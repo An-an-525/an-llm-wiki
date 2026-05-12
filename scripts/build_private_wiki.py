@@ -287,6 +287,59 @@ def local_inventory_table(rows: list[dict[str, str]], limit: int = 180) -> str:
     return "\n".join(lines)
 
 
+def root_by_fragments(rows: list[dict[str, str]], fragments: list[str]) -> dict[str, str] | None:
+    wanted = [fragment.casefold() for fragment in fragments]
+    for row in rows:
+        text = f"{row.get('root_id', '')} {row.get('path', '')}".casefold()
+        if all(fragment in text for fragment in wanted):
+            return row
+    return None
+
+
+def inventory_for_root(rows: list[dict[str, str]], root_row: dict[str, str] | None) -> list[dict[str, str]]:
+    if not root_row:
+        return []
+    root_id = root_row.get("root_id", "")
+    return [row for row in rows if row.get("root_id") == root_id]
+
+
+def archive_package_table(rows: list[dict[str, str]], limit: int = 60) -> str:
+    grouped: dict[str, Counter] = defaultdict(Counter)
+    for row in rows:
+        archive = row.get("archive_relative_path", "") or "unknown-archive"
+        grouped[archive]["members"] += 1
+        grouped[archive][f"kind:{row.get('kind', '')}"] += 1
+        if row.get("risk_flags"):
+            grouped[archive]["risk_named"] += 1
+    ranked = sorted(grouped.items(), key=lambda item: (-item[1]["members"], item[0].casefold()))
+    lines = ["| Archive | Members | Text | Documents | Images | Nested packages | Risk-named |", "|---|---:|---:|---:|---:|---:|---:|"]
+    for archive, counts in ranked[:limit]:
+        lines.append(
+            f"| `{md_cell(archive, 170)}` | {counts['members']} | {counts['kind:text']} | "
+            f"{counts['kind:document']} | {counts['kind:image']} | {counts['kind:archive']} | {counts['risk_named']} |"
+        )
+    if len(ranked) > limit:
+        lines.append(f"| `...` | ... | ... | ... | ... | ... | {len(ranked) - limit} more archives in local_archive_inventory.csv |")
+    if len(lines) == 2:
+        lines.append("| - | 0 | 0 | 0 | 0 | 0 | 0 |")
+    return "\n".join(lines)
+
+
+def archive_member_table(rows: list[dict[str, str]], limit: int = 140) -> str:
+    lines = ["| Archive | Member | Kind | Size | Risk flags |", "|---|---|---|---:|---|"]
+    for row in rows[:limit]:
+        lines.append(
+            f"| `{md_cell(row.get('archive_relative_path', ''), 130)}` | "
+            f"`{md_cell(row.get('member_path', ''), 170)}` | `{row.get('kind', '')}` | "
+            f"{row.get('size_bytes', '0')} | `{md_cell(row.get('risk_flags', '') or '-', 120)}` |"
+        )
+    if len(rows) > limit:
+        lines.append(f"| ... | {len(rows) - limit} more members in local_archive_inventory.csv | ... | ... | ... |")
+    if len(lines) == 2:
+        lines.append("| - | No archive members indexed | - | 0 | - |")
+    return "\n".join(lines)
+
+
 def contains_any(text: str, terms: list[str]) -> bool:
     haystack = text.casefold()
     return any(term.casefold() in haystack for term in terms)
@@ -534,11 +587,14 @@ def write_deep_context_pages(
     local_root_rows: list[dict[str, str]],
     local_finding_rows: list[dict[str, str]],
     local_timeline_rows: list[dict[str, str]],
+    archive_rows: list[dict[str, str]],
 ) -> int:
     session_terms = ["conversation", "conversations", "chat", "session", "history", "transcript", "memory", "memories", "微信", "wechat", "会话", "记忆", "画像", "summary", "codex", "claude"]
     project_terms = ["project", "repo", "github", "workspace", "项目", "作品", "平台", "系统", "小程序", "frontend", "backend", "openhanako", "hanako", "airi", "mcc", "gitnexus"]
     agent_terms = ["agent", "codex", "claude", "cursor", "gemini", "qwen", "openclaw", "mcp", "skill", "prompt", "hook", "rules", "serena", "mempalace", "config", "settings"]
     publish_terms = ["public", "site-data", "showcase", "portfolio", "README", "index", "资料库", "展示", "公开", "网站", "frontend"]
+    coze_xiaoan_terms = ["coze", "扣子", "小安", "xiaoan", "bot", "智能体", "workflow", "dify", "n8n"]
+    wechat_terms = ["wechat", "weixin", "wxid", "tencent", "微信", "msg/file", "msg\\file"]
 
     recovered_session = select_recovered_rows(
         recovered_rows,
@@ -568,6 +624,46 @@ def write_deep_context_pages(
     finding_groups = Counter(row.get("group", "") for row in local_finding_rows)
     finding_rules = Counter(row.get("rule", "") for row in local_finding_rows)
     timeline_sources = Counter(row.get("source", "") for row in local_timeline_rows)
+    archive_kind_counts = Counter(row.get("kind", "") for row in archive_rows)
+    archive_risk_counts = Counter(row.get("risk_flags", "") or "-" for row in archive_rows)
+
+    download_root = root_by_fragments(local_root_rows, ["下载"])
+    wechat_file_root = root_by_fragments(local_root_rows, ["wxid", "msg", "file"])
+    oh_workspace_root = root_by_fragments(local_root_rows, ["oh-workspace"])
+    download_rows = inventory_for_root(local_rows, download_root)
+    wechat_file_rows = inventory_for_root(local_rows, wechat_file_root)
+    oh_workspace_rows = inventory_for_root(local_rows, oh_workspace_root)
+    coze_xiaoan_rows = select_local_rows(local_rows, coze_xiaoan_terms, None, 260)
+    coze_xiaoan_archive_rows = [
+        row
+        for row in archive_rows
+        if contains_any(
+            " ".join(
+                [
+                    row.get("root_id", ""),
+                    row.get("archive_relative_path", ""),
+                    row.get("member_path", ""),
+                    row.get("name", ""),
+                ]
+            ),
+            coze_xiaoan_terms,
+        )
+    ]
+    wechat_archive_rows = [
+        row
+        for row in archive_rows
+        if contains_any(
+            " ".join(
+                [
+                    row.get("root_id", ""),
+                    row.get("archive_relative_path", ""),
+                    row.get("member_path", ""),
+                    row.get("name", ""),
+                ]
+            ),
+            wechat_terms,
+        )
+    ]
 
     index_body = (
         "这组页面回答“还有哪些信息和上下文在本地”。它把来源、会话、项目、Agent、公开候选和待办问题拆开，避免所有东西挤在一个索引表里。\n\n"
@@ -576,6 +672,9 @@ def write_deep_context_pages(
         "- [[private-wiki/context/session-memory-map]] - 会话、记忆、个人画像和上下文线索\n"
         "- [[private-wiki/context/project-continuity-map]] - 项目连续性与交付上下文\n"
         "- [[private-wiki/context/agent-runtime-map]] - Agent 运行面、规则面、配置面\n"
+        "- [[private-wiki/context/coze-xiaoan-source-map]] - Coze/小安、下载目录和前端资料库规格线索\n"
+        "- [[private-wiki/context/wechat-file-attachments-map]] - WeChat 文件附件元数据地图\n"
+        "- [[private-wiki/context/archive-package-map]] - 压缩包成员元数据地图\n"
         "- [[private-wiki/context/publication-context-map]] - 公开展示候选与脱敏队列\n"
         "- [[private-wiki/context/continuation-questions]] - 后续需要回答的问题\n\n"
         "## 现有规模\n\n"
@@ -583,6 +682,7 @@ def write_deep_context_pages(
         f"- 本地来源索引：`{len(local_rows)}`\n"
         f"- 本地时间线行：`{len(local_timeline_rows)}`\n"
         f"- 本地风险/隐私线索：`{len(local_finding_rows)}`\n\n"
+        f"- 压缩包成员索引：`{len(archive_rows)}`\n\n"
         "## 使用方式\n\n"
         "先从 source-priority 看来源，再从 session/project/agent 三条线决定要不要继续细化成单独页面。公开展示只走 publication-context，不直接从 context 页复制原文。\n"
     )
@@ -648,6 +748,61 @@ def write_deep_context_pages(
     )
     write_page(out / "context" / "agent-runtime-map.md", "Agent 运行面上下文地图", ["Agent运行面", "Agent上下文"], ["personal-archive", "context", "agents"], "private-context", "map", "Codex、Claude、Cursor、OpenClaw、MCP、技能和规则的本地上下文地图。", agent_body, "sensitive")
 
+    coze_body = (
+        "这页把 Coze/扣子/小安、下载目录、资料库前端规格和相关 Agent 项目线索放在一起。它只做私有元数据地图，不抽取压缩包或聊天原文。\n\n"
+        "## 下载与工作区根\n\n"
+        + local_root_table([row for row in [download_root, oh_workspace_root] if row], 20)
+        + "\n\n## 下载目录重点文件\n\n"
+        + local_inventory_table(sorted(download_rows, key=lambda row: (row.get("category", ""), row.get("relative_path", ""))), 120)
+        + "\n\n## OH-WorkSpace 与资料库前端规格\n\n"
+        + local_inventory_table(sorted(oh_workspace_rows, key=lambda row: (row.get("relative_path", ""))), 120)
+        + "\n\n## Coze/小安/自动化候选\n\n"
+        + source_status_table(coze_xiaoan_rows, 80)
+        + "\n\n## 压缩包内相关成员\n\n"
+        + archive_member_table(sorted(coze_xiaoan_archive_rows, key=lambda row: (not row.get("risk_flags"), row.get("archive_relative_path", ""), row.get("member_path", ""))), 120)
+        + "\n\n## 后续处理\n\n"
+        "- Coze/小安资料先归到私有项目线，不直接进入公开 `wiki/`。\n"
+        "- 如果要给前端展示，只公开项目目标、能力证明、非敏感截图和脱敏后的架构说明。\n"
+        "- 压缩包只在确认无密钥和隐私后再按需解包；默认仅索引成员名、类型、大小和风险标记。\n"
+    )
+    write_page(out / "context" / "coze-xiaoan-source-map.md", "Coze 小安与下载资料地图", ["Coze资料地图", "小安资料地图", "下载资料地图"], ["personal-archive", "context", "coze", "xiaoan"], "private-context", "map", "Coze/小安、下载目录和个人资料库前端规格的私有来源地图。", coze_body, "sensitive")
+
+    wechat_body = (
+        "这页专门整理 WeChat 文件附件目录。它不解析聊天数据库，不复制附件正文，只把文件、类型、时间线和风险标记编译成可检索地图。\n\n"
+        "## 文件附件根\n\n"
+        + local_root_table([wechat_file_root] if wechat_file_root else [], 20)
+        + "\n\n## 附件分类分布\n\n"
+        + counter_table("WeChat 附件类别", Counter(row.get("category", "") for row in wechat_file_rows), "类别", 12)
+        + "\n\n"
+        + counter_table("WeChat 附件类型", Counter(row.get("kind", "") for row in wechat_file_rows), "类型", 12)
+        + "\n\n## 重点附件清单\n\n"
+        + local_inventory_table(sorted(wechat_file_rows, key=lambda row: (not row.get("risk_flags"), row.get("category", ""), row.get("relative_path", ""))), 180)
+        + "\n\n## 压缩包内 WeChat 相关成员\n\n"
+        + archive_member_table(sorted(wechat_archive_rows, key=lambda row: (not row.get("risk_flags"), row.get("archive_relative_path", ""), row.get("member_path", ""))), 140)
+        + "\n\n## 处理规则\n\n"
+        "- WeChat 附件默认 `private-only`，特别是学校材料、简历、聊天导出、合同、账号和截图。\n"
+        "- 对项目有价值的附件，先改写成私有项目页；公开前再做二次脱敏。\n"
+        "- 图片、音频和文档后续需要单独的多模态/文档读取批次，不在这一步展开。\n"
+    )
+    write_page(out / "context" / "wechat-file-attachments-map.md", "WeChat 文件附件地图", ["微信附件地图", "WeChat附件地图"], ["personal-archive", "context", "wechat"], "private-context", "map", "WeChat 文件附件目录的私有元数据地图。", wechat_body, "sensitive")
+
+    archive_body = (
+        "这页是本地压缩包成员索引。脚本只读取 ZIP 目录，不抽取、不执行、不复制压缩包内容。\n\n"
+        "## 成员类型\n\n"
+        + counter_table("压缩包成员类型", archive_kind_counts, "类型", 12)
+        + "\n\n"
+        + counter_table("成员风险标记", archive_risk_counts, "风险标记", 12)
+        + "\n\n## 压缩包分布\n\n"
+        + archive_package_table(archive_rows, 80)
+        + "\n\n## 成员样本\n\n"
+        + archive_member_table(sorted(archive_rows, key=lambda row: (not row.get("risk_flags"), row.get("archive_relative_path", ""), row.get("member_path", ""))), 160)
+        + "\n\n## 解包门槛\n\n"
+        "- 默认不解包；成员名已经足够支持搜索、排序和人工复核。\n"
+        "- 只有明确需要提取某个项目/资料包时，才在临时目录解包并重新跑私有扫描。\n"
+        "- 含 `sensitive-name`、`personal-name`、`.env`、`token`、`cookie`、`session` 的包先做安全复核。\n"
+    )
+    write_page(out / "context" / "archive-package-map.md", "本地压缩包成员地图", ["压缩包成员索引", "Archive Package Map"], ["personal-archive", "context", "archives"], "private-context", "map", "本地 ZIP 压缩包成员名、类型和风险标记的私有地图。", archive_body, "sensitive")
+
     publication_body = (
         "这页把更多本地上下文接到未来网站展示：什么可以写成公开资料，什么必须留私有。\n\n"
         "## 展示候选\n\n"
@@ -676,7 +831,7 @@ def write_deep_context_pages(
     )
     write_page(out / "context" / "continuation-questions.md", "继续完善问题队列", ["上下文待办", "复核问题"], ["personal-archive", "context", "todo"], "private-context", "queue", "继续完善本地知识库时需要人工复核和决策的问题队列。", questions_body, "sensitive")
 
-    return 7
+    return 10
 
 
 def write_readable_knowledge_pages(
@@ -686,6 +841,7 @@ def write_readable_knowledge_pages(
     local_root_rows: list[dict[str, str]],
     local_finding_rows: list[dict[str, str]],
     local_timeline_rows: list[dict[str, str]],
+    archive_rows: list[dict[str, str]],
     recovered_growth: list[dict[str, str]],
     recovered_projects: list[dict[str, str]],
     recovered_skills: list[dict[str, str]],
@@ -874,6 +1030,7 @@ def write_readable_knowledge_pages(
         local_root_rows,
         local_finding_rows,
         local_timeline_rows,
+        archive_rows,
     )
 
     return 7 + context_pages
@@ -888,6 +1045,7 @@ def write_personal_archive_pages(
     local_root_rows: list[dict[str, str]],
     local_finding_rows: list[dict[str, str]],
     local_timeline_rows: list[dict[str, str]],
+    archive_rows: list[dict[str, str]],
 ) -> dict[str, int]:
     growth_terms = [
         "成长",
@@ -1117,6 +1275,7 @@ def write_personal_archive_pages(
         local_root_rows,
         local_finding_rows,
         local_timeline_rows,
+        archive_rows,
         recovered_growth,
         recovered_projects,
         recovered_skills,
@@ -1413,6 +1572,7 @@ def build(root: Path) -> int:
     local_root_rows = read_csv(local_dir / "local_roots.csv")
     local_finding_rows = read_csv(local_dir / "local_sensitive_findings.csv")
     local_timeline_rows = read_csv(local_dir / "local_timeline_index.csv")
+    archive_rows = read_csv(local_dir / "local_archive_inventory.csv")
 
     secret_rows = group_sensitive(sensitive_rows, SECRET_RULES)
     high_secret_rows = group_sensitive(sensitive_rows, HIGH_SECRET_RULES)
@@ -1522,6 +1682,7 @@ def build(root: Path) -> int:
         local_root_rows,
         local_finding_rows,
         local_timeline_rows,
+        archive_rows,
     )
 
     publication_body = (
@@ -1545,6 +1706,7 @@ def build(root: Path) -> int:
         "sensitive_rows": len(sensitive_rows),
         "timeline_rows": len(timeline_rows),
         "review_rows": len(review_rows),
+        "local_archive_members": len(archive_rows),
         "publication_status_counts": dict(status_counts),
         **local_stats,
         **personal_archive_stats,

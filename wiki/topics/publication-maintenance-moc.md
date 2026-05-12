@@ -20,6 +20,8 @@ Use this page before publishing or importing more content.
 ## Policy
 
 - [[wiki/sources-and-data-policy]] - public/private boundary
+- [[wiki/concepts/private-to-public-promotion-pipeline]] - promotion workflow
+- [[wiki/concepts/public-site-data-boundary]] - frontend/backend data boundary
 - [[AGENTS]] - operating rules
 - [[CLAUDE]] - schema and page format
 

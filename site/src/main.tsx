@@ -1,16 +1,10 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { HashRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router'
 import './index.css'
 import App from './App.tsx'
-import { ArchiveDataProvider } from './lib/archive-api'
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <HashRouter>
-      <ArchiveDataProvider>
-        <App />
-      </ArchiveDataProvider>
-    </HashRouter>
-  </StrictMode>,
+  <HashRouter>
+    <App />
+  </HashRouter>,
 )

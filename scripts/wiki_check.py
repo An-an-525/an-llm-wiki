@@ -50,7 +50,7 @@ class LinkFinding:
 
 def iter_markdown(root: Path):
     for current, dirs, names in os.walk(root, followlinks=False):
-        dirs[:] = [d for d in dirs if d not in IGNORE_DIRS and not d.startswith("00 - ")]
+        dirs[:] = [d for d in dirs if d not in IGNORE_DIRS and not d.startswith("00 - ") and not d.startswith("01 - ")]
         for name in names:
             if name in IGNORE_FILES:
                 continue

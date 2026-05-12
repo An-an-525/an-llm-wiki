@@ -362,6 +362,36 @@ class PrivateWikiBuilderTests(unittest.TestCase):
         self.assertNotIn(fake_secret, local_table)
         self.assertNotIn(fake_secret, aggregate_table)
 
+    def test_archive_member_table_redacts_secret_like_member_names(self) -> None:
+        token = "sk-" + "a" * 24
+        rows = [
+            {
+                "root_id": "archive-root",
+                "archive_relative_path": "downloads/package.zip",
+                "member_path": f"configs/{token}.env",
+                "kind": "text",
+                "size_bytes": "42",
+                "risk_flags": "sensitive-name",
+            }
+        ]
+
+        table = build_private_wiki.archive_member_table(rows)
+
+        self.assertIn("sensitive-name", table)
+        self.assertIn("[secret-redacted]", table)
+        self.assertNotIn(token, table)
+
+    def test_inventory_for_root_selects_exact_root_only(self) -> None:
+        root = {"root_id": "target-root", "path": "D:/source"}
+        rows = [
+            {"root_id": "target-root", "relative_path": "a.md"},
+            {"root_id": "other-root", "relative_path": "b.md"},
+        ]
+
+        selected = build_private_wiki.inventory_for_root(rows, root)
+
+        self.assertEqual(["a.md"], [row["relative_path"] for row in selected])
+
 
 class SiteDataBuilderTests(unittest.TestCase):
     def test_site_data_compiles_public_wiki_only(self) -> None:

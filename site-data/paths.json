@@ -207,6 +207,8 @@
       "",
       "- [[README]] - overview",
       "- [[wiki/index]] - main wiki workbench",
+      "- [[wiki/synthesis/karpathy-official-wiki-layer]] - official wiki layer contract",
+      "- [[wiki/topics/personal-archive-moc]] - personal archive and website backend map",
       "- [[wiki/topics/llm-wiki-moc]] - architecture and operations",
       "- [[wiki/topics/ai-agent-systems-moc]] - agent systems map",
       "- [[wiki/topics/skills-and-tools-moc]] - skills and tooling map",
@@ -225,6 +227,14 @@
       {
         "target": "wiki/index",
         "label": "wiki/index"
+      },
+      {
+        "target": "wiki/synthesis/karpathy-official-wiki-layer",
+        "label": "wiki/synthesis/karpathy-official-wiki-layer"
+      },
+      {
+        "target": "wiki/topics/personal-archive-moc",
+        "label": "wiki/topics/personal-archive-moc"
       },
       {
         "target": "wiki/topics/llm-wiki-moc",
@@ -265,12 +275,12 @@
         "anchor": "an-llm-wiki-index"
       }
     ],
-    "wordCount": 86,
+    "wordCount": 106,
     "readingMinutes": 1,
     "metrics": {
-      "lineCount": 13,
+      "lineCount": 15,
       "headingCount": 1,
-      "linkCount": 9,
+      "linkCount": 11,
       "sourceCount": 1
     },
     "quality": {
@@ -339,12 +349,15 @@
       "",
       "- [[README]] - vault overview",
       "- [[wiki/sources/karpathy-llm-wiki-pattern]] - official architecture source",
+      "- [[wiki/synthesis/karpathy-official-wiki-layer]] - public wiki layer contract",
       "- [[wiki/sources-and-data-policy]] - source and publication boundary",
       "- [[wiki/projects/root-maintenance-backlog]] - current maintenance backlog",
       "- [[log]] - append-only maintenance log",
       "",
       "## Maps",
       "",
+      "- [[wiki/topics/personal-archive-moc]] - public personal archive and website data map",
+      "- [[wiki/synthesis/archive-information-architecture]] - information backbone for projects, capabilities, timeline, and review queues",
       "- [[wiki/topics/llm-wiki-moc]] - LLM Wiki architecture and operations",
       "- [[wiki/topics/ai-agent-systems-moc]] - AI agent systems and framework notes",
       "- [[wiki/topics/skills-and-tools-moc]] - migrated skills and reusable tooling notes",
@@ -353,6 +366,7 @@
       "## Source Notes",
       "",
       "- [[wiki/sources/karpathy-llm-wiki-pattern]] - official pattern source",
+      "- [[wiki/sources/local-private-compile-2026-05-13]] - public-safe source record for the current local compile pass",
       "- [[wiki/sources/github-reference-projects]] - secondary project index",
       "- [[wiki/sources/obsidian-llm-wiki-local]] - local-first reference project",
       "- [[wiki/sources/llm-wikid]] - vault-template reference project",
@@ -368,6 +382,10 @@
         "label": "wiki/sources/karpathy-llm-wiki-pattern"
       },
       {
+        "target": "wiki/synthesis/karpathy-official-wiki-layer",
+        "label": "wiki/synthesis/karpathy-official-wiki-layer"
+      },
+      {
         "target": "wiki/sources-and-data-policy",
         "label": "wiki/sources-and-data-policy"
       },
@@ -378,6 +396,14 @@
       {
         "target": "log",
         "label": "log"
+      },
+      {
+        "target": "wiki/topics/personal-archive-moc",
+        "label": "wiki/topics/personal-archive-moc"
+      },
+      {
+        "target": "wiki/synthesis/archive-information-architecture",
+        "label": "wiki/synthesis/archive-information-architecture"
       },
       {
         "target": "wiki/topics/llm-wiki-moc",
@@ -398,6 +424,10 @@
       {
         "target": "wiki/sources/karpathy-llm-wiki-pattern",
         "label": "wiki/sources/karpathy-llm-wiki-pattern"
+      },
+      {
+        "target": "wiki/sources/local-private-compile-2026-05-13",
+        "label": "wiki/sources/local-private-compile-2026-05-13"
       },
       {
         "target": "wiki/sources/github-reference-projects",
@@ -441,12 +471,12 @@
         "anchor": "source-notes"
       }
     ],
-    "wordCount": 148,
+    "wordCount": 197,
     "readingMinutes": 1,
     "metrics": {
-      "lineCount": 26,
+      "lineCount": 30,
       "headingCount": 4,
-      "linkCount": 14,
+      "linkCount": 18,
       "sourceCount": 1
     },
     "quality": {
@@ -552,6 +582,7 @@
       "",
       "## Architecture Notes",
       "",
+      "- [[wiki/concepts/agent-skill-governance]] - public-safe skill and rule governance",
       "- [[wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agent_Computer_Interface_Best_Practices]]",
       "- [[wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agent_Design_Patterns_2026]]",
       "- [[wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agentic_Workflow_Optimization_2026]]",
@@ -596,6 +627,10 @@
       {
         "target": "wiki/topics/04-知识库-领域研究-Agent生态-SWE-Agent",
         "label": "wiki/topics/04-知识库-领域研究-Agent生态-SWE-Agent"
+      },
+      {
+        "target": "wiki/concepts/agent-skill-governance",
+        "label": "wiki/concepts/agent-skill-governance"
       },
       {
         "target": "wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agent_Computer_Interface_Best_Practices",
@@ -655,12 +690,12 @@
         "anchor": "project-architecture"
       }
     ],
-    "wordCount": 348,
+    "wordCount": 358,
     "readingMinutes": 1,
     "metrics": {
-      "lineCount": 28,
+      "lineCount": 29,
       "headingCount": 4,
-      "linkCount": 16,
+      "linkCount": 17,
       "sourceCount": 1
     },
     "quality": {
@@ -760,6 +795,7 @@
       "## Architecture",
       "",
       "- [[wiki/sources/karpathy-llm-wiki-pattern]] - official pattern source",
+      "- [[wiki/synthesis/karpathy-official-wiki-layer]] - public wiki layer contract",
       "- [[CLAUDE]] - local schema and page contract",
       "- [[AGENTS]] - operating rules for future agents",
       "- [[wiki/sources-and-data-policy]] - public/private source boundary",
@@ -782,6 +818,10 @@
       {
         "target": "wiki/sources/karpathy-llm-wiki-pattern",
         "label": "wiki/sources/karpathy-llm-wiki-pattern"
+      },
+      {
+        "target": "wiki/synthesis/karpathy-official-wiki-layer",
+        "label": "wiki/synthesis/karpathy-official-wiki-layer"
       },
       {
         "target": "CLAUDE",
@@ -853,12 +893,12 @@
         "anchor": "migrated-llm-wiki-notes"
       }
     ],
-    "wordCount": 128,
+    "wordCount": 137,
     "readingMinutes": 1,
     "metrics": {
-      "lineCount": 24,
+      "lineCount": 25,
       "headingCount": 4,
-      "linkCount": 12,
+      "linkCount": 13,
       "sourceCount": 1
     },
     "quality": {
@@ -925,6 +965,240 @@
     ]
   },
   {
+    "id": "c_74981be21c4f4c9f",
+    "title": "Personal Archive MOC",
+    "slug": "wiki-topics-personal-archive-moc",
+    "summary": "Map of the public personal archive platform, promotion workflow, frontend data boundary, and publication roadmap.",
+    "tags": [
+      "archive",
+      "moc",
+      "llm-wiki",
+      "curated"
+    ],
+    "status": [
+      "featured",
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "sourcePath": "wiki/topics/personal-archive-moc.md",
+    "module": "paths",
+    "category": "synthesis",
+    "type": "moc",
+    "contentType": "article",
+    "href": "/content/wiki-topics-personal-archive-moc",
+    "contentLines": [
+      "# Personal Archive MOC",
+      "",
+      "This map is the public navigation layer for the personal archive project.",
+      "",
+      "## Platform",
+      "",
+      "- [[wiki/projects/personal-archive-platform]] - public project overview",
+      "- [[wiki/synthesis/archive-information-architecture]] - information backbone",
+      "- [[wiki/synthesis/personal-archive-public-roadmap]] - staged publication plan",
+      "- [[wiki/synthesis/karpathy-official-wiki-layer]] - wiki layer contract",
+      "",
+      "## Promotion Workflow",
+      "",
+      "- [[wiki/synthesis/project-evidence-matrix]] - project evidence and readiness",
+      "- [[wiki/synthesis/capability-evidence-matrix]] - capability evidence and repeatable workflows",
+      "- [[wiki/synthesis/public-growth-timeline-framework]] - public timeline classification",
+      "- [[wiki/synthesis/information-review-queue]] - unresolved information decisions",
+      "- [[wiki/concepts/private-to-public-promotion-pipeline]] - how local-only review material becomes public pages",
+      "- [[wiki/sources/local-private-compile-2026-05-13]] - public-safe source record for the current compile pass",
+      "- [[wiki/sources-and-data-policy]] - source and publication boundary",
+      "",
+      "## Website Data",
+      "",
+      "- [[wiki/concepts/public-site-data-boundary]] - frontend/backend data contract",
+      "- [[wiki/topics/publication-maintenance-moc]] - validation and publication gates",
+      "",
+      "## Agent And Skills",
+      "",
+      "- [[wiki/concepts/agent-skill-governance]] - public-safe skill and rule governance",
+      "- [[wiki/topics/skills-and-tools-moc]] - public skills and tools map",
+      "- [[wiki/topics/ai-agent-systems-moc]] - public agent systems map"
+    ],
+    "links": [
+      {
+        "target": "wiki/projects/personal-archive-platform",
+        "label": "wiki/projects/personal-archive-platform"
+      },
+      {
+        "target": "wiki/synthesis/archive-information-architecture",
+        "label": "wiki/synthesis/archive-information-architecture"
+      },
+      {
+        "target": "wiki/synthesis/personal-archive-public-roadmap",
+        "label": "wiki/synthesis/personal-archive-public-roadmap"
+      },
+      {
+        "target": "wiki/synthesis/karpathy-official-wiki-layer",
+        "label": "wiki/synthesis/karpathy-official-wiki-layer"
+      },
+      {
+        "target": "wiki/synthesis/project-evidence-matrix",
+        "label": "wiki/synthesis/project-evidence-matrix"
+      },
+      {
+        "target": "wiki/synthesis/capability-evidence-matrix",
+        "label": "wiki/synthesis/capability-evidence-matrix"
+      },
+      {
+        "target": "wiki/synthesis/public-growth-timeline-framework",
+        "label": "wiki/synthesis/public-growth-timeline-framework"
+      },
+      {
+        "target": "wiki/synthesis/information-review-queue",
+        "label": "wiki/synthesis/information-review-queue"
+      },
+      {
+        "target": "wiki/concepts/private-to-public-promotion-pipeline",
+        "label": "wiki/concepts/private-to-public-promotion-pipeline"
+      },
+      {
+        "target": "wiki/sources/local-private-compile-2026-05-13",
+        "label": "wiki/sources/local-private-compile-2026-05-13"
+      },
+      {
+        "target": "wiki/sources-and-data-policy",
+        "label": "wiki/sources-and-data-policy"
+      },
+      {
+        "target": "wiki/concepts/public-site-data-boundary",
+        "label": "wiki/concepts/public-site-data-boundary"
+      },
+      {
+        "target": "wiki/topics/publication-maintenance-moc",
+        "label": "wiki/topics/publication-maintenance-moc"
+      },
+      {
+        "target": "wiki/concepts/agent-skill-governance",
+        "label": "wiki/concepts/agent-skill-governance"
+      },
+      {
+        "target": "wiki/topics/skills-and-tools-moc",
+        "label": "wiki/topics/skills-and-tools-moc"
+      },
+      {
+        "target": "wiki/topics/ai-agent-systems-moc",
+        "label": "wiki/topics/ai-agent-systems-moc"
+      }
+    ],
+    "sources": [
+      "[[wiki/sources/local-private-compile-2026-05-13]]",
+      "[[wiki/synthesis/karpathy-official-wiki-layer]]"
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Personal Archive MOC",
+        "anchor": "personal-archive-moc"
+      },
+      {
+        "level": 2,
+        "title": "Platform",
+        "anchor": "platform"
+      },
+      {
+        "level": 2,
+        "title": "Promotion Workflow",
+        "anchor": "promotion-workflow"
+      },
+      {
+        "level": 2,
+        "title": "Website Data",
+        "anchor": "website-data"
+      },
+      {
+        "level": 2,
+        "title": "Agent And Skills",
+        "anchor": "agent-and-skills"
+      }
+    ],
+    "wordCount": 169,
+    "readingMinutes": 1,
+    "metrics": {
+      "lineCount": 31,
+      "headingCount": 5,
+      "linkCount": 16,
+      "sourceCount": 2
+    },
+    "quality": {
+      "hasSources": true,
+      "hasToc": true,
+      "summaryLength": 113,
+      "needsSourceReview": false,
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "explicitlyCurated": true
+    },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "map",
+      "archive"
+    ],
+    "displayTier": "showcase",
+    "qualityScore": 100,
+    "hiddenReasons": [],
+    "goal": "Map of the public personal archive platform, promotion workflow, frontend data boundary, and publication roadmap.",
+    "audience": "希望沿着公开资料路线学习、复刻或维护知识库的读者。",
+    "prerequisites": [],
+    "estimatedTime": "按主题自定",
+    "difficulty": "intermediate",
+    "finalOutput": "形成一条可复用的公开学习或构建路径。",
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "Personal Archive MOC",
+        "goal": "Personal Archive MOC",
+        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "resources": [],
+        "completion": "读完本节并能连接到相关公开页面。",
+        "optional": false
+      },
+      {
+        "id": "step-2",
+        "title": "Platform",
+        "goal": "Platform",
+        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "resources": [],
+        "completion": "读完本节并能连接到相关公开页面。",
+        "optional": false
+      },
+      {
+        "id": "step-3",
+        "title": "Promotion Workflow",
+        "goal": "Promotion Workflow",
+        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "resources": [],
+        "completion": "读完本节并能连接到相关公开页面。",
+        "optional": false
+      },
+      {
+        "id": "step-4",
+        "title": "Website Data",
+        "goal": "Website Data",
+        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "resources": [],
+        "completion": "读完本节并能连接到相关公开页面。",
+        "optional": false
+      },
+      {
+        "id": "step-5",
+        "title": "Agent And Skills",
+        "goal": "Agent And Skills",
+        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "resources": [],
+        "completion": "读完本节并能连接到相关公开页面。",
+        "optional": false
+      }
+    ]
+  },
+  {
     "id": "c_7e9d08f8f6eda5d4",
     "title": "Publication Maintenance MOC",
     "slug": "wiki-topics-publication-maintenance-moc",
@@ -955,6 +1229,8 @@
       "## Policy",
       "",
       "- [[wiki/sources-and-data-policy]] - public/private boundary",
+      "- [[wiki/concepts/private-to-public-promotion-pipeline]] - promotion workflow",
+      "- [[wiki/concepts/public-site-data-boundary]] - frontend/backend data boundary",
       "- [[AGENTS]] - operating rules",
       "- [[CLAUDE]] - schema and page format",
       "",
@@ -981,6 +1257,14 @@
       {
         "target": "wiki/sources-and-data-policy",
         "label": "wiki/sources-and-data-policy"
+      },
+      {
+        "target": "wiki/concepts/private-to-public-promotion-pipeline",
+        "label": "wiki/concepts/private-to-public-promotion-pipeline"
+      },
+      {
+        "target": "wiki/concepts/public-site-data-boundary",
+        "label": "wiki/concepts/public-site-data-boundary"
       },
       {
         "target": "AGENTS",
@@ -1030,12 +1314,12 @@
         "anchor": "maintenance"
       }
     ],
-    "wordCount": 111,
+    "wordCount": 127,
     "readingMinutes": 1,
     "metrics": {
-      "lineCount": 28,
+      "lineCount": 30,
       "headingCount": 5,
-      "linkCount": 5,
+      "linkCount": 7,
       "sourceCount": 2
     },
     "quality": {
@@ -1139,6 +1423,7 @@
       "",
       "## Skill Indexes",
       "",
+      "- [[wiki/concepts/agent-skill-governance]] - current public model for skill governance",
       "- [[wiki/concepts/04-知识库-领域研究-AI-Agent技术-技能库-MuleRun_Skills_Hub_MOC]] - migrated skill knowledge network",
       "- [[wiki/concepts/07-技能库-MuleRun_Skills_Hub]] - common source note for migrated skill entries",
       "- [[wiki/concepts/07-技能库-说明-技能库说明]] - skill-library operating note",
@@ -1162,6 +1447,10 @@
       "- [[wiki/topics/02-领域-AI工具生态-记忆系统对比]]"
     ],
     "links": [
+      {
+        "target": "wiki/concepts/agent-skill-governance",
+        "label": "wiki/concepts/agent-skill-governance"
+      },
       {
         "target": "wiki/concepts/04-知识库-领域研究-AI-Agent技术-技能库-MuleRun_Skills_Hub_MOC",
         "label": "wiki/concepts/04-知识库-领域研究-AI-Agent技术-技能库-MuleRun_Skills_Hub_MOC"
@@ -1248,12 +1537,12 @@
         "anchor": "tooling-areas"
       }
     ],
-    "wordCount": 248,
+    "wordCount": 259,
     "readingMinutes": 1,
     "metrics": {
-      "lineCount": 27,
+      "lineCount": 28,
       "headingCount": 4,
-      "linkCount": 15,
+      "linkCount": 16,
       "sourceCount": 1
     },
     "quality": {
@@ -1262,7 +1551,7 @@
       "summaryLength": 83,
       "needsSourceReview": false,
       "displayTier": "showcase",
-      "qualityScore": 94,
+      "qualityScore": 100,
       "hiddenReasons": [
         "source:archive-only"
       ],
@@ -1274,7 +1563,7 @@
       "archive-derived"
     ],
     "displayTier": "showcase",
-    "qualityScore": 94,
+    "qualityScore": 100,
     "hiddenReasons": [
       "source:archive-only"
     ],

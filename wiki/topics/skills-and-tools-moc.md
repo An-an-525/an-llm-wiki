@@ -18,6 +18,7 @@ This page is the public navigation layer for migrated skill notes.
 
 ## Skill Indexes
 
+- [[wiki/concepts/agent-skill-governance]] - current public model for skill governance
 - [[wiki/concepts/04-知识库-领域研究-AI-Agent技术-技能库-MuleRun_Skills_Hub_MOC]] - migrated skill knowledge network
 - [[wiki/concepts/07-技能库-MuleRun_Skills_Hub]] - common source note for migrated skill entries
 - [[wiki/concepts/07-技能库-说明-技能库说明]] - skill-library operating note

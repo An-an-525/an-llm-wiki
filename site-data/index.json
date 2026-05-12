@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-12T20:11:50+00:00",
+  "generatedAt": "2026-05-12T20:46:22+00:00",
   "source": "an-llm-wiki public wiki",
   "schemaVersion": 1,
   "privacyBoundary": {
@@ -93,21 +93,21 @@
     }
   ],
   "counts": {
-    "content": 13,
-    "publicMarkdown": 207,
-    "reviewQueue": 194,
-    "library": 6,
-    "paths": 7,
+    "content": 25,
+    "publicMarkdown": 220,
+    "reviewQueue": 195,
+    "library": 16,
+    "paths": 8,
     "feed": 0,
-    "works": 0,
+    "works": 1,
     "journal": 0,
-    "timeline": 13
+    "timeline": 25
   },
   "curation": {
     "mode": "curated-public-showcase",
-    "displayedContent": 13,
-    "reviewQueue": 194,
-    "allPublicMarkdown": 207,
+    "displayedContent": 25,
+    "reviewQueue": 195,
+    "allPublicMarkdown": 220,
     "qualityManifest": "manifests/site_data_quality_review.csv",
     "rules": [
       "Front-end payload includes only showcase/starter pages.",
@@ -117,9 +117,9 @@
     ],
     "nextImportWorkflow": [
       "Collect useful local material into private-wiki or wiki draft pages.",
-      "Rewrite each item for beginner readers with a clear summary, use case, sources, and next step.",
+      "Use skills/archive-content-curator/SKILL.md to rewrite each item for beginner readers with concrete evidence, operation steps, literary care, psychological insight, sociological context, and philosophical restraint.",
       "Mark it with publish: curated or status: verified only after privacy and source review.",
-      "Use skills/archive-content-curator/SKILL.md for project cards, tool cards, prompt patterns, routes, and timeline records.",
+      "Match the current frontend contract in site/src/types/index.ts; never hand-edit site/src/data/siteData.generated.ts.",
       "Regenerate site-data and verify the public frontend before publishing."
     ]
   },
@@ -127,19 +127,47 @@
     "tags": [
       {
         "key": "llm-wiki",
+        "count": 15
+      },
+      {
+        "key": "curated",
         "count": 10
       },
       {
+        "key": "publication",
+        "count": 7
+      },
+      {
         "key": "moc",
-        "count": 5
+        "count": 6
       },
       {
         "key": "source",
+        "count": 6
+      },
+      {
+        "key": "archive",
         "count": 5
       },
       {
         "key": "github",
         "count": 3
+      },
+      {
+        "key": "skills",
+        "count": 3
+      },
+      {
+        "key": "synthesis",
+        "count": 3
+      },
+      {
+        "key": "evidence",
+        "count": 2
+      },
+      {
+        "key": "information-architecture",
+        "count": 2
       },
       {
         "key": "obsidian",
@@ -150,6 +178,10 @@
         "count": 2
       },
       {
+        "key": "agent",
+        "count": 1
+      },
+      {
         "key": "ai-agent",
         "count": 1
       },
@@ -158,7 +190,27 @@
         "count": 1
       },
       {
-        "key": "archive",
+        "key": "backend",
+        "count": 1
+      },
+      {
+        "key": "beginner-friendly",
+        "count": 1
+      },
+      {
+        "key": "capabilities",
+        "count": 1
+      },
+      {
+        "key": "frontend",
+        "count": 1
+      },
+      {
+        "key": "governance",
+        "count": 1
+      },
+      {
+        "key": "growth",
         "count": 1
       },
       {
@@ -170,15 +222,31 @@
         "count": 1
       },
       {
+        "key": "project",
+        "count": 1
+      },
+      {
+        "key": "projects",
+        "count": 1
+      },
+      {
         "key": "public",
         "count": 1
       },
       {
-        "key": "publication",
+        "key": "review",
         "count": 1
       },
       {
-        "key": "skills",
+        "key": "roadmap",
+        "count": 1
+      },
+      {
+        "key": "showcase",
+        "count": 1
+      },
+      {
+        "key": "site-data",
         "count": 1
       },
       {
@@ -190,18 +258,30 @@
         "count": 1
       },
       {
+        "key": "timeline",
+        "count": 1
+      },
+      {
         "key": "tools",
+        "count": 1
+      },
+      {
+        "key": "workflow",
         "count": 1
       }
     ],
     "types": [
       {
         "key": "article",
-        "count": 6
+        "count": 16
       },
       {
         "key": "source",
-        "count": 6
+        "count": 7
+      },
+      {
+        "key": "case",
+        "count": 1
       },
       {
         "key": "tool",
@@ -211,21 +291,29 @@
     "statuses": [
       {
         "key": "public",
-        "count": 13
+        "count": 14
+      },
+      {
+        "key": "verified",
+        "count": 11
       },
       {
         "key": "featured",
-        "count": 7
+        "count": 8
       }
     ],
     "modules": [
       {
-        "key": "paths",
-        "count": 7
+        "key": "library",
+        "count": 16
       },
       {
-        "key": "library",
-        "count": 6
+        "key": "paths",
+        "count": 8
+      },
+      {
+        "key": "works",
+        "count": 1
       }
     ]
   },
@@ -239,20 +327,20 @@
     ],
     "featuredWorkSlugs": [],
     "recentLibrarySlugs": [
-      "wiki-sources-and-data-policy",
-      "wiki-sources-github-reference-projects",
-      "wiki-sources-karpathy-llm-wiki-pattern",
-      "wiki-sources-llm-wikid",
-      "wiki-sources-obsidian-llm-wiki-local",
-      "wiki-sources-pre-rebuild-vault-archive"
+      "wiki-concepts-agent-skill-governance",
+      "wiki-concepts-private-to-public-promotion-pipeline",
+      "wiki-concepts-public-site-data-boundary",
+      "wiki-sources-local-private-compile-2026-05-13",
+      "wiki-synthesis-archive-information-architecture",
+      "wiki-synthesis-capability-evidence-matrix"
     ],
     "recentTimelineSlugs": [
-      "readme",
-      "index",
-      "wiki-index",
-      "wiki-sources-and-data-policy",
-      "wiki-sources-github-reference-projects",
-      "wiki-sources-karpathy-llm-wiki-pattern"
+      "wiki-concepts-agent-skill-governance",
+      "wiki-concepts-private-to-public-promotion-pipeline",
+      "wiki-concepts-public-site-data-boundary",
+      "wiki-projects-personal-archive-platform",
+      "wiki-sources-local-private-compile-2026-05-13",
+      "wiki-synthesis-archive-information-architecture"
     ]
   },
   "content": [
@@ -464,6 +552,8 @@
         "",
         "- [[README]] - overview",
         "- [[wiki/index]] - main wiki workbench",
+        "- [[wiki/synthesis/karpathy-official-wiki-layer]] - official wiki layer contract",
+        "- [[wiki/topics/personal-archive-moc]] - personal archive and website backend map",
         "- [[wiki/topics/llm-wiki-moc]] - architecture and operations",
         "- [[wiki/topics/ai-agent-systems-moc]] - agent systems map",
         "- [[wiki/topics/skills-and-tools-moc]] - skills and tooling map",
@@ -482,6 +572,14 @@
         {
           "target": "wiki/index",
           "label": "wiki/index"
+        },
+        {
+          "target": "wiki/synthesis/karpathy-official-wiki-layer",
+          "label": "wiki/synthesis/karpathy-official-wiki-layer"
+        },
+        {
+          "target": "wiki/topics/personal-archive-moc",
+          "label": "wiki/topics/personal-archive-moc"
         },
         {
           "target": "wiki/topics/llm-wiki-moc",
@@ -522,12 +620,12 @@
           "anchor": "an-llm-wiki-index"
         }
       ],
-      "wordCount": 86,
+      "wordCount": 106,
       "readingMinutes": 1,
       "metrics": {
-        "lineCount": 13,
+        "lineCount": 15,
         "headingCount": 1,
-        "linkCount": 9,
+        "linkCount": 11,
         "sourceCount": 1
       },
       "quality": {
@@ -567,6 +665,469 @@
       ]
     },
     {
+      "id": "c_32c45035f9107070",
+      "title": "Agent Skill Governance",
+      "slug": "wiki-concepts-agent-skill-governance",
+      "summary": "A public-safe model for preserving agent and skill knowledge without exposing local prompts or private runtime state.",
+      "tags": [
+        "agent",
+        "skills",
+        "governance",
+        "llm-wiki",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/concepts/agent-skill-governance.md",
+      "module": "library",
+      "category": "concept",
+      "type": "operating-model",
+      "contentType": "article",
+      "href": "/content/wiki-concepts-agent-skill-governance",
+      "contentLines": [
+        "# Agent Skill Governance",
+        "",
+        "Agent skill governance is the practice of turning repeated agent workflows into durable process assets while keeping local runtime state out of the public archive.",
+        "",
+        "## What Belongs In Public",
+        "",
+        "Public pages can describe:",
+        "",
+        "- the problem a skill solves;",
+        "- when to use it;",
+        "- what boundaries it protects;",
+        "- what validation commands prove it worked;",
+        "- how it connects to the wiki and website workflow.",
+        "",
+        "This is enough for future agents and collaborators to understand the operating model.",
+        "",
+        "## What Stays Local",
+        "",
+        "Raw prompts, memory files, private session notes, unrevised rule packs, account-specific setup, and local tool state should stay in local-only layers. They may inform a rewritten public operating model, but they are not themselves public documentation.",
+        "",
+        "## Current Pattern",
+        "",
+        "The archive now uses a skill-style approach for local private compilation. The public lesson is not the private source list; it is the repeatable boundary:",
+        "",
+        "- index local material;",
+        "- compile local review pages;",
+        "- rewrite safe concepts into `wiki/`;",
+        "- regenerate public data only after gates pass.",
+        "",
+        "## Related",
+        "",
+        "- [[wiki/topics/skills-and-tools-moc]]",
+        "- [[wiki/topics/ai-agent-systems-moc]]",
+        "- [[wiki/concepts/private-to-public-promotion-pipeline]]"
+      ],
+      "links": [
+        {
+          "target": "wiki/topics/skills-and-tools-moc",
+          "label": "wiki/topics/skills-and-tools-moc"
+        },
+        {
+          "target": "wiki/topics/ai-agent-systems-moc",
+          "label": "wiki/topics/ai-agent-systems-moc"
+        },
+        {
+          "target": "wiki/concepts/private-to-public-promotion-pipeline",
+          "label": "wiki/concepts/private-to-public-promotion-pipeline"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/local-private-compile-2026-05-13]]",
+        "[[wiki/synthesis/karpathy-official-wiki-layer]]",
+        "[[wiki/topics/skills-and-tools-moc]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Agent Skill Governance",
+          "anchor": "agent-skill-governance"
+        },
+        {
+          "level": 2,
+          "title": "What Belongs In Public",
+          "anchor": "what-belongs-in-public"
+        },
+        {
+          "level": 2,
+          "title": "What Stays Local",
+          "anchor": "what-stays-local"
+        },
+        {
+          "level": 2,
+          "title": "Current Pattern",
+          "anchor": "current-pattern"
+        },
+        {
+          "level": 2,
+          "title": "Related",
+          "anchor": "related"
+        }
+      ],
+      "wordCount": 184,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 34,
+        "headingCount": 5,
+        "linkCount": 3,
+        "sourceCount": 3
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 117,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "agent workflow",
+        "skills"
+      ],
+      "whyItMattered": "It lets the archive preserve agent operating knowledge without publishing raw rules, prompts, or local state.",
+      "operationStory": [
+        "Separate current active rules from historical recovered rules.",
+        "Turn repeated workflows into skills only when they are reusable.",
+        "Keep sensitive execution context outside the public wiki."
+      ],
+      "replicationSteps": [
+        "Document the trigger for a skill.",
+        "State what the skill must protect.",
+        "Keep commands and validation gates concrete.",
+        "Link public skills to public concepts, not local-only state."
+      ],
+      "failureModes": [
+        "treating old rules as current policy",
+        "publishing raw prompt text",
+        "creating skills for one-off actions",
+        "skipping validation"
+      ],
+      "lessons": [
+        "skills are reusable process assets",
+        "historical rules need promotion",
+        "public governance should be compact"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": []
+    },
+    {
+      "id": "c_8008030b505902e0",
+      "title": "Private To Public Promotion Pipeline",
+      "slug": "wiki-concepts-private-to-public-promotion-pipeline",
+      "summary": "The workflow for rewriting local-only archive material into public-safe wiki pages.",
+      "tags": [
+        "publication",
+        "workflow",
+        "llm-wiki",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/concepts/private-to-public-promotion-pipeline.md",
+      "module": "library",
+      "category": "concept",
+      "type": "workflow",
+      "contentType": "article",
+      "href": "/content/wiki-concepts-private-to-public-promotion-pipeline",
+      "contentLines": [
+        "# Private To Public Promotion Pipeline",
+        "",
+        "The promotion pipeline is the repeatable path from local review material to public wiki pages.",
+        "",
+        "## Pipeline",
+        "",
+        "1. Index local material without publishing it.",
+        "2. Compile local-only review pages that group sources by theme, project, skill, agent, and timeline.",
+        "3. Select one public-safe theme.",
+        "4. Write or update a source note.",
+        "5. Rewrite the theme as a compact public page.",
+        "6. Link it from the relevant MOC.",
+        "7. Run the structure and privacy gates.",
+        "8. Regenerate `site-data/` only after the public wiki passes.",
+        "",
+        "## Public Page Test",
+        "",
+        "A promoted page should answer:",
+        "",
+        "- what is the reusable idea or project;",
+        "- why it matters;",
+        "- what source note supports it;",
+        "- what can be repeated by another person;",
+        "- what remains unfinished;",
+        "- what was deliberately excluded from public view.",
+        "",
+        "## Good Promotion",
+        "",
+        "Good promotion turns private evidence into a public lesson. It does not quote raw chats, reveal local setup, or convert every file into a page. One strong concept page is better than many thin summaries.",
+        "",
+        "## Related",
+        "",
+        "- [[wiki/projects/personal-archive-platform]]",
+        "- [[wiki/concepts/public-site-data-boundary]]",
+        "- [[wiki/synthesis/personal-archive-public-roadmap]]"
+      ],
+      "links": [
+        {
+          "target": "wiki/projects/personal-archive-platform",
+          "label": "wiki/projects/personal-archive-platform"
+        },
+        {
+          "target": "wiki/concepts/public-site-data-boundary",
+          "label": "wiki/concepts/public-site-data-boundary"
+        },
+        {
+          "target": "wiki/synthesis/personal-archive-public-roadmap",
+          "label": "wiki/synthesis/personal-archive-public-roadmap"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/karpathy-llm-wiki-pattern]]",
+        "[[wiki/sources/local-private-compile-2026-05-13]]",
+        "[[wiki/sources-and-data-policy]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Private To Public Promotion Pipeline",
+          "anchor": "private-to-public-promotion-pipeline"
+        },
+        {
+          "level": 2,
+          "title": "Pipeline",
+          "anchor": "pipeline"
+        },
+        {
+          "level": 2,
+          "title": "Public Page Test",
+          "anchor": "public-page-test"
+        },
+        {
+          "level": 2,
+          "title": "Good Promotion",
+          "anchor": "good-promotion"
+        },
+        {
+          "level": 2,
+          "title": "Related",
+          "anchor": "related"
+        }
+      ],
+      "wordCount": 183,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 35,
+        "headingCount": 5,
+        "linkCount": 3,
+        "sourceCount": 3
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 83,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "workflow",
+        "privacy filtered"
+      ],
+      "whyItMattered": "It gives the archive a repeatable way to grow without turning private review material into public content.",
+      "operationStory": [
+        "Local evidence is indexed first.",
+        "Private review pages identify themes and risk.",
+        "Public pages are rewritten as source-aware lessons."
+      ],
+      "replicationSteps": [
+        "Choose one theme from the private review layer.",
+        "Create a public source note or cite an existing one.",
+        "Write the smallest durable concept, project, or synthesis page.",
+        "Run public structure and privacy gates."
+      ],
+      "failureModes": [
+        "copying raw evidence",
+        "over-broad batch imports",
+        "missing source notes",
+        "skipping validation"
+      ],
+      "lessons": [
+        "small batches are safer",
+        "source notes carry provenance",
+        "public writing should explain reusable knowledge"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": []
+    },
+    {
+      "id": "c_151dd4949baa1108",
+      "title": "Public Site Data Boundary",
+      "slug": "wiki-concepts-public-site-data-boundary",
+      "summary": "The architecture boundary that keeps the website consuming curated public JSON instead of raw Obsidian content.",
+      "tags": [
+        "frontend",
+        "backend",
+        "site-data",
+        "publication",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/concepts/public-site-data-boundary.md",
+      "module": "library",
+      "category": "concept",
+      "type": "architecture",
+      "contentType": "article",
+      "href": "/content/wiki-concepts-public-site-data-boundary",
+      "contentLines": [
+        "# Public Site Data Boundary",
+        "",
+        "The public site data boundary is the backend contract for the future archive website. It keeps the web layer small, predictable, and safer to deploy.",
+        "",
+        "## Rule",
+        "",
+        "The frontend can read generated public data. It cannot read raw local sources, local review pages, private reports, or arbitrary Markdown.",
+        "",
+        "In this vault, `site-data/*.json` is the current backend contract. A later server can replace the file transport, but it should keep the same boundary: only curated public fields cross into the website.",
+        "",
+        "## Allowed Shape",
+        "",
+        "Public data can include:",
+        "",
+        "- title, summary, tags, category, status;",
+        "- source labels that are safe to show;",
+        "- table of contents and related public links;",
+        "- operation story, repeatable steps, lessons, and failure modes;",
+        "- public timeline or path entries that were written for display.",
+        "",
+        "Public data should not include local-only source locations, review-only queue details, raw transcripts, account state, or unreviewed personal records.",
+        "",
+        "## Why This Is A Backend Decision",
+        "",
+        "Even without a deployed server, the data generator is already acting as a backend. It chooses which pages are visible, which fields are exposed, and which items stay hidden. Treating it as a backend contract now makes the later server simpler.",
+        "",
+        "## Related",
+        "",
+        "- [[wiki/projects/personal-archive-platform]]",
+        "- [[wiki/concepts/private-to-public-promotion-pipeline]]",
+        "- [[wiki/topics/personal-archive-moc]]"
+      ],
+      "links": [
+        {
+          "target": "wiki/projects/personal-archive-platform",
+          "label": "wiki/projects/personal-archive-platform"
+        },
+        {
+          "target": "wiki/concepts/private-to-public-promotion-pipeline",
+          "label": "wiki/concepts/private-to-public-promotion-pipeline"
+        },
+        {
+          "target": "wiki/topics/personal-archive-moc",
+          "label": "wiki/topics/personal-archive-moc"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/local-private-compile-2026-05-13]]",
+        "[[wiki/synthesis/karpathy-official-wiki-layer]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Public Site Data Boundary",
+          "anchor": "public-site-data-boundary"
+        },
+        {
+          "level": 2,
+          "title": "Rule",
+          "anchor": "rule"
+        },
+        {
+          "level": 2,
+          "title": "Allowed Shape",
+          "anchor": "allowed-shape"
+        },
+        {
+          "level": 2,
+          "title": "Why This Is A Backend Decision",
+          "anchor": "why-this-is-a-backend-decision"
+        },
+        {
+          "level": 2,
+          "title": "Related",
+          "anchor": "related"
+        }
+      ],
+      "wordCount": 211,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 31,
+        "headingCount": 5,
+        "linkCount": 3,
+        "sourceCount": 2
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 111,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "frontend backend boundary",
+        "architecture"
+      ],
+      "whyItMattered": "It prevents the future website from depending on private vault structure or unreviewed Markdown.",
+      "operationStory": [
+        "The public wiki remains the human-editable compiled layer.",
+        "The generator turns curated wiki pages into JSON.",
+        "The frontend reads generated data, not the private vault."
+      ],
+      "replicationSteps": [
+        "Keep frontend inputs under generated site-data files.",
+        "Do not expose local-only directories through routes or APIs.",
+        "Treat every new public field as a publication surface."
+      ],
+      "failureModes": [
+        "direct vault reads",
+        "exposing review manifests",
+        "mixing draft and curated data",
+        "serving local-only directories"
+      ],
+      "lessons": [
+        "data contracts are publication policy",
+        "generated JSON should be narrower than the vault",
+        "backend work starts with field boundaries"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": []
+    },
+    {
       "id": "c_0b2b8021fc47d672",
       "title": "LLM Wiki Index",
       "slug": "wiki-index",
@@ -596,12 +1157,15 @@
         "",
         "- [[README]] - vault overview",
         "- [[wiki/sources/karpathy-llm-wiki-pattern]] - official architecture source",
+        "- [[wiki/synthesis/karpathy-official-wiki-layer]] - public wiki layer contract",
         "- [[wiki/sources-and-data-policy]] - source and publication boundary",
         "- [[wiki/projects/root-maintenance-backlog]] - current maintenance backlog",
         "- [[log]] - append-only maintenance log",
         "",
         "## Maps",
         "",
+        "- [[wiki/topics/personal-archive-moc]] - public personal archive and website data map",
+        "- [[wiki/synthesis/archive-information-architecture]] - information backbone for projects, capabilities, timeline, and review queues",
         "- [[wiki/topics/llm-wiki-moc]] - LLM Wiki architecture and operations",
         "- [[wiki/topics/ai-agent-systems-moc]] - AI agent systems and framework notes",
         "- [[wiki/topics/skills-and-tools-moc]] - migrated skills and reusable tooling notes",
@@ -610,6 +1174,7 @@
         "## Source Notes",
         "",
         "- [[wiki/sources/karpathy-llm-wiki-pattern]] - official pattern source",
+        "- [[wiki/sources/local-private-compile-2026-05-13]] - public-safe source record for the current local compile pass",
         "- [[wiki/sources/github-reference-projects]] - secondary project index",
         "- [[wiki/sources/obsidian-llm-wiki-local]] - local-first reference project",
         "- [[wiki/sources/llm-wikid]] - vault-template reference project",
@@ -625,6 +1190,10 @@
           "label": "wiki/sources/karpathy-llm-wiki-pattern"
         },
         {
+          "target": "wiki/synthesis/karpathy-official-wiki-layer",
+          "label": "wiki/synthesis/karpathy-official-wiki-layer"
+        },
+        {
           "target": "wiki/sources-and-data-policy",
           "label": "wiki/sources-and-data-policy"
         },
@@ -635,6 +1204,14 @@
         {
           "target": "log",
           "label": "log"
+        },
+        {
+          "target": "wiki/topics/personal-archive-moc",
+          "label": "wiki/topics/personal-archive-moc"
+        },
+        {
+          "target": "wiki/synthesis/archive-information-architecture",
+          "label": "wiki/synthesis/archive-information-architecture"
         },
         {
           "target": "wiki/topics/llm-wiki-moc",
@@ -655,6 +1232,10 @@
         {
           "target": "wiki/sources/karpathy-llm-wiki-pattern",
           "label": "wiki/sources/karpathy-llm-wiki-pattern"
+        },
+        {
+          "target": "wiki/sources/local-private-compile-2026-05-13",
+          "label": "wiki/sources/local-private-compile-2026-05-13"
         },
         {
           "target": "wiki/sources/github-reference-projects",
@@ -698,12 +1279,12 @@
           "anchor": "source-notes"
         }
       ],
-      "wordCount": 148,
+      "wordCount": 197,
       "readingMinutes": 1,
       "metrics": {
-        "lineCount": 26,
+        "lineCount": 30,
         "headingCount": 4,
-        "linkCount": 14,
+        "linkCount": 18,
         "sourceCount": 1
       },
       "quality": {
@@ -768,6 +1349,198 @@
           "optional": false
         }
       ]
+    },
+    {
+      "id": "c_ac08a639fed4d6c8",
+      "title": "Personal Archive Platform",
+      "slug": "wiki-projects-personal-archive-platform",
+      "summary": "A public-safe project page for the personal archive platform that connects the Obsidian wiki layer to future website data.",
+      "tags": [
+        "archive",
+        "llm-wiki",
+        "project",
+        "showcase",
+        "beginner-friendly"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/projects/personal-archive-platform.md",
+      "module": "works",
+      "category": "project",
+      "type": "project",
+      "contentType": "case",
+      "href": "/content/wiki-projects-personal-archive-platform",
+      "contentLines": [
+        "# Personal Archive Platform",
+        "",
+        "The personal archive platform is the public-facing version of this vault. Its job is to turn learning history, projects, tools, agent work, and reusable methods into a navigable knowledge base and future website.",
+        "",
+        "## What It Is",
+        "",
+        "The platform has four working layers:",
+        "",
+        "- local raw material that stays outside the public graph;",
+        "- a local compiled review layer for sensitive or unfinished material;",
+        "- `wiki/`, the public Karpathy-style compiled layer;",
+        "- `site-data/`, the generated data contract for the website.",
+        "",
+        "The key design choice is that the website does not read the vault directly. It reads curated JSON generated from public wiki pages.",
+        "",
+        "## What It Proves",
+        "",
+        "This project demonstrates several capabilities:",
+        "",
+        "- turning messy personal material into structured source notes and concepts;",
+        "- designing a publication workflow with validation gates;",
+        "- building a frontend data boundary that can later move behind a server API;",
+        "- using agent-readable schema files to keep future maintenance consistent.",
+        "",
+        "## Current Public Scope",
+        "",
+        "The first public scope is not a full autobiography. It is a governed archive of work patterns:",
+        "",
+        "- [[wiki/concepts/private-to-public-promotion-pipeline]] explains how local material becomes public pages.",
+        "- [[wiki/concepts/public-site-data-boundary]] defines what the frontend is allowed to consume.",
+        "- [[wiki/concepts/agent-skill-governance]] records how agent skills and rules are kept usable without publishing raw prompts.",
+        "- [[wiki/synthesis/personal-archive-public-roadmap]] describes the next content batches.",
+        "",
+        "## What Stays Out",
+        "",
+        "Local setup details, raw private conversations, account state, unrevised personal records, and secret-like values do not belong in this page or in `site-data/`. They can inform rewritten lessons, but they are not public content.",
+        "",
+        "## Related",
+        "",
+        "- [[wiki/topics/personal-archive-moc]]",
+        "- [[wiki/synthesis/karpathy-official-wiki-layer]]",
+        "- [[wiki/sources/local-private-compile-2026-05-13]]"
+      ],
+      "links": [
+        {
+          "target": "wiki/concepts/private-to-public-promotion-pipeline",
+          "label": "wiki/concepts/private-to-public-promotion-pipeline"
+        },
+        {
+          "target": "wiki/concepts/public-site-data-boundary",
+          "label": "wiki/concepts/public-site-data-boundary"
+        },
+        {
+          "target": "wiki/concepts/agent-skill-governance",
+          "label": "wiki/concepts/agent-skill-governance"
+        },
+        {
+          "target": "wiki/synthesis/personal-archive-public-roadmap",
+          "label": "wiki/synthesis/personal-archive-public-roadmap"
+        },
+        {
+          "target": "wiki/topics/personal-archive-moc",
+          "label": "wiki/topics/personal-archive-moc"
+        },
+        {
+          "target": "wiki/synthesis/karpathy-official-wiki-layer",
+          "label": "wiki/synthesis/karpathy-official-wiki-layer"
+        },
+        {
+          "target": "wiki/sources/local-private-compile-2026-05-13",
+          "label": "wiki/sources/local-private-compile-2026-05-13"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/karpathy-llm-wiki-pattern]]",
+        "[[wiki/sources/local-private-compile-2026-05-13]]",
+        "[[wiki/synthesis/karpathy-official-wiki-layer]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Personal Archive Platform",
+          "anchor": "personal-archive-platform"
+        },
+        {
+          "level": 2,
+          "title": "What It Is",
+          "anchor": "what-it-is"
+        },
+        {
+          "level": 2,
+          "title": "What It Proves",
+          "anchor": "what-it-proves"
+        },
+        {
+          "level": 2,
+          "title": "Current Public Scope",
+          "anchor": "current-public-scope"
+        },
+        {
+          "level": 2,
+          "title": "What Stays Out",
+          "anchor": "what-stays-out"
+        },
+        {
+          "level": 2,
+          "title": "Related",
+          "anchor": "related"
+        }
+      ],
+      "wordCount": 275,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 42,
+        "headingCount": 6,
+        "linkCount": 7,
+        "sourceCount": 3
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 122,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "local compile",
+        "architecture"
+      ],
+      "whyItMattered": "It turns scattered work history into a governed archive that can feed a website without exposing local-only material.",
+      "operationStory": [
+        "Split raw evidence, private compiled notes, public wiki pages, and frontend data.",
+        "Added validation scripts so publishing depends on structure and privacy gates.",
+        "Converted the website backend contract into generated site-data instead of direct vault reads."
+      ],
+      "replicationSteps": [
+        "Define raw, private, public, and frontend data layers.",
+        "Write a source note before promoting claims.",
+        "Promote one project or concept at a time through structure and privacy checks."
+      ],
+      "failureModes": [
+        "publishing raw notes",
+        "treating private review pages as public sources",
+        "letting frontend read the vault directly"
+      ],
+      "lessons": [
+        "compiled pages beat raw dumps",
+        "public data needs a narrow contract",
+        "promotion should be reviewable"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "projectStatus": "archived",
+      "techStack": [
+        "archive",
+        "llm-wiki",
+        "project",
+        "showcase",
+        "beginner-friendly"
+      ],
+      "nextPlan": ""
     },
     {
       "id": "c_ad9a9fc54757ca67",
@@ -978,9 +1751,30 @@
         "- the LLM maintains a persistent Markdown artifact",
         "- Obsidian is the browsing and graph surface",
         "- schema/rule files guide future agent maintenance",
-        "- Git tracks the public-safe artifact"
+        "- Git tracks the public-safe artifact",
+        "",
+        "Operational consequence for this vault:",
+        "",
+        "- `wiki/` is the public compiled layer, not a staging area",
+        "- `private-wiki/` can guide future rewrites, but it is not a public source",
+        "- durable answers should improve the wiki graph instead of living only in chat",
+        "- every promotion should update indexes and `log.md`",
+        "",
+        "Related:",
+        "",
+        "- [[wiki/synthesis/karpathy-official-wiki-layer]]",
+        "- [[wiki/topics/llm-wiki-moc]]"
       ],
-      "links": [],
+      "links": [
+        {
+          "target": "wiki/synthesis/karpathy-official-wiki-layer",
+          "label": "wiki/synthesis/karpathy-official-wiki-layer"
+        },
+        {
+          "target": "wiki/topics/llm-wiki-moc",
+          "label": "wiki/topics/llm-wiki-moc"
+        }
+      ],
       "sources": [
         "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"
       ],
@@ -991,12 +1785,12 @@
           "anchor": "karpathy-llm-wiki-pattern"
         }
       ],
-      "wordCount": 66,
+      "wordCount": 127,
       "readingMinutes": 1,
       "metrics": {
-        "lineCount": 13,
+        "lineCount": 25,
         "headingCount": 1,
-        "linkCount": 0,
+        "linkCount": 2,
         "sourceCount": 1
       },
       "quality": {
@@ -1112,6 +1906,136 @@
       "sourceLabels": [
         "public wiki",
         "source-backed"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": []
+    },
+    {
+      "id": "c_58d7fda66c48c030",
+      "title": "Local Private Compile 2026-05-13",
+      "slug": "wiki-sources-local-private-compile-2026-05-13",
+      "summary": "Public-safe source record for the local-only private compile pass that informed the next public wiki pages.",
+      "tags": [
+        "llm-wiki",
+        "source",
+        "publication"
+      ],
+      "status": [
+        "public"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/sources/local-private-compile-2026-05-13.md",
+      "module": "library",
+      "category": "source",
+      "type": "source",
+      "contentType": "source",
+      "href": "/content/wiki-sources-local-private-compile-2026-05-13",
+      "contentLines": [
+        "# Local Private Compile 2026-05-13",
+        "",
+        "This source record represents a local-only compile pass used to decide what can be safely rewritten into the public wiki. The underlying material stayed outside the public graph. This page records only the public interpretation boundary.",
+        "",
+        "## What Was Learned",
+        "",
+        "- The public archive should be a compiled knowledge product, not a dump of local files.",
+        "- The strongest public themes are knowledge-base architecture, public data boundaries, agent skill governance, and repeatable promotion workflow.",
+        "- Project and capability claims should be rewritten into reusable lessons before they appear in `wiki/`.",
+        "- Items that depend on private conversations, local setup details, account state, or unrevised personal records remain out of public pages.",
+        "",
+        "## Why It Matters",
+        "",
+        "Karpathy's LLM Wiki pattern depends on the wiki becoming the durable artifact. For a personal archive, that artifact must also be safe to publish. This means the public layer needs source notes, distilled concepts, and synthesis pages that explain the system without leaking the private evidence behind it.",
+        "",
+        "## Public Pages Informed",
+        "",
+        "- [[wiki/projects/personal-archive-platform]]",
+        "- [[wiki/concepts/private-to-public-promotion-pipeline]]",
+        "- [[wiki/concepts/public-site-data-boundary]]",
+        "- [[wiki/concepts/agent-skill-governance]]",
+        "- [[wiki/synthesis/personal-archive-public-roadmap]]",
+        "",
+        "## Boundary",
+        "",
+        "This page does not make the local-only compile itself a public source. It is a public-safe provenance marker for the rewritten pages created from that review."
+      ],
+      "links": [
+        {
+          "target": "wiki/projects/personal-archive-platform",
+          "label": "wiki/projects/personal-archive-platform"
+        },
+        {
+          "target": "wiki/concepts/private-to-public-promotion-pipeline",
+          "label": "wiki/concepts/private-to-public-promotion-pipeline"
+        },
+        {
+          "target": "wiki/concepts/public-site-data-boundary",
+          "label": "wiki/concepts/public-site-data-boundary"
+        },
+        {
+          "target": "wiki/concepts/agent-skill-governance",
+          "label": "wiki/concepts/agent-skill-governance"
+        },
+        {
+          "target": "wiki/synthesis/personal-archive-public-roadmap",
+          "label": "wiki/synthesis/personal-archive-public-roadmap"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/karpathy-llm-wiki-pattern]]",
+        "[[wiki/sources/pre-rebuild-vault-archive]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Local Private Compile 2026-05-13",
+          "anchor": "local-private-compile-2026-05-13"
+        },
+        {
+          "level": 2,
+          "title": "What Was Learned",
+          "anchor": "what-was-learned"
+        },
+        {
+          "level": 2,
+          "title": "Why It Matters",
+          "anchor": "why-it-matters"
+        },
+        {
+          "level": 2,
+          "title": "Public Pages Informed",
+          "anchor": "public-pages-informed"
+        },
+        {
+          "level": 2,
+          "title": "Boundary",
+          "anchor": "boundary"
+        }
+      ],
+      "wordCount": 216,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 26,
+        "headingCount": 5,
+        "linkCount": 5,
+        "sourceCount": 2
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 107,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "local compile",
+        "privacy filtered",
+        "source record"
       ],
       "displayTier": "showcase",
       "qualityScore": 100,
@@ -1282,6 +2206,985 @@
       "hiddenReasons": []
     },
     {
+      "id": "c_910d420ab933c045",
+      "title": "Archive Information Architecture",
+      "slug": "wiki-synthesis-archive-information-architecture",
+      "summary": "The public information backbone for organizing projects, capabilities, timeline, and review queues before final showcase pages.",
+      "tags": [
+        "archive",
+        "information-architecture",
+        "synthesis",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/synthesis/archive-information-architecture.md",
+      "module": "library",
+      "category": "synthesis",
+      "type": "information-architecture",
+      "contentType": "article",
+      "href": "/content/wiki-synthesis-archive-information-architecture",
+      "contentLines": [
+        "# Archive Information Architecture",
+        "",
+        "The archive should become useful as an information system before it becomes polished as a portfolio. This page defines the public information backbone.",
+        "",
+        "## Core Tables",
+        "",
+        "- [[wiki/synthesis/project-evidence-matrix]] records project themes and public readiness.",
+        "- [[wiki/synthesis/capability-evidence-matrix]] connects capabilities to evidence and repeatable workflows.",
+        "- [[wiki/synthesis/public-growth-timeline-framework]] defines how growth and timeline information can be made public without exposing private records.",
+        "- [[wiki/synthesis/information-review-queue]] keeps unresolved information decisions visible.",
+        "",
+        "## Information Priority",
+        "",
+        "The highest-value information is not necessarily the newest file. Priority comes from:",
+        "",
+        "- repeated evidence across multiple source groups;",
+        "- ability to explain a project or capability publicly;",
+        "- low privacy risk;",
+        "- usefulness for a future reader;",
+        "- connection to existing wiki pages.",
+        "",
+        "## Public Shape",
+        "",
+        "Each public information page should say what is known, what is inferred, what remains private, and what needs review. This is stricter than a normal portfolio page, but it keeps the archive trustworthy.",
+        "",
+        "## Related",
+        "",
+        "- [[wiki/topics/personal-archive-moc]]",
+        "- [[wiki/projects/personal-archive-platform]]",
+        "- [[wiki/synthesis/personal-archive-public-roadmap]]"
+      ],
+      "links": [
+        {
+          "target": "wiki/synthesis/project-evidence-matrix",
+          "label": "wiki/synthesis/project-evidence-matrix"
+        },
+        {
+          "target": "wiki/synthesis/capability-evidence-matrix",
+          "label": "wiki/synthesis/capability-evidence-matrix"
+        },
+        {
+          "target": "wiki/synthesis/public-growth-timeline-framework",
+          "label": "wiki/synthesis/public-growth-timeline-framework"
+        },
+        {
+          "target": "wiki/synthesis/information-review-queue",
+          "label": "wiki/synthesis/information-review-queue"
+        },
+        {
+          "target": "wiki/topics/personal-archive-moc",
+          "label": "wiki/topics/personal-archive-moc"
+        },
+        {
+          "target": "wiki/projects/personal-archive-platform",
+          "label": "wiki/projects/personal-archive-platform"
+        },
+        {
+          "target": "wiki/synthesis/personal-archive-public-roadmap",
+          "label": "wiki/synthesis/personal-archive-public-roadmap"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/local-private-compile-2026-05-13]]",
+        "[[wiki/synthesis/karpathy-official-wiki-layer]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Archive Information Architecture",
+          "anchor": "archive-information-architecture"
+        },
+        {
+          "level": 2,
+          "title": "Core Tables",
+          "anchor": "core-tables"
+        },
+        {
+          "level": 2,
+          "title": "Information Priority",
+          "anchor": "information-priority"
+        },
+        {
+          "level": 2,
+          "title": "Public Shape",
+          "anchor": "public-shape"
+        },
+        {
+          "level": 2,
+          "title": "Related",
+          "anchor": "related"
+        }
+      ],
+      "wordCount": 170,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 30,
+        "headingCount": 5,
+        "linkCount": 7,
+        "sourceCount": 2
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 127,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "information architecture",
+        "local compile"
+      ],
+      "whyItMattered": "It makes information retrievable before it is made presentational.",
+      "operationStory": [
+        "Separated source coverage, project evidence, capability evidence, timeline evidence, and review queues.",
+        "Kept sensitive local material in private review layers while creating public navigation pages.",
+        "Prioritized evidence relationships over visual showcase polish."
+      ],
+      "replicationSteps": [
+        "Start with source coverage.",
+        "Group information by project, capability, agent system, and timeline.",
+        "Only then write display pages."
+      ],
+      "failureModes": [
+        "publishing before evidence is grouped",
+        "confusing file counts with knowledge",
+        "hiding uncertainty"
+      ],
+      "lessons": [
+        "information first",
+        "presentation second",
+        "every public claim needs an evidence route"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": []
+    },
+    {
+      "id": "c_40e886748f617bef",
+      "title": "Capability Evidence Matrix",
+      "slug": "wiki-synthesis-capability-evidence-matrix",
+      "summary": "Public-safe matrix linking capabilities to project evidence, repeatable workflows, and future wiki pages.",
+      "tags": [
+        "skills",
+        "capabilities",
+        "evidence",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/synthesis/capability-evidence-matrix.md",
+      "module": "library",
+      "category": "synthesis",
+      "type": "evidence-matrix",
+      "contentType": "article",
+      "href": "/content/wiki-synthesis-capability-evidence-matrix",
+      "contentLines": [
+        "# Capability Evidence Matrix",
+        "",
+        "This matrix keeps capability information concrete. A capability should explain what can be delivered, what evidence supports it, and what workflow can be repeated.",
+        "",
+        "| Capability | Evidence route | Repeatable workflow | Public status |",
+        "|---|---|---|---|",
+        "| Knowledge-base compilation | [[wiki/projects/personal-archive-platform]] | raw/private/public/schema split | Published seed |",
+        "| Publication safety and privacy gates | [[wiki/concepts/private-to-public-promotion-pipeline]] | scan, review, rewrite, validate | Published seed |",
+        "| Frontend data boundary design | [[wiki/concepts/public-site-data-boundary]] | generate curated `site-data` from public pages | Published seed |",
+        "| Agent skill governance | [[wiki/concepts/agent-skill-governance]] | promote reusable process into skills | Published seed |",
+        "| AI agent system research | [[wiki/topics/ai-agent-systems-moc]] | compare frameworks and extract operating patterns | Needs consolidation |",
+        "| Frontend archive implementation | [[wiki/topics/personal-archive-moc]] | build UI from generated data, not raw vault files | Needs project page |",
+        "| Local-first data processing | [[wiki/synthesis/archive-information-architecture]] | index metadata, group evidence, promote safe summaries | Needs workflow page |",
+        "| Model and learning-loop experimentation | [[wiki/synthesis/project-evidence-matrix]] | separate training lessons from private runtime state | Needs source review |",
+        "",
+        "## Claim Standard",
+        "",
+        "Every public capability claim should have:",
+        "",
+        "- a public page or source note;",
+        "- a project where the capability was exercised;",
+        "- a repeatable procedure;",
+        "- a known failure mode.",
+        "",
+        "## Related",
+        "",
+        "- [[wiki/concepts/agent-skill-governance]]",
+        "- [[wiki/synthesis/project-evidence-matrix]]",
+        "- [[wiki/topics/skills-and-tools-moc]]"
+      ],
+      "links": [
+        {
+          "target": "wiki/projects/personal-archive-platform",
+          "label": "wiki/projects/personal-archive-platform"
+        },
+        {
+          "target": "wiki/concepts/private-to-public-promotion-pipeline",
+          "label": "wiki/concepts/private-to-public-promotion-pipeline"
+        },
+        {
+          "target": "wiki/concepts/public-site-data-boundary",
+          "label": "wiki/concepts/public-site-data-boundary"
+        },
+        {
+          "target": "wiki/concepts/agent-skill-governance",
+          "label": "wiki/concepts/agent-skill-governance"
+        },
+        {
+          "target": "wiki/topics/ai-agent-systems-moc",
+          "label": "wiki/topics/ai-agent-systems-moc"
+        },
+        {
+          "target": "wiki/topics/personal-archive-moc",
+          "label": "wiki/topics/personal-archive-moc"
+        },
+        {
+          "target": "wiki/synthesis/archive-information-architecture",
+          "label": "wiki/synthesis/archive-information-architecture"
+        },
+        {
+          "target": "wiki/synthesis/project-evidence-matrix",
+          "label": "wiki/synthesis/project-evidence-matrix"
+        },
+        {
+          "target": "wiki/concepts/agent-skill-governance",
+          "label": "wiki/concepts/agent-skill-governance"
+        },
+        {
+          "target": "wiki/synthesis/project-evidence-matrix",
+          "label": "wiki/synthesis/project-evidence-matrix"
+        },
+        {
+          "target": "wiki/topics/skills-and-tools-moc",
+          "label": "wiki/topics/skills-and-tools-moc"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/local-private-compile-2026-05-13]]",
+        "[[wiki/topics/skills-and-tools-moc]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Capability Evidence Matrix",
+          "anchor": "capability-evidence-matrix"
+        },
+        {
+          "level": 2,
+          "title": "Claim Standard",
+          "anchor": "claim-standard"
+        },
+        {
+          "level": 2,
+          "title": "Related",
+          "anchor": "related"
+        }
+      ],
+      "wordCount": 203,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 29,
+        "headingCount": 3,
+        "linkCount": 11,
+        "sourceCount": 2
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 105,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "capability evidence",
+        "local compile"
+      ],
+      "whyItMattered": "It turns capability claims into evidence-backed archive structure.",
+      "operationStory": [
+        "Grouped local evidence into capability themes.",
+        "Connected each theme to a project and a repeatable workflow.",
+        "Avoided generic skill lists without proof."
+      ],
+      "replicationSteps": [
+        "Name the capability as an output, not a tool list.",
+        "Attach at least one project and one workflow.",
+        "Keep private tools and prompts out of the public claim."
+      ],
+      "failureModes": [
+        "generic resumes",
+        "unsupported skill claims",
+        "publishing private prompts",
+        "mixing tools with outcomes"
+      ],
+      "lessons": [
+        "capabilities need proof",
+        "workflows make skills repeatable",
+        "projects make claims concrete"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": []
+    },
+    {
+      "id": "c_d2558f33511a9ddd",
+      "title": "Information Review Queue",
+      "slug": "wiki-synthesis-information-review-queue",
+      "summary": "Public-safe review queue for unresolved information decisions before more archive content is promoted.",
+      "tags": [
+        "review",
+        "publication",
+        "information-architecture",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/synthesis/information-review-queue.md",
+      "module": "library",
+      "category": "synthesis",
+      "type": "queue",
+      "contentType": "article",
+      "href": "/content/wiki-synthesis-information-review-queue",
+      "contentLines": [
+        "# Information Review Queue",
+        "",
+        "This queue keeps information quality visible. It is public-safe: it records categories and decisions, not private details.",
+        "",
+        "## P0 Security Review",
+        "",
+        "- Confirm which credential-like findings are live, stale, or false positives.",
+        "- Keep rotation actions outside the public wiki.",
+        "- Do not publish secret values, account state, or local environment maps.",
+        "",
+        "## P1 Identity And Personal Scope",
+        "",
+        "- Decide which personal details can be public.",
+        "- Keep private memories and unrevised personal records local-only.",
+        "- Rewrite growth information as project-linked milestones rather than raw biography.",
+        "",
+        "## P2 Project Selection",
+        "",
+        "- Choose the first ten public project candidates.",
+        "- Require each project to have a goal, evidence route, repeatable lesson, and unfinished status.",
+        "- Keep school, account, deployment, and private collaboration context out unless explicitly rewritten.",
+        "",
+        "## P3 Capability Claims",
+        "",
+        "- Bind each public capability to project evidence.",
+        "- Avoid generic claims that cannot be traced.",
+        "- Convert workflows into pages before adding broad skill summaries.",
+        "",
+        "## P4 Agent Context",
+        "",
+        "- Separate active rules from historical recovered rules.",
+        "- Publish operating models, not raw prompts or local runtime state.",
+        "- Keep skill creation focused on reusable work.",
+        "",
+        "## Related",
+        "",
+        "- [[wiki/synthesis/archive-information-architecture]]",
+        "- [[wiki/synthesis/project-evidence-matrix]]",
+        "- [[wiki/synthesis/public-growth-timeline-framework]]"
+      ],
+      "links": [
+        {
+          "target": "wiki/synthesis/archive-information-architecture",
+          "label": "wiki/synthesis/archive-information-architecture"
+        },
+        {
+          "target": "wiki/synthesis/project-evidence-matrix",
+          "label": "wiki/synthesis/project-evidence-matrix"
+        },
+        {
+          "target": "wiki/synthesis/public-growth-timeline-framework",
+          "label": "wiki/synthesis/public-growth-timeline-framework"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/local-private-compile-2026-05-13]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Information Review Queue",
+          "anchor": "information-review-queue"
+        },
+        {
+          "level": 2,
+          "title": "P0 Security Review",
+          "anchor": "p0-security-review"
+        },
+        {
+          "level": 2,
+          "title": "P1 Identity And Personal Scope",
+          "anchor": "p1-identity-and-personal-scope"
+        },
+        {
+          "level": 2,
+          "title": "P2 Project Selection",
+          "anchor": "p2-project-selection"
+        },
+        {
+          "level": 2,
+          "title": "P3 Capability Claims",
+          "anchor": "p3-capability-claims"
+        },
+        {
+          "level": 2,
+          "title": "P4 Agent Context",
+          "anchor": "p4-agent-context"
+        },
+        {
+          "level": 2,
+          "title": "Related",
+          "anchor": "related"
+        }
+      ],
+      "wordCount": 198,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 39,
+        "headingCount": 7,
+        "linkCount": 3,
+        "sourceCount": 1
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 102,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "review queue",
+        "local compile"
+      ],
+      "whyItMattered": "It makes missing or uncertain information explicit instead of hiding it behind polished pages.",
+      "operationStory": [
+        "Converted private follow-up questions into public-safe review categories.",
+        "Kept sensitive values and identities out of the queue.",
+        "Defined what must be decided before future public batches."
+      ],
+      "replicationSteps": [
+        "Record uncertain information as a queue item.",
+        "Classify whether it is security, identity, project, capability, or timeline risk.",
+        "Promote only after review changes the state."
+      ],
+      "failureModes": [
+        "publishing uncertainty as fact",
+        "leaving security questions implicit",
+        "mixing private and public queues"
+      ],
+      "lessons": [
+        "review queues are part of the knowledge base",
+        "uncertainty is useful when labeled",
+        "public scope needs explicit gates"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": []
+    },
+    {
+      "id": "c_8a14bcb2a5e3fd90",
+      "title": "Personal Archive Public Roadmap",
+      "slug": "wiki-synthesis-personal-archive-public-roadmap",
+      "summary": "A staged roadmap for growing the public personal archive from safe architecture pages into project and capability pages.",
+      "tags": [
+        "archive",
+        "roadmap",
+        "synthesis",
+        "publication",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/synthesis/personal-archive-public-roadmap.md",
+      "module": "library",
+      "category": "synthesis",
+      "type": "roadmap",
+      "contentType": "article",
+      "href": "/content/wiki-synthesis-personal-archive-public-roadmap",
+      "contentLines": [
+        "# Personal Archive Public Roadmap",
+        "",
+        "This roadmap defines the next public wiki batches. It keeps growth deliberate: the archive should become useful without exposing local-only material or publishing thin pages.",
+        "",
+        "## Batch 1: Architecture And Boundary",
+        "",
+        "Status: started.",
+        "",
+        "- [[wiki/projects/personal-archive-platform]]",
+        "- [[wiki/concepts/private-to-public-promotion-pipeline]]",
+        "- [[wiki/concepts/public-site-data-boundary]]",
+        "- [[wiki/concepts/agent-skill-governance]]",
+        "",
+        "This batch explains how the archive works and how it stays safe.",
+        "",
+        "## Batch 2: Project Evidence",
+        "",
+        "Next candidates should be rewritten project pages. A good project page needs:",
+        "",
+        "- public goal;",
+        "- role and tools;",
+        "- what changed;",
+        "- what can be repeated;",
+        "- what is unfinished;",
+        "- links to concept or source pages.",
+        "",
+        "Do not promote projects that still depend on unrevised personal context or local setup details.",
+        "",
+        "## Batch 3: Capability Pages",
+        "",
+        "Capability pages should not be generic skill lists. Each capability should connect to at least one project and one repeatable workflow.",
+        "",
+        "Likely themes:",
+        "",
+        "- knowledge-base compilation;",
+        "- agent workflow design;",
+        "- frontend archive implementation;",
+        "- validation and publication gates;",
+        "- local-first data processing.",
+        "",
+        "## Batch 4: Website Display",
+        "",
+        "Only after pages are curated should `site-data/` expose them to the website. Display data should remain smaller than the wiki, because not every useful page is ready to be a showcase item.",
+        "",
+        "## Related",
+        "",
+        "- [[wiki/topics/personal-archive-moc]]",
+        "- [[wiki/concepts/public-site-data-boundary]]",
+        "- [[wiki/topics/publication-maintenance-moc]]"
+      ],
+      "links": [
+        {
+          "target": "wiki/projects/personal-archive-platform",
+          "label": "wiki/projects/personal-archive-platform"
+        },
+        {
+          "target": "wiki/concepts/private-to-public-promotion-pipeline",
+          "label": "wiki/concepts/private-to-public-promotion-pipeline"
+        },
+        {
+          "target": "wiki/concepts/public-site-data-boundary",
+          "label": "wiki/concepts/public-site-data-boundary"
+        },
+        {
+          "target": "wiki/concepts/agent-skill-governance",
+          "label": "wiki/concepts/agent-skill-governance"
+        },
+        {
+          "target": "wiki/topics/personal-archive-moc",
+          "label": "wiki/topics/personal-archive-moc"
+        },
+        {
+          "target": "wiki/concepts/public-site-data-boundary",
+          "label": "wiki/concepts/public-site-data-boundary"
+        },
+        {
+          "target": "wiki/topics/publication-maintenance-moc",
+          "label": "wiki/topics/publication-maintenance-moc"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/local-private-compile-2026-05-13]]",
+        "[[wiki/projects/personal-archive-platform]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Personal Archive Public Roadmap",
+          "anchor": "personal-archive-public-roadmap"
+        },
+        {
+          "level": 2,
+          "title": "Batch 1: Architecture And Boundary",
+          "anchor": "batch-1-architecture-and-boundary"
+        },
+        {
+          "level": 2,
+          "title": "Batch 2: Project Evidence",
+          "anchor": "batch-2-project-evidence"
+        },
+        {
+          "level": 2,
+          "title": "Batch 3: Capability Pages",
+          "anchor": "batch-3-capability-pages"
+        },
+        {
+          "level": 2,
+          "title": "Batch 4: Website Display",
+          "anchor": "batch-4-website-display"
+        },
+        {
+          "level": 2,
+          "title": "Related",
+          "anchor": "related"
+        }
+      ],
+      "wordCount": 217,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 49,
+        "headingCount": 6,
+        "linkCount": 7,
+        "sourceCount": 2
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 120,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "roadmap",
+        "publication"
+      ],
+      "whyItMattered": "It turns a large local archive into a staged public writing plan instead of a risky bulk release.",
+      "operationStory": [
+        "Start with architecture and process pages.",
+        "Then promote project pages with evidence.",
+        "Then add capability pages tied to projects."
+      ],
+      "replicationSteps": [
+        "Promote one batch at a time.",
+        "Run gates after every batch.",
+        "Keep unresolved items in review queues."
+      ],
+      "failureModes": [
+        "trying to publish everything",
+        "writing generic self-branding",
+        "separating skills from project evidence",
+        "ignoring unfinished status"
+      ],
+      "lessons": [
+        "roadmaps reduce publication risk",
+        "capability claims need evidence",
+        "unfinished status is useful when explicit"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": []
+    },
+    {
+      "id": "c_43043860b6d67e12",
+      "title": "Project Evidence Matrix",
+      "slug": "wiki-synthesis-project-evidence-matrix",
+      "summary": "Public-safe matrix of project themes, evidence strength, privacy risk, and next promotion action.",
+      "tags": [
+        "projects",
+        "evidence",
+        "synthesis",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/synthesis/project-evidence-matrix.md",
+      "module": "library",
+      "category": "synthesis",
+      "type": "evidence-matrix",
+      "contentType": "article",
+      "href": "/content/wiki-synthesis-project-evidence-matrix",
+      "contentLines": [
+        "# Project Evidence Matrix",
+        "",
+        "This matrix tracks what project information is ready to become public knowledge. It does not expose private source locations or raw local files.",
+        "",
+        "| Project theme | Evidence strength | Public readiness | Next action |",
+        "|---|---|---|---|",
+        "| Personal archive platform | Strong | Published seed page | Expand with screenshots and deployment notes after server plan is stable |",
+        "| Private-to-public knowledge pipeline | Strong | Published concept | Add examples from future promoted pages |",
+        "| Public site data backend | Strong | Published concept | Convert into API schema when a server is introduced |",
+        "| Agent and skill governance | Strong | Published concept | Add public examples of reusable skills |",
+        "| Coze/agent builder research | Medium | Needs rewrite | Write a public architecture comparison without local project state |",
+        "| Xiaoan/local model learning loop | Medium | Needs source review | Separate public training lessons from private runtime and memory traces |",
+        "| AI agent systems research | Strong | Partly public | Consolidate migrated framework notes into cleaner comparison pages |",
+        "| Frontend archive website | Strong | Needs integration | Link current frontend implementation to the public data boundary |",
+        "| Campus or school-related projects | Medium | Private by default | Publish only generic product lessons after removing identity context |",
+        "| Automation and data processing scripts | Strong | Needs curation | Promote repeatable workflows, not local file paths |",
+        "",
+        "## Promotion Rules",
+        "",
+        "- A project page needs a public goal, evidence route, repeatable lesson, and unfinished status.",
+        "- A project with personal, school, account, deployment, or credential context stays private until rewritten.",
+        "- Assets, screenshots, and generated files are supporting evidence, not the project story by themselves.",
+        "",
+        "## Related",
+        "",
+        "- [[wiki/projects/personal-archive-platform]]",
+        "- [[wiki/synthesis/personal-archive-public-roadmap]]",
+        "- [[wiki/concepts/private-to-public-promotion-pipeline]]"
+      ],
+      "links": [
+        {
+          "target": "wiki/projects/personal-archive-platform",
+          "label": "wiki/projects/personal-archive-platform"
+        },
+        {
+          "target": "wiki/synthesis/personal-archive-public-roadmap",
+          "label": "wiki/synthesis/personal-archive-public-roadmap"
+        },
+        {
+          "target": "wiki/concepts/private-to-public-promotion-pipeline",
+          "label": "wiki/concepts/private-to-public-promotion-pipeline"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/local-private-compile-2026-05-13]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Project Evidence Matrix",
+          "anchor": "project-evidence-matrix"
+        },
+        {
+          "level": 2,
+          "title": "Promotion Rules",
+          "anchor": "promotion-rules"
+        },
+        {
+          "level": 2,
+          "title": "Related",
+          "anchor": "related"
+        }
+      ],
+      "wordCount": 254,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 28,
+        "headingCount": 3,
+        "linkCount": 3,
+        "sourceCount": 1
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 97,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "project evidence",
+        "local compile"
+      ],
+      "whyItMattered": "It ranks project information by public readiness instead of turning every local trace into a showcase item.",
+      "operationStory": [
+        "Grouped private project evidence into public-safe project themes.",
+        "Separated ready architecture themes from sensitive or identity-heavy project traces.",
+        "Defined the next project pages as evidence-backed rewrites."
+      ],
+      "replicationSteps": [
+        "Choose a project theme.",
+        "Check whether its evidence has private identifiers or secret-shaped material.",
+        "Write a public page only if the reusable lesson is clear."
+      ],
+      "failureModes": [
+        "thin project summaries",
+        "private setup leakage",
+        "treating assets as project proof",
+        "missing unfinished status"
+      ],
+      "lessons": [
+        "project pages need evidence",
+        "risk status matters",
+        "public value should be explicit"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": []
+    },
+    {
+      "id": "c_4ffbf9e307e04258",
+      "title": "Public Growth Timeline Framework",
+      "slug": "wiki-synthesis-public-growth-timeline-framework",
+      "summary": "A framework for turning private timeline evidence into public milestones without exposing sensitive personal material.",
+      "tags": [
+        "timeline",
+        "growth",
+        "publication",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/synthesis/public-growth-timeline-framework.md",
+      "module": "library",
+      "category": "synthesis",
+      "type": "framework",
+      "contentType": "article",
+      "href": "/content/wiki-synthesis-public-growth-timeline-framework",
+      "contentLines": [
+        "# Public Growth Timeline Framework",
+        "",
+        "The archive contains many time signals. Not all of them are public growth events. This framework defines how to turn timeline evidence into public milestones.",
+        "",
+        "## Date Types",
+        "",
+        "| Type | Meaning | Public handling |",
+        "|---|---|---|",
+        "| Event date | A real project, learning, release, or decision date | Can become a milestone after review |",
+        "| Artifact date | A file creation or modification date | Use only as supporting evidence |",
+        "| Plan date | A planned task, schedule, or target | Mark as plan, not completed history |",
+        "| Reference date | A date quoted inside a source | Verify before treating as an event |",
+        "| Uncertain date | Ambiguous or extracted without context | Keep in review queue |",
+        "",
+        "## Public Milestone Shape",
+        "",
+        "A public milestone should include:",
+        "",
+        "- what changed;",
+        "- which project or capability it connects to;",
+        "- what evidence supports it;",
+        "- what remains private;",
+        "- what the next public artifact should be.",
+        "",
+        "## First Public Timeline Themes",
+        "",
+        "- building the personal archive platform;",
+        "- establishing the public data boundary;",
+        "- consolidating agent and skill governance;",
+        "- moving from raw local evidence to reviewed public knowledge.",
+        "",
+        "## Related",
+        "",
+        "- [[wiki/synthesis/project-evidence-matrix]]",
+        "- [[wiki/synthesis/capability-evidence-matrix]]",
+        "- [[wiki/synthesis/information-review-queue]]"
+      ],
+      "links": [
+        {
+          "target": "wiki/synthesis/project-evidence-matrix",
+          "label": "wiki/synthesis/project-evidence-matrix"
+        },
+        {
+          "target": "wiki/synthesis/capability-evidence-matrix",
+          "label": "wiki/synthesis/capability-evidence-matrix"
+        },
+        {
+          "target": "wiki/synthesis/information-review-queue",
+          "label": "wiki/synthesis/information-review-queue"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/local-private-compile-2026-05-13]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Public Growth Timeline Framework",
+          "anchor": "public-growth-timeline-framework"
+        },
+        {
+          "level": 2,
+          "title": "Date Types",
+          "anchor": "date-types"
+        },
+        {
+          "level": 2,
+          "title": "Public Milestone Shape",
+          "anchor": "public-milestone-shape"
+        },
+        {
+          "level": 2,
+          "title": "First Public Timeline Themes",
+          "anchor": "first-public-timeline-themes"
+        },
+        {
+          "level": 2,
+          "title": "Related",
+          "anchor": "related"
+        }
+      ],
+      "wordCount": 187,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 36,
+        "headingCount": 5,
+        "linkCount": 3,
+        "sourceCount": 1
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 118,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "timeline framework",
+        "local compile"
+      ],
+      "whyItMattered": "It preserves growth information without publishing private memories or raw personal records.",
+      "operationStory": [
+        "Separated real events from file modification dates and quoted dates.",
+        "Kept private identity details out of the public timeline.",
+        "Defined timeline entries as reviewed narrative milestones."
+      ],
+      "replicationSteps": [
+        "Classify each date as event, artifact date, plan date, or uncertain reference.",
+        "Publish only milestones with clear public value.",
+        "Link milestones to projects or capabilities."
+      ],
+      "failureModes": [
+        "treating every file date as life history",
+        "exposing personal records",
+        "writing vague self-narrative"
+      ],
+      "lessons": [
+        "timeline data needs classification",
+        "public growth should connect to work evidence",
+        "uncertainty should be visible"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": []
+    },
+    {
       "id": "c_3d19f3d825d4e136",
       "title": "AI Agent Systems MOC",
       "slug": "wiki-topics-ai-agent-systems-moc",
@@ -1321,6 +3224,7 @@
         "",
         "## Architecture Notes",
         "",
+        "- [[wiki/concepts/agent-skill-governance]] - public-safe skill and rule governance",
         "- [[wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agent_Computer_Interface_Best_Practices]]",
         "- [[wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agent_Design_Patterns_2026]]",
         "- [[wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agentic_Workflow_Optimization_2026]]",
@@ -1365,6 +3269,10 @@
         {
           "target": "wiki/topics/04-知识库-领域研究-Agent生态-SWE-Agent",
           "label": "wiki/topics/04-知识库-领域研究-Agent生态-SWE-Agent"
+        },
+        {
+          "target": "wiki/concepts/agent-skill-governance",
+          "label": "wiki/concepts/agent-skill-governance"
         },
         {
           "target": "wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agent_Computer_Interface_Best_Practices",
@@ -1424,12 +3332,12 @@
           "anchor": "project-architecture"
         }
       ],
-      "wordCount": 348,
+      "wordCount": 358,
       "readingMinutes": 1,
       "metrics": {
-        "lineCount": 28,
+        "lineCount": 29,
         "headingCount": 4,
-        "linkCount": 16,
+        "linkCount": 17,
         "sourceCount": 1
       },
       "quality": {
@@ -1529,6 +3437,7 @@
         "## Architecture",
         "",
         "- [[wiki/sources/karpathy-llm-wiki-pattern]] - official pattern source",
+        "- [[wiki/synthesis/karpathy-official-wiki-layer]] - public wiki layer contract",
         "- [[CLAUDE]] - local schema and page contract",
         "- [[AGENTS]] - operating rules for future agents",
         "- [[wiki/sources-and-data-policy]] - public/private source boundary",
@@ -1551,6 +3460,10 @@
         {
           "target": "wiki/sources/karpathy-llm-wiki-pattern",
           "label": "wiki/sources/karpathy-llm-wiki-pattern"
+        },
+        {
+          "target": "wiki/synthesis/karpathy-official-wiki-layer",
+          "label": "wiki/synthesis/karpathy-official-wiki-layer"
         },
         {
           "target": "CLAUDE",
@@ -1622,12 +3535,12 @@
           "anchor": "migrated-llm-wiki-notes"
         }
       ],
-      "wordCount": 128,
+      "wordCount": 137,
       "readingMinutes": 1,
       "metrics": {
-        "lineCount": 24,
+        "lineCount": 25,
         "headingCount": 4,
-        "linkCount": 12,
+        "linkCount": 13,
         "sourceCount": 1
       },
       "quality": {
@@ -1694,6 +3607,240 @@
       ]
     },
     {
+      "id": "c_74981be21c4f4c9f",
+      "title": "Personal Archive MOC",
+      "slug": "wiki-topics-personal-archive-moc",
+      "summary": "Map of the public personal archive platform, promotion workflow, frontend data boundary, and publication roadmap.",
+      "tags": [
+        "archive",
+        "moc",
+        "llm-wiki",
+        "curated"
+      ],
+      "status": [
+        "featured",
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/topics/personal-archive-moc.md",
+      "module": "paths",
+      "category": "synthesis",
+      "type": "moc",
+      "contentType": "article",
+      "href": "/content/wiki-topics-personal-archive-moc",
+      "contentLines": [
+        "# Personal Archive MOC",
+        "",
+        "This map is the public navigation layer for the personal archive project.",
+        "",
+        "## Platform",
+        "",
+        "- [[wiki/projects/personal-archive-platform]] - public project overview",
+        "- [[wiki/synthesis/archive-information-architecture]] - information backbone",
+        "- [[wiki/synthesis/personal-archive-public-roadmap]] - staged publication plan",
+        "- [[wiki/synthesis/karpathy-official-wiki-layer]] - wiki layer contract",
+        "",
+        "## Promotion Workflow",
+        "",
+        "- [[wiki/synthesis/project-evidence-matrix]] - project evidence and readiness",
+        "- [[wiki/synthesis/capability-evidence-matrix]] - capability evidence and repeatable workflows",
+        "- [[wiki/synthesis/public-growth-timeline-framework]] - public timeline classification",
+        "- [[wiki/synthesis/information-review-queue]] - unresolved information decisions",
+        "- [[wiki/concepts/private-to-public-promotion-pipeline]] - how local-only review material becomes public pages",
+        "- [[wiki/sources/local-private-compile-2026-05-13]] - public-safe source record for the current compile pass",
+        "- [[wiki/sources-and-data-policy]] - source and publication boundary",
+        "",
+        "## Website Data",
+        "",
+        "- [[wiki/concepts/public-site-data-boundary]] - frontend/backend data contract",
+        "- [[wiki/topics/publication-maintenance-moc]] - validation and publication gates",
+        "",
+        "## Agent And Skills",
+        "",
+        "- [[wiki/concepts/agent-skill-governance]] - public-safe skill and rule governance",
+        "- [[wiki/topics/skills-and-tools-moc]] - public skills and tools map",
+        "- [[wiki/topics/ai-agent-systems-moc]] - public agent systems map"
+      ],
+      "links": [
+        {
+          "target": "wiki/projects/personal-archive-platform",
+          "label": "wiki/projects/personal-archive-platform"
+        },
+        {
+          "target": "wiki/synthesis/archive-information-architecture",
+          "label": "wiki/synthesis/archive-information-architecture"
+        },
+        {
+          "target": "wiki/synthesis/personal-archive-public-roadmap",
+          "label": "wiki/synthesis/personal-archive-public-roadmap"
+        },
+        {
+          "target": "wiki/synthesis/karpathy-official-wiki-layer",
+          "label": "wiki/synthesis/karpathy-official-wiki-layer"
+        },
+        {
+          "target": "wiki/synthesis/project-evidence-matrix",
+          "label": "wiki/synthesis/project-evidence-matrix"
+        },
+        {
+          "target": "wiki/synthesis/capability-evidence-matrix",
+          "label": "wiki/synthesis/capability-evidence-matrix"
+        },
+        {
+          "target": "wiki/synthesis/public-growth-timeline-framework",
+          "label": "wiki/synthesis/public-growth-timeline-framework"
+        },
+        {
+          "target": "wiki/synthesis/information-review-queue",
+          "label": "wiki/synthesis/information-review-queue"
+        },
+        {
+          "target": "wiki/concepts/private-to-public-promotion-pipeline",
+          "label": "wiki/concepts/private-to-public-promotion-pipeline"
+        },
+        {
+          "target": "wiki/sources/local-private-compile-2026-05-13",
+          "label": "wiki/sources/local-private-compile-2026-05-13"
+        },
+        {
+          "target": "wiki/sources-and-data-policy",
+          "label": "wiki/sources-and-data-policy"
+        },
+        {
+          "target": "wiki/concepts/public-site-data-boundary",
+          "label": "wiki/concepts/public-site-data-boundary"
+        },
+        {
+          "target": "wiki/topics/publication-maintenance-moc",
+          "label": "wiki/topics/publication-maintenance-moc"
+        },
+        {
+          "target": "wiki/concepts/agent-skill-governance",
+          "label": "wiki/concepts/agent-skill-governance"
+        },
+        {
+          "target": "wiki/topics/skills-and-tools-moc",
+          "label": "wiki/topics/skills-and-tools-moc"
+        },
+        {
+          "target": "wiki/topics/ai-agent-systems-moc",
+          "label": "wiki/topics/ai-agent-systems-moc"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/local-private-compile-2026-05-13]]",
+        "[[wiki/synthesis/karpathy-official-wiki-layer]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Personal Archive MOC",
+          "anchor": "personal-archive-moc"
+        },
+        {
+          "level": 2,
+          "title": "Platform",
+          "anchor": "platform"
+        },
+        {
+          "level": 2,
+          "title": "Promotion Workflow",
+          "anchor": "promotion-workflow"
+        },
+        {
+          "level": 2,
+          "title": "Website Data",
+          "anchor": "website-data"
+        },
+        {
+          "level": 2,
+          "title": "Agent And Skills",
+          "anchor": "agent-and-skills"
+        }
+      ],
+      "wordCount": 169,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 31,
+        "headingCount": 5,
+        "linkCount": 16,
+        "sourceCount": 2
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 113,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "map",
+        "archive"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "goal": "Map of the public personal archive platform, promotion workflow, frontend data boundary, and publication roadmap.",
+      "audience": "希望沿着公开资料路线学习、复刻或维护知识库的读者。",
+      "prerequisites": [],
+      "estimatedTime": "按主题自定",
+      "difficulty": "intermediate",
+      "finalOutput": "形成一条可复用的公开学习或构建路径。",
+      "steps": [
+        {
+          "id": "step-1",
+          "title": "Personal Archive MOC",
+          "goal": "Personal Archive MOC",
+          "description": "从公开 wiki 页面章节生成的路线节点。",
+          "resources": [],
+          "completion": "读完本节并能连接到相关公开页面。",
+          "optional": false
+        },
+        {
+          "id": "step-2",
+          "title": "Platform",
+          "goal": "Platform",
+          "description": "从公开 wiki 页面章节生成的路线节点。",
+          "resources": [],
+          "completion": "读完本节并能连接到相关公开页面。",
+          "optional": false
+        },
+        {
+          "id": "step-3",
+          "title": "Promotion Workflow",
+          "goal": "Promotion Workflow",
+          "description": "从公开 wiki 页面章节生成的路线节点。",
+          "resources": [],
+          "completion": "读完本节并能连接到相关公开页面。",
+          "optional": false
+        },
+        {
+          "id": "step-4",
+          "title": "Website Data",
+          "goal": "Website Data",
+          "description": "从公开 wiki 页面章节生成的路线节点。",
+          "resources": [],
+          "completion": "读完本节并能连接到相关公开页面。",
+          "optional": false
+        },
+        {
+          "id": "step-5",
+          "title": "Agent And Skills",
+          "goal": "Agent And Skills",
+          "description": "从公开 wiki 页面章节生成的路线节点。",
+          "resources": [],
+          "completion": "读完本节并能连接到相关公开页面。",
+          "optional": false
+        }
+      ]
+    },
+    {
       "id": "c_7e9d08f8f6eda5d4",
       "title": "Publication Maintenance MOC",
       "slug": "wiki-topics-publication-maintenance-moc",
@@ -1724,6 +3871,8 @@
         "## Policy",
         "",
         "- [[wiki/sources-and-data-policy]] - public/private boundary",
+        "- [[wiki/concepts/private-to-public-promotion-pipeline]] - promotion workflow",
+        "- [[wiki/concepts/public-site-data-boundary]] - frontend/backend data boundary",
         "- [[AGENTS]] - operating rules",
         "- [[CLAUDE]] - schema and page format",
         "",
@@ -1750,6 +3899,14 @@
         {
           "target": "wiki/sources-and-data-policy",
           "label": "wiki/sources-and-data-policy"
+        },
+        {
+          "target": "wiki/concepts/private-to-public-promotion-pipeline",
+          "label": "wiki/concepts/private-to-public-promotion-pipeline"
+        },
+        {
+          "target": "wiki/concepts/public-site-data-boundary",
+          "label": "wiki/concepts/public-site-data-boundary"
         },
         {
           "target": "AGENTS",
@@ -1799,12 +3956,12 @@
           "anchor": "maintenance"
         }
       ],
-      "wordCount": 111,
+      "wordCount": 127,
       "readingMinutes": 1,
       "metrics": {
-        "lineCount": 28,
+        "lineCount": 30,
         "headingCount": 5,
-        "linkCount": 5,
+        "linkCount": 7,
         "sourceCount": 2
       },
       "quality": {
@@ -1908,6 +4065,7 @@
         "",
         "## Skill Indexes",
         "",
+        "- [[wiki/concepts/agent-skill-governance]] - current public model for skill governance",
         "- [[wiki/concepts/04-知识库-领域研究-AI-Agent技术-技能库-MuleRun_Skills_Hub_MOC]] - migrated skill knowledge network",
         "- [[wiki/concepts/07-技能库-MuleRun_Skills_Hub]] - common source note for migrated skill entries",
         "- [[wiki/concepts/07-技能库-说明-技能库说明]] - skill-library operating note",
@@ -1931,6 +4089,10 @@
         "- [[wiki/topics/02-领域-AI工具生态-记忆系统对比]]"
       ],
       "links": [
+        {
+          "target": "wiki/concepts/agent-skill-governance",
+          "label": "wiki/concepts/agent-skill-governance"
+        },
         {
           "target": "wiki/concepts/04-知识库-领域研究-AI-Agent技术-技能库-MuleRun_Skills_Hub_MOC",
           "label": "wiki/concepts/04-知识库-领域研究-AI-Agent技术-技能库-MuleRun_Skills_Hub_MOC"
@@ -2017,12 +4179,12 @@
           "anchor": "tooling-areas"
         }
       ],
-      "wordCount": 248,
+      "wordCount": 259,
       "readingMinutes": 1,
       "metrics": {
-        "lineCount": 27,
+        "lineCount": 28,
         "headingCount": 4,
-        "linkCount": 15,
+        "linkCount": 16,
         "sourceCount": 1
       },
       "quality": {
@@ -2031,7 +4193,7 @@
         "summaryLength": 83,
         "needsSourceReview": false,
         "displayTier": "showcase",
-        "qualityScore": 94,
+        "qualityScore": 100,
         "hiddenReasons": [
           "source:archive-only"
         ],
@@ -2043,7 +4205,7 @@
         "archive-derived"
       ],
       "displayTier": "showcase",
-      "qualityScore": 94,
+      "qualityScore": 100,
       "hiddenReasons": [
         "source:archive-only"
       ],
@@ -2094,6 +4256,469 @@
     }
   ],
   "library": [
+    {
+      "id": "c_32c45035f9107070",
+      "title": "Agent Skill Governance",
+      "slug": "wiki-concepts-agent-skill-governance",
+      "summary": "A public-safe model for preserving agent and skill knowledge without exposing local prompts or private runtime state.",
+      "tags": [
+        "agent",
+        "skills",
+        "governance",
+        "llm-wiki",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/concepts/agent-skill-governance.md",
+      "module": "library",
+      "category": "concept",
+      "type": "operating-model",
+      "contentType": "article",
+      "href": "/content/wiki-concepts-agent-skill-governance",
+      "contentLines": [
+        "# Agent Skill Governance",
+        "",
+        "Agent skill governance is the practice of turning repeated agent workflows into durable process assets while keeping local runtime state out of the public archive.",
+        "",
+        "## What Belongs In Public",
+        "",
+        "Public pages can describe:",
+        "",
+        "- the problem a skill solves;",
+        "- when to use it;",
+        "- what boundaries it protects;",
+        "- what validation commands prove it worked;",
+        "- how it connects to the wiki and website workflow.",
+        "",
+        "This is enough for future agents and collaborators to understand the operating model.",
+        "",
+        "## What Stays Local",
+        "",
+        "Raw prompts, memory files, private session notes, unrevised rule packs, account-specific setup, and local tool state should stay in local-only layers. They may inform a rewritten public operating model, but they are not themselves public documentation.",
+        "",
+        "## Current Pattern",
+        "",
+        "The archive now uses a skill-style approach for local private compilation. The public lesson is not the private source list; it is the repeatable boundary:",
+        "",
+        "- index local material;",
+        "- compile local review pages;",
+        "- rewrite safe concepts into `wiki/`;",
+        "- regenerate public data only after gates pass.",
+        "",
+        "## Related",
+        "",
+        "- [[wiki/topics/skills-and-tools-moc]]",
+        "- [[wiki/topics/ai-agent-systems-moc]]",
+        "- [[wiki/concepts/private-to-public-promotion-pipeline]]"
+      ],
+      "links": [
+        {
+          "target": "wiki/topics/skills-and-tools-moc",
+          "label": "wiki/topics/skills-and-tools-moc"
+        },
+        {
+          "target": "wiki/topics/ai-agent-systems-moc",
+          "label": "wiki/topics/ai-agent-systems-moc"
+        },
+        {
+          "target": "wiki/concepts/private-to-public-promotion-pipeline",
+          "label": "wiki/concepts/private-to-public-promotion-pipeline"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/local-private-compile-2026-05-13]]",
+        "[[wiki/synthesis/karpathy-official-wiki-layer]]",
+        "[[wiki/topics/skills-and-tools-moc]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Agent Skill Governance",
+          "anchor": "agent-skill-governance"
+        },
+        {
+          "level": 2,
+          "title": "What Belongs In Public",
+          "anchor": "what-belongs-in-public"
+        },
+        {
+          "level": 2,
+          "title": "What Stays Local",
+          "anchor": "what-stays-local"
+        },
+        {
+          "level": 2,
+          "title": "Current Pattern",
+          "anchor": "current-pattern"
+        },
+        {
+          "level": 2,
+          "title": "Related",
+          "anchor": "related"
+        }
+      ],
+      "wordCount": 184,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 34,
+        "headingCount": 5,
+        "linkCount": 3,
+        "sourceCount": 3
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 117,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "agent workflow",
+        "skills"
+      ],
+      "whyItMattered": "It lets the archive preserve agent operating knowledge without publishing raw rules, prompts, or local state.",
+      "operationStory": [
+        "Separate current active rules from historical recovered rules.",
+        "Turn repeated workflows into skills only when they are reusable.",
+        "Keep sensitive execution context outside the public wiki."
+      ],
+      "replicationSteps": [
+        "Document the trigger for a skill.",
+        "State what the skill must protect.",
+        "Keep commands and validation gates concrete.",
+        "Link public skills to public concepts, not local-only state."
+      ],
+      "failureModes": [
+        "treating old rules as current policy",
+        "publishing raw prompt text",
+        "creating skills for one-off actions",
+        "skipping validation"
+      ],
+      "lessons": [
+        "skills are reusable process assets",
+        "historical rules need promotion",
+        "public governance should be compact"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": []
+    },
+    {
+      "id": "c_8008030b505902e0",
+      "title": "Private To Public Promotion Pipeline",
+      "slug": "wiki-concepts-private-to-public-promotion-pipeline",
+      "summary": "The workflow for rewriting local-only archive material into public-safe wiki pages.",
+      "tags": [
+        "publication",
+        "workflow",
+        "llm-wiki",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/concepts/private-to-public-promotion-pipeline.md",
+      "module": "library",
+      "category": "concept",
+      "type": "workflow",
+      "contentType": "article",
+      "href": "/content/wiki-concepts-private-to-public-promotion-pipeline",
+      "contentLines": [
+        "# Private To Public Promotion Pipeline",
+        "",
+        "The promotion pipeline is the repeatable path from local review material to public wiki pages.",
+        "",
+        "## Pipeline",
+        "",
+        "1. Index local material without publishing it.",
+        "2. Compile local-only review pages that group sources by theme, project, skill, agent, and timeline.",
+        "3. Select one public-safe theme.",
+        "4. Write or update a source note.",
+        "5. Rewrite the theme as a compact public page.",
+        "6. Link it from the relevant MOC.",
+        "7. Run the structure and privacy gates.",
+        "8. Regenerate `site-data/` only after the public wiki passes.",
+        "",
+        "## Public Page Test",
+        "",
+        "A promoted page should answer:",
+        "",
+        "- what is the reusable idea or project;",
+        "- why it matters;",
+        "- what source note supports it;",
+        "- what can be repeated by another person;",
+        "- what remains unfinished;",
+        "- what was deliberately excluded from public view.",
+        "",
+        "## Good Promotion",
+        "",
+        "Good promotion turns private evidence into a public lesson. It does not quote raw chats, reveal local setup, or convert every file into a page. One strong concept page is better than many thin summaries.",
+        "",
+        "## Related",
+        "",
+        "- [[wiki/projects/personal-archive-platform]]",
+        "- [[wiki/concepts/public-site-data-boundary]]",
+        "- [[wiki/synthesis/personal-archive-public-roadmap]]"
+      ],
+      "links": [
+        {
+          "target": "wiki/projects/personal-archive-platform",
+          "label": "wiki/projects/personal-archive-platform"
+        },
+        {
+          "target": "wiki/concepts/public-site-data-boundary",
+          "label": "wiki/concepts/public-site-data-boundary"
+        },
+        {
+          "target": "wiki/synthesis/personal-archive-public-roadmap",
+          "label": "wiki/synthesis/personal-archive-public-roadmap"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/karpathy-llm-wiki-pattern]]",
+        "[[wiki/sources/local-private-compile-2026-05-13]]",
+        "[[wiki/sources-and-data-policy]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Private To Public Promotion Pipeline",
+          "anchor": "private-to-public-promotion-pipeline"
+        },
+        {
+          "level": 2,
+          "title": "Pipeline",
+          "anchor": "pipeline"
+        },
+        {
+          "level": 2,
+          "title": "Public Page Test",
+          "anchor": "public-page-test"
+        },
+        {
+          "level": 2,
+          "title": "Good Promotion",
+          "anchor": "good-promotion"
+        },
+        {
+          "level": 2,
+          "title": "Related",
+          "anchor": "related"
+        }
+      ],
+      "wordCount": 183,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 35,
+        "headingCount": 5,
+        "linkCount": 3,
+        "sourceCount": 3
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 83,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "workflow",
+        "privacy filtered"
+      ],
+      "whyItMattered": "It gives the archive a repeatable way to grow without turning private review material into public content.",
+      "operationStory": [
+        "Local evidence is indexed first.",
+        "Private review pages identify themes and risk.",
+        "Public pages are rewritten as source-aware lessons."
+      ],
+      "replicationSteps": [
+        "Choose one theme from the private review layer.",
+        "Create a public source note or cite an existing one.",
+        "Write the smallest durable concept, project, or synthesis page.",
+        "Run public structure and privacy gates."
+      ],
+      "failureModes": [
+        "copying raw evidence",
+        "over-broad batch imports",
+        "missing source notes",
+        "skipping validation"
+      ],
+      "lessons": [
+        "small batches are safer",
+        "source notes carry provenance",
+        "public writing should explain reusable knowledge"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": []
+    },
+    {
+      "id": "c_151dd4949baa1108",
+      "title": "Public Site Data Boundary",
+      "slug": "wiki-concepts-public-site-data-boundary",
+      "summary": "The architecture boundary that keeps the website consuming curated public JSON instead of raw Obsidian content.",
+      "tags": [
+        "frontend",
+        "backend",
+        "site-data",
+        "publication",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/concepts/public-site-data-boundary.md",
+      "module": "library",
+      "category": "concept",
+      "type": "architecture",
+      "contentType": "article",
+      "href": "/content/wiki-concepts-public-site-data-boundary",
+      "contentLines": [
+        "# Public Site Data Boundary",
+        "",
+        "The public site data boundary is the backend contract for the future archive website. It keeps the web layer small, predictable, and safer to deploy.",
+        "",
+        "## Rule",
+        "",
+        "The frontend can read generated public data. It cannot read raw local sources, local review pages, private reports, or arbitrary Markdown.",
+        "",
+        "In this vault, `site-data/*.json` is the current backend contract. A later server can replace the file transport, but it should keep the same boundary: only curated public fields cross into the website.",
+        "",
+        "## Allowed Shape",
+        "",
+        "Public data can include:",
+        "",
+        "- title, summary, tags, category, status;",
+        "- source labels that are safe to show;",
+        "- table of contents and related public links;",
+        "- operation story, repeatable steps, lessons, and failure modes;",
+        "- public timeline or path entries that were written for display.",
+        "",
+        "Public data should not include local-only source locations, review-only queue details, raw transcripts, account state, or unreviewed personal records.",
+        "",
+        "## Why This Is A Backend Decision",
+        "",
+        "Even without a deployed server, the data generator is already acting as a backend. It chooses which pages are visible, which fields are exposed, and which items stay hidden. Treating it as a backend contract now makes the later server simpler.",
+        "",
+        "## Related",
+        "",
+        "- [[wiki/projects/personal-archive-platform]]",
+        "- [[wiki/concepts/private-to-public-promotion-pipeline]]",
+        "- [[wiki/topics/personal-archive-moc]]"
+      ],
+      "links": [
+        {
+          "target": "wiki/projects/personal-archive-platform",
+          "label": "wiki/projects/personal-archive-platform"
+        },
+        {
+          "target": "wiki/concepts/private-to-public-promotion-pipeline",
+          "label": "wiki/concepts/private-to-public-promotion-pipeline"
+        },
+        {
+          "target": "wiki/topics/personal-archive-moc",
+          "label": "wiki/topics/personal-archive-moc"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/local-private-compile-2026-05-13]]",
+        "[[wiki/synthesis/karpathy-official-wiki-layer]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Public Site Data Boundary",
+          "anchor": "public-site-data-boundary"
+        },
+        {
+          "level": 2,
+          "title": "Rule",
+          "anchor": "rule"
+        },
+        {
+          "level": 2,
+          "title": "Allowed Shape",
+          "anchor": "allowed-shape"
+        },
+        {
+          "level": 2,
+          "title": "Why This Is A Backend Decision",
+          "anchor": "why-this-is-a-backend-decision"
+        },
+        {
+          "level": 2,
+          "title": "Related",
+          "anchor": "related"
+        }
+      ],
+      "wordCount": 211,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 31,
+        "headingCount": 5,
+        "linkCount": 3,
+        "sourceCount": 2
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 111,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "frontend backend boundary",
+        "architecture"
+      ],
+      "whyItMattered": "It prevents the future website from depending on private vault structure or unreviewed Markdown.",
+      "operationStory": [
+        "The public wiki remains the human-editable compiled layer.",
+        "The generator turns curated wiki pages into JSON.",
+        "The frontend reads generated data, not the private vault."
+      ],
+      "replicationSteps": [
+        "Keep frontend inputs under generated site-data files.",
+        "Do not expose local-only directories through routes or APIs.",
+        "Treat every new public field as a publication surface."
+      ],
+      "failureModes": [
+        "direct vault reads",
+        "exposing review manifests",
+        "mixing draft and curated data",
+        "serving local-only directories"
+      ],
+      "lessons": [
+        "data contracts are publication policy",
+        "generated JSON should be narrower than the vault",
+        "backend work starts with field boundaries"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": []
+    },
     {
       "id": "c_ad9a9fc54757ca67",
       "title": "Sources and Data Policy",
@@ -2303,9 +4928,30 @@
         "- the LLM maintains a persistent Markdown artifact",
         "- Obsidian is the browsing and graph surface",
         "- schema/rule files guide future agent maintenance",
-        "- Git tracks the public-safe artifact"
+        "- Git tracks the public-safe artifact",
+        "",
+        "Operational consequence for this vault:",
+        "",
+        "- `wiki/` is the public compiled layer, not a staging area",
+        "- `private-wiki/` can guide future rewrites, but it is not a public source",
+        "- durable answers should improve the wiki graph instead of living only in chat",
+        "- every promotion should update indexes and `log.md`",
+        "",
+        "Related:",
+        "",
+        "- [[wiki/synthesis/karpathy-official-wiki-layer]]",
+        "- [[wiki/topics/llm-wiki-moc]]"
       ],
-      "links": [],
+      "links": [
+        {
+          "target": "wiki/synthesis/karpathy-official-wiki-layer",
+          "label": "wiki/synthesis/karpathy-official-wiki-layer"
+        },
+        {
+          "target": "wiki/topics/llm-wiki-moc",
+          "label": "wiki/topics/llm-wiki-moc"
+        }
+      ],
       "sources": [
         "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"
       ],
@@ -2316,12 +4962,12 @@
           "anchor": "karpathy-llm-wiki-pattern"
         }
       ],
-      "wordCount": 66,
+      "wordCount": 127,
       "readingMinutes": 1,
       "metrics": {
-        "lineCount": 13,
+        "lineCount": 25,
         "headingCount": 1,
-        "linkCount": 0,
+        "linkCount": 2,
         "sourceCount": 1
       },
       "quality": {
@@ -2437,6 +5083,136 @@
       "sourceLabels": [
         "public wiki",
         "source-backed"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": []
+    },
+    {
+      "id": "c_58d7fda66c48c030",
+      "title": "Local Private Compile 2026-05-13",
+      "slug": "wiki-sources-local-private-compile-2026-05-13",
+      "summary": "Public-safe source record for the local-only private compile pass that informed the next public wiki pages.",
+      "tags": [
+        "llm-wiki",
+        "source",
+        "publication"
+      ],
+      "status": [
+        "public"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/sources/local-private-compile-2026-05-13.md",
+      "module": "library",
+      "category": "source",
+      "type": "source",
+      "contentType": "source",
+      "href": "/content/wiki-sources-local-private-compile-2026-05-13",
+      "contentLines": [
+        "# Local Private Compile 2026-05-13",
+        "",
+        "This source record represents a local-only compile pass used to decide what can be safely rewritten into the public wiki. The underlying material stayed outside the public graph. This page records only the public interpretation boundary.",
+        "",
+        "## What Was Learned",
+        "",
+        "- The public archive should be a compiled knowledge product, not a dump of local files.",
+        "- The strongest public themes are knowledge-base architecture, public data boundaries, agent skill governance, and repeatable promotion workflow.",
+        "- Project and capability claims should be rewritten into reusable lessons before they appear in `wiki/`.",
+        "- Items that depend on private conversations, local setup details, account state, or unrevised personal records remain out of public pages.",
+        "",
+        "## Why It Matters",
+        "",
+        "Karpathy's LLM Wiki pattern depends on the wiki becoming the durable artifact. For a personal archive, that artifact must also be safe to publish. This means the public layer needs source notes, distilled concepts, and synthesis pages that explain the system without leaking the private evidence behind it.",
+        "",
+        "## Public Pages Informed",
+        "",
+        "- [[wiki/projects/personal-archive-platform]]",
+        "- [[wiki/concepts/private-to-public-promotion-pipeline]]",
+        "- [[wiki/concepts/public-site-data-boundary]]",
+        "- [[wiki/concepts/agent-skill-governance]]",
+        "- [[wiki/synthesis/personal-archive-public-roadmap]]",
+        "",
+        "## Boundary",
+        "",
+        "This page does not make the local-only compile itself a public source. It is a public-safe provenance marker for the rewritten pages created from that review."
+      ],
+      "links": [
+        {
+          "target": "wiki/projects/personal-archive-platform",
+          "label": "wiki/projects/personal-archive-platform"
+        },
+        {
+          "target": "wiki/concepts/private-to-public-promotion-pipeline",
+          "label": "wiki/concepts/private-to-public-promotion-pipeline"
+        },
+        {
+          "target": "wiki/concepts/public-site-data-boundary",
+          "label": "wiki/concepts/public-site-data-boundary"
+        },
+        {
+          "target": "wiki/concepts/agent-skill-governance",
+          "label": "wiki/concepts/agent-skill-governance"
+        },
+        {
+          "target": "wiki/synthesis/personal-archive-public-roadmap",
+          "label": "wiki/synthesis/personal-archive-public-roadmap"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/karpathy-llm-wiki-pattern]]",
+        "[[wiki/sources/pre-rebuild-vault-archive]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Local Private Compile 2026-05-13",
+          "anchor": "local-private-compile-2026-05-13"
+        },
+        {
+          "level": 2,
+          "title": "What Was Learned",
+          "anchor": "what-was-learned"
+        },
+        {
+          "level": 2,
+          "title": "Why It Matters",
+          "anchor": "why-it-matters"
+        },
+        {
+          "level": 2,
+          "title": "Public Pages Informed",
+          "anchor": "public-pages-informed"
+        },
+        {
+          "level": 2,
+          "title": "Boundary",
+          "anchor": "boundary"
+        }
+      ],
+      "wordCount": 216,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 26,
+        "headingCount": 5,
+        "linkCount": 5,
+        "sourceCount": 2
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 107,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "local compile",
+        "privacy filtered",
+        "source record"
       ],
       "displayTier": "showcase",
       "qualityScore": 100,
@@ -2604,6 +5380,985 @@
       ],
       "displayTier": "showcase",
       "qualityScore": 85,
+      "hiddenReasons": []
+    },
+    {
+      "id": "c_910d420ab933c045",
+      "title": "Archive Information Architecture",
+      "slug": "wiki-synthesis-archive-information-architecture",
+      "summary": "The public information backbone for organizing projects, capabilities, timeline, and review queues before final showcase pages.",
+      "tags": [
+        "archive",
+        "information-architecture",
+        "synthesis",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/synthesis/archive-information-architecture.md",
+      "module": "library",
+      "category": "synthesis",
+      "type": "information-architecture",
+      "contentType": "article",
+      "href": "/content/wiki-synthesis-archive-information-architecture",
+      "contentLines": [
+        "# Archive Information Architecture",
+        "",
+        "The archive should become useful as an information system before it becomes polished as a portfolio. This page defines the public information backbone.",
+        "",
+        "## Core Tables",
+        "",
+        "- [[wiki/synthesis/project-evidence-matrix]] records project themes and public readiness.",
+        "- [[wiki/synthesis/capability-evidence-matrix]] connects capabilities to evidence and repeatable workflows.",
+        "- [[wiki/synthesis/public-growth-timeline-framework]] defines how growth and timeline information can be made public without exposing private records.",
+        "- [[wiki/synthesis/information-review-queue]] keeps unresolved information decisions visible.",
+        "",
+        "## Information Priority",
+        "",
+        "The highest-value information is not necessarily the newest file. Priority comes from:",
+        "",
+        "- repeated evidence across multiple source groups;",
+        "- ability to explain a project or capability publicly;",
+        "- low privacy risk;",
+        "- usefulness for a future reader;",
+        "- connection to existing wiki pages.",
+        "",
+        "## Public Shape",
+        "",
+        "Each public information page should say what is known, what is inferred, what remains private, and what needs review. This is stricter than a normal portfolio page, but it keeps the archive trustworthy.",
+        "",
+        "## Related",
+        "",
+        "- [[wiki/topics/personal-archive-moc]]",
+        "- [[wiki/projects/personal-archive-platform]]",
+        "- [[wiki/synthesis/personal-archive-public-roadmap]]"
+      ],
+      "links": [
+        {
+          "target": "wiki/synthesis/project-evidence-matrix",
+          "label": "wiki/synthesis/project-evidence-matrix"
+        },
+        {
+          "target": "wiki/synthesis/capability-evidence-matrix",
+          "label": "wiki/synthesis/capability-evidence-matrix"
+        },
+        {
+          "target": "wiki/synthesis/public-growth-timeline-framework",
+          "label": "wiki/synthesis/public-growth-timeline-framework"
+        },
+        {
+          "target": "wiki/synthesis/information-review-queue",
+          "label": "wiki/synthesis/information-review-queue"
+        },
+        {
+          "target": "wiki/topics/personal-archive-moc",
+          "label": "wiki/topics/personal-archive-moc"
+        },
+        {
+          "target": "wiki/projects/personal-archive-platform",
+          "label": "wiki/projects/personal-archive-platform"
+        },
+        {
+          "target": "wiki/synthesis/personal-archive-public-roadmap",
+          "label": "wiki/synthesis/personal-archive-public-roadmap"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/local-private-compile-2026-05-13]]",
+        "[[wiki/synthesis/karpathy-official-wiki-layer]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Archive Information Architecture",
+          "anchor": "archive-information-architecture"
+        },
+        {
+          "level": 2,
+          "title": "Core Tables",
+          "anchor": "core-tables"
+        },
+        {
+          "level": 2,
+          "title": "Information Priority",
+          "anchor": "information-priority"
+        },
+        {
+          "level": 2,
+          "title": "Public Shape",
+          "anchor": "public-shape"
+        },
+        {
+          "level": 2,
+          "title": "Related",
+          "anchor": "related"
+        }
+      ],
+      "wordCount": 170,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 30,
+        "headingCount": 5,
+        "linkCount": 7,
+        "sourceCount": 2
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 127,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "information architecture",
+        "local compile"
+      ],
+      "whyItMattered": "It makes information retrievable before it is made presentational.",
+      "operationStory": [
+        "Separated source coverage, project evidence, capability evidence, timeline evidence, and review queues.",
+        "Kept sensitive local material in private review layers while creating public navigation pages.",
+        "Prioritized evidence relationships over visual showcase polish."
+      ],
+      "replicationSteps": [
+        "Start with source coverage.",
+        "Group information by project, capability, agent system, and timeline.",
+        "Only then write display pages."
+      ],
+      "failureModes": [
+        "publishing before evidence is grouped",
+        "confusing file counts with knowledge",
+        "hiding uncertainty"
+      ],
+      "lessons": [
+        "information first",
+        "presentation second",
+        "every public claim needs an evidence route"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": []
+    },
+    {
+      "id": "c_40e886748f617bef",
+      "title": "Capability Evidence Matrix",
+      "slug": "wiki-synthesis-capability-evidence-matrix",
+      "summary": "Public-safe matrix linking capabilities to project evidence, repeatable workflows, and future wiki pages.",
+      "tags": [
+        "skills",
+        "capabilities",
+        "evidence",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/synthesis/capability-evidence-matrix.md",
+      "module": "library",
+      "category": "synthesis",
+      "type": "evidence-matrix",
+      "contentType": "article",
+      "href": "/content/wiki-synthesis-capability-evidence-matrix",
+      "contentLines": [
+        "# Capability Evidence Matrix",
+        "",
+        "This matrix keeps capability information concrete. A capability should explain what can be delivered, what evidence supports it, and what workflow can be repeated.",
+        "",
+        "| Capability | Evidence route | Repeatable workflow | Public status |",
+        "|---|---|---|---|",
+        "| Knowledge-base compilation | [[wiki/projects/personal-archive-platform]] | raw/private/public/schema split | Published seed |",
+        "| Publication safety and privacy gates | [[wiki/concepts/private-to-public-promotion-pipeline]] | scan, review, rewrite, validate | Published seed |",
+        "| Frontend data boundary design | [[wiki/concepts/public-site-data-boundary]] | generate curated `site-data` from public pages | Published seed |",
+        "| Agent skill governance | [[wiki/concepts/agent-skill-governance]] | promote reusable process into skills | Published seed |",
+        "| AI agent system research | [[wiki/topics/ai-agent-systems-moc]] | compare frameworks and extract operating patterns | Needs consolidation |",
+        "| Frontend archive implementation | [[wiki/topics/personal-archive-moc]] | build UI from generated data, not raw vault files | Needs project page |",
+        "| Local-first data processing | [[wiki/synthesis/archive-information-architecture]] | index metadata, group evidence, promote safe summaries | Needs workflow page |",
+        "| Model and learning-loop experimentation | [[wiki/synthesis/project-evidence-matrix]] | separate training lessons from private runtime state | Needs source review |",
+        "",
+        "## Claim Standard",
+        "",
+        "Every public capability claim should have:",
+        "",
+        "- a public page or source note;",
+        "- a project where the capability was exercised;",
+        "- a repeatable procedure;",
+        "- a known failure mode.",
+        "",
+        "## Related",
+        "",
+        "- [[wiki/concepts/agent-skill-governance]]",
+        "- [[wiki/synthesis/project-evidence-matrix]]",
+        "- [[wiki/topics/skills-and-tools-moc]]"
+      ],
+      "links": [
+        {
+          "target": "wiki/projects/personal-archive-platform",
+          "label": "wiki/projects/personal-archive-platform"
+        },
+        {
+          "target": "wiki/concepts/private-to-public-promotion-pipeline",
+          "label": "wiki/concepts/private-to-public-promotion-pipeline"
+        },
+        {
+          "target": "wiki/concepts/public-site-data-boundary",
+          "label": "wiki/concepts/public-site-data-boundary"
+        },
+        {
+          "target": "wiki/concepts/agent-skill-governance",
+          "label": "wiki/concepts/agent-skill-governance"
+        },
+        {
+          "target": "wiki/topics/ai-agent-systems-moc",
+          "label": "wiki/topics/ai-agent-systems-moc"
+        },
+        {
+          "target": "wiki/topics/personal-archive-moc",
+          "label": "wiki/topics/personal-archive-moc"
+        },
+        {
+          "target": "wiki/synthesis/archive-information-architecture",
+          "label": "wiki/synthesis/archive-information-architecture"
+        },
+        {
+          "target": "wiki/synthesis/project-evidence-matrix",
+          "label": "wiki/synthesis/project-evidence-matrix"
+        },
+        {
+          "target": "wiki/concepts/agent-skill-governance",
+          "label": "wiki/concepts/agent-skill-governance"
+        },
+        {
+          "target": "wiki/synthesis/project-evidence-matrix",
+          "label": "wiki/synthesis/project-evidence-matrix"
+        },
+        {
+          "target": "wiki/topics/skills-and-tools-moc",
+          "label": "wiki/topics/skills-and-tools-moc"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/local-private-compile-2026-05-13]]",
+        "[[wiki/topics/skills-and-tools-moc]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Capability Evidence Matrix",
+          "anchor": "capability-evidence-matrix"
+        },
+        {
+          "level": 2,
+          "title": "Claim Standard",
+          "anchor": "claim-standard"
+        },
+        {
+          "level": 2,
+          "title": "Related",
+          "anchor": "related"
+        }
+      ],
+      "wordCount": 203,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 29,
+        "headingCount": 3,
+        "linkCount": 11,
+        "sourceCount": 2
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 105,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "capability evidence",
+        "local compile"
+      ],
+      "whyItMattered": "It turns capability claims into evidence-backed archive structure.",
+      "operationStory": [
+        "Grouped local evidence into capability themes.",
+        "Connected each theme to a project and a repeatable workflow.",
+        "Avoided generic skill lists without proof."
+      ],
+      "replicationSteps": [
+        "Name the capability as an output, not a tool list.",
+        "Attach at least one project and one workflow.",
+        "Keep private tools and prompts out of the public claim."
+      ],
+      "failureModes": [
+        "generic resumes",
+        "unsupported skill claims",
+        "publishing private prompts",
+        "mixing tools with outcomes"
+      ],
+      "lessons": [
+        "capabilities need proof",
+        "workflows make skills repeatable",
+        "projects make claims concrete"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": []
+    },
+    {
+      "id": "c_d2558f33511a9ddd",
+      "title": "Information Review Queue",
+      "slug": "wiki-synthesis-information-review-queue",
+      "summary": "Public-safe review queue for unresolved information decisions before more archive content is promoted.",
+      "tags": [
+        "review",
+        "publication",
+        "information-architecture",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/synthesis/information-review-queue.md",
+      "module": "library",
+      "category": "synthesis",
+      "type": "queue",
+      "contentType": "article",
+      "href": "/content/wiki-synthesis-information-review-queue",
+      "contentLines": [
+        "# Information Review Queue",
+        "",
+        "This queue keeps information quality visible. It is public-safe: it records categories and decisions, not private details.",
+        "",
+        "## P0 Security Review",
+        "",
+        "- Confirm which credential-like findings are live, stale, or false positives.",
+        "- Keep rotation actions outside the public wiki.",
+        "- Do not publish secret values, account state, or local environment maps.",
+        "",
+        "## P1 Identity And Personal Scope",
+        "",
+        "- Decide which personal details can be public.",
+        "- Keep private memories and unrevised personal records local-only.",
+        "- Rewrite growth information as project-linked milestones rather than raw biography.",
+        "",
+        "## P2 Project Selection",
+        "",
+        "- Choose the first ten public project candidates.",
+        "- Require each project to have a goal, evidence route, repeatable lesson, and unfinished status.",
+        "- Keep school, account, deployment, and private collaboration context out unless explicitly rewritten.",
+        "",
+        "## P3 Capability Claims",
+        "",
+        "- Bind each public capability to project evidence.",
+        "- Avoid generic claims that cannot be traced.",
+        "- Convert workflows into pages before adding broad skill summaries.",
+        "",
+        "## P4 Agent Context",
+        "",
+        "- Separate active rules from historical recovered rules.",
+        "- Publish operating models, not raw prompts or local runtime state.",
+        "- Keep skill creation focused on reusable work.",
+        "",
+        "## Related",
+        "",
+        "- [[wiki/synthesis/archive-information-architecture]]",
+        "- [[wiki/synthesis/project-evidence-matrix]]",
+        "- [[wiki/synthesis/public-growth-timeline-framework]]"
+      ],
+      "links": [
+        {
+          "target": "wiki/synthesis/archive-information-architecture",
+          "label": "wiki/synthesis/archive-information-architecture"
+        },
+        {
+          "target": "wiki/synthesis/project-evidence-matrix",
+          "label": "wiki/synthesis/project-evidence-matrix"
+        },
+        {
+          "target": "wiki/synthesis/public-growth-timeline-framework",
+          "label": "wiki/synthesis/public-growth-timeline-framework"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/local-private-compile-2026-05-13]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Information Review Queue",
+          "anchor": "information-review-queue"
+        },
+        {
+          "level": 2,
+          "title": "P0 Security Review",
+          "anchor": "p0-security-review"
+        },
+        {
+          "level": 2,
+          "title": "P1 Identity And Personal Scope",
+          "anchor": "p1-identity-and-personal-scope"
+        },
+        {
+          "level": 2,
+          "title": "P2 Project Selection",
+          "anchor": "p2-project-selection"
+        },
+        {
+          "level": 2,
+          "title": "P3 Capability Claims",
+          "anchor": "p3-capability-claims"
+        },
+        {
+          "level": 2,
+          "title": "P4 Agent Context",
+          "anchor": "p4-agent-context"
+        },
+        {
+          "level": 2,
+          "title": "Related",
+          "anchor": "related"
+        }
+      ],
+      "wordCount": 198,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 39,
+        "headingCount": 7,
+        "linkCount": 3,
+        "sourceCount": 1
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 102,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "review queue",
+        "local compile"
+      ],
+      "whyItMattered": "It makes missing or uncertain information explicit instead of hiding it behind polished pages.",
+      "operationStory": [
+        "Converted private follow-up questions into public-safe review categories.",
+        "Kept sensitive values and identities out of the queue.",
+        "Defined what must be decided before future public batches."
+      ],
+      "replicationSteps": [
+        "Record uncertain information as a queue item.",
+        "Classify whether it is security, identity, project, capability, or timeline risk.",
+        "Promote only after review changes the state."
+      ],
+      "failureModes": [
+        "publishing uncertainty as fact",
+        "leaving security questions implicit",
+        "mixing private and public queues"
+      ],
+      "lessons": [
+        "review queues are part of the knowledge base",
+        "uncertainty is useful when labeled",
+        "public scope needs explicit gates"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": []
+    },
+    {
+      "id": "c_8a14bcb2a5e3fd90",
+      "title": "Personal Archive Public Roadmap",
+      "slug": "wiki-synthesis-personal-archive-public-roadmap",
+      "summary": "A staged roadmap for growing the public personal archive from safe architecture pages into project and capability pages.",
+      "tags": [
+        "archive",
+        "roadmap",
+        "synthesis",
+        "publication",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/synthesis/personal-archive-public-roadmap.md",
+      "module": "library",
+      "category": "synthesis",
+      "type": "roadmap",
+      "contentType": "article",
+      "href": "/content/wiki-synthesis-personal-archive-public-roadmap",
+      "contentLines": [
+        "# Personal Archive Public Roadmap",
+        "",
+        "This roadmap defines the next public wiki batches. It keeps growth deliberate: the archive should become useful without exposing local-only material or publishing thin pages.",
+        "",
+        "## Batch 1: Architecture And Boundary",
+        "",
+        "Status: started.",
+        "",
+        "- [[wiki/projects/personal-archive-platform]]",
+        "- [[wiki/concepts/private-to-public-promotion-pipeline]]",
+        "- [[wiki/concepts/public-site-data-boundary]]",
+        "- [[wiki/concepts/agent-skill-governance]]",
+        "",
+        "This batch explains how the archive works and how it stays safe.",
+        "",
+        "## Batch 2: Project Evidence",
+        "",
+        "Next candidates should be rewritten project pages. A good project page needs:",
+        "",
+        "- public goal;",
+        "- role and tools;",
+        "- what changed;",
+        "- what can be repeated;",
+        "- what is unfinished;",
+        "- links to concept or source pages.",
+        "",
+        "Do not promote projects that still depend on unrevised personal context or local setup details.",
+        "",
+        "## Batch 3: Capability Pages",
+        "",
+        "Capability pages should not be generic skill lists. Each capability should connect to at least one project and one repeatable workflow.",
+        "",
+        "Likely themes:",
+        "",
+        "- knowledge-base compilation;",
+        "- agent workflow design;",
+        "- frontend archive implementation;",
+        "- validation and publication gates;",
+        "- local-first data processing.",
+        "",
+        "## Batch 4: Website Display",
+        "",
+        "Only after pages are curated should `site-data/` expose them to the website. Display data should remain smaller than the wiki, because not every useful page is ready to be a showcase item.",
+        "",
+        "## Related",
+        "",
+        "- [[wiki/topics/personal-archive-moc]]",
+        "- [[wiki/concepts/public-site-data-boundary]]",
+        "- [[wiki/topics/publication-maintenance-moc]]"
+      ],
+      "links": [
+        {
+          "target": "wiki/projects/personal-archive-platform",
+          "label": "wiki/projects/personal-archive-platform"
+        },
+        {
+          "target": "wiki/concepts/private-to-public-promotion-pipeline",
+          "label": "wiki/concepts/private-to-public-promotion-pipeline"
+        },
+        {
+          "target": "wiki/concepts/public-site-data-boundary",
+          "label": "wiki/concepts/public-site-data-boundary"
+        },
+        {
+          "target": "wiki/concepts/agent-skill-governance",
+          "label": "wiki/concepts/agent-skill-governance"
+        },
+        {
+          "target": "wiki/topics/personal-archive-moc",
+          "label": "wiki/topics/personal-archive-moc"
+        },
+        {
+          "target": "wiki/concepts/public-site-data-boundary",
+          "label": "wiki/concepts/public-site-data-boundary"
+        },
+        {
+          "target": "wiki/topics/publication-maintenance-moc",
+          "label": "wiki/topics/publication-maintenance-moc"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/local-private-compile-2026-05-13]]",
+        "[[wiki/projects/personal-archive-platform]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Personal Archive Public Roadmap",
+          "anchor": "personal-archive-public-roadmap"
+        },
+        {
+          "level": 2,
+          "title": "Batch 1: Architecture And Boundary",
+          "anchor": "batch-1-architecture-and-boundary"
+        },
+        {
+          "level": 2,
+          "title": "Batch 2: Project Evidence",
+          "anchor": "batch-2-project-evidence"
+        },
+        {
+          "level": 2,
+          "title": "Batch 3: Capability Pages",
+          "anchor": "batch-3-capability-pages"
+        },
+        {
+          "level": 2,
+          "title": "Batch 4: Website Display",
+          "anchor": "batch-4-website-display"
+        },
+        {
+          "level": 2,
+          "title": "Related",
+          "anchor": "related"
+        }
+      ],
+      "wordCount": 217,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 49,
+        "headingCount": 6,
+        "linkCount": 7,
+        "sourceCount": 2
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 120,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "roadmap",
+        "publication"
+      ],
+      "whyItMattered": "It turns a large local archive into a staged public writing plan instead of a risky bulk release.",
+      "operationStory": [
+        "Start with architecture and process pages.",
+        "Then promote project pages with evidence.",
+        "Then add capability pages tied to projects."
+      ],
+      "replicationSteps": [
+        "Promote one batch at a time.",
+        "Run gates after every batch.",
+        "Keep unresolved items in review queues."
+      ],
+      "failureModes": [
+        "trying to publish everything",
+        "writing generic self-branding",
+        "separating skills from project evidence",
+        "ignoring unfinished status"
+      ],
+      "lessons": [
+        "roadmaps reduce publication risk",
+        "capability claims need evidence",
+        "unfinished status is useful when explicit"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": []
+    },
+    {
+      "id": "c_43043860b6d67e12",
+      "title": "Project Evidence Matrix",
+      "slug": "wiki-synthesis-project-evidence-matrix",
+      "summary": "Public-safe matrix of project themes, evidence strength, privacy risk, and next promotion action.",
+      "tags": [
+        "projects",
+        "evidence",
+        "synthesis",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/synthesis/project-evidence-matrix.md",
+      "module": "library",
+      "category": "synthesis",
+      "type": "evidence-matrix",
+      "contentType": "article",
+      "href": "/content/wiki-synthesis-project-evidence-matrix",
+      "contentLines": [
+        "# Project Evidence Matrix",
+        "",
+        "This matrix tracks what project information is ready to become public knowledge. It does not expose private source locations or raw local files.",
+        "",
+        "| Project theme | Evidence strength | Public readiness | Next action |",
+        "|---|---|---|---|",
+        "| Personal archive platform | Strong | Published seed page | Expand with screenshots and deployment notes after server plan is stable |",
+        "| Private-to-public knowledge pipeline | Strong | Published concept | Add examples from future promoted pages |",
+        "| Public site data backend | Strong | Published concept | Convert into API schema when a server is introduced |",
+        "| Agent and skill governance | Strong | Published concept | Add public examples of reusable skills |",
+        "| Coze/agent builder research | Medium | Needs rewrite | Write a public architecture comparison without local project state |",
+        "| Xiaoan/local model learning loop | Medium | Needs source review | Separate public training lessons from private runtime and memory traces |",
+        "| AI agent systems research | Strong | Partly public | Consolidate migrated framework notes into cleaner comparison pages |",
+        "| Frontend archive website | Strong | Needs integration | Link current frontend implementation to the public data boundary |",
+        "| Campus or school-related projects | Medium | Private by default | Publish only generic product lessons after removing identity context |",
+        "| Automation and data processing scripts | Strong | Needs curation | Promote repeatable workflows, not local file paths |",
+        "",
+        "## Promotion Rules",
+        "",
+        "- A project page needs a public goal, evidence route, repeatable lesson, and unfinished status.",
+        "- A project with personal, school, account, deployment, or credential context stays private until rewritten.",
+        "- Assets, screenshots, and generated files are supporting evidence, not the project story by themselves.",
+        "",
+        "## Related",
+        "",
+        "- [[wiki/projects/personal-archive-platform]]",
+        "- [[wiki/synthesis/personal-archive-public-roadmap]]",
+        "- [[wiki/concepts/private-to-public-promotion-pipeline]]"
+      ],
+      "links": [
+        {
+          "target": "wiki/projects/personal-archive-platform",
+          "label": "wiki/projects/personal-archive-platform"
+        },
+        {
+          "target": "wiki/synthesis/personal-archive-public-roadmap",
+          "label": "wiki/synthesis/personal-archive-public-roadmap"
+        },
+        {
+          "target": "wiki/concepts/private-to-public-promotion-pipeline",
+          "label": "wiki/concepts/private-to-public-promotion-pipeline"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/local-private-compile-2026-05-13]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Project Evidence Matrix",
+          "anchor": "project-evidence-matrix"
+        },
+        {
+          "level": 2,
+          "title": "Promotion Rules",
+          "anchor": "promotion-rules"
+        },
+        {
+          "level": 2,
+          "title": "Related",
+          "anchor": "related"
+        }
+      ],
+      "wordCount": 254,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 28,
+        "headingCount": 3,
+        "linkCount": 3,
+        "sourceCount": 1
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 97,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "project evidence",
+        "local compile"
+      ],
+      "whyItMattered": "It ranks project information by public readiness instead of turning every local trace into a showcase item.",
+      "operationStory": [
+        "Grouped private project evidence into public-safe project themes.",
+        "Separated ready architecture themes from sensitive or identity-heavy project traces.",
+        "Defined the next project pages as evidence-backed rewrites."
+      ],
+      "replicationSteps": [
+        "Choose a project theme.",
+        "Check whether its evidence has private identifiers or secret-shaped material.",
+        "Write a public page only if the reusable lesson is clear."
+      ],
+      "failureModes": [
+        "thin project summaries",
+        "private setup leakage",
+        "treating assets as project proof",
+        "missing unfinished status"
+      ],
+      "lessons": [
+        "project pages need evidence",
+        "risk status matters",
+        "public value should be explicit"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": []
+    },
+    {
+      "id": "c_4ffbf9e307e04258",
+      "title": "Public Growth Timeline Framework",
+      "slug": "wiki-synthesis-public-growth-timeline-framework",
+      "summary": "A framework for turning private timeline evidence into public milestones without exposing sensitive personal material.",
+      "tags": [
+        "timeline",
+        "growth",
+        "publication",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/synthesis/public-growth-timeline-framework.md",
+      "module": "library",
+      "category": "synthesis",
+      "type": "framework",
+      "contentType": "article",
+      "href": "/content/wiki-synthesis-public-growth-timeline-framework",
+      "contentLines": [
+        "# Public Growth Timeline Framework",
+        "",
+        "The archive contains many time signals. Not all of them are public growth events. This framework defines how to turn timeline evidence into public milestones.",
+        "",
+        "## Date Types",
+        "",
+        "| Type | Meaning | Public handling |",
+        "|---|---|---|",
+        "| Event date | A real project, learning, release, or decision date | Can become a milestone after review |",
+        "| Artifact date | A file creation or modification date | Use only as supporting evidence |",
+        "| Plan date | A planned task, schedule, or target | Mark as plan, not completed history |",
+        "| Reference date | A date quoted inside a source | Verify before treating as an event |",
+        "| Uncertain date | Ambiguous or extracted without context | Keep in review queue |",
+        "",
+        "## Public Milestone Shape",
+        "",
+        "A public milestone should include:",
+        "",
+        "- what changed;",
+        "- which project or capability it connects to;",
+        "- what evidence supports it;",
+        "- what remains private;",
+        "- what the next public artifact should be.",
+        "",
+        "## First Public Timeline Themes",
+        "",
+        "- building the personal archive platform;",
+        "- establishing the public data boundary;",
+        "- consolidating agent and skill governance;",
+        "- moving from raw local evidence to reviewed public knowledge.",
+        "",
+        "## Related",
+        "",
+        "- [[wiki/synthesis/project-evidence-matrix]]",
+        "- [[wiki/synthesis/capability-evidence-matrix]]",
+        "- [[wiki/synthesis/information-review-queue]]"
+      ],
+      "links": [
+        {
+          "target": "wiki/synthesis/project-evidence-matrix",
+          "label": "wiki/synthesis/project-evidence-matrix"
+        },
+        {
+          "target": "wiki/synthesis/capability-evidence-matrix",
+          "label": "wiki/synthesis/capability-evidence-matrix"
+        },
+        {
+          "target": "wiki/synthesis/information-review-queue",
+          "label": "wiki/synthesis/information-review-queue"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/local-private-compile-2026-05-13]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Public Growth Timeline Framework",
+          "anchor": "public-growth-timeline-framework"
+        },
+        {
+          "level": 2,
+          "title": "Date Types",
+          "anchor": "date-types"
+        },
+        {
+          "level": 2,
+          "title": "Public Milestone Shape",
+          "anchor": "public-milestone-shape"
+        },
+        {
+          "level": 2,
+          "title": "First Public Timeline Themes",
+          "anchor": "first-public-timeline-themes"
+        },
+        {
+          "level": 2,
+          "title": "Related",
+          "anchor": "related"
+        }
+      ],
+      "wordCount": 187,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 36,
+        "headingCount": 5,
+        "linkCount": 3,
+        "sourceCount": 1
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 118,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "timeline framework",
+        "local compile"
+      ],
+      "whyItMattered": "It preserves growth information without publishing private memories or raw personal records.",
+      "operationStory": [
+        "Separated real events from file modification dates and quoted dates.",
+        "Kept private identity details out of the public timeline.",
+        "Defined timeline entries as reviewed narrative milestones."
+      ],
+      "replicationSteps": [
+        "Classify each date as event, artifact date, plan date, or uncertain reference.",
+        "Publish only milestones with clear public value.",
+        "Link milestones to projects or capabilities."
+      ],
+      "failureModes": [
+        "treating every file date as life history",
+        "exposing personal records",
+        "writing vague self-narrative"
+      ],
+      "lessons": [
+        "timeline data needs classification",
+        "public growth should connect to work evidence",
+        "uncertainty should be visible"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
       "hiddenReasons": []
     }
   ],
@@ -2816,6 +6571,8 @@
         "",
         "- [[README]] - overview",
         "- [[wiki/index]] - main wiki workbench",
+        "- [[wiki/synthesis/karpathy-official-wiki-layer]] - official wiki layer contract",
+        "- [[wiki/topics/personal-archive-moc]] - personal archive and website backend map",
         "- [[wiki/topics/llm-wiki-moc]] - architecture and operations",
         "- [[wiki/topics/ai-agent-systems-moc]] - agent systems map",
         "- [[wiki/topics/skills-and-tools-moc]] - skills and tooling map",
@@ -2834,6 +6591,14 @@
         {
           "target": "wiki/index",
           "label": "wiki/index"
+        },
+        {
+          "target": "wiki/synthesis/karpathy-official-wiki-layer",
+          "label": "wiki/synthesis/karpathy-official-wiki-layer"
+        },
+        {
+          "target": "wiki/topics/personal-archive-moc",
+          "label": "wiki/topics/personal-archive-moc"
         },
         {
           "target": "wiki/topics/llm-wiki-moc",
@@ -2874,12 +6639,12 @@
           "anchor": "an-llm-wiki-index"
         }
       ],
-      "wordCount": 86,
+      "wordCount": 106,
       "readingMinutes": 1,
       "metrics": {
-        "lineCount": 13,
+        "lineCount": 15,
         "headingCount": 1,
-        "linkCount": 9,
+        "linkCount": 11,
         "sourceCount": 1
       },
       "quality": {
@@ -2948,12 +6713,15 @@
         "",
         "- [[README]] - vault overview",
         "- [[wiki/sources/karpathy-llm-wiki-pattern]] - official architecture source",
+        "- [[wiki/synthesis/karpathy-official-wiki-layer]] - public wiki layer contract",
         "- [[wiki/sources-and-data-policy]] - source and publication boundary",
         "- [[wiki/projects/root-maintenance-backlog]] - current maintenance backlog",
         "- [[log]] - append-only maintenance log",
         "",
         "## Maps",
         "",
+        "- [[wiki/topics/personal-archive-moc]] - public personal archive and website data map",
+        "- [[wiki/synthesis/archive-information-architecture]] - information backbone for projects, capabilities, timeline, and review queues",
         "- [[wiki/topics/llm-wiki-moc]] - LLM Wiki architecture and operations",
         "- [[wiki/topics/ai-agent-systems-moc]] - AI agent systems and framework notes",
         "- [[wiki/topics/skills-and-tools-moc]] - migrated skills and reusable tooling notes",
@@ -2962,6 +6730,7 @@
         "## Source Notes",
         "",
         "- [[wiki/sources/karpathy-llm-wiki-pattern]] - official pattern source",
+        "- [[wiki/sources/local-private-compile-2026-05-13]] - public-safe source record for the current local compile pass",
         "- [[wiki/sources/github-reference-projects]] - secondary project index",
         "- [[wiki/sources/obsidian-llm-wiki-local]] - local-first reference project",
         "- [[wiki/sources/llm-wikid]] - vault-template reference project",
@@ -2977,6 +6746,10 @@
           "label": "wiki/sources/karpathy-llm-wiki-pattern"
         },
         {
+          "target": "wiki/synthesis/karpathy-official-wiki-layer",
+          "label": "wiki/synthesis/karpathy-official-wiki-layer"
+        },
+        {
           "target": "wiki/sources-and-data-policy",
           "label": "wiki/sources-and-data-policy"
         },
@@ -2987,6 +6760,14 @@
         {
           "target": "log",
           "label": "log"
+        },
+        {
+          "target": "wiki/topics/personal-archive-moc",
+          "label": "wiki/topics/personal-archive-moc"
+        },
+        {
+          "target": "wiki/synthesis/archive-information-architecture",
+          "label": "wiki/synthesis/archive-information-architecture"
         },
         {
           "target": "wiki/topics/llm-wiki-moc",
@@ -3007,6 +6788,10 @@
         {
           "target": "wiki/sources/karpathy-llm-wiki-pattern",
           "label": "wiki/sources/karpathy-llm-wiki-pattern"
+        },
+        {
+          "target": "wiki/sources/local-private-compile-2026-05-13",
+          "label": "wiki/sources/local-private-compile-2026-05-13"
         },
         {
           "target": "wiki/sources/github-reference-projects",
@@ -3050,12 +6835,12 @@
           "anchor": "source-notes"
         }
       ],
-      "wordCount": 148,
+      "wordCount": 197,
       "readingMinutes": 1,
       "metrics": {
-        "lineCount": 26,
+        "lineCount": 30,
         "headingCount": 4,
-        "linkCount": 14,
+        "linkCount": 18,
         "sourceCount": 1
       },
       "quality": {
@@ -3161,6 +6946,7 @@
         "",
         "## Architecture Notes",
         "",
+        "- [[wiki/concepts/agent-skill-governance]] - public-safe skill and rule governance",
         "- [[wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agent_Computer_Interface_Best_Practices]]",
         "- [[wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agent_Design_Patterns_2026]]",
         "- [[wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agentic_Workflow_Optimization_2026]]",
@@ -3205,6 +6991,10 @@
         {
           "target": "wiki/topics/04-知识库-领域研究-Agent生态-SWE-Agent",
           "label": "wiki/topics/04-知识库-领域研究-Agent生态-SWE-Agent"
+        },
+        {
+          "target": "wiki/concepts/agent-skill-governance",
+          "label": "wiki/concepts/agent-skill-governance"
         },
         {
           "target": "wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agent_Computer_Interface_Best_Practices",
@@ -3264,12 +7054,12 @@
           "anchor": "project-architecture"
         }
       ],
-      "wordCount": 348,
+      "wordCount": 358,
       "readingMinutes": 1,
       "metrics": {
-        "lineCount": 28,
+        "lineCount": 29,
         "headingCount": 4,
-        "linkCount": 16,
+        "linkCount": 17,
         "sourceCount": 1
       },
       "quality": {
@@ -3369,6 +7159,7 @@
         "## Architecture",
         "",
         "- [[wiki/sources/karpathy-llm-wiki-pattern]] - official pattern source",
+        "- [[wiki/synthesis/karpathy-official-wiki-layer]] - public wiki layer contract",
         "- [[CLAUDE]] - local schema and page contract",
         "- [[AGENTS]] - operating rules for future agents",
         "- [[wiki/sources-and-data-policy]] - public/private source boundary",
@@ -3391,6 +7182,10 @@
         {
           "target": "wiki/sources/karpathy-llm-wiki-pattern",
           "label": "wiki/sources/karpathy-llm-wiki-pattern"
+        },
+        {
+          "target": "wiki/synthesis/karpathy-official-wiki-layer",
+          "label": "wiki/synthesis/karpathy-official-wiki-layer"
         },
         {
           "target": "CLAUDE",
@@ -3462,12 +7257,12 @@
           "anchor": "migrated-llm-wiki-notes"
         }
       ],
-      "wordCount": 128,
+      "wordCount": 137,
       "readingMinutes": 1,
       "metrics": {
-        "lineCount": 24,
+        "lineCount": 25,
         "headingCount": 4,
-        "linkCount": 12,
+        "linkCount": 13,
         "sourceCount": 1
       },
       "quality": {
@@ -3534,6 +7329,240 @@
       ]
     },
     {
+      "id": "c_74981be21c4f4c9f",
+      "title": "Personal Archive MOC",
+      "slug": "wiki-topics-personal-archive-moc",
+      "summary": "Map of the public personal archive platform, promotion workflow, frontend data boundary, and publication roadmap.",
+      "tags": [
+        "archive",
+        "moc",
+        "llm-wiki",
+        "curated"
+      ],
+      "status": [
+        "featured",
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/topics/personal-archive-moc.md",
+      "module": "paths",
+      "category": "synthesis",
+      "type": "moc",
+      "contentType": "article",
+      "href": "/content/wiki-topics-personal-archive-moc",
+      "contentLines": [
+        "# Personal Archive MOC",
+        "",
+        "This map is the public navigation layer for the personal archive project.",
+        "",
+        "## Platform",
+        "",
+        "- [[wiki/projects/personal-archive-platform]] - public project overview",
+        "- [[wiki/synthesis/archive-information-architecture]] - information backbone",
+        "- [[wiki/synthesis/personal-archive-public-roadmap]] - staged publication plan",
+        "- [[wiki/synthesis/karpathy-official-wiki-layer]] - wiki layer contract",
+        "",
+        "## Promotion Workflow",
+        "",
+        "- [[wiki/synthesis/project-evidence-matrix]] - project evidence and readiness",
+        "- [[wiki/synthesis/capability-evidence-matrix]] - capability evidence and repeatable workflows",
+        "- [[wiki/synthesis/public-growth-timeline-framework]] - public timeline classification",
+        "- [[wiki/synthesis/information-review-queue]] - unresolved information decisions",
+        "- [[wiki/concepts/private-to-public-promotion-pipeline]] - how local-only review material becomes public pages",
+        "- [[wiki/sources/local-private-compile-2026-05-13]] - public-safe source record for the current compile pass",
+        "- [[wiki/sources-and-data-policy]] - source and publication boundary",
+        "",
+        "## Website Data",
+        "",
+        "- [[wiki/concepts/public-site-data-boundary]] - frontend/backend data contract",
+        "- [[wiki/topics/publication-maintenance-moc]] - validation and publication gates",
+        "",
+        "## Agent And Skills",
+        "",
+        "- [[wiki/concepts/agent-skill-governance]] - public-safe skill and rule governance",
+        "- [[wiki/topics/skills-and-tools-moc]] - public skills and tools map",
+        "- [[wiki/topics/ai-agent-systems-moc]] - public agent systems map"
+      ],
+      "links": [
+        {
+          "target": "wiki/projects/personal-archive-platform",
+          "label": "wiki/projects/personal-archive-platform"
+        },
+        {
+          "target": "wiki/synthesis/archive-information-architecture",
+          "label": "wiki/synthesis/archive-information-architecture"
+        },
+        {
+          "target": "wiki/synthesis/personal-archive-public-roadmap",
+          "label": "wiki/synthesis/personal-archive-public-roadmap"
+        },
+        {
+          "target": "wiki/synthesis/karpathy-official-wiki-layer",
+          "label": "wiki/synthesis/karpathy-official-wiki-layer"
+        },
+        {
+          "target": "wiki/synthesis/project-evidence-matrix",
+          "label": "wiki/synthesis/project-evidence-matrix"
+        },
+        {
+          "target": "wiki/synthesis/capability-evidence-matrix",
+          "label": "wiki/synthesis/capability-evidence-matrix"
+        },
+        {
+          "target": "wiki/synthesis/public-growth-timeline-framework",
+          "label": "wiki/synthesis/public-growth-timeline-framework"
+        },
+        {
+          "target": "wiki/synthesis/information-review-queue",
+          "label": "wiki/synthesis/information-review-queue"
+        },
+        {
+          "target": "wiki/concepts/private-to-public-promotion-pipeline",
+          "label": "wiki/concepts/private-to-public-promotion-pipeline"
+        },
+        {
+          "target": "wiki/sources/local-private-compile-2026-05-13",
+          "label": "wiki/sources/local-private-compile-2026-05-13"
+        },
+        {
+          "target": "wiki/sources-and-data-policy",
+          "label": "wiki/sources-and-data-policy"
+        },
+        {
+          "target": "wiki/concepts/public-site-data-boundary",
+          "label": "wiki/concepts/public-site-data-boundary"
+        },
+        {
+          "target": "wiki/topics/publication-maintenance-moc",
+          "label": "wiki/topics/publication-maintenance-moc"
+        },
+        {
+          "target": "wiki/concepts/agent-skill-governance",
+          "label": "wiki/concepts/agent-skill-governance"
+        },
+        {
+          "target": "wiki/topics/skills-and-tools-moc",
+          "label": "wiki/topics/skills-and-tools-moc"
+        },
+        {
+          "target": "wiki/topics/ai-agent-systems-moc",
+          "label": "wiki/topics/ai-agent-systems-moc"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/local-private-compile-2026-05-13]]",
+        "[[wiki/synthesis/karpathy-official-wiki-layer]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Personal Archive MOC",
+          "anchor": "personal-archive-moc"
+        },
+        {
+          "level": 2,
+          "title": "Platform",
+          "anchor": "platform"
+        },
+        {
+          "level": 2,
+          "title": "Promotion Workflow",
+          "anchor": "promotion-workflow"
+        },
+        {
+          "level": 2,
+          "title": "Website Data",
+          "anchor": "website-data"
+        },
+        {
+          "level": 2,
+          "title": "Agent And Skills",
+          "anchor": "agent-and-skills"
+        }
+      ],
+      "wordCount": 169,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 31,
+        "headingCount": 5,
+        "linkCount": 16,
+        "sourceCount": 2
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 113,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "map",
+        "archive"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "goal": "Map of the public personal archive platform, promotion workflow, frontend data boundary, and publication roadmap.",
+      "audience": "希望沿着公开资料路线学习、复刻或维护知识库的读者。",
+      "prerequisites": [],
+      "estimatedTime": "按主题自定",
+      "difficulty": "intermediate",
+      "finalOutput": "形成一条可复用的公开学习或构建路径。",
+      "steps": [
+        {
+          "id": "step-1",
+          "title": "Personal Archive MOC",
+          "goal": "Personal Archive MOC",
+          "description": "从公开 wiki 页面章节生成的路线节点。",
+          "resources": [],
+          "completion": "读完本节并能连接到相关公开页面。",
+          "optional": false
+        },
+        {
+          "id": "step-2",
+          "title": "Platform",
+          "goal": "Platform",
+          "description": "从公开 wiki 页面章节生成的路线节点。",
+          "resources": [],
+          "completion": "读完本节并能连接到相关公开页面。",
+          "optional": false
+        },
+        {
+          "id": "step-3",
+          "title": "Promotion Workflow",
+          "goal": "Promotion Workflow",
+          "description": "从公开 wiki 页面章节生成的路线节点。",
+          "resources": [],
+          "completion": "读完本节并能连接到相关公开页面。",
+          "optional": false
+        },
+        {
+          "id": "step-4",
+          "title": "Website Data",
+          "goal": "Website Data",
+          "description": "从公开 wiki 页面章节生成的路线节点。",
+          "resources": [],
+          "completion": "读完本节并能连接到相关公开页面。",
+          "optional": false
+        },
+        {
+          "id": "step-5",
+          "title": "Agent And Skills",
+          "goal": "Agent And Skills",
+          "description": "从公开 wiki 页面章节生成的路线节点。",
+          "resources": [],
+          "completion": "读完本节并能连接到相关公开页面。",
+          "optional": false
+        }
+      ]
+    },
+    {
       "id": "c_7e9d08f8f6eda5d4",
       "title": "Publication Maintenance MOC",
       "slug": "wiki-topics-publication-maintenance-moc",
@@ -3564,6 +7593,8 @@
         "## Policy",
         "",
         "- [[wiki/sources-and-data-policy]] - public/private boundary",
+        "- [[wiki/concepts/private-to-public-promotion-pipeline]] - promotion workflow",
+        "- [[wiki/concepts/public-site-data-boundary]] - frontend/backend data boundary",
         "- [[AGENTS]] - operating rules",
         "- [[CLAUDE]] - schema and page format",
         "",
@@ -3590,6 +7621,14 @@
         {
           "target": "wiki/sources-and-data-policy",
           "label": "wiki/sources-and-data-policy"
+        },
+        {
+          "target": "wiki/concepts/private-to-public-promotion-pipeline",
+          "label": "wiki/concepts/private-to-public-promotion-pipeline"
+        },
+        {
+          "target": "wiki/concepts/public-site-data-boundary",
+          "label": "wiki/concepts/public-site-data-boundary"
         },
         {
           "target": "AGENTS",
@@ -3639,12 +7678,12 @@
           "anchor": "maintenance"
         }
       ],
-      "wordCount": 111,
+      "wordCount": 127,
       "readingMinutes": 1,
       "metrics": {
-        "lineCount": 28,
+        "lineCount": 30,
         "headingCount": 5,
-        "linkCount": 5,
+        "linkCount": 7,
         "sourceCount": 2
       },
       "quality": {
@@ -3748,6 +7787,7 @@
         "",
         "## Skill Indexes",
         "",
+        "- [[wiki/concepts/agent-skill-governance]] - current public model for skill governance",
         "- [[wiki/concepts/04-知识库-领域研究-AI-Agent技术-技能库-MuleRun_Skills_Hub_MOC]] - migrated skill knowledge network",
         "- [[wiki/concepts/07-技能库-MuleRun_Skills_Hub]] - common source note for migrated skill entries",
         "- [[wiki/concepts/07-技能库-说明-技能库说明]] - skill-library operating note",
@@ -3771,6 +7811,10 @@
         "- [[wiki/topics/02-领域-AI工具生态-记忆系统对比]]"
       ],
       "links": [
+        {
+          "target": "wiki/concepts/agent-skill-governance",
+          "label": "wiki/concepts/agent-skill-governance"
+        },
         {
           "target": "wiki/concepts/04-知识库-领域研究-AI-Agent技术-技能库-MuleRun_Skills_Hub_MOC",
           "label": "wiki/concepts/04-知识库-领域研究-AI-Agent技术-技能库-MuleRun_Skills_Hub_MOC"
@@ -3857,12 +7901,12 @@
           "anchor": "tooling-areas"
         }
       ],
-      "wordCount": 248,
+      "wordCount": 259,
       "readingMinutes": 1,
       "metrics": {
-        "lineCount": 27,
+        "lineCount": 28,
         "headingCount": 4,
-        "linkCount": 15,
+        "linkCount": 16,
         "sourceCount": 1
       },
       "quality": {
@@ -3871,7 +7915,7 @@
         "summaryLength": 83,
         "needsSourceReview": false,
         "displayTier": "showcase",
-        "qualityScore": 94,
+        "qualityScore": 100,
         "hiddenReasons": [
           "source:archive-only"
         ],
@@ -3883,7 +7927,7 @@
         "archive-derived"
       ],
       "displayTier": "showcase",
-      "qualityScore": 94,
+      "qualityScore": 100,
       "hiddenReasons": [
         "source:archive-only"
       ],
@@ -3934,9 +7978,578 @@
     }
   ],
   "feed": [],
-  "works": [],
+  "works": [
+    {
+      "id": "c_ac08a639fed4d6c8",
+      "title": "Personal Archive Platform",
+      "slug": "wiki-projects-personal-archive-platform",
+      "summary": "A public-safe project page for the personal archive platform that connects the Obsidian wiki layer to future website data.",
+      "tags": [
+        "archive",
+        "llm-wiki",
+        "project",
+        "showcase",
+        "beginner-friendly"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "sourcePath": "wiki/projects/personal-archive-platform.md",
+      "module": "works",
+      "category": "project",
+      "type": "project",
+      "contentType": "case",
+      "href": "/content/wiki-projects-personal-archive-platform",
+      "contentLines": [
+        "# Personal Archive Platform",
+        "",
+        "The personal archive platform is the public-facing version of this vault. Its job is to turn learning history, projects, tools, agent work, and reusable methods into a navigable knowledge base and future website.",
+        "",
+        "## What It Is",
+        "",
+        "The platform has four working layers:",
+        "",
+        "- local raw material that stays outside the public graph;",
+        "- a local compiled review layer for sensitive or unfinished material;",
+        "- `wiki/`, the public Karpathy-style compiled layer;",
+        "- `site-data/`, the generated data contract for the website.",
+        "",
+        "The key design choice is that the website does not read the vault directly. It reads curated JSON generated from public wiki pages.",
+        "",
+        "## What It Proves",
+        "",
+        "This project demonstrates several capabilities:",
+        "",
+        "- turning messy personal material into structured source notes and concepts;",
+        "- designing a publication workflow with validation gates;",
+        "- building a frontend data boundary that can later move behind a server API;",
+        "- using agent-readable schema files to keep future maintenance consistent.",
+        "",
+        "## Current Public Scope",
+        "",
+        "The first public scope is not a full autobiography. It is a governed archive of work patterns:",
+        "",
+        "- [[wiki/concepts/private-to-public-promotion-pipeline]] explains how local material becomes public pages.",
+        "- [[wiki/concepts/public-site-data-boundary]] defines what the frontend is allowed to consume.",
+        "- [[wiki/concepts/agent-skill-governance]] records how agent skills and rules are kept usable without publishing raw prompts.",
+        "- [[wiki/synthesis/personal-archive-public-roadmap]] describes the next content batches.",
+        "",
+        "## What Stays Out",
+        "",
+        "Local setup details, raw private conversations, account state, unrevised personal records, and secret-like values do not belong in this page or in `site-data/`. They can inform rewritten lessons, but they are not public content.",
+        "",
+        "## Related",
+        "",
+        "- [[wiki/topics/personal-archive-moc]]",
+        "- [[wiki/synthesis/karpathy-official-wiki-layer]]",
+        "- [[wiki/sources/local-private-compile-2026-05-13]]"
+      ],
+      "links": [
+        {
+          "target": "wiki/concepts/private-to-public-promotion-pipeline",
+          "label": "wiki/concepts/private-to-public-promotion-pipeline"
+        },
+        {
+          "target": "wiki/concepts/public-site-data-boundary",
+          "label": "wiki/concepts/public-site-data-boundary"
+        },
+        {
+          "target": "wiki/concepts/agent-skill-governance",
+          "label": "wiki/concepts/agent-skill-governance"
+        },
+        {
+          "target": "wiki/synthesis/personal-archive-public-roadmap",
+          "label": "wiki/synthesis/personal-archive-public-roadmap"
+        },
+        {
+          "target": "wiki/topics/personal-archive-moc",
+          "label": "wiki/topics/personal-archive-moc"
+        },
+        {
+          "target": "wiki/synthesis/karpathy-official-wiki-layer",
+          "label": "wiki/synthesis/karpathy-official-wiki-layer"
+        },
+        {
+          "target": "wiki/sources/local-private-compile-2026-05-13",
+          "label": "wiki/sources/local-private-compile-2026-05-13"
+        }
+      ],
+      "sources": [
+        "[[wiki/sources/karpathy-llm-wiki-pattern]]",
+        "[[wiki/sources/local-private-compile-2026-05-13]]",
+        "[[wiki/synthesis/karpathy-official-wiki-layer]]"
+      ],
+      "toc": [
+        {
+          "level": 1,
+          "title": "Personal Archive Platform",
+          "anchor": "personal-archive-platform"
+        },
+        {
+          "level": 2,
+          "title": "What It Is",
+          "anchor": "what-it-is"
+        },
+        {
+          "level": 2,
+          "title": "What It Proves",
+          "anchor": "what-it-proves"
+        },
+        {
+          "level": 2,
+          "title": "Current Public Scope",
+          "anchor": "current-public-scope"
+        },
+        {
+          "level": 2,
+          "title": "What Stays Out",
+          "anchor": "what-stays-out"
+        },
+        {
+          "level": 2,
+          "title": "Related",
+          "anchor": "related"
+        }
+      ],
+      "wordCount": 275,
+      "readingMinutes": 1,
+      "metrics": {
+        "lineCount": 42,
+        "headingCount": 6,
+        "linkCount": 7,
+        "sourceCount": 3
+      },
+      "quality": {
+        "hasSources": true,
+        "hasToc": true,
+        "summaryLength": 122,
+        "needsSourceReview": false,
+        "displayTier": "showcase",
+        "qualityScore": 100,
+        "hiddenReasons": [],
+        "explicitlyCurated": true
+      },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "local compile",
+        "architecture"
+      ],
+      "whyItMattered": "It turns scattered work history into a governed archive that can feed a website without exposing local-only material.",
+      "operationStory": [
+        "Split raw evidence, private compiled notes, public wiki pages, and frontend data.",
+        "Added validation scripts so publishing depends on structure and privacy gates.",
+        "Converted the website backend contract into generated site-data instead of direct vault reads."
+      ],
+      "replicationSteps": [
+        "Define raw, private, public, and frontend data layers.",
+        "Write a source note before promoting claims.",
+        "Promote one project or concept at a time through structure and privacy checks."
+      ],
+      "failureModes": [
+        "publishing raw notes",
+        "treating private review pages as public sources",
+        "letting frontend read the vault directly"
+      ],
+      "lessons": [
+        "compiled pages beat raw dumps",
+        "public data needs a narrow contract",
+        "promotion should be reviewable"
+      ],
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "projectStatus": "archived",
+      "techStack": [
+        "archive",
+        "llm-wiki",
+        "project",
+        "showcase",
+        "beginner-friendly"
+      ],
+      "nextPlan": ""
+    }
+  ],
   "journal": [],
   "timeline": [
+    {
+      "id": "timeline-c_32c45035f9107070",
+      "title": "Agent Skill Governance",
+      "slug": "wiki-concepts-agent-skill-governance",
+      "summary": "A public-safe model for preserving agent and skill knowledge without exposing local prompts or private runtime state.",
+      "tags": [
+        "agent",
+        "skills",
+        "governance",
+        "llm-wiki",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "date": "2026-05-13",
+      "phase": "library",
+      "type": "library",
+      "importance": "medium",
+      "relatedLibraryItems": [
+        "c_32c45035f9107070"
+      ],
+      "href": "/content/wiki-concepts-agent-skill-governance",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "agent workflow",
+        "skills"
+      ]
+    },
+    {
+      "id": "timeline-c_8008030b505902e0",
+      "title": "Private To Public Promotion Pipeline",
+      "slug": "wiki-concepts-private-to-public-promotion-pipeline",
+      "summary": "The workflow for rewriting local-only archive material into public-safe wiki pages.",
+      "tags": [
+        "publication",
+        "workflow",
+        "llm-wiki",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "date": "2026-05-13",
+      "phase": "library",
+      "type": "library",
+      "importance": "medium",
+      "relatedLibraryItems": [
+        "c_8008030b505902e0"
+      ],
+      "href": "/content/wiki-concepts-private-to-public-promotion-pipeline",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "workflow",
+        "privacy filtered"
+      ]
+    },
+    {
+      "id": "timeline-c_151dd4949baa1108",
+      "title": "Public Site Data Boundary",
+      "slug": "wiki-concepts-public-site-data-boundary",
+      "summary": "The architecture boundary that keeps the website consuming curated public JSON instead of raw Obsidian content.",
+      "tags": [
+        "frontend",
+        "backend",
+        "site-data",
+        "publication",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "date": "2026-05-13",
+      "phase": "library",
+      "type": "library",
+      "importance": "medium",
+      "relatedLibraryItems": [
+        "c_151dd4949baa1108"
+      ],
+      "href": "/content/wiki-concepts-public-site-data-boundary",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "frontend backend boundary",
+        "architecture"
+      ]
+    },
+    {
+      "id": "timeline-c_ac08a639fed4d6c8",
+      "title": "Personal Archive Platform",
+      "slug": "wiki-projects-personal-archive-platform",
+      "summary": "A public-safe project page for the personal archive platform that connects the Obsidian wiki layer to future website data.",
+      "tags": [
+        "archive",
+        "llm-wiki",
+        "project",
+        "showcase",
+        "beginner-friendly"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "date": "2026-05-13",
+      "phase": "works",
+      "type": "works",
+      "importance": "medium",
+      "relatedLibraryItems": [
+        "c_ac08a639fed4d6c8"
+      ],
+      "href": "/content/wiki-projects-personal-archive-platform",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "local compile",
+        "architecture"
+      ]
+    },
+    {
+      "id": "timeline-c_58d7fda66c48c030",
+      "title": "Local Private Compile 2026-05-13",
+      "slug": "wiki-sources-local-private-compile-2026-05-13",
+      "summary": "Public-safe source record for the local-only private compile pass that informed the next public wiki pages.",
+      "tags": [
+        "llm-wiki",
+        "source",
+        "publication"
+      ],
+      "status": [
+        "public"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "date": "2026-05-13",
+      "phase": "library",
+      "type": "library",
+      "importance": "medium",
+      "relatedLibraryItems": [
+        "c_58d7fda66c48c030"
+      ],
+      "href": "/content/wiki-sources-local-private-compile-2026-05-13",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "local compile",
+        "privacy filtered",
+        "source record"
+      ]
+    },
+    {
+      "id": "timeline-c_910d420ab933c045",
+      "title": "Archive Information Architecture",
+      "slug": "wiki-synthesis-archive-information-architecture",
+      "summary": "The public information backbone for organizing projects, capabilities, timeline, and review queues before final showcase pages.",
+      "tags": [
+        "archive",
+        "information-architecture",
+        "synthesis",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "date": "2026-05-13",
+      "phase": "library",
+      "type": "library",
+      "importance": "medium",
+      "relatedLibraryItems": [
+        "c_910d420ab933c045"
+      ],
+      "href": "/content/wiki-synthesis-archive-information-architecture",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "information architecture",
+        "local compile"
+      ]
+    },
+    {
+      "id": "timeline-c_40e886748f617bef",
+      "title": "Capability Evidence Matrix",
+      "slug": "wiki-synthesis-capability-evidence-matrix",
+      "summary": "Public-safe matrix linking capabilities to project evidence, repeatable workflows, and future wiki pages.",
+      "tags": [
+        "skills",
+        "capabilities",
+        "evidence",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "date": "2026-05-13",
+      "phase": "library",
+      "type": "library",
+      "importance": "medium",
+      "relatedLibraryItems": [
+        "c_40e886748f617bef"
+      ],
+      "href": "/content/wiki-synthesis-capability-evidence-matrix",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "capability evidence",
+        "local compile"
+      ]
+    },
+    {
+      "id": "timeline-c_d2558f33511a9ddd",
+      "title": "Information Review Queue",
+      "slug": "wiki-synthesis-information-review-queue",
+      "summary": "Public-safe review queue for unresolved information decisions before more archive content is promoted.",
+      "tags": [
+        "review",
+        "publication",
+        "information-architecture",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "date": "2026-05-13",
+      "phase": "library",
+      "type": "library",
+      "importance": "medium",
+      "relatedLibraryItems": [
+        "c_d2558f33511a9ddd"
+      ],
+      "href": "/content/wiki-synthesis-information-review-queue",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "review queue",
+        "local compile"
+      ]
+    },
+    {
+      "id": "timeline-c_8a14bcb2a5e3fd90",
+      "title": "Personal Archive Public Roadmap",
+      "slug": "wiki-synthesis-personal-archive-public-roadmap",
+      "summary": "A staged roadmap for growing the public personal archive from safe architecture pages into project and capability pages.",
+      "tags": [
+        "archive",
+        "roadmap",
+        "synthesis",
+        "publication",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "date": "2026-05-13",
+      "phase": "library",
+      "type": "library",
+      "importance": "medium",
+      "relatedLibraryItems": [
+        "c_8a14bcb2a5e3fd90"
+      ],
+      "href": "/content/wiki-synthesis-personal-archive-public-roadmap",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "roadmap",
+        "publication"
+      ]
+    },
+    {
+      "id": "timeline-c_43043860b6d67e12",
+      "title": "Project Evidence Matrix",
+      "slug": "wiki-synthesis-project-evidence-matrix",
+      "summary": "Public-safe matrix of project themes, evidence strength, privacy risk, and next promotion action.",
+      "tags": [
+        "projects",
+        "evidence",
+        "synthesis",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "date": "2026-05-13",
+      "phase": "library",
+      "type": "library",
+      "importance": "medium",
+      "relatedLibraryItems": [
+        "c_43043860b6d67e12"
+      ],
+      "href": "/content/wiki-synthesis-project-evidence-matrix",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "project evidence",
+        "local compile"
+      ]
+    },
+    {
+      "id": "timeline-c_4ffbf9e307e04258",
+      "title": "Public Growth Timeline Framework",
+      "slug": "wiki-synthesis-public-growth-timeline-framework",
+      "summary": "A framework for turning private timeline evidence into public milestones without exposing sensitive personal material.",
+      "tags": [
+        "timeline",
+        "growth",
+        "publication",
+        "curated"
+      ],
+      "status": [
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "date": "2026-05-13",
+      "phase": "library",
+      "type": "library",
+      "importance": "medium",
+      "relatedLibraryItems": [
+        "c_4ffbf9e307e04258"
+      ],
+      "href": "/content/wiki-synthesis-public-growth-timeline-framework",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "timeline framework",
+        "local compile"
+      ]
+    },
+    {
+      "id": "timeline-c_74981be21c4f4c9f",
+      "title": "Personal Archive MOC",
+      "slug": "wiki-topics-personal-archive-moc",
+      "summary": "Map of the public personal archive platform, promotion workflow, frontend data boundary, and publication roadmap.",
+      "tags": [
+        "archive",
+        "moc",
+        "llm-wiki",
+        "curated"
+      ],
+      "status": [
+        "featured",
+        "verified"
+      ],
+      "createdAt": "2026-05-13",
+      "updatedAt": "2026-05-13",
+      "date": "2026-05-13",
+      "phase": "paths",
+      "type": "paths",
+      "importance": "high",
+      "relatedLibraryItems": [
+        "c_74981be21c4f4c9f"
+      ],
+      "href": "/content/wiki-topics-personal-archive-moc",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "map",
+        "archive"
+      ]
+    },
     {
       "id": "timeline-c_b335630551682c19",
       "title": "An LLM Wiki",
@@ -4354,6 +8967,53 @@
       "sourcePath": "index.md"
     },
     {
+      "id": "c_32c45035f9107070",
+      "title": "Agent Skill Governance",
+      "summary": "A public-safe model for preserving agent and skill knowledge without exposing local prompts or private runtime state.",
+      "tags": [
+        "agent",
+        "skills",
+        "governance",
+        "llm-wiki",
+        "curated"
+      ],
+      "module": "library",
+      "type": "article",
+      "href": "/content/wiki-concepts-agent-skill-governance",
+      "sourcePath": "wiki/concepts/agent-skill-governance.md"
+    },
+    {
+      "id": "c_8008030b505902e0",
+      "title": "Private To Public Promotion Pipeline",
+      "summary": "The workflow for rewriting local-only archive material into public-safe wiki pages.",
+      "tags": [
+        "publication",
+        "workflow",
+        "llm-wiki",
+        "curated"
+      ],
+      "module": "library",
+      "type": "article",
+      "href": "/content/wiki-concepts-private-to-public-promotion-pipeline",
+      "sourcePath": "wiki/concepts/private-to-public-promotion-pipeline.md"
+    },
+    {
+      "id": "c_151dd4949baa1108",
+      "title": "Public Site Data Boundary",
+      "summary": "The architecture boundary that keeps the website consuming curated public JSON instead of raw Obsidian content.",
+      "tags": [
+        "frontend",
+        "backend",
+        "site-data",
+        "publication",
+        "curated"
+      ],
+      "module": "library",
+      "type": "article",
+      "href": "/content/wiki-concepts-public-site-data-boundary",
+      "sourcePath": "wiki/concepts/public-site-data-boundary.md"
+    },
+    {
       "id": "c_0b2b8021fc47d672",
       "title": "LLM Wiki Index",
       "summary": "Short workbench for the rebuilt public-safe LLM Wiki.",
@@ -4365,6 +9025,22 @@
       "type": "article",
       "href": "/content/wiki-index",
       "sourcePath": "wiki/index.md"
+    },
+    {
+      "id": "c_ac08a639fed4d6c8",
+      "title": "Personal Archive Platform",
+      "summary": "A public-safe project page for the personal archive platform that connects the Obsidian wiki layer to future website data.",
+      "tags": [
+        "archive",
+        "llm-wiki",
+        "project",
+        "showcase",
+        "beginner-friendly"
+      ],
+      "module": "works",
+      "type": "case",
+      "href": "/content/wiki-projects-personal-archive-platform",
+      "sourcePath": "wiki/projects/personal-archive-platform.md"
     },
     {
       "id": "c_ad9a9fc54757ca67",
@@ -4423,6 +9099,20 @@
       "sourcePath": "wiki/sources/llm-wikid.md"
     },
     {
+      "id": "c_58d7fda66c48c030",
+      "title": "Local Private Compile 2026-05-13",
+      "summary": "Public-safe source record for the local-only private compile pass that informed the next public wiki pages.",
+      "tags": [
+        "llm-wiki",
+        "source",
+        "publication"
+      ],
+      "module": "library",
+      "type": "source",
+      "href": "/content/wiki-sources-local-private-compile-2026-05-13",
+      "sourcePath": "wiki/sources/local-private-compile-2026-05-13.md"
+    },
+    {
       "id": "c_55208509a7f3108b",
       "title": "obsidian-llm-wiki-local",
       "summary": "Secondary GitHub reference for local-first LLM Wiki implementation ideas.",
@@ -4451,6 +9141,97 @@
       "sourcePath": "wiki/sources/pre-rebuild-vault-archive.md"
     },
     {
+      "id": "c_910d420ab933c045",
+      "title": "Archive Information Architecture",
+      "summary": "The public information backbone for organizing projects, capabilities, timeline, and review queues before final showcase pages.",
+      "tags": [
+        "archive",
+        "information-architecture",
+        "synthesis",
+        "curated"
+      ],
+      "module": "library",
+      "type": "article",
+      "href": "/content/wiki-synthesis-archive-information-architecture",
+      "sourcePath": "wiki/synthesis/archive-information-architecture.md"
+    },
+    {
+      "id": "c_40e886748f617bef",
+      "title": "Capability Evidence Matrix",
+      "summary": "Public-safe matrix linking capabilities to project evidence, repeatable workflows, and future wiki pages.",
+      "tags": [
+        "skills",
+        "capabilities",
+        "evidence",
+        "curated"
+      ],
+      "module": "library",
+      "type": "article",
+      "href": "/content/wiki-synthesis-capability-evidence-matrix",
+      "sourcePath": "wiki/synthesis/capability-evidence-matrix.md"
+    },
+    {
+      "id": "c_d2558f33511a9ddd",
+      "title": "Information Review Queue",
+      "summary": "Public-safe review queue for unresolved information decisions before more archive content is promoted.",
+      "tags": [
+        "review",
+        "publication",
+        "information-architecture",
+        "curated"
+      ],
+      "module": "library",
+      "type": "article",
+      "href": "/content/wiki-synthesis-information-review-queue",
+      "sourcePath": "wiki/synthesis/information-review-queue.md"
+    },
+    {
+      "id": "c_8a14bcb2a5e3fd90",
+      "title": "Personal Archive Public Roadmap",
+      "summary": "A staged roadmap for growing the public personal archive from safe architecture pages into project and capability pages.",
+      "tags": [
+        "archive",
+        "roadmap",
+        "synthesis",
+        "publication",
+        "curated"
+      ],
+      "module": "library",
+      "type": "article",
+      "href": "/content/wiki-synthesis-personal-archive-public-roadmap",
+      "sourcePath": "wiki/synthesis/personal-archive-public-roadmap.md"
+    },
+    {
+      "id": "c_43043860b6d67e12",
+      "title": "Project Evidence Matrix",
+      "summary": "Public-safe matrix of project themes, evidence strength, privacy risk, and next promotion action.",
+      "tags": [
+        "projects",
+        "evidence",
+        "synthesis",
+        "curated"
+      ],
+      "module": "library",
+      "type": "article",
+      "href": "/content/wiki-synthesis-project-evidence-matrix",
+      "sourcePath": "wiki/synthesis/project-evidence-matrix.md"
+    },
+    {
+      "id": "c_4ffbf9e307e04258",
+      "title": "Public Growth Timeline Framework",
+      "summary": "A framework for turning private timeline evidence into public milestones without exposing sensitive personal material.",
+      "tags": [
+        "timeline",
+        "growth",
+        "publication",
+        "curated"
+      ],
+      "module": "library",
+      "type": "article",
+      "href": "/content/wiki-synthesis-public-growth-timeline-framework",
+      "sourcePath": "wiki/synthesis/public-growth-timeline-framework.md"
+    },
+    {
       "id": "c_3d19f3d825d4e136",
       "title": "AI Agent Systems MOC",
       "summary": "Map for public-safe AI agent framework and architecture notes migrated into the wiki.",
@@ -4477,6 +9258,21 @@
       "type": "article",
       "href": "/content/wiki-topics-llm-wiki-moc",
       "sourcePath": "wiki/topics/llm-wiki-moc.md"
+    },
+    {
+      "id": "c_74981be21c4f4c9f",
+      "title": "Personal Archive MOC",
+      "summary": "Map of the public personal archive platform, promotion workflow, frontend data boundary, and publication roadmap.",
+      "tags": [
+        "archive",
+        "moc",
+        "llm-wiki",
+        "curated"
+      ],
+      "module": "paths",
+      "type": "article",
+      "href": "/content/wiki-topics-personal-archive-moc",
+      "sourcePath": "wiki/topics/personal-archive-moc.md"
     },
     {
       "id": "c_7e9d08f8f6eda5d4",

@@ -4,6 +4,10 @@ This document is the public-safe product brief for the personal archive frontend
 It is written for Kimi or any frontend engineer who needs to rebuild the site
 without reading private local folders.
 
+Current ownership note: Kimi's latest package has been adopted as the visual
+baseline. Local Codex now owns the frontend, backend contract, Obsidian data
+compilation, validation gates, and GitHub publication.
+
 ## 1. Product Positioning
 
 The site is a public personal archive and learning showcase. It should help a
@@ -63,8 +67,9 @@ Do not read:
 The current production data contract is described in:
 
 - `site/README.md`
-- `site/src/lib/types.ts`
-- `site/src/lib/archive-api.tsx`
+- `site/src/types/index.ts`
+- `site/src/data/siteData.generated.ts`
+- `site/scripts/sync-site-data.mjs`
 
 Current public payload status:
 
@@ -545,7 +550,7 @@ A Kimi-generated frontend is acceptable only if:
 Use this repository as a public personal archive frontend.
 Read docs/kimi-frontend-reference.md, docs/archive-platform-project-constraints.md,
 docs/archive-content-style-and-ingest-workflow.md, docs/kimi-frontend-sample-data.json,
-site/README.md, and site/src/lib/types.ts first.
+site/README.md, and site/src/types/index.ts first.
 
 Goal:
 make the frontend clearly show the owner's AI operation journey, tools/agents,

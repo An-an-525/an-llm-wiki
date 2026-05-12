@@ -787,9 +787,9 @@ def build_payload(root: Path) -> dict[str, Any]:
             ],
             "nextImportWorkflow": [
                 "Collect useful local material into private-wiki or wiki draft pages.",
-                "Rewrite each item for beginner readers with a clear summary, use case, sources, and next step.",
+                "Use skills/archive-content-curator/SKILL.md to rewrite each item for beginner readers with concrete evidence, operation steps, literary care, psychological insight, sociological context, and philosophical restraint.",
                 "Mark it with publish: curated or status: verified only after privacy and source review.",
-                "Use skills/archive-content-curator/SKILL.md for project cards, tool cards, prompt patterns, routes, and timeline records.",
+                "Match the current frontend contract in site/src/types/index.ts; never hand-edit site/src/data/siteData.generated.ts.",
                 "Regenerate site-data and verify the public frontend before publishing.",
             ],
         },

@@ -29,6 +29,7 @@ This map keeps the agent notes navigable without depending on old private vault 
 
 ## Architecture Notes
 
+- [[wiki/concepts/agent-skill-governance]] - public-safe skill and rule governance
 - [[wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agent_Computer_Interface_Best_Practices]]
 - [[wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agent_Design_Patterns_2026]]
 - [[wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agentic_Workflow_Optimization_2026]]

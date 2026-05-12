@@ -8,6 +8,8 @@ pipeline, and future agent work around `an-llm-wiki`.
 `an-llm-wiki` is a public personal archive and learning showcase. It should help
 beginners understand the owner's AI operation journey, tools, agent workflows,
 project history, prompt patterns, replication paths, and public-safe lessons.
+Kimi's latest frontend is now the adopted visual baseline, but local Codex owns
+the implementation, backend data contract, validation, and publication process.
 
 It is not a raw vault browser, a private memory dump, or a marketing landing
 page. The public site shows curated records compiled from the Obsidian public
@@ -82,7 +84,7 @@ source candidate
   -> archive-content-curator skill
   -> public/private safety classification
   -> public-safe rewrite or private-only queue
-  -> structured record matching site/src/lib/types.ts
+  -> structured record matching site/src/types/index.ts
   -> python scripts/build_site_data.py .
   -> frontend route QA
   -> privacy, wiki, inventory, lint, build gates
@@ -164,6 +166,6 @@ frontend, backend, or archive data:
 3. `docs/archive-content-style-and-ingest-workflow.md`
 4. `docs/agent-skill-stack.md`
 5. `site/README.md`
-6. `site/src/lib/types.ts`
+6. `site/src/types/index.ts`
 7. `AGENTS.md`
 8. `CLAUDE.md`

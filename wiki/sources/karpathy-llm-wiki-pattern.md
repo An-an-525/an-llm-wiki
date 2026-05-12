@@ -25,3 +25,15 @@ Local interpretation:
 - Obsidian is the browsing and graph surface
 - schema/rule files guide future agent maintenance
 - Git tracks the public-safe artifact
+
+Operational consequence for this vault:
+
+- `wiki/` is the public compiled layer, not a staging area
+- `private-wiki/` can guide future rewrites, but it is not a public source
+- durable answers should improve the wiki graph instead of living only in chat
+- every promotion should update indexes and `log.md`
+
+Related:
+
+- [[wiki/synthesis/karpathy-official-wiki-layer]]
+- [[wiki/topics/llm-wiki-moc]]

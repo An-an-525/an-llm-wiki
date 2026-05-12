@@ -1,5 +1,6 @@
 path,title,module,display_tier,quality_score,status,tags,sources,hidden_reasons
-log.md,Vault Log,journal,hidden,61,public,llm-wiki|log,[[wiki/sources/pre-rebuild-vault-archive]],source:archive-only
+wiki/synthesis/karpathy-official-wiki-layer.md,Karpathy Official Wiki Layer,library,candidate,85,public,llm-wiki|synthesis|architecture,[[wiki/sources/karpathy-llm-wiki-pattern]],needs-explicit-curation
+log.md,Vault Log,journal,hidden,71,public,llm-wiki|log,[[wiki/sources/pre-rebuild-vault-archive]],source:archive-only
 wiki/concepts/03-代码片段-代码片段索引.md,代码片段索引,library,hidden,33,public,llm-wiki|migrated,[[wiki/sources/pre-rebuild-vault-archive]],source:archive-only|status:migrated-needs-source-review|tag:migrated
 wiki/concepts/04-知识库-方法论专题-06-Obsidian知识管理.md,📚 Obsidian 知识管理,library,hidden,48,public,llm-wiki|migrated,[[wiki/sources/pre-rebuild-vault-archive]],source:archive-only|status:migrated-needs-source-review|tag:migrated
 wiki/concepts/04-知识库-领域研究-AI-Agent技术-技能库-MCP_Ecosystem_2026.md,MCP 生态全景 (MCP Ecosystem 2026),library,hidden,43,public,llm-wiki|migrated,[[wiki/sources/pre-rebuild-vault-archive]],source:archive-only|status:migrated-needs-source-review|tag:migrated
@@ -195,14 +196,26 @@ wiki/topics/05-外部信息-调研报告.md,2026 多 Agent 框架深度调研与
 wiki/topics/wiki-topics-README.md,Topics,library,hidden,20,public,llm-wiki|migrated,[[wiki/sources/pre-rebuild-vault-archive]],content:too-thin|source:archive-only|status:migrated-needs-source-review|tag:migrated
 README.md,An LLM Wiki,paths,showcase,100,featured|public,llm-wiki|obsidian|public,[[wiki/sources/karpathy-llm-wiki-pattern]],
 index.md,An LLM Wiki Index,paths,showcase,100,featured|public,llm-wiki|index,[[wiki/index]],
+wiki/concepts/agent-skill-governance.md,Agent Skill Governance,library,showcase,100,verified,agent|skills|governance|llm-wiki|curated,[[wiki/sources/local-private-compile-2026-05-13]]|[[wiki/synthesis/karpathy-official-wiki-layer]]|[[wiki/topics/skills-and-tools-moc]],
+wiki/concepts/private-to-public-promotion-pipeline.md,Private To Public Promotion Pipeline,library,showcase,100,verified,publication|workflow|llm-wiki|curated,[[wiki/sources/karpathy-llm-wiki-pattern]]|[[wiki/sources/local-private-compile-2026-05-13]]|[[wiki/sources-and-data-policy]],
+wiki/concepts/public-site-data-boundary.md,Public Site Data Boundary,library,showcase,100,verified,frontend|backend|site-data|publication|curated,[[wiki/sources/local-private-compile-2026-05-13]]|[[wiki/synthesis/karpathy-official-wiki-layer]],
 wiki/index.md,LLM Wiki Index,paths,showcase,100,featured|public,llm-wiki|moc,[[wiki/sources/karpathy-llm-wiki-pattern]],
+wiki/projects/personal-archive-platform.md,Personal Archive Platform,works,showcase,100,verified,archive|llm-wiki|project|showcase|beginner-friendly,[[wiki/sources/karpathy-llm-wiki-pattern]]|[[wiki/sources/local-private-compile-2026-05-13]]|[[wiki/synthesis/karpathy-official-wiki-layer]],
 wiki/sources-and-data-policy.md,Sources and Data Policy,library,showcase,100,public,llm-wiki|sources|privacy,[[wiki/sources/karpathy-llm-wiki-pattern]],
 wiki/sources/github-reference-projects.md,GitHub Reference Projects,library,showcase,100,public,llm-wiki|github|source,https://github.com/kytmanov/obsidian-llm-wiki-local|https://github.com/shannhk/llm-wikid|https://github.com/green-dalii/obsidian-llm-wiki|https://github.com/MehmetGoekce/llm-wiki,
 wiki/sources/karpathy-llm-wiki-pattern.md,Karpathy LLM Wiki Pattern,library,showcase,100,public,llm-wiki|source|obsidian,https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f,
 wiki/sources/llm-wikid.md,llm-wikid,library,showcase,100,public,llm-wiki|github|source,https://github.com/shannhk/llm-wikid,
+wiki/sources/local-private-compile-2026-05-13.md,Local Private Compile 2026-05-13,library,showcase,100,public,llm-wiki|source|publication,[[wiki/sources/karpathy-llm-wiki-pattern]]|[[wiki/sources/pre-rebuild-vault-archive]],
 wiki/sources/obsidian-llm-wiki-local.md,obsidian-llm-wiki-local,library,showcase,100,public,llm-wiki|github|source,https://github.com/kytmanov/obsidian-llm-wiki-local,
 wiki/sources/pre-rebuild-vault-archive.md,Pre-Rebuild Vault Archive,library,showcase,85,public,llm-wiki|source|archive,,
+wiki/synthesis/archive-information-architecture.md,Archive Information Architecture,library,showcase,100,verified,archive|information-architecture|synthesis|curated,[[wiki/sources/local-private-compile-2026-05-13]]|[[wiki/synthesis/karpathy-official-wiki-layer]],
+wiki/synthesis/capability-evidence-matrix.md,Capability Evidence Matrix,library,showcase,100,verified,skills|capabilities|evidence|curated,[[wiki/sources/local-private-compile-2026-05-13]]|[[wiki/topics/skills-and-tools-moc]],
+wiki/synthesis/information-review-queue.md,Information Review Queue,library,showcase,100,verified,review|publication|information-architecture|curated,[[wiki/sources/local-private-compile-2026-05-13]],
+wiki/synthesis/personal-archive-public-roadmap.md,Personal Archive Public Roadmap,library,showcase,100,verified,archive|roadmap|synthesis|publication|curated,[[wiki/sources/local-private-compile-2026-05-13]]|[[wiki/projects/personal-archive-platform]],
+wiki/synthesis/project-evidence-matrix.md,Project Evidence Matrix,library,showcase,100,verified,projects|evidence|synthesis|curated,[[wiki/sources/local-private-compile-2026-05-13]],
+wiki/synthesis/public-growth-timeline-framework.md,Public Growth Timeline Framework,library,showcase,100,verified,timeline|growth|publication|curated,[[wiki/sources/local-private-compile-2026-05-13]],
 wiki/topics/ai-agent-systems-moc.md,AI Agent Systems MOC,paths,showcase,100,featured|public,ai-agent|moc|systems,[[wiki/sources/pre-rebuild-vault-archive]],source:archive-only
 wiki/topics/llm-wiki-moc.md,LLM Wiki MOC,paths,showcase,100,featured|public,llm-wiki|moc|architecture,[[wiki/sources/karpathy-llm-wiki-pattern]],
+wiki/topics/personal-archive-moc.md,Personal Archive MOC,paths,showcase,100,featured|verified,archive|moc|llm-wiki|curated,[[wiki/sources/local-private-compile-2026-05-13]]|[[wiki/synthesis/karpathy-official-wiki-layer]],
 wiki/topics/publication-maintenance-moc.md,Publication Maintenance MOC,paths,showcase,100,featured|public,publication|maintenance|privacy|moc,[[wiki/sources/karpathy-llm-wiki-pattern]]|[[wiki/sources/pre-rebuild-vault-archive]],
-wiki/topics/skills-and-tools-moc.md,Skills and Tools MOC,paths,showcase,94,featured|public,skills|tools|moc,[[wiki/sources/pre-rebuild-vault-archive]],source:archive-only
+wiki/topics/skills-and-tools-moc.md,Skills and Tools MOC,paths,showcase,100,featured|public,skills|tools|moc,[[wiki/sources/pre-rebuild-vault-archive]],source:archive-only

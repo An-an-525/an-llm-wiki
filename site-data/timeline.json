@@ -1,5 +1,381 @@
 [
   {
+    "id": "timeline-c_32c45035f9107070",
+    "title": "Agent Skill Governance",
+    "slug": "wiki-concepts-agent-skill-governance",
+    "summary": "A public-safe model for preserving agent and skill knowledge without exposing local prompts or private runtime state.",
+    "tags": [
+      "agent",
+      "skills",
+      "governance",
+      "llm-wiki",
+      "curated"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "date": "2026-05-13",
+    "phase": "library",
+    "type": "library",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_32c45035f9107070"
+    ],
+    "href": "/content/wiki-concepts-agent-skill-governance",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "agent workflow",
+      "skills"
+    ]
+  },
+  {
+    "id": "timeline-c_8008030b505902e0",
+    "title": "Private To Public Promotion Pipeline",
+    "slug": "wiki-concepts-private-to-public-promotion-pipeline",
+    "summary": "The workflow for rewriting local-only archive material into public-safe wiki pages.",
+    "tags": [
+      "publication",
+      "workflow",
+      "llm-wiki",
+      "curated"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "date": "2026-05-13",
+    "phase": "library",
+    "type": "library",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_8008030b505902e0"
+    ],
+    "href": "/content/wiki-concepts-private-to-public-promotion-pipeline",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "workflow",
+      "privacy filtered"
+    ]
+  },
+  {
+    "id": "timeline-c_151dd4949baa1108",
+    "title": "Public Site Data Boundary",
+    "slug": "wiki-concepts-public-site-data-boundary",
+    "summary": "The architecture boundary that keeps the website consuming curated public JSON instead of raw Obsidian content.",
+    "tags": [
+      "frontend",
+      "backend",
+      "site-data",
+      "publication",
+      "curated"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "date": "2026-05-13",
+    "phase": "library",
+    "type": "library",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_151dd4949baa1108"
+    ],
+    "href": "/content/wiki-concepts-public-site-data-boundary",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "frontend backend boundary",
+      "architecture"
+    ]
+  },
+  {
+    "id": "timeline-c_ac08a639fed4d6c8",
+    "title": "Personal Archive Platform",
+    "slug": "wiki-projects-personal-archive-platform",
+    "summary": "A public-safe project page for the personal archive platform that connects the Obsidian wiki layer to future website data.",
+    "tags": [
+      "archive",
+      "llm-wiki",
+      "project",
+      "showcase",
+      "beginner-friendly"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "date": "2026-05-13",
+    "phase": "works",
+    "type": "works",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_ac08a639fed4d6c8"
+    ],
+    "href": "/content/wiki-projects-personal-archive-platform",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "local compile",
+      "architecture"
+    ]
+  },
+  {
+    "id": "timeline-c_58d7fda66c48c030",
+    "title": "Local Private Compile 2026-05-13",
+    "slug": "wiki-sources-local-private-compile-2026-05-13",
+    "summary": "Public-safe source record for the local-only private compile pass that informed the next public wiki pages.",
+    "tags": [
+      "llm-wiki",
+      "source",
+      "publication"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "date": "2026-05-13",
+    "phase": "library",
+    "type": "library",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_58d7fda66c48c030"
+    ],
+    "href": "/content/wiki-sources-local-private-compile-2026-05-13",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "local compile",
+      "privacy filtered",
+      "source record"
+    ]
+  },
+  {
+    "id": "timeline-c_910d420ab933c045",
+    "title": "Archive Information Architecture",
+    "slug": "wiki-synthesis-archive-information-architecture",
+    "summary": "The public information backbone for organizing projects, capabilities, timeline, and review queues before final showcase pages.",
+    "tags": [
+      "archive",
+      "information-architecture",
+      "synthesis",
+      "curated"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "date": "2026-05-13",
+    "phase": "library",
+    "type": "library",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_910d420ab933c045"
+    ],
+    "href": "/content/wiki-synthesis-archive-information-architecture",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "information architecture",
+      "local compile"
+    ]
+  },
+  {
+    "id": "timeline-c_40e886748f617bef",
+    "title": "Capability Evidence Matrix",
+    "slug": "wiki-synthesis-capability-evidence-matrix",
+    "summary": "Public-safe matrix linking capabilities to project evidence, repeatable workflows, and future wiki pages.",
+    "tags": [
+      "skills",
+      "capabilities",
+      "evidence",
+      "curated"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "date": "2026-05-13",
+    "phase": "library",
+    "type": "library",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_40e886748f617bef"
+    ],
+    "href": "/content/wiki-synthesis-capability-evidence-matrix",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "capability evidence",
+      "local compile"
+    ]
+  },
+  {
+    "id": "timeline-c_d2558f33511a9ddd",
+    "title": "Information Review Queue",
+    "slug": "wiki-synthesis-information-review-queue",
+    "summary": "Public-safe review queue for unresolved information decisions before more archive content is promoted.",
+    "tags": [
+      "review",
+      "publication",
+      "information-architecture",
+      "curated"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "date": "2026-05-13",
+    "phase": "library",
+    "type": "library",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_d2558f33511a9ddd"
+    ],
+    "href": "/content/wiki-synthesis-information-review-queue",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "review queue",
+      "local compile"
+    ]
+  },
+  {
+    "id": "timeline-c_8a14bcb2a5e3fd90",
+    "title": "Personal Archive Public Roadmap",
+    "slug": "wiki-synthesis-personal-archive-public-roadmap",
+    "summary": "A staged roadmap for growing the public personal archive from safe architecture pages into project and capability pages.",
+    "tags": [
+      "archive",
+      "roadmap",
+      "synthesis",
+      "publication",
+      "curated"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "date": "2026-05-13",
+    "phase": "library",
+    "type": "library",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_8a14bcb2a5e3fd90"
+    ],
+    "href": "/content/wiki-synthesis-personal-archive-public-roadmap",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "roadmap",
+      "publication"
+    ]
+  },
+  {
+    "id": "timeline-c_43043860b6d67e12",
+    "title": "Project Evidence Matrix",
+    "slug": "wiki-synthesis-project-evidence-matrix",
+    "summary": "Public-safe matrix of project themes, evidence strength, privacy risk, and next promotion action.",
+    "tags": [
+      "projects",
+      "evidence",
+      "synthesis",
+      "curated"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "date": "2026-05-13",
+    "phase": "library",
+    "type": "library",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_43043860b6d67e12"
+    ],
+    "href": "/content/wiki-synthesis-project-evidence-matrix",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "project evidence",
+      "local compile"
+    ]
+  },
+  {
+    "id": "timeline-c_4ffbf9e307e04258",
+    "title": "Public Growth Timeline Framework",
+    "slug": "wiki-synthesis-public-growth-timeline-framework",
+    "summary": "A framework for turning private timeline evidence into public milestones without exposing sensitive personal material.",
+    "tags": [
+      "timeline",
+      "growth",
+      "publication",
+      "curated"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "date": "2026-05-13",
+    "phase": "library",
+    "type": "library",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_4ffbf9e307e04258"
+    ],
+    "href": "/content/wiki-synthesis-public-growth-timeline-framework",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "timeline framework",
+      "local compile"
+    ]
+  },
+  {
+    "id": "timeline-c_74981be21c4f4c9f",
+    "title": "Personal Archive MOC",
+    "slug": "wiki-topics-personal-archive-moc",
+    "summary": "Map of the public personal archive platform, promotion workflow, frontend data boundary, and publication roadmap.",
+    "tags": [
+      "archive",
+      "moc",
+      "llm-wiki",
+      "curated"
+    ],
+    "status": [
+      "featured",
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "date": "2026-05-13",
+    "phase": "paths",
+    "type": "paths",
+    "importance": "high",
+    "relatedLibraryItems": [
+      "c_74981be21c4f4c9f"
+    ],
+    "href": "/content/wiki-topics-personal-archive-moc",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "map",
+      "archive"
+    ]
+  },
+  {
     "id": "timeline-c_b335630551682c19",
     "title": "An LLM Wiki",
     "slug": "readme",

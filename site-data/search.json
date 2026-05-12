@@ -27,6 +27,53 @@
     "sourcePath": "index.md"
   },
   {
+    "id": "c_32c45035f9107070",
+    "title": "Agent Skill Governance",
+    "summary": "A public-safe model for preserving agent and skill knowledge without exposing local prompts or private runtime state.",
+    "tags": [
+      "agent",
+      "skills",
+      "governance",
+      "llm-wiki",
+      "curated"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-concepts-agent-skill-governance",
+    "sourcePath": "wiki/concepts/agent-skill-governance.md"
+  },
+  {
+    "id": "c_8008030b505902e0",
+    "title": "Private To Public Promotion Pipeline",
+    "summary": "The workflow for rewriting local-only archive material into public-safe wiki pages.",
+    "tags": [
+      "publication",
+      "workflow",
+      "llm-wiki",
+      "curated"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-concepts-private-to-public-promotion-pipeline",
+    "sourcePath": "wiki/concepts/private-to-public-promotion-pipeline.md"
+  },
+  {
+    "id": "c_151dd4949baa1108",
+    "title": "Public Site Data Boundary",
+    "summary": "The architecture boundary that keeps the website consuming curated public JSON instead of raw Obsidian content.",
+    "tags": [
+      "frontend",
+      "backend",
+      "site-data",
+      "publication",
+      "curated"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-concepts-public-site-data-boundary",
+    "sourcePath": "wiki/concepts/public-site-data-boundary.md"
+  },
+  {
     "id": "c_0b2b8021fc47d672",
     "title": "LLM Wiki Index",
     "summary": "Short workbench for the rebuilt public-safe LLM Wiki.",
@@ -38,6 +85,22 @@
     "type": "article",
     "href": "/content/wiki-index",
     "sourcePath": "wiki/index.md"
+  },
+  {
+    "id": "c_ac08a639fed4d6c8",
+    "title": "Personal Archive Platform",
+    "summary": "A public-safe project page for the personal archive platform that connects the Obsidian wiki layer to future website data.",
+    "tags": [
+      "archive",
+      "llm-wiki",
+      "project",
+      "showcase",
+      "beginner-friendly"
+    ],
+    "module": "works",
+    "type": "case",
+    "href": "/content/wiki-projects-personal-archive-platform",
+    "sourcePath": "wiki/projects/personal-archive-platform.md"
   },
   {
     "id": "c_ad9a9fc54757ca67",
@@ -96,6 +159,20 @@
     "sourcePath": "wiki/sources/llm-wikid.md"
   },
   {
+    "id": "c_58d7fda66c48c030",
+    "title": "Local Private Compile 2026-05-13",
+    "summary": "Public-safe source record for the local-only private compile pass that informed the next public wiki pages.",
+    "tags": [
+      "llm-wiki",
+      "source",
+      "publication"
+    ],
+    "module": "library",
+    "type": "source",
+    "href": "/content/wiki-sources-local-private-compile-2026-05-13",
+    "sourcePath": "wiki/sources/local-private-compile-2026-05-13.md"
+  },
+  {
     "id": "c_55208509a7f3108b",
     "title": "obsidian-llm-wiki-local",
     "summary": "Secondary GitHub reference for local-first LLM Wiki implementation ideas.",
@@ -124,6 +201,97 @@
     "sourcePath": "wiki/sources/pre-rebuild-vault-archive.md"
   },
   {
+    "id": "c_910d420ab933c045",
+    "title": "Archive Information Architecture",
+    "summary": "The public information backbone for organizing projects, capabilities, timeline, and review queues before final showcase pages.",
+    "tags": [
+      "archive",
+      "information-architecture",
+      "synthesis",
+      "curated"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-synthesis-archive-information-architecture",
+    "sourcePath": "wiki/synthesis/archive-information-architecture.md"
+  },
+  {
+    "id": "c_40e886748f617bef",
+    "title": "Capability Evidence Matrix",
+    "summary": "Public-safe matrix linking capabilities to project evidence, repeatable workflows, and future wiki pages.",
+    "tags": [
+      "skills",
+      "capabilities",
+      "evidence",
+      "curated"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-synthesis-capability-evidence-matrix",
+    "sourcePath": "wiki/synthesis/capability-evidence-matrix.md"
+  },
+  {
+    "id": "c_d2558f33511a9ddd",
+    "title": "Information Review Queue",
+    "summary": "Public-safe review queue for unresolved information decisions before more archive content is promoted.",
+    "tags": [
+      "review",
+      "publication",
+      "information-architecture",
+      "curated"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-synthesis-information-review-queue",
+    "sourcePath": "wiki/synthesis/information-review-queue.md"
+  },
+  {
+    "id": "c_8a14bcb2a5e3fd90",
+    "title": "Personal Archive Public Roadmap",
+    "summary": "A staged roadmap for growing the public personal archive from safe architecture pages into project and capability pages.",
+    "tags": [
+      "archive",
+      "roadmap",
+      "synthesis",
+      "publication",
+      "curated"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-synthesis-personal-archive-public-roadmap",
+    "sourcePath": "wiki/synthesis/personal-archive-public-roadmap.md"
+  },
+  {
+    "id": "c_43043860b6d67e12",
+    "title": "Project Evidence Matrix",
+    "summary": "Public-safe matrix of project themes, evidence strength, privacy risk, and next promotion action.",
+    "tags": [
+      "projects",
+      "evidence",
+      "synthesis",
+      "curated"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-synthesis-project-evidence-matrix",
+    "sourcePath": "wiki/synthesis/project-evidence-matrix.md"
+  },
+  {
+    "id": "c_4ffbf9e307e04258",
+    "title": "Public Growth Timeline Framework",
+    "summary": "A framework for turning private timeline evidence into public milestones without exposing sensitive personal material.",
+    "tags": [
+      "timeline",
+      "growth",
+      "publication",
+      "curated"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-synthesis-public-growth-timeline-framework",
+    "sourcePath": "wiki/synthesis/public-growth-timeline-framework.md"
+  },
+  {
     "id": "c_3d19f3d825d4e136",
     "title": "AI Agent Systems MOC",
     "summary": "Map for public-safe AI agent framework and architecture notes migrated into the wiki.",
@@ -150,6 +318,21 @@
     "type": "article",
     "href": "/content/wiki-topics-llm-wiki-moc",
     "sourcePath": "wiki/topics/llm-wiki-moc.md"
+  },
+  {
+    "id": "c_74981be21c4f4c9f",
+    "title": "Personal Archive MOC",
+    "summary": "Map of the public personal archive platform, promotion workflow, frontend data boundary, and publication roadmap.",
+    "tags": [
+      "archive",
+      "moc",
+      "llm-wiki",
+      "curated"
+    ],
+    "module": "paths",
+    "type": "article",
+    "href": "/content/wiki-topics-personal-archive-moc",
+    "sourcePath": "wiki/topics/personal-archive-moc.md"
   },
   {
     "id": "c_7e9d08f8f6eda5d4",

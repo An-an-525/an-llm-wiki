@@ -43,35 +43,29 @@
     @apply bg-white text-graphite font-sans antialiased;
     font-size: 15px;
     line-height: 1.75;
-    letter-spacing: 0;
+    letter-spacing: 0.01em;
     overscroll-behavior-y: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     @apply font-serif text-ink;
-    letter-spacing: 0;
   }
 
   * {
     @apply border-border-color;
   }
 
-  a,
-  button {
+  /* Touch-friendly improvements */
+  a, button {
     touch-action: manipulation;
   }
 
-  ::selection {
-    background-color: rgba(200, 149, 108, 0.2);
-    color: #1e1e1e;
+  /* Prevent text selection on interactive elements */
+  .no-select {
+    -webkit-user-select: none;
+    user-select: none;
   }
 }
 
@@ -80,33 +74,28 @@
     text-wrap: balance;
   }
 
+  /* Hide scrollbar but allow scroll */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
 
+  /* Active/tap feedback for clickable elements */
   .tap-active {
-    transition:
-      transform 150ms ease,
-      opacity 150ms ease;
+    transition: transform 150ms ease, opacity 150ms ease;
   }
-
   .tap-active:active {
     transform: scale(0.98);
     opacity: 0.9;
   }
 
+  /* Card tap feedback */
   .card-tap {
-    transition:
-      transform 150ms ease,
-      box-shadow 150ms ease,
-      opacity 150ms ease;
+    transition: transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
   }
-
   .card-tap:active {
     transform: scale(0.98);
     opacity: 0.92;

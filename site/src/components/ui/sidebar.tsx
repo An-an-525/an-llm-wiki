@@ -606,7 +606,7 @@ function SidebarMenuSkeleton({
 }: React.ComponentProps<"div"> & {
   showIcon?: boolean
 }) {
-  const width = "72%"
+  const width = showIcon ? "72%" : "84%"
 
   return (
     <div

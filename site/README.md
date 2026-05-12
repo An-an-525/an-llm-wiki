@@ -34,6 +34,17 @@ The public frontend is a curated showcase, not a full vault browser.
 
 Future frontend replacements should keep this rule: render `site-data/index.json`, not the vault filesystem.
 
+## Data Refill Skill
+
+After the frontend and backend contract are stable, add real content through
+`skills/archive-content-curator/SKILL.md`, not by editing generated frontend
+data. Each public record should explain the operation for beginners and carry
+evidence-backed literary, psychological, sociological, and philosophical depth.
+
+The current TypeScript display contract lives in `site/src/types/index.ts`.
+The generated adapter `site/src/data/siteData.generated.ts` is rebuilt by
+`site/scripts/sync-site-data.mjs`.
+
 ## Commands
 
 Run from the vault root:

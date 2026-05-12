@@ -83,6 +83,7 @@ def iter_files(root: Path):
             for d in dirs
             if d not in IGNORE_DIRS
             and not d.startswith("00 - ")
+            and not d.startswith("01 - ")
             and f"{rel_current}/{d}".lstrip("./") != "site/public/site-data"
         ]
         for name in names:

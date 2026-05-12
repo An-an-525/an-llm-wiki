@@ -2,7 +2,9 @@
 
 This is the project constraint for adding future frontend/backend archive data.
 It defines the writing standard, data workflow, and skill-driven acceptance
-process for the public personal archive.
+process for the public personal archive. Kimi's latest frontend is now a visual
+baseline; local Codex owns the frontend, backend data contract, Obsidian
+compilation, validation, and publishing workflow.
 
 Use it together with `docs/archive-platform-project-constraints.md`, which
 defines the frontend, backend, privacy, and agent boundaries for the whole
@@ -101,7 +103,9 @@ local source or candidate
   -> commit and publish
 ```
 
-Do not add raw source material directly to `site-data/`.
+Do not add raw source material directly to `site-data/`, and do not hand-edit
+`site/src/data/siteData.generated.ts`. The frontend adapter is generated from
+`site-data/index.json`.
 
 ## 6. Skill Chain
 
@@ -110,9 +114,10 @@ Use these skills or skill-like rules in this order:
 1. `llm-wiki` - keep the raw/private/public compilation model intact.
 2. `archive-content-curator` - rewrite one candidate into a high-quality public record.
 3. `wiki-lint` - check frontmatter, links, provenance, and index health.
-4. frontend data contract checks - confirm the record matches `site/src/lib/types.ts`.
+4. frontend data contract checks - confirm the record matches `site/src/types/index.ts`.
 5. privacy and publication gates - confirm no secret values, account material, local absolute paths, or raw chats leak.
 6. frontend verification - confirm the page, card, filter, search, and detail view render correctly.
+7. GitHub publication - commit only after the public inventory and privacy report remain clean.
 
 ## 7. Structured Record Contract
 
@@ -134,7 +139,8 @@ optional fields:
 ```
 
 Existing frontend fields remain mandatory: `id`, `title`, `slug`, `summary`,
-`tags`, `status`, `createdAt`, `updatedAt`, and module-specific fields.
+`tags`, `status`, `createdAt`, `updatedAt`, and module-specific fields. The
+current TypeScript contract lives in `site/src/types/index.ts`.
 
 ## 8. Project Constraints
 

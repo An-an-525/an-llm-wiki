@@ -19,6 +19,7 @@ Use this page for the wiki operating model, not for raw migrated content.
 ## Architecture
 
 - [[wiki/sources/karpathy-llm-wiki-pattern]] - official pattern source
+- [[wiki/synthesis/karpathy-official-wiki-layer]] - public wiki layer contract
 - [[CLAUDE]] - local schema and page contract
 - [[AGENTS]] - operating rules for future agents
 - [[wiki/sources-and-data-policy]] - public/private source boundary

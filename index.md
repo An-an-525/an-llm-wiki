@@ -16,6 +16,8 @@ summary: "Root navigation page for the public-safe Obsidian LLM Wiki."
 
 - [[README]] - overview
 - [[wiki/index]] - main wiki workbench
+- [[wiki/synthesis/karpathy-official-wiki-layer]] - official wiki layer contract
+- [[wiki/topics/personal-archive-moc]] - personal archive and website backend map
 - [[wiki/topics/llm-wiki-moc]] - architecture and operations
 - [[wiki/topics/ai-agent-systems-moc]] - agent systems map
 - [[wiki/topics/skills-and-tools-moc]] - skills and tooling map

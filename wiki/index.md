@@ -20,12 +20,15 @@ This is the short workbench for the public wiki. Raw sources and private staging
 
 - [[README]] - vault overview
 - [[wiki/sources/karpathy-llm-wiki-pattern]] - official architecture source
+- [[wiki/synthesis/karpathy-official-wiki-layer]] - public wiki layer contract
 - [[wiki/sources-and-data-policy]] - source and publication boundary
 - [[wiki/projects/root-maintenance-backlog]] - current maintenance backlog
 - [[log]] - append-only maintenance log
 
 ## Maps
 
+- [[wiki/topics/personal-archive-moc]] - public personal archive and website data map
+- [[wiki/synthesis/archive-information-architecture]] - information backbone for projects, capabilities, timeline, and review queues
 - [[wiki/topics/llm-wiki-moc]] - LLM Wiki architecture and operations
 - [[wiki/topics/ai-agent-systems-moc]] - AI agent systems and framework notes
 - [[wiki/topics/skills-and-tools-moc]] - migrated skills and reusable tooling notes
@@ -34,6 +37,7 @@ This is the short workbench for the public wiki. Raw sources and private staging
 ## Source Notes
 
 - [[wiki/sources/karpathy-llm-wiki-pattern]] - official pattern source
+- [[wiki/sources/local-private-compile-2026-05-13]] - public-safe source record for the current local compile pass
 - [[wiki/sources/github-reference-projects]] - secondary project index
 - [[wiki/sources/obsidian-llm-wiki-local]] - local-first reference project
 - [[wiki/sources/llm-wikid]] - vault-template reference project
