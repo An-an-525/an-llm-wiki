@@ -1,0 +1,66 @@
+{
+  "id": "./#/",
+  "name": "藏馆 · 个人资料库",
+  "short_name": "藏馆",
+  "description": "一座关于资料、路径、作品与成长的个人藏馆",
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "start_url": "./#/",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "browser"],
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "categories": ["education", "productivity", "books"],
+  "icons": [
+    {
+      "src": "./app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./maskable-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "藏馆",
+      "short_name": "藏馆",
+      "url": "./#/library",
+      "icons": [{ "src": "./app-icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "谱系",
+      "short_name": "谱系",
+      "url": "./#/paths",
+      "icons": [{ "src": "./app-icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "工坊",
+      "short_name": "工坊",
+      "url": "./#/works",
+      "icons": [{ "src": "./app-icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "./og-image.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "藏馆桌面展示"
+    },
+    {
+      "src": "./hero-cover.jpg",
+      "sizes": "1200x800",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "藏馆移动展示"
+    }
+  ]
+}

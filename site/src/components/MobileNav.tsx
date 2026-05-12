@@ -1,13 +1,14 @@
 import { useLocation } from 'react-router';
 import { Link } from 'react-router';
 import { motion } from 'framer-motion';
-import { Library, Rss, FileText, BookOpen } from 'lucide-react';
+import { Home, Library, Route, Hammer, UserRound } from 'lucide-react';
 
 const tabs = [
+  { label: '首页', icon: Home, path: '/' },
   { label: '藏馆', icon: Library, path: '/library' },
-  { label: '风信', icon: Rss, path: '/feed' },
-  { label: '手记', icon: FileText, path: '/journal' },
-  { label: '书房', icon: BookOpen, path: '/about' },
+  { label: '谱系', icon: Route, path: '/paths' },
+  { label: '工坊', icon: Hammer, path: '/works' },
+  { label: '我的', icon: UserRound, path: '/about' },
 ];
 
 export default function MobileNav() {
@@ -34,7 +35,7 @@ export default function MobileNav() {
             <Link
               key={tab.path}
               to={tab.path}
-              className="flex flex-col items-center justify-center gap-0.5 w-16 h-full select-none"
+              className="flex h-full min-w-0 flex-1 flex-col items-center justify-center gap-0.5 select-none"
               style={{
                 WebkitTapHighlightColor: 'transparent',
               }}

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
 import Navbar from './Navbar';
 import MobileNav from './MobileNav';
+import AppInstallPrompt from './AppInstallPrompt';
 import { NetworkStatus } from './ui/lifecycle';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -47,6 +48,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       {/* Mobile bottom navigation */}
       <MobileNav />
+      <AppInstallPrompt />
 
       {/* Back to top button */}
       <AnimatePresence>
