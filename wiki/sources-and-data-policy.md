@@ -1,6 +1,6 @@
 ---
 title: Sources and Data Policy
-aliases: [Source Policy, Publication Policy]
+aliases: ["Source Policy", "Publication Policy", "wiki/sources-and-data", "wiki/sources-and-data-policy"]
 tags: [llm-wiki, sources, privacy]
 category: source
 type: rule

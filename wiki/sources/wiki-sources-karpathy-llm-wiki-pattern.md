@@ -1,10 +1,10 @@
 ---
 title: "Karpathy LLM Wiki Pattern"
-aliases: []
+aliases: ["wiki-sources-karpathy-llm-wiki-pattern"]
 tags: [llm-wiki, migrated]
 category: source
 type: source
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -55,6 +55,6 @@ This repository is not Karpathy's official source. It is useful as a current imp
 
 ## Related Pages
 
-- [[wiki/current-status]]
+- current-status
 - [[wiki/sources-and-data]]
-- [[wiki/projects/karpathy-llm-wiki-alignment-2026-05-12]]
+- karpathy-llm-wiki-alignment-2026-05-12

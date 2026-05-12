@@ -14,5 +14,5 @@ summary: "Machine-readable source and publication ledgers."
 
 # Manifests
 
-- [[manifests/raw_sources.csv]] - source groups
-- [[manifests/publication_review.csv]] - migration and privacy review decisions
+- [raw_sources.csv](raw_sources.csv) - source groups
+- [publication_review.csv](publication_review.csv) - migration and privacy review decisions

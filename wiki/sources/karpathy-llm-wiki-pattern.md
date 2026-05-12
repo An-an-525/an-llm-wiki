@@ -1,6 +1,6 @@
 ---
 title: Karpathy LLM Wiki Pattern
-aliases: [Karpathy LLM Wiki, llm-wiki.md]
+aliases: ["Karpathy LLM Wiki", "llm-wiki.md"]
 tags: [llm-wiki, source, obsidian]
 category: source
 type: source

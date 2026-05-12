@@ -1,6 +1,6 @@
 ---
 title: GitHub Reference Projects
-aliases: [LLM Wiki GitHub References]
+aliases: ["LLM Wiki GitHub References"]
 tags: [llm-wiki, github, source]
 category: source
 type: source
@@ -20,8 +20,8 @@ summary: "Secondary engineering references for local-first LLM Wiki implementati
 
 These projects inform implementation details. They do not replace Karpathy's gist as the architecture source.
 
-- kytmanov/obsidian-llm-wiki-local - local-first CLI/Ollama workflow ideas
-- shannhk/llm-wikid - Obsidian vault template conventions
+- [[wiki/sources/obsidian-llm-wiki-local]] - local-first CLI/Ollama workflow ideas
+- [[wiki/sources/llm-wikid]] - Obsidian vault template conventions
 - green-dalii/obsidian-llm-wiki - plugin-oriented interaction model
 - MehmetGoekce/llm-wiki - Claude Code and layered wiki workflow
 - yologdev/karpathy-llm-wiki - web app and agentic experiment

@@ -35,4 +35,4 @@
 
 ## Publication Boundary
 
-Never publish credentials, raw private conversations, local environment maps, personal memory dumps, browser/session data, or true local filesystem paths. If uncertain, exclude and record the decision in [[manifests/publication_review.csv]].
+Never publish credentials, raw private conversations, local environment maps, personal memory dumps, browser/session data, or true local filesystem paths. If uncertain, exclude and record the decision in [publication_review.csv](manifests/publication_review.csv).

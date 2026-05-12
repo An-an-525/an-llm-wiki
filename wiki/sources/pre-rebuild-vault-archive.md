@@ -1,6 +1,6 @@
 ---
 title: Pre-Rebuild Vault Archive
-aliases: [Pre-Rebuild Source Archive]
+aliases: ["Pre-Rebuild Source Archive"]
 tags: [llm-wiki, source, archive]
 category: source
 type: source

@@ -19,6 +19,8 @@ This is a public-safe personal Obsidian knowledge base rebuilt around Andrej Kar
 ## Start Here
 
 - [[wiki/index]] - curated wiki workbench
+- [[wiki/topics/llm-wiki-moc]] - architecture and operation map
+- [[wiki/topics/publication-maintenance-moc]] - publication and validation map
 - [[wiki/sources/karpathy-llm-wiki-pattern]] - official architecture source
 - [[wiki/sources/github-reference-projects]] - secondary implementation references
 - [[AGENTS]] - agent maintenance rules

@@ -16,8 +16,12 @@ summary: "Root navigation page for the public-safe Obsidian LLM Wiki."
 
 - [[README]] - overview
 - [[wiki/index]] - main wiki workbench
+- [[wiki/topics/llm-wiki-moc]] - architecture and operations
+- [[wiki/topics/ai-agent-systems-moc]] - agent systems map
+- [[wiki/topics/skills-and-tools-moc]] - skills and tooling map
+- [[wiki/topics/publication-maintenance-moc]] - publication gates and restore evidence
 - [[wiki/sources-and-data-policy]] - source and publication policy
 - [[wiki/sources/karpathy-llm-wiki-pattern]] - official architecture source
-- [[manifests/raw_sources.csv]] - source registry
-- [[manifests/publication_review.csv]] - migration and privacy review ledger
+- [raw_sources.csv](manifests/raw_sources.csv) - source registry
+- [publication_review.csv](manifests/publication_review.csv) - migration and privacy review ledger
 - [[log]] - maintenance log
