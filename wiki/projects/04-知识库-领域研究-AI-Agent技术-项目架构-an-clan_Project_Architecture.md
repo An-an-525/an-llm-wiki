@@ -4,7 +4,7 @@ aliases: []
 tags: [llm-wiki, migrated]
 category: project
 type: project
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -60,6 +60,6 @@ summary: "🧬 an-clan (安氏宗门) 元逻辑架构图"
 - **SOP 继承**: `accio` 的任务流设计应继续保留 `an-clan` 的“先审计、后执行”基因。
 
 ---
-log:: [[06 - 周期回顾/2026-04-10-详细行动存证.md]]
-MOC:: [[04 - 知识库/领域研究/AI-Agent技术/项目架构/Frameworks_MOC.md]]
-Genealogy:: [[04 - 知识库/99 - Agent指南与规范/项目血缘关系图.md]]
+log:: 2026-04-10-详细行动存证
+MOC:: Frameworks_MOC
+Genealogy:: 项目血缘关系图

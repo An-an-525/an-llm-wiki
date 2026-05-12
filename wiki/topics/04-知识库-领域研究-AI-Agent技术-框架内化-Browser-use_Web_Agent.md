@@ -1,10 +1,10 @@
 ---
 title: "Browser-use 深度内化: 浏览器 Agent 与网页自动化"
-aliases: []
+aliases: ["Browser-use_Web_Agent"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -55,8 +55,8 @@ summary: "🌐 Browser-use 深度内化: 浏览器 Agent 与网页自动化"
 ---
 ## 🧬 【Neuro-Link】
 - **Upward (向上关联)**: 理论架构支撑了 **[[browser-use|browser-use 技能]]** 的实战开发。
-- **Downward (向下关联)**: 技术基石源于 **[[playwright]]** 的 DOM 操作能力。
-- **全局拓扑**: 属于 **[[技术栈关联矩阵]]** 中的 L3 级外部框架内化成果。
+- **Downward (向下关联)**: 技术基石源于 **playwright** 的 DOM 操作能力。
+- **全局拓扑**: 属于 **技术栈关联矩阵** 中的 L3 级外部框架内化成果。
 
 ---
-log:: [[06 - 周期回顾/2026-04-10-详细行动存证]]
+log:: 2026-04-10-详细行动存证

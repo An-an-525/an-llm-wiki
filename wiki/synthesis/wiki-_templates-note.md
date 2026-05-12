@@ -1,10 +1,10 @@
 ---
 title: "Title"
-aliases: []
+aliases: ["wiki-_templates-note"]
 tags: [llm-wiki, migrated]
 category: synthesis
 type: synthesis
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:

@@ -1,10 +1,10 @@
 ---
 title: "prometheus-api 技能"
-aliases: []
+aliases: ["prometheus-api"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -69,7 +69,7 @@ python scripts/prom_health.py http://localhost:9090
 - [[技能库 MOC]]
 - [[MuleRun_Skills_Hub]]
 - [[site-reliability-engineer]]
-- [[unraid]]
+- unraid
 
 ---
 

@@ -1,10 +1,10 @@
 ---
 title: "MCP (Model Context Protocol)"
-aliases: []
+aliases: ["MCP"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -51,7 +51,7 @@ summary: "🔌 MCP (Model Context Protocol)"
 ## 🔗 相关链接
 
 - [[Agent 生态 MOC]]
-- [[基础设施运维底座]]
+- 基础设施运维底座
 
 ---
 

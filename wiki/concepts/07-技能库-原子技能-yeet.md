@@ -1,10 +1,10 @@
 ---
 title: "yeet 技能"
-aliases: []
+aliases: ["yeet"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -53,7 +53,7 @@ summary: "当用户明确要求“一次性完成 stage / commit / push / 开 PR
 ## 🔗 相关链接
 
 - [[技能库 MOC]]
-- [[GitHub]]
+- GitHub
 - [[gh-fix-ci]]
 - [[gh-address-comments]]
 - [[commit]]

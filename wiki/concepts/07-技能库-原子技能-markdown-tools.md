@@ -1,10 +1,10 @@
 ---
 title: "markdown-tools 技能"
-aliases: []
+aliases: ["markdown-tools"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -52,8 +52,8 @@ python3 scripts/split_markdown.py large_doc.md --output ./output/
 
 - [[技能库 MOC]]
 - [[MuleRun_Skills_Hub]]
-- [[Obsidian]]
-- [[笔记写入规范]]
+- Obsidian
+- 笔记写入规范
 
 ---
 

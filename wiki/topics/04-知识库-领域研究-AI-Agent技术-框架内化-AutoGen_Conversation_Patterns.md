@@ -1,10 +1,10 @@
 ---
 title: "AutoGen 对话模式内化: 动态路由与多 Agent 协作"
-aliases: []
+aliases: ["AutoGen_Conversation_Patterns"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -49,4 +49,4 @@ summary: "💬 AutoGen 对话模式内化: 动态路由与多 Agent 协作"
 - **对话驱动控制**: 减少繁琐的 API 封装，更多利用“自然语言驱动”的模式来编排工具调用。
 
 ---
-log:: [[06 - 周期回顾/2026-04-10-详细行动存证]]
+log:: 2026-04-10-详细行动存证

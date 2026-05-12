@@ -1,10 +1,10 @@
 ---
 title: "video-comparer 技能"
-aliases: []
+aliases: ["video-comparer"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -51,7 +51,7 @@ python3 scripts/compare_videos.py video1.mp4 video2.mp4 --visual-diff
 
 - [[技能库 MOC]]
 - [[MuleRun_Skills_Hub]]
-- [[playwright]]
+- playwright
 
 ---
 

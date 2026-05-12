@@ -1,10 +1,10 @@
 ---
 title: "document-converter-suite 技能"
-aliases: []
+aliases: ["document-converter-suite"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -54,7 +54,7 @@ summary: "📄 document-converter-suite 技能"
 ## 🔗 相关链接
 
 - [[技能库 MOC]]
-- [[文档处理]]
+- 文档处理
 - [[MuleRun_Skills_Hub]]
 
 ---

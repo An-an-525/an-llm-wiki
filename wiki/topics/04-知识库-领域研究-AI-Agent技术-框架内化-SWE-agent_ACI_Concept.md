@@ -1,10 +1,10 @@
 ---
 title: "SWE-agent ACI 概念内化: 针对 LLM 的计算机接口"
-aliases: []
+aliases: ["SWE-agent_ACI_Concept"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -42,4 +42,4 @@ summary: "🖱️ SWE-agent ACI 概念内化: 针对 LLM 的计算机接口"
 - **环境感知**: 为 Agent 提供更清晰的“当前路径”和“状态快照”。
 
 ---
-log:: [[06 - 周期回顾/2026-04-10-详细行动存证]]
+log:: 2026-04-10-详细行动存证

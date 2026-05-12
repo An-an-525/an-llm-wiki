@@ -1,10 +1,10 @@
 ---
 title: "Agent 平台内化: Dify vs n8n"
-aliases: []
+aliases: ["Agent_Platform_Dify_n8n"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -57,4 +57,4 @@ summary: "🚀 Agent 平台内化: Dify vs n8n"
 - **界面灵感**: 学习 Dify 的知识库管理界面，改进 `accio` 在 Obsidian 之外的展示形式。
 
 ---
-log:: [[06 - 周期回顾/2026-04-10-详细行动存证]]
+log:: 2026-04-10-详细行动存证

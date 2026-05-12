@@ -1,10 +1,10 @@
 ---
 title: "gitnexus-explorer 技能"
-aliases: []
+aliases: ["gitnexus-explorer"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -104,21 +104,21 @@ npx gitnexus serve
 ## 🔗 相关链接
 
 - [[技能库 MOC]]
-- [[codebase-analysis]]
-- [[creating-mcp-servers]]
-- [[技术栈关联矩阵]]
+- codebase-analysis
+- creating-mcp-servers
+- 技术栈关联矩阵
 - [[MuleRun_Skills_Hub]]
-- [[本机网络下载链路排障-2026-04-11]]
-- [[GitNexus运行时剩余问题-2026-04-11]]
+- 本机网络下载链路排障-2026-04-11
+- GitNexus运行时剩余问题-2026-04-11
 
 ---
 
 ## 🧬 【Neuro-Link】
 
-- **Upward (向上关联)**: 可作为代码库结构探索层，支撑 [[codebase-analysis]] 与后续架构调研。
+- **Upward (向上关联)**: 可作为代码库结构探索层，支撑 codebase-analysis 与后续架构调研。
 - **Downward (向下关联)**: 依赖 Node.js、Git 仓库元数据和本地代理/静态服务能力。
-- **Lateral (横向协作)**: 可与 [[creating-mcp-servers]] 结合，把图谱分析转成更稳定的工具接口。
-- **全局拓扑**: 位于 [[技术栈关联矩阵]] 的代码理解与结构可视化链路。
+- **Lateral (横向协作)**: 可与 creating-mcp-servers 结合，把图谱分析转成更稳定的工具接口。
+- **全局拓扑**: 位于 技术栈关联矩阵 的代码理解与结构可视化链路。
 
 ---
-log:: [[06 - 周期回顾/2026-04-10-详细行动存证]]
+log:: 2026-04-10-详细行动存证

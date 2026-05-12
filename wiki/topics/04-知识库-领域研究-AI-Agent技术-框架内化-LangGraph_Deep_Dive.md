@@ -1,10 +1,10 @@
 ---
 title: "LangGraph 深度内化: 确定性状态机与 HITL"
-aliases: []
+aliases: ["LangGraph_Deep_Dive"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -69,7 +69,7 @@ graph TD
 ## 🚀 accio 演进启示
 - **引入 `GlobalContext`**: 在 `aipy` 中实现类似的状态对象。
 - **建立中断机制**: 在涉及本地磁盘写入或大额 API 消耗时，强制触发 `question` 供用户审核。
-- **架构关联**: 查看该模式在本地技术拓扑中的演进逻辑：**[[技术栈关联矩阵]]**。
+- **架构关联**: 查看该模式在本地技术拓扑中的演进逻辑：**技术栈关联矩阵**。
 
 ---
-log:: [[06 - 周期回顾/2026-04-10-详细行动存证]]
+log:: 2026-04-10-详细行动存证

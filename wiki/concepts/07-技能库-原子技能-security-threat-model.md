@@ -1,10 +1,10 @@
 ---
 title: "security-threat-model 技能"
-aliases: []
+aliases: ["security-threat-model"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -54,7 +54,7 @@ summary: "🧠 security-threat-model 技能"
 
 - [[技能库 MOC]]
 - [[security-best-practices]]
-- [[技术栈关联矩阵]]
+- 技术栈关联矩阵
 
 ---
 

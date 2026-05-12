@@ -1,10 +1,10 @@
 ---
 title: "home-assistant-awtrix 技能"
-aliases: []
+aliases: ["home-assistant-awtrix"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -58,7 +58,7 @@ python3 scripts/awtrix_fs.py --host <device_ip> icons import-lametric 1234
 ## 🔗 相关链接
 
 - [[技能库 MOC]]
-- [[home-assistant]]
+- home-assistant
 - [[MuleRun_Skills_Hub]]
 
 ---

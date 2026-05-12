@@ -1,10 +1,10 @@
 ---
 title: "MuleRun 外部资料入口"
-aliases: []
+aliases: ["MuleRun-README"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:

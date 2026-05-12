@@ -1,10 +1,10 @@
 ---
 title: "Apple SSD 集成说明"
-aliases: []
+aliases: ["项目文档-xiaoan-finetune-docs-apple_ssd_integration"]
 tags: [llm-wiki, migrated]
 category: project
 type: project
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:

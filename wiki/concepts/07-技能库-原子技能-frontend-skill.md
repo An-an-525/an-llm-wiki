@@ -1,10 +1,10 @@
 ---
 title: "frontend-skill 技能"
-aliases: []
+aliases: ["frontend-skill"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -38,7 +38,7 @@ summary: "🎨 frontend-skill 技能"
 
 - **要做强视觉页面**: 落地页、产品站、demo、品牌页。
 - **不想做 AI 味很重的平均 UI**: 本技能专门压制“卡片堆叠 + 默认紫色 + 机械动画”。
-- **适合配合浏览器验活**: 做完界面后可联动 [[playwright]] 或 [[screenshot]] 做视觉检查。
+- **适合配合浏览器验活**: 做完界面后可联动 playwright 或 [[screenshot]] 做视觉检查。
 
 ---
 
@@ -53,7 +53,7 @@ summary: "🎨 frontend-skill 技能"
 ## 🔗 相关链接
 
 - [[技能库 MOC]]
-- [[playwright]]
+- playwright
 - [[screenshot]]
 - [[technical-writer]]
 

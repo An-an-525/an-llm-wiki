@@ -1,10 +1,10 @@
 ---
 title: "自动采集目录说明"
-aliases: []
+aliases: ["自动采集-README"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:

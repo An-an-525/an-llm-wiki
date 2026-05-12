@@ -1,10 +1,10 @@
 ---
 title: "Agent 平台最佳实践与反模式"
-aliases: []
+aliases: ["Agent-平台最佳实践与反模式-2026-04-11"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -81,18 +81,18 @@ summary: "目标：把公开 Agent 框架里反复被验证过的方法，压到
 
 ## 5. 推荐阅读顺序
 
-1. [[本地运行时角色边界矩阵-2026-04-11]]
+1. 本地运行时角色边界矩阵-2026-04-11
 2. [[多Agent协调与受控委派-2026-04-11]]
 3. [[多Agent通信信封与工件传递-2026-04-11]]
-4. [[本地工具权限地图与审批边界-2026-04-11]]
+4. 本地工具权限地图与审批边界-2026-04-11
 
 ---
 
 ## 相关链接
 
-- [[Frameworks_MOC]]
+- Frameworks_MOC
 - [[Agent_Design_Patterns_2026]]
 - [[MCP_Protocol_Standard]]
-- [[01 - 项目中枢/活跃项目/Multica 运行时目标]]
-- [[本地运行时角色边界矩阵-2026-04-11]]
-- [[06 - 周期回顾/2026-04-11-详细行动存证]]
+- Multica 运行时目标
+- 本地运行时角色边界矩阵-2026-04-11
+- 2026-04-11-详细行动存证

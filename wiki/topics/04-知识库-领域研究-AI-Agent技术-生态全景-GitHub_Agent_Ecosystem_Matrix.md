@@ -1,10 +1,10 @@
 ---
 title: "GitHub AI Agent 生态全景矩阵 (Top 60)"
-aliases: []
+aliases: ["GitHub_Agent_Ecosystem_Matrix"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -54,6 +54,6 @@ summary: "📊 GitHub AI Agent 生态全景矩阵 (Top 60)"
 3. **协作大于单兵**: 强调 Agent 间的“审议 (Deliberation)”和“回溯 (Backtracking)”。
 
 ---
-log:: [[06 - 周期回顾/2026-04-10-详细行动存证.md]]
-MOC:: [[04 - 知识库/领域研究/AI-Agent技术/框架内化/Frameworks_MOC.md]]
-Original Report:: [[05 - 外部信息/调研报告/存档/GitHub_AI_Agent_生态全景报告_Full.md]]
+log:: 2026-04-10-详细行动存证
+MOC:: Frameworks_MOC
+Original Report:: GitHub_AI_Agent_生态全景报告_Full

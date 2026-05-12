@@ -1,10 +1,10 @@
 ---
 title: "git-changes-reporter 技能"
-aliases: []
+aliases: ["git-changes-reporter"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -51,10 +51,10 @@ python3 scripts/daily_summary.py --repo "."
 
 - [[技能库 MOC]]
 - [[MuleRun_Skills_Hub]]
-- [[GitHub 技能]]
-- [[最近更新]]
+- GitHub 技能
+- 最近更新
 - [[commit]] - 基于变更生成提交。
-- [[github]] - 拉取远端变更数据。
+- github - 拉取远端变更数据。
 
 ---
 

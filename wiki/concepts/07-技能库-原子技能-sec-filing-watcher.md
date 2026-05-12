@@ -1,10 +1,10 @@
 ---
 title: "sec-filing-watcher 技能"
-aliases: []
+aliases: ["sec-filing-watcher"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -55,8 +55,8 @@ cron add --job '{
 
 - [[技能库 MOC]]
 - [[MuleRun_Skills_Hub]]
-- [[文档处理]]
-- [[paperless-ngx]] - 自动化归档监控文件。
+- 文档处理
+- paperless-ngx - 自动化归档监控文件。
 - [[competitors-analysis]] - 为竞品分析提供财务数据源。
 
 ---

@@ -1,10 +1,10 @@
 ---
 title: "Topics"
-aliases: []
+aliases: ["wiki-topics-README"]
 tags: [llm-wiki, migrated]
 category: synthesis
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:

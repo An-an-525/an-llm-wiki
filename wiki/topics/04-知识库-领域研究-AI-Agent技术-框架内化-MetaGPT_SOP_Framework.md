@@ -1,10 +1,10 @@
 ---
 title: "MetaGPT SOP 框架内化: 软件公司隐喻与标准化流程"
-aliases: []
+aliases: ["MetaGPT_SOP_Framework"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -49,4 +49,4 @@ summary: "🏢 MetaGPT SOP 框架内化: 软件公司隐喻与标准化流程"
 - **岗位化封装**: 强化目前 Pro-Team 的岗位边界。
 
 ---
-log:: [[06 - 周期回顾/2026-04-10-详细行动存证]]
+log:: 2026-04-10-详细行动存证

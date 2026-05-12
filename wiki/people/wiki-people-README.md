@@ -1,10 +1,10 @@
 ---
 title: "People"
-aliases: []
+aliases: ["wiki-people-README"]
 tags: [llm-wiki, migrated]
 category: entity
 type: people
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -27,8 +27,8 @@ summary: "放人物、组织、Agent、工具主体等实体页。"
 
 - [[wiki/index]]
 - [[wiki/projects/README|Projects]]
-- [[08 - 智能实体库/entities-moc]]
+- entities-moc
 
 ## Pages
 
-- [[wiki/people/Hanako|Hanako]] — 本地活跃的 OpenHanako 桌面 Agent。
+- Hanako — 本地活跃的 OpenHanako 桌面 Agent。

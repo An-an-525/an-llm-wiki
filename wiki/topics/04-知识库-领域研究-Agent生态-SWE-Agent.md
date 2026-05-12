@@ -1,10 +1,10 @@
 ---
 title: "SWE-Agent"
-aliases: []
+aliases: ["SWE-Agent"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -52,7 +52,7 @@ summary: "SWE-agent enables your language model of choice to autonomously use to
 
 - [[Agent 生态 MOC]]
 - [[OpenHands]]
-- [[Claude Code]]
+- Claude Code
 
 ---
 

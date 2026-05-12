@@ -1,10 +1,10 @@
 ---
 title: "MetaGPT"
-aliases: []
+aliases: ["MetaGPT"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -51,7 +51,7 @@ summary: "The Multi-Agent Framework: First AI Software Company, Towards Natural 
 ## 🔗 相关链接
 
 - [[Agent 生态 MOC]]
-- [[宗门逻辑与专业角色映射表]]
+- 宗门逻辑与专业角色映射表
 
 ---
 

@@ -1,10 +1,10 @@
 ---
 title: "TASK_STATE"
-aliases: []
+aliases: ["项目文档-xiaoan-finetune-TASK_STATE"]
 tags: [llm-wiki, migrated]
 category: project
 type: project
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:

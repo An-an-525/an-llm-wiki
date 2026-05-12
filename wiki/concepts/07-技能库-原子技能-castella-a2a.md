@@ -1,10 +1,10 @@
 ---
 title: "castella-a2a 技能"
-aliases: []
+aliases: ["castella-a2a"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -59,7 +59,7 @@ print(response)
 ## 🔗 相关链接
 
 - [[技能库 MOC]]
-- [[ACP 协议白皮书]]
+- ACP 协议白皮书
 - [[MuleRun_Skills_Hub]]
 
 ---

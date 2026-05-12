@@ -1,10 +1,10 @@
 ---
 title: "commit 技能"
-aliases: []
+aliases: ["commit"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -56,10 +56,10 @@ summary: "📝 commit 技能 (Smart Commit)"
 ## 🔗 相关链接
 
 - [[技能库 MOC]]
-- [[GitHub 技能]]
+- GitHub 技能
 - [[MuleRun_Skills_Hub]]
 - [[git-changes-reporter]] - 为提交信息提供内容参考。
-- [[git-worktree-setup]] - 在不同工作树中应用提交。
+- git-worktree-setup - 在不同工作树中应用提交。
 
 ---
 

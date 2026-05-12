@@ -4,7 +4,7 @@ aliases: []
 tags: [llm-wiki, migrated]
 category: project
 type: project
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -76,4 +76,4 @@ summary: "🏗️ zongmen-gui (宗门管理 GUI) 项目架构图"
 - **UI 风格统一**: 基于 `AIRI` 设计语言，完善更多专业化的 Agent 监控看板。
 
 ---
-log:: [[06 - 周期回顾/2026-04-10-详细行动存证]]
+log:: 2026-04-10-详细行动存证

@@ -1,10 +1,10 @@
 ---
 title: "MemPalace 长上下文记忆系统"
-aliases: []
+aliases: ["MemPalace-长上下文记忆系统-2026-04-11"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -161,8 +161,8 @@ summary: "MemPalace 长上下文记忆系统"
 
 ## 关联
 
-- [[MemPalace接入试点-2026-04-11]]
-- [[全局问题收敛路线-2026-04-11]]
-- [[Codex-当前上下文包-当前]]
-- [[Codex-连续接手摘要-当前]]
-- [[AI-Agent技术]]
+- MemPalace接入试点-2026-04-11
+- 全局问题收敛路线-2026-04-11
+- Codex-当前上下文包-当前
+- Codex-连续接手摘要-当前
+- AI-Agent技术

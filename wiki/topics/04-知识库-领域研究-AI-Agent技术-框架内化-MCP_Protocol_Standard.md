@@ -1,10 +1,10 @@
 ---
 title: "MCP (Model Context Protocol) 标准内化"
-aliases: []
+aliases: ["MCP_Protocol_Standard"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -56,4 +56,4 @@ summary: "🛰️ MCP (Model Context Protocol) 标准内化"
 - **复用社区资源**: 直接利用 `awesome-mcp-servers` 中的 2000+ 个现成 Server，无需再为 `accio` 编写重复的本地工具逻辑。
 
 ---
-log:: [[06 - 周期回顾/2026-04-10-详细行动存证]]
+log:: 2026-04-10-详细行动存证

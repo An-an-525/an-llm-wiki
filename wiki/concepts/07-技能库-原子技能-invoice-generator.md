@@ -1,10 +1,10 @@
 ---
 title: "invoice-generator 技能"
-aliases: []
+aliases: ["invoice-generator"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -72,7 +72,7 @@ cat data.json | {baseDir}/scripts/generate.sh
 
 - [[技能库 MOC]]
 - [[MuleRun_Skills_Hub]]
-- [[文档处理]]
+- 文档处理
 
 ---
 

@@ -1,10 +1,10 @@
 ---
 title: "Projects"
-aliases: []
+aliases: ["wiki-projects-README"]
 tags: [llm-wiki, migrated]
 category: synthesis
 type: project
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -26,9 +26,9 @@ summary: "放项目、产品、实验、交付记录与状态页。"
 ## Links
 
 - [[wiki/index]]
-- [[01 - 项目中枢/项目全景图]]
+- 项目全景图
 - [[04 - 知识库/项目索引]]
 
 ## Pages
 
-- [[wiki/projects/karpathy-llm-wiki-alignment-2026-05-12]] — 本地 vault 对齐 Karpathy LLM Wiki 模式的项目记录。
+- karpathy-llm-wiki-alignment-2026-05-12 — 本地 vault 对齐 Karpathy LLM Wiki 模式的项目记录。

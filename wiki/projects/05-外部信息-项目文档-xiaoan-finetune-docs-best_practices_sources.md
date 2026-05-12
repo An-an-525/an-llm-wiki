@@ -1,10 +1,10 @@
 ---
 title: "最佳实践来源清单（用于后续持续更新）"
-aliases: []
+aliases: ["项目文档-xiaoan-finetune-docs-best_practices_sources"]
 tags: [llm-wiki, migrated]
 category: project
 type: project
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:

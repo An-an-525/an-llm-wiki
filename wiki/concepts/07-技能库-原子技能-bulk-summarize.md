@@ -1,10 +1,10 @@
 ---
 title: "bulk-summarize 技能"
-aliases: []
+aliases: ["bulk-summarize"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -53,9 +53,9 @@ summary: "📹 bulk-summarize 技能"
 ## 🔗 相关链接
 
 - [[技能库 MOC]]
-- [[文档处理]]
+- 文档处理
 - [[MuleRun_Skills_Hub]]
-- [[youtube-collector]] - 核心数据源采集工具。
+- youtube-collector - 核心数据源采集工具。
 - [[transcript-fixer]] - 针对转录文本进行精细化处理。
 
 ---

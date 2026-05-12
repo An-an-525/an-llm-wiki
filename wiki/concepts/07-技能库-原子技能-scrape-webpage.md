@@ -1,10 +1,10 @@
 ---
 title: "scrape-webpage 技能"
-aliases: []
+aliases: ["scrape-webpage"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -56,8 +56,8 @@ node .claude/skills/scrape-webpage/scripts/analyze-webpage.js \
 
 - [[技能库 MOC]]
 - [[MuleRun_Skills_Hub]]
-- [[playwright]]
-- [[browser-control]]
+- playwright
+- browser-control
 
 ---
 

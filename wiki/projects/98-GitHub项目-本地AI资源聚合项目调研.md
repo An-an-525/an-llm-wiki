@@ -1,10 +1,10 @@
 ---
 title: "本地AI资源聚合项目调研"
-aliases: []
+aliases: ["本地AI资源聚合项目调研"]
 tags: [llm-wiki, migrated]
 category: project
 type: project
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -148,18 +148,18 @@ summary: "聚合本地资源和信息、面向 AI Agent 使用的开源项目汇
 
 | 需求场景 | 推荐项目 |
 |----------|----------|
-| 全局了解本地 AI 生态 | [[janhq/awesome-local-ai]] |
-| 深挖 Agent 工具链 | [[danielrosehill/Local-AI-Agent-Resources]] |
-| 让 AI 实时获取最新文档 | **[[neuledge/context]]** ⭐ |
-| 给 Agent 建本地上下文数据库 | **[[volcengine/OpenViking]]** ⭐ |
-| 一键部署全套本地 AI 环境 | [[coleam00/local-ai-packaged]] |
+| 全局了解本地 AI 生态 | awesome-local-ai |
+| 深挖 Agent 工具链 | Local-AI-Agent-Resources |
+| 让 AI 实时获取最新文档 | **context** ⭐ |
+| 给 Agent 建本地上下文数据库 | **OpenViking** ⭐ |
+| 一键部署全套本地 AI 环境 | local-ai-packaged |
 | 让 LobeHub 访问本地文件 | MCP Filesystem Server |
 
 ---
 
 ## 📌 与现有项目的关联
 
-- 这些项目可以配合 [[ollama.ollama]] 使用，作为本地 LLM 的上下文增强
+- 这些项目可以配合 ollama.ollama 使用，作为本地 LLM 的上下文增强
 - OpenViking 可以直接作为 Agent 的记忆/技能/资源统一存储层
 - local-ai-packaged 本质上是一个自托管的 AI 基础设施编排方案
 

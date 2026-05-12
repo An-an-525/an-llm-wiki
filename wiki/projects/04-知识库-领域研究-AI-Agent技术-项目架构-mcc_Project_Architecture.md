@@ -4,7 +4,7 @@ aliases: []
 tags: [llm-wiki, migrated]
 category: project
 type: project
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -62,4 +62,4 @@ summary: "🏗️ mcc (Master Control Console) 项目架构图"
 - **持久化增强**: 强化 `drizzle/` 中的数据库模式，支持更复杂的 Agent 状态存储。
 
 ---
-log:: [[06 - 周期回顾/2026-04-10-详细行动存证]]
+log:: 2026-04-10-详细行动存证

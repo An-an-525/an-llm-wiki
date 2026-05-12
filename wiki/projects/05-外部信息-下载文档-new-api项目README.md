@@ -1,10 +1,10 @@
 ---
 title: "new-api 项目 README"
-aliases: []
+aliases: ["下载文档-new-api项目README"]
 tags: [llm-wiki, migrated]
 category: project
 type: project
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -23,4 +23,4 @@ summary: "本页为空白占位修复后的轻量入口。当前可用资料："
 
 本页为空白占位修复后的轻量入口。当前可用资料：
 
-- [[05 - 外部信息/项目文档/newapi-readme]]
+- newapi-readme

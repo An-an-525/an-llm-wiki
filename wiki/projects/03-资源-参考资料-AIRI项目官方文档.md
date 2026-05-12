@@ -4,7 +4,7 @@ aliases: []
 tags: [llm-wiki, migrated]
 category: project
 type: project
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -118,6 +118,6 @@ AIRI 是一个AI虚拟角色/数字伴侣容器项目，灵感来源于 Neuro-sa
 
 ## 关联
 
-- [[全系统指挥中心]]
-- [[airi|airi 项目总览]]
-- [[airi-server|airi-server 项目总览]]
+- 全系统指挥中心
+- airi 项目总览
+- airi-server 项目总览

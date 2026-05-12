@@ -1,10 +1,10 @@
 ---
 title: "mcaf-skill-curation 技能"
-aliases: []
+aliases: ["mcaf-skill-curation"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -48,7 +48,7 @@ summary: "🛠️ mcaf-skill-curation 技能"
 ## 🔗 相关链接
 
 - [[技能库 MOC]]
-- [[Agent使用黑曜石准则]]
+- Agent使用黑曜石准则
 - [[MuleRun_Skills_Hub]]
 
 ---

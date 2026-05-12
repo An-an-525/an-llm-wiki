@@ -1,10 +1,10 @@
 ---
 title: "competitors-analysis 技能"
-aliases: []
+aliases: ["competitors-analysis"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -51,8 +51,8 @@ summary: "🕵️ competitors-analysis 技能"
 
 - [[技能库 MOC]]
 - [[MuleRun_Skills_Hub]]
-- [[知识资产审计报告]]
-- [[研究策略师 MOC]]
+- 知识资产审计报告
+- 研究策略师 MOC
 - [[sec-filing-watcher]] - 获取公开财务与披露信息。
 - [[git-changes-reporter]] - 分析竞品代码库变更趋势。
 

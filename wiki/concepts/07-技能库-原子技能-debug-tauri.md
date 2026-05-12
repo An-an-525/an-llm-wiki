@@ -1,10 +1,10 @@
 ---
 title: "debug-tauri 技能"
-aliases: []
+aliases: ["debug-tauri"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -51,8 +51,8 @@ node scripts/tauri_debugger.js --screenshot --output ./debug/
 
 - [[技能库 MOC]]
 - [[MuleRun_Skills_Hub]]
-- [[zongmen-gui_Project_Architecture]]
-- [[playwright]]
+- zongmen-gui_Project_Architecture
+- playwright
 
 ---
 

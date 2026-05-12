@@ -1,10 +1,10 @@
 ---
 title: "ms-agent-framework-rag 技能"
-aliases: []
+aliases: ["ms-agent-framework-rag"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -53,8 +53,8 @@ context = rag.retrieve("How to configure ACP protocol?")
 - [[技能库 MOC]]
 - [[MuleRun_Skills_Hub]]
 - [[LlamaIndex]] - 行业标杆 RAG 框架。
-- [[sqlite-vectordb]] - 本地向量存储后端。
-- [[记忆生命周期管理]]
+- sqlite-vectordb - 本地向量存储后端。
+- 记忆生命周期管理
 
 ---
 

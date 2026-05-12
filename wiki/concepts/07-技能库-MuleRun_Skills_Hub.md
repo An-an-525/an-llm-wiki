@@ -1,10 +1,10 @@
 ---
 title: "MuleRun Skills Hub"
-aliases: []
+aliases: ["MuleRun_Skills_Hub"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:

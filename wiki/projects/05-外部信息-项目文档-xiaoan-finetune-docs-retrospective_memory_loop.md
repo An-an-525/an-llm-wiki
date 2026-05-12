@@ -1,10 +1,10 @@
 ---
 title: "小安行动复盘与记忆迭代闭环"
-aliases: []
+aliases: ["项目文档-xiaoan-finetune-docs-retrospective_memory_loop"]
 tags: [llm-wiki, migrated]
 category: project
 type: project
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:

@@ -1,10 +1,10 @@
 ---
 title: "Aider"
-aliases: []
+aliases: ["Aider"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -52,7 +52,7 @@ summary: "AI Pair Programming in Your Terminal. Aider allows you to edit code in
 ## 🔗 相关链接
 
 - [[Agent 生态 MOC]]
-- [[Claude Code]]
+- Claude Code
 
 ---
 

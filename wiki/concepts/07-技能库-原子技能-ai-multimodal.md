@@ -1,10 +1,10 @@
 ---
 title: "ai-multimodal 技能"
-aliases: []
+aliases: ["ai-multimodal"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -60,8 +60,8 @@ python scripts/gemini_batch_process.py --task generate --prompt "A futuristic ci
 ## 🔗 相关链接
 
 - [[技能库 MOC]]
-- [[文档处理]]
-- [[youtube-collector]]
+- 文档处理
+- youtube-collector
 - [[MuleRun_Skills_Hub]]
 
 ---

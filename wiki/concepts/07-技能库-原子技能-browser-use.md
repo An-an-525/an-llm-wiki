@@ -1,10 +1,10 @@
 ---
 title: "browser-use 技能"
-aliases: []
+aliases: ["browser-use"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -54,16 +54,16 @@ await agent.run()
 ## 🔗 相关链接
 - [[技能库 MOC]]
 - [[MuleRun_Skills_Hub]]
-- [[browser-control]] - 基础浏览器控制接口。
-- [[playwright]] - 底层浏览器驱动引擎。
-- [[collaborating-with-claude]] - 结合 Claude 进行复杂交互开发。
+- browser-control - 基础浏览器控制接口。
+- playwright - 底层浏览器驱动引擎。
+- collaborating-with-claude - 结合 Claude 进行复杂交互开发。
 
 ---
 ## 🧬 【Neuro-Link】
-- **Upward (向上关联)**: 为 **[[mcc_Project_Architecture|mcc 后端中控]]** 提供网页 Agent 交互能力。
-- **Downward (向下关联)**: 依赖底层驱动 **[[playwright]]** 及视觉模型推理能力。
-- **Lateral (横向协作)**: 与 **[[browser-control]]** 形成“视觉+协议”的双重控制链路。
-- **全局拓扑**: 位于 **[[技术栈关联矩阵]]** 的 L3 编排与框架层。
+- **Upward (向上关联)**: 为 **mcc 后端中控** 提供网页 Agent 交互能力。
+- **Downward (向下关联)**: 依赖底层驱动 **playwright** 及视觉模型推理能力。
+- **Lateral (横向协作)**: 与 **browser-control** 形成“视觉+协议”的双重控制链路。
+- **全局拓扑**: 位于 **技术栈关联矩阵** 的 L3 编排与框架层。
 
 ---
-log:: [[06 - 周期回顾/2026-04-10-详细行动存证]]
+log:: 2026-04-10-详细行动存证

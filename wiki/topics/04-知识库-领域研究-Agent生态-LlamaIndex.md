@@ -1,10 +1,10 @@
 ---
 title: "LlamaIndex"
-aliases: []
+aliases: ["LlamaIndex"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -55,7 +55,7 @@ summary: "LlamaIndex (formerly GPT Index) is a data framework for your LLM appli
 - [[LangChain]]
 - [[Mem0]]
 - [[ms-agent-framework-rag]] - 微软框架下的 RAG 插件实现。
-- [[sqlite-vectordb]] - 支持本地语义搜索的向量后端。
+- sqlite-vectordb - 支持本地语义搜索的向量后端。
 
 ---
 

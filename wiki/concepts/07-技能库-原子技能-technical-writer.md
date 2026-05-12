@@ -1,10 +1,10 @@
 ---
 title: "technical-writer 技能"
-aliases: []
+aliases: ["technical-writer"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -47,8 +47,8 @@ summary: "✍️ technical-writer 技能"
 ## 🔗 相关链接
 
 - [[技能库 MOC]]
-- [[笔记写入规范]]
-- [[ADR-架构决策日志]]
+- 笔记写入规范
+- ADR-架构决策日志
 - [[MuleRun_Skills_Hub]]
 
 ---

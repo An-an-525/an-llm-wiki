@@ -1,10 +1,10 @@
 ---
 title: "Agent-Computer Interface (ACI) 设计准则 2026"
-aliases: []
+aliases: ["Agent_Computer_Interface_Best_Practices"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -55,4 +55,4 @@ summary: "⌨️ Agent-Computer Interface (ACI) 设计准则 2026"
 3. **增加环境快照**: 每次工具调用前自动注入当前的 `project_structure` 和 `active_task`。
 
 ---
-log:: [[06 - 周期回顾/2026-04-10-详细行动存证]]
+log:: 2026-04-10-详细行动存证

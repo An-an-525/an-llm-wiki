@@ -1,10 +1,10 @@
 ---
 title: "transcript-fixer 技能"
-aliases: []
+aliases: ["transcript-fixer"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -51,9 +51,9 @@ python3 scripts/fix_transcript.py input.txt --summary-only
 
 - [[技能库 MOC]]
 - [[MuleRun_Skills_Hub]]
-- [[文档处理]]
+- 文档处理
 - [[bulk-summarize]] - 生成结构化会议纪要。
-- [[paperless-ngx]] - 存档处理后的文档。
+- paperless-ngx - 存档处理后的文档。
 
 ---
 

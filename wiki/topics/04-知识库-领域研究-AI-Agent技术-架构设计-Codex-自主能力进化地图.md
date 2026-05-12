@@ -1,10 +1,10 @@
 ---
 title: "Codex 自主能力进化地图"
-aliases: []
+aliases: ["Codex-自主能力进化地图"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -68,16 +68,16 @@ summary: "本页是 `Codex` 自主能力主线的 Obsidian 镜像入口，不是
 
 ## 阅读顺序
 
-1. [[99 - Agent指南与规范/Codex-轻量通用规则-2026-04-24]]
-2. [[99 - Agent指南与规范/当前状态总览]]
+1. Codex-轻量通用规则-2026-04-24
+2. 当前状态总览
 3. `[local path redacted]`
-4. [[Codex能力边界与向外学习框架-2026-04-15]]
-5. [[Codex生态扩展与Harness编排研究-2026-04-15]]
+4. Codex能力边界与向外学习框架-2026-04-15
+5. Codex生态扩展与Harness编排研究-2026-04-15
 6. [[Codex后台代跑侧车试点-v1-2026-04-15]]（按需）
 7. [[Codex治理任务编排主线-v1-2026-04-15]]（按需）
 8. [[Codex验证反馈回环主线-v1-2026-04-15]]（按需）
-9. [[00 - 协作缓冲区/02 - Action_Items/Codex 自主能力演进待办-当前]]
-10. [[06 - 周期回顾/每周/2026-W16-Codex-自主能力综合判断]]
+9. Codex 自主能力演进待办-当前
+10. 2026-W16-Codex-自主能力综合判断
 
 ## 操作节奏
 
@@ -93,11 +93,11 @@ summary: "本页是 `Codex` 自主能力主线的 Obsidian 镜像入口，不是
 
 ## 关联
 
-- [[00 - 协作缓冲区/02 - Action_Items/Codex 自主能力演进待办-当前]]
-- [[Codex能力边界与向外学习框架-2026-04-15]]
-- [[Codex生态扩展与Harness编排研究-2026-04-15]]
+- Codex 自主能力演进待办-当前
+- Codex能力边界与向外学习框架-2026-04-15
+- Codex生态扩展与Harness编排研究-2026-04-15
 - [[Codex后台代跑侧车试点-v1-2026-04-15]]
 - [[Codex治理任务编排主线-v1-2026-04-15]]
 - [[Codex验证反馈回环主线-v1-2026-04-15]]
-- [[99 - Agent指南与规范/当前状态总览]]
-- [[06 - 周期回顾/周期回顾总览]]
+- 当前状态总览
+- 周期回顾总览

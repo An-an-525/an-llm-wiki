@@ -1,10 +1,10 @@
 ---
 title: "LLM Wiki Index"
-aliases: []
+aliases: ["index"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -35,9 +35,9 @@ summary: "[!abstract] LLM Wiki 定位"
 
 ## 当前样例
 
-- [[04 - 知识库/LLM Wiki/articles/2026-04-11-Agentic-Wiki-编译样本|Agentic Wiki 编译样本]]
-- [[04 - 知识库/LLM Wiki/articles/2026-04-14-多仓接入样例|多仓接入样例]]
-- [[04 - 知识库/LLM Wiki/articles/2026-05-01-Codex-会话历史导入与上下文沉淀|Codex 会话历史导入与上下文沉淀]]
+- Agentic Wiki 编译样本
+- 多仓接入样例
+- Codex 会话历史导入与上下文沉淀
 
 > [!warning] 告警规则
 > - 出现 C 盘异常持久化或无 `storage_tier` 的条目 → 先挂**待修复**
@@ -46,9 +46,9 @@ summary: "[!abstract] LLM Wiki 定位"
 
 ## 推荐入口
 
-- [[99 - Agent指南与规范/00-开始 here|全系统指挥中心]]
-- [[99 - Agent指南与规范/Obsidian-知识编译流水线-2026-04-11|知识编译流水线]]
+- 全系统指挥中心
+- 知识编译流水线
 - [[99 - 模板/LLM Wiki 条目模板|Wiki 条目模板]]
-- [[04 - 知识库/本地物理资产全景索引|物理资产全景索引]]
+- 物理资产全景索引
 - [[04 - 知识库/LLM Wiki/log|Wiki 导入日志]]
-- [[04 - 知识库/LLM Wiki/sources/2026-05-01-Codex-历史导入源登记|Codex 历史导入源登记]]
+- Codex 历史导入源登记

@@ -1,10 +1,10 @@
 ---
 title: "GitHub AI Agent 生态全景报告 (完整版)"
-aliases: []
+aliases: ["调研报告-存档-GitHub_AI_Agent_生态全景报告"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:

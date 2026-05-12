@@ -1,10 +1,10 @@
 ---
 title: "ccsinfo 技能"
-aliases: []
+aliases: ["ccsinfo"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -51,7 +51,7 @@ node scripts/collect_info.js --ai-check
 
 - [[技能库 MOC]]
 - [[MuleRun_Skills_Hub]]
-- [[基础设施运维底座]]
+- 基础设施运维底座
 
 ---
 

@@ -1,10 +1,10 @@
 ---
 title: "CrewAI 架构内化: 角色驱动与任务委派"
-aliases: []
+aliases: ["CrewAI_Architecture"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -55,4 +55,4 @@ summary: "👥 CrewAI 架构内化: 角色驱动与任务委派"
 - **管理层级**: 在复杂项目中，引入一个 `Manager Agent` 自动处理任务同步和冲突。
 
 ---
-log:: [[06 - 周期回顾/2026-04-10-详细行动存证]]
+log:: 2026-04-10-详细行动存证

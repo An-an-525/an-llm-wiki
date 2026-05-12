@@ -1,10 +1,10 @@
 ---
 title: "swissweather 技能"
-aliases: []
+aliases: ["swissweather"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:

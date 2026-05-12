@@ -1,10 +1,10 @@
 ---
 title: "openclaw-version-monitor 技能"
-aliases: []
+aliases: ["flyio-cli-public"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -60,7 +60,7 @@ curl -s https://api.github.com/repos/openclaw/openclaw/releases/latest | jq -r '
 ## 🔗 相关链接
 
 - [[技能库 MOC]]
-- [[GitHub 技能]]
+- GitHub 技能
 - [[MuleRun_Skills_Hub]]
 
 ---

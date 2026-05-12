@@ -1,10 +1,10 @@
 ---
 title: "MCP 生态全景 (MCP Ecosystem 2026)"
-aliases: []
+aliases: ["MCP_Ecosystem_2026"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -55,4 +55,4 @@ summary: "🛰️ MCP 生态全景 (MCP Ecosystem 2026)"
 - **本地 MCP 优先**: 鼓励将本地的 `python-scripts` 封装为标准的 **Stdio MCP Server**，实现与 `mcc` 的解耦。
 
 ---
-log:: [[06 - 周期回顾/2026-04-10-详细行动存证]]
+log:: 2026-04-10-详细行动存证

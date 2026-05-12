@@ -1,10 +1,10 @@
 ---
 title: "LlamaIndex AgentWorkflow 内化: RAG 原生与数据驱动"
-aliases: []
+aliases: ["LlamaIndex_AgentWorkflow"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -48,4 +48,4 @@ summary: "📊 LlamaIndex AgentWorkflow 内化: RAG 原生与数据驱动"
 - **文档专家角色**: 强化 `technical-writer-pro` 在大规模文档处理时的“多子查询”能力。
 
 ---
-log:: [[06 - 周期回顾/2026-04-10-详细行动存证]]
+log:: 2026-04-10-详细行动存证

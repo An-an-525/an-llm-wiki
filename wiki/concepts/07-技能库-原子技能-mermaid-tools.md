@@ -1,10 +1,10 @@
 ---
 title: "mermaid-tools 技能"
-aliases: []
+aliases: ["mermaid-tools"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -58,7 +58,7 @@ cd ~/.claude/skills/mermaid-tools/scripts
 
 - [[技能库 MOC]]
 - [[MuleRun_Skills_Hub]]
-- [[文档处理]]
+- 文档处理
 
 ---
 

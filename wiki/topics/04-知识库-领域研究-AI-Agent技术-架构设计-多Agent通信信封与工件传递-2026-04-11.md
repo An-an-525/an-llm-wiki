@@ -1,10 +1,10 @@
 ---
 title: "多Agent通信信封与工件传递"
-aliases: []
+aliases: ["多Agent通信信封与工件传递-2026-04-11"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -109,8 +109,8 @@ timestamp
 ## 相关链接
 
 - [[多Agent协调与受控委派-2026-04-11]]
-- [[Agent 平台最佳实践与反模式-2026-04-11]]
+- Agent 平台最佳实践与反模式-2026-04-11
 - [[MCP_Protocol_Standard]]
-- [[01 - 项目中枢/活跃项目/Multica 运行时目标]]
-- [[99 - Agent指南与规范/多Agent协作冲突处理协议]]
-- [[06 - 周期回顾/2026-04-11-详细行动存证]]
+- Multica 运行时目标
+- 多Agent协作冲突处理协议
+- 2026-04-11-详细行动存证

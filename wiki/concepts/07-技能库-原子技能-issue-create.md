@@ -1,10 +1,10 @@
 ---
 title: "issue-create 技能"
-aliases: []
+aliases: ["issue-create"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -55,7 +55,7 @@ summary: "Create well-formatted GitHub issues with AI-powered label suggestions 
 ## 🔗 相关链接
 
 - [[技能库 MOC]]
-- [[GitHub 技能]]
+- GitHub 技能
 - [[MuleRun_Skills_Hub]]
 
 ---

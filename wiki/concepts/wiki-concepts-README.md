@@ -1,10 +1,10 @@
 ---
 title: "Concepts"
-aliases: []
+aliases: ["wiki-concepts-README"]
 tags: [llm-wiki, migrated]
 category: synthesis
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -27,7 +27,7 @@ summary: "放原子概念、方法、术语、模式和可复用判断框架。"
 
 - [[wiki/index]]
 - [[wiki/topics/README|Topics]]
-- [[04 - 知识库/方法论专题/00-方法论索引]]
+- 00-方法论索引
 
 ## Pages
 

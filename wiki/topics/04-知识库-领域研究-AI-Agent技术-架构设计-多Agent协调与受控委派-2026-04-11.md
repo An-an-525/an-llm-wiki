@@ -1,10 +1,10 @@
 ---
 title: "多Agent协调与受控委派"
-aliases: []
+aliases: ["多Agent协调与受控委派-2026-04-11"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -109,8 +109,8 @@ summary: "目标：明确当前本地多 Agent 应该怎样协作，才不会退
 ## 相关链接
 
 - [[多Agent通信信封与工件传递-2026-04-11]]
-- [[本地工具权限地图与审批边界-2026-04-11]]
-- [[99 - Agent指南与规范/多Agent协作冲突处理协议]]
-- [[99 - Agent指南与规范/Multica-转接协议-2026-04-11]]
-- [[01 - 项目中枢/活跃项目/Multica 运行时目标]]
-- [[06 - 周期回顾/2026-04-11-详细行动存证]]
+- 本地工具权限地图与审批边界-2026-04-11
+- 多Agent协作冲突处理协议
+- Multica-转接协议-2026-04-11
+- Multica 运行时目标
+- 2026-04-11-详细行动存证

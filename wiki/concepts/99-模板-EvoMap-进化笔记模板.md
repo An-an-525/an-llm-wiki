@@ -4,7 +4,7 @@ aliases: []
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -40,7 +40,7 @@ summary: "🌀 [EVO-XXX] [问题简短描述]"
 ## 🧬 4. 系统进化 (Evolution)
 - **方法论提炼**: [针对此问题，制定了什么新的规则或最佳实践？]
 - **系统性改进**: [是否修改了全局规范 (SOP) 或工具 (Tools)？]
-- **关联规范**: [[相关准则笔记]]
+- **关联规范**: 相关准则笔记
 
 ---
 *“错误记录，系统进化。”*

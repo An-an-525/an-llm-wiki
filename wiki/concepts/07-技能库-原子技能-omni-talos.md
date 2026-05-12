@@ -1,10 +1,10 @@
 ---
 title: "omni-talos 技能"
-aliases: []
+aliases: ["omni-talos"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -54,7 +54,7 @@ summary: "Operational tooling for Talos Linux Kubernetes clusters via Sidero Omn
 ## 🔗 相关链接
 
 - [[技能库 MOC]]
-- [[基础设施运维底座]]
+- 基础设施运维底座
 - [[MuleRun_Skills_Hub]]
 
 ---

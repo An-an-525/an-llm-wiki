@@ -1,10 +1,10 @@
 ---
 title: "小安复盘知识库"
-aliases: []
+aliases: ["项目文档-xiaoan-finetune-data-knowledge-lessons"]
 tags: [llm-wiki, migrated]
 category: project
 type: project
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:

@@ -1,10 +1,10 @@
 ---
 title: "CrewAI"
-aliases: []
+aliases: ["CrewAI"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -52,10 +52,10 @@ summary: "CrewAI is a cutting-edge framework for orchestrating role-playing, aut
 ## 🔗 相关链接
 
 - [[Agent 生态 MOC]]
-- [[LangGraph]]
+- LangGraph
 - [[MetaGPT]]
 - [[AutoGen]] - 另一种多 Agent 协作框架。
-- [[宗门逻辑与专业角色映射表]] - 本地团队角色定义的理论基础。
+- 宗门逻辑与专业角色映射表 - 本地团队角色定义的理论基础。
 
 ---
 

@@ -1,10 +1,10 @@
 ---
 title: "Agent 协作设计模式 (Design Patterns 2026)"
-aliases: []
+aliases: ["Agent_Design_Patterns_2026"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -67,4 +67,4 @@ summary: "🧩 Agent 协作设计模式 (Design Patterns 2026)"
 2. **引入“回溯钩子”**: 在 `task-update` 中增加 `retry_from_step` 字段，支持任务执行的失败回溯。
 
 ---
-log:: [[06 - 周期回顾/2026-04-10-详细行动存证]]
+log:: 2026-04-10-详细行动存证

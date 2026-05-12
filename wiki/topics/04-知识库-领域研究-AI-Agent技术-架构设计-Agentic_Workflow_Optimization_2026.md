@@ -1,10 +1,10 @@
 ---
 title: "Agent 工作流优化最佳实践 (Optimization 2026)"
-aliases: []
+aliases: ["Agentic_Workflow_Optimization_2026"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -56,6 +56,6 @@ summary: "🚀 Agent 工作流优化最佳实践 (Optimization 2026)"
 3. **任务原子化**: `task-architect` 在拆解任务时，应确保每个子任务独立且闭环。
 
 ---
-log:: [[06 - 周期回顾/2026-04-10-详细行动存证.md]]
-DoD Status:: [[04 - 知识库/99 - Agent指南与规范/系统验收标准看板.md]]
-MOC:: [[04 - 知识库/领域研究/AI-Agent技术/框架内化/Frameworks_MOC.md]]
+log:: 2026-04-10-详细行动存证
+DoD Status:: 系统验收标准看板
+MOC:: Frameworks_MOC

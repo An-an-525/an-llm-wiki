@@ -1,10 +1,10 @@
 ---
 title: "Learn Harness：从 vibe agent 到 Harness Engineering"
-aliases: []
+aliases: ["Learn-Harness-从vibe-agent到稳定执行层-2026-05-01"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -176,6 +176,6 @@ Learn Harness 应继承现有“单主控 + 多执行面”的本地原则：
 
 - [[多Agent协调与受控委派-2026-04-11]]
 - [[多Agent通信信封与工件传递-2026-04-11]]
-- [[Codex生态扩展与Harness编排研究-2026-04-15]]
-- [[04 - 知识库/方法论专题/08-多Agent协调模式]]
-- [[06 - 周期回顾/每日/2026-04-28-LobeHub早间简报]]
+- Codex生态扩展与Harness编排研究-2026-04-15
+- 08-多Agent协调模式
+- 2026-04-28-LobeHub早间简报

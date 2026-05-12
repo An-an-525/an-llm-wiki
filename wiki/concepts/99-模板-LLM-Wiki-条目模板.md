@@ -4,7 +4,7 @@ aliases: []
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -33,7 +33,7 @@ updated: YYYY-MM-DD HH:mm
 tags: [llm-wiki, <topic>, <type>, <project-key>]
 status: active
 uid: <stable-id>
-source: [[99 - Agent指南与规范/Obsidian-知识编译流水线-2026-04-11]]
+source: Obsidian-知识编译流水线-2026-04-11
 storage_tier: compiled
 source_locator: [[00 - 协作缓冲区/01 - Inbox/raw/...]]
 source_root: [local path redacted]<repo>\...
@@ -92,13 +92,13 @@ llm_reuse_scope: project
 ## 使用约束
 
 - 条目必须有 YAML frontmatter，并包含 `storage_tier`、`source_locator`、`source_root`
-- 条目必须至少保留 2 个 `[[wiki link]]`
+- 条目必须至少保留 2 个 `wiki link`
 - 条目必须在 `04 - 知识库/LLM Wiki/index.md` 或专题 MOC 中登记
 - 每条新增或改写都应回写 `log.md` 的对应字段
 - 验收前必须执行 `obsidian-aos --json validate-note <path>`
 
 ## 关联
 
-- [[99 - Agent指南与规范/Obsidian-知识编译流水线-2026-04-11]]
+- Obsidian-知识编译流水线-2026-04-11
 - [[04 - 知识库/LLM Wiki/index]]
 - [[04 - 知识库/LLM Wiki/log]]

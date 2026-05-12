@@ -1,10 +1,10 @@
 ---
 title: "Karpathy LLM Wiki Alignment 2026-05-12"
-aliases: []
+aliases: ["wiki-projects-karpathy-llm-wiki-alignment-2026-05-12"]
 tags: [llm-wiki, migrated]
 category: synthesis
 type: project
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -28,7 +28,7 @@ Bring `[local path redacted]` closer to the Karpathy LLM Wiki pattern while pres
 ## Completed In This Pass
 
 - Added an official source note for the Karpathy gist.
-- Added [[wiki/current-status]] as the active alignment and startup status page.
+- Added current-status as the active alignment and startup status page.
 - Added [[wiki/sources-and-data]] for raw-source, manifest, privacy, and GitHub publication policy.
 - Added `manifests/raw_sources.csv` as the first source registry.
 - Added `.gitignore` so private raw material and volatile Obsidian state are excluded before GitHub work.

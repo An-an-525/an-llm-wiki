@@ -1,10 +1,10 @@
 ---
 title: "gh-fix-ci 技能"
-aliases: []
+aliases: ["gh-fix-ci"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -53,7 +53,7 @@ summary: "用于调试和修复 GitHub Actions 失败检查。适合定位 PR ch
 ## 🔗 相关链接
 
 - [[技能库 MOC]]
-- [[GitHub]]
+- GitHub
 - [[gh-address-comments]]
 - [[yeet]]
 

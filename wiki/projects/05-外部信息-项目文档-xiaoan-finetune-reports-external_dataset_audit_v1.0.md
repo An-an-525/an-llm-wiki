@@ -1,10 +1,10 @@
 ---
 title: "External SFT Dataset Audit"
-aliases: []
+aliases: ["项目文档-xiaoan-finetune-reports-external_dataset_audit_v1.0"]
 tags: [llm-wiki, migrated]
 category: project
 type: project
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:

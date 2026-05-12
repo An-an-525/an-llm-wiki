@@ -1,10 +1,10 @@
 ---
 title: "PROGRESS SNAPSHOT v1.1 025"
-aliases: []
+aliases: ["项目文档-xiaoan-finetune-PROGRESS_SNAPSHOT_v1_1_025"]
 tags: [llm-wiki, migrated]
 category: project
 type: project
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:

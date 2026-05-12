@@ -1,16 +1,16 @@
 ---
 title: "多仓接入样例-仓库主控与LLM Wiki闭环"
-aliases: []
+aliases: ["articles-2026-04-14-多仓接入-样例"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
   - "[[wiki/sources/pre-rebuild-vault-archive]]"
 source_id: "63678da6e3ef"
-summary: "归档说明：当前 canonical 样例页见 [[04 - 知识库/LLM Wiki/articles/2026-04-14-多仓接入样例]]。本页保留为历史叙述与对比样本。"
+summary: "归档说明：当前 canonical 样例页见 2026-04-14-多仓接入样例。本页保留为历史叙述与对比样本。"
 ---
 
 # 多仓接入样例-仓库主控与LLM Wiki闭环
@@ -19,7 +19,7 @@ summary: "归档说明：当前 canonical 样例页见 [[04 - 知识库/LLM Wiki
 
 ## Content
 
-> 归档说明：当前 canonical 样例页见 [[04 - 知识库/LLM Wiki/articles/2026-04-14-多仓接入样例]]。本页保留为历史叙述与对比样本。
+> 归档说明：当前 canonical 样例页见 2026-04-14-多仓接入样例。本页保留为历史叙述与对比样本。
 
 # 多仓接入样例-仓库主控与LLM Wiki闭环
 
@@ -42,5 +42,5 @@ summary: "归档说明：当前 canonical 样例页见 [[04 - 知识库/LLM Wiki
 
 - [[04 - 知识库/LLM Wiki/index]]
 - [[04 - 知识库/LLM Wiki/log]]
-- [[99 - Agent指南与规范/Obsidian-知识编译流水线-2026-04-11]]
-- [[04 - 知识库/本地物理资产全景索引]]
+- Obsidian-知识编译流水线-2026-04-11
+- 本地物理资产全景索引

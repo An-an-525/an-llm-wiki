@@ -1,10 +1,10 @@
 ---
 title: "Browser-use"
-aliases: []
+aliases: ["Browser-use"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -51,8 +51,8 @@ summary: "Make websites accessible for AI agents."
 ## 🔗 相关链接
 
 - [[Agent 生态 MOC]]
-- [[playwright]] - 底层浏览器自动化驱动。
-- [[browser-control]] - 浏览器 HTTP 控制接口。
+- playwright - 底层浏览器自动化驱动。
+- browser-control - 浏览器 HTTP 控制接口。
 
 ---
 

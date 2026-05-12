@@ -1,10 +1,10 @@
 ---
 title: "LangChain"
-aliases: []
+aliases: ["LangChain"]
 tags: [llm-wiki, migrated]
 category: concept
 type: topic
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -51,7 +51,7 @@ summary: "LangChain is a framework for developing applications powered by large 
 ## 🔗 相关链接
 
 - [[Agent 生态 MOC]]
-- [[LangGraph]] - LangChain 旗下的状态机框架。
+- LangGraph - LangChain 旗下的状态机框架。
 
 ---
 

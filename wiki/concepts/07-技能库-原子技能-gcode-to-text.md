@@ -1,10 +1,10 @@
 ---
 title: "gcode-to-text 技能 (Letta)"
-aliases: []
+aliases: ["gcode-to-text"]
 tags: [llm-wiki, migrated]
 category: concept
 type: concept
-status: active
+status: migrated-needs-source-review
 created: 2026-05-12
 updated: 2026-05-12
 sources:
@@ -51,7 +51,7 @@ Letta 提供三类记忆，需在 context window 80% 以内平衡：
 ## 🔗 相关链接
 
 - [[技能库 MOC]]
-- [[记忆生命周期管理]]
+- 记忆生命周期管理
 - [[MuleRun_Skills_Hub]]
 
 ---
