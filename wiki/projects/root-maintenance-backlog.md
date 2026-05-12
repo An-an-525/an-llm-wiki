@@ -1,6 +1,6 @@
 ---
 title: Root Maintenance Backlog
-aliases:
+aliases: ["- 根问题清单"]
   - 根问题清单
   - Rebuild Follow-up Issues
 tags: [llm-wiki, project, maintenance]
@@ -27,7 +27,7 @@ These are root issues to solve after the public-safe rebuild, kept here so they 
 | P1 | Migration quality pass | Some migrated pages preserve old headings, examples, or generated-report structure | High-value pages are rewritten into compact source-aware wiki notes |
 | P1 | Source coverage | Migrated pages currently cite the pre-rebuild archive as a bulk source | Important claims have specific public source notes under `wiki/sources/` |
 | P1 | Git publish reliability | First push needed an explicit working proxy override | Push workflow is documented or made independent of transient local network settings |
-| P2 | Restore drill | Archive exists, but restore has not been rehearsed end to end | A test restore to a temporary path succeeds and is recorded |
+| P2 | Restore drill | Temporary restore drill completed for archive ID `pre-karpathy-rebuild-20260512-143127` | Recorded in [restore_drill.csv](../../manifests/restore_drill.csv) without exposing local absolute paths |
 | P2 | Index shape | `wiki/index` is large and mostly mechanical | Index is split into topic MOCs with short summaries |
 
 ## Working Rules
@@ -44,3 +44,9 @@ These are root issues to solve after the public-safe rebuild, kept here so they 
 3. Split migrated skill pages into a dedicated skills MOC.
 4. Add public source notes for the GitHub reference projects and AI agent framework pages.
 5. Document the reliable push command without exposing local network details.
+
+## Completed This Batch
+
+- Broken wikilinks reduced to zero untriaged findings in the validator.
+- Privacy scan rules were hardened while preserving a zero high-risk publication gate.
+- Restore drill was rehearsed to a temporary copy and recorded in [restore_drill.csv](../../manifests/restore_drill.csv).
