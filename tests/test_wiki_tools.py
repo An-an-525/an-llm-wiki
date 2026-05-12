@@ -25,6 +25,7 @@ wiki_check = load_module("wiki_check", ROOT / "scripts" / "wiki_check.py")
 privacy_scan = load_module("privacy_scan", ROOT / "scripts" / "privacy_scan.py")
 build_public_inventory = load_module("build_public_inventory", ROOT / "scripts" / "build_public_inventory.py")
 check_private_wiki = load_module("check_private_wiki", ROOT / "scripts" / "check_private_wiki.py")
+build_local_source_inventory = load_module("build_local_source_inventory", ROOT / "scripts" / "build_local_source_inventory.py")
 
 
 class WikiCheckTests(unittest.TestCase):
@@ -178,6 +179,25 @@ class PrivateWikiCheckTests(unittest.TestCase):
         block = check_private_wiki.frontmatter(text)
         self.assertEqual(set(), check_private_wiki.REQUIRED_KEYS - check_private_wiki.frontmatter_keys(block))
         self.assertTrue(check_private_wiki.has_private_visibility(block))
+
+
+class LocalSourceInventoryTests(unittest.TestCase):
+    def test_local_sensitive_scan_hashes_excerpt_without_value(self) -> None:
+        text = "token=abcd1234abcd1234\n"
+        findings, timeline, groups = build_local_source_inventory.scan_text("root", "note.md", text)
+        self.assertEqual("secret_assignment", findings[0]["rule"])
+        self.assertEqual("credential", findings[0]["group"])
+        self.assertNotIn("abcd1234abcd1234", findings[0].values())
+        self.assertEqual([], timeline)
+        self.assertEqual(1, groups["credential"])
+
+    def test_binary_hash_defaults_to_metadata_only(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "image.png"
+            path.write_bytes(b"not really an image")
+            digest, status = build_local_source_inventory.sha256_file(path, path.stat().st_size, "image", [])
+            self.assertEqual("", digest)
+            self.assertEqual("metadata-only", status)
 
 
 if __name__ == "__main__":

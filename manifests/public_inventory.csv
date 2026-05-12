@@ -1,8 +1,8 @@
 path,bytes
 .env.example,22
 .gitignore,608
-AGENTS.md,2669
-CLAUDE.md,2458
+AGENTS.md,3083
+CLAUDE.md,2849
 README.md,1342
 index.md,984
 log.md,1556
@@ -14,12 +14,13 @@ manifests/restore_drill.csv,372
 manifests/wiki_check_broken_links.csv,33
 manifests/wiki_check_exceptions.csv,26
 manifests/wiki_check_report.json,181
-scripts/build_private_wiki.py,19699
+scripts/build_local_source_inventory.py,22757
+scripts/build_private_wiki.py,36750
 scripts/build_public_inventory.py,1408
 scripts/check_private_wiki.py,4299
-scripts/privacy_scan.py,5372
+scripts/privacy_scan.py,5464
 scripts/wiki_check.py,9513
-tests/test_wiki_tools.py,8017
+tests/test_wiki_tools.py,9124
 wiki/concepts/03-代码片段-代码片段索引.md,1283
 wiki/concepts/04-知识库-方法论专题-06-Obsidian知识管理.md,5847
 wiki/concepts/04-知识库-领域研究-AI-Agent技术-技能库-MCP_Ecosystem_2026.md,2150

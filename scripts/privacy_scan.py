@@ -32,6 +32,7 @@ ALLOW_MARKER_FILES = {
     "CLAUDE.md",
     "README.md",
     "scripts/build_private_wiki.py",
+    "scripts/build_local_source_inventory.py",
     "scripts/build_public_inventory.py",
     "scripts/check_private_wiki.py",
     "scripts/wiki_check.py",
@@ -86,7 +87,7 @@ def hash_excerpt(text: str) -> str:
 
 
 def should_skip_rule(rel: str, rule_name: str) -> bool:
-    if rel == "scripts/privacy_scan.py":
+    if rel in {"scripts/privacy_scan.py", "scripts/build_local_source_inventory.py"}:
         return True
     if rel == "tests/test_wiki_tools.py":
         return True

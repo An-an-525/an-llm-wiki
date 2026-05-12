@@ -12,6 +12,7 @@ from pathlib import Path
 ARCHIVE_ID = "pre-karpathy-rebuild-20260512-143127"
 PRIVATE_MANIFEST_DIR = Path("inbox/private/local-recovery-2026-05-12/manifests")
 PRIVATE_CAPTURES_DIR = Path("inbox/private/local-recovery-2026-05-12/captures")
+LOCAL_DISCOVERY_DIR = Path("inbox/private/local-recovery-2026-05-12/local-discovery")
 OUT_DIR = Path("private-wiki")
 TODAY = "2026-05-12"
 
@@ -103,6 +104,18 @@ def md_link(label: str, vault_path: str, current_depth: int = 1) -> str:
 def private_report_link(label: str, manifest_name: str, current_depth: int = 1) -> str:
     prefix = "../" * current_depth
     return f"[{label}]({prefix}{PRIVATE_MANIFEST_DIR.as_posix()}/{manifest_name})"
+
+
+def local_report_link(label: str, manifest_name: str, current_depth: int = 1) -> str:
+    prefix = "../" * current_depth
+    return f"[{label}]({prefix}{LOCAL_DISCOVERY_DIR.as_posix()}/{manifest_name})"
+
+
+def md_cell(text: str, limit: int = 160) -> str:
+    clean = (text or "").replace("|", "-").replace("\n", " ").strip()
+    if len(clean) > limit:
+        return clean[: limit - 3] + "..."
+    return clean
 
 
 def row_label(row: dict[str, str]) -> str:
@@ -212,6 +225,252 @@ def context_page(rows: list[dict[str, str]], category: str, title: str, summary:
     write_page(output, title, [title], ["local-recovery", "private-wiki"], "private-context", "moc", summary, body)
 
 
+def local_root_table(rows: list[dict[str, str]], limit: int = 80) -> str:
+    lines = ["| Root | Files | Findings | Latest modified | Categories |", "|---|---:|---:|---|---|"]
+    for row in rows[:limit]:
+        categories = row.get("category_counts", "{}")
+        lines.append(
+            f"| `{md_cell(row.get('root_id', ''), 80)}`<br>`{md_cell(row.get('path', ''), 140)}` | "
+            f"{row.get('files', '0')} | {row.get('findings', '0')} | `{row.get('latest_modified_at', '')}` | `{md_cell(categories, 220)}` |"
+        )
+    if len(rows) > limit:
+        lines.append(f"| ... | ... | ... | ... | {len(rows) - limit} more roots in local_roots.csv |")
+    if len(lines) == 2:
+        lines.append("| - | 0 | 0 | - | - |")
+    return "\n".join(lines)
+
+
+def local_finding_table(rows: list[dict[str, str]], limit: int = 220) -> str:
+    lines = ["| Severity | Group | Rule | Line | Source | Hash |", "|---|---|---|---:|---|---|"]
+    for row in rows[:limit]:
+        source = f"{row.get('root_id', '')}/{row.get('relative_path', '')}"
+        lines.append(
+            f"| `{row.get('severity', '')}` | `{row.get('group', '')}` | `{row.get('rule', '')}` | "
+            f"{row.get('line', '')} | `{md_cell(source, 190)}` | `{row.get('excerpt_hash', '')}` |"
+        )
+    if len(rows) > limit:
+        lines.append(f"| ... | ... | ... | ... | {len(rows) - limit} more rows in local_sensitive_findings.csv | ... |")
+    if len(lines) == 2:
+        lines.append("| - | - | - | 0 | No matching findings | - |")
+    return "\n".join(lines)
+
+
+def local_inventory_table(rows: list[dict[str, str]], limit: int = 180) -> str:
+    lines = ["| Category | Kind | Size | Source | Risk flags |", "|---|---|---:|---|---|"]
+    for row in rows[:limit]:
+        source = f"{row.get('root_id', '')}/{row.get('relative_path', '')}"
+        lines.append(
+            f"| `{row.get('category', '')}` | `{row.get('kind', '')}` | {row.get('size_bytes', '0')} | "
+            f"`{md_cell(source, 190)}` | `{md_cell(row.get('risk_flags', '') or '-', 180)}` |"
+        )
+    if len(rows) > limit:
+        lines.append(f"| ... | ... | ... | {len(rows) - limit} more rows in local_source_inventory.csv | ... |")
+    if len(lines) == 2:
+        lines.append("| - | - | 0 | No matching sources | - |")
+    return "\n".join(lines)
+
+
+def append_sample(bucket: list[dict[str, str]], row: dict[str, str], limit: int) -> None:
+    if len(bucket) < limit:
+        bucket.append(row)
+
+
+def iter_csv(path: Path):
+    if not path.exists():
+        return
+    with path.open("r", encoding="utf-8", newline="") as f:
+        yield from csv.DictReader(f)
+
+
+def write_local_source_pages(root: Path, out: Path) -> dict[str, int]:
+    local_dir = root / LOCAL_DISCOVERY_DIR
+    summary = read_json(local_dir / "local_discovery_summary.json")
+    if not summary:
+        return {}
+
+    root_rows = read_csv(local_dir / "local_roots.csv")
+    finding_samples: dict[str, list[dict[str, str]]] = defaultdict(list)
+    inventory_by_category: dict[str, list[dict[str, str]]] = defaultdict(list)
+    codex_inventory: list[dict[str, str]] = []
+    wechat_inventory: list[dict[str, str]] = []
+    legacy_rule_candidates: list[dict[str, str]] = []
+    timeline_by_month: Counter = Counter()
+
+    for row in iter_csv(local_dir / "local_sensitive_findings.csv") or []:
+        append_sample(finding_samples[row.get("group", "")], row, 320)
+
+    for row in iter_csv(local_dir / "local_source_inventory.csv") or []:
+        category = row.get("category", "")
+        append_sample(inventory_by_category[category], row, 520)
+        source_text = (row.get("root_id", "") + row.get("absolute_path", "") + row.get("relative_path", "")).lower()
+        if "codex" in source_text:
+            append_sample(codex_inventory, row, 520)
+        if any(term in source_text for term in ["wechat", "weixin", "tencent", "wxwork"]) or any(term in row.get("absolute_path", "") for term in ["微信", "企业微信"]):
+            append_sample(wechat_inventory, row, 520)
+        if (
+            row.get("kind") == "text"
+            and any(term in (row.get("relative_path", "") + row.get("name", "")).lower() for term in ["agent", "rule", "rules", "claude", "codex", "startup", "governance", "controller", "skill", "prompt"])
+        ):
+            append_sample(legacy_rule_candidates, row, 520)
+
+    for row in iter_csv(local_dir / "local_timeline_index.csv") or []:
+        date_value = row.get("date", "")
+        if date_value:
+            timeline_by_month[date_value[:7]] += 1
+
+    finding_group_counts = summary.get("finding_group_counts", {})
+
+    local_index_body = (
+        "This section indexes local sources outside the recovered Obsidian archive. It is private-only and designed for search, security review, and later public-safe rewriting.\n\n"
+        "## Workbench\n\n"
+        "- [[security-and-credentials]] - local credential and secret-candidate findings\n"
+        "- [[personal-info-review]] - personal information and private-chat markers\n"
+        "- [[local-path-map]] - local path and environment references\n"
+        "- [[timeline]] - file/content dates and modification timeline\n"
+        "- [[codex-context]] - Codex sessions, logs, memories, and config metadata\n"
+        "- [[agent-context]] - agent rules, skills, prompts, and local assistant state\n"
+        "- [[legacy-rule-review]] - old rule-like files quarantined as historical references\n"
+        "- [[project-roots]] - local repositories, projects, and runtime roots\n"
+        "- [[wechat-sources]] - WeChat and Tencent source metadata\n\n"
+        "## Counts\n\n"
+        f"- Roots scanned: `{summary.get('roots', 0)}`\n"
+        f"- Files indexed: `{summary.get('files', 0)}`\n"
+        f"- Sensitive/privacy findings: `{summary.get('findings', 0)}`\n"
+        f"- High-risk findings: `{summary.get('high_findings', 0)}`\n"
+        f"- Timeline rows: `{summary.get('timeline_rows', 0)}`\n"
+        f"- Category counts: `{summary.get('category_counts', {})}`\n"
+        f"- Finding groups: `{summary.get('finding_group_counts', {})}`\n\n"
+        "## Reports\n\n"
+        f"- {local_report_link('local_roots.csv', 'local_roots.csv', 2)}\n"
+        f"- {local_report_link('local_source_inventory.csv', 'local_source_inventory.csv', 2)}\n"
+        f"- {local_report_link('local_sensitive_findings.csv', 'local_sensitive_findings.csv', 2)}\n"
+        f"- {local_report_link('local_timeline_index.csv', 'local_timeline_index.csv', 2)}\n"
+        f"- {local_report_link('local_discovery_summary.json', 'local_discovery_summary.json', 2)}\n\n"
+        "## Roots\n\n"
+        + local_root_table(root_rows, 80)
+        + "\n\n## Safety Boundary\n\n"
+        "- These pages do not contain secret values.\n"
+        "- High-risk rows are review and rotation candidates, not public wiki material.\n"
+        "- Use root IDs and report rows for lookup; promote only rewritten summaries to `wiki/`.\n"
+    )
+    write_page(out / "local-sources" / "index.md", "Local Sources Index", ["本地信息总索引"], ["local-discovery", "private-wiki"], "private-wiki", "moc", "Private local-source index for additional local context outside the recovered vault.", local_index_body, "sensitive")
+
+    credential_rows = finding_samples.get("credential", [])
+    credential_body = (
+        "This page is the local credential workbench. It stores only rule names, file locations, line numbers, and excerpt hashes.\n\n"
+        f"- Credential findings: `{finding_group_counts.get('credential', len(credential_rows))}`\n"
+        f"- Full report: {local_report_link('local_sensitive_findings.csv', 'local_sensitive_findings.csv', 2)}\n\n"
+        "## Findings\n\n"
+        + local_finding_table(credential_rows, 260)
+        + "\n\n## Handling\n\n"
+        "- Rotate or revoke confirmed live secrets outside Obsidian.\n"
+        "- Do not paste secret values into notes, chats, commits, or issue trackers.\n"
+        "- After rotation, mark disposition in a local private follow-up note rather than editing the raw source.\n"
+    )
+    write_page(out / "local-sources" / "security-and-credentials.md", "Local Security And Credentials", ["本地密钥索引"], ["local-discovery", "security", "credentials"], "private-security", "review", "Local credential and secret-candidate findings without secret values.", credential_body, "sensitive")
+
+    personal_rows = finding_samples.get("personal", [])
+    personal_body = (
+        "This page tracks local personal information and private-chat markers. It does not reproduce the matched values.\n\n"
+        f"- Personal/private findings: `{finding_group_counts.get('personal', len(personal_rows))}`\n"
+        f"- Full report: {local_report_link('local_sensitive_findings.csv', 'local_sensitive_findings.csv', 2)}\n\n"
+        "## Findings\n\n"
+        + local_finding_table(personal_rows, 260)
+    )
+    write_page(out / "local-sources" / "personal-info-review.md", "Local Personal Information Review", ["本地个人信息复核"], ["local-discovery", "personal-info"], "private-security", "review", "Local personal information and private context review without raw values.", personal_body, "sensitive")
+
+    local_path_rows = finding_samples.get("local-path", [])
+    path_body = (
+        "This page tracks local path references discovered in local source text. Paths are private-only and should not be promoted to public pages.\n\n"
+        f"- Local path findings: `{finding_group_counts.get('local-path', len(local_path_rows))}`\n"
+        f"- Full report: {local_report_link('local_sensitive_findings.csv', 'local_sensitive_findings.csv', 2)}\n\n"
+        "## Findings\n\n"
+        + local_finding_table(local_path_rows, 220)
+    )
+    write_page(out / "local-sources" / "local-path-map.md", "Local Source Path Map", ["本地来源路径地图"], ["local-discovery", "local-paths"], "private-security", "review", "Local path references from additional local source discovery.", path_body, "sensitive")
+
+    timeline_lines = ["| Month | Rows |", "|---|---:|"]
+    for month, count in sorted(timeline_by_month.items()):
+        timeline_lines.append(f"| `{month}` | {count} |")
+    timeline_body = (
+        "This page summarizes local timeline rows. Rows can come from file modification times or detected dates inside text samples.\n\n"
+        f"- Timeline rows: `{summary.get('timeline_rows', 0)}`\n"
+        f"- Full report: {local_report_link('local_timeline_index.csv', 'local_timeline_index.csv', 2)}\n\n"
+        "## Months\n\n"
+        + "\n".join(timeline_lines)
+    )
+    write_page(out / "local-sources" / "timeline.md", "Local Source Timeline", ["本地来源时间线"], ["local-discovery", "timeline"], "private-timeline", "timeline-index", "Local-source date and modification timeline summary.", timeline_body, "internal")
+
+    codex_roots = [r for r in root_rows if "codex" in (r.get("root_id", "") + r.get("path", "")).lower()]
+    codex_body = (
+        "This page indexes Codex local state, sessions, history, memories, config, and logs at metadata level. SQLite databases remain metadata-only unless explicitly extracted later.\n\n"
+        "## Roots\n\n"
+        + local_root_table(codex_roots, 80)
+        + "\n\n## Priority Inventory\n\n"
+        + local_inventory_table(sorted(codex_inventory, key=lambda r: (not r.get("risk_flags"), r.get("relative_path", ""))), 180)
+    )
+    write_page(out / "local-sources" / "codex-context.md", "Local Codex Context", ["本地 Codex 上下文"], ["local-discovery", "codex"], "private-context", "index", "Local Codex session, memory, config, and log metadata index.", codex_body, "sensitive")
+
+    agent_roots = [
+        r for r in root_rows
+        if any(term in (r.get("root_id", "") + r.get("path", "")).lower() for term in ["agent", "claude", "cursor", "gemini", "qwen", "openclaw", "commander"])
+    ]
+    agent_inventory = inventory_by_category.get("agent-context", [])
+    agent_body = (
+        "This page indexes local assistant and agent operating context: rules, skills, prompts, memories, and tool state.\n\n"
+        "Recovered or discovered rule files are historical references by default. They are not current operating policy unless they are copied into the active rule surfaces after review.\n\n"
+        "## Roots\n\n"
+        + local_root_table(agent_roots, 80)
+        + "\n\n## Priority Inventory\n\n"
+        + local_inventory_table(sorted(agent_inventory, key=lambda r: (not r.get("risk_flags"), r.get("relative_path", ""))), 180)
+    )
+    write_page(out / "local-sources" / "agent-context.md", "Local Agent Context", ["本地 Agent 上下文"], ["local-discovery", "agents"], "private-context", "index", "Local agent rules, skills, prompts, and state metadata index.", agent_body, "sensitive")
+
+    legacy_body = (
+        "This page quarantines discovered rule-like files as historical references. They are useful for continuity search, but they do not automatically govern current work.\n\n"
+        "## Current Authority Rule\n\n"
+        "- Current user instructions override recovered historical process text.\n"
+        "- Current `AGENTS.md` and `CLAUDE.md` define the live wiki schema.\n"
+        "- Recovered controller, startup, delegation, or agent-rule documents are `historical-reference` until explicitly promoted.\n"
+        "- Privacy and credential safety rules remain active even when an old workflow says otherwise.\n\n"
+        "## Candidates\n\n"
+        + local_inventory_table(sorted(legacy_rule_candidates, key=lambda r: (not r.get("risk_flags"), r.get("relative_path", ""))), 240)
+    )
+    write_page(out / "local-sources" / "legacy-rule-review.md", "Legacy Rule Review", ["旧规则复核"], ["local-discovery", "agents", "deprecated-rules"], "private-context", "review", "Historical rule-like files discovered locally, quarantined from current policy until reviewed.", legacy_body, "sensitive")
+
+    project_inventory = inventory_by_category.get("project-roots", [])
+    project_body = (
+        "This page indexes local project and repository roots at metadata level. It is a map for later targeted distillation, not a raw code dump.\n\n"
+        f"- Project-root files: `{summary.get('category_counts', {}).get('project-roots', len(project_inventory))}`\n"
+        f"- Full inventory: {local_report_link('local_source_inventory.csv', 'local_source_inventory.csv', 2)}\n\n"
+        "## Priority Inventory\n\n"
+        + local_inventory_table(sorted(project_inventory, key=lambda r: (not r.get("risk_flags"), r.get("relative_path", ""))), 220)
+    )
+    write_page(out / "local-sources" / "project-roots.md", "Local Project Roots", ["本地项目根索引"], ["local-discovery", "projects"], "private-context", "index", "Local repository and project root metadata index.", project_body, "internal")
+
+    wechat_roots = [
+        r for r in root_rows
+        if any(term in (r.get("root_id", "") + r.get("path", "")).lower() for term in ["wechat", "weixin", "tencent", "wxwork"])
+        or any(term in r.get("path", "") for term in ["微信", "企业微信"])
+    ]
+    wechat_body = (
+        "This page indexes WeChat/Tencent local sources as metadata only. Message databases and media archives require a separate extraction plan before content distillation.\n\n"
+        "## Roots\n\n"
+        + local_root_table(wechat_roots, 80)
+        + "\n\n## Priority Inventory\n\n"
+        + local_inventory_table(sorted(wechat_inventory, key=lambda r: (not r.get("risk_flags"), r.get("relative_path", ""))), 180)
+    )
+    write_page(out / "local-sources" / "wechat-sources.md", "Local WeChat Sources", ["本地微信来源"], ["local-discovery", "wechat"], "private-context", "index", "Local WeChat and Tencent source metadata index.", wechat_body, "sensitive")
+
+    return {
+        "local_roots": len(root_rows),
+        "local_files": int(summary.get("files", 0)),
+        "local_findings": int(summary.get("findings", 0)),
+        "local_high_findings": int(summary.get("high_findings", 0)),
+        "local_timeline_rows": int(summary.get("timeline_rows", 0)),
+    }
+
+
 def write_timeline_pages(timeline_rows: list[dict[str, str]]) -> None:
     by_month: dict[str, list[dict[str, str]]] = defaultdict(list)
     for row in timeline_rows:
@@ -277,6 +536,7 @@ def build(root: Path) -> int:
     review_rows = read_csv(manifest_dir / "review_queue.csv")
     recovery_summary = read_json(manifest_dir / "recovery_summary.json")
     sensitive_summary = read_json(manifest_dir / "sensitive_timeline_summary.json")
+    local_discovery_summary = read_json(root / LOCAL_DISCOVERY_DIR / "local_discovery_summary.json")
 
     secret_rows = group_sensitive(sensitive_rows, SECRET_RULES)
     high_secret_rows = group_sensitive(sensitive_rows, HIGH_SECRET_RULES)
@@ -293,6 +553,7 @@ def build(root: Path) -> int:
         "- [[agents/index]] - agent memory, rules, prompts, and skills context\n"
         "- [[personal/index]] - private memory and session context\n"
         "- [[assets/index]] - local asset and environment context\n"
+        "- [[local-sources/index]] - additional local source discovery outside the recovered vault\n"
         "- [[synthesis/index]] - recovery synthesis and next passes\n"
         "- [[publication-candidates]] - candidates for future public-safe rewrite\n\n"
         "## Current Counts\n\n"
@@ -300,6 +561,8 @@ def build(root: Path) -> int:
         f"- Recovered Markdown files: `{recovery_summary.get('markdown_files', 'unknown')}`\n"
         f"- Sensitive/context rows: `{sensitive_summary.get('sensitive_rows', 'unknown')}`\n"
         f"- Timeline rows: `{sensitive_summary.get('timeline_rows', 'unknown')}`\n"
+        f"- Additional local-source files indexed: `{local_discovery_summary.get('files', 'not scanned')}`\n"
+        f"- Additional local-source findings: `{local_discovery_summary.get('findings', 'not scanned')}`\n"
         f"- Publication candidate status counts: `{dict(status_counts)}`\n\n"
         "## Boundary\n\n"
         "- Do not publish this directory.\n"
@@ -360,6 +623,7 @@ def build(root: Path) -> int:
     context_page(review_rows, "private-memory-and-sessions", "Private Personal Context Index", "Recovered private memory, session, and personal context index.", out / "personal" / "index.md")
     context_page(review_rows, "local-assets-and-environment", "Private Assets Index", "Recovered local assets, environment, and path-map context index.", out / "assets" / "index.md")
     context_page(review_rows, "public-knowledge-candidates", "Private Public-Knowledge Candidate Index", "Recovered public-knowledge candidates that still require review.", out / "synthesis" / "index.md")
+    local_stats = write_local_source_pages(root, out)
 
     publication_body = (
         "Candidates here are not public pages. They are triage rows for future rewritten public-safe notes.\n\n"
@@ -383,6 +647,7 @@ def build(root: Path) -> int:
         "timeline_rows": len(timeline_rows),
         "review_rows": len(review_rows),
         "publication_status_counts": dict(status_counts),
+        **local_stats,
     }
     (out / ".private_wiki_manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"private_wiki_pages: {manifest['pages']}")

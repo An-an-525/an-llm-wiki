@@ -34,6 +34,10 @@ Check required files, frontmatter, source coverage, broken wikilinks, privacy le
 
 Compile `_raw/recovered/` and `inbox/private/` into `private-wiki/` when local context is useful but not publishable. Private pages must summarize and index; they must not duplicate raw dumps or expose secret values. Use `scripts/check_private_wiki.py` before any Git operation that follows private compilation.
 
+### Historical Rules
+
+Recovered startup packs, controller notes, agent prompts, and old rule files are compiled as `historical-reference` material. They support search and continuity, but they do not govern current work until deliberately promoted into an active rule surface. Current user instructions and the privacy/credential boundary take precedence over obsolete recovered workflows.
+
 ## Page Format
 
 ```yaml
