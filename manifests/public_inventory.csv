@@ -5,10 +5,10 @@ AGENTS.md,1539
 CLAUDE.md,1319
 README.md,1199
 index.md,649
-log.md,687
+log.md,999
 manifests/README.md,422
 manifests/privacy_scan_report.csv,20
-manifests/public_inventory.csv,14859
+manifests/public_inventory.csv,14756
 manifests/publication_review.csv,912471
 manifests/raw_sources.csv,361
 scripts/build_public_inventory.py,1043
@@ -89,7 +89,7 @@ wiki/concepts/99-模板-周回顾模板.md,1777
 wiki/concepts/99-模板-每日回顾模板.md,1374
 wiki/concepts/99-模板-每日笔记模板.md,953
 wiki/concepts/wiki-concepts-README.md,690
-wiki/index.md,19844
+wiki/index.md,19913
 wiki/people/wiki-people-README.md,700
 wiki/projects/02-项目笔记-项目笔记总览.md,1619
 wiki/projects/02-领域-最佳实践-项目环境配置指导.md,1188
@@ -131,6 +131,7 @@ wiki/projects/05-外部信息-项目文档-xiaoan-finetune-reports-external_data
 wiki/projects/05-外部信息-项目文档-xiaoan-finetune-reports-startup_7b_blocker_20260406.md,1617
 wiki/projects/98-GitHub项目-ollama.ollama-ollama.ollama.md,9101
 wiki/projects/98-GitHub项目-本地AI资源聚合项目调研.md,6346
+wiki/projects/root-maintenance-backlog.md,2479
 wiki/projects/wiki-projects-README.md,757
 wiki/projects/wiki-projects-karpathy-llm-wiki-alignment-2026-05-12.md,2724
 wiki/sources-and-data-policy.md,827

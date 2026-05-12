@@ -20,6 +20,7 @@ summary: "Main map of content for the rebuilt public-safe LLM Wiki."
 - [[wiki/sources/karpathy-llm-wiki-pattern]] - official pattern source
 - [[wiki/sources/github-reference-projects]] - secondary GitHub references
 - [[wiki/sources-and-data-policy]] - privacy and publication rules
+- [[wiki/projects/root-maintenance-backlog]] - root follow-up issues
 - [[AGENTS]] - agent operating rules
 - [[CLAUDE]] - schema
 - [[log]] - maintenance log

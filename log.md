@@ -22,3 +22,8 @@ summary: "Append-only maintenance log for the rebuilt public-safe vault."
 - Migrated public-safe notes: 192.
 - Reviewed source files: 11147.
 - Private raw material, local memory, true local paths, credentials, and unreviewed imports were excluded.
+
+## [2026-05-12] update | Root maintenance backlog
+
+- Added [[wiki/projects/root-maintenance-backlog]] so follow-up issues from the rebuild are durable.
+- Captured broken link cleanup, privacy hardening, migration quality, source coverage, publish reliability, restore drill, and index splitting as root issues.
