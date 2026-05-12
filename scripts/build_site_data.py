@@ -2,21 +2,64 @@
 from __future__ import annotations
 
 import json
+import math
 import re
 import shutil
 import subprocess
 import sys
+import csv
 from datetime import datetime, timezone
 from hashlib import sha256
 from pathlib import Path
 from typing import Any
 
 OUT_DIR = Path("site-data")
+QUALITY_REVIEW_PATH = Path("manifests/site_data_quality_review.csv")
 PUBLIC_MARKDOWN_ROOTS = [Path("wiki"), Path("README.md"), Path("index.md"), Path("log.md")]
 FRONTMATTER_RE = re.compile(r"^---\r?\n(.*?)\r?\n---\r?\n", re.DOTALL)
 HEADING_RE = re.compile(r"^(#{1,3})\s+(.+?)\s*$", re.MULTILINE)
 WIKILINK_RE = re.compile(r"\[\[([^\]|#]+)(?:#[^\]|]+)?(?:\|([^\]]+))?\]\]")
 DATE_RE = re.compile(r"(?<!\d)((?:19|20)\d{2})[-_/年.]([01]\d)[-_/月.]([0-3]\d)(?:日)?(?!\d)")
+LATIN_WORD_RE = re.compile(r"[A-Za-z0-9_+-]+")
+HAN_CHAR_RE = re.compile(r"[\u4e00-\u9fff]")
+
+PROMOTION_STATUSES = {"featured", "recommended", "verified"}
+PROMOTION_TAGS = {"featured", "recommended", "verified", "showcase", "curated", "beginner-friendly"}
+ARCHIVE_SOURCE = "[[wiki/sources/pre-rebuild-vault-archive]]"
+CURATED_SOURCE_PATHS = {
+    "README.md",
+    "index.md",
+    "wiki/index.md",
+    "wiki/sources-and-data-policy.md",
+    "wiki/topics/llm-wiki-moc.md",
+    "wiki/topics/ai-agent-systems-moc.md",
+    "wiki/topics/skills-and-tools-moc.md",
+    "wiki/topics/publication-maintenance-moc.md",
+    "wiki/sources/karpathy-llm-wiki-pattern.md",
+    "wiki/sources/github-reference-projects.md",
+    "wiki/sources/obsidian-llm-wiki-local.md",
+    "wiki/sources/llm-wikid.md",
+    "wiki/sources/pre-rebuild-vault-archive.md",
+}
+LOW_QUALITY_PATH_PATTERNS = [
+    "07-技能库-原子技能-",
+    "99-模板-",
+    "项目同步_",
+    "每小时检查_",
+    "PROGRESS_SNAPSHOT",
+    "断链检测报告",
+    "每日整理报告",
+    "自动采集",
+    "wiki-_templates",
+]
+LOW_QUALITY_TITLE_PATTERNS = [
+    "{{date}}",
+    "{{year}}",
+    "模板",
+    "同步报告",
+    "每小时检查",
+    "PROGRESS_SNAPSHOT",
+]
 
 
 MODULES = [
@@ -173,6 +216,14 @@ def as_list(value: Any) -> list[str]:
     return [str(value).strip()]
 
 
+def has_truthy_frontmatter(value: Any) -> bool:
+    if isinstance(value, bool):
+        return value
+    if value is None:
+        return False
+    return str(value).strip().lower() in {"true", "yes", "1", "curated", "showcase", "public"}
+
+
 def first_heading(body: str) -> str | None:
     match = HEADING_RE.search(body)
     if not match:
@@ -211,6 +262,13 @@ def stable_id(rel: str) -> str:
     return "c_" + sha256(rel.encode("utf-8")).hexdigest()[:16]
 
 
+def anchor_for(title: str) -> str:
+    anchor = title.strip().lower()
+    anchor = re.sub(r"\s+", "-", anchor)
+    anchor = re.sub(r"[^\w\-\u4e00-\u9fff]+", "", anchor)
+    return anchor.strip("-") or sha256(title.encode("utf-8")).hexdigest()[:8]
+
+
 def item_status(frontmatter: dict[str, Any]) -> list[str]:
     raw = as_list(frontmatter.get("status"))
     statuses = [status for status in raw if status in {"draft", "public", "featured", "recommended", "verified", "pending", "archived", "outdated"}]
@@ -221,11 +279,97 @@ def item_status(frontmatter: dict[str, Any]) -> list[str]:
     return sorted(set(statuses or ["public"]))
 
 
+def source_only_archive(sources: list[str]) -> bool:
+    return len(sources) == 1 and sources[0] == ARCHIVE_SOURCE
+
+
+def quality_review(item: dict[str, Any], frontmatter: dict[str, Any]) -> dict[str, Any]:
+    rel = item["sourcePath"]
+    title = item["title"]
+    statuses = set(item["status"])
+    declared_statuses = set(as_list(frontmatter.get("status")))
+    tags = set(item["tags"])
+    sources = item["sources"]
+    reasons: list[str] = []
+
+    explicitly_curated = (
+        rel in CURATED_SOURCE_PATHS
+        or bool(declared_statuses & PROMOTION_STATUSES)
+        or bool(tags & PROMOTION_TAGS)
+        or has_truthy_frontmatter(frontmatter.get("publish"))
+        or has_truthy_frontmatter(frontmatter.get("site"))
+    )
+
+    if "migrated-needs-source-review" in statuses or "migrated-needs-source-review" in declared_statuses:
+        reasons.append("status:migrated-needs-source-review")
+    if "migrated" in tags:
+        reasons.append("tag:migrated")
+    if source_only_archive(sources):
+        reasons.append("source:archive-only")
+    for pattern in LOW_QUALITY_PATH_PATTERNS:
+        if pattern.lower() in rel.lower():
+            reasons.append(f"path-pattern:{pattern}")
+    for pattern in LOW_QUALITY_TITLE_PATTERNS:
+        if pattern.lower() in title.lower():
+            reasons.append(f"title-pattern:{pattern}")
+    if item["wordCount"] < 80 and item["module"] not in {"paths"} and rel not in CURATED_SOURCE_PATHS:
+        reasons.append("content:too-thin")
+    if not item["summary"] or item["summary"] == title:
+        reasons.append("summary:missing-or-title-only")
+
+    blocking_reasons = [
+        reason
+        for reason in reasons
+        if reason.startswith(("status:", "tag:", "source:", "path-pattern:", "title-pattern:", "content:"))
+    ]
+
+    score = 50
+    if item["quality"]["hasSources"]:
+        score += 15
+    if item["quality"]["hasToc"]:
+        score += 10
+    if item["wordCount"] >= 250:
+        score += 10
+    if item["wordCount"] >= 800:
+        score += 5
+    if item["module"] == "paths":
+        score += 8
+    if explicitly_curated:
+        score += 25
+    score -= min(55, len(blocking_reasons) * 14)
+    score = max(0, min(100, score))
+
+    if explicitly_curated and not rel.endswith("log.md"):
+        display_tier = "showcase" if score >= 75 else "starter"
+    elif blocking_reasons:
+        display_tier = "hidden"
+    elif score >= 75:
+        display_tier = "candidate"
+    else:
+        display_tier = "hidden"
+
+    if display_tier == "candidate":
+        reasons.append("needs-explicit-curation")
+
+    return {
+        "displayTier": display_tier,
+        "qualityScore": score,
+        "hiddenReasons": sorted(set(reasons)),
+        "explicitlyCurated": explicitly_curated,
+    }
+
+
 def classify_module(rel: str, frontmatter: dict[str, Any], title: str) -> str:
     haystack = f"{rel} {title} {' '.join(as_list(frontmatter.get('tags')))} {frontmatter.get('type', '')}".lower()
     if rel.startswith("wiki/projects/") or frontmatter.get("type") == "project":
         return "works"
-    if "moc" in haystack or "路线" in haystack or "谱系" in haystack or "path" in haystack or "route" in haystack:
+    if (
+        "moc" in haystack
+        or "路线" in haystack
+        or "谱系" in haystack
+        or re.search(r"(^|[^a-z])path(s)?([^a-z]|$)", haystack)
+        or re.search(r"(^|[^a-z])route(s)?([^a-z]|$)", haystack)
+    ):
         return "paths"
     if "情报日报" in haystack or "信息总汇" in haystack or "调研报告" in haystack or "feed" in haystack:
         return "feed"
@@ -264,6 +408,33 @@ def extract_links(body: str) -> list[dict[str, str]]:
     return links
 
 
+def extract_toc(body: str) -> list[dict[str, Any]]:
+    toc = []
+    for match in HEADING_RE.finditer(body):
+        raw = strip_markdown(match.group(2)).strip()
+        if not raw:
+            continue
+        toc.append(
+            {
+                "level": len(match.group(1)),
+                "title": raw,
+                "anchor": anchor_for(raw),
+            }
+        )
+    return toc
+
+
+def estimate_word_count(text: str) -> int:
+    clean = strip_markdown(text)
+    return len(HAN_CHAR_RE.findall(clean)) + len(LATIN_WORD_RE.findall(clean))
+
+
+def reading_minutes(word_count: int) -> int:
+    if word_count <= 0:
+        return 1
+    return max(1, math.ceil(word_count / 450))
+
+
 def extract_dates(text: str) -> list[str]:
     dates = set()
     for match in DATE_RE.finditer(text):
@@ -295,10 +466,52 @@ def extract_steps(body: str) -> list[dict[str, Any]]:
     return steps
 
 
+def is_displayable(item: dict[str, Any]) -> bool:
+    return item.get("displayTier") in {"showcase", "starter"}
+
+
+def write_quality_review(root: Path, all_items: list[dict[str, Any]]) -> None:
+    path = root / QUALITY_REVIEW_PATH
+    path.parent.mkdir(parents=True, exist_ok=True)
+    rows = []
+    for item in sorted(all_items, key=lambda row: (row.get("displayTier", ""), row["sourcePath"])):
+        rows.append(
+            {
+                "path": item["sourcePath"],
+                "title": item["title"],
+                "module": item["module"],
+                "display_tier": item.get("displayTier", "hidden"),
+                "quality_score": item.get("qualityScore", 0),
+                "status": "|".join(item.get("status", [])),
+                "tags": "|".join(item.get("tags", [])[:12]),
+                "sources": "|".join(item.get("sources", [])[:4]),
+                "hidden_reasons": "|".join(item.get("hiddenReasons", [])),
+            }
+        )
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[
+                "path",
+                "title",
+                "module",
+                "display_tier",
+                "quality_score",
+                "status",
+                "tags",
+                "sources",
+                "hidden_reasons",
+            ],
+        )
+        writer.writeheader()
+        writer.writerows(rows)
+
+
 def build_item(root: Path, path: Path) -> dict[str, Any]:
     rel = path.relative_to(root).as_posix()
     text = path.read_text(encoding="utf-8", errors="replace")
     frontmatter, body = parse_frontmatter(text)
+    raw_statuses = as_list(frontmatter.get("status"))
     title = str(frontmatter.get("title") or first_heading(body) or path.stem).strip()
     summary = str(frontmatter.get("summary") or summary_from_body(body) or title).strip()
     tags = as_list(frontmatter.get("tags"))
@@ -308,13 +521,18 @@ def build_item(root: Path, path: Path) -> dict[str, Any]:
     slug = slug_for(path, root)
     module = classify_module(rel, frontmatter, title)
     links = extract_links(body)
+    toc = extract_toc(body)
+    body_lines = body.strip().splitlines()
+    sources = as_list(frontmatter.get("sources"))
+    word_count = estimate_word_count(body)
+    statuses = item_status(frontmatter)
     item = {
         "id": stable_id(rel),
         "title": title,
         "slug": slug,
         "summary": summary,
         "tags": tags,
-        "status": item_status(frontmatter),
+        "status": statuses,
         "createdAt": created,
         "updatedAt": updated,
         "sourcePath": rel,
@@ -323,10 +541,38 @@ def build_item(root: Path, path: Path) -> dict[str, Any]:
         "type": str(frontmatter.get("type") or content_type(rel, frontmatter, title)),
         "contentType": content_type(rel, frontmatter, title),
         "href": f"/content/{slug}",
-        "contentLines": body.strip().splitlines(),
+        "contentLines": body_lines,
         "links": links,
-        "sources": as_list(frontmatter.get("sources")),
+        "sources": sources,
+        "toc": toc,
+        "wordCount": word_count,
+        "readingMinutes": reading_minutes(word_count),
+        "metrics": {
+            "lineCount": len(body_lines),
+            "headingCount": len(toc),
+            "linkCount": len(links),
+            "sourceCount": len(sources),
+        },
+        "quality": {
+            "hasSources": bool(sources),
+            "hasToc": bool(toc),
+            "summaryLength": len(summary),
+            "needsSourceReview": "migrated-needs-source-review" in statuses
+            or "migrated-needs-source-review" in raw_statuses,
+        },
     }
+    review = quality_review(item, frontmatter)
+    item["displayTier"] = review["displayTier"]
+    item["qualityScore"] = review["qualityScore"]
+    item["hiddenReasons"] = review["hiddenReasons"]
+    item["quality"].update(
+        {
+            "displayTier": review["displayTier"],
+            "qualityScore": review["qualityScore"],
+            "hiddenReasons": review["hiddenReasons"],
+            "explicitlyCurated": review["explicitlyCurated"],
+        }
+    )
     if module == "paths":
         item.update(
             {
@@ -362,7 +608,10 @@ def build_item(root: Path, path: Path) -> dict[str, Any]:
 
 
 def build_payload(root: Path) -> dict[str, Any]:
-    items = [build_item(root, path) for path in markdown_files(root)]
+    all_items = [build_item(root, path) for path in markdown_files(root)]
+    write_quality_review(root, all_items)
+    items = [item for item in all_items if is_displayable(item)]
+    hidden_items = [item for item in all_items if not is_displayable(item)]
     buckets: dict[str, list[dict[str, Any]]] = {module["key"]: [] for module in MODULES}
     for item in items:
         buckets.setdefault(item["module"], []).append(item)
@@ -403,6 +652,32 @@ def build_payload(root: Path) -> dict[str, Any]:
         }
         for item in items
     ]
+    tag_counts: dict[str, int] = {}
+    type_counts: dict[str, int] = {}
+    status_counts: dict[str, int] = {}
+    module_counts: dict[str, int] = {}
+    for item in items:
+        module_counts[item["module"]] = module_counts.get(item["module"], 0) + 1
+        type_counts[item["contentType"]] = type_counts.get(item["contentType"], 0) + 1
+        for tag in item["tags"]:
+            tag_counts[tag] = tag_counts.get(tag, 0) + 1
+        for status in item["status"]:
+            status_counts[status] = status_counts.get(status, 0) + 1
+
+    def top_counts(values: dict[str, int], limit: int = 40) -> list[dict[str, Any]]:
+        return [
+            {"key": key, "count": count}
+            for key, count in sorted(values.items(), key=lambda pair: (-pair[1], pair[0]))[:limit]
+        ]
+
+    featured_paths = [item for item in buckets.get("paths", []) if "featured" in item["status"]][:3]
+    featured_works = [
+        item
+        for item in buckets.get("works", [])
+        if "featured" in item["status"] or "recommended" in item["status"]
+    ][:3]
+    recent_library = sorted(buckets.get("library", []), key=lambda item: item["updatedAt"], reverse=True)[:6]
+    recent_timeline = timeline[:6]
 
     return {
         "generatedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
@@ -416,12 +691,47 @@ def build_payload(root: Path) -> dict[str, Any]:
         "modules": MODULES,
         "counts": {
             "content": len(items),
+            "publicMarkdown": len(all_items),
+            "reviewQueue": len(hidden_items),
             "library": len(buckets.get("library", [])),
             "paths": len(buckets.get("paths", [])),
             "feed": len(buckets.get("feed", [])),
             "works": len(buckets.get("works", [])),
             "journal": len(buckets.get("journal", [])),
             "timeline": len(timeline),
+        },
+        "curation": {
+            "mode": "curated-public-showcase",
+            "displayedContent": len(items),
+            "reviewQueue": len(hidden_items),
+            "allPublicMarkdown": len(all_items),
+            "qualityManifest": QUALITY_REVIEW_PATH.as_posix(),
+            "rules": [
+                "Front-end payload includes only showcase/starter pages.",
+                "Archive-only migrated pages stay in the review manifest until manually promoted.",
+                "Templates, sync snapshots, raw skill fragments, progress reports, and thin pages are hidden by default.",
+                "Private layers and raw sources are never included in site-data.",
+            ],
+            "nextImportWorkflow": [
+                "Collect useful local material into private-wiki or wiki draft pages.",
+                "Rewrite each item for beginner readers with a clear summary, use case, sources, and next step.",
+                "Mark it with publish: curated or status: verified only after privacy and source review.",
+                "Regenerate site-data and verify the public frontend before publishing.",
+            ],
+        },
+        "facets": {
+            "tags": top_counts(tag_counts),
+            "types": top_counts(type_counts),
+            "statuses": top_counts(status_counts),
+            "modules": top_counts(module_counts),
+        },
+        "homepage": {
+            "headline": "给新手也能看懂的 AI 与知识库资料展柜",
+            "summary": "前端只展示精选公开层；更多本地资料先进入复核队列，整理成可靠、有来源、能落地的条目后再上架。",
+            "featuredPathSlugs": [item["slug"] for item in featured_paths],
+            "featuredWorkSlugs": [item["slug"] for item in featured_works],
+            "recentLibrarySlugs": [item["slug"] for item in recent_library],
+            "recentTimelineSlugs": [item["slug"] for item in recent_timeline],
         },
         "content": items,
         "library": buckets.get("library", []),
@@ -432,8 +742,8 @@ def build_payload(root: Path) -> dict[str, Any]:
         "timeline": timeline,
         "about": {
             "title": "关于 an-llm-wiki",
-            "summary": "一个从 Obsidian public wiki 编译出的公开资料库后端。",
-            "body": "这里展示公开安全的资料、路径、项目、手记和年谱。私有资料、密钥线索、本地路径和 raw dump 不进入公开数据包。",
+            "summary": "一个从 Obsidian public wiki 编译出的精选公开资料库后端。",
+            "body": "这里展示已经整理过的资料、路径、项目、手记和年谱。私有资料、密钥线索、本地路径、raw dump、模板和机械迁移稿不会进入前端数据包。",
         },
         "search": search,
     }
@@ -454,8 +764,9 @@ def write_payload(root: Path, payload: dict[str, Any]) -> None:
         write_json(out / f"{key}.json", payload[key])
     (out / "README.md").write_text(
         "# Site Data\n\n"
-        "Generated public content data for the future archive frontend. Regenerate with `python scripts/build_site_data.py .`.\n"
-        "This directory must contain only public-safe data compiled from `wiki/`, `README.md`, `index.md`, and `log.md`.\n",
+        "Generated curated public content data for the archive frontend. Regenerate with `python scripts/build_site_data.py .`.\n"
+        "This directory must contain only public-safe showcase data compiled from `wiki/`, `README.md`, `index.md`, and `log.md`.\n"
+        "Review excluded public-safe candidates in `manifests/site_data_quality_review.csv`.\n",
         encoding="utf-8",
     )
 

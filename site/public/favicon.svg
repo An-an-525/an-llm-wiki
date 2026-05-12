@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="萦思藏馆">
+  <rect width="64" height="64" rx="14" fill="#FFFDFB"/>
+  <path d="M18 16h22c4.4 0 8 3.6 8 8v24H24c-3.3 0-6-2.7-6-6V16Z" fill="#F7F5F2" stroke="#B8956A" stroke-width="3"/>
+  <path d="M26 24h14M26 32h12M26 40h8" stroke="#4F4F4F" stroke-width="3" stroke-linecap="round"/>
+</svg>

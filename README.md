@@ -23,6 +23,7 @@ This is a public-safe personal Obsidian knowledge base rebuilt around Andrej Kar
 - [[wiki/topics/publication-maintenance-moc]] - publication and validation map
 - [[wiki/sources/karpathy-llm-wiki-pattern]] - official architecture source
 - [[wiki/sources/github-reference-projects]] - secondary implementation references
+- [Kimi frontend reference](docs/kimi-frontend-reference.md) - public-safe product brief, data model, prompt patterns, and frontend acceptance criteria
 - [[AGENTS]] - agent maintenance rules
 - [[CLAUDE]] - wiki schema
 - [[log]] - append-only rebuild and maintenance log

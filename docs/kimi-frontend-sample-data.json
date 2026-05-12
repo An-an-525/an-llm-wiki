@@ -1,0 +1,415 @@
+{
+  "schemaVersion": 1,
+  "packageName": "kimi-frontend-reference",
+  "purpose": "Public-safe sample data for a personal AI operation archive frontend. Use as reference only; production should render site-data/index.json.",
+  "currentProductionData": {
+    "content": 13,
+    "library": 6,
+    "paths": 7,
+    "timeline": 13,
+    "works": 0,
+    "feed": 0,
+    "journal": 0,
+    "reviewQueue": 194
+  },
+  "modules": [
+    {
+      "id": "library",
+      "label": "藏馆",
+      "goal": "Display curated tools, sources, prompt patterns, and reference notes."
+    },
+    {
+      "id": "paths",
+      "label": "谱系",
+      "goal": "Display reproducible learning and build routes."
+    },
+    {
+      "id": "works",
+      "label": "工坊",
+      "goal": "Display projects, prototypes, and operation stories with honest status."
+    },
+    {
+      "id": "timeline",
+      "label": "年谱",
+      "goal": "Display growth, project, and system evolution over time."
+    },
+    {
+      "id": "journal",
+      "label": "手记",
+      "goal": "Display public devlogs, retrospectives, and lessons."
+    },
+    {
+      "id": "feed",
+      "label": "风信",
+      "goal": "Display short public updates and collected signals."
+    }
+  ],
+  "sampleWorks": [
+    {
+      "id": "work-personal-archive-backend",
+      "title": "Personal Archive / Obsidian Backend",
+      "slug": "personal-archive-obsidian-backend",
+      "summary": "A public/private Obsidian knowledge base rebuilt into raw sources, private compiled notes, public wiki pages, and frontend JSON.",
+      "tags": ["obsidian", "llm-wiki", "knowledge-base", "public-data"],
+      "type": "tool",
+      "projectStatus": "building",
+      "publicSafety": "public-safe",
+      "role": "owner-built",
+      "techStack": ["Obsidian", "Markdown", "Python", "GitHub", "React data contract"],
+      "operationStory": [
+        "Archived the previous vault before rebuilding.",
+        "Separated raw material, private compiled knowledge, and public wiki.",
+        "Built validation scripts for structure, privacy, and public inventory.",
+        "Generated site-data/index.json for the frontend."
+      ],
+      "replicationSteps": [
+        "Create raw, private compiled, and public compiled layers.",
+        "Define frontmatter and source rules.",
+        "Write privacy and structure checks before publishing.",
+        "Generate a public JSON payload for the frontend."
+      ],
+      "lessons": [
+        "A frontend should not read raw notes directly.",
+        "Public display needs curated records, not mechanical migrations.",
+        "Validation gates are part of the product."
+      ],
+      "nextPlan": "Curate real works, feed, and journal items from the private queue.",
+      "sourceLabels": ["public wiki", "site-data", "archive-derived"]
+    },
+    {
+      "id": "work-agent-operating-system",
+      "title": "Agent Operating System Line",
+      "slug": "agent-operating-system-line",
+      "summary": "A long-running exploration of controller rules, skills, agent delegation, validation gates, and local runtime boundaries.",
+      "tags": ["agent", "skills", "workflow", "governance"],
+      "type": "prototype",
+      "projectStatus": "building",
+      "publicSafety": "needs-redaction",
+      "role": "mixed",
+      "techStack": ["Codex", "Claude Code", "MCP", "skills", "GitHub", "local scripts"],
+      "operationStory": [
+        "Moved from single prompts to structured agent workflows.",
+        "Collected skills, rules, and validation patterns.",
+        "Learned that old rule files must be treated as historical unless promoted.",
+        "Separated one controller from bounded helpers to keep work auditable."
+      ],
+      "replicationSteps": [
+        "Start with one controller agent and one repository.",
+        "Write task-specific skills or prompts only after repeated need appears.",
+        "Add validation commands before allowing publish or deploy.",
+        "Keep delegation bounded by ownership and output format."
+      ],
+      "lessons": [
+        "More agents do not automatically improve work.",
+        "Rules need authority levels and retirement paths.",
+        "Outputs must be inspectable and reversible."
+      ],
+      "nextPlan": "Rewrite a public-safe article explaining the controller plus bounded delegation pattern.",
+      "sourceLabels": ["private compiled index", "needs public rewrite"]
+    },
+    {
+      "id": "work-campus-ai-qa",
+      "title": "Campus AI Q&A / Competition System",
+      "slug": "campus-ai-qa-competition-system",
+      "summary": "A school-facing project line involving competition information, student-facing pages, and AI Q&A style workflows.",
+      "tags": ["campus", "ai-qa", "frontend", "student-project"],
+      "type": "website",
+      "projectStatus": "paused",
+      "publicSafety": "needs-redaction",
+      "role": "owner-built",
+      "techStack": ["React", "frontend deployment", "AI Q&A", "public information workflow"],
+      "operationStory": [
+        "Built or maintained school-facing frontend pages.",
+        "Explored external link confirmation, registration, and Q&A workflows.",
+        "Produced implementation and handoff notes."
+      ],
+      "replicationSteps": [
+        "Define one campus use case.",
+        "Collect only public source information.",
+        "Build the frontend flow first.",
+        "Add AI Q&A only after source boundaries are clear."
+      ],
+      "lessons": [
+        "Student-facing tools need simple flows and clear source trust.",
+        "AI answers need source boundaries more than visual polish."
+      ],
+      "nextPlan": "Create a sanitized case-study card and remove local project details.",
+      "sourceLabels": ["archive-derived", "needs review"]
+    },
+    {
+      "id": "work-knowledge-capture-workflow",
+      "title": "Knowledge Capture Workflow",
+      "slug": "knowledge-capture-workflow",
+      "summary": "A workflow for collecting, triaging, rewriting, and publishing high-signal notes from local research and project work.",
+      "tags": ["workflow", "knowledge-capture", "n8n", "dify", "obsidian"],
+      "type": "prototype",
+      "projectStatus": "building",
+      "publicSafety": "needs-redaction",
+      "role": "owner-built",
+      "techStack": ["Obsidian", "n8n", "Dify-style workflow", "Python scripts", "review queues"],
+      "operationStory": [
+        "Collected many raw notes and imported materials.",
+        "Discovered that raw import creates noise without curation.",
+        "Created review queues and public-safe promotion rules."
+      ],
+      "replicationSteps": [
+        "Capture sources into an immutable area.",
+        "Classify each item by value and risk.",
+        "Rewrite useful items into compact public notes.",
+        "Generate frontend data only from reviewed notes."
+      ],
+      "lessons": [
+        "The bottleneck is not collecting data; it is rewriting and review.",
+        "A public archive needs fewer, better records."
+      ],
+      "nextPlan": "Turn the workflow into a beginner route with screenshots and checkpoints.",
+      "sourceLabels": ["private queue", "public-safe candidate"]
+    }
+  ],
+  "samplePaths": [
+    {
+      "id": "path-build-public-archive",
+      "title": "Build A Public-Safe Obsidian Archive",
+      "slug": "build-public-safe-obsidian-archive",
+      "summary": "A beginner route for turning scattered notes into a publishable personal knowledge site.",
+      "difficulty": "beginner",
+      "estimatedTime": "1-3 days for v1",
+      "finalOutput": "A public JSON data layer and a frontend that does not expose private raw notes.",
+      "steps": [
+        {
+          "title": "Split layers",
+          "goal": "Separate raw material, private compilation, and public wiki.",
+          "completion": "No public page depends on raw local folders."
+        },
+        {
+          "title": "Write schemas",
+          "goal": "Define frontmatter, status labels, source labels, and safety labels.",
+          "completion": "Every public item has title, summary, tags, status, sources, and safety."
+        },
+        {
+          "title": "Generate data",
+          "goal": "Compile public pages into site-data/index.json.",
+          "completion": "Frontend can render without file system access."
+        },
+        {
+          "title": "Validate",
+          "goal": "Run structure, privacy, inventory, lint, and build checks.",
+          "completion": "GitHub package is safe to share."
+        }
+      ],
+      "pitfalls": [
+        "Publishing raw notes directly.",
+        "Showing unfinished projects as complete.",
+        "Using fake content to fill empty modules."
+      ]
+    },
+    {
+      "id": "path-replicate-agent-workflow",
+      "title": "Replicate A Small Agent Workflow",
+      "slug": "replicate-small-agent-workflow",
+      "summary": "A route for copying the controller plus validation pattern without importing the full local setup.",
+      "difficulty": "intermediate",
+      "estimatedTime": "2-5 days for a practical demo",
+      "finalOutput": "One controller prompt, one task skill, one validation script, and one published case study.",
+      "steps": [
+        {
+          "title": "Choose one task",
+          "goal": "Avoid building a huge agent system first.",
+          "completion": "The workflow has one concrete repeated job."
+        },
+        {
+          "title": "Define controller rules",
+          "goal": "Clarify input, output, boundaries, and stop conditions.",
+          "completion": "A new AI session can follow the rule without chat history."
+        },
+        {
+          "title": "Add validation",
+          "goal": "Make completion testable.",
+          "completion": "There is at least one command or checklist that can fail."
+        },
+        {
+          "title": "Write public case study",
+          "goal": "Explain what worked, what failed, and what to improve.",
+          "completion": "A beginner can copy the minimal pattern."
+        }
+      ],
+      "pitfalls": [
+        "Adding many helper agents before defining the task.",
+        "Letting old rules override current project needs.",
+        "Publishing operational details that should stay local."
+      ]
+    }
+  ],
+  "toolAgentInventory": [
+    {
+      "id": "tool-codex",
+      "name": "Codex",
+      "group": "coding agents",
+      "role": "Primary coding and repository operation agent.",
+      "usedFor": ["code changes", "validation", "Obsidian maintenance", "frontend/backend preparation"],
+      "learningValue": "Shows how to turn a vague goal into files, scripts, validation, and public docs.",
+      "replicationUse": "Use as the controller for bounded coding tasks.",
+      "riskLevel": "medium",
+      "relatedProjects": ["Personal Archive Backend", "Personal Archive Frontend", "Agent Operating System Line"],
+      "status": "active"
+    },
+    {
+      "id": "tool-kimi",
+      "name": "Kimi",
+      "group": "coding agents",
+      "role": "Frontend collaborator and product interpretation assistant.",
+      "usedFor": ["frontend prototypes", "visual exploration", "interaction ideas"],
+      "learningValue": "Useful when it receives a concrete product brief, data contract, and acceptance gates.",
+      "replicationUse": "Give Kimi this reference package before asking for frontend changes.",
+      "riskLevel": "low",
+      "relatedProjects": ["Personal Archive Frontend"],
+      "status": "active"
+    },
+    {
+      "id": "tool-obsidian",
+      "name": "Obsidian",
+      "group": "knowledge base",
+      "role": "The source workspace for compiled public and private knowledge layers.",
+      "usedFor": ["notes", "wiki", "source review", "timeline", "project archive"],
+      "learningValue": "Demonstrates raw-to-compiled knowledge management.",
+      "replicationUse": "Use markdown frontmatter and sources to create a maintainable personal wiki.",
+      "riskLevel": "medium",
+      "relatedProjects": ["Personal Archive Backend"],
+      "status": "active"
+    },
+    {
+      "id": "tool-playwright-browser-use",
+      "name": "Playwright / Browser Use",
+      "group": "browser and UI testing",
+      "role": "Browser verification and visual workflow testing.",
+      "usedFor": ["route checks", "frontend screenshots", "interaction testing"],
+      "learningValue": "Makes frontend quality testable instead of opinion-only.",
+      "replicationUse": "Use after every major frontend change.",
+      "riskLevel": "low",
+      "relatedProjects": ["Personal Archive Frontend"],
+      "status": "active"
+    },
+    {
+      "id": "tool-mcp-acp-skills",
+      "name": "MCP / ACP / Skills",
+      "group": "agent protocols and skills",
+      "role": "Capability extension and reusable agent workflow packaging.",
+      "usedFor": ["tool access", "task-specific rules", "agent workflow standardization"],
+      "learningValue": "Shows how local workflows become reusable instructions.",
+      "replicationUse": "Start with one skill per repeated task, not a large catalog.",
+      "riskLevel": "medium",
+      "relatedProjects": ["Agent Operating System Line", "Knowledge Capture Workflow"],
+      "status": "active"
+    }
+  ],
+  "promptPatterns": [
+    {
+      "id": "prompt-frontend-brief",
+      "title": "Frontend Product Brief",
+      "intent": "Ask an AI frontend builder to improve the archive using product context and data rules.",
+      "whenToUse": "Before frontend redesign, page implementation, or component cleanup.",
+      "inputSlots": ["product goal", "routes", "audience", "data source", "forbidden content", "acceptance criteria"],
+      "outputFormat": ["code changes", "data assumptions", "verification notes", "missing data fields"],
+      "qualityChecks": ["uses public JSON only", "does not fake project completion", "has empty states", "passes build"],
+      "samplePrompt": "Read the product reference and data contract first. Render site-data/index.json. Improve the archive frontend for beginners who want to learn and replicate the workflows. Do not expose sensitive values, raw chats, or local absolute paths."
+    },
+    {
+      "id": "prompt-project-card-rewrite",
+      "title": "Project Card Rewrite",
+      "intent": "Convert a project note into a readable public work card.",
+      "whenToUse": "When filling works data from reviewed project candidates.",
+      "inputSlots": ["project note", "status", "stack", "source labels", "risk notes"],
+      "outputFormat": ["title", "summary", "status", "operation story", "replication steps", "lessons", "next plan"],
+      "qualityChecks": ["does not overstate completion", "separates reference and owner-built work", "contains a beginner route"],
+      "samplePrompt": "Rewrite this project note as a public work card. Keep purpose, operation steps, lessons, and replication route. Remove sensitive values and local absolute paths. Mark uncertain content as needs-redaction."
+    },
+    {
+      "id": "prompt-route-map",
+      "title": "Route Map Builder",
+      "intent": "Turn a project or tool cluster into a step-by-step learning path.",
+      "whenToUse": "When building paths pages or path detail pages.",
+      "inputSlots": ["goal", "audience", "starting knowledge", "tools", "final output"],
+      "outputFormat": ["steps", "resources", "pitfalls", "completion checks", "next steps"],
+      "qualityChecks": ["beginner can follow", "each step has completion criteria", "pitfalls are explicit"],
+      "samplePrompt": "Create a step-by-step learning route. Each step needs a goal, action, resource, pitfall, and completion check. Make it useful for a beginner."
+    }
+  ],
+  "operationTimeline": [
+    {
+      "id": "event-structured-vault-rebuild",
+      "date": "2026-05-12",
+      "phase": "knowledge-base",
+      "title": "Rebuilt The Vault Into Public And Private Layers",
+      "summary": "The archive was reorganized into raw source, private compiled, public wiki, and frontend data layers.",
+      "operation": ["archived old material", "created public wiki structure", "kept private compiled notes local", "generated public site data"],
+      "tools": ["Obsidian", "Python scripts", "GitHub", "Codex"],
+      "result": "A GitHub-ready public layer with validation gates.",
+      "lesson": "Public display should be compiled and reviewed, not copied from raw notes.",
+      "publicSafety": "public-safe"
+    },
+    {
+      "id": "event-frontend-contract",
+      "date": "2026-05-12",
+      "phase": "frontend",
+      "title": "Created A Frontend Data Contract",
+      "summary": "The React frontend was prepared to consume site-data/index.json instead of reading Obsidian files.",
+      "operation": ["defined modules", "generated counts", "mapped library paths timeline", "identified empty works feed journal"],
+      "tools": ["React", "Vite", "TypeScript", "site-data"],
+      "result": "The frontend has a stable public data boundary but still needs better curated content.",
+      "lesson": "A beautiful frontend still looks weak when important modules have no curated records.",
+      "publicSafety": "public-safe"
+    },
+    {
+      "id": "event-kimi-reference-package",
+      "date": "2026-05-13",
+      "phase": "frontend",
+      "title": "Prepared A Kimi Reference Package",
+      "summary": "Created a public-safe product brief and sample data so Kimi can understand the desired frontend.",
+      "operation": ["defined product purpose", "listed project lines", "listed tools and agents", "added prompt patterns", "specified acceptance gates"],
+      "tools": ["Codex", "Obsidian", "Kimi reference docs"],
+      "result": "Future frontend work has concrete context instead of vague visual instructions.",
+      "lesson": "AI frontend builders need product truth, data shape, and forbidden boundaries before design work.",
+      "publicSafety": "public-safe"
+    }
+  ],
+  "privacyBoundary": {
+    "allowedToDisplay": [
+      "project names",
+      "sanitized project purpose",
+      "tool and agent names",
+      "operation steps",
+      "lessons learned",
+      "replication routes",
+      "public source labels",
+      "status and review badges"
+    ],
+    "doNotDisplay": [
+      "sensitive values",
+      "account identifiers",
+      "cookies",
+      "sessions",
+      "raw chat text",
+      "local absolute paths",
+      "private source folders"
+    ],
+    "displayInstead": [
+      "sensitive value removed",
+      "local source label",
+      "needs-redaction",
+      "local-only-source",
+      "public-safe candidate"
+    ]
+  },
+  "frontendAcceptance": [
+    "Render production data from site-data/index.json.",
+    "Use this JSON only as reference for richer missing modules.",
+    "All routes must work on desktop and mobile.",
+    "Empty works, feed, or journal modules must have clear empty states.",
+    "Project cards must show status and publicSafety.",
+    "Prompt patterns must be visible and copyable.",
+    "Operation timeline must show actions, tools, results, and lessons.",
+    "No fake finished projects.",
+    "No local absolute paths or sensitive values in UI.",
+    "Lint and build should pass before handoff."
+  ]
+}

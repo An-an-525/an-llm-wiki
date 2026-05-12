@@ -173,6 +173,9 @@ def discover_roots(vault_root: Path) -> list[Path]:
     documents = home / "Documents"
     for name in ["Codex", "xwechat_files", "Tencent Files", "WXWork"]:
         candidates.append(documents / name)
+    desktop = home / "Desktop"
+    for name in ["OH-WorkSpace"]:
+        candidates.append(desktop / name)
     fake_desktop = home / "假桌面"
     candidates.extend([fake_desktop / "AI_Commander_Docs", fake_desktop])
 
@@ -216,15 +219,28 @@ def discover_roots(vault_root: Path) -> list[Path]:
 
 def ensure_roots_file(vault_root: Path) -> None:
     roots_path = vault_root / ROOTS_FILE
-    if roots_path.exists():
-        return
     roots_path.parent.mkdir(parents=True, exist_ok=True)
+    existing_rows: list[dict[str, str]] = []
+    if roots_path.exists():
+        with roots_path.open("r", encoding="utf-8", newline="") as f:
+            existing_rows = list(csv.DictReader(f))
     roots = discover_roots(vault_root)
+    existing_paths = {
+        str(Path(row.get("path", "")).expanduser()).casefold()
+        for row in existing_rows
+        if row.get("path")
+    }
+    rows = list(existing_rows)
+    for root in roots:
+        normalized = str(root).casefold()
+        if normalized in existing_paths:
+            continue
+        rows.append({"root_id": path_id(root), "path": str(root), "profile": "default", "enabled": "1"})
+        existing_paths.add(normalized)
     with roots_path.open("w", encoding="utf-8", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=["root_id", "path", "profile", "enabled"])
         writer.writeheader()
-        for root in roots:
-            writer.writerow({"root_id": path_id(root), "path": str(root), "profile": "default", "enabled": "1"})
+        writer.writerows(rows)
 
 
 def read_roots(vault_root: Path) -> list[dict[str, str]]:
@@ -474,19 +490,32 @@ def write_reports(
     (out / "local_discovery_summary.json").write_text(json.dumps(serializable, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
-def build(vault_root: Path, reset: bool = False) -> int:
+def build(vault_root: Path, reset: bool = False, root_ids: list[str] | None = None) -> int:
     out = vault_root / PRIVATE_OUT
     out.mkdir(parents=True, exist_ok=True)
     roots = read_roots(vault_root)
+    selected_roots = roots
+    if root_ids:
+        wanted = {root_id.casefold() for root_id in root_ids}
+        selected_roots = [root for root in roots if root["root_id"].casefold() in wanted]
+        missing = sorted(wanted - {root["root_id"].casefold() for root in selected_roots})
+        if missing:
+            print(f"missing_root_ids: {', '.join(missing)}")
+            return 1
 
-    inventory_rows: list[dict[str, str]] = [] if reset else read_csv(out / "local_source_inventory.csv")
-    finding_rows: list[dict[str, str]] = [] if reset else read_csv(out / "local_sensitive_findings.csv")
-    timeline_rows: list[dict[str, str]] = [] if reset else read_csv(out / "local_timeline_index.csv")
+    inventory_rows: list[dict[str, str]] = [] if reset and not root_ids else read_csv(out / "local_source_inventory.csv")
+    finding_rows: list[dict[str, str]] = [] if reset and not root_ids else read_csv(out / "local_sensitive_findings.csv")
+    timeline_rows: list[dict[str, str]] = [] if reset and not root_ids else read_csv(out / "local_timeline_index.csv")
+    if reset and root_ids:
+        wanted = {root_id.casefold() for root_id in root_ids}
+        inventory_rows = [row for row in inventory_rows if row.get("root_id", "").casefold() not in wanted]
+        finding_rows = [row for row in finding_rows if row.get("root_id", "").casefold() not in wanted]
+        timeline_rows = [row for row in timeline_rows if row.get("root_id", "").casefold() not in wanted]
     root_stats, root_latest = hydrate_stats(inventory_rows)
     root_paths = {row["root_id"]: row["path"] for row in roots}
     indexed_files = {(row.get("root_id", ""), row.get("relative_path", "")) for row in inventory_rows}
 
-    for root_row in roots:
+    for root_row in selected_roots:
         root_id = root_row["root_id"]
         root_path = Path(root_row["path"])
         root_new_files = 0
@@ -574,10 +603,33 @@ def build(vault_root: Path, reset: bool = False) -> int:
 
 
 def main() -> int:
-    args = [arg for arg in sys.argv[1:] if arg != "--reset"]
-    reset = "--reset" in sys.argv[1:]
-    root = Path(args[0]).resolve() if args else Path.cwd().resolve()
-    return build(root, reset=reset)
+    reset = False
+    root_ids: list[str] = []
+    positional: list[str] = []
+    args = sys.argv[1:]
+    i = 0
+    while i < len(args):
+        arg = args[i]
+        if arg == "--reset":
+            reset = True
+        elif arg in {"--root-id", "--only-root"}:
+            i += 1
+            if i >= len(args):
+                print(f"missing value for {arg}")
+                return 1
+            root_ids.append(args[i])
+        elif arg.startswith("--root-id="):
+            root_ids.append(arg.split("=", 1)[1])
+        elif arg.startswith("--only-root="):
+            root_ids.append(arg.split("=", 1)[1])
+        elif arg.startswith("-"):
+            print(f"unknown flag: {arg}")
+            return 1
+        else:
+            positional.append(arg)
+        i += 1
+    root = Path(positional[0]).resolve() if positional else Path.cwd().resolve()
+    return build(root, reset=reset, root_ids=root_ids or None)
 
 
 if __name__ == "__main__":

@@ -14,7 +14,7 @@ PRIVATE_MANIFEST_DIR = Path("inbox/private/local-recovery-2026-05-12/manifests")
 PRIVATE_CAPTURES_DIR = Path("inbox/private/local-recovery-2026-05-12/captures")
 LOCAL_DISCOVERY_DIR = Path("inbox/private/local-recovery-2026-05-12/local-discovery")
 OUT_DIR = Path("private-wiki")
-TODAY = "2026-05-12"
+TODAY = date.today().isoformat()
 
 SECRET_RULES = {
     "openai_token",
@@ -268,6 +268,642 @@ def local_inventory_table(rows: list[dict[str, str]], limit: int = 180) -> str:
     if len(lines) == 2:
         lines.append("| - | - | 0 | No matching sources | - |")
     return "\n".join(lines)
+
+
+def contains_any(text: str, terms: list[str]) -> bool:
+    haystack = text.casefold()
+    return any(term.casefold() in haystack for term in terms)
+
+
+def row_text(row: dict[str, str], fields: list[str] | None = None) -> str:
+    fields = fields or ["relative_path", "vault_copy_path", "title", "tags", "summary", "root_id", "name", "category", "risk_flags"]
+    return " ".join(row.get(field, "") for field in fields)
+
+
+def score_terms(row: dict[str, str], terms: list[str]) -> int:
+    text = row_text(row).casefold()
+    score = 0
+    for term in terms:
+        if term.casefold() in text:
+            score += 1
+    if row.get("summary"):
+        score += 1
+    if row.get("title"):
+        score += 1
+    return score
+
+
+def select_recovered_rows(rows: list[dict[str, str]], terms: list[str], categories: set[str] | None = None, limit: int = 180) -> list[dict[str, str]]:
+    selected = []
+    for row in rows:
+        if categories and row.get("category") not in categories:
+            continue
+        score = score_terms(row, terms)
+        if score:
+            selected.append((score, int(row.get("size_bytes") or 0), row))
+    selected.sort(key=lambda item: (-item[0], -item[1], row_label(item[2]).casefold()))
+    return [row for _, _, row in selected[:limit]]
+
+
+def select_local_rows(rows: list[dict[str, str]], terms: list[str], categories: set[str] | None = None, limit: int = 180) -> list[dict[str, str]]:
+    selected = []
+    for row in rows:
+        if categories and row.get("category") not in categories:
+            continue
+        score = score_terms(row, terms)
+        if score:
+            selected.append((score, int(row.get("size_bytes") or 0), row))
+    selected.sort(key=lambda item: (-item[0], -item[1], row_text(item[2], ["root_id", "relative_path"]).casefold()))
+    return [row for _, _, row in selected[:limit]]
+
+
+def recovered_source_table(rows: list[dict[str, str]], limit: int = 120, current_depth: int = 2) -> str:
+    lines = ["| Category | Risk | Source | Summary |", "|---|---|---|---|"]
+    for row in rows[:limit]:
+        link = md_link(row_label(row), row.get("vault_copy_path", ""), current_depth)
+        lines.append(
+            f"| `{row.get('category', '')}` | `{row.get('risk_flags', '') or '-'}` | {link} | {md_cell(row.get('summary', '') or row.get('tags', ''), 180)} |"
+        )
+    if len(rows) > limit:
+        lines.append(f"| ... | ... | {len(rows) - limit} more rows in recovered_file_inventory.csv | ... |")
+    if len(lines) == 2:
+        lines.append("| - | - | No matching recovered sources | - |")
+    return "\n".join(lines)
+
+
+def root_summary_table(rows: list[dict[str, str]], terms: list[str] | None = None, limit: int = 80) -> str:
+    filtered = rows
+    if terms:
+        filtered = [row for row in rows if contains_any(row_text(row, ["root_id", "path", "category_counts"]), terms)]
+    filtered = sorted(filtered, key=lambda row: -int(row.get("files") or 0))
+    lines = ["| Root | Files | Findings | Timeline rows | Categories |", "|---|---:|---:|---:|---|"]
+    for row in filtered[:limit]:
+        lines.append(
+            f"| `{md_cell(row.get('root_id', ''), 100)}`<br>`{md_cell(row.get('path', ''), 160)}` | "
+            f"{row.get('files', '0')} | {row.get('findings', '0')} | {row.get('timeline_rows', '0')} | `{md_cell(row.get('category_counts', '{}'), 220)}` |"
+        )
+    if len(filtered) > limit:
+        lines.append(f"| ... | ... | ... | ... | {len(filtered) - limit} more roots in local_roots.csv |")
+    if len(lines) == 2:
+        lines.append("| - | 0 | 0 | 0 | - |")
+    return "\n".join(lines)
+
+
+def finding_summary_table(rows: list[dict[str, str]], limit: int = 80) -> str:
+    grouped: dict[tuple[str, str, str], Counter] = defaultdict(Counter)
+    for row in rows:
+        key = (row.get("root_id", ""), row.get("group", ""), row.get("rule", ""))
+        grouped[key]["findings"] += 1
+        if row.get("severity") == "high":
+            grouped[key]["high"] += 1
+    ranked = sorted(grouped.items(), key=lambda item: (-item[1]["high"], -item[1]["findings"], item[0]))
+    lines = ["| Root | Group | Rule | Findings | High |", "|---|---|---|---:|---:|"]
+    for (root_id, group, rule), counts in ranked[:limit]:
+        lines.append(f"| `{md_cell(root_id, 80)}` | `{group}` | `{rule}` | {counts['findings']} | {counts['high']} |")
+    if len(ranked) > limit:
+        lines.append(f"| ... | ... | ... | {len(ranked) - limit} more grouped rows in local_sensitive_findings.csv | ... |")
+    if len(lines) == 2:
+        lines.append("| - | - | - | 0 | 0 |")
+    return "\n".join(lines)
+
+
+def timeline_month_table(rows: list[dict[str, str]], terms: list[str], limit: int = 120) -> str:
+    by_month: Counter = Counter()
+    samples: dict[str, list[str]] = defaultdict(list)
+    for row in rows:
+        if not contains_any(row_text(row, ["root_id", "relative_path"]), terms):
+            continue
+        date_value = row.get("date", "")
+        if len(date_value) < 7:
+            continue
+        month = date_value[:7]
+        source = f"{row.get('root_id', '')}/{row.get('relative_path', '')}"
+        by_month[month] += 1
+        if len(samples[month]) < 3:
+            samples[month].append(md_cell(source, 120))
+    lines = ["| Month | Evidence rows | Sample sources |", "|---|---:|---|"]
+    for month, count in sorted(by_month.items(), reverse=True)[:limit]:
+        lines.append(f"| `{month}` | {count} | " + "<br>".join(f"`{sample}`" for sample in samples[month]) + " |")
+    if len(by_month) > limit:
+        lines.append(f"| ... | ... | {len(by_month) - limit} more months in local_timeline_index.csv |")
+    if len(lines) == 2:
+        lines.append("| - | 0 | No matching timeline evidence |")
+    return "\n".join(lines)
+
+
+def cluster_counts(rows: list[dict[str, str]], clusters: list[tuple[str, list[str]]]) -> Counter:
+    counts: Counter = Counter()
+    for row in rows:
+        text = row_text(row)
+        matched = False
+        for label, terms in clusters:
+            if contains_any(text, terms):
+                counts[label] += 1
+                matched = True
+        if not matched:
+            counts["未归类"] += 1
+    return counts
+
+
+def cluster_table(title: str, counts: Counter, descriptions: dict[str, str], limit: int = 12) -> str:
+    lines = [f"## {title}", "", "| 主题 | 证据数 | 含义 |", "|---|---:|---|"]
+    for label, count in counts.most_common(limit):
+        lines.append(f"| {label} | {count} | {descriptions.get(label, '需要后续人工归并和命名。')} |")
+    if not counts:
+        lines.append("| - | 0 | 暂无匹配证据。 |")
+    return "\n".join(lines)
+
+
+def clean_source_name(row: dict[str, str]) -> str:
+    value = row.get("title") or row.get("name") or Path(row.get("relative_path", "")).stem or "source"
+    value = value.replace("|", "-").strip()
+    if len(value) > 80:
+        value = value[:77] + "..."
+    return value
+
+
+def source_bullets(rows: list[dict[str, str]], limit: int = 24) -> str:
+    lines = []
+    seen: set[str] = set()
+    for row in rows:
+        name = clean_source_name(row)
+        if name in seen:
+            continue
+        seen.add(name)
+        risk = row.get("risk_flags") or "-"
+        category = row.get("category") or "source"
+        lines.append(f"- {name} — `{category}`, risk `{risk}`")
+        if len(lines) >= limit:
+            break
+    return "\n".join(lines) if lines else "- 暂无候选。"
+
+
+def source_status_table(rows: list[dict[str, str]], limit: int = 24) -> str:
+    lines = ["| 候选 | 分类 | 风险 | 建议状态 |", "|---|---|---|---|"]
+    seen: set[str] = set()
+    for row in rows:
+        name = clean_source_name(row)
+        if name in seen:
+            continue
+        seen.add(name)
+        risk = row.get("risk_flags") or "-"
+        status = "先留私有"
+        if risk == "-":
+            status = "可人工改写为公开候选"
+        elif "credential" in risk or "private" in risk:
+            status = "仅作私有证据"
+        elif "local-path" in risk:
+            status = "脱敏后再评估"
+        lines.append(f"| {name} | `{row.get('category', '')}` | `{risk}` | {status} |")
+        if len(lines) - 2 >= limit:
+            break
+    if len(lines) == 2:
+        lines.append("| - | - | - | 暂无候选 |")
+    return "\n".join(lines)
+
+
+def write_readable_knowledge_pages(
+    out: Path,
+    recovered_rows: list[dict[str, str]],
+    local_rows: list[dict[str, str]],
+    local_root_rows: list[dict[str, str]],
+    local_finding_rows: list[dict[str, str]],
+    recovered_growth: list[dict[str, str]],
+    recovered_projects: list[dict[str, str]],
+    recovered_skills: list[dict[str, str]],
+    recovered_agents: list[dict[str, str]],
+    local_growth: list[dict[str, str]],
+    local_projects: list[dict[str, str]],
+    local_skills: list[dict[str, str]],
+    local_agents: list[dict[str, str]],
+) -> int:
+    project_clusters = [
+        ("AI Agent 与多智能体系统", ["agent", "mcp", "codex", "claude", "openclaw", "mcc", "gitnexus", "mempalace", "小安"]),
+        ("个人资料库与知识库展示", ["资料库", "知识库", "archive", "wiki", "obsidian", "site-data", "展示", "前端"]),
+        ("前端与全栈应用", ["frontend", "react", "vite", "next", "backend", "api", "server", "web", "网页"]),
+        ("微信与校园项目", ["微信", "小程序", "校园", "学校", "竞赛", "问答助手"]),
+        ("模型与本地 AI", ["ollama", "qwen", "finetune", "微调", "模型", "llm", "airi"]),
+        ("自动化与工作流", ["n8n", "dify", "workflow", "自动化", "采集", "pipeline"]),
+    ]
+    skill_clusters = [
+        ("知识管理与资料编译", ["obsidian", "wiki", "知识库", "资料库", "lint", "privacy", "ingest"]),
+        ("Agent 工程", ["agent", "mcp", "prompt", "skill", "hook", "codex", "claude"]),
+        ("前端产品实现", ["frontend", "react", "vite", "ui", "site", "web", "组件"]),
+        ("后端与接口", ["backend", "api", "server", "database", "postgres", "supabase"]),
+        ("自动化与数据处理", ["python", "powershell", "csv", "json", "script", "workflow", "自动化"]),
+        ("测试与验收", ["test", "unittest", "playwright", "验收", "lint", "scan"]),
+    ]
+    agent_clusters = [
+        ("Codex 工作流", ["codex"]),
+        ("Claude/Claude Code", ["claude"]),
+        ("Cursor", ["cursor"]),
+        ("Gemini/Qwen", ["gemini", "qwen"]),
+        ("OpenClaw/ClawX", ["openclaw", "clawx"]),
+        ("MCP 与技能系统", ["mcp", "skill", "plugin", "hook"]),
+        ("记忆与上下文", ["memory", "mempalace", "context", "记忆"]),
+    ]
+    descriptions = {
+        "AI Agent 与多智能体系统": "Agent 编排、上下文、工具调用、规则与技能配置，是当前资料库的主轴。",
+        "个人资料库与知识库展示": "面向未来网站展示的资料编译层，必须从私有证据改写成公开叙事。",
+        "前端与全栈应用": "可沉淀为作品集条目的 Web、API、前后端项目。",
+        "微信与校园项目": "包含校园、竞赛、小程序等更贴近真实场景的项目线。",
+        "模型与本地 AI": "本地模型、微调、Ollama/Qwen/AIRI 等 AI 实验线。",
+        "自动化与工作流": "资料采集、发布、脚本、n8n/Dify 等流程资产。",
+        "知识管理与资料编译": "把散乱本地材料转为可维护 wiki 的核心能力。",
+        "Agent 工程": "提示词、技能、工具、MCP、规则、上下文管理。",
+        "前端产品实现": "个人资料馆、展示站、组件和交互实现。",
+        "后端与接口": "为前端提供安全 JSON 数据边界和服务端能力。",
+        "自动化与数据处理": "扫描、清洗、索引、报表和批处理脚本。",
+        "测试与验收": "结构检查、隐私扫描、单测、发布门禁。",
+        "Codex 工作流": "Codex 的本地会话、规则、技能与工程化使用。",
+        "Claude/Claude Code": "Claude/Claude Code 相关项目状态、会话、配置与规则。",
+        "Cursor": "Cursor 本地状态、规则和开发上下文。",
+        "Gemini/Qwen": "其他模型客户端与本地模型使用痕迹。",
+        "OpenClaw/ClawX": "自建 Agent/控制台相关项目和历史规则。",
+        "MCP 与技能系统": "插件、技能、MCP 服务与工具协议。",
+        "记忆与上下文": "长期记忆、上下文提取、跨会话连续性。",
+    }
+
+    all_project_rows = recovered_projects + local_projects
+    all_skill_rows = recovered_skills + local_skills
+    all_agent_rows = recovered_agents + local_agents
+    credential_rows = [row for row in local_finding_rows if row.get("group") == "credential"]
+    personal_rows = [row for row in local_finding_rows if row.get("group") == "personal"]
+    high_credential_rows = [row for row in credential_rows if row.get("severity") == "high"]
+
+    start_body = (
+        "这是本地 Karpathy-style 知识库的阅读入口。原始材料保持不动，`private-wiki/` 是私有编译层，`wiki/` 和 `site-data/` 才是公开候选层。\n\n"
+        "## 先读这 7 页\n\n"
+        "- [[private-wiki/profile/personal-brief]] - 个人成长与定位摘要\n"
+        "- [[private-wiki/projects/showcase-draft]] - 项目展示草稿池\n"
+        "- [[private-wiki/skills/capability-brief]] - 能力画像与证据\n"
+        "- [[private-wiki/agents/agent-ecosystem-brief]] - Agent 生态与配置地图\n"
+        "- [[private-wiki/security/review-priority]] - 密钥与隐私复核优先级\n"
+        "- [[private-wiki/profile/source-coverage]] - 本地资料覆盖面\n"
+        "- [[private-wiki/synthesis/local-karpathy-wiki-operating-model]] - 本地知识库运行模型\n\n"
+        "## 日常流程\n\n"
+        "1. 新资料先进入原始层或本地来源索引。\n"
+        "2. 私有编译层只做提炼、链接、计数和证据定位，不复制密钥明文。\n"
+        "3. 公开展示必须从私有页人工改写，脱敏后再进入 `wiki/`。\n"
+        "4. 前端只读 `site-data/*.json`，不读 Obsidian 原文和私有目录。\n\n"
+        "## 判断标准\n\n"
+        "- 能回答“我做过什么、会什么、有哪些 Agent 配置、哪些内容不能公开”。\n"
+        "- 每个结论能回到来源索引或原始材料。\n"
+        "- 不确定内容留在私有层，不直接发布。\n"
+    )
+    write_page(out / "guide" / "start-here.md", "本地 Karpathy 知识库入口", ["本地知识库入口", "Start Here"], ["personal-archive", "karpathy-wiki", "guide"], "private-guide", "moc", "本地 Karpathy-style 私有知识库的阅读入口和维护流程。", start_body, "internal")
+
+    personal_body = (
+        "这页是从本地证据编译出来的个人成长与定位摘要，不是公开简历。它的作用是帮助后续写公开自序、项目页和能力页。\n\n"
+        "## 当前定位\n\n"
+        "- 主线是把 AI Agent、知识库、自动化、前后端产品和个人资料展示系统汇合成一个可持续维护的本地知识库。^[inferred]\n"
+        "- 资料形态从会话、项目、规则、脚本、前端规格、Agent 配置逐步转成可审计的 Obsidian 页面。^[inferred]\n"
+        "- 公开展示不应直接复用私有证据，而应抽取项目成果、能力证明和公开安全叙事。^[inferred]\n\n"
+        "## 证据覆盖\n\n"
+        f"- 成长/个人候选来源：`{len(recovered_growth) + len(local_growth)}`\n"
+        f"- 项目候选来源：`{len(all_project_rows)}`\n"
+        f"- 能力候选来源：`{len(all_skill_rows)}`\n"
+        f"- Agent 候选来源：`{len(all_agent_rows)}`\n"
+        f"- 个人/隐私线索：`{len(personal_rows)}`\n\n"
+        "## 成长材料候选\n\n"
+        + source_bullets(recovered_growth + local_growth, 24)
+        + "\n\n## 下一步\n\n"
+        "- 把真实成长节点拆成按年月的事件页。\n"
+        "- 把文件修改时间和真实人生/项目事件分开。\n"
+        "- 写一版公开自序草稿，只保留愿意公开的身份、方向和作品。\n"
+    )
+    write_page(out / "profile" / "personal-brief.md", "个人成长与定位摘要", ["个人画像草稿", "成长摘要"], ["personal-archive", "growth", "summary"], "private-profile", "brief", "从本地证据编译出的个人成长、方向和展示素材摘要。", personal_body, "sensitive")
+
+    project_body = (
+        "这页把项目证据整理成展示草稿池。它不是最终作品集，目标是筛出值得公开改写的项目线。\n\n"
+        + cluster_table("项目主题分布", cluster_counts(all_project_rows, project_clusters), descriptions)
+        + "\n\n## 展示候选清单\n\n"
+        + source_status_table(all_project_rows, 36)
+        + "\n\n## 公开改写规则\n\n"
+        "- 一个公开项目页只讲目标、角色、技术栈、成果、截图/演示和可公开链接。\n"
+        "- 删除本地路径、账号、密钥、部署细节、未公开学校/个人信息。\n"
+        "- 每个项目页至少链接一个来源说明页和一个能力页。\n"
+    )
+    write_page(out / "projects" / "showcase-draft.md", "项目展示草稿池", ["作品集草稿", "项目展示候选"], ["personal-archive", "projects", "showcase"], "private-projects", "draft", "用于从私有项目证据筛选公开作品集条目的草稿池。", project_body, "internal")
+
+    skill_body = (
+        "这页把技能和能力从散乱来源中聚类，方便后续写公开能力页或简历式技能说明。\n\n"
+        + cluster_table("能力主题分布", cluster_counts(all_skill_rows, skill_clusters), descriptions)
+        + "\n\n## 能力证据候选\n\n"
+        + source_status_table(all_skill_rows, 36)
+        + "\n\n## 对外表达方式\n\n"
+        "- 不写“会很多工具”，要写“能完成什么交付”。\n"
+        "- 每个能力最好绑定一个项目证据和一个可复用流程。\n"
+        "- 私有 Agent 规则和提示词只能作为证据，不能原文公开。\n"
+    )
+    write_page(out / "skills" / "capability-brief.md", "能力画像与证据", ["能力画像", "技能摘要"], ["personal-archive", "skills", "summary"], "private-skills", "brief", "把本地技能、工具和流程证据聚类成可展示能力画像。", skill_body, "internal")
+
+    agent_body = (
+        "这页整理配置过的 Agent、规则、技能、提示词、上下文和历史控制面。旧规则默认是历史材料，不自动变成当前规范。\n\n"
+        + cluster_table("Agent 生态分布", cluster_counts(all_agent_rows, agent_clusters), descriptions)
+        + "\n\n## Agent 资料候选\n\n"
+        + source_status_table(all_agent_rows, 36)
+        + "\n\n## 维护规则\n\n"
+        "- 当前规范只看活动规则面；旧控制器、旧编排和旧强制流程只作历史参考。\n"
+        "- Agent 配置页默认私有，公开时只讲架构思想和可复用模式。\n"
+        "- 涉及 prompt、memory、hook、token、local path 的内容不直接发布。\n"
+    )
+    write_page(out / "agents" / "agent-ecosystem-brief.md", "Agent 生态与配置地图", ["Agent生态", "配置过的智能体"], ["personal-archive", "agents", "summary"], "private-agents", "brief", "配置过的 Agent、规则、技能、提示词、记忆和上下文系统摘要。", agent_body, "sensitive")
+
+    security_body = (
+        "这页把密钥和隐私审计变成行动队列。它不显示任何密钥值，只显示类别和优先级。\n\n"
+        "## 优先级\n\n"
+        f"- P0：高置信凭据线索 `{len(high_credential_rows)}`，优先人工打开原始来源确认并轮换。\n"
+        f"- P1：全部凭据/会话/密钥上下文 `{len(credential_rows)}`，用于清理旧配置和误报归类。\n"
+        f"- P2：个人/隐私上下文 `{len(personal_rows)}`，用于公开前脱敏。\n\n"
+        "## 凭据规则分布\n\n"
+        + finding_summary_table(credential_rows, 60)
+        + "\n\n## 处理规则\n\n"
+        "- 不在 Obsidian 编译页写明文密钥。\n"
+        "- 不把本地路径、账号、cookie、session、token 作为公开展示内容。\n"
+        "- 轮换动作需要单独确认；本页只负责定位和排序。\n"
+    )
+    write_page(out / "security" / "review-priority.md", "密钥与隐私复核优先级", ["密钥复核队列", "隐私复核优先级"], ["personal-archive", "security", "review"], "private-security", "queue", "把密钥、凭据和个人隐私线索整理成不含明文的复核优先级。", security_body, "sensitive")
+
+    model_body = (
+        "这页定义本地知识库的运行模型，避免未来继续把原文、扫描表和展示页混在一起。\n\n"
+        "## 三层结构\n\n"
+        "- 原始层：本地文件、恢复档案、会话、截图、项目目录。只读保存，不直接发布。\n"
+        "- 私有编译层：`private-wiki/`，负责成长、项目、能力、Agent、密钥、时间线和来源覆盖。\n"
+        "- 公开编译层：`wiki/` 与 `site-data/`，只接收人工改写、脱敏、可展示的内容。\n\n"
+        "## 为什么这样做\n\n"
+        "- Karpathy-style wiki 的价值在于把知识编译成可复用页面，而不是每次重新翻原始材料。^[inferred]\n"
+        "- 个人资料库需要比普通 wiki 更严格的边界，因为项目、Agent 配置和成长记录天然混有隐私。^[inferred]\n"
+        "- 前端展示层应该只消费精选 JSON，不应该接触原始 Obsidian 私有目录。^[inferred]\n\n"
+        "## 晋升流程\n\n"
+        "1. 从 [[private-wiki/projects/showcase-draft]] 或 [[private-wiki/skills/capability-brief]] 选候选。\n"
+        "2. 写公开安全草稿，删除本地路径、密钥、账号和未确认身份信息。\n"
+        "3. 跑结构检查、隐私扫描和站点数据构建。\n"
+        "4. 只把通过检查的内容放进 `site-data/` 给前端。\n"
+    )
+    write_page(out / "synthesis" / "local-karpathy-wiki-operating-model.md", "本地 Karpathy 知识库运行模型", ["本地知识库运行模型", "Karpathy Wiki 本地模型"], ["personal-archive", "karpathy-wiki", "synthesis"], "private-synthesis", "model", "定义 raw、private-wiki、wiki/site-data 三层之间的职责和晋升流程。", model_body, "internal")
+
+    return 7
+
+
+def write_personal_archive_pages(
+    root: Path,
+    out: Path,
+    recovered_rows: list[dict[str, str]],
+    sensitive_rows: list[dict[str, str]],
+    local_rows: list[dict[str, str]],
+    local_root_rows: list[dict[str, str]],
+    local_finding_rows: list[dict[str, str]],
+    local_timeline_rows: list[dict[str, str]],
+) -> dict[str, int]:
+    growth_terms = [
+        "成长",
+        "目标",
+        "待办",
+        "复盘",
+        "周期",
+        "每日",
+        "手记",
+        "简历",
+        "个人",
+        "档案",
+        "学习",
+        "学校",
+        "大学",
+        "竞赛",
+        "规划",
+        "路线",
+        "经历",
+        "diary",
+        "journal",
+        "profile",
+        "resume",
+        "goal",
+        "plan",
+        "todo",
+        "review",
+        "timeline",
+    ]
+    project_terms = [
+        "项目",
+        "project",
+        "repo",
+        "github",
+        "workspace",
+        "app",
+        "平台",
+        "系统",
+        "小程序",
+        "frontend",
+        "backend",
+        "openhanako",
+        "hanako",
+        "airi",
+        "mcc",
+        "gitnexus",
+        "zongmen",
+        "coze",
+        "dify",
+        "n8n",
+        "one-hub",
+        "安心跃动",
+        "竞赛",
+        "校园",
+    ]
+    skill_terms = [
+        "技能",
+        "skill",
+        "skills",
+        "能力",
+        "工具",
+        "workflow",
+        "playwright",
+        "browser",
+        "mcp",
+        "agent",
+        "prompt",
+        "提示词",
+        "最佳实践",
+        "frontend",
+        "react",
+        "python",
+        "powershell",
+        "docker",
+        "obsidian",
+        "测试",
+        "部署",
+    ]
+    agent_terms = ["agent", "agents", "codex", "claude", "cursor", "gemini", "qwen", "openclaw", "mcp", "skill", "prompt", "hook", "rules", "serena", "mempalace", "config", "settings", "小安"]
+    security_terms = ["credential", "secret", "token", "key", "password", "session", "cookie", "密钥", "凭据", "安全"]
+
+    recovered_growth = select_recovered_rows(
+        recovered_rows,
+        growth_terms,
+        {"private-memory-and-sessions", "projects-and-action-items", "agent-governance-and-skills", "public-knowledge-candidates"},
+        180,
+    )
+    recovered_projects = select_recovered_rows(recovered_rows, project_terms, {"projects-and-action-items", "agent-governance-and-skills", "public-knowledge-candidates"}, 220)
+    recovered_skills = select_recovered_rows(recovered_rows, skill_terms, {"agent-governance-and-skills", "public-knowledge-candidates"}, 220)
+    recovered_agents = select_recovered_rows(recovered_rows, agent_terms, {"agent-governance-and-skills"}, 220)
+
+    local_growth = select_local_rows(local_rows, growth_terms, {"personal-and-chat-context", "project-roots", "agent-context"}, 180)
+    local_projects = select_local_rows(local_rows, project_terms, {"project-roots", "local-assets", "agent-context"}, 220)
+    local_skills = select_local_rows(local_rows, skill_terms, {"agent-context", "project-roots", "local-assets"}, 220)
+    local_agents = select_local_rows(local_rows, agent_terms, {"agent-context", "security-and-credentials"}, 220)
+    local_security = select_local_rows(local_rows, security_terms, {"security-and-credentials", "agent-context"}, 180)
+    local_personal_findings = [row for row in local_finding_rows if row.get("group") == "personal"]
+    local_credential_findings = [row for row in local_finding_rows if row.get("group") == "credential"]
+
+    profile_body = (
+        "This is the private personal archive layer for identity, growth evidence, project history, skills, configured agents, and sensitive material triage.\n\n"
+        "## Core Maps\n\n"
+        "- [[private-wiki/guide/start-here]] - 本地 Karpathy 知识库阅读入口\n"
+        "- [[private-wiki/profile/personal-brief]] - 个人成长与定位摘要\n"
+        "- [[private-wiki/profile/growth-timeline]] - growth, learning, goals, reviews, personal records, and timeline evidence\n"
+        "- [[private-wiki/projects/portfolio-map]] - projects, prototypes, repos, product ideas, and action-item history\n"
+        "- [[private-wiki/projects/showcase-draft]] - 项目展示草稿池\n"
+        "- [[private-wiki/skills/index]] - skills, reusable workflows, tools, and proof sources\n"
+        "- [[private-wiki/skills/capability-brief]] - 能力画像与证据\n"
+        "- [[private-wiki/agents/configuration-map]] - configured agents, rules, prompts, memories, and local assistant state\n"
+        "- [[private-wiki/agents/agent-ecosystem-brief]] - Agent 生态与配置地图\n"
+        "- [[private-wiki/security/secret-material-map]] - credential and privacy evidence without secret values\n"
+        "- [[private-wiki/security/review-priority]] - 密钥与隐私复核优先级\n"
+        "- [[private-wiki/profile/source-coverage]] - what local roots and source reports currently cover\n\n"
+        "## Coverage Snapshot\n\n"
+        f"- Recovered archive rows: `{len(recovered_rows)}`\n"
+        f"- Local source inventory rows: `{len(local_rows)}`\n"
+        f"- Local timeline rows: `{len(local_timeline_rows)}`\n"
+        f"- Local personal/privacy findings: `{len(local_personal_findings)}`\n"
+        f"- Local credential/security findings: `{len(local_credential_findings)}`\n\n"
+        "## Rule\n\n"
+        "This layer is the searchable private biography and work archive. It may point to raw sources, but it must not be copied into the public `wiki/` until each item is rewritten and reviewed.\n"
+    )
+    write_page(out / "profile" / "index.md", "Private Personal Archive", ["个人资料馆", "成长项目能力总览"], ["personal-archive", "profile"], "private-profile", "moc", "Private index for growth, projects, skills, configured agents, and sensitive local context.", profile_body, "sensitive")
+
+    growth_body = (
+        "This page turns scattered local notes into a private growth map. It keeps evidence links and counts instead of trying to publish a finished biography.\n\n"
+        "## Evidence Sources\n\n"
+        f"- Recovered growth/profile candidates: `{len(recovered_growth)}`\n"
+        f"- Local growth/profile candidates: `{len(local_growth)}`\n"
+        f"- Full recovered inventory: {private_report_link('recovered_file_inventory.csv', 'recovered_file_inventory.csv', 2)}\n"
+        f"- Full local inventory: {local_report_link('local_source_inventory.csv', 'local_source_inventory.csv', 2)}\n"
+        f"- Full local timeline: {local_report_link('local_timeline_index.csv', 'local_timeline_index.csv', 2)}\n\n"
+        "## Recovered Personal/Growth Sources\n\n"
+        + recovered_source_table(recovered_growth, 140, 2)
+        + "\n\n## Local Personal/Growth Sources\n\n"
+        + local_inventory_table(local_growth, 140)
+        + "\n\n## Timeline Evidence By Month\n\n"
+        + timeline_month_table(local_timeline_rows, growth_terms, 140)
+        + "\n\n## Next Compilation Pass\n\n"
+        "- Promote recurring milestones into dated private biography entries.\n"
+        "- Separate true life events from file modification dates and quoted dates.\n"
+        "- Keep private names, contact details, and raw chats out of public pages.\n"
+    )
+    write_page(out / "profile" / "growth-timeline.md", "Growth Timeline And Profile Evidence", ["成长时间线", "个人成长证据"], ["personal-archive", "growth", "timeline"], "private-profile", "timeline-index", "Growth, learning, goals, reviews, and personal profile evidence gathered from local sources.", growth_body, "sensitive")
+
+    coverage_body = (
+        "This page records what the local archive currently covers. It is the control panel for adding more roots later.\n\n"
+        "## Indexed Roots\n\n"
+        + root_summary_table(local_root_rows, None, 120)
+        + "\n\n## Complete Reports\n\n"
+        f"- {local_report_link('local_roots.csv', 'local_roots.csv', 2)}\n"
+        f"- {local_report_link('local_source_inventory.csv', 'local_source_inventory.csv', 2)}\n"
+        f"- {local_report_link('local_sensitive_findings.csv', 'local_sensitive_findings.csv', 2)}\n"
+        f"- {local_report_link('local_timeline_index.csv', 'local_timeline_index.csv', 2)}\n"
+        f"- {private_report_link('recovered_file_inventory.csv', 'recovered_file_inventory.csv', 2)}\n\n"
+        "## Source Gap Rule\n\n"
+        "If a folder contains personal growth, projects, skills, or agent configuration but is not listed here, add it to `local-discovery/roots.csv` and rerun the local inventory before compiling pages.\n"
+    )
+    write_page(out / "profile" / "source-coverage.md", "Private Source Coverage", ["资料覆盖面"], ["personal-archive", "source-coverage"], "private-profile", "index", "Local roots and reports covered by the private personal archive pipeline.", coverage_body, "internal")
+
+    project_body = (
+        "This page is the private portfolio map: project roots, project notes, prototypes, product ideas, and action history.\n\n"
+        "## Project Roots\n\n"
+        + root_summary_table(local_root_rows, project_terms, 80)
+        + "\n\n## Recovered Project Sources\n\n"
+        + recovered_source_table(recovered_projects, 180, 2)
+        + "\n\n## Local Project Sources\n\n"
+        + local_inventory_table(local_projects, 180)
+        + "\n\n## Timeline Evidence By Month\n\n"
+        + timeline_month_table(local_timeline_rows, project_terms, 120)
+        + "\n\n## Compilation Rule\n\n"
+        "Create one project page per durable project only after review. Keep throwaway logs and raw handoff notes as linked evidence rather than copying them into the portfolio narrative.\n"
+    )
+    write_page(out / "projects" / "portfolio-map.md", "Private Project Portfolio Map", ["项目作品地图", "项目资料馆"], ["personal-archive", "projects"], "private-projects", "portfolio", "Private map of projects, prototypes, repositories, product ideas, and action history.", project_body, "internal")
+
+    skills_body = (
+        "This page gathers evidence for skills and reusable workflows from notes, configs, project files, and skill libraries.\n\n"
+        "## Recovered Skill Sources\n\n"
+        + recovered_source_table(recovered_skills, 180, 2)
+        + "\n\n## Local Skill Sources\n\n"
+        + local_inventory_table(local_skills, 180)
+        + "\n\n## Skill Evidence By Month\n\n"
+        + timeline_month_table(local_timeline_rows, skill_terms, 120)
+        + "\n\n## Use\n\n"
+        "- Use this as the private evidence base for a public skills page.\n"
+        "- Public claims should cite sanitized project pages or rewritten source notes, not raw local logs.\n"
+    )
+    write_page(out / "skills" / "index.md", "Private Skills And Capabilities Index", ["能力清单", "技能资料馆"], ["personal-archive", "skills"], "private-skills", "index", "Private inventory of skills, tools, workflows, and evidence sources.", skills_body, "internal")
+
+    agent_body = (
+        "This page gathers configured agents, assistant rules, prompts, memories, skills, hooks, and local agent state. Old rule files are historical unless promoted into active rule surfaces.\n\n"
+        "## Agent Roots\n\n"
+        + root_summary_table(local_root_rows, agent_terms, 80)
+        + "\n\n## Recovered Agent Sources\n\n"
+        + recovered_source_table(recovered_agents, 180, 2)
+        + "\n\n## Local Agent Sources\n\n"
+        + local_inventory_table(local_agents, 180)
+        + "\n\n## Agent Timeline Evidence\n\n"
+        + timeline_month_table(local_timeline_rows, agent_terms, 120)
+        + "\n\n## Handling\n\n"
+        "- Keep configured agent state private by default.\n"
+        "- Review old controller and orchestration files before treating them as current behavior.\n"
+        "- Never publish prompts, memory, hooks, or configs that expose local paths or credentials.\n"
+    )
+    write_page(out / "agents" / "configuration-map.md", "Configured Agents And Rules Map", ["Agent配置地图", "智能体配置"], ["personal-archive", "agents"], "private-agents", "index", "Private map of configured agents, rules, prompts, memories, hooks, and local assistant state.", agent_body, "sensitive")
+
+    secret_body = (
+        "This page is the private sensitive-material map. It intentionally does not reproduce credential values or personal identifiers.\n\n"
+        "## Local Credential Findings By Rule\n\n"
+        + finding_summary_table(local_credential_findings, 100)
+        + "\n\n## Local Security-Related Sources\n\n"
+        + local_inventory_table(local_security, 140)
+        + "\n\n## Recovered Vault Credential Findings\n\n"
+        + table_for_findings(aggregate_by_file(group_sensitive(sensitive_rows, SECRET_RULES)), 120, 2)
+        + "\n\n## Review Policy\n\n"
+        "- Treat high-confidence tokens, private keys, JWTs, cloud keys, and secret assignments as rotation candidates.\n"
+        "- Store only rule names, line numbers, source locations, and excerpt hashes in compiled pages.\n"
+        "- If a value must be inspected, open the raw local source directly and do not paste it into public notes or chat.\n"
+    )
+    write_page(out / "security" / "secret-material-map.md", "Secret Material And Credential Map", ["密钥资料地图", "敏感材料地图"], ["personal-archive", "security", "credentials"], "private-security", "review", "Private credential and sensitive-material map without secret values.", secret_body, "sensitive")
+
+    readable_pages = write_readable_knowledge_pages(
+        out,
+        recovered_rows,
+        local_rows,
+        local_root_rows,
+        local_finding_rows,
+        recovered_growth,
+        recovered_projects,
+        recovered_skills,
+        recovered_agents,
+        local_growth,
+        local_projects,
+        local_skills,
+        local_agents,
+    )
+
+    return {
+        "personal_archive_pages": 7 + readable_pages,
+        "personal_archive_recovered_growth": len(recovered_growth),
+        "personal_archive_recovered_projects": len(recovered_projects),
+        "personal_archive_recovered_skills": len(recovered_skills),
+        "personal_archive_recovered_agents": len(recovered_agents),
+        "personal_archive_local_growth": len(local_growth),
+        "personal_archive_local_projects": len(local_projects),
+        "personal_archive_local_skills": len(local_skills),
+        "personal_archive_local_agents": len(local_agents),
+    }
 
 
 def append_sample(bucket: list[dict[str, str]], row: dict[str, str], limit: int) -> None:
@@ -534,9 +1170,15 @@ def build(root: Path) -> int:
     sensitive_rows = read_csv(manifest_dir / "sensitive_local_scan.csv")
     timeline_rows = read_csv(manifest_dir / "timeline_index.csv")
     review_rows = read_csv(manifest_dir / "review_queue.csv")
+    recovered_rows = read_csv(manifest_dir / "recovered_file_inventory.csv")
     recovery_summary = read_json(manifest_dir / "recovery_summary.json")
     sensitive_summary = read_json(manifest_dir / "sensitive_timeline_summary.json")
-    local_discovery_summary = read_json(root / LOCAL_DISCOVERY_DIR / "local_discovery_summary.json")
+    local_dir = root / LOCAL_DISCOVERY_DIR
+    local_discovery_summary = read_json(local_dir / "local_discovery_summary.json")
+    local_rows = read_csv(local_dir / "local_source_inventory.csv")
+    local_root_rows = read_csv(local_dir / "local_roots.csv")
+    local_finding_rows = read_csv(local_dir / "local_sensitive_findings.csv")
+    local_timeline_rows = read_csv(local_dir / "local_timeline_index.csv")
 
     secret_rows = group_sensitive(sensitive_rows, SECRET_RULES)
     high_secret_rows = group_sensitive(sensitive_rows, HIGH_SECRET_RULES)
@@ -547,15 +1189,26 @@ def build(root: Path) -> int:
     index_body = (
         "This is the local-only compiled wiki layer for recovered private context. It follows the raw -> private compiled wiki -> public wiki split.\n\n"
         "## Start Here\n\n"
-        "- [[security/index]] - credential, personal information, and local path triage\n"
-        "- [[timeline/index]] - recovered timeline by month\n"
-        "- [[projects/index]] - project and action-item context\n"
-        "- [[agents/index]] - agent memory, rules, prompts, and skills context\n"
-        "- [[personal/index]] - private memory and session context\n"
-        "- [[assets/index]] - local asset and environment context\n"
-        "- [[local-sources/index]] - additional local source discovery outside the recovered vault\n"
-        "- [[synthesis/index]] - recovery synthesis and next passes\n"
-        "- [[publication-candidates]] - candidates for future public-safe rewrite\n\n"
+        "- [[private-wiki/guide/start-here]] - 本地 Karpathy 知识库阅读入口\n"
+        "- [[private-wiki/profile/index]] - private personal archive for growth, projects, skills, agents, and sensitive context\n"
+        "- [[private-wiki/profile/personal-brief]] - 个人成长与定位摘要\n"
+        "- [[private-wiki/security/index]] - credential, personal information, and local path triage\n"
+        "- [[private-wiki/security/review-priority]] - 密钥与隐私复核优先级\n"
+        "- [[private-wiki/timeline/index]] - recovered timeline by month\n"
+        "- [[private-wiki/projects/index]] - project and action-item context\n"
+        "- [[private-wiki/projects/portfolio-map]] - private project portfolio and root map\n"
+        "- [[private-wiki/projects/showcase-draft]] - 项目展示草稿池\n"
+        "- [[private-wiki/agents/index]] - agent memory, rules, prompts, and skills context\n"
+        "- [[private-wiki/agents/configuration-map]] - configured agents and rule surfaces\n"
+        "- [[private-wiki/agents/agent-ecosystem-brief]] - Agent 生态与配置地图\n"
+        "- [[private-wiki/skills/index]] - private skills and capabilities evidence\n"
+        "- [[private-wiki/skills/capability-brief]] - 能力画像与证据\n"
+        "- [[private-wiki/personal/index]] - private memory and session context\n"
+        "- [[private-wiki/assets/index]] - local asset and environment context\n"
+        "- [[private-wiki/local-sources/index]] - additional local source discovery outside the recovered vault\n"
+        "- [[private-wiki/synthesis/index]] - recovery synthesis and next passes\n"
+        "- [[private-wiki/synthesis/local-karpathy-wiki-operating-model]] - 本地 Karpathy 知识库运行模型\n"
+        "- [[private-wiki/publication-candidates]] - candidates for future public-safe rewrite\n\n"
         "## Current Counts\n\n"
         f"- Recovered files: `{recovery_summary.get('total_files', 'unknown')}`\n"
         f"- Recovered Markdown files: `{recovery_summary.get('markdown_files', 'unknown')}`\n"
@@ -575,6 +1228,7 @@ def build(root: Path) -> int:
         "Security pages contain only rule names, paths, line numbers, counts, and hashes. They do not contain secret values.\n\n"
         "## Security Workbench\n\n"
         "- [[credential-review]] - exact and candidate credential findings\n"
+        "- [[secret-material-map]] - local and recovered credential material map without secret values\n"
         "- [[personal-info-review]] - personal information and private-memory markers\n"
         "- [[local-path-map]] - local filesystem and environment path markers\n\n"
         "## Counts\n\n"
@@ -624,6 +1278,16 @@ def build(root: Path) -> int:
     context_page(review_rows, "local-assets-and-environment", "Private Assets Index", "Recovered local assets, environment, and path-map context index.", out / "assets" / "index.md")
     context_page(review_rows, "public-knowledge-candidates", "Private Public-Knowledge Candidate Index", "Recovered public-knowledge candidates that still require review.", out / "synthesis" / "index.md")
     local_stats = write_local_source_pages(root, out)
+    personal_archive_stats = write_personal_archive_pages(
+        root,
+        out,
+        recovered_rows,
+        sensitive_rows,
+        local_rows,
+        local_root_rows,
+        local_finding_rows,
+        local_timeline_rows,
+    )
 
     publication_body = (
         "Candidates here are not public pages. They are triage rows for future rewritten public-safe notes.\n\n"
@@ -648,6 +1312,7 @@ def build(root: Path) -> int:
         "review_rows": len(review_rows),
         "publication_status_counts": dict(status_counts),
         **local_stats,
+        **personal_archive_stats,
     }
     (out / ".private_wiki_manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"private_wiki_pages: {manifest['pages']}")

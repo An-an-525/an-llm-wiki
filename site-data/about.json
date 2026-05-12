@@ -1,5 +1,5 @@
 {
   "title": "关于 an-llm-wiki",
-  "summary": "一个从 Obsidian public wiki 编译出的公开资料库后端。",
-  "body": "这里展示公开安全的资料、路径、项目、手记和年谱。私有资料、密钥线索、本地路径和 raw dump 不进入公开数据包。"
+  "summary": "一个从 Obsidian public wiki 编译出的精选公开资料库后端。",
+  "body": "这里展示已经整理过的资料、路径、项目、手记和年谱。私有资料、密钥线索、本地路径、raw dump、模板和机械迁移稿不会进入前端数据包。"
 }

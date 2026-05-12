@@ -30,6 +30,11 @@ hot.md
 00 - */
 scripts/__pycache__/
 __pycache__/
+site/node_modules/
+site/dist/
+site/dist-ssr/
+site/.vite/
+site/public/site-data/
 
 # Generated local reports
 wiki/reports/

@@ -19,9 +19,13 @@ IGNORE_DIRS = {
     "private-wiki",
     ".local_private",
     "node_modules",
+    "dist",
+    "dist-ssr",
+    ".vite",
     "__pycache__",
 }
 IGNORE_FILES = {"hot.md"}
+IGNORE_SUFFIXES = {".log"}
 
 
 def main() -> int:
@@ -29,9 +33,18 @@ def main() -> int:
     out = root / "manifests" / "public_inventory.csv"
     rows = []
     for current, dirs, names in os.walk(root, followlinks=False):
-        dirs[:] = [d for d in dirs if d not in IGNORE_DIRS and not d.startswith("00 - ")]
+        rel_current = Path(current).resolve().relative_to(root).as_posix()
+        dirs[:] = [
+            d
+            for d in dirs
+            if d not in IGNORE_DIRS
+            and not d.startswith("00 - ")
+            and f"{rel_current}/{d}".lstrip("./") != "site/public/site-data"
+        ]
         for name in names:
             if name in IGNORE_FILES:
+                continue
+            if any(name.endswith(suffix) for suffix in IGNORE_SUFFIXES):
                 continue
             path = Path(current) / name
             if path.resolve() == out.resolve():
