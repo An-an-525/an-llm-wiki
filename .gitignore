@@ -26,6 +26,7 @@ inbox/private/
 # Local runtime/collaboration scratch
 00 - */
 scripts/__pycache__/
+__pycache__/
 
 # Generated local reports
 wiki/reports/
