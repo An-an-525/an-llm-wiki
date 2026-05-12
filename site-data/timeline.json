@@ -1,0 +1,4783 @@
+[
+  {
+    "id": "timeline-c_b335630551682c19",
+    "title": "An LLM Wiki",
+    "slug": "readme",
+    "summary": "A public, privacy-filtered Obsidian LLM Wiki rebuilt around Karpathy's llm-wiki pattern.",
+    "tags": [
+      "llm-wiki",
+      "obsidian",
+      "public"
+    ],
+    "status": [
+      "featured",
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "paths",
+    "type": "paths",
+    "importance": "high",
+    "relatedLibraryItems": [
+      "c_b335630551682c19"
+    ],
+    "href": "/content/readme"
+  },
+  {
+    "id": "timeline-c_a48746cae70c44e7",
+    "title": "An LLM Wiki Index",
+    "slug": "index",
+    "summary": "Root navigation page for the public-safe Obsidian LLM Wiki.",
+    "tags": [
+      "llm-wiki",
+      "index"
+    ],
+    "status": [
+      "featured",
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "paths",
+    "type": "paths",
+    "importance": "high",
+    "relatedLibraryItems": [
+      "c_a48746cae70c44e7"
+    ],
+    "href": "/content/index"
+  },
+  {
+    "id": "timeline-c_7204c0a4f935b256",
+    "title": "Vault Log",
+    "slug": "log",
+    "summary": "Append-only maintenance log for the rebuilt public-safe vault.",
+    "tags": [
+      "llm-wiki",
+      "log"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "journal",
+    "type": "journal",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_7204c0a4f935b256"
+    ],
+    "href": "/content/log"
+  },
+  {
+    "id": "timeline-c_4c5d52e3616d9f42",
+    "title": "代码片段索引",
+    "slug": "wiki-concepts-03-代码片段-代码片段索引",
+    "summary": "`03 - 代码片段` 是代码复用的 canonical 区，不再把片段分散到其他平级目录。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_4c5d52e3616d9f42"
+    ],
+    "href": "/content/wiki-concepts-03-代码片段-代码片段索引"
+  },
+  {
+    "id": "timeline-c_cb3f695c0f6d2225",
+    "title": "📚 Obsidian 知识管理",
+    "slug": "wiki-concepts-04-知识库-方法论专题-06-obsidian知识管理",
+    "summary": "Obsidian Vault 组织、批量导入、知识沉淀的方法论",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_cb3f695c0f6d2225"
+    ],
+    "href": "/content/wiki-concepts-04-知识库-方法论专题-06-obsidian知识管理"
+  },
+  {
+    "id": "timeline-c_6be46217736a5441",
+    "title": "MCP 生态全景 (MCP Ecosystem 2026)",
+    "slug": "wiki-concepts-04-知识库-领域研究-ai-agent技术-技能库-mcp_ecosystem_2026",
+    "summary": "🛰️ MCP 生态全景 (MCP Ecosystem 2026)",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_6be46217736a5441"
+    ],
+    "href": "/content/wiki-concepts-04-知识库-领域研究-ai-agent技术-技能库-mcp_ecosystem_2026"
+  },
+  {
+    "id": "timeline-c_f24af3c4d6cc73b2",
+    "title": "MuleRun 技能知识网络索引 (MuleRun Skills MOC)",
+    "slug": "wiki-concepts-04-知识库-领域研究-ai-agent技术-技能库-mulerun_skills_hub_moc",
+    "summary": "🛠️ MuleRun 技能知识网络索引 (MuleRun Skills MOC)",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "paths",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_f24af3c4d6cc73b2"
+    ],
+    "href": "/content/wiki-concepts-04-知识库-领域研究-ai-agent技术-技能库-mulerun_skills_hub_moc"
+  },
+  {
+    "id": "timeline-c_036509eb8e82c67a",
+    "title": "Agent 平台最佳实践与反模式",
+    "slug": "wiki-concepts-04-知识库-领域研究-ai-agent技术-架构设计-agent-平台最佳实践与反模式-2026-04-11",
+    "summary": "目标：把公开 Agent 框架里反复被验证过的方法，压到当前本地现实里，形成适用于 `Codex -> Multica -> execution runtimes` 的落地准则。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_036509eb8e82c67a"
+    ],
+    "href": "/content/wiki-concepts-04-知识库-领域研究-ai-agent技术-架构设计-agent-平台最佳实践与反模式-2026-04-11"
+  },
+  {
+    "id": "timeline-c_d0b246601379480d",
+    "title": "MuleRun Skills Hub",
+    "slug": "wiki-concepts-07-技能库-mulerun_skills_hub",
+    "summary": "MuleRun Skills Hub",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_d0b246601379480d"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-mulerun_skills_hub"
+  },
+  {
+    "id": "timeline-c_0140a25e6f6b4db0",
+    "title": "ai-multimodal 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-ai-multimodal",
+    "summary": "🎨 ai-multimodal 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_0140a25e6f6b4db0"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-ai-multimodal"
+  },
+  {
+    "id": "timeline-c_c88f4f7359413b90",
+    "title": "beautiful-mermaid-ascii 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-beautiful-mermaid-ascii",
+    "summary": "🔠 beautiful-mermaid-ascii 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_c88f4f7359413b90"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-beautiful-mermaid-ascii"
+  },
+  {
+    "id": "timeline-c_4c56913e707292d2",
+    "title": "browser-use 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-browser-use",
+    "summary": "Make websites accessible for AI agents via visual interaction and long-flow automation.",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_4c56913e707292d2"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-browser-use"
+  },
+  {
+    "id": "timeline-c_954a740e61f32f62",
+    "title": "bulk-summarize 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-bulk-summarize",
+    "summary": "📹 bulk-summarize 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_954a740e61f32f62"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-bulk-summarize"
+  },
+  {
+    "id": "timeline-c_66bf06ec3ad74ca3",
+    "title": "camelcamelcamel-alerts 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-camelcamelcamel-alerts",
+    "summary": "🐫 camelcamelcamel-alerts 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_66bf06ec3ad74ca3"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-camelcamelcamel-alerts"
+  },
+  {
+    "id": "timeline-c_1a1158fded8c2020",
+    "title": "castella-a2a 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-castella-a2a",
+    "summary": "Connect to A2A (Agent-to-Agent) protocol agents from Castella. Communicate with agents, display agent cards, and handle message streams.",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_1a1158fded8c2020"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-castella-a2a"
+  },
+  {
+    "id": "timeline-c_54343803e1f539fe",
+    "title": "ccsinfo 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-ccsinfo",
+    "summary": "System and environment information collector for Claude Code environments. Use when diagnosing environment issues or identifying hardware capabilities.",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_54343803e1f539fe"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-ccsinfo"
+  },
+  {
+    "id": "timeline-c_d3ba547642fc06ea",
+    "title": "code-runner 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-code-runner",
+    "summary": "Run code snippets in 30+ programming languages directly from the command line. Use for testing algorithms, verifying syntax, and running quick scripts.",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_d3ba547642fc06ea"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-code-runner"
+  },
+  {
+    "id": "timeline-c_3a362b2cf3490fa7",
+    "title": "commit 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-commit",
+    "summary": "📝 commit 技能 (Smart Commit)",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_3a362b2cf3490fa7"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-commit"
+  },
+  {
+    "id": "timeline-c_a451aa4075ad7cb0",
+    "title": "competitors-analysis 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-competitors-analysis",
+    "summary": "🕵️ competitors-analysis 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_a451aa4075ad7cb0"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-competitors-analysis"
+  },
+  {
+    "id": "timeline-c_cc91ac0b619cd49b",
+    "title": "composewebview-development 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-composewebview-development",
+    "summary": "🛠️ composewebview-development 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_cc91ac0b619cd49b"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-composewebview-development"
+  },
+  {
+    "id": "timeline-c_4b51b4dd24b8ea46",
+    "title": "composewebview-documentation 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-composewebview-documentation",
+    "summary": "📚 composewebview-documentation 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_4b51b4dd24b8ea46"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-composewebview-documentation"
+  },
+  {
+    "id": "timeline-c_a0e503d93d357c1c",
+    "title": "data-pipeline-engineer 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-data-pipeline-engineer",
+    "summary": "💾 data-pipeline-engineer 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_a0e503d93d357c1c"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-data-pipeline-engineer"
+  },
+  {
+    "id": "timeline-c_15f1beb1b712823d",
+    "title": "debug-tauri 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-debug-tauri",
+    "summary": "Automates Tauri WebView debugging using official plugins (tauri-plugin-log + screenshots).",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_15f1beb1b712823d"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-debug-tauri"
+  },
+  {
+    "id": "timeline-c_a03ee5267d2a806c",
+    "title": "differentiation-schemes 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-differentiation-schemes",
+    "summary": "📐 differentiation-schemes 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_a03ee5267d2a806c"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-differentiation-schemes"
+  },
+  {
+    "id": "timeline-c_55ca39d69c7698bf",
+    "title": "doc 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-doc",
+    "summary": "用于读取、创建、编辑 `.docx` 文档，尤其在版式、表格、分页和视觉保真度重要时触发。底层优先 `python-docx`，并配合渲染检查。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_55ca39d69c7698bf"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-doc"
+  },
+  {
+    "id": "timeline-c_db5e457f3561e4e8",
+    "title": "document-converter-suite 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-document-converter-suite",
+    "summary": "📄 document-converter-suite 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_db5e457f3561e4e8"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-document-converter-suite"
+  },
+  {
+    "id": "timeline-c_4ab164b111a1910b",
+    "title": "figlet-text-converter 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-figlet-text-converter",
+    "summary": "🎨 figlet-text-converter 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_4ab164b111a1910b"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-figlet-text-converter"
+  },
+  {
+    "id": "timeline-c_0d8f16a247a073a4",
+    "title": "openclaw-version-monitor 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-flyio-cli-public",
+    "summary": "🤖 openclaw-version-monitor (flyio-cli-public)",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_0d8f16a247a073a4"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-flyio-cli-public"
+  },
+  {
+    "id": "timeline-c_f2ac210613525d06",
+    "title": "frontend-skill 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-frontend-skill",
+    "summary": "🎨 frontend-skill 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_f2ac210613525d06"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-frontend-skill"
+  },
+  {
+    "id": "timeline-c_433ce15fd08096bb",
+    "title": "gcode-to-text 技能 (Letta)",
+    "slug": "wiki-concepts-07-技能库-原子技能-gcode-to-text",
+    "summary": "🧠 gcode-to-text 技能 (Letta Development)",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_433ce15fd08096bb"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-gcode-to-text"
+  },
+  {
+    "id": "timeline-c_745ee1b523ff622b",
+    "title": "generating-memes 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-generating-memes",
+    "summary": "🎭 generating-memes 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_745ee1b523ff622b"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-generating-memes"
+  },
+  {
+    "id": "timeline-c_25658b372edcef79",
+    "title": "gh-address-comments 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-gh-address-comments",
+    "summary": "💬 gh-address-comments 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_25658b372edcef79"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-gh-address-comments"
+  },
+  {
+    "id": "timeline-c_d67590d531072801",
+    "title": "gh-fix-ci 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-gh-fix-ci",
+    "summary": "用于调试和修复 GitHub Actions 失败检查。适合定位 PR checks、抓取日志片段、提炼失败上下文，并在审批后实施修复。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_d67590d531072801"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-gh-fix-ci"
+  },
+  {
+    "id": "timeline-c_f01792aee76894b4",
+    "title": "git-changes-reporter 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-git-changes-reporter",
+    "summary": "📝 git-changes-reporter 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_f01792aee76894b4"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-git-changes-reporter"
+  },
+  {
+    "id": "timeline-c_2bada39595f50a57",
+    "title": "gitnexus-explorer 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-gitnexus-explorer",
+    "summary": "🕸️ gitnexus-explorer 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_2bada39595f50a57"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-gitnexus-explorer"
+  },
+  {
+    "id": "timeline-c_0a94ae694d2b68a6",
+    "title": "home-assistant-awtrix 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-home-assistant-awtrix",
+    "summary": "📟 home-assistant-awtrix 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_0a94ae694d2b68a6"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-home-assistant-awtrix"
+  },
+  {
+    "id": "timeline-c_61a4965222638765",
+    "title": "hooks-development 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-hooks-development",
+    "summary": "⚓ hooks-development 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_61a4965222638765"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-hooks-development"
+  },
+  {
+    "id": "timeline-c_ed02ddf4afe437cc",
+    "title": "invoice-generator 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-invoice-generator",
+    "summary": "🧾 invoice-generator 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_ed02ddf4afe437cc"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-invoice-generator"
+  },
+  {
+    "id": "timeline-c_228bb38ab5078ba5",
+    "title": "ios-simulator 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-ios-simulator",
+    "summary": "📱 ios-simulator 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_228bb38ab5078ba5"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-ios-simulator"
+  },
+  {
+    "id": "timeline-c_bbac479e6d215369",
+    "title": "issue-create 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-issue-create",
+    "summary": "Create well-formatted GitHub issues with AI-powered label suggestions and content type detection.",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_bbac479e6d215369"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-issue-create"
+  },
+  {
+    "id": "timeline-c_a429a719d569ecd8",
+    "title": "jira 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-jira",
+    "summary": "🟦 jira 技能 (SAFe Methodology)",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_a429a719d569ecd8"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-jira"
+  },
+  {
+    "id": "timeline-c_e0f800acd933c702",
+    "title": "linear-solvers 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-linear-solvers",
+    "summary": "🧮 linear-solvers 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_e0f800acd933c702"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-linear-solvers"
+  },
+  {
+    "id": "timeline-c_ad13ab4941ea86cf",
+    "title": "link-validator 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-link-validator",
+    "summary": "🔗 link-validator 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_ad13ab4941ea86cf"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-link-validator"
+  },
+  {
+    "id": "timeline-c_349fc6203669c5e2",
+    "title": "markdown-tools 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-markdown-tools",
+    "summary": "🖋️ markdown-tools 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_349fc6203669c5e2"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-markdown-tools"
+  },
+  {
+    "id": "timeline-c_bc43bb6728cb7cb4",
+    "title": "mcaf-skill-curation 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-mcaf-skill-curation",
+    "summary": "🛠️ mcaf-skill-curation 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_bc43bb6728cb7cb4"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-mcaf-skill-curation"
+  },
+  {
+    "id": "timeline-c_242f238bcda0e957",
+    "title": "mermaid-tools 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-mermaid-tools",
+    "summary": "📊 mermaid-tools 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_242f238bcda0e957"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-mermaid-tools"
+  },
+  {
+    "id": "timeline-c_ebd52c7e3a3b7e0f",
+    "title": "mesh-generation 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-mesh-generation",
+    "summary": "🕸️ mesh-generation 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_ebd52c7e3a3b7e0f"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-mesh-generation"
+  },
+  {
+    "id": "timeline-c_8b8058905d39ae76",
+    "title": "ms-agent-framework-rag 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-ms-agent-framework-rag",
+    "summary": "🧠 ms-agent-framework-rag 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_8b8058905d39ae76"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-ms-agent-framework-rag"
+  },
+  {
+    "id": "timeline-c_75d68f2f7dab4ac8",
+    "title": "n8n 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-n8n",
+    "summary": "Manage n8n workflows and automations via API. Use when working with n8n workflows, executions, or automation tasks.",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_75d68f2f7dab4ac8"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-n8n"
+  },
+  {
+    "id": "timeline-c_2a8100338afb9ea6",
+    "title": "numerical-stability 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-numerical-stability",
+    "summary": "⚖️ numerical-stability 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_2a8100338afb9ea6"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-numerical-stability"
+  },
+  {
+    "id": "timeline-c_77703ae064cf26b9",
+    "title": "omni-talos 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-omni-talos",
+    "summary": "Operational tooling for Talos Linux Kubernetes clusters via Sidero Omni with Proxmox.",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_77703ae064cf26b9"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-omni-talos"
+  },
+  {
+    "id": "timeline-c_2a57b3ad9306b985",
+    "title": "omnifocus-2 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-omnifocus-2",
+    "summary": "Manage OmniFocus tasks via JavaScript for Automation (JXA) scripts on macOS. Supports inbox entry, task listing, searching, and property updates.",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_2a57b3ad9306b985"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-omnifocus-2"
+  },
+  {
+    "id": "timeline-c_cf7507c5e3021139",
+    "title": "parameter-optimization 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-parameter-optimization",
+    "summary": "🧪 parameter-optimization 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_cf7507c5e3021139"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-parameter-optimization"
+  },
+  {
+    "id": "timeline-c_3002aaa938bfba57",
+    "title": "pdf 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-pdf",
+    "summary": "用于阅读、生成和复核 PDF，重点在于渲染后的视觉效果，而不是只抽取文本。创建时倾向 `reportlab`，检查时优先转图查看。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_3002aaa938bfba57"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-pdf"
+  },
+  {
+    "id": "timeline-c_749f0f21420f32ec",
+    "title": "plugin-validator 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-plugin-validator",
+    "summary": "🔌 plugin-validator 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_749f0f21420f32ec"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-plugin-validator"
+  },
+  {
+    "id": "timeline-c_8fdb2043fa541ca0",
+    "title": "prometheus-api 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-prometheus-api",
+    "summary": "📈 prometheus-api 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_8fdb2043fa541ca0"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-prometheus-api"
+  },
+  {
+    "id": "timeline-c_3dd04c58931fd50a",
+    "title": "scientific-papers-to-dataset 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-scientific-papers-to-dataset",
+    "summary": "🔬 scientific-papers-to-dataset 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_3dd04c58931fd50a"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-scientific-papers-to-dataset"
+  },
+  {
+    "id": "timeline-c_5b3499c5f0900613",
+    "title": "scrape-webpage 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-scrape-webpage",
+    "summary": "🌐 scrape-webpage 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_5b3499c5f0900613"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-scrape-webpage"
+  },
+  {
+    "id": "timeline-c_d56b698fa4ba60ab",
+    "title": "screenshot 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-screenshot",
+    "summary": "当用户明确要桌面截图、窗口截图、区域截图，或当前工具链没有更合适的专用截图能力时使用。适合系统级、桌面级而非单网页级抓取。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_d56b698fa4ba60ab"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-screenshot"
+  },
+  {
+    "id": "timeline-c_4d4354acdd58752e",
+    "title": "searxng-web-search 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-searxng-web-search",
+    "summary": "🔍 searxng-web-search 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_4d4354acdd58752e"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-searxng-web-search"
+  },
+  {
+    "id": "timeline-c_4574f279c24e74b9",
+    "title": "sec-filing-watcher 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-sec-filing-watcher",
+    "summary": "🏛️ sec-filing-watcher 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_4574f279c24e74b9"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-sec-filing-watcher"
+  },
+  {
+    "id": "timeline-c_365c2c86dc2be506",
+    "title": "security-best-practices 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-security-best-practices",
+    "summary": "🛡️ security-best-practices 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_365c2c86dc2be506"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-security-best-practices"
+  },
+  {
+    "id": "timeline-c_ca5e6000e8546349",
+    "title": "security-threat-model 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-security-threat-model",
+    "summary": "🧠 security-threat-model 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_ca5e6000e8546349"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-security-threat-model"
+  },
+  {
+    "id": "timeline-c_91758efffda22f17",
+    "title": "site-reliability-engineer 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-site-reliability-engineer",
+    "summary": "🏗️ site-reliability-engineer 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_91758efffda22f17"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-site-reliability-engineer"
+  },
+  {
+    "id": "timeline-c_5a3f2c5284008688",
+    "title": "strudel 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-strudel",
+    "summary": "Live-coding music environment porting TidalCycles to JavaScript. Use for musical patterns, melodies, and generative compositions in the browser.",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_5a3f2c5284008688"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-strudel"
+  },
+  {
+    "id": "timeline-c_6716fb02ff4e4de8",
+    "title": "swissweather 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-swissweather",
+    "summary": "🇨🇭 swissweather 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_6716fb02ff4e4de8"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-swissweather"
+  },
+  {
+    "id": "timeline-c_71dc4af9a8c931c2",
+    "title": "technical-writer 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-technical-writer",
+    "summary": "✍️ technical-writer 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_71dc4af9a8c931c2"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-technical-writer"
+  },
+  {
+    "id": "timeline-c_f5ecea09ce71f738",
+    "title": "time-stepping 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-time-stepping",
+    "summary": "🕒 time-stepping 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_f5ecea09ce71f738"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-time-stepping"
+  },
+  {
+    "id": "timeline-c_f2fcdf9eda8111c9",
+    "title": "transcript-fixer 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-transcript-fixer",
+    "summary": "✍️ transcript-fixer 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_f2fcdf9eda8111c9"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-transcript-fixer"
+  },
+  {
+    "id": "timeline-c_6ca1c8a466189f42",
+    "title": "video-comparer 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-video-comparer",
+    "summary": "🎞️ video-comparer 技能",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_6ca1c8a466189f42"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-video-comparer"
+  },
+  {
+    "id": "timeline-c_0c714013545b3480",
+    "title": "yeet 技能",
+    "slug": "wiki-concepts-07-技能库-原子技能-yeet",
+    "summary": "当用户明确要求“一次性完成 stage / commit / push / 开 PR”时使用。它是 GitHub 发布流的快速收口器，而不是通用 Git 技能。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_0c714013545b3480"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-原子技能-yeet"
+  },
+  {
+    "id": "timeline-c_129a498f00168ce1",
+    "title": "技能库说明",
+    "slug": "wiki-concepts-07-技能库-说明-技能库说明",
+    "summary": "用户已构建的 AI 技能库说明，帮助 Agent 了解可用技能及其使用方法。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_129a498f00168ce1"
+    ],
+    "href": "/content/wiki-concepts-07-技能库-说明-技能库说明"
+  },
+  {
+    "id": "timeline-c_56d5a18de83b21b3",
+    "title": "EvoMap 进化笔记模板",
+    "slug": "wiki-concepts-99-模板-evomap-进化笔记模板",
+    "summary": "🌀 [EVO-XXX] [问题简短描述]",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_56d5a18de83b21b3"
+    ],
+    "href": "/content/wiki-concepts-99-模板-evomap-进化笔记模板"
+  },
+  {
+    "id": "timeline-c_c0bfc93464a0e096",
+    "title": "LLM Wiki 条目模板",
+    "slug": "wiki-concepts-99-模板-llm-wiki-条目模板",
+    "summary": "用于把 `raw` 原料压缩为可复用、可审核、可追溯的知识条目。Obsidian 层只承接压缩和导航，不承接仓库事实真相。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_c0bfc93464a0e096"
+    ],
+    "href": "/content/wiki-concepts-99-模板-llm-wiki-条目模板"
+  },
+  {
+    "id": "timeline-c_7734a190165d21eb",
+    "title": "周回顾 - {{year}}-W{{week}}",
+    "slug": "wiki-concepts-99-模板-周回顾模板",
+    "summary": "周回顾 - {{year}}-W{{week}} ({{startDate}} - {{endDate}})",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_7734a190165d21eb"
+    ],
+    "href": "/content/wiki-concepts-99-模板-周回顾模板"
+  },
+  {
+    "id": "timeline-c_057a45c2fd510b80",
+    "title": "{{date}} 每日回顾",
+    "slug": "wiki-concepts-99-模板-每日回顾模板",
+    "summary": "| **日期** | {{date}} |",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "journal",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_057a45c2fd510b80"
+    ],
+    "href": "/content/wiki-concepts-99-模板-每日回顾模板"
+  },
+  {
+    "id": "timeline-c_ae39b0afe7b96e72",
+    "title": "每日笔记模板",
+    "slug": "wiki-concepts-99-模板-每日笔记模板",
+    "summary": "星期{{weekday}} | {{lunar}} | {{weather}}",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "journal",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_ae39b0afe7b96e72"
+    ],
+    "href": "/content/wiki-concepts-99-模板-每日笔记模板"
+  },
+  {
+    "id": "timeline-c_32edd088a45dbdf2",
+    "title": "Concepts",
+    "slug": "wiki-concepts-wiki-concepts-readme",
+    "summary": "放原子概念、方法、术语、模式和可复用判断框架。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_32edd088a45dbdf2"
+    ],
+    "href": "/content/wiki-concepts-wiki-concepts-readme"
+  },
+  {
+    "id": "timeline-c_0b2b8021fc47d672",
+    "title": "LLM Wiki Index",
+    "slug": "wiki-index",
+    "summary": "Short workbench for the rebuilt public-safe LLM Wiki.",
+    "tags": [
+      "llm-wiki",
+      "moc"
+    ],
+    "status": [
+      "featured",
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "paths",
+    "type": "paths",
+    "importance": "high",
+    "relatedLibraryItems": [
+      "c_0b2b8021fc47d672"
+    ],
+    "href": "/content/wiki-index"
+  },
+  {
+    "id": "timeline-c_3ab8fb04b7722ab4",
+    "title": "People",
+    "slug": "wiki-people-wiki-people-readme",
+    "summary": "放人物、组织、Agent、工具主体等实体页。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_3ab8fb04b7722ab4"
+    ],
+    "href": "/content/wiki-people-wiki-people-readme"
+  },
+  {
+    "id": "timeline-c_738963c9715e60e0",
+    "title": "项目笔记总览",
+    "slug": "wiki-projects-02-项目笔记-项目笔记总览",
+    "summary": "这里承接的是“跨项目、跨阶段、跨一次性任务”的项目沉淀，不是项目总览页的重复副本。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_738963c9715e60e0"
+    ],
+    "href": "/content/wiki-projects-02-项目笔记-项目笔记总览"
+  },
+  {
+    "id": "timeline-c_42cb5a0b09867f86",
+    "title": "项目环境配置指导",
+    "slug": "wiki-projects-02-领域-最佳实践-项目环境配置指导",
+    "summary": "本页保留为轻量索引。原文件是大段 AI 对话原文，已迁入冷档案，避免拖慢 Obsidian 搜索、图谱和 AI 上下文。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_42cb5a0b09867f86"
+    ],
+    "href": "/content/wiki-projects-02-领域-最佳实践-项目环境配置指导"
+  },
+  {
+    "id": "timeline-c_1277b16bde1b5212",
+    "title": "AIRI项目官方文档",
+    "slug": "wiki-projects-03-资源-参考资料-airi项目官方文档",
+    "summary": "Project AIRI - Re-creating Neuro-sama, a soul container of AI waifu / virtual characters",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_1277b16bde1b5212"
+    ],
+    "href": "/content/wiki-projects-03-资源-参考资料-airi项目官方文档"
+  },
+  {
+    "id": "timeline-c_3eb7a580d0619970",
+    "title": "活跃项目同步报告",
+    "slug": "wiki-projects-04-知识库-优化-项目同步_17-46",
+    "summary": "**时间**: 2026-04-30 17:46",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_3eb7a580d0619970"
+    ],
+    "href": "/content/wiki-projects-04-知识库-优化-项目同步_17-46"
+  },
+  {
+    "id": "timeline-c_b9226ee61e98a96f",
+    "title": "活跃项目同步报告",
+    "slug": "wiki-projects-04-知识库-优化-项目同步_18-23",
+    "summary": "**时间**: 2026-04-30 18:23",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_b9226ee61e98a96f"
+    ],
+    "href": "/content/wiki-projects-04-知识库-优化-项目同步_18-23"
+  },
+  {
+    "id": "timeline-c_f70150741bc829d2",
+    "title": "活跃项目同步报告",
+    "slug": "wiki-projects-04-知识库-优化-项目同步_19-24",
+    "summary": "**时间**: 2026-04-30 19:24",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_f70150741bc829d2"
+    ],
+    "href": "/content/wiki-projects-04-知识库-优化-项目同步_19-24"
+  },
+  {
+    "id": "timeline-c_8cd2e9e0867d6341",
+    "title": "活跃项目同步报告",
+    "slug": "wiki-projects-04-知识库-优化-项目同步_20-51",
+    "summary": "**时间**: 2026-04-30 20:51",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_8cd2e9e0867d6341"
+    ],
+    "href": "/content/wiki-projects-04-知识库-优化-项目同步_20-51"
+  },
+  {
+    "id": "timeline-c_4a87ee3476212192",
+    "title": "活跃项目同步报告",
+    "slug": "wiki-projects-04-知识库-优化-项目同步_21-51",
+    "summary": "**时间**: 2026-04-30 21:51",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_4a87ee3476212192"
+    ],
+    "href": "/content/wiki-projects-04-知识库-优化-项目同步_21-51"
+  },
+  {
+    "id": "timeline-c_0d29c3fb6d46baaa",
+    "title": ">-",
+    "slug": "wiki-projects-04-知识库-项目-coze复刻计划-coze复刻计划",
+    "summary": "以最小化方式复刻扣子（Coze）平台的核心功能。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_0d29c3fb6d46baaa"
+    ],
+    "href": "/content/wiki-projects-04-知识库-项目-coze复刻计划-coze复刻计划"
+  },
+  {
+    "id": "timeline-c_975da9ee23938390",
+    "title": "竞赛系统开发项目记录",
+    "slug": "wiki-projects-04-知识库-项目-竞赛系统-项目记录-2026-04-20",
+    "summary": "**项目路径**: `[local path redacted]`",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_975da9ee23938390"
+    ],
+    "href": "/content/wiki-projects-04-知识库-项目-竞赛系统-项目记录-2026-04-20"
+  },
+  {
+    "id": "timeline-c_4b428fb52ee69463",
+    "title": "项目索引",
+    "slug": "wiki-projects-04-知识库-项目索引",
+    "summary": "**最后更新**: 2026-05-01",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_4b428fb52ee69463"
+    ],
+    "href": "/content/wiki-projects-04-知识库-项目索引"
+  },
+  {
+    "id": "timeline-c_e9152ded522cbcb7",
+    "title": "an-clan (安氏宗门) 元逻辑架构图",
+    "slug": "wiki-projects-04-知识库-领域研究-ai-agent技术-项目架构-an-clan_project_architecture",
+    "summary": "🧬 an-clan (安氏宗门) 元逻辑架构图",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_e9152ded522cbcb7"
+    ],
+    "href": "/content/wiki-projects-04-知识库-领域研究-ai-agent技术-项目架构-an-clan_project_architecture"
+  },
+  {
+    "id": "timeline-c_cc01bb92e1fdfbf0",
+    "title": "mcc (Master Control Console) 项目架构图",
+    "slug": "wiki-projects-04-知识库-领域研究-ai-agent技术-项目架构-mcc_project_architecture",
+    "summary": "🏗️ mcc (Master Control Console) 项目架构图",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_cc01bb92e1fdfbf0"
+    ],
+    "href": "/content/wiki-projects-04-知识库-领域研究-ai-agent技术-项目架构-mcc_project_architecture"
+  },
+  {
+    "id": "timeline-c_9784bc52cb8a4d4d",
+    "title": "zongmen-gui (宗门管理 GUI) 项目架构图",
+    "slug": "wiki-projects-04-知识库-领域研究-ai-agent技术-项目架构-zongmen-gui_project_architecture",
+    "summary": "🏗️ zongmen-gui (宗门管理 GUI) 项目架构图",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_9784bc52cb8a4d4d"
+    ],
+    "href": "/content/wiki-projects-04-知识库-领域研究-ai-agent技术-项目架构-zongmen-gui_project_architecture"
+  },
+  {
+    "id": "timeline-c_22acd6518108f4c5",
+    "title": "AIRI 项目官方 README",
+    "slug": "wiki-projects-05-外部信息-下载文档-airi项目官方readme",
+    "summary": "本页为空白占位修复后的轻量入口。当前可用资料：",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_22acd6518108f4c5"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-下载文档-airi项目官方readme"
+  },
+  {
+    "id": "timeline-c_d5b1b387a32386cb",
+    "title": "new-api 项目 README",
+    "slug": "wiki-projects-05-外部信息-下载文档-new-api项目readme",
+    "summary": "本页为空白占位修复后的轻量入口。当前可用资料：",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_d5b1b387a32386cb"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-下载文档-new-api项目readme"
+  },
+  {
+    "id": "timeline-c_b73d362f2335c3c9",
+    "title": "PROGRESS SNAPSHOT 025",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_025",
+    "summary": "PROGRESS SNAPSHOT 025",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_b73d362f2335c3c9"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_025"
+  },
+  {
+    "id": "timeline-c_55df02f4cb1b3f8f",
+    "title": "PROGRESS SNAPSHOT 050",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_050",
+    "summary": "PROGRESS SNAPSHOT 050",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_55df02f4cb1b3f8f"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_050"
+  },
+  {
+    "id": "timeline-c_28ad82ab574b357b",
+    "title": "PROGRESS SNAPSHOT 075",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_075",
+    "summary": "PROGRESS SNAPSHOT 075",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_28ad82ab574b357b"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_075"
+  },
+  {
+    "id": "timeline-c_279662b9a9230110",
+    "title": "PROGRESS SNAPSHOT 100",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_100",
+    "summary": "PROGRESS SNAPSHOT 100",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_279662b9a9230110"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_100"
+  },
+  {
+    "id": "timeline-c_c5500d984226cffc",
+    "title": "PROGRESS SNAPSHOT openclaw 025",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_openclaw_025",
+    "summary": "PROGRESS SNAPSHOT openclaw 025",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_c5500d984226cffc"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_openclaw_025"
+  },
+  {
+    "id": "timeline-c_4b575c032c7ecec0",
+    "title": "PROGRESS SNAPSHOT openclaw 075",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_openclaw_075",
+    "summary": "PROGRESS SNAPSHOT openclaw 075",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_4b575c032c7ecec0"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_openclaw_075"
+  },
+  {
+    "id": "timeline-c_efb81c8b6d06bcd7",
+    "title": "PROGRESS SNAPSHOT openclaw 100",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_openclaw_100",
+    "summary": "PROGRESS SNAPSHOT openclaw 100",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_efb81c8b6d06bcd7"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_openclaw_100"
+  },
+  {
+    "id": "timeline-c_76644bc3e06cc203",
+    "title": "PROGRESS SNAPSHOT openclaw v2 100",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_openclaw_v2_100",
+    "summary": "PROGRESS SNAPSHOT openclaw v2 100",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_76644bc3e06cc203"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_openclaw_v2_100"
+  },
+  {
+    "id": "timeline-c_889cd69bd7f2b2a4",
+    "title": "PROGRESS SNAPSHOT optimization audit 100",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_optimization_audit_100",
+    "summary": "PROGRESS SNAPSHOT optimization audit 100",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_889cd69bd7f2b2a4"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_optimization_audit_100"
+  },
+  {
+    "id": "timeline-c_08ef545de6c80c0f",
+    "title": "PROGRESS SNAPSHOT v1.1 025",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_v1_1_025",
+    "summary": "PROGRESS SNAPSHOT v1.1 025",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_08ef545de6c80c0f"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_v1_1_025"
+  },
+  {
+    "id": "timeline-c_e8e5698bcf0ada01",
+    "title": "PROGRESS SNAPSHOT v1.1 050",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_v1_1_050",
+    "summary": "PROGRESS SNAPSHOT v1.1 050",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_e8e5698bcf0ada01"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_v1_1_050"
+  },
+  {
+    "id": "timeline-c_e3b534ed5b25e2e2",
+    "title": "PROGRESS SNAPSHOT v1.1 075",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_v1_1_075",
+    "summary": "PROGRESS SNAPSHOT v1.1 075",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_e3b534ed5b25e2e2"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_v1_1_075"
+  },
+  {
+    "id": "timeline-c_ea1763d0e52c0227",
+    "title": "PROGRESS SNAPSHOT v1.1 100",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_v1_1_100",
+    "summary": "PROGRESS SNAPSHOT v1.1 100",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_ea1763d0e52c0227"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_v1_1_100"
+  },
+  {
+    "id": "timeline-c_9a8b5a53c62c9ac4",
+    "title": "PROGRESS SNAPSHOT v1.2 025",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_v1_2_025",
+    "summary": "PROGRESS SNAPSHOT v1.2 025",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_9a8b5a53c62c9ac4"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-progress_snapshot_v1_2_025"
+  },
+  {
+    "id": "timeline-c_78a218a1f05a4e01",
+    "title": "TARGET_CARD",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-target_card",
+    "summary": "完成小安第2轮微调（策略混合数据），并交付可复现、可审计、可对比的一轮训练成果。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_78a218a1f05a4e01"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-target_card"
+  },
+  {
+    "id": "timeline-c_f92c7567883aaabd",
+    "title": "TASK_STATE",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-task_state",
+    "summary": "在可复现与可审计前提下，完成小安第2轮策略数据微调并产出可验证的训练结果与阶段性报告。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_f92c7567883aaabd"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-task_state"
+  },
+  {
+    "id": "timeline-c_bf5bf09dbd606c2a",
+    "title": "小安复盘知识库",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-data-knowledge-lessons",
+    "summary": "2026-04-05T17:14:20",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_bf5bf09dbd606c2a"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-data-knowledge-lessons"
+  },
+  {
+    "id": "timeline-c_e540973622695342",
+    "title": "Apple SSD 集成说明",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-docs-apple_ssd_integration",
+    "summary": "Embarrassingly Simple Self-Distillation Improves Code Generation (arXiv:2604.01193)",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_e540973622695342"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-docs-apple_ssd_integration"
+  },
+  {
+    "id": "timeline-c_567f1040bc17977b",
+    "title": "最佳实践来源清单（用于后续持续更新）",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-docs-best_practices_sources",
+    "summary": "最佳实践来源清单（用于后续持续更新）",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_567f1040bc17977b"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-docs-best_practices_sources"
+  },
+  {
+    "id": "timeline-c_b2dfa9aa21ff4027",
+    "title": "小安行动复盘与记忆迭代闭环",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-docs-retrospective_memory_loop",
+    "summary": "复盘结论进入记忆库（结构化）与知识库（可读）。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_b2dfa9aa21ff4027"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-docs-retrospective_memory_loop"
+  },
+  {
+    "id": "timeline-c_ffb9bc2bbc32d165",
+    "title": "External SFT Dataset Audit",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-reports-external_dataset_audit_v1-0",
+    "summary": "External SFT Dataset Audit",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_ffb9bc2bbc32d165"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-reports-external_dataset_audit_v1-0"
+  },
+  {
+    "id": "timeline-c_e31a8d55f5154b41",
+    "title": "7B Startup Blocker (2026-04-06)",
+    "slug": "wiki-projects-05-外部信息-项目文档-xiaoan-finetune-reports-startup_7b_blocker_20260406",
+    "summary": "7B Startup Blocker (2026-04-06)",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_e31a8d55f5154b41"
+    ],
+    "href": "/content/wiki-projects-05-外部信息-项目文档-xiaoan-finetune-reports-startup_7b_blocker_20260406"
+  },
+  {
+    "id": "timeline-c_1d2eab09374f4a07",
+    "title": "ollama.ollama 深度调研",
+    "slug": "wiki-projects-98-github项目-ollama-ollama-ollama-ollama",
+    "summary": "ollama.ollama 深度调研",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_1d2eab09374f4a07"
+    ],
+    "href": "/content/wiki-projects-98-github项目-ollama-ollama-ollama-ollama"
+  },
+  {
+    "id": "timeline-c_042735576eaaa9b0",
+    "title": "本地AI资源聚合项目调研",
+    "slug": "wiki-projects-98-github项目-本地ai资源聚合项目调研",
+    "summary": "聚合本地资源和信息、面向 AI Agent 使用的开源项目汇总。涵盖资源导航、上下文管理、本地部署套件、MCP 接入层。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_042735576eaaa9b0"
+    ],
+    "href": "/content/wiki-projects-98-github项目-本地ai资源聚合项目调研"
+  },
+  {
+    "id": "timeline-c_ee167eaecfc32253",
+    "title": "Root Maintenance Backlog",
+    "slug": "wiki-projects-root-maintenance-backlog",
+    "summary": "Durable follow-up list for root issues found during the Karpathy-style public rebuild.",
+    "tags": [
+      "llm-wiki",
+      "project",
+      "maintenance"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "works",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_ee167eaecfc32253"
+    ],
+    "href": "/content/wiki-projects-root-maintenance-backlog"
+  },
+  {
+    "id": "timeline-c_c02a10694bf04a06",
+    "title": "Projects",
+    "slug": "wiki-projects-wiki-projects-readme",
+    "summary": "放项目、产品、实验、交付记录与状态页。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_c02a10694bf04a06"
+    ],
+    "href": "/content/wiki-projects-wiki-projects-readme"
+  },
+  {
+    "id": "timeline-c_56d6bcb2cea9c19a",
+    "title": "Karpathy LLM Wiki Alignment 2026-05-12",
+    "slug": "wiki-projects-wiki-projects-karpathy-llm-wiki-alignment-2026-05-12",
+    "summary": "Karpathy LLM Wiki Alignment 2026-05-12",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "works",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_56d6bcb2cea9c19a"
+    ],
+    "href": "/content/wiki-projects-wiki-projects-karpathy-llm-wiki-alignment-2026-05-12"
+  },
+  {
+    "id": "timeline-c_ad9a9fc54757ca67",
+    "title": "Sources and Data Policy",
+    "slug": "wiki-sources-and-data-policy",
+    "summary": "Source, privacy, and publication rules for this public-safe wiki.",
+    "tags": [
+      "llm-wiki",
+      "sources",
+      "privacy"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "library",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_ad9a9fc54757ca67"
+    ],
+    "href": "/content/wiki-sources-and-data-policy"
+  },
+  {
+    "id": "timeline-c_34b380dfec2c06c0",
+    "title": "GitHub Reference Projects",
+    "slug": "wiki-sources-github-reference-projects",
+    "summary": "Secondary engineering references for local-first LLM Wiki implementations.",
+    "tags": [
+      "llm-wiki",
+      "github",
+      "source"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "library",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_34b380dfec2c06c0"
+    ],
+    "href": "/content/wiki-sources-github-reference-projects"
+  },
+  {
+    "id": "timeline-c_08b81444115464f6",
+    "title": "Karpathy LLM Wiki Pattern",
+    "slug": "wiki-sources-karpathy-llm-wiki-pattern",
+    "summary": "Official pattern source for this vault architecture.",
+    "tags": [
+      "llm-wiki",
+      "source",
+      "obsidian"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "paths",
+    "type": "paths",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_08b81444115464f6"
+    ],
+    "href": "/content/wiki-sources-karpathy-llm-wiki-pattern"
+  },
+  {
+    "id": "timeline-c_d1f1b66d423fc694",
+    "title": "llm-wikid",
+    "slug": "wiki-sources-llm-wikid",
+    "summary": "Secondary GitHub reference for Obsidian vault template and wiki maintenance conventions.",
+    "tags": [
+      "llm-wiki",
+      "github",
+      "source"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "library",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_d1f1b66d423fc694"
+    ],
+    "href": "/content/wiki-sources-llm-wikid"
+  },
+  {
+    "id": "timeline-c_55208509a7f3108b",
+    "title": "obsidian-llm-wiki-local",
+    "slug": "wiki-sources-obsidian-llm-wiki-local",
+    "summary": "Secondary GitHub reference for local-first LLM Wiki implementation ideas.",
+    "tags": [
+      "llm-wiki",
+      "github",
+      "source"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "library",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_55208509a7f3108b"
+    ],
+    "href": "/content/wiki-sources-obsidian-llm-wiki-local"
+  },
+  {
+    "id": "timeline-c_e408088da7f9f832",
+    "title": "Pre-Rebuild Vault Archive",
+    "slug": "wiki-sources-pre-rebuild-vault-archive",
+    "summary": "Local private archive used as the source for public-safe migration.",
+    "tags": [
+      "llm-wiki",
+      "source",
+      "archive"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "library",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_e408088da7f9f832"
+    ],
+    "href": "/content/wiki-sources-pre-rebuild-vault-archive"
+  },
+  {
+    "id": "timeline-c_28504e623385c722",
+    "title": "Sources",
+    "slug": "wiki-sources-wiki-sources-readme",
+    "summary": "放来源记录，不放完整复制的大段原文。原始资料保留在 `_raw/` 或 [[inbox/README|inbox]]。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_28504e623385c722"
+    ],
+    "href": "/content/wiki-sources-wiki-sources-readme"
+  },
+  {
+    "id": "timeline-c_f0a81275f49ee843",
+    "title": "Karpathy LLM Wiki Pattern",
+    "slug": "wiki-sources-wiki-sources-karpathy-llm-wiki-pattern",
+    "summary": "Karpathy LLM Wiki Pattern",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "paths",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_f0a81275f49ee843"
+    ],
+    "href": "/content/wiki-sources-wiki-sources-karpathy-llm-wiki-pattern"
+  },
+  {
+    "id": "timeline-c_22fc5ca8bae3800a",
+    "title": "Title",
+    "slug": "wiki-synthesis-wiki-_templates-note",
+    "summary": "Public-safe migrated note about Title.",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_22fc5ca8bae3800a"
+    ],
+    "href": "/content/wiki-synthesis-wiki-_templates-note"
+  },
+  {
+    "id": "timeline-c_c221b4768b2b8974",
+    "title": "LLM Wiki Index",
+    "slug": "wiki-synthesis-wiki-index",
+    "summary": "Codex 可持续维护的 Obsidian-as-IDE 工作台。这里放整理后的导航，不放未经处理的大段原文。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_c221b4768b2b8974"
+    ],
+    "href": "/content/wiki-synthesis-wiki-index"
+  },
+  {
+    "id": "timeline-c_ef55b86e38c9ca7c",
+    "title": "记忆系统对比",
+    "slug": "wiki-topics-02-领域-ai工具生态-记忆系统对比",
+    "summary": "对比不同的 AI Agent 记忆系统方案",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_ef55b86e38c9ca7c"
+    ],
+    "href": "/content/wiki-topics-02-领域-ai工具生态-记忆系统对比"
+  },
+  {
+    "id": "timeline-c_9c028792c437569e",
+    "title": "微调 Qwen 本地模型",
+    "slug": "wiki-topics-02-领域-学习笔记-微调qwen本地模型",
+    "summary": "本页保留为轻量索引。原文件是大段 AI 对话原文，已迁入冷档案，避免拖慢 Obsidian 搜索、图谱和 AI 上下文。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_9c028792c437569e"
+    ],
+    "href": "/content/wiki-topics-02-领域-学习笔记-微调qwen本地模型"
+  },
+  {
+    "id": "timeline-c_0616012912388452",
+    "title": "知识索引 (MOC)",
+    "slug": "wiki-topics-02-领域-知识索引-moc",
+    "summary": "Public-safe migrated note about 知识索引 (MOC).",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "paths",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_0616012912388452"
+    ],
+    "href": "/content/wiki-topics-02-领域-知识索引-moc"
+  },
+  {
+    "id": "timeline-c_6cd22781bfa499ac",
+    "title": "AI Commander文档索引",
+    "slug": "wiki-topics-03-资源-参考资料-ai-commander文档索引",
+    "summary": "AI Commander项目的完整文档库索引，包含架构规范、行业白皮书、学术论文和商业分析",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_6cd22781bfa499ac"
+    ],
+    "href": "/content/wiki-topics-03-资源-参考资料-ai-commander文档索引"
+  },
+  {
+    "id": "timeline-c_a91b6fea591eb6a9",
+    "title": "电脑硬件资产",
+    "slug": "wiki-topics-03-资源-参考资料-电脑硬件资产",
+    "summary": "小米 Redmi Book Pro 16 2024 详细配置",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_a91b6fea591eb6a9"
+    ],
+    "href": "/content/wiki-topics-03-资源-参考资料-电脑硬件资产"
+  },
+  {
+    "id": "timeline-c_d4776c1c27c119ce",
+    "title": "AI 工具总览",
+    "slug": "wiki-topics-03-资源-工具配置-ai工具总览",
+    "summary": "Public-safe migrated note about AI 工具总览.",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_d4776c1c27c119ce"
+    ],
+    "href": "/content/wiki-topics-03-资源-工具配置-ai工具总览"
+  },
+  {
+    "id": "timeline-c_c2ce649fe926aa64",
+    "title": "Claude灵魂提示词",
+    "slug": "wiki-topics-03-资源-提示词库-claude灵魂提示词",
+    "summary": "Anthropic Thinking Protocol - Claude深度思考协议",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_c2ce649fe926aa64"
+    ],
+    "href": "/content/wiki-topics-03-资源-提示词库-claude灵魂提示词"
+  },
+  {
+    "id": "timeline-c_e0c1ce02bc055be8",
+    "title": "OpenClaw核心提示词库",
+    "slug": "wiki-topics-03-资源-提示词库-openclaw核心提示词",
+    "summary": "用于驱动OpenClaw系统的核心提示词模板",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_e0c1ce02bc055be8"
+    ],
+    "href": "/content/wiki-topics-03-资源-提示词库-openclaw核心提示词"
+  },
+  {
+    "id": "timeline-c_e257c2731cf52a0f",
+    "title": "AI 工具演化轨迹",
+    "slug": "wiki-topics-04-知识库-07-ai工具演化轨迹",
+    "summary": "从第一个 AI 工具到当前多 agent 协作，完整演化记录。由 Hanako 于 2026-05-06 整理。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_e257c2731cf52a0f"
+    ],
+    "href": "/content/wiki-topics-04-知识库-07-ai工具演化轨迹"
+  },
+  {
+    "id": "timeline-c_5ce84d2f167d8dc6",
+    "title": "Agentic Wiki 编译样本",
+    "slug": "wiki-topics-04-知识库-llm-wiki-articles-2026-04-11-agentic-wiki-编译样本",
+    "summary": "从 2026-04-11-Agentic-Wiki-原料样本 编译出的 LLM Wiki 草稿。先保留原始信号，再补充摘要、概念、结论。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_5ce84d2f167d8dc6"
+    ],
+    "href": "/content/wiki-topics-04-知识库-llm-wiki-articles-2026-04-11-agentic-wiki-编译样本"
+  },
+  {
+    "id": "timeline-c_543cfc4060548699",
+    "title": "多仓接入样例-仓库主控与LLM Wiki闭环",
+    "slug": "wiki-topics-04-知识库-llm-wiki-articles-2026-04-14-多仓接入-样例",
+    "summary": "归档说明：当前 canonical 样例页见 2026-04-14-多仓接入样例。本页保留为历史叙述与对比样本。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_543cfc4060548699"
+    ],
+    "href": "/content/wiki-topics-04-知识库-llm-wiki-articles-2026-04-14-多仓接入-样例"
+  },
+  {
+    "id": "timeline-c_653ca1d2c104db66",
+    "title": "多仓接入样例",
+    "slug": "wiki-topics-04-知识库-llm-wiki-articles-2026-04-14-多仓接入样例",
+    "summary": "从 2026-04-14-多仓接入样例原料 编译出的 LLM Wiki 草稿。先保留原始信号，再补充摘要、概念、结论。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_653ca1d2c104db66"
+    ],
+    "href": "/content/wiki-topics-04-知识库-llm-wiki-articles-2026-04-14-多仓接入样例"
+  },
+  {
+    "id": "timeline-c_cb88bb37aa88cccb",
+    "title": "LLM Wiki Index",
+    "slug": "wiki-topics-04-知识库-llm-wiki-index",
+    "summary": "[!abstract] LLM Wiki 定位",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_cb88bb37aa88cccb"
+    ],
+    "href": "/content/wiki-topics-04-知识库-llm-wiki-index"
+  },
+  {
+    "id": "timeline-c_0d2232f4886a7c75",
+    "title": "LLM Wiki Log",
+    "slug": "wiki-topics-04-知识库-llm-wiki-log",
+    "summary": "记录 `raw -> LLM Wiki -> reuse -> lint` 全链路的新增、重写、对齐、弃用和下一步。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "journal",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_0d2232f4886a7c75"
+    ],
+    "href": "/content/wiki-topics-04-知识库-llm-wiki-log"
+  },
+  {
+    "id": "timeline-c_bc75c91d07c1b03a",
+    "title": "Obsidian Vault 断链检测报告",
+    "slug": "wiki-topics-04-知识库-优化-断链检测报告_2026-04-30",
+    "summary": "Obsidian Vault 断链检测报告",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_bc75c91d07c1b03a"
+    ],
+    "href": "/content/wiki-topics-04-知识库-优化-断链检测报告_2026-04-30"
+  },
+  {
+    "id": "timeline-c_246052b2eccea576",
+    "title": "Obsidian 每小时健康检查",
+    "slug": "wiki-topics-04-知识库-优化-每小时检查_17-46",
+    "summary": "**时间**: 2026-04-30 17:46",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_246052b2eccea576"
+    ],
+    "href": "/content/wiki-topics-04-知识库-优化-每小时检查_17-46"
+  },
+  {
+    "id": "timeline-c_46d6dac0254aa836",
+    "title": "Obsidian 每小时健康检查",
+    "slug": "wiki-topics-04-知识库-优化-每小时检查_18-23",
+    "summary": "**时间**: 2026-04-30 18:23",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_46d6dac0254aa836"
+    ],
+    "href": "/content/wiki-topics-04-知识库-优化-每小时检查_18-23"
+  },
+  {
+    "id": "timeline-c_75acf16b30c34cc6",
+    "title": "Obsidian 每小时健康检查",
+    "slug": "wiki-topics-04-知识库-优化-每小时检查_19-24",
+    "summary": "**时间**: 2026-04-30 19:24",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_75acf16b30c34cc6"
+    ],
+    "href": "/content/wiki-topics-04-知识库-优化-每小时检查_19-24"
+  },
+  {
+    "id": "timeline-c_387f09a6e3f0bb22",
+    "title": "Obsidian 每小时健康检查",
+    "slug": "wiki-topics-04-知识库-优化-每小时检查_20-24",
+    "summary": "**时间**: 2026-04-30 20:24",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_387f09a6e3f0bb22"
+    ],
+    "href": "/content/wiki-topics-04-知识库-优化-每小时检查_20-24"
+  },
+  {
+    "id": "timeline-c_8c571fc86ac5c174",
+    "title": "Obsidian 每小时健康检查",
+    "slug": "wiki-topics-04-知识库-优化-每小时检查_20-51",
+    "summary": "**时间**: 2026-04-30 20:51",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_8c571fc86ac5c174"
+    ],
+    "href": "/content/wiki-topics-04-知识库-优化-每小时检查_20-51"
+  },
+  {
+    "id": "timeline-c_e9e3ca6b9d95956d",
+    "title": "Obsidian 每小时健康检查",
+    "slug": "wiki-topics-04-知识库-优化-每小时检查_21-24",
+    "summary": "**时间**: 2026-04-30 21:24",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_e9e3ca6b9d95956d"
+    ],
+    "href": "/content/wiki-topics-04-知识库-优化-每小时检查_21-24"
+  },
+  {
+    "id": "timeline-c_d73662277c0c436c",
+    "title": "Obsidian 每小时健康检查",
+    "slug": "wiki-topics-04-知识库-优化-每小时检查_22-24",
+    "summary": "**时间**: 2026-04-30 22:24",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_d73662277c0c436c"
+    ],
+    "href": "/content/wiki-topics-04-知识库-优化-每小时检查_22-24"
+  },
+  {
+    "id": "timeline-c_2e9015d6963f1ccb",
+    "title": "Obsidian 每日整理报告",
+    "slug": "wiki-topics-04-知识库-优化-每日整理报告_2026-04-30",
+    "summary": "**日期**: 2026-04-30 (周四)",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "journal",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_2e9015d6963f1ccb"
+    ],
+    "href": "/content/wiki-topics-04-知识库-优化-每日整理报告_2026-04-30"
+  },
+  {
+    "id": "timeline-c_6219608d638bd185",
+    "title": "知识库优化建议",
+    "slug": "wiki-topics-04-知识库-优化-知识库优化建议",
+    "summary": "基于 PARA + Zettelkasten 最佳实践和 AI Agent 记忆系统设计研究的优化建议",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_6219608d638bd185"
+    ],
+    "href": "/content/wiki-topics-04-知识库-优化-知识库优化建议"
+  },
+  {
+    "id": "timeline-c_a3902a6c317ae1c6",
+    "title": ">-",
+    "slug": "wiki-topics-04-知识库-基础设施-ai-agent-系统总览-2026-05-02",
+    "summary": "├── 手机小安 📱 — KimiCLaw（总调度）",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_a3902a6c317ae1c6"
+    ],
+    "href": "/content/wiki-topics-04-知识库-基础设施-ai-agent-系统总览-2026-05-02"
+  },
+  {
+    "id": "timeline-c_84d4782acc8e89c7",
+    "title": "提示词-总控-系统主控执行引擎",
+    "slug": "wiki-topics-04-知识库-提示词库-提示词-总控-系统主控执行引擎",
+    "summary": "你是系统主控执行引擎（Controller）。你接收问题报告、优化方案或功能需求作为输入。你的职责是把目标落地为可验证交付。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_84d4782acc8e89c7"
+    ],
+    "href": "/content/wiki-topics-04-知识库-提示词库-提示词-总控-系统主控执行引擎"
+  },
+  {
+    "id": "timeline-c_f3cae2bbc5b7d6ff",
+    "title": "提示词仓库 MOC",
+    "slug": "wiki-topics-04-知识库-提示词库-提示词仓库-moc",
+    "summary": "建立'最佳 agent **提示词内容仓库**'，支持多 Agent 可复用、可版本化、可审计。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "paths",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_f3cae2bbc5b7d6ff"
+    ],
+    "href": "/content/wiki-topics-04-知识库-提示词库-提示词仓库-moc"
+  },
+  {
+    "id": "timeline-c_b8a72fe928be113f",
+    "title": "知识库架构设计",
+    "slug": "wiki-topics-04-知识库-架构-知识库架构设计",
+    "summary": "1. **全面性** - 整合所有本地信息源",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_b8a72fe928be113f"
+    ],
+    "href": "/content/wiki-topics-04-知识库-架构-知识库架构设计"
+  },
+  {
+    "id": "timeline-c_32addb757a90aaa5",
+    "title": "Agent-Computer Interface (ACI) 设计准则 2026",
+    "slug": "wiki-topics-04-知识库-领域研究-ai-agent技术-架构设计-agent_computer_interface_best_practices",
+    "summary": "⌨️ Agent-Computer Interface (ACI) 设计准则 2026",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_32addb757a90aaa5"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-ai-agent技术-架构设计-agent_computer_interface_best_practices"
+  },
+  {
+    "id": "timeline-c_3dfcef43eced8b02",
+    "title": "Agent 协作设计模式 (Design Patterns 2026)",
+    "slug": "wiki-topics-04-知识库-领域研究-ai-agent技术-架构设计-agent_design_patterns_2026",
+    "summary": "🧩 Agent 协作设计模式 (Design Patterns 2026)",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_3dfcef43eced8b02"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-ai-agent技术-架构设计-agent_design_patterns_2026"
+  },
+  {
+    "id": "timeline-c_8870aaaba51b3537",
+    "title": "Agent 工作流优化最佳实践 (Optimization 2026)",
+    "slug": "wiki-topics-04-知识库-领域研究-ai-agent技术-架构设计-agentic_workflow_optimization_2026",
+    "summary": "🚀 Agent 工作流优化最佳实践 (Optimization 2026)",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_8870aaaba51b3537"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-ai-agent技术-架构设计-agentic_workflow_optimization_2026"
+  },
+  {
+    "id": "timeline-c_86e98eab215b921b",
+    "title": "Codex 自主能力进化地图",
+    "slug": "wiki-topics-04-知识库-领域研究-ai-agent技术-架构设计-codex-自主能力进化地图",
+    "summary": "本页是 `Codex` 自主能力主线的 Obsidian 镜像入口，不是 canonical 规则源。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_86e98eab215b921b"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-ai-agent技术-架构设计-codex-自主能力进化地图"
+  },
+  {
+    "id": "timeline-c_4dbe1bec165f17b6",
+    "title": "Codex后台代跑侧车试点-v1",
+    "slug": "wiki-topics-04-知识库-领域研究-ai-agent技术-架构设计-codex后台代跑侧车试点-v1-2026-04-15",
+    "summary": "**当前定位**：`候选增强 / 按需启用`。这页是 sidecar 试点参考，不是当前默认工作入口。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_4dbe1bec165f17b6"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-ai-agent技术-架构设计-codex后台代跑侧车试点-v1-2026-04-15"
+  },
+  {
+    "id": "timeline-c_19fdba3598679f98",
+    "title": "Codex 治理任务编排主线 v1",
+    "slug": "wiki-topics-04-知识库-领域研究-ai-agent技术-架构设计-codex治理任务编排主线-v1-2026-04-15",
+    "summary": "**当前定位**：`高级能力 / 按需启用`。这页保留为治理任务的重流程参考，不再是 `Codex` 默认规则基线。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_19fdba3598679f98"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-ai-agent技术-架构设计-codex治理任务编排主线-v1-2026-04-15"
+  },
+  {
+    "id": "timeline-c_147d55fae9bd5981",
+    "title": "Codex验证反馈回环主线 v1",
+    "slug": "wiki-topics-04-知识库-领域研究-ai-agent技术-架构设计-codex验证反馈回环主线-v1-2026-04-15",
+    "summary": "**当前定位**：`高级能力 / 按需启用`。这页保留的是强验证闭环，不是默认每个任务都必须走的重流程。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_147d55fae9bd5981"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-ai-agent技术-架构设计-codex验证反馈回环主线-v1-2026-04-15"
+  },
+  {
+    "id": "timeline-c_bc3864ed6389ca83",
+    "title": "Learn Harness：从 vibe agent 到 Harness Engineering",
+    "slug": "wiki-topics-04-知识库-领域研究-ai-agent技术-架构设计-learn-harness-从vibe-agent到稳定执行层-2026-05-01",
+    "summary": "Learn Harness：从 vibe agent 到 Harness Engineering",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_bc3864ed6389ca83"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-ai-agent技术-架构设计-learn-harness-从vibe-agent到稳定执行层-2026-05-01"
+  },
+  {
+    "id": "timeline-c_e58c1788f9a4bcac",
+    "title": "多Agent协调与受控委派",
+    "slug": "wiki-topics-04-知识库-领域研究-ai-agent技术-架构设计-多agent协调与受控委派-2026-04-11",
+    "summary": "目标：明确当前本地多 Agent 应该怎样协作，才不会退化成多主控、多写口和不可审计的混乱系统。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_e58c1788f9a4bcac"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-ai-agent技术-架构设计-多agent协调与受控委派-2026-04-11"
+  },
+  {
+    "id": "timeline-c_ee741487b3423e7d",
+    "title": "多Agent通信信封与工件传递",
+    "slug": "wiki-topics-04-知识库-领域研究-ai-agent技术-架构设计-多agent通信信封与工件传递-2026-04-11",
+    "summary": "目标：给本地多 Agent 协作补一套轻量但可审计的通信模型，重点不是“聊天更自由”，而是“传递更可追踪”。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_ee741487b3423e7d"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-ai-agent技术-架构设计-多agent通信信封与工件传递-2026-04-11"
+  },
+  {
+    "id": "timeline-c_cb85728f120e9359",
+    "title": "Agent 平台内化: Dify vs n8n",
+    "slug": "wiki-topics-04-知识库-领域研究-ai-agent技术-框架内化-agent_platform_dify_n8n",
+    "summary": "🚀 Agent 平台内化: Dify vs n8n",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_cb85728f120e9359"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-ai-agent技术-框架内化-agent_platform_dify_n8n"
+  },
+  {
+    "id": "timeline-c_79b06443f4bbeb8e",
+    "title": "AutoGen 对话模式内化: 动态路由与多 Agent 协作",
+    "slug": "wiki-topics-04-知识库-领域研究-ai-agent技术-框架内化-autogen_conversation_patterns",
+    "summary": "💬 AutoGen 对话模式内化: 动态路由与多 Agent 协作",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_79b06443f4bbeb8e"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-ai-agent技术-框架内化-autogen_conversation_patterns"
+  },
+  {
+    "id": "timeline-c_c4e5c90a5d0f2dda",
+    "title": "Browser-use 深度内化: 浏览器 Agent 与网页自动化",
+    "slug": "wiki-topics-04-知识库-领域研究-ai-agent技术-框架内化-browser-use_web_agent",
+    "summary": "🌐 Browser-use 深度内化: 浏览器 Agent 与网页自动化",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_c4e5c90a5d0f2dda"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-ai-agent技术-框架内化-browser-use_web_agent"
+  },
+  {
+    "id": "timeline-c_2407d62f1a2fcb64",
+    "title": "CrewAI 架构内化: 角色驱动与任务委派",
+    "slug": "wiki-topics-04-知识库-领域研究-ai-agent技术-框架内化-crewai_architecture",
+    "summary": "👥 CrewAI 架构内化: 角色驱动与任务委派",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_2407d62f1a2fcb64"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-ai-agent技术-框架内化-crewai_architecture"
+  },
+  {
+    "id": "timeline-c_cd5e6deb11094fcd",
+    "title": "LangGraph 深度内化: 确定性状态机与 HITL",
+    "slug": "wiki-topics-04-知识库-领域研究-ai-agent技术-框架内化-langgraph_deep_dive",
+    "summary": "🏗️ LangGraph 深度内化: 确定性状态机与 HITL",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_cd5e6deb11094fcd"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-ai-agent技术-框架内化-langgraph_deep_dive"
+  },
+  {
+    "id": "timeline-c_c163ef66a2b843bf",
+    "title": "LlamaIndex AgentWorkflow 内化: RAG 原生与数据驱动",
+    "slug": "wiki-topics-04-知识库-领域研究-ai-agent技术-框架内化-llamaindex_agentworkflow",
+    "summary": "📊 LlamaIndex AgentWorkflow 内化: RAG 原生与数据驱动",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_c163ef66a2b843bf"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-ai-agent技术-框架内化-llamaindex_agentworkflow"
+  },
+  {
+    "id": "timeline-c_6727534d0295e60a",
+    "title": "MCP (Model Context Protocol) 标准内化",
+    "slug": "wiki-topics-04-知识库-领域研究-ai-agent技术-框架内化-mcp_protocol_standard",
+    "summary": "🛰️ MCP (Model Context Protocol) 标准内化",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_6727534d0295e60a"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-ai-agent技术-框架内化-mcp_protocol_standard"
+  },
+  {
+    "id": "timeline-c_c469cce2b79c8c7e",
+    "title": "MemPalace 长上下文记忆系统",
+    "slug": "wiki-topics-04-知识库-领域研究-ai-agent技术-框架内化-mempalace-长上下文记忆系统-2026-04-11",
+    "summary": "MemPalace 长上下文记忆系统",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_c469cce2b79c8c7e"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-ai-agent技术-框架内化-mempalace-长上下文记忆系统-2026-04-11"
+  },
+  {
+    "id": "timeline-c_b90373cbd16adca3",
+    "title": "MetaGPT SOP 框架内化: 软件公司隐喻与标准化流程",
+    "slug": "wiki-topics-04-知识库-领域研究-ai-agent技术-框架内化-metagpt_sop_framework",
+    "summary": "🏢 MetaGPT SOP 框架内化: 软件公司隐喻与标准化流程",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_b90373cbd16adca3"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-ai-agent技术-框架内化-metagpt_sop_framework"
+  },
+  {
+    "id": "timeline-c_5a9490cbaf23eb30",
+    "title": "SWE-agent ACI 概念内化: 针对 LLM 的计算机接口",
+    "slug": "wiki-topics-04-知识库-领域研究-ai-agent技术-框架内化-swe-agent_aci_concept",
+    "summary": "🖱️ SWE-agent ACI 概念内化: 针对 LLM 的计算机接口",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_5a9490cbaf23eb30"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-ai-agent技术-框架内化-swe-agent_aci_concept"
+  },
+  {
+    "id": "timeline-c_80a02dac647a4301",
+    "title": "GitHub AI Agent 生态全景矩阵 (Top 60)",
+    "slug": "wiki-topics-04-知识库-领域研究-ai-agent技术-生态全景-github_agent_ecosystem_matrix",
+    "summary": "📊 GitHub AI Agent 生态全景矩阵 (Top 60)",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_80a02dac647a4301"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-ai-agent技术-生态全景-github_agent_ecosystem_matrix"
+  },
+  {
+    "id": "timeline-c_2aa51a5b6fb273c6",
+    "title": "Agent 生ated MOC",
+    "slug": "wiki-topics-04-知识库-领域研究-agent生态-agent-生态-moc",
+    "summary": "🌐 Agent 生态地图 (Map of Content)",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "paths",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_2aa51a5b6fb273c6"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-agent生态-agent-生态-moc"
+  },
+  {
+    "id": "timeline-c_5a7b06c4c65591a0",
+    "title": "Aider",
+    "slug": "wiki-topics-04-知识库-领域研究-agent生态-aider",
+    "summary": "AI Pair Programming in Your Terminal. Aider allows you to edit code in your local git repository using LLMs.",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_5a7b06c4c65591a0"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-agent生态-aider"
+  },
+  {
+    "id": "timeline-c_e7408f3ddf4730d6",
+    "title": "AutoGen",
+    "slug": "wiki-topics-04-知识库-领域研究-agent生态-autogen",
+    "summary": "AutoGen is a framework for creating multi-agent AI applications that can act autonomously or work alongside humans.",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_e7408f3ddf4730d6"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-agent生态-autogen"
+  },
+  {
+    "id": "timeline-c_84f355a45f61cfff",
+    "title": "Browser-use",
+    "slug": "wiki-topics-04-知识库-领域研究-agent生态-browser-use",
+    "summary": "Make websites accessible for AI agents.",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_84f355a45f61cfff"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-agent生态-browser-use"
+  },
+  {
+    "id": "timeline-c_fe09cf45147b28ca",
+    "title": "CrewAI",
+    "slug": "wiki-topics-04-知识库-领域研究-agent生态-crewai",
+    "summary": "CrewAI is a cutting-edge framework for orchestrating role-playing, autonomous AI agents.",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_fe09cf45147b28ca"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-agent生态-crewai"
+  },
+  {
+    "id": "timeline-c_6ac4a17a929cf647",
+    "title": "LangChain",
+    "slug": "wiki-topics-04-知识库-领域研究-agent生态-langchain",
+    "summary": "LangChain is a framework for developing applications powered by large language models (LLMs).",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_6ac4a17a929cf647"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-agent生态-langchain"
+  },
+  {
+    "id": "timeline-c_1a0ff23b8c51e5cf",
+    "title": "LlamaIndex",
+    "slug": "wiki-topics-04-知识库-领域研究-agent生态-llamaindex",
+    "summary": "LlamaIndex (formerly GPT Index) is a data framework for your LLM applications. It provides the tools to build agentic applications over your data.",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_1a0ff23b8c51e5cf"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-agent生态-llamaindex"
+  },
+  {
+    "id": "timeline-c_33959ad3eb590640",
+    "title": "MCP (Model Context Protocol)",
+    "slug": "wiki-topics-04-知识库-领域研究-agent生态-mcp",
+    "summary": "🔌 MCP (Model Context Protocol)",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_33959ad3eb590640"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-agent生态-mcp"
+  },
+  {
+    "id": "timeline-c_c331dfd394473baf",
+    "title": "Mem0",
+    "slug": "wiki-topics-04-知识库-领域研究-agent生态-mem0",
+    "summary": "Mem0 enhances AI assistants and agents with an intelligent memory layer, enabling personalized AI interactions.",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_c331dfd394473baf"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-agent生态-mem0"
+  },
+  {
+    "id": "timeline-c_23e285d91f03c60a",
+    "title": "MetaGPT",
+    "slug": "wiki-topics-04-知识库-领域研究-agent生态-metagpt",
+    "summary": "The Multi-Agent Framework: First AI Software Company, Towards Natural Language Programming.",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_23e285d91f03c60a"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-agent生态-metagpt"
+  },
+  {
+    "id": "timeline-c_6883f9a77b327864",
+    "title": "OpenHands",
+    "slug": "wiki-topics-04-知识库-领域研究-agent生态-openhands",
+    "summary": "OpenHands (formerly OpenDevin) is an AI-driven development environment that aims to provide a powerful, open-source alternative to commercial coding agents.",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_6883f9a77b327864"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-agent生态-openhands"
+  },
+  {
+    "id": "timeline-c_b75a2b4946a79acf",
+    "title": "SWE-Agent",
+    "slug": "wiki-topics-04-知识库-领域研究-agent生态-swe-agent",
+    "summary": "SWE-agent enables your language model of choice to autonomously use tools to fix issues in real GitHub repositories.",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_b75a2b4946a79acf"
+    ],
+    "href": "/content/wiki-topics-04-知识库-领域研究-agent生态-swe-agent"
+  },
+  {
+    "id": "timeline-c_9c006bb197c92b58",
+    "title": "MuleRun 外部资料入口",
+    "slug": "wiki-topics-05-外部信息-mulerun-readme",
+    "summary": "MuleRun 的完整外部资料已迁入冷档案，活跃知识库只保留本入口和精炼后的技能 MOC。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_9c006bb197c92b58"
+    ],
+    "href": "/content/wiki-topics-05-外部信息-mulerun-readme"
+  },
+  {
+    "id": "timeline-c_5c2aeb18fb5d4ad3",
+    "title": "安的知识系统 — 信息总汇",
+    "slug": "wiki-topics-05-外部信息-信息总汇-2026-05-02",
+    "summary": "**最后更新**：2026-05-02",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "feed",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_5c2aeb18fb5d4ad3"
+    ],
+    "href": "/content/wiki-topics-05-外部信息-信息总汇-2026-05-02"
+  },
+  {
+    "id": "timeline-c_bc5167cbf2943fa3",
+    "title": "daily-2026-05-02",
+    "slug": "wiki-topics-05-外部信息-情报日报-daily-2026-05-02",
+    "summary": "生成时间：2026-05-02T13:42:38.974Z",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "feed",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_bc5167cbf2943fa3"
+    ],
+    "href": "/content/wiki-topics-05-外部信息-情报日报-daily-2026-05-02"
+  },
+  {
+    "id": "timeline-c_90725212a940eb2b",
+    "title": "monitoring-2026-05-02",
+    "slug": "wiki-topics-05-外部信息-情报日报-monitoring-2026-05-02",
+    "summary": "关键词：agent, agentic, rag, benchmark, release, policy, workflow, multimodal, memory, retrieval",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "feed",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_90725212a940eb2b"
+    ],
+    "href": "/content/wiki-topics-05-外部信息-情报日报-monitoring-2026-05-02"
+  },
+  {
+    "id": "timeline-c_6ab189f7950004c3",
+    "title": "ops-cards-2026-05-02",
+    "slug": "wiki-topics-05-外部信息-情报日报-ops-cards-2026-05-02",
+    "summary": "LLM-based early rumor detection with imitation agent",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "feed",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_6ab189f7950004c3"
+    ],
+    "href": "/content/wiki-topics-05-外部信息-情报日报-ops-cards-2026-05-02"
+  },
+  {
+    "id": "timeline-c_80941b97f88f3968",
+    "title": "自动采集目录说明",
+    "slug": "wiki-topics-05-外部信息-自动采集-readme",
+    "summary": "此目录由 n8n + Dify 工作流自动写入，请勿手动修改子目录结构。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_80941b97f88f3968"
+    ],
+    "href": "/content/wiki-topics-05-外部信息-自动采集-readme"
+  },
+  {
+    "id": "timeline-c_b5589839f8abf156",
+    "title": "GitHub AI Agent 生态全景报告 (完整版)",
+    "slug": "wiki-topics-05-外部信息-调研报告-存档-github_ai_agent_生态全景报告",
+    "summary": "📊 GitHub AI Agent 生态全景报告",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "feed",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_b5589839f8abf156"
+    ],
+    "href": "/content/wiki-topics-05-外部信息-调研报告-存档-github_ai_agent_生态全景报告"
+  },
+  {
+    "id": "timeline-c_6b5f64f9de130ff5",
+    "title": "2026 多 Agent 框架深度调研与 accio 演进建议",
+    "slug": "wiki-topics-05-外部信息-调研报告",
+    "summary": "📊 2026 多 Agent 框架深度调研与 accio 演进建议",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "feed",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_6b5f64f9de130ff5"
+    ],
+    "href": "/content/wiki-topics-05-外部信息-调研报告"
+  },
+  {
+    "id": "timeline-c_3d19f3d825d4e136",
+    "title": "AI Agent Systems MOC",
+    "slug": "wiki-topics-ai-agent-systems-moc",
+    "summary": "Map for public-safe AI agent framework and architecture notes migrated into the wiki.",
+    "tags": [
+      "ai-agent",
+      "moc",
+      "systems"
+    ],
+    "status": [
+      "featured",
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "paths",
+    "type": "paths",
+    "importance": "high",
+    "relatedLibraryItems": [
+      "c_3d19f3d825d4e136"
+    ],
+    "href": "/content/wiki-topics-ai-agent-systems-moc"
+  },
+  {
+    "id": "timeline-c_87e2a1ac5dbe8a31",
+    "title": "LLM Wiki MOC",
+    "slug": "wiki-topics-llm-wiki-moc",
+    "summary": "Map for the vault architecture, schema, source policy, and rebuild alignment notes.",
+    "tags": [
+      "llm-wiki",
+      "moc",
+      "architecture"
+    ],
+    "status": [
+      "featured",
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "paths",
+    "type": "paths",
+    "importance": "high",
+    "relatedLibraryItems": [
+      "c_87e2a1ac5dbe8a31"
+    ],
+    "href": "/content/wiki-topics-llm-wiki-moc"
+  },
+  {
+    "id": "timeline-c_7e9d08f8f6eda5d4",
+    "title": "Publication Maintenance MOC",
+    "slug": "wiki-topics-publication-maintenance-moc",
+    "summary": "Map for publication gates, privacy scans, manifests, restore evidence, and root maintenance work.",
+    "tags": [
+      "publication",
+      "maintenance",
+      "privacy",
+      "moc"
+    ],
+    "status": [
+      "featured",
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "paths",
+    "type": "paths",
+    "importance": "high",
+    "relatedLibraryItems": [
+      "c_7e9d08f8f6eda5d4"
+    ],
+    "href": "/content/wiki-topics-publication-maintenance-moc"
+  },
+  {
+    "id": "timeline-c_68d8f2407d41eb74",
+    "title": "Skills and Tools MOC",
+    "slug": "wiki-topics-skills-and-tools-moc",
+    "summary": "Map for migrated public-safe skills, tool notes, and reusable operational patterns.",
+    "tags": [
+      "skills",
+      "tools",
+      "moc"
+    ],
+    "status": [
+      "featured",
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "paths",
+    "type": "paths",
+    "importance": "high",
+    "relatedLibraryItems": [
+      "c_68d8f2407d41eb74"
+    ],
+    "href": "/content/wiki-topics-skills-and-tools-moc"
+  },
+  {
+    "id": "timeline-c_7f1d890ac292b41d",
+    "title": "Topics",
+    "slug": "wiki-topics-wiki-topics-readme",
+    "summary": "放跨多个概念、项目或来源的主题页与主题 MOC。",
+    "tags": [
+      "llm-wiki",
+      "migrated"
+    ],
+    "status": [
+      "public"
+    ],
+    "createdAt": "2026-05-12",
+    "updatedAt": "2026-05-12",
+    "date": "2026-05-12",
+    "phase": "library",
+    "type": "migration",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_7f1d890ac292b41d"
+    ],
+    "href": "/content/wiki-topics-wiki-topics-readme"
+  }
+]

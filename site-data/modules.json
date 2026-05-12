@@ -1,0 +1,72 @@
+[
+  {
+    "id": "library",
+    "name": "藏馆",
+    "key": "library",
+    "description": "公开资源、工具、项目、资料与知识条目。",
+    "href": "/library",
+    "view": "card-grid",
+    "visible": true,
+    "order": 1
+  },
+  {
+    "id": "paths",
+    "name": "谱系",
+    "key": "paths",
+    "description": "学习路径、复刻路线、知识库构建路线与主题地图。",
+    "href": "/paths",
+    "view": "route-map",
+    "visible": true,
+    "order": 2
+  },
+  {
+    "id": "feed",
+    "name": "风信",
+    "key": "feed",
+    "description": "公开信息流、调研报告、情报日报与最近收录。",
+    "href": "/feed",
+    "view": "info-feed",
+    "visible": true,
+    "order": 3
+  },
+  {
+    "id": "works",
+    "name": "工坊",
+    "key": "works",
+    "description": "公开项目、实验、系统原型与维护工作。",
+    "href": "/works",
+    "view": "card-grid",
+    "visible": true,
+    "order": 4
+  },
+  {
+    "id": "journal",
+    "name": "手记",
+    "key": "journal",
+    "description": "公开维护日志、复盘、整理记录和开发过程。",
+    "href": "/journal",
+    "view": "article-list",
+    "visible": true,
+    "order": 5
+  },
+  {
+    "id": "timeline",
+    "name": "年谱",
+    "key": "timeline",
+    "description": "资料库、项目和公开内容的阶段时间线。",
+    "href": "/timeline",
+    "view": "timeline",
+    "visible": true,
+    "order": 6
+  },
+  {
+    "id": "about",
+    "name": "自序",
+    "key": "about",
+    "description": "关于这个公开资料库、组织方式和发布边界。",
+    "href": "/about",
+    "view": "markdown",
+    "visible": true,
+    "order": 7
+  }
+]

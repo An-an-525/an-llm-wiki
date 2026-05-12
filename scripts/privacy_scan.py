@@ -33,6 +33,7 @@ ALLOW_MARKER_FILES = {
     "README.md",
     "scripts/build_private_wiki.py",
     "scripts/build_local_source_inventory.py",
+    "scripts/build_site_data.py",
     "scripts/build_public_inventory.py",
     "scripts/check_private_wiki.py",
     "scripts/wiki_check.py",
@@ -90,6 +91,8 @@ def should_skip_rule(rel: str, rule_name: str) -> bool:
     if rel in {"scripts/privacy_scan.py", "scripts/build_local_source_inventory.py"}:
         return True
     if rel == "tests/test_wiki_tools.py":
+        return True
+    if rule_name == "private_marker" and rel.startswith("site-data/"):
         return True
     if rule_name == "private_marker" and rel in ALLOW_MARKER_FILES:
         return True

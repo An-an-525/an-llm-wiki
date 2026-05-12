@@ -23,6 +23,7 @@
 - `inbox/private/` - local-only recovery manifests, review queues, and private staging.
 - `private-wiki/` - local-only compiled wiki for private context, credentials triage, personal information triage, local path maps, and timeline synthesis.
 - `wiki/` - public curated compiled pages.
+- `site-data/` - generated public JSON data for the future archive frontend.
 - `wiki/sources/` - source notes and provenance records.
 - `manifests/` - source and publication inventories.
 - `scripts/` - validation and inventory tools.
@@ -32,6 +33,7 @@
 1. Raw layer: `_raw/` keeps original recovered evidence unchanged.
 2. Private compiled layer: `private-wiki/` rewrites local-only material into searchable review pages without publishing it.
 3. Public compiled layer: `wiki/` contains only sanitized, source-aware pages that pass privacy and structure gates.
+4. Frontend data layer: `site-data/` is generated from public sources only and must be regenerated through `scripts/build_site_data.py`.
 
 ## Ingest Rules
 
@@ -51,6 +53,12 @@ Never publish credentials, raw private conversations, local environment maps, pe
 - Security pages must show only path, rule, line, count, status, and excerpt hash; never secret values.
 - Personal and timeline pages must keep `visibility/internal` or `visibility/private` tags.
 - Promotion from `private-wiki/` to `wiki/` requires redaction, source-aware rewriting, `python scripts/privacy_scan.py .`, and `python scripts/wiki_check.py .`.
+
+## Site Data Backend
+
+- Generate frontend data with `python scripts/build_site_data.py .`.
+- The generator must run public structure and privacy gates before writing `site-data/`.
+- Frontends may read `site-data/*.json`; they must not read `_raw/`, `inbox/private/`, `private-wiki/`, or local-only reports directly.
 
 ## Historical Rule Boundary
 

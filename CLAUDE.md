@@ -10,6 +10,7 @@ inbox/         -> local staging
 inbox/private/ -> local recovery manifests and private review queues
 private-wiki/  -> local compiled private wiki, excluded from Git
 wiki/          -> public compiled wiki pages
+site-data/     -> generated public JSON for the archive frontend
 manifests/     -> public source and publication registries
 scripts/       -> validation helpers
 AGENTS.md      -> agent operating rules
@@ -33,6 +34,10 @@ Check required files, frontmatter, source coverage, broken wikilinks, privacy le
 ### Private Compile
 
 Compile `_raw/recovered/` and `inbox/private/` into `private-wiki/` when local context is useful but not publishable. Private pages must summarize and index; they must not duplicate raw dumps or expose secret values. Use `scripts/check_private_wiki.py` before any Git operation that follows private compilation.
+
+### Site Data Build
+
+Compile the public frontend backend with `python scripts/build_site_data.py .`. The script reads only `wiki/`, `README.md`, `index.md`, and `log.md`, runs public gates by default, and writes `site-data/*.json` for the future web frontend.
 
 ### Historical Rules
 

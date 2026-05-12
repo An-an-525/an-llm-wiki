@@ -26,6 +26,7 @@ privacy_scan = load_module("privacy_scan", ROOT / "scripts" / "privacy_scan.py")
 build_public_inventory = load_module("build_public_inventory", ROOT / "scripts" / "build_public_inventory.py")
 check_private_wiki = load_module("check_private_wiki", ROOT / "scripts" / "check_private_wiki.py")
 build_local_source_inventory = load_module("build_local_source_inventory", ROOT / "scripts" / "build_local_source_inventory.py")
+build_site_data = load_module("build_site_data", ROOT / "scripts" / "build_site_data.py")
 
 
 class WikiCheckTests(unittest.TestCase):
@@ -88,6 +89,12 @@ class PrivacyScanTests(unittest.TestCase):
     def test_allows_policy_marker_files(self) -> None:
         rows = privacy_scan.scan_text("README.md", "Never publish 凭据 or raw private content.")
         self.assertEqual([], rows)
+
+    def test_site_data_allows_boundary_markers_but_not_secret_values(self) -> None:
+        marker_rows = privacy_scan.scan_text("site-data/index.json", "private-wiki and 凭据 are excluded by policy.")
+        self.assertEqual([], marker_rows)
+        secret_rows = privacy_scan.scan_text("site-data/index.json", "token=abcd1234abcd1234")
+        self.assertEqual("secret_assignment", secret_rows[0]["rule"])
 
 
 class LocalOnlyExclusionTests(unittest.TestCase):
@@ -198,6 +205,57 @@ class LocalSourceInventoryTests(unittest.TestCase):
             digest, status = build_local_source_inventory.sha256_file(path, path.stat().st_size, "image", [])
             self.assertEqual("", digest)
             self.assertEqual("metadata-only", status)
+
+
+class SiteDataBuilderTests(unittest.TestCase):
+    def test_site_data_compiles_public_wiki_only(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            public = root / "wiki" / "topics" / "llm-wiki-moc.md"
+            public.parent.mkdir(parents=True)
+            public.write_text(
+                "---\n"
+                "title: LLM Wiki MOC\n"
+                "tags: [llm-wiki, moc]\n"
+                "category: synthesis\n"
+                "type: moc\n"
+                "status: active\n"
+                "created: 2026-05-12\n"
+                "updated: 2026-05-12\n"
+                "sources: []\n"
+                "summary: A public map.\n"
+                "---\n\n"
+                "# LLM Wiki MOC\n\n"
+                "## Step One\n\n"
+                "See [[wiki/sources/source-note]].\n",
+                encoding="utf-8",
+            )
+            private = root / "private-wiki" / "secret.md"
+            private.parent.mkdir()
+            private.write_text("token=abcd1234abcd1234\n", encoding="utf-8")
+
+            payload = build_site_data.build(root, run_gates=False)
+            self.assertEqual(1, payload["counts"]["content"])
+            self.assertEqual(1, payload["counts"]["paths"])
+            self.assertEqual("LLM Wiki MOC", payload["paths"][0]["title"])
+            self.assertTrue(all("private-wiki" not in item["sourcePath"] for item in payload["content"]))
+
+    def test_site_data_frontmatter_lists_and_links(self) -> None:
+        text = (
+            "---\n"
+            "title: Example\n"
+            "tags:\n"
+            "  - alpha\n"
+            "  - beta\n"
+            "sources: [source-a]\n"
+            "---\n\n"
+            "# Example\n\n"
+            "A paragraph with [[Target|Label]].\n"
+        )
+        frontmatter, body = build_site_data.parse_frontmatter(text)
+        self.assertEqual(["alpha", "beta"], frontmatter["tags"])
+        self.assertEqual(["source-a"], frontmatter["sources"])
+        self.assertEqual([{"target": "Target", "label": "Label"}], build_site_data.extract_links(body))
 
 
 if __name__ == "__main__":
