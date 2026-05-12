@@ -12,13 +12,16 @@ IGNORE_DIRS = {
     ".trash",
     ".claude",
     ".claudian",
+    ".serena",
     "_raw",
     "_archives",
     "inbox",
+    "private-wiki",
     ".local_private",
     "node_modules",
     "__pycache__",
 }
+IGNORE_FILES = {"hot.md"}
 
 
 def main() -> int:
@@ -28,6 +31,8 @@ def main() -> int:
     for current, dirs, names in os.walk(root, followlinks=False):
         dirs[:] = [d for d in dirs if d not in IGNORE_DIRS and not d.startswith("00 - ")]
         for name in names:
+            if name in IGNORE_FILES:
+                continue
             path = Path(current) / name
             if path.resolve() == out.resolve():
                 continue

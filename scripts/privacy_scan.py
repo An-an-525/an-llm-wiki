@@ -15,20 +15,25 @@ IGNORE_DIRS = {
     ".trash",
     ".claude",
     ".claudian",
+    ".serena",
     "_raw",
     "_archives",
     "inbox",
+    "private-wiki",
     ".local_private",
     "node_modules",
     "__pycache__",
 }
+IGNORE_FILES = {"hot.md"}
 TEXT_EXTS = {".md", ".txt", ".csv", ".json", ".yml", ".yaml", ".py", ".js", ".ts", ".toml", ".gitignore", ""}
 ALLOW_MARKER_FILES = {
     ".gitignore",
     "AGENTS.md",
     "CLAUDE.md",
     "README.md",
+    "scripts/build_private_wiki.py",
     "scripts/build_public_inventory.py",
+    "scripts/check_private_wiki.py",
     "scripts/wiki_check.py",
     "wiki/sources-and-data-policy.md",
     "scripts/privacy_scan.py",
@@ -69,6 +74,8 @@ def iter_files(root: Path):
     for current, dirs, names in os.walk(root, followlinks=False):
         dirs[:] = [d for d in dirs if d not in IGNORE_DIRS and not d.startswith("00 - ")]
         for name in names:
+            if name in IGNORE_FILES:
+                continue
             path = Path(current) / name
             if path.suffix.lower() in TEXT_EXTS or name.startswith(".gitignore"):
                 yield path

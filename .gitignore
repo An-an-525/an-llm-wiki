@@ -2,10 +2,13 @@
 _raw/
 _archives/
 inbox/private/
+private-wiki/
 .trash/
 .claude/
 .claudian/
+.serena/
 .local_private/
+hot.md
 
 # Local environment and credentials
 .env

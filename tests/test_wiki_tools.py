@@ -24,6 +24,7 @@ def load_module(name: str, path: Path):
 wiki_check = load_module("wiki_check", ROOT / "scripts" / "wiki_check.py")
 privacy_scan = load_module("privacy_scan", ROOT / "scripts" / "privacy_scan.py")
 build_public_inventory = load_module("build_public_inventory", ROOT / "scripts" / "build_public_inventory.py")
+check_private_wiki = load_module("check_private_wiki", ROOT / "scripts" / "check_private_wiki.py")
 
 
 class WikiCheckTests(unittest.TestCase):
@@ -96,6 +97,17 @@ class LocalOnlyExclusionTests(unittest.TestCase):
             private.parent.mkdir(parents=True)
             private.write_text("token=abcd1234abcd1234\n", encoding="utf-8")
 
+            private_wiki = root / "private-wiki" / "note.md"
+            private_wiki.parent.mkdir(parents=True)
+            private_wiki.write_text("token=abcd1234abcd1234\n", encoding="utf-8")
+
+            serena = root / ".serena" / "memory.md"
+            serena.parent.mkdir()
+            serena.write_text("token=abcd1234abcd1234\n", encoding="utf-8")
+
+            hot = root / "hot.md"
+            hot.write_text("token=abcd1234abcd1234\n", encoding="utf-8")
+
             raw = root / "_raw" / "note.md"
             raw.parent.mkdir(parents=True)
             raw.write_text("C:\\\\private\\\\file.txt\n", encoding="utf-8")
@@ -124,6 +136,48 @@ class LocalOnlyExclusionTests(unittest.TestCase):
             self.assertIn("wiki/note.md", inventory)
             self.assertNotIn("inbox/private", inventory)
             self.assertNotIn("_raw", inventory)
+
+    def test_public_inventory_skips_private_wiki(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "private-wiki").mkdir()
+            (root / "private-wiki" / "index.md").write_text("private\n", encoding="utf-8")
+            (root / ".serena").mkdir()
+            (root / ".serena" / "memory.md").write_text("private\n", encoding="utf-8")
+            (root / "hot.md").write_text("private\n", encoding="utf-8")
+            (root / "wiki").mkdir()
+            (root / "wiki" / "index.md").write_text("public\n", encoding="utf-8")
+
+            build_public_inventory.main.__globals__["sys"].argv = ["build_public_inventory.py", str(root)]
+            with contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(0, build_public_inventory.main())
+            inventory = (root / "manifests" / "public_inventory.csv").read_text(encoding="utf-8")
+            self.assertIn("wiki/index.md", inventory)
+            self.assertNotIn("private-wiki", inventory)
+            self.assertNotIn(".serena", inventory)
+            self.assertNotIn("hot.md", inventory)
+
+
+class PrivateWikiCheckTests(unittest.TestCase):
+    def test_private_wiki_frontmatter_validation(self) -> None:
+        text = (
+            "---\n"
+            "title: Private Index\n"
+            "aliases: [Private Index]\n"
+            "tags: [local-recovery, visibility/internal]\n"
+            "category: private-wiki\n"
+            "type: moc\n"
+            "status: active\n"
+            "created: 2026-05-12\n"
+            "updated: 2026-05-12\n"
+            "sources: [pre-karpathy-rebuild-20260512-143127]\n"
+            "summary: Private summary.\n"
+            "---\n\n"
+            "# Private Index\n"
+        )
+        block = check_private_wiki.frontmatter(text)
+        self.assertEqual(set(), check_private_wiki.REQUIRED_KEYS - check_private_wiki.frontmatter_keys(block))
+        self.assertTrue(check_private_wiki.has_private_visibility(block))
 
 
 if __name__ == "__main__":
