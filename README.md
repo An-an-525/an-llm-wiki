@@ -24,6 +24,8 @@ This is a public-safe personal Obsidian knowledge base rebuilt around Andrej Kar
 - [[wiki/sources/karpathy-llm-wiki-pattern]] - official architecture source
 - [[wiki/sources/github-reference-projects]] - secondary implementation references
 - [Kimi frontend reference](docs/kimi-frontend-reference.md) - public-safe product brief, data model, prompt patterns, and frontend acceptance criteria
+- [Archive platform project constraints](docs/archive-platform-project-constraints.md) - frontend, backend, privacy, data, and agent operating constraints
+- [Archive content style and ingest workflow](docs/archive-content-style-and-ingest-workflow.md) - content depth, writing standard, formal data workflow, and validation gates
 - [[AGENTS]] - agent maintenance rules
 - [[CLAUDE]] - wiki schema
 - [[log]] - append-only rebuild and maintenance log

@@ -82,6 +82,11 @@
       "hiddenReasons": [],
       "explicitlyCurated": true
     },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ],
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": []
@@ -160,6 +165,11 @@
       "hiddenReasons": [],
       "explicitlyCurated": true
     },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ],
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": []
@@ -229,6 +239,11 @@
       "hiddenReasons": [],
       "explicitlyCurated": true
     },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ],
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": []
@@ -323,6 +338,11 @@
       "hiddenReasons": [],
       "explicitlyCurated": true
     },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ],
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": []
@@ -417,6 +437,11 @@
       "hiddenReasons": [],
       "explicitlyCurated": true
     },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ],
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": []
@@ -478,6 +503,10 @@
       "hiddenReasons": [],
       "explicitlyCurated": true
     },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki"
+    ],
     "displayTier": "showcase",
     "qualityScore": 85,
     "hiddenReasons": []

@@ -23,12 +23,34 @@ The main user promise:
 > and reproducible learning paths so others can inspect, learn, copy, and improve
 > the workflow."
 
+## 1.1 Content Depth Standard
+
+The frontend is not only a project grid. It is a public learning archive with
+literary, psychological, sociological, and philosophical depth. Kimi should read
+`docs/archive-platform-project-constraints.md` and
+`docs/archive-content-style-and-ingest-workflow.md` before changing the content
+model, backend contract, or adding new records.
+
+Each important item should show:
+
+- concrete evidence: what happened, what was built, what tools were used;
+- operation path: how the work was done and how a beginner can repeat it;
+- literary expression: precise, memorable language without empty decoration;
+- psychological layer: motivation, friction, attention, confidence, or learning pattern;
+- sociological layer: platform, school, workflow, community, market, or collaboration context;
+- philosophical layer: a restrained idea about agency, systems, craft, limits, failure, or time.
+
+Depth must not become vague inspiration. Every reflective claim should attach to
+a concrete project, event, tool, decision, or failure.
+
 ## 2. Source Of Truth
 
 Frontend code must read only the public data contract:
 
 - `site-data/index.json`
 - optional public sample file: `docs/kimi-frontend-sample-data.json`
+- project constraints: `docs/archive-platform-project-constraints.md`
+- content workflow: `docs/archive-content-style-and-ingest-workflow.md`
 
 Do not read:
 
@@ -292,7 +314,7 @@ Write for a beginner reader.
 
 Return:
 title, summary, module, tags, status, sources, publicSafety,
-whyItMatters, replicationSteps, pitfalls, nextPlan.
+whyItMattered, replicationSteps, failureModes, nextPlan.
 ```
 
 #### C. Project Card Rewrite Prompt
@@ -352,8 +374,13 @@ type WorkItem = {
   publicSafety: "public-safe" | "needs-redaction" | "local-only-source"
   role: "owner-built" | "adapted" | "reference-study" | "mixed"
   techStack: string[]
+  whyItMattered: string
   operationStory: string[]
+  psychologicalLayer?: string
+  sociologicalLayer?: string
+  philosophicalLayer?: string
   replicationSteps: string[]
+  failureModes: string[]
   lessons: string[]
   nextPlan: string
   sourceLabels: string[]
@@ -471,12 +498,14 @@ Server-side rules:
 Use this workflow when adding high-quality content later:
 
 1. Select one candidate from the private publication queue.
-2. Rewrite it into a public-safe wiki note or a structured site-data record.
-3. Add a beginner summary, sources, project status, safety status, and next step.
-4. Add replication steps if the item is a project or method.
-5. Run validation.
-6. Regenerate `site-data/index.json`.
-7. Verify the frontend route that consumes the new data.
+2. Use `skills/archive-content-curator/SKILL.md` to classify, rewrite, and structure it.
+3. Rewrite it into a public-safe wiki note or a structured site-data record.
+4. Add beginner explanation, sources, project status, safety status, and next step.
+5. Add literary, psychological, sociological, and philosophical layers only where they are evidence-backed.
+6. Add replication steps if the item is a project or method.
+7. Run validation.
+8. Regenerate `site-data/index.json`.
+9. Verify the frontend route that consumes the new data.
 
 Commands from the vault root:
 
@@ -514,7 +543,8 @@ A Kimi-generated frontend is acceptable only if:
 
 ```text
 Use this repository as a public personal archive frontend.
-Read docs/kimi-frontend-reference.md, docs/kimi-frontend-sample-data.json,
+Read docs/kimi-frontend-reference.md, docs/archive-platform-project-constraints.md,
+docs/archive-content-style-and-ingest-workflow.md, docs/kimi-frontend-sample-data.json,
 site/README.md, and site/src/lib/types.ts first.
 
 Goal:

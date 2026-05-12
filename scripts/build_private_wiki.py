@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import csv
 import json
+import re
 import shutil
 import sys
 from collections import Counter, defaultdict
@@ -15,6 +16,15 @@ PRIVATE_CAPTURES_DIR = Path("inbox/private/local-recovery-2026-05-12/captures")
 LOCAL_DISCOVERY_DIR = Path("inbox/private/local-recovery-2026-05-12/local-discovery")
 OUT_DIR = Path("private-wiki")
 TODAY = date.today().isoformat()
+
+SECRET_TEXT_PATTERNS = [
+    re.compile(r"\bsk-(?:proj-)?[A-Za-z0-9_-]{20,}\b"),
+    re.compile(r"\b(?:ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9_]{20,}\b"),
+    re.compile(r"\bsk-ant-[A-Za-z0-9_-]{20,}\b"),
+    re.compile(r"\bAIza[0-9A-Za-z_-]{35}\b"),
+    re.compile(r"\b(?:AKIA|ASIA)[0-9A-Z]{16}\b"),
+    re.compile(r"\beyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\b"),
+]
 
 SECRET_RULES = {
     "openai_token",
@@ -111,15 +121,22 @@ def local_report_link(label: str, manifest_name: str, current_depth: int = 1) ->
     return f"[{label}]({prefix}{LOCAL_DISCOVERY_DIR.as_posix()}/{manifest_name})"
 
 
+def redact_sensitive_text(text: str) -> str:
+    clean = text or ""
+    for pattern in SECRET_TEXT_PATTERNS:
+        clean = pattern.sub("[secret-redacted]", clean)
+    return clean
+
+
 def md_cell(text: str, limit: int = 160) -> str:
-    clean = (text or "").replace("|", "-").replace("\n", " ").strip()
+    clean = redact_sensitive_text(text).replace("|", "-").replace("\n", " ").strip()
     if len(clean) > limit:
         return clean[: limit - 3] + "..."
     return clean
 
 
 def row_label(row: dict[str, str]) -> str:
-    return (row.get("title") or Path(row.get("relative_path", "source")).stem)[:90].replace("|", "-")
+    return redact_sensitive_text(row.get("title") or Path(row.get("relative_path", "source")).stem)[:90].replace("|", "-")
 
 
 def group_sensitive(rows: list[dict[str, str]], rules: set[str]) -> list[dict[str, str]]:
@@ -416,7 +433,7 @@ def cluster_table(title: str, counts: Counter, descriptions: dict[str, str], lim
 
 def clean_source_name(row: dict[str, str]) -> str:
     value = row.get("title") or row.get("name") or Path(row.get("relative_path", "")).stem or "source"
-    value = value.replace("|", "-").strip()
+    value = redact_sensitive_text(value).replace("|", "-").strip()
     if len(value) > 80:
         value = value[:77] + "..."
     return value
@@ -462,12 +479,213 @@ def source_status_table(rows: list[dict[str, str]], limit: int = 24) -> str:
     return "\n".join(lines)
 
 
+def counter_table(title: str, counter: Counter, label_name: str = "类别", limit: int = 16) -> str:
+    lines = [f"## {title}", "", f"| {label_name} | 数量 |", "|---|---:|"]
+    for label, count in counter.most_common(limit):
+        lines.append(f"| `{md_cell(str(label), 120)}` | {count} |")
+    if len(counter) > limit:
+        lines.append(f"| `...` | {len(counter) - limit} more categories |")
+    if not counter:
+        lines.append("| `-` | 0 |")
+    return "\n".join(lines)
+
+
+def root_signal_table(rows: list[dict[str, str]], limit: int = 18) -> str:
+    ranked = sorted(
+        rows,
+        key=lambda row: (
+            -int(row.get("timeline_rows") or 0),
+            -int(row.get("findings") or 0),
+            -int(row.get("files") or 0),
+        ),
+    )
+    lines = ["| 来源根 | 文件 | 线索 | 时间线 | 上下文含义 |", "|---|---:|---:|---:|---|"]
+    for row in ranked[:limit]:
+        try:
+            categories = json.loads(row.get("category_counts", "{}"))
+        except json.JSONDecodeError:
+            categories = {}
+        root_id = row.get("root_id", "")
+        dominant = max(categories.items(), key=lambda item: item[1])[0] if categories else ""
+        meaning = "综合本地上下文"
+        if "projects" in root_id or "github" in root_id or "workspace" in root_id or dominant == "project-roots":
+            meaning = "项目与作品上下文"
+        elif dominant == "agent-context" or any(term in root_id for term in ["codex", "claude", "cursor", "agents", "gemini", "qwen", "openclaw"]):
+            meaning = "Agent/会话/规则上下文"
+        elif dominant == "personal-and-chat-context" or any(term in root_id for term in ["wechat", "tencent"]):
+            meaning = "个人/聊天上下文，需要私有处理"
+        elif dominant == "security-and-credentials":
+            meaning = "凭据/安全上下文，只做复核"
+        elif dominant == "local-assets":
+            meaning = "本地资产/备份上下文，需要去重"
+        lines.append(
+            f"| `{md_cell(row.get('root_id', ''), 90)}` | {row.get('files', '0')} | {row.get('findings', '0')} | "
+            f"{row.get('timeline_rows', '0')} | {meaning} |"
+        )
+    if len(ranked) > limit:
+        lines.append(f"| `...` | ... | ... | ... | {len(ranked) - limit} more roots in local_roots.csv |")
+    return "\n".join(lines)
+
+
+def write_deep_context_pages(
+    out: Path,
+    recovered_rows: list[dict[str, str]],
+    local_rows: list[dict[str, str]],
+    local_root_rows: list[dict[str, str]],
+    local_finding_rows: list[dict[str, str]],
+    local_timeline_rows: list[dict[str, str]],
+) -> int:
+    session_terms = ["conversation", "conversations", "chat", "session", "history", "transcript", "memory", "memories", "微信", "wechat", "会话", "记忆", "画像", "summary", "codex", "claude"]
+    project_terms = ["project", "repo", "github", "workspace", "项目", "作品", "平台", "系统", "小程序", "frontend", "backend", "openhanako", "hanako", "airi", "mcc", "gitnexus"]
+    agent_terms = ["agent", "codex", "claude", "cursor", "gemini", "qwen", "openclaw", "mcp", "skill", "prompt", "hook", "rules", "serena", "mempalace", "config", "settings"]
+    publish_terms = ["public", "site-data", "showcase", "portfolio", "README", "index", "资料库", "展示", "公开", "网站", "frontend"]
+
+    recovered_session = select_recovered_rows(
+        recovered_rows,
+        session_terms,
+        {"private-memory-and-sessions", "agent-governance-and-skills", "projects-and-action-items"},
+        260,
+    )
+    local_session = select_local_rows(local_rows, session_terms, {"personal-and-chat-context", "agent-context"}, 260)
+    local_project_context = select_local_rows(local_rows, project_terms, {"project-roots", "agent-context", "local-assets"}, 260)
+    recovered_project_context = select_recovered_rows(
+        recovered_rows,
+        project_terms,
+        {"projects-and-action-items", "agent-governance-and-skills", "public-knowledge-candidates"},
+        260,
+    )
+    local_agent_context = select_local_rows(local_rows, agent_terms, {"agent-context", "security-and-credentials"}, 260)
+    recovered_agent_context = select_recovered_rows(recovered_rows, agent_terms, {"agent-governance-and-skills", "private-memory-and-sessions"}, 260)
+    publish_candidates = select_recovered_rows(
+        recovered_rows,
+        publish_terms,
+        {"public-knowledge-candidates", "projects-and-action-items", "agent-governance-and-skills"},
+        220,
+    ) + select_local_rows(local_rows, publish_terms, {"project-roots", "agent-context", "local-assets"}, 180)
+
+    recovered_categories = Counter(row.get("category", "") for row in recovered_rows)
+    local_categories = Counter(row.get("category", "") for row in local_rows)
+    finding_groups = Counter(row.get("group", "") for row in local_finding_rows)
+    finding_rules = Counter(row.get("rule", "") for row in local_finding_rows)
+    timeline_sources = Counter(row.get("source", "") for row in local_timeline_rows)
+
+    index_body = (
+        "这组页面回答“还有哪些信息和上下文在本地”。它把来源、会话、项目、Agent、公开候选和待办问题拆开，避免所有东西挤在一个索引表里。\n\n"
+        "## 上下文入口\n\n"
+        "- [[private-wiki/context/source-priority-map]] - 哪些本地来源最值得继续读\n"
+        "- [[private-wiki/context/session-memory-map]] - 会话、记忆、个人画像和上下文线索\n"
+        "- [[private-wiki/context/project-continuity-map]] - 项目连续性与交付上下文\n"
+        "- [[private-wiki/context/agent-runtime-map]] - Agent 运行面、规则面、配置面\n"
+        "- [[private-wiki/context/publication-context-map]] - 公开展示候选与脱敏队列\n"
+        "- [[private-wiki/context/continuation-questions]] - 后续需要回答的问题\n\n"
+        "## 现有规模\n\n"
+        f"- 恢复档案来源：`{len(recovered_rows)}`\n"
+        f"- 本地来源索引：`{len(local_rows)}`\n"
+        f"- 本地时间线行：`{len(local_timeline_rows)}`\n"
+        f"- 本地风险/隐私线索：`{len(local_finding_rows)}`\n\n"
+        "## 使用方式\n\n"
+        "先从 source-priority 看来源，再从 session/project/agent 三条线决定要不要继续细化成单独页面。公开展示只走 publication-context，不直接从 context 页复制原文。\n"
+    )
+    write_page(out / "context" / "index.md", "更多本地信息与上下文地图", ["上下文地图", "更多信息"], ["personal-archive", "context"], "private-context", "moc", "把本地来源、会话、项目、Agent 和公开候选拆成可继续深挖的上下文地图。", index_body, "sensitive")
+
+    source_body = (
+        "这页用于决定下一轮该读哪些本地材料。它按来源根、类别、时间线和风险信号排序，不复制原始内容。\n\n"
+        "## 高信号来源根\n\n"
+        + root_signal_table(local_root_rows, 24)
+        + "\n\n"
+        + counter_table("恢复档案类别", recovered_categories, "类别")
+        + "\n\n"
+        + counter_table("本地来源类别", local_categories, "类别")
+        + "\n\n"
+        + counter_table("时间线来源类型", timeline_sources, "来源类型")
+        + "\n\n## 下一步\n\n"
+        "- 优先读项目根、Agent 会话、个人记忆三个方向。\n"
+        "- 不要把备份目录当成当前事实，需要核对是否为重复副本。\n"
+        "- 对公开展示，优先选择风险为 `-` 或只需脱敏的候选。\n"
+    )
+    write_page(out / "context" / "source-priority-map.md", "本地来源优先级地图", ["来源优先级", "Source Priority"], ["personal-archive", "context", "sources"], "private-context", "map", "按来源根、类别、风险和时间线信号整理的本地资料优先级。", source_body, "sensitive")
+
+    session_body = (
+        "这页整理会话、记忆、个人画像、聊天上下文和连续接手线索。它是理解“为什么项目这样演进”的上下文层。\n\n"
+        "## 恢复档案里的会话/记忆候选\n\n"
+        + source_status_table(recovered_session, 48)
+        + "\n\n## 本地会话/记忆候选\n\n"
+        + source_status_table(local_session, 48)
+        + "\n\n"
+        + counter_table("个人/隐私规则分布", Counter(row.get("rule", "") for row in local_finding_rows if row.get("group") == "personal"), "规则", 18)
+        + "\n\n## 处理规则\n\n"
+        "- 会话只作为事实和决策来源，不把整段对话复制进展示层。\n"
+        "- 个人画像、微信、记忆、私聊默认 `private-only`。\n"
+        "- 能公开的是经过改写的项目背景、能力证明和非敏感经验。\n"
+    )
+    write_page(out / "context" / "session-memory-map.md", "会话记忆与个人上下文地图", ["会话上下文", "记忆地图"], ["personal-archive", "context", "memory"], "private-context", "map", "本地会话、记忆、个人画像和聊天上下文的私有地图。", session_body, "sensitive")
+
+    project_body = (
+        "这页关注项目连续性：项目从哪里来、当前证据在哪里、哪些可以变成作品集条目。\n\n"
+        "## 恢复档案项目上下文\n\n"
+        + source_status_table(recovered_project_context, 54)
+        + "\n\n## 本地项目上下文\n\n"
+        + source_status_table(local_project_context, 54)
+        + "\n\n## 项目连续性判断\n\n"
+        "- 同时出现在项目根、会话记录和展示草稿里的项目，优先提升成单独项目页。\n"
+        "- 只出现在备份或导入包里的项目，先确认是不是废弃材料。\n"
+        "- 带密钥、支付、部署、账号、学校信息的项目，先留私有。\n"
+    )
+    write_page(out / "context" / "project-continuity-map.md", "项目连续性上下文地图", ["项目上下文", "项目连续性"], ["personal-archive", "context", "projects"], "private-context", "map", "把恢复档案和本地项目根连接起来的项目连续性地图。", project_body, "internal")
+
+    agent_body = (
+        "这页整理 Agent 运行面：Codex、Claude、Cursor、Gemini/Qwen、OpenClaw、MCP、技能、hooks、rules 和 memory/context。\n\n"
+        "## 恢复档案 Agent 上下文\n\n"
+        + source_status_table(recovered_agent_context, 54)
+        + "\n\n## 本地 Agent 上下文\n\n"
+        + source_status_table(local_agent_context, 54)
+        + "\n\n"
+        + counter_table("本地风险规则分布", finding_rules, "规则", 18)
+        + "\n\n## 当前规则\n\n"
+        "- 旧规则是历史材料，不自动成为当前行为规范。\n"
+        "- 配置、hooks、memory、prompt、token 线索默认不公开。\n"
+        "- 对外可写的是 Agent 架构、工具链经验和安全边界。\n"
+    )
+    write_page(out / "context" / "agent-runtime-map.md", "Agent 运行面上下文地图", ["Agent运行面", "Agent上下文"], ["personal-archive", "context", "agents"], "private-context", "map", "Codex、Claude、Cursor、OpenClaw、MCP、技能和规则的本地上下文地图。", agent_body, "sensitive")
+
+    publication_body = (
+        "这页把更多本地上下文接到未来网站展示：什么可以写成公开资料，什么必须留私有。\n\n"
+        "## 展示候选\n\n"
+        + source_status_table(publish_candidates, 64)
+        + "\n\n## 展示边界\n\n"
+        "- 公开页面只讲项目目标、技术选择、成果、经验和公开链接。\n"
+        "- 不展示本地路径、账号、密钥、私聊、个人识别信息、未确认学校/组织细节。\n"
+        "- 前端只读 `site-data` 生成物，不读私有 Obsidian 目录。\n"
+    )
+    write_page(out / "context" / "publication-context-map.md", "公开展示上下文地图", ["公开候选上下文", "展示上下文"], ["personal-archive", "context", "publication"], "private-context", "map", "从私有上下文筛选公开展示候选的边界和队列。", publication_body, "internal")
+
+    questions_body = (
+        "这页是继续完善本地知识库的复核问题队列。\n\n"
+        "## P0 安全\n\n"
+        f"- 高风险凭据线索是否需要轮换：`{sum(1 for row in local_finding_rows if row.get('severity') == 'high')}` 条。\n"
+        f"- 凭据/会话类上下文是否有废弃配置需要清理：`{finding_groups.get('credential', 0)}` 条。\n\n"
+        "## P1 个人资料\n\n"
+        "- 哪些个人身份、学校、经历可以公开，哪些永远只留本地。\n"
+        "- 成长时间线里哪些是真实事件，哪些只是文件时间或引用日期。\n\n"
+        "## P2 项目与能力\n\n"
+        "- 哪 10 个项目最适合作为网站第一批展示条目。\n"
+        "- 每个能力要绑定哪个项目证据，避免空泛技能清单。\n\n"
+        "## P3 Agent 上下文\n\n"
+        "- 哪些 Agent 规则是当前有效，哪些只是旧系统遗留。\n"
+        "- 哪些配置可以抽象成公开方法论，哪些必须留私有。\n"
+    )
+    write_page(out / "context" / "continuation-questions.md", "继续完善问题队列", ["上下文待办", "复核问题"], ["personal-archive", "context", "todo"], "private-context", "queue", "继续完善本地知识库时需要人工复核和决策的问题队列。", questions_body, "sensitive")
+
+    return 7
+
+
 def write_readable_knowledge_pages(
     out: Path,
     recovered_rows: list[dict[str, str]],
     local_rows: list[dict[str, str]],
     local_root_rows: list[dict[str, str]],
     local_finding_rows: list[dict[str, str]],
+    local_timeline_rows: list[dict[str, str]],
     recovered_growth: list[dict[str, str]],
     recovered_projects: list[dict[str, str]],
     recovered_skills: list[dict[str, str]],
@@ -541,6 +759,12 @@ def write_readable_knowledge_pages(
         "- [[private-wiki/security/review-priority]] - 密钥与隐私复核优先级\n"
         "- [[private-wiki/profile/source-coverage]] - 本地资料覆盖面\n"
         "- [[private-wiki/synthesis/local-karpathy-wiki-operating-model]] - 本地知识库运行模型\n\n"
+        "## 深挖上下文\n\n"
+        "- [[private-wiki/context/index]] - 更多本地信息与上下文地图\n"
+        "- [[private-wiki/context/source-priority-map]] - 来源优先级\n"
+        "- [[private-wiki/context/session-memory-map]] - 会话和记忆上下文\n"
+        "- [[private-wiki/context/project-continuity-map]] - 项目连续性上下文\n"
+        "- [[private-wiki/context/agent-runtime-map]] - Agent 运行面上下文\n\n"
         "## 日常流程\n\n"
         "1. 新资料先进入原始层或本地来源索引。\n"
         "2. 私有编译层只做提炼、链接、计数和证据定位，不复制密钥明文。\n"
@@ -643,7 +867,16 @@ def write_readable_knowledge_pages(
     )
     write_page(out / "synthesis" / "local-karpathy-wiki-operating-model.md", "本地 Karpathy 知识库运行模型", ["本地知识库运行模型", "Karpathy Wiki 本地模型"], ["personal-archive", "karpathy-wiki", "synthesis"], "private-synthesis", "model", "定义 raw、private-wiki、wiki/site-data 三层之间的职责和晋升流程。", model_body, "internal")
 
-    return 7
+    context_pages = write_deep_context_pages(
+        out,
+        recovered_rows,
+        local_rows,
+        local_root_rows,
+        local_finding_rows,
+        local_timeline_rows,
+    )
+
+    return 7 + context_pages
 
 
 def write_personal_archive_pages(
@@ -883,6 +1116,7 @@ def write_personal_archive_pages(
         local_rows,
         local_root_rows,
         local_finding_rows,
+        local_timeline_rows,
         recovered_growth,
         recovered_projects,
         recovered_skills,
@@ -1206,6 +1440,7 @@ def build(root: Path) -> int:
         "- [[private-wiki/personal/index]] - private memory and session context\n"
         "- [[private-wiki/assets/index]] - local asset and environment context\n"
         "- [[private-wiki/local-sources/index]] - additional local source discovery outside the recovered vault\n"
+        "- [[private-wiki/context/index]] - 更多本地信息与上下文地图\n"
         "- [[private-wiki/synthesis/index]] - recovery synthesis and next passes\n"
         "- [[private-wiki/synthesis/local-karpathy-wiki-operating-model]] - 本地 Karpathy 知识库运行模型\n"
         "- [[private-wiki/publication-candidates]] - candidates for future public-safe rewrite\n\n"

@@ -39,6 +39,23 @@ Compile `_raw/recovered/` and `inbox/private/` into `private-wiki/` when local c
 
 Compile the public frontend backend with `python scripts/build_site_data.py .`. The script reads only `wiki/`, `README.md`, `index.md`, and `log.md`, runs public gates by default, and writes `site-data/*.json` for the future web frontend.
 
+### Archive Content Curation
+
+When adding frontend-facing data, use the archive curation workflow instead of bulk import. Each item must preserve evidence, explain the operation, and add beginner-readable depth across literary, psychological, sociological, and philosophical layers. The working standard lives in `docs/archive-content-style-and-ingest-workflow.md`; the reusable skill lives in `skills/archive-content-curator/SKILL.md`.
+
+Frontend, backend, privacy, and data import constraints live in `docs/archive-platform-project-constraints.md`. Future agents must read it before changing the public site, server contract, or display data.
+
+Good public records should include:
+
+- what the item is;
+- why it mattered;
+- what happened;
+- what tools or agents were involved;
+- what someone can repeat;
+- what can go wrong;
+- what is still unfinished;
+- what source labels support the record.
+
 ### Historical Rules
 
 Recovered startup packs, controller notes, agent prompts, and old rule files are compiled as `historical-reference` material. They support search and continuity, but they do not govern current work until deliberately promoted into an active rule surface. Current user instructions and the privacy/credential boundary take precedence over obsolete recovered workflows.
@@ -77,6 +94,20 @@ publication_status: private-only
 - `private-wiki` - local-only compiled private context
 - `private-security` - local-only credential, personal information, and path triage
 - `private-timeline` - local-only dated context indexes
+
+## Content Depth Fields
+
+Frontend records and future wiki pages may use these optional fields when useful:
+
+- `whyItMattered`
+- `operationStory`
+- `psychologicalLayer`
+- `sociologicalLayer`
+- `philosophicalLayer`
+- `replicationSteps`
+- `failureModes`
+- `sourceLabels`
+- `publicSafety`
 
 ## Publication Boundary
 

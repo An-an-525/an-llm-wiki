@@ -34,6 +34,8 @@
       "- [[wiki/sources/karpathy-llm-wiki-pattern]] - official architecture source",
       "- [[wiki/sources/github-reference-projects]] - secondary implementation references",
       "- [Kimi frontend reference](docs/kimi-frontend-reference.md) - public-safe product brief, data model, prompt patterns, and frontend acceptance criteria",
+      "- [Archive platform project constraints](docs/archive-platform-project-constraints.md) - frontend, backend, privacy, data, and agent operating constraints",
+      "- [Archive content style and ingest workflow](docs/archive-content-style-and-ingest-workflow.md) - content depth, writing standard, formal data workflow, and validation gates",
       "- [[AGENTS]] - agent maintenance rules",
       "- [[CLAUDE]] - wiki schema",
       "- [[log]] - append-only rebuild and maintenance log",
@@ -107,10 +109,10 @@
         "anchor": "current-rebuild"
       }
     ],
-    "wordCount": 145,
+    "wordCount": 177,
     "readingMinutes": 1,
     "metrics": {
-      "lineCount": 25,
+      "lineCount": 27,
       "headingCount": 4,
       "linkCount": 8,
       "sourceCount": 1
@@ -125,6 +127,11 @@
       "hiddenReasons": [],
       "explicitlyCurated": true
     },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ],
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": [],
@@ -275,6 +282,11 @@
       "hiddenReasons": [],
       "explicitlyCurated": true
     },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ],
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": [],
@@ -446,6 +458,11 @@
       "hiddenReasons": [],
       "explicitlyCurated": true
     },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ],
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": [],
@@ -577,6 +594,11 @@
       "hiddenReasons": [],
       "explicitlyCurated": true
     },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ],
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": []
@@ -655,6 +677,11 @@
       "hiddenReasons": [],
       "explicitlyCurated": true
     },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ],
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": []
@@ -724,6 +751,11 @@
       "hiddenReasons": [],
       "explicitlyCurated": true
     },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ],
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": []
@@ -818,6 +850,11 @@
       "hiddenReasons": [],
       "explicitlyCurated": true
     },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ],
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": []
@@ -912,6 +949,11 @@
       "hiddenReasons": [],
       "explicitlyCurated": true
     },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ],
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": []
@@ -973,6 +1015,10 @@
       "hiddenReasons": [],
       "explicitlyCurated": true
     },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki"
+    ],
     "displayTier": "showcase",
     "qualityScore": 85,
     "hiddenReasons": []
@@ -1140,6 +1186,11 @@
       ],
       "explicitlyCurated": true
     },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "archive-derived"
+    ],
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": [
@@ -1331,6 +1382,11 @@
       "hiddenReasons": [],
       "explicitlyCurated": true
     },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ],
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": [],
@@ -1503,6 +1559,11 @@
       "hiddenReasons": [],
       "explicitlyCurated": true
     },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ],
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": [],
@@ -1718,6 +1779,11 @@
       ],
       "explicitlyCurated": true
     },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "archive-derived"
+    ],
     "displayTier": "showcase",
     "qualityScore": 94,
     "hiddenReasons": [

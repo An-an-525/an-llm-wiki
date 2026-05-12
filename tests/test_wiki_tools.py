@@ -419,6 +419,51 @@ class SiteDataBuilderTests(unittest.TestCase):
         self.assertEqual(["source-a"], frontmatter["sources"])
         self.assertEqual([{"target": "Target", "label": "Label"}], build_site_data.extract_links(body))
 
+    def test_site_data_preserves_public_content_depth_fields(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            project = root / "wiki" / "projects" / "archive-platform.md"
+            project.parent.mkdir(parents=True)
+            project.write_text(
+                "---\n"
+                "title: Archive Platform\n"
+                "tags: [archive, agent, beginner-friendly]\n"
+                "category: project\n"
+                "type: project\n"
+                "status: verified\n"
+                "publish: curated\n"
+                "created: 2026-05-12\n"
+                "updated: 2026-05-12\n"
+                "sources: [public-note]\n"
+                "sourceLabels: [public wiki, source-backed]\n"
+                "publicSafety: public-safe\n"
+                "whyItMattered: It turned scattered work into a teachable archive.\n"
+                "operationStory:\n"
+                "  - Split raw, private, and public layers.\n"
+                "  - Generated structured frontend data.\n"
+                "replicationSteps:\n"
+                "  - Define the public/private boundary.\n"
+                "  - Build a JSON contract for the frontend.\n"
+                "failureModes: [publishing raw notes, hiding unfinished status]\n"
+                "lessons: [small curated batches beat bulk imports]\n"
+                "---\n\n"
+                "# Archive Platform\n\n"
+                "## What It Is\n\n"
+                "This public project page explains a curated archive platform with enough concrete detail for a beginner to understand the architecture, repeat the useful part, and avoid confusing raw collection with public knowledge.\n",
+                encoding="utf-8",
+            )
+
+            payload = build_site_data.build(root, run_gates=False)
+            self.assertEqual(1, payload["counts"]["content"])
+            item = payload["content"][0]
+            self.assertEqual("public-safe", item["publicSafety"])
+            self.assertEqual(["public wiki", "source-backed"], item["sourceLabels"])
+            self.assertEqual("It turned scattered work into a teachable archive.", item["whyItMattered"])
+            self.assertEqual("Split raw, private, and public layers.", item["operationStory"][0])
+            self.assertEqual("Define the public/private boundary.", item["replicationSteps"][0])
+            self.assertEqual("publishing raw notes", item["failureModes"][0])
+            self.assertEqual("small curated batches beat bulk imports", item["lessons"][0])
+
     def test_site_data_hides_migrated_archive_only_pages_by_default(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

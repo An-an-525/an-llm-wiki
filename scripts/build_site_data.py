@@ -26,6 +26,19 @@ HAN_CHAR_RE = re.compile(r"[\u4e00-\u9fff]")
 PROMOTION_STATUSES = {"featured", "recommended", "verified"}
 PROMOTION_TAGS = {"featured", "recommended", "verified", "showcase", "curated", "beginner-friendly"}
 ARCHIVE_SOURCE = "[[wiki/sources/pre-rebuild-vault-archive]]"
+PUBLIC_SAFETY_VALUES = {"public-safe", "needs-redaction", "local-only-source"}
+TEXT_DEPTH_FIELDS = {
+    "whyItMattered": ["whyItMattered", "whyItMatters", "why_it_mattered", "why_it_matters"],
+    "psychologicalLayer": ["psychologicalLayer", "psychological_layer"],
+    "sociologicalLayer": ["sociologicalLayer", "sociological_layer"],
+    "philosophicalLayer": ["philosophicalLayer", "philosophical_layer"],
+}
+LIST_DEPTH_FIELDS = {
+    "operationStory": ["operationStory", "operation_story", "operations"],
+    "replicationSteps": ["replicationSteps", "replication_steps"],
+    "failureModes": ["failureModes", "failure_modes", "pitfalls"],
+    "lessons": ["lessons", "lesson"],
+}
 CURATED_SOURCE_PATHS = {
     "README.md",
     "index.md",
@@ -216,6 +229,61 @@ def as_list(value: Any) -> list[str]:
     return [str(value).strip()]
 
 
+def first_frontmatter_value(frontmatter: dict[str, Any], keys: list[str]) -> Any:
+    for key in keys:
+        if key in frontmatter and frontmatter[key] not in (None, "", []):
+            return frontmatter[key]
+    return None
+
+
+def optional_frontmatter_text(frontmatter: dict[str, Any], keys: list[str]) -> str | None:
+    value = first_frontmatter_value(frontmatter, keys)
+    if value is None or isinstance(value, (list, dict)):
+        return None
+    text = str(value).strip()
+    return text or None
+
+
+def optional_frontmatter_list(frontmatter: dict[str, Any], keys: list[str]) -> list[str]:
+    return as_list(first_frontmatter_value(frontmatter, keys))
+
+
+def public_safety(frontmatter: dict[str, Any]) -> str:
+    raw = optional_frontmatter_text(frontmatter, ["publicSafety", "public_safety", "publication_safety"])
+    return raw if raw in PUBLIC_SAFETY_VALUES else "public-safe"
+
+
+def source_labels(frontmatter: dict[str, Any], sources: list[str]) -> list[str]:
+    labels = optional_frontmatter_list(frontmatter, ["sourceLabels", "source_labels"])
+    if labels:
+        return labels
+    labels = ["public wiki"]
+    if source_only_archive(sources):
+        labels.append("archive-derived")
+    elif sources:
+        labels.append("source-backed")
+    return labels
+
+
+def content_depth(frontmatter: dict[str, Any], sources: list[str]) -> dict[str, Any]:
+    depth: dict[str, Any] = {
+        "publicSafety": public_safety(frontmatter),
+        "sourceLabels": source_labels(frontmatter, sources),
+    }
+    for field, keys in TEXT_DEPTH_FIELDS.items():
+        value = optional_frontmatter_text(frontmatter, keys)
+        if value:
+            depth[field] = value
+    for field, keys in LIST_DEPTH_FIELDS.items():
+        values = optional_frontmatter_list(frontmatter, keys)
+        if values:
+            depth[field] = values
+    next_plan = optional_frontmatter_text(frontmatter, ["nextPlan", "next_plan"])
+    if next_plan:
+        depth["nextPlan"] = next_plan
+    return depth
+
+
 def has_truthy_frontmatter(value: Any) -> bool:
     if isinstance(value, bool):
         return value
@@ -316,11 +384,13 @@ def quality_review(item: dict[str, Any], frontmatter: dict[str, Any]) -> dict[st
         reasons.append("content:too-thin")
     if not item["summary"] or item["summary"] == title:
         reasons.append("summary:missing-or-title-only")
+    if item.get("publicSafety") != "public-safe":
+        reasons.append(f"publicSafety:{item.get('publicSafety', 'unknown')}")
 
     blocking_reasons = [
         reason
         for reason in reasons
-        if reason.startswith(("status:", "tag:", "source:", "path-pattern:", "title-pattern:", "content:"))
+        if reason.startswith(("status:", "tag:", "source:", "path-pattern:", "title-pattern:", "content:", "publicSafety:"))
     ]
 
     score = 50
@@ -467,7 +537,7 @@ def extract_steps(body: str) -> list[dict[str, Any]]:
 
 
 def is_displayable(item: dict[str, Any]) -> bool:
-    return item.get("displayTier") in {"showcase", "starter"}
+    return item.get("displayTier") in {"showcase", "starter"} and item.get("publicSafety") == "public-safe"
 
 
 def write_quality_review(root: Path, all_items: list[dict[str, Any]]) -> None:
@@ -561,6 +631,7 @@ def build_item(root: Path, path: Path) -> dict[str, Any]:
             or "migrated-needs-source-review" in raw_statuses,
         },
     }
+    item.update(content_depth(frontmatter, sources))
     review = quality_review(item, frontmatter)
     item["displayTier"] = review["displayTier"]
     item["qualityScore"] = review["qualityScore"]
@@ -590,7 +661,7 @@ def build_item(root: Path, path: Path) -> dict[str, Any]:
             {
                 "projectStatus": "maintaining" if "active" in str(frontmatter.get("status", "")) else "archived",
                 "techStack": tags[:6],
-                "nextPlan": "",
+                "nextPlan": item.get("nextPlan", ""),
             }
         )
     if module == "feed":
@@ -635,6 +706,8 @@ def build_payload(root: Path) -> dict[str, Any]:
                 "importance": "high" if "featured" in item["status"] else "medium",
                 "relatedLibraryItems": [item["id"]],
                 "href": item["href"],
+                "publicSafety": item.get("publicSafety", "public-safe"),
+                "sourceLabels": item.get("sourceLabels", []),
             }
         )
     timeline.sort(key=lambda row: row["date"], reverse=True)
@@ -716,6 +789,7 @@ def build_payload(root: Path) -> dict[str, Any]:
                 "Collect useful local material into private-wiki or wiki draft pages.",
                 "Rewrite each item for beginner readers with a clear summary, use case, sources, and next step.",
                 "Mark it with publish: curated or status: verified only after privacy and source review.",
+                "Use skills/archive-content-curator/SKILL.md for project cards, tool cards, prompt patterns, routes, and timeline records.",
                 "Regenerate site-data and verify the public frontend before publishing.",
             ],
         },

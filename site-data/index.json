@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-12T19:10:16+00:00",
+  "generatedAt": "2026-05-12T19:58:08+00:00",
   "source": "an-llm-wiki public wiki",
   "schemaVersion": 1,
   "privacyBoundary": {
@@ -119,6 +119,7 @@
       "Collect useful local material into private-wiki or wiki draft pages.",
       "Rewrite each item for beginner readers with a clear summary, use case, sources, and next step.",
       "Mark it with publish: curated or status: verified only after privacy and source review.",
+      "Use skills/archive-content-curator/SKILL.md for project cards, tool cards, prompt patterns, routes, and timeline records.",
       "Regenerate site-data and verify the public frontend before publishing."
     ]
   },
@@ -290,6 +291,8 @@
         "- [[wiki/sources/karpathy-llm-wiki-pattern]] - official architecture source",
         "- [[wiki/sources/github-reference-projects]] - secondary implementation references",
         "- [Kimi frontend reference](docs/kimi-frontend-reference.md) - public-safe product brief, data model, prompt patterns, and frontend acceptance criteria",
+        "- [Archive platform project constraints](docs/archive-platform-project-constraints.md) - frontend, backend, privacy, data, and agent operating constraints",
+        "- [Archive content style and ingest workflow](docs/archive-content-style-and-ingest-workflow.md) - content depth, writing standard, formal data workflow, and validation gates",
         "- [[AGENTS]] - agent maintenance rules",
         "- [[CLAUDE]] - wiki schema",
         "- [[log]] - append-only rebuild and maintenance log",
@@ -363,10 +366,10 @@
           "anchor": "current-rebuild"
         }
       ],
-      "wordCount": 145,
+      "wordCount": 177,
       "readingMinutes": 1,
       "metrics": {
-        "lineCount": 25,
+        "lineCount": 27,
         "headingCount": 4,
         "linkCount": 8,
         "sourceCount": 1
@@ -381,6 +384,11 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": [],
@@ -531,6 +539,11 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": [],
@@ -702,6 +715,11 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": [],
@@ -833,6 +851,11 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": []
@@ -911,6 +934,11 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": []
@@ -980,6 +1008,11 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": []
@@ -1074,6 +1107,11 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": []
@@ -1168,6 +1206,11 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": []
@@ -1229,6 +1272,10 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki"
+      ],
       "displayTier": "showcase",
       "qualityScore": 85,
       "hiddenReasons": []
@@ -1396,6 +1443,11 @@
         ],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "archive-derived"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": [
@@ -1587,6 +1639,11 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": [],
@@ -1759,6 +1816,11 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": [],
@@ -1974,6 +2036,11 @@
         ],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "archive-derived"
+      ],
       "displayTier": "showcase",
       "qualityScore": 94,
       "hiddenReasons": [
@@ -2109,6 +2176,11 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": []
@@ -2187,6 +2259,11 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": []
@@ -2256,6 +2333,11 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": []
@@ -2350,6 +2432,11 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": []
@@ -2444,6 +2531,11 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": []
@@ -2505,6 +2597,10 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki"
+      ],
       "displayTier": "showcase",
       "qualityScore": 85,
       "hiddenReasons": []
@@ -2546,6 +2642,8 @@
         "- [[wiki/sources/karpathy-llm-wiki-pattern]] - official architecture source",
         "- [[wiki/sources/github-reference-projects]] - secondary implementation references",
         "- [Kimi frontend reference](docs/kimi-frontend-reference.md) - public-safe product brief, data model, prompt patterns, and frontend acceptance criteria",
+        "- [Archive platform project constraints](docs/archive-platform-project-constraints.md) - frontend, backend, privacy, data, and agent operating constraints",
+        "- [Archive content style and ingest workflow](docs/archive-content-style-and-ingest-workflow.md) - content depth, writing standard, formal data workflow, and validation gates",
         "- [[AGENTS]] - agent maintenance rules",
         "- [[CLAUDE]] - wiki schema",
         "- [[log]] - append-only rebuild and maintenance log",
@@ -2619,10 +2717,10 @@
           "anchor": "current-rebuild"
         }
       ],
-      "wordCount": 145,
+      "wordCount": 177,
       "readingMinutes": 1,
       "metrics": {
-        "lineCount": 25,
+        "lineCount": 27,
         "headingCount": 4,
         "linkCount": 8,
         "sourceCount": 1
@@ -2637,6 +2735,11 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": [],
@@ -2787,6 +2890,11 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": [],
@@ -2958,6 +3066,11 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": [],
@@ -3169,6 +3282,11 @@
         ],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "archive-derived"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": [
@@ -3360,6 +3478,11 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": [],
@@ -3532,6 +3655,11 @@
         "hiddenReasons": [],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ],
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": [],
@@ -3747,6 +3875,11 @@
         ],
         "explicitlyCurated": true
       },
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "archive-derived"
+      ],
       "displayTier": "showcase",
       "qualityScore": 94,
       "hiddenReasons": [
@@ -3825,7 +3958,12 @@
       "relatedLibraryItems": [
         "c_b335630551682c19"
       ],
-      "href": "/content/readme"
+      "href": "/content/readme",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ]
     },
     {
       "id": "timeline-c_a48746cae70c44e7",
@@ -3849,7 +3987,12 @@
       "relatedLibraryItems": [
         "c_a48746cae70c44e7"
       ],
-      "href": "/content/index"
+      "href": "/content/index",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ]
     },
     {
       "id": "timeline-c_0b2b8021fc47d672",
@@ -3873,7 +4016,12 @@
       "relatedLibraryItems": [
         "c_0b2b8021fc47d672"
       ],
-      "href": "/content/wiki-index"
+      "href": "/content/wiki-index",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ]
     },
     {
       "id": "timeline-c_ad9a9fc54757ca67",
@@ -3897,7 +4045,12 @@
       "relatedLibraryItems": [
         "c_ad9a9fc54757ca67"
       ],
-      "href": "/content/wiki-sources-and-data-policy"
+      "href": "/content/wiki-sources-and-data-policy",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ]
     },
     {
       "id": "timeline-c_34b380dfec2c06c0",
@@ -3921,7 +4074,12 @@
       "relatedLibraryItems": [
         "c_34b380dfec2c06c0"
       ],
-      "href": "/content/wiki-sources-github-reference-projects"
+      "href": "/content/wiki-sources-github-reference-projects",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ]
     },
     {
       "id": "timeline-c_08b81444115464f6",
@@ -3945,7 +4103,12 @@
       "relatedLibraryItems": [
         "c_08b81444115464f6"
       ],
-      "href": "/content/wiki-sources-karpathy-llm-wiki-pattern"
+      "href": "/content/wiki-sources-karpathy-llm-wiki-pattern",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ]
     },
     {
       "id": "timeline-c_d1f1b66d423fc694",
@@ -3969,7 +4132,12 @@
       "relatedLibraryItems": [
         "c_d1f1b66d423fc694"
       ],
-      "href": "/content/wiki-sources-llm-wikid"
+      "href": "/content/wiki-sources-llm-wikid",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ]
     },
     {
       "id": "timeline-c_55208509a7f3108b",
@@ -3993,7 +4161,12 @@
       "relatedLibraryItems": [
         "c_55208509a7f3108b"
       ],
-      "href": "/content/wiki-sources-obsidian-llm-wiki-local"
+      "href": "/content/wiki-sources-obsidian-llm-wiki-local",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ]
     },
     {
       "id": "timeline-c_e408088da7f9f832",
@@ -4017,7 +4190,11 @@
       "relatedLibraryItems": [
         "c_e408088da7f9f832"
       ],
-      "href": "/content/wiki-sources-pre-rebuild-vault-archive"
+      "href": "/content/wiki-sources-pre-rebuild-vault-archive",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki"
+      ]
     },
     {
       "id": "timeline-c_3d19f3d825d4e136",
@@ -4042,7 +4219,12 @@
       "relatedLibraryItems": [
         "c_3d19f3d825d4e136"
       ],
-      "href": "/content/wiki-topics-ai-agent-systems-moc"
+      "href": "/content/wiki-topics-ai-agent-systems-moc",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "archive-derived"
+      ]
     },
     {
       "id": "timeline-c_87e2a1ac5dbe8a31",
@@ -4067,7 +4249,12 @@
       "relatedLibraryItems": [
         "c_87e2a1ac5dbe8a31"
       ],
-      "href": "/content/wiki-topics-llm-wiki-moc"
+      "href": "/content/wiki-topics-llm-wiki-moc",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ]
     },
     {
       "id": "timeline-c_7e9d08f8f6eda5d4",
@@ -4093,7 +4280,12 @@
       "relatedLibraryItems": [
         "c_7e9d08f8f6eda5d4"
       ],
-      "href": "/content/wiki-topics-publication-maintenance-moc"
+      "href": "/content/wiki-topics-publication-maintenance-moc",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "source-backed"
+      ]
     },
     {
       "id": "timeline-c_68d8f2407d41eb74",
@@ -4118,7 +4310,12 @@
       "relatedLibraryItems": [
         "c_68d8f2407d41eb74"
       ],
-      "href": "/content/wiki-topics-skills-and-tools-moc"
+      "href": "/content/wiki-topics-skills-and-tools-moc",
+      "publicSafety": "public-safe",
+      "sourceLabels": [
+        "public wiki",
+        "archive-derived"
+      ]
     }
   ],
   "about": {

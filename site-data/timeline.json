@@ -22,7 +22,12 @@
     "relatedLibraryItems": [
       "c_b335630551682c19"
     ],
-    "href": "/content/readme"
+    "href": "/content/readme",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ]
   },
   {
     "id": "timeline-c_a48746cae70c44e7",
@@ -46,7 +51,12 @@
     "relatedLibraryItems": [
       "c_a48746cae70c44e7"
     ],
-    "href": "/content/index"
+    "href": "/content/index",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ]
   },
   {
     "id": "timeline-c_0b2b8021fc47d672",
@@ -70,7 +80,12 @@
     "relatedLibraryItems": [
       "c_0b2b8021fc47d672"
     ],
-    "href": "/content/wiki-index"
+    "href": "/content/wiki-index",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ]
   },
   {
     "id": "timeline-c_ad9a9fc54757ca67",
@@ -94,7 +109,12 @@
     "relatedLibraryItems": [
       "c_ad9a9fc54757ca67"
     ],
-    "href": "/content/wiki-sources-and-data-policy"
+    "href": "/content/wiki-sources-and-data-policy",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ]
   },
   {
     "id": "timeline-c_34b380dfec2c06c0",
@@ -118,7 +138,12 @@
     "relatedLibraryItems": [
       "c_34b380dfec2c06c0"
     ],
-    "href": "/content/wiki-sources-github-reference-projects"
+    "href": "/content/wiki-sources-github-reference-projects",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ]
   },
   {
     "id": "timeline-c_08b81444115464f6",
@@ -142,7 +167,12 @@
     "relatedLibraryItems": [
       "c_08b81444115464f6"
     ],
-    "href": "/content/wiki-sources-karpathy-llm-wiki-pattern"
+    "href": "/content/wiki-sources-karpathy-llm-wiki-pattern",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ]
   },
   {
     "id": "timeline-c_d1f1b66d423fc694",
@@ -166,7 +196,12 @@
     "relatedLibraryItems": [
       "c_d1f1b66d423fc694"
     ],
-    "href": "/content/wiki-sources-llm-wikid"
+    "href": "/content/wiki-sources-llm-wikid",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ]
   },
   {
     "id": "timeline-c_55208509a7f3108b",
@@ -190,7 +225,12 @@
     "relatedLibraryItems": [
       "c_55208509a7f3108b"
     ],
-    "href": "/content/wiki-sources-obsidian-llm-wiki-local"
+    "href": "/content/wiki-sources-obsidian-llm-wiki-local",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ]
   },
   {
     "id": "timeline-c_e408088da7f9f832",
@@ -214,7 +254,11 @@
     "relatedLibraryItems": [
       "c_e408088da7f9f832"
     ],
-    "href": "/content/wiki-sources-pre-rebuild-vault-archive"
+    "href": "/content/wiki-sources-pre-rebuild-vault-archive",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki"
+    ]
   },
   {
     "id": "timeline-c_3d19f3d825d4e136",
@@ -239,7 +283,12 @@
     "relatedLibraryItems": [
       "c_3d19f3d825d4e136"
     ],
-    "href": "/content/wiki-topics-ai-agent-systems-moc"
+    "href": "/content/wiki-topics-ai-agent-systems-moc",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "archive-derived"
+    ]
   },
   {
     "id": "timeline-c_87e2a1ac5dbe8a31",
@@ -264,7 +313,12 @@
     "relatedLibraryItems": [
       "c_87e2a1ac5dbe8a31"
     ],
-    "href": "/content/wiki-topics-llm-wiki-moc"
+    "href": "/content/wiki-topics-llm-wiki-moc",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ]
   },
   {
     "id": "timeline-c_7e9d08f8f6eda5d4",
@@ -290,7 +344,12 @@
     "relatedLibraryItems": [
       "c_7e9d08f8f6eda5d4"
     ],
-    "href": "/content/wiki-topics-publication-maintenance-moc"
+    "href": "/content/wiki-topics-publication-maintenance-moc",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "source-backed"
+    ]
   },
   {
     "id": "timeline-c_68d8f2407d41eb74",
@@ -315,6 +374,11 @@
     "relatedLibraryItems": [
       "c_68d8f2407d41eb74"
     ],
-    "href": "/content/wiki-topics-skills-and-tools-moc"
+    "href": "/content/wiki-topics-skills-and-tools-moc",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "archive-derived"
+    ]
   }
 ]

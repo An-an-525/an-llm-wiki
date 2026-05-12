@@ -35,9 +35,28 @@ export type ViewType =
   | "markdown"
   | "link-list";
 
+export type PublicSafety =
+  | "public-safe"
+  | "needs-redaction"
+  | "local-only-source";
+
+export interface ContentDepth {
+  publicSafety?: PublicSafety;
+  sourceLabels?: string[];
+  whyItMattered?: string;
+  operationStory?: string[];
+  psychologicalLayer?: string;
+  sociologicalLayer?: string;
+  philosophicalLayer?: string;
+  replicationSteps?: string[];
+  failureModes?: string[];
+  lessons?: string[];
+  nextPlan?: string;
+}
+
 // ---- 基础内容 ----
 
-export interface BaseContent {
+export interface BaseContent extends ContentDepth {
   id: string;
   title: string;
   slug: string;
@@ -213,12 +232,12 @@ export type WorkProjectStatus =
 export interface WorkItem extends BaseContent {
   type: WorkItemType;
   projectStatus: WorkProjectStatus;
+  role?: "owner-built" | "adapted" | "reference-study" | "mixed";
   techStack?: string[];
   demoUrl?: string;
   githubUrl?: string;
   relatedPath?: string;
   relatedJournal?: string[];
-  nextPlan?: string;
 }
 
 // ---- 手记 ----

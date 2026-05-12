@@ -60,6 +60,15 @@ Never publish credentials, raw private conversations, local environment maps, pe
 - The generator must run public structure and privacy gates before writing `site-data/`.
 - Frontends may read `site-data/*.json`; they must not read `_raw/`, `inbox/private/`, `private-wiki/`, or local-only reports directly.
 
+## Archive Content Quality
+
+- Public-facing content is for beginners, the owner, and future collaborators at the same time.
+- Each promoted item should carry concrete evidence, operational clarity, literary expression, psychological insight, sociological context, and restrained philosophical reflection.
+- Deep interpretation must be tied to evidence; do not write diagnosis, myth, empty inspiration, or generic self-branding.
+- Every frontend item should answer: what it is, why it mattered, what happened, how to repeat the useful part, what can fail, and what remains unfinished.
+- Use `skills/archive-content-curator/SKILL.md` and [archive-content-style-and-ingest-workflow.md](docs/archive-content-style-and-ingest-workflow.md) when adding project cards, tool cards, prompt patterns, routes, timeline entries, or public journal records.
+- Frontend, backend, privacy, and data import decisions must follow [archive-platform-project-constraints.md](docs/archive-platform-project-constraints.md).
+
 ## Historical Rule Boundary
 
 - Recovered controller notes, startup packs, legacy agent rules, and old process choreography are historical references by default.

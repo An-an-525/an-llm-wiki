@@ -12,6 +12,46 @@
     "journal": 0,
     "reviewQueue": 194
   },
+  "contentQualityRubric": {
+    "targetReader": ["beginner", "future self", "frontend builder", "collaborator"],
+    "requiredLayers": [
+      "concrete evidence",
+      "operational clarity",
+      "literary expression",
+      "psychological insight",
+      "sociological context",
+      "philosophical restraint"
+    ],
+    "rejectWhen": [
+      "fake finished status",
+      "raw dump copied into display data",
+      "generic inspirational writing",
+      "deep claim without evidence",
+      "no replication path",
+      "unsafe public material"
+    ],
+    "optionalFields": [
+      "whyItMattered",
+      "operationStory",
+      "psychologicalLayer",
+      "sociologicalLayer",
+      "philosophicalLayer",
+      "replicationSteps",
+      "failureModes",
+      "sourceLabels",
+      "publicSafety"
+    ]
+  },
+  "skillWorkflow": [
+    "Read docs/archive-platform-project-constraints.md.",
+    "Read docs/archive-content-style-and-ingest-workflow.md.",
+    "Use skills/archive-content-curator/SKILL.md to classify the source.",
+    "Rewrite into a beginner-readable public record.",
+    "Add evidence-backed literary, psychological, sociological, and philosophical layers.",
+    "Attach source labels and publicSafety.",
+    "Regenerate site-data and verify frontend routes.",
+    "Run structure, privacy, lint, and build gates before publishing."
+  ],
   "modules": [
     {
       "id": "library",

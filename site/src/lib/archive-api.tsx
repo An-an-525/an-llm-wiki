@@ -17,6 +17,7 @@ import type {
   LibraryItemType,
   PathItem,
   PathStep,
+  PublicSafety,
   TimelineItem,
   TimelineItemType,
   WorkItem,
@@ -67,6 +68,17 @@ type PublicContentRecord = Record<string, unknown> & {
   displayTier?: "showcase" | "starter" | "candidate" | "hidden";
   qualityScore?: number;
   hiddenReasons?: string[];
+  publicSafety?: string;
+  sourceLabels?: string[];
+  whyItMattered?: string;
+  operationStory?: string[];
+  psychologicalLayer?: string;
+  sociologicalLayer?: string;
+  philosophicalLayer?: string;
+  replicationSteps?: string[];
+  failureModes?: string[];
+  lessons?: string[];
+  nextPlan?: string;
 };
 
 interface PublicSiteData {
@@ -171,6 +183,12 @@ const allowedStatuses = new Set<ContentStatus>([
   "outdated",
 ]);
 
+const allowedPublicSafety = new Set<PublicSafety>([
+  "public-safe",
+  "needs-redaction",
+  "local-only-source",
+]);
+
 const fallbackDate = "2026-05-12";
 
 function siteDataUrl() {
@@ -181,6 +199,11 @@ function siteDataUrl() {
 
 function text(value: unknown, fallback = ""): string {
   return typeof value === "string" && value.trim() ? value.trim() : fallback;
+}
+
+function optionalText(value: unknown): string | undefined {
+  const normalized = text(value);
+  return normalized || undefined;
 }
 
 function textArray(value: unknown): string[] {
@@ -194,6 +217,11 @@ function normalizeStatus(value: unknown): ContentStatus[] {
     allowedStatuses.has(status as ContentStatus),
   );
   return statuses.length > 0 ? statuses : ["public"];
+}
+
+function normalizePublicSafety(value: unknown): PublicSafety {
+  const normalized = text(value, "public-safe") as PublicSafety;
+  return allowedPublicSafety.has(normalized) ? normalized : "public-safe";
 }
 
 function normalizeDate(value: unknown): string {
@@ -232,6 +260,17 @@ function baseContent(item: PublicContentRecord): ArchiveContentItem {
     href: text(item.href),
     sourcePath: text(item.sourcePath),
     sources: textArray(item.sources),
+    publicSafety: normalizePublicSafety(item.publicSafety),
+    sourceLabels: textArray(item.sourceLabels),
+    whyItMattered: optionalText(item.whyItMattered),
+    operationStory: textArray(item.operationStory),
+    psychologicalLayer: optionalText(item.psychologicalLayer),
+    sociologicalLayer: optionalText(item.sociologicalLayer),
+    philosophicalLayer: optionalText(item.philosophicalLayer),
+    replicationSteps: textArray(item.replicationSteps),
+    failureModes: textArray(item.failureModes),
+    lessons: textArray(item.lessons),
+    nextPlan: optionalText(item.nextPlan),
     contentLines,
     toc,
     wordCount: typeof item.wordCount === "number" ? item.wordCount : undefined,
@@ -449,10 +488,18 @@ function workType(item: PublicContentRecord): WorkItemType {
 function toWorkItem(item: PublicContentRecord): WorkItem {
   const base = baseContent(item);
   const projectStatus = text(item.projectStatus, "archived") as WorkProjectStatus;
+  const role = text(item.role);
   return {
     ...base,
     type: workType(item),
     projectStatus,
+    role:
+      role === "owner-built" ||
+      role === "adapted" ||
+      role === "reference-study" ||
+      role === "mixed"
+        ? role
+        : undefined,
     techStack: textArray(item.techStack).length ? textArray(item.techStack) : base.tags.slice(0, 6),
     nextPlan: text(item.nextPlan),
   };
