@@ -9,7 +9,19 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 
-IGNORE_DIRS = {".git", ".obsidian", ".trash", ".claude", ".claudian", "_raw", "_archives", "node_modules", "__pycache__"}
+IGNORE_DIRS = {
+    ".git",
+    ".obsidian",
+    ".trash",
+    ".claude",
+    ".claudian",
+    "_raw",
+    "_archives",
+    "inbox",
+    ".local_private",
+    "node_modules",
+    "__pycache__",
+}
 REQUIRED_FILES = [
     "AGENTS.md",
     "CLAUDE.md",
@@ -35,7 +47,7 @@ class LinkFinding:
 
 def iter_markdown(root: Path):
     for current, dirs, names in os.walk(root, followlinks=False):
-        dirs[:] = [d for d in dirs if d not in IGNORE_DIRS]
+        dirs[:] = [d for d in dirs if d not in IGNORE_DIRS and not d.startswith("00 - ")]
         for name in names:
             if name.endswith(".md"):
                 yield Path(current) / name

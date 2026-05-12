@@ -9,13 +9,27 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 
-IGNORE_DIRS = {".git", ".obsidian", ".trash", ".claude", ".claudian", "_raw", "_archives", "node_modules", "__pycache__"}
+IGNORE_DIRS = {
+    ".git",
+    ".obsidian",
+    ".trash",
+    ".claude",
+    ".claudian",
+    "_raw",
+    "_archives",
+    "inbox",
+    ".local_private",
+    "node_modules",
+    "__pycache__",
+}
 TEXT_EXTS = {".md", ".txt", ".csv", ".json", ".yml", ".yaml", ".py", ".js", ".ts", ".toml", ".gitignore", ""}
 ALLOW_MARKER_FILES = {
     ".gitignore",
     "AGENTS.md",
     "CLAUDE.md",
     "README.md",
+    "scripts/build_public_inventory.py",
+    "scripts/wiki_check.py",
     "wiki/sources-and-data-policy.md",
     "scripts/privacy_scan.py",
 }
@@ -53,7 +67,7 @@ PATTERNS = [
 
 def iter_files(root: Path):
     for current, dirs, names in os.walk(root, followlinks=False):
-        dirs[:] = [d for d in dirs if d not in IGNORE_DIRS]
+        dirs[:] = [d for d in dirs if d not in IGNORE_DIRS and not d.startswith("00 - ")]
         for name in names:
             path = Path(current) / name
             if path.suffix.lower() in TEXT_EXTS or name.startswith(".gitignore"):

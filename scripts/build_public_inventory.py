@@ -6,18 +6,33 @@ import os
 import sys
 from pathlib import Path
 
-IGNORE_DIRS = {".git", ".obsidian", ".trash", ".claude", ".claudian", "_raw", "_archives", "node_modules"}
+IGNORE_DIRS = {
+    ".git",
+    ".obsidian",
+    ".trash",
+    ".claude",
+    ".claudian",
+    "_raw",
+    "_archives",
+    "inbox",
+    ".local_private",
+    "node_modules",
+    "__pycache__",
+}
 
 
 def main() -> int:
     root = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else Path.cwd().resolve()
+    out = root / "manifests" / "public_inventory.csv"
     rows = []
     for current, dirs, names in os.walk(root, followlinks=False):
-        dirs[:] = [d for d in dirs if d not in IGNORE_DIRS]
+        dirs[:] = [d for d in dirs if d not in IGNORE_DIRS and not d.startswith("00 - ")]
         for name in names:
             path = Path(current) / name
+            if path.resolve() == out.resolve():
+                continue
             rows.append({"path": path.relative_to(root).as_posix(), "bytes": path.stat().st_size})
-    out = root / "manifests" / "public_inventory.csv"
+    out.parent.mkdir(parents=True, exist_ok=True)
     with out.open("w", encoding="utf-8", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=["path", "bytes"])
         writer.writeheader()

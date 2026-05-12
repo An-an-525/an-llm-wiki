@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import importlib.util
+import contextlib
+import io
 import sys
 import tempfile
 import unittest
@@ -21,6 +23,7 @@ def load_module(name: str, path: Path):
 
 wiki_check = load_module("wiki_check", ROOT / "scripts" / "wiki_check.py")
 privacy_scan = load_module("privacy_scan", ROOT / "scripts" / "privacy_scan.py")
+build_public_inventory = load_module("build_public_inventory", ROOT / "scripts" / "build_public_inventory.py")
 
 
 class WikiCheckTests(unittest.TestCase):
@@ -83,6 +86,44 @@ class PrivacyScanTests(unittest.TestCase):
     def test_allows_policy_marker_files(self) -> None:
         rows = privacy_scan.scan_text("README.md", "Never publish 凭据 or raw private content.")
         self.assertEqual([], rows)
+
+
+class LocalOnlyExclusionTests(unittest.TestCase):
+    def test_privacy_scan_skips_local_only_dirs(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            private = root / "inbox" / "private" / "note.md"
+            private.parent.mkdir(parents=True)
+            private.write_text("token=abcd1234abcd1234\n", encoding="utf-8")
+
+            raw = root / "_raw" / "note.md"
+            raw.parent.mkdir(parents=True)
+            raw.write_text("C:\\\\private\\\\file.txt\n", encoding="utf-8")
+
+            public = root / "wiki" / "note.md"
+            public.parent.mkdir(parents=True)
+            public.write_text("safe\n", encoding="utf-8")
+
+            files = sorted(p.relative_to(root).as_posix() for p in privacy_scan.iter_files(root))
+            self.assertEqual(["wiki/note.md"], files)
+
+    def test_public_inventory_skips_local_only_dirs(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "inbox" / "private").mkdir(parents=True)
+            (root / "inbox" / "private" / "note.md").write_text("private\n", encoding="utf-8")
+            (root / "_raw").mkdir()
+            (root / "_raw" / "note.md").write_text("raw\n", encoding="utf-8")
+            (root / "wiki").mkdir()
+            (root / "wiki" / "note.md").write_text("public\n", encoding="utf-8")
+
+            build_public_inventory.main.__globals__["sys"].argv = ["build_public_inventory.py", str(root)]
+            with contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(0, build_public_inventory.main())
+            inventory = (root / "manifests" / "public_inventory.csv").read_text(encoding="utf-8")
+            self.assertIn("wiki/note.md", inventory)
+            self.assertNotIn("inbox/private", inventory)
+            self.assertNotIn("_raw", inventory)
 
 
 if __name__ == "__main__":
