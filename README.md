@@ -26,6 +26,7 @@ This is a public-safe personal Obsidian knowledge base rebuilt around Andrej Kar
 - [Kimi frontend reference](docs/kimi-frontend-reference.md) - public-safe product brief, data model, prompt patterns, and frontend acceptance criteria
 - [Archive platform project constraints](docs/archive-platform-project-constraints.md) - frontend, backend, privacy, data, and agent operating constraints
 - [Archive content style and ingest workflow](docs/archive-content-style-and-ingest-workflow.md) - content depth, writing standard, formal data workflow, and validation gates
+- [Agent skill stack](docs/agent-skill-stack.md) - GitHub-sourced skills and task-specific skill chains for frontend, backend, app, QA, security, and release work
 - [[AGENTS]] - agent maintenance rules
 - [[CLAUDE]] - wiki schema
 - [[log]] - append-only rebuild and maintenance log

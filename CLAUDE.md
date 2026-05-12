@@ -45,6 +45,10 @@ When adding frontend-facing data, use the archive curation workflow instead of b
 
 Frontend, backend, privacy, and data import constraints live in `docs/archive-platform-project-constraints.md`. Future agents must read it before changing the public site, server contract, or display data.
 
+Use `docs/agent-skill-stack.md` as the skill routing baseline. Prefer installed
+GitHub-sourced skills for frontend, backend, app, QA, security, deployment, and
+GitHub code workflow before creating project-specific process.
+
 Good public records should include:
 
 - what the item is;

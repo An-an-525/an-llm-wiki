@@ -162,7 +162,8 @@ frontend, backend, or archive data:
 1. `docs/kimi-frontend-reference.md`
 2. `docs/archive-platform-project-constraints.md`
 3. `docs/archive-content-style-and-ingest-workflow.md`
-4. `site/README.md`
-5. `site/src/lib/types.ts`
-6. `AGENTS.md`
-7. `CLAUDE.md`
+4. `docs/agent-skill-stack.md`
+5. `site/README.md`
+6. `site/src/lib/types.ts`
+7. `AGENTS.md`
+8. `CLAUDE.md`

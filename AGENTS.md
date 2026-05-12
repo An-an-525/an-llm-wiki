@@ -68,6 +68,7 @@ Never publish credentials, raw private conversations, local environment maps, pe
 - Every frontend item should answer: what it is, why it mattered, what happened, how to repeat the useful part, what can fail, and what remains unfinished.
 - Use `skills/archive-content-curator/SKILL.md` and [archive-content-style-and-ingest-workflow.md](docs/archive-content-style-and-ingest-workflow.md) when adding project cards, tool cards, prompt patterns, routes, timeline entries, or public journal records.
 - Frontend, backend, privacy, and data import decisions must follow [archive-platform-project-constraints.md](docs/archive-platform-project-constraints.md).
+- Before major GitHub, frontend, backend, app, QA, or deployment work, consult [agent-skill-stack.md](docs/agent-skill-stack.md) and prefer the GitHub-sourced skills it lists over ad hoc local process.
 
 ## Historical Rule Boundary
 
