@@ -1,0 +1,3 @@
+source_id,source_type,visibility,status,compiled_pages,notes
+karpathy-llm-wiki-gist,external-gist,public,active,wiki/sources/karpathy-llm-wiki-pattern.md,https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
+pre-karpathy-rebuild-20260512-143127,private-pre-rebuild-archive,private,local-only,192,Private archive used only for filtered migration.
