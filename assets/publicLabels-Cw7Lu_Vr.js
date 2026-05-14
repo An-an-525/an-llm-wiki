@@ -1,0 +1,1 @@
+const n={Agent:"智能体",App:"应用",API:"接口",Browser:"浏览器",CLI:"命令行",IDE:"开发工作台",Coze:"扣子",Dashboard:"看板",Docs:"文档",Frontend:"前端",Backend:"后端",Guide:"指南",Library:"藏馆",Markdown:"Markdown",PWA:"可安装网页",Path:"路线",Prompt:"提示词",Resource:"资料",Security:"隐私",Timeline:"年谱",Work:"工坊",Workflow:"工作流",X:"未知"};function t(r){var e;if(!r)return"";const o=r.trim();return(e=n[o])!=null?e:o}export{t};

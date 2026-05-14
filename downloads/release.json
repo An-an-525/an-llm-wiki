@@ -1,0 +1,42 @@
+{
+  "productName": "安的书房",
+  "version": "0.1.1",
+  "generatedAt": "2026-05-13T18:39:04.700Z",
+  "channel": "stable",
+  "clients": {
+    "web": {
+      "status": "active",
+      "delivery": "浏览器 / PWA",
+      "entry": "https://an520.xin/study-room/#/",
+      "updateMode": "刷新后获取最新内容与界面"
+    },
+    "windows": {
+      "status": "active",
+      "delivery": "NSIS 安装包",
+      "entry": "https://an520.xin/study-room/downloads/an-study-room_0.1.1_x64-setup.exe",
+      "updateMode": "应用内检查更新 + 远程下载安装",
+      "updateManifest": "https://an520.xin/study-room/updates/latest.json"
+    },
+    "android": {
+      "status": "planned",
+      "delivery": "Tauri Android（APK / AAB）",
+      "entry": "",
+      "updateMode": "内测走 APK，正式发布走 AAB / 应用市场",
+      "targets": [
+        "aarch64",
+        "armv7"
+      ]
+    }
+  },
+  "files": {
+    "windowsInstaller": {
+      "name": "an-study-room_0.1.1_x64-setup.exe",
+      "path": "/downloads/an-study-room_0.1.1_x64-setup.exe",
+      "bytes": 25626128
+    },
+    "windowsSignature": {
+      "name": "an-study-room_0.1.1_x64-setup.exe.sig",
+      "path": "/downloads/an-study-room_0.1.1_x64-setup.exe.sig"
+    }
+  }
+}

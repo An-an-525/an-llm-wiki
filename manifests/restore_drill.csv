@@ -1,2 +1,0 @@
-archive_id,drill_date,mode,restored_files,restored_dirs,key_files_checked,key_files_present,live_vault_overwritten,result,notes
-pre-karpathy-rebuild-20260512-143127,2026-05-12,temp_copy,11569,3619,"README.md;index.md;log.md;AGENTS.md;CLAUDE.md;.obsidian",true,false,pass,"Temporary restore copy created outside the public vault; public record omits local absolute paths."
