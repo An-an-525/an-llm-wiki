@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-label="手记">
+  <rect width="640" height="420" fill="#F5F1EA"/>
+  <rect x="144" y="88" width="352" height="252" rx="18" fill="#FFFDF9" stroke="#D8C9BB" stroke-width="3"/>
+  <path d="M196 150h248M196 200h214M196 250h180M196 300h122" stroke="#7A716B" stroke-width="8" stroke-linecap="round"/>
+  <path d="M430 262l42 42" stroke="#C8956C" stroke-width="10" stroke-linecap="round"/>
+  <text x="92" y="54" fill="#3C3530" font-family="serif" font-size="30">手记</text>
+  <text x="96" y="384" fill="#7A716B" font-family="sans-serif" font-size="20">事件之后留下判断、反思和方法修正</text>
+</svg>

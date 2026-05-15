@@ -10,7 +10,21 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+src-tauri/target
+src-tauri/gen
+public/downloads/*
+!public/downloads/.gitkeep
+public/updates/*
+!public/updates/.gitkeep
 *.local
+.env
+.env.*
+!.env.example
+!.env.desktop.example
+*.key
+*.pem
+*.p12
+*.pfx
 
 # Editor directories and files
 .vscode/*

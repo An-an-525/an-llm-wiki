@@ -1,8 +1,14 @@
-const CACHE_NAME = "an-llm-wiki-app-v1";
-const DATA_CACHE_NAME = "an-llm-wiki-data-v1";
-const SHELL_ASSETS = ["./", "./manifest.webmanifest", "./app-icon.svg", "./maskable-icon.svg"];
+const CACHE_NAME = "an-study-room-shell-v5";
+const DATA_CACHE_NAME = "an-study-room-data-v5";
+const SHELL_ASSETS = ["./", "./app-icon.svg", "./maskable-icon.svg"];
 
 const fromScope = (path) => new URL(path, self.registration.scope).toString();
+
+self.addEventListener("message", (event) => {
+  if (event.data?.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
+});
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -32,6 +38,7 @@ self.addEventListener("fetch", (event) => {
 
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
+  if (url.pathname.includes("/api/")) return;
 
   if (request.mode === "navigate") {
     event.respondWith(

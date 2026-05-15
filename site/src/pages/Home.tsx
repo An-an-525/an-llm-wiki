@@ -2,65 +2,66 @@ import { Link } from 'react-router';
 import { motion } from 'framer-motion';
 import {
   Library,
-  GitBranch,
   Radio,
   Hammer,
   BookOpen,
   CalendarDays,
-  User,
-  Search,
   ChevronDown,
   ArrowRight,
-  Sparkles,
+  Route,
   Zap,
-  GraduationCap,
-  Clock,
 } from 'lucide-react';
-import paths from '@/data/mockPaths';
-import feedItems from '@/data/mockFeed';
 import works from '@/data/mockWorks';
-import timelineEvents from '@/data/mockTimeline';
-import { libraryItems } from '@/data/mockLibrary';
-import { journalEntries } from '@/data/mockJournal';
+import { resolveAssetUrl } from '@/lib/runtime';
 
 const easeOut = [0, 0, 0.2, 1] as [number, number, number, number];
 
-const entryCards = [
-  { name: '藏馆', icon: Library, desc: '资料收藏与整理', path: '/library' },
-  { name: '谱系', icon: GitBranch, desc: '学习路径与复刻路线', path: '/paths' },
-  { name: '风信', icon: Radio, desc: '最新动态与信息流', path: '/feed' },
-  { name: '工坊', icon: Hammer, desc: '作品与项目展示', path: '/works' },
-  { name: '手记', icon: BookOpen, desc: '随笔与思考记录', path: '/journal' },
-  { name: '年谱', icon: CalendarDays, desc: '成长时间线', path: '/timeline' },
-  { name: '自序', icon: User, desc: '关于我的自述', path: '/about' },
-  { name: '搜索', icon: Search, desc: '全站内容搜索', path: '#' },
+const roomCards = [
+  { name: '工坊', icon: Hammer, desc: '项目和复刻记录', path: '/works', kind: 'link' as const },
+  { name: '藏馆', icon: Library, desc: '工具和资料卡', path: '/library', kind: 'link' as const },
+  { name: '谱系', icon: Route, desc: '可以复刻的小路', path: '/paths', kind: 'link' as const },
+  { name: '手记', icon: BookOpen, desc: '笔记和复盘', path: '/journal', kind: 'link' as const },
+  { name: '年谱', icon: CalendarDays, desc: '真实时间线', path: '/timeline', kind: 'link' as const },
+  { name: '风信', icon: Radio, desc: '趋势和判断', path: '/feed', kind: 'link' as const },
+  { name: '小安', icon: Zap, desc: '在书页旁回答问题', path: '#', kind: 'dialog' as const },
 ];
 
-const feedTypeConfig: Record<string, { label: string; color: string }> = {
-  resource: { label: '资源收藏', color: '#C8956C' },
-  path_update: { label: '路径更新', color: '#6B9E7C' },
-  work: { label: '新作品', color: '#C47D6E' },
-  journal: { label: '手记', color: '#8A8A88' },
-  milestone: { label: '里程碑', color: '#C8956C' },
-};
+const starterBlueprints = [
+  {
+    title: '个人资料库展示前端',
+    label: '前端',
+    desc: '展示站的骨架：首屏、卡片、详情页、搜索和移动端阅读秩序。',
+  },
+  {
+    title: '个人资料库平台复刻学习包',
+    label: '资料层',
+    desc: '把资料整理成公开数据，让前端只呈现经过取舍的内容。',
+  },
+  {
+    title: 'Coze Agent Builder 复刻学习包',
+    label: '智能体',
+    desc: '把资料、前端和小安对话连成一条可检查的工作流。',
+  },
+];
 
-const difficultyMap: Record<string, string> = {
-  beginner: '入门',
-  intermediate: '中级',
-  advanced: '进阶',
-};
-
-const difficultyColorMap: Record<string, string> = {
-  beginner: '#6B9E7C',
-  intermediate: '#C8956C',
-  advanced: '#C47D6E',
-};
-
-const statusMap: Record<string, { label: string; bg: string; text: string }> = {
-  in_progress: { label: '进行中', bg: 'bg-[#C8956C]', text: 'text-white' },
-  completed: { label: '已完成', bg: 'bg-[#6B9E7C]', text: 'text-white' },
-  planned: { label: '待开始', bg: 'bg-[#A0A0A0]', text: 'text-white' },
-};
+const growthMoments = [
+  {
+    title: '2026 年 3 月之后，AI 从好奇变成实践',
+    desc: '工具不再只是聊天窗口，而开始进入项目、资料和复盘。',
+  },
+  {
+    title: '从零散使用，走向有记录的工作流',
+    desc: '提示词、工具、失败和验收开始被写成可以复看的材料。',
+  },
+  {
+    title: '从本地材料，走向公开书房',
+    desc: '读者看到的是被整理后的书页，不是后台仓库和原始碎片。',
+  },
+  {
+    title: '从网页预览，走向可安装的应用',
+    desc: '书房开始承担阅读、更新、对话和长期维护。',
+  },
+];
 
 function SectionTitle({
   title,
@@ -74,57 +75,134 @@ function SectionTitle({
   linkText: string;
 }) {
   return (
-    <div className="flex items-end justify-between mb-6 md:mb-8">
+    <div className="mb-6 flex items-end justify-between md:mb-8">
       <div>
-        <h2 className="font-serif text-[22px] md:text-[28px] text-ink font-normal mb-1">
-          {title}
-        </h2>
-        <p className="text-[13px] md:text-[14px] text-silver font-sans">{subtitle}</p>
+        <h2 className="font-serif text-[22px] text-ink md:text-[28px]">{title}</h2>
+        <p className="text-[13px] text-silver md:text-[14px]">{subtitle}</p>
       </div>
       <Link
         to={linkTo}
-        className="text-[12px] md:text-[13px] text-silver hover:text-ink transition-colors duration-150 flex items-center gap-1 group shrink-0 ml-4"
+        className="group ml-4 flex shrink-0 items-center gap-1 text-[12px] text-silver transition-colors duration-150 hover:text-ink md:text-[13px]"
       >
         {linkText}
         <ArrowRight
           size={14}
           strokeWidth={1.5}
-          className="group-hover:translate-x-0.5 transition-transform duration-150"
+          className="transition-transform duration-150 group-hover:translate-x-0.5"
         />
       </Link>
     </div>
   );
 }
 
-/* ============ HERO SECTION ============ */
 function HeroSection() {
   const scrollToEntries = () => {
     const el = document.getElementById('core-entries');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const openXiaoan = () => {
+    window.dispatchEvent(new CustomEvent('an-open-xiaoan'));
+  };
+
   return (
-    <section className="relative min-h-[calc(85dvh-56px)] md:min-h-[calc(100dvh-64px)] flex flex-col items-center justify-center bg-gradient-to-b from-white to-cream border-b border-border-color">
+    <section className="relative flex min-h-[calc(88dvh-56px)] flex-col items-center justify-center overflow-hidden border-b border-border-color bg-[#fbfaf7] md:min-h-[calc(100dvh-64px)]">
+      <div
+        className="absolute inset-0 opacity-[0.55]"
+        aria-hidden="true"
+        style={{
+          backgroundImage:
+            'linear-gradient(90deg, rgba(216,198,184,0.22) 1px, transparent 1px), linear-gradient(180deg, rgba(232,221,212,0.32) 1px, transparent 1px)',
+          backgroundSize: '88px 88px, 88px 88px',
+          maskImage: 'linear-gradient(180deg, transparent 0%, black 16%, black 72%, transparent 100%)',
+        }}
+      />
+      <div className="absolute left-6 top-[18%] hidden h-[52%] w-px bg-[#D8C6B8]/80 md:block" aria-hidden="true" />
+      <div className="absolute right-6 top-[18%] hidden h-[52%] w-px bg-[#D8C6B8]/80 md:block" aria-hidden="true" />
+
+      <motion.div
+        className="relative mb-6 flex items-center justify-center gap-4"
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.55, ease: easeOut, delay: 0.12 }}
+      >
+        <div className="flex flex-col items-center gap-1.5">
+          <img
+            src={resolveAssetUrl('/avatar-an.jpg')}
+            alt="安的头像"
+            className="h-16 w-16 rounded-full border-[3px] border-white object-cover shadow-[0_12px_28px_rgba(67,52,43,0.12)] md:h-20 md:w-20"
+          />
+          <span className="font-serif text-[13px] text-graphite">安</span>
+        </div>
+        <div className="mt-5 h-px w-10 bg-[#D8C6B8]" aria-hidden="true" />
+        <div className="flex flex-col items-center gap-1.5">
+          <img
+            src={resolveAssetUrl('/avatar-xiaoan.jpg')}
+            alt="小安的头像"
+            className="h-16 w-16 rounded-full border-[3px] border-white object-cover shadow-[0_12px_28px_rgba(67,52,43,0.12)] md:h-20 md:w-20"
+          />
+          <span className="font-serif text-[13px] text-graphite">小安</span>
+          <span className="-mt-1 text-[10px] text-light-silver">数字生命体</span>
+        </div>
+      </motion.div>
+
+      <motion.p
+        className="relative text-[11px] uppercase tracking-[0.08em] text-[#9B7E68] md:text-[12px]"
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: easeOut, delay: 0.16 }}
+      >
+        安的学习档案与公开书房
+      </motion.p>
+
       <motion.h1
-        className="font-serif text-[32px] md:text-[56px] font-normal text-ink tracking-[-0.02em] text-center leading-[1.15]"
+        className="relative mt-3 text-center font-serif text-[38px] leading-[1.14] text-ink md:text-[64px]"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: easeOut, delay: 0.2 }}
       >
-        藏馆
+        安的个人书房
       </motion.h1>
 
       <motion.p
-        className="mt-4 text-[14px] md:text-[16px] font-sans font-light text-silver text-center max-w-[480px] px-5 leading-relaxed"
+        className="relative mt-5 max-w-[760px] px-5 text-center text-[14px] font-light leading-[2.05] text-silver md:text-[16px]"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: easeOut, delay: 0.35 }}
       >
-        一座关于资料、路径、作品与成长的个人藏馆。这里记录的每一条路、每一件工具，都经过真实使用与思考。
+        这里存放安的项目、工具、笔记、复盘和失败记录。它不替读者做判断，只把一段路修到可以被看见。
       </motion.p>
 
+      <motion.div
+        className="relative mt-9 flex flex-wrap items-center justify-center gap-3 px-5"
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: easeOut, delay: 0.65 }}
+      >
+        <button
+          type="button"
+          onClick={scrollToEntries}
+          className="rounded-full bg-ink px-5 py-2.5 text-[13px] text-white shadow-[0_10px_24px_rgba(47,43,38,0.12)] transition-transform duration-150 hover:-translate-y-0.5"
+        >
+          进入书房
+        </button>
+        <Link
+          to="/works"
+          className="rounded-full border border-[#D8C6B8] bg-white/72 px-5 py-2.5 text-[13px] text-graphite transition-transform duration-150 hover:-translate-y-0.5 hover:border-[#BFA58F]"
+        >
+          看工坊
+        </Link>
+        <button
+          type="button"
+          onClick={openXiaoan}
+          className="rounded-full border border-[#E6D8CD] bg-[#F8F3EE]/90 px-5 py-2.5 text-[13px] text-silver transition-transform duration-150 hover:-translate-y-0.5 hover:border-[#CDAE95] hover:text-graphite"
+        >
+          叫醒小安
+        </button>
+      </motion.div>
+
       <motion.button
-        className="absolute bottom-8 text-silver hover:text-graphite transition-colors duration-150"
+        className="absolute bottom-8 text-silver transition-colors duration-150 hover:text-graphite"
         onClick={scrollToEntries}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -137,61 +215,38 @@ function HeroSection() {
   );
 }
 
-/* ============ STAT BAR SECTION ============ */
-function StatBarSection() {
-  const stats = [
-    { value: libraryItems.length, label: '条资源', icon: Library },
-    { value: paths.length, label: '条路径', icon: GitBranch },
-    { value: works.length, label: '件作品', icon: Hammer },
-    { value: journalEntries.length, label: '篇手记', icon: BookOpen },
-  ];
-
-  return (
-    <section className="bg-cream border-b border-border-color py-4">
-      <div className="max-w-[1200px] mx-auto px-5 md:px-12">
-        <motion.div
-          className="flex flex-wrap items-center justify-center gap-6 md:gap-10"
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: easeOut, delay: 0.5 }}
-        >
-          {stats.map((stat) => {
-            const Icon = stat.icon;
-            return (
-              <div key={stat.label} className="flex items-center gap-2">
-                <Icon size={15} strokeWidth={1.5} className="text-silver" />
-                <span className="text-[16px] font-sans font-medium text-ink">
-                  {stat.value}
-                </span>
-                <span className="text-[13px] font-sans text-silver">
-                  {stat.label}
-                </span>
-              </div>
-            );
-          })}
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-/* ============ CORE ENTRIES SECTION ============ */
 function CoreEntriesSection() {
+  const openXiaoan = () => {
+    window.dispatchEvent(new CustomEvent('an-open-xiaoan'));
+  };
+
   return (
     <section id="core-entries" className="bg-cream py-12 md:py-20">
-      <div className="max-w-[1200px] mx-auto px-5 md:px-12">
+      <div className="mx-auto max-w-[1200px] px-5 md:px-12">
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
+          className="mb-8 md:mb-10"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.4, ease: easeOut }}
+        >
+          <h2 className="font-serif text-[24px] leading-[1.35] text-ink md:text-[32px]">
+            书房入口
+          </h2>
+          <p className="mt-3 max-w-[760px] text-[13px] leading-[1.9] text-silver md:text-[14px]">
+            每个入口只负责一件事，打开需要的那一处就好。
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4 xl:grid-cols-7"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          variants={{
-            visible: { transition: { staggerChildren: 0.06 } },
-          }}
+          variants={{ visible: { transition: { staggerChildren: 0.06 } } }}
         >
-          {entryCards.map((card) => {
+          {roomCards.map((card) => {
             const Icon = card.icon;
-            const isSearch = card.name === '搜索';
             return (
               <motion.div
                 key={card.name}
@@ -200,469 +255,100 @@ function CoreEntriesSection() {
                   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: easeOut } },
                 }}
               >
-                {isSearch ? (
-                  <button className="w-full text-left bg-white border border-border-color rounded-xl px-4 md:px-5 py-5 md:py-7 hover:-translate-y-[3px] hover:shadow-md hover:border-border-dark transition-all duration-250 group card-tap">
-                    <Icon
-                      size={22}
-                      strokeWidth={1.5}
-                      className="text-silver group-hover:text-status-active transition-colors duration-250 mb-2 md:mb-3"
-                    />
-                    <div className="text-[14px] md:text-[15px] font-sans font-medium text-graphite">
-                      {card.name}
-                    </div>
-                    <div className="text-[11px] md:text-[12px] text-silver mt-1 truncate">{card.desc}</div>
-                  </button>
-                ) : (
-                  <Link
-                    to={card.path}
-                    className="block w-full text-left bg-white border border-border-color rounded-xl px-4 md:px-5 py-5 md:py-7 hover:-translate-y-[3px] hover:shadow-md hover:border-border-dark transition-all duration-250 group card-tap"
+                {card.kind === 'dialog' ? (
+                  <button
+                    type="button"
+                    onClick={openXiaoan}
+                    className="card-tap group block w-full rounded-xl border border-border-color bg-white px-4 py-5 text-left transition-all duration-250 hover:-translate-y-[3px] hover:border-border-dark hover:shadow-md md:px-5 md:py-7"
                   >
                     <Icon
                       size={22}
                       strokeWidth={1.5}
-                      className="text-silver group-hover:text-status-active transition-colors duration-250 mb-2 md:mb-3"
+                      className="mb-2 text-silver transition-colors duration-250 group-hover:text-status-active md:mb-3"
                     />
-                    <div className="text-[14px] md:text-[15px] font-sans font-medium text-graphite">
-                      {card.name}
-                    </div>
-                    <div className="text-[11px] md:text-[12px] text-silver mt-1 truncate">{card.desc}</div>
+                    <div className="text-[14px] font-medium text-graphite md:text-[15px]">{card.name}</div>
+                    <div className="mt-1 text-[11px] leading-relaxed text-silver md:text-[12px]">{card.desc}</div>
+                  </button>
+                ) : (
+                  <Link
+                    to={card.path}
+                    className="card-tap group block w-full rounded-xl border border-border-color bg-white px-4 py-5 text-left transition-all duration-250 hover:-translate-y-[3px] hover:border-border-dark hover:shadow-md md:px-5 md:py-7"
+                  >
+                    <Icon
+                      size={22}
+                      strokeWidth={1.5}
+                      className="mb-2 text-silver transition-colors duration-250 group-hover:text-status-active md:mb-3"
+                    />
+                    <div className="text-[14px] font-medium text-graphite md:text-[15px]">{card.name}</div>
+                    <div className="mt-1 text-[11px] leading-relaxed text-silver md:text-[12px]">{card.desc}</div>
                   </Link>
                 )}
               </motion.div>
             );
           })}
         </motion.div>
+
       </div>
     </section>
   );
 }
 
-/* ============ QUICK START SECTION ============ */
-function QuickStartSection() {
-  const quickPaths = paths.filter((p) => p.difficulty === 'beginner').slice(0, 3);
-  const quickResources = libraryItems.filter((i) => i.isRecommended && i.difficulty === 'easy').slice(0, 3);
+function FeaturedPacketsSection() {
+  const featuredPackets = starterBlueprints.flatMap((blueprint) => {
+    const work = works.find((item) => item.title === blueprint.title);
+    return work ? [{ ...blueprint, work }] : [];
+  });
 
   return (
-    <section className="bg-white py-12 md:py-20 border-b border-border-color">
-      <div className="max-w-[1200px] mx-auto px-5 md:px-12">
+    <section className="border-b border-border-color bg-white py-12 md:py-16">
+      <div className="mx-auto max-w-[1200px] px-5 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.4, ease: easeOut }}
-          className="mb-6 md:mb-8"
         >
-          <div className="flex items-center gap-2 mb-2">
-            <GraduationCap size={20} strokeWidth={1.5} className="text-[#C8956C]" />
-            <h2 className="font-serif text-[22px] md:text-[28px] text-ink font-normal">
-              新手从这里开始
-            </h2>
-          </div>
-          <p className="text-[13px] md:text-[14px] text-silver font-sans">
-            不知道从哪里入手？这些路径和资源是我为初学者精心挑选的
-          </p>
+          <SectionTitle title="三份主档案" subtitle="当前最值得打开的项目档案。" linkTo="/works" linkText="进入工坊" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {/* Recommended paths for beginners */}
-          {quickPaths.map((path, index) => (
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          {featuredPackets.map(({ label, desc, work }, index) => (
             <motion.div
-              key={path.id}
-              initial={{ opacity: 0, y: 20 }}
+              key={work.id}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-30px' }}
-              transition={{ duration: 0.4, ease: easeOut, delay: index * 0.1 }}
+              transition={{ duration: 0.4, ease: easeOut, delay: index * 0.06 }}
             >
               <Link
-                to={`/paths/${path.id}`}
-                className="group block bg-cream border border-border-color rounded-xl p-5 hover:shadow-md hover:border-border-dark transition-all duration-250 card-tap h-full"
+                to={`/content/${work.id}`}
+                className="group block h-full rounded-xl border border-[#E6D8CD] bg-[#FCFAF7] px-5 py-5 transition-all duration-250 hover:-translate-y-[2px] hover:border-[#CDAE95] hover:shadow-md"
               >
-                <div className="flex items-center gap-2 mb-2">
-                  <span
-                    className="text-[11px] font-sans font-normal px-2 py-0.5 rounded-full"
-                    style={{
-                      backgroundColor: difficultyColorMap[path.difficulty] + '18',
-                      color: difficultyColorMap[path.difficulty],
-                    }}
-                  >
-                    {difficultyMap[path.difficulty]}
+                <div className="flex items-center justify-between gap-3">
+                  <span className="inline-flex items-center rounded-full bg-white px-2.5 py-1 text-[11px] text-[#9B7E68]">
+                    {label}
                   </span>
-                  <span className="text-[11px] font-sans font-normal px-2 py-0.5 rounded-full bg-[#F5EDE8] text-[#C8956C]">
-                    新手推荐
-                  </span>
-                </div>
-                <h3 className="text-[15px] font-sans font-medium text-graphite group-hover:text-ink transition-colors duration-150 mb-1.5">
-                  {path.title}
-                </h3>
-                <p className="text-[12px] font-sans text-silver leading-relaxed line-clamp-2 mb-3">
-                  {path.description}
-                </p>
-                <div className="flex items-center gap-2 text-[11px] font-sans text-light-silver">
-                  <Clock size={11} strokeWidth={1.5} />
-                  <span>{path.estimatedTime}</span>
-                  <span className="text-border-color">|</span>
-                  <span>{path.stages.length} 个阶段</span>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-
-          {/* Quick resources */}
-          {quickResources.slice(0, 3 - quickPaths.length).map((resource, index) => (
-            <motion.div
-              key={resource.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-30px' }}
-              transition={{ duration: 0.4, ease: easeOut, delay: (quickPaths.length + index) * 0.1 }}
-            >
-              <Link
-                to={`/content/${resource.id}`}
-                className="group block bg-cream border border-border-color rounded-xl p-5 hover:shadow-md hover:border-border-dark transition-all duration-250 card-tap h-full"
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-[11px] font-sans font-normal px-2 py-0.5 rounded-full bg-[#6B9E7C]/10 text-[#6B9E7C] border border-[#6B9E7C]/30">
-                    简单
-                  </span>
-                  <span className="text-[11px] font-sans font-normal px-2 py-0.5 rounded-full bg-[#F5EDE8] text-[#C8956C]">
-                    新手推荐
-                  </span>
-                </div>
-                <h3 className="text-[15px] font-sans font-medium text-graphite group-hover:text-ink transition-colors duration-150 mb-1.5">
-                  {resource.title}
-                </h3>
-                <p className="text-[12px] font-sans text-silver leading-relaxed line-clamp-2 mb-3">
-                  {resource.description}
-                </p>
-                <div className="flex items-center gap-2 text-[11px] font-sans text-light-silver">
-                  <Clock size={11} strokeWidth={1.5} />
-                  <span>{resource.timeToLearn}</span>
-                  <span className="text-border-color">|</span>
-                  <Sparkles size={11} strokeWidth={1.5} className="text-[#C8956C]" />
-                  <span className="text-[#C8956C]">{resource.recommendedFor}</span>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ============ FEATURED PATHS SECTION ============ */
-function FeaturedPathsSection() {
-  const featuredPaths = paths.slice(0, 3);
-
-  return (
-    <section className="bg-cream py-12 md:py-20">
-      <div className="max-w-[1200px] mx-auto px-5 md:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.4, ease: easeOut }}
-        >
-          <SectionTitle
-            title="推荐谱系"
-            subtitle="可复刻的学习与成长路径，每条都有详细的学习指南"
-            linkTo="/paths"
-            linkText="查看全部"
-          />
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {featuredPaths.map((path, index) => (
-            <motion.div
-              key={path.id}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, ease: easeOut, delay: index * 0.1 }}
-            >
-              <Link
-                to={`/paths/${path.id}`}
-                className="group block bg-white border border-border-color rounded-xl overflow-hidden hover:-translate-y-[2px] hover:shadow-md transition-all duration-250"
-              >
-                {path.cover && (
-                  <div className="aspect-[16/10] overflow-hidden">
-                    <img
-                      src={path.cover}
-                      alt={path.title}
-                      className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
-                    />
-                  </div>
-                )}
-                <div className="p-5">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span
-                      className="inline-block text-[12px] font-sans font-normal rounded-full px-2.5 py-0.5"
-                      style={{
-                        backgroundColor: difficultyColorMap[path.difficulty] + '18',
-                        color: difficultyColorMap[path.difficulty],
-                      }}
-                    >
-                      {difficultyMap[path.difficulty] || path.difficulty}
-                    </span>
-                    <span
-                      className={`text-[12px] font-sans font-normal rounded-full px-2.5 py-0.5 ${statusMap[path.status]?.bg ?? 'bg-light-gray'} ${statusMap[path.status]?.text ?? 'text-graphite'}`}
-                    >
-                      {statusMap[path.status]?.label ?? path.status}
-                    </span>
-                  </div>
-                  <h3 className="font-serif text-[20px] text-ink font-normal mb-1 leading-tight">
-                    {path.title}
-                  </h3>
-                  <p className="text-[13px] text-silver leading-relaxed line-clamp-2 mb-3">
-                    {path.description}
-                  </p>
-                  <div className="flex items-center gap-2 text-[12px] text-silver">
-                    <Clock size={12} strokeWidth={1.5} />
-                    <span>{path.estimatedTime}</span>
-                    <span className="text-border-color">|</span>
-                    <span>{path.stages.length} 个阶段</span>
-                  </div>
-                  {/* Who for */}
-                  <div className="mt-3 pt-3 border-t border-[#F0F0EE]">
-                    <p className="text-[11px] font-sans text-light-silver">
-                      <span className="text-silver">适合：</span>
-                      {path.whoFor}
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ============ RECENT FEEDS SECTION ============ */
-function RecentFeedsSection() {
-  const recentFeeds = feedItems.slice(0, 5);
-
-  return (
-    <section className="bg-white py-12 md:py-20">
-      <div className="max-w-[800px] mx-auto px-5 md:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.4, ease: easeOut }}
-        >
-          <SectionTitle
-            title="风信"
-            subtitle="最近的更新、收藏、发布与动态"
-            linkTo="/feed"
-            linkText="查看全部"
-          />
-        </motion.div>
-
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-[11px] top-2 bottom-2 w-[2px] bg-border-color" />
-
-          <div className="space-y-0">
-            {recentFeeds.map((feed, index) => {
-              const config = feedTypeConfig[feed.type] || {
-                label: feed.type,
-                color: '#8A8A88',
-              };
-              const isCritical = feed.importanceLevel === 'critical';
-              return (
-                <motion.div
-                  key={feed.id}
-                  className="relative pl-8 pb-5"
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '-30px' }}
-                  transition={{ duration: 0.4, ease: easeOut, delay: index * 0.08 }}
-                >
-                  {/* Dot */}
-                  <div
-                    className={`absolute left-[6px] top-[9px] w-[12px] h-[12px] rounded-full border-2 border-white ${isCritical ? 'ring-2 ring-[#C47D6E]/30' : ''}`}
-                    style={{ backgroundColor: isCritical ? '#C47D6E' : config.color }}
+                  <ArrowRight
+                    size={16}
+                    strokeWidth={1.5}
+                    className="text-silver transition-transform duration-150 group-hover:translate-x-0.5"
                   />
-
-                  <Link to={feed.link || '#'} className="group block">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="inline-block text-[11px] text-silver bg-light-pink rounded px-2 py-0.5">
-                        {config.label}
-                      </span>
-                      {/* Source */}
-                      <span className="text-[11px] font-sans text-light-silver">
-                        {feed.source}
-                      </span>
-                      {isCritical && (
-                        <span className="inline-flex items-center gap-0.5 text-[10px] font-sans text-[#C47D6E] bg-[#C47D6E]/10 px-1.5 py-0.5 rounded">
-                          <Zap size={9} strokeWidth={2} />
-                          重要
-                        </span>
-                      )}
-                    </div>
-                    <h4 className="text-[15px] font-sans font-medium text-graphite group-hover:text-status-active transition-colors duration-200 leading-snug">
-                      {feed.title}
-                    </h4>
-                    <p className="text-[13px] text-silver leading-relaxed truncate mt-0.5">
-                      {feed.content}
-                    </p>
-                    <span className="text-[11px] text-light-silver mt-1 block">
-                      {new Date(feed.createdAt).toLocaleDateString('zh-CN')}
-                    </span>
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ============ FEATURED WORKS SECTION ============ */
-function FeaturedWorksSection() {
-  const featuredWorks = works.slice(0, 3);
-  const mainWork = featuredWorks[0];
-  const sideWorks = featuredWorks.slice(1);
-
-  return (
-    <section className="bg-cream py-12 md:py-20">
-      <div className="max-w-[1200px] mx-auto px-5 md:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.4, ease: easeOut }}
-        >
-          <SectionTitle
-            title="工坊"
-            subtitle="作品与项目，每件都记录了真实的开发历程"
-            linkTo="/works"
-            linkText="查看全部"
-          />
-        </motion.div>
-
-        <div className="flex flex-col lg:flex-row gap-5">
-          {/* Main large card */}
-          {mainWork && (
-            <motion.div
-              className="lg:w-2/3"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, ease: easeOut }}
-            >
-              <Link
-                to={`/works`}
-                className="group block bg-white border border-border-color rounded-xl overflow-hidden hover:-translate-y-[2px] hover:shadow-md transition-all duration-250"
-              >
-                {mainWork.cover && (
-                  <div className="aspect-[16/10] overflow-hidden">
-                    <img
-                      src={mainWork.cover}
-                      alt={mainWork.title}
-                      className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
-                    />
-                  </div>
-                )}
-                <div className="p-5">
-                  <h3 className="font-serif text-[22px] text-ink font-normal mb-1">
-                    {mainWork.title}
-                  </h3>
-                  <p className="text-[13px] text-silver leading-relaxed line-clamp-2 mb-3">
-                    {mainWork.description}
-                  </p>
-                  <div className="flex flex-wrap gap-1.5 mb-3">
-                    {mainWork.techStack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="text-[11px] text-silver bg-light-gray rounded px-2 py-0.5"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex items-center gap-3 text-[11px] font-sans text-light-silver pt-3 border-t border-[#F0F0EE]">
-                    <span>{mainWork.duration}</span>
-                    <span className="text-border-color">|</span>
-                    <span>{mainWork.teamSize}</span>
-                  </div>
                 </div>
+                <h3 className="mt-4 font-serif text-[20px] leading-[1.45] text-ink">{work.title}</h3>
+                <p className="mt-3 text-[13px] leading-[1.85] text-silver">{desc}</p>
               </Link>
             </motion.div>
-          )}
-
-          {/* Side cards */}
-          <div className="lg:w-1/3 flex flex-col gap-5">
-            {sideWorks.map((work, index) => (
-              <motion.div
-                key={work.id}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.5, ease: easeOut, delay: (index + 1) * 0.12 }}
-              >
-                <Link
-                  to={`/works`}
-                  className="group flex flex-row bg-white border border-border-color rounded-xl overflow-hidden hover:-translate-y-[2px] hover:shadow-md transition-all duration-250 h-full"
-                >
-                  {work.cover && (
-                    <div className="w-2/5 overflow-hidden">
-                      <img
-                        src={work.cover}
-                        alt={work.title}
-                        className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
-                      />
-                    </div>
-                  )}
-                  <div className="w-3/5 p-4 flex flex-col justify-center">
-                    <h4 className="font-serif text-[16px] text-ink font-normal mb-1 leading-tight">
-                      {work.title}
-                    </h4>
-                    <p className="text-[12px] text-silver leading-relaxed line-clamp-1 mb-2">
-                      {work.description}
-                    </p>
-                    <div className="flex flex-wrap gap-1">
-                      {work.techStack.slice(0, 2).map((tech) => (
-                        <span
-                          key={tech}
-                          className="text-[10px] text-silver bg-light-gray rounded px-1.5 py-0.5"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex items-center gap-2 mt-2 text-[10px] font-sans text-light-silver">
-                      <Clock size={9} strokeWidth={1.5} />
-                      <span>{work.duration}</span>
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-/* ============ TIMELINE PREVIEW SECTION ============ */
-function TimelinePreviewSection() {
-  const previewEvents = timelineEvents.slice(0, 4);
-
-  const importanceColor: Record<string, { dot: string; ring?: string }> = {
-    normal: { dot: '#C8C8C6' },
-    important: { dot: '#C8956C' },
-    major: { dot: '#C47D6E', ring: 'rgba(196,125,110,0.2)' },
-  };
-
+function GrowthArcSection() {
   return (
-    <section className="bg-white py-12 md:py-20 pb-16 md:pb-24">
-      <div className="max-w-[800px] mx-auto px-5 md:px-12">
+    <section className="border-b border-border-color bg-white py-12 md:py-16">
+      <div className="mx-auto max-w-[1200px] px-5 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -670,127 +356,46 @@ function TimelinePreviewSection() {
           transition={{ duration: 0.4, ease: easeOut }}
         >
           <SectionTitle
-            title="年谱"
-            subtitle="成长的重要节点与反思"
+            title="安的主线"
+            subtitle="从 2026 年 3 月之后，AI 学习逐渐变成一套可复看的方法。"
             linkTo="/timeline"
-            linkText="查看全部"
+            linkText="查看年谱"
           />
         </motion.div>
 
-        <div className="relative">
-          {/* Center vertical line */}
-          <motion.div
-            className="absolute left-1/2 top-0 bottom-0 w-[2px] bg-border-color -translate-x-1/2 origin-top hidden md:block"
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: easeOut }}
-          />
-          {/* Mobile line */}
-          <motion.div
-            className="absolute left-[15px] top-0 bottom-0 w-[2px] bg-border-color origin-top md:hidden"
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: easeOut }}
-          />
-
-          <div className="space-y-6">
-            {previewEvents.map((event, index) => {
-              const imp = importanceColor[event.importance] || importanceColor.normal;
-              const isLeft = index % 2 === 0;
-
-              return (
-                <div
-                  key={event.id}
-                  className={`relative flex items-center ${
-                    isLeft ? 'md:flex-row' : 'md:flex-row-reverse'
-                  } flex-row`}
-                >
-                  {/* Content card */}
-                  <motion.div
-                    className={`w-full md:w-1/2 ${isLeft ? 'md:pr-10' : 'md:pl-10'} pl-10 md:pl-0`}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true, margin: '-30px' }}
-                    transition={{ duration: 0.4, ease: [0.34, 1.56, 0.64, 1] as [number, number, number, number], delay: index * 0.15 }}
-                  >
-                    <Link
-                      to="/timeline"
-                      className="block bg-white border border-border-color rounded-xl p-4 md:p-5 hover:shadow-md transition-shadow duration-200"
-                    >
-                      <span className="text-[12px] text-silver block mb-1">
-                        {event.date}
-                      </span>
-                      <h4 className="text-[15px] font-sans font-medium text-graphite mb-1">
-                        {event.title}
-                      </h4>
-                      <p className="text-[13px] text-silver leading-relaxed line-clamp-2">
-                        {event.description}
-                      </p>
-                      {/* Achievements */}
-                      {event.achievements && event.achievements.length > 0 && (
-                        <div className="mt-2 pt-2 border-t border-[#F0F0EE]">
-                          <div className="flex flex-wrap gap-1">
-                            {event.achievements.slice(0, 2).map((achievement) => (
-                              <span
-                                key={achievement}
-                                className="text-[10px] font-sans text-silver bg-light-pink rounded px-2 py-0.5"
-                              >
-                                {achievement}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </Link>
-                  </motion.div>
-
-                  {/* Center dot */}
-                  <motion.div
-                    className="absolute left-[9px] md:left-1/2 md:-translate-x-1/2 z-10"
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true, margin: '-30px' }}
-                    transition={{ duration: 0.4, ease: [0.34, 1.56, 0.64, 1] as [number, number, number, number], delay: index * 0.15 }}
-                  >
-                    <div
-                      className="w-[10px] h-[10px] rounded-full"
-                      style={{
-                        backgroundColor: imp.dot,
-                        boxShadow: imp.ring ? `0 0 0 3px ${imp.ring}` : 'none',
-                      }}
-                    />
-                  </motion.div>
-
-                  {/* Empty spacer for alternating layout on desktop */}
-                  <div className="hidden md:block w-1/2" />
-                </div>
-              );
-            })}
-          </div>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {growthMoments.map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-30px' }}
+              transition={{ duration: 0.4, ease: easeOut, delay: index * 0.06 }}
+              className="rounded-xl border border-border-color bg-cream px-4 py-5"
+            >
+              <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white text-[12px] text-[#9B7E68]">
+                {index + 1}
+              </span>
+              <h3 className="mt-3 font-serif text-[18px] leading-[1.45] text-ink">{item.title}</h3>
+              <p className="mt-2 text-[12px] leading-[1.85] text-silver">{item.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-/* ============ HOME PAGE ============ */
 export default function Home() {
   return (
     <div>
       <HeroSection />
-      <StatBarSection />
       <CoreEntriesSection />
-      <QuickStartSection />
-      <FeaturedPathsSection />
-      <RecentFeedsSection />
-      <FeaturedWorksSection />
-      <TimelinePreviewSection />
+      <FeaturedPacketsSection />
+      <GrowthArcSection />
 
-      {/* Bottom transition to footer */}
       <div className="bg-white pb-16">
-        <div className="max-w-[1200px] mx-auto px-5 md:px-12">
+        <div className="mx-auto max-w-[1200px] px-5 md:px-12">
           <div className="border-t border-border-color" />
         </div>
       </div>

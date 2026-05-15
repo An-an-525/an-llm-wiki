@@ -8,7 +8,7 @@ const tabs = [
   { label: '藏馆', icon: Library, path: '/library' },
   { label: '谱系', icon: Route, path: '/paths' },
   { label: '工坊', icon: Hammer, path: '/works' },
-  { label: '我的', icon: UserRound, path: '/about' },
+  { label: '书房', icon: UserRound, path: '/about' },
 ];
 
 export default function MobileNav() {
@@ -18,8 +18,8 @@ export default function MobileNav() {
     <nav
       className="fixed bottom-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-[12px] border-t border-[#E5E5E3] md:hidden"
       style={{
-        height: 'calc(56px + env(safe-area-inset-bottom))',
-        paddingBottom: 'env(safe-area-inset-bottom)',
+        height: 'var(--mobile-nav-height)',
+        paddingBottom: 'var(--app-safe-bottom)',
       }}
       aria-label="底部导航"
     >

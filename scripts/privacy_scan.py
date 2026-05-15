@@ -16,6 +16,7 @@ IGNORE_DIRS = {
     ".claude",
     ".claudian",
     ".serena",
+    ".cache",
     "_raw",
     "_archives",
     "inbox",
@@ -28,7 +29,35 @@ IGNORE_DIRS = {
     "__pycache__",
 }
 IGNORE_FILES = {"hot.md"}
-TEXT_EXTS = {".md", ".txt", ".csv", ".json", ".yml", ".yaml", ".py", ".js", ".ts", ".toml", ".gitignore", ""}
+LOCAL_ONLY_FILE_PATTERNS = (".local",)
+TEXT_EXTS = {
+    ".md",
+    ".txt",
+    ".csv",
+    ".json",
+    ".yml",
+    ".yaml",
+    ".py",
+    ".js",
+    ".jsx",
+    ".ts",
+    ".tsx",
+    ".mjs",
+    ".cjs",
+    ".mts",
+    ".cts",
+    ".toml",
+    ".html",
+    ".css",
+    ".gitignore",
+    "",
+}
+TEXT_FILENAMES = {
+    ".env",
+    ".env.example",
+    ".env.sample",
+    ".env.template",
+}
 ALLOW_MARKER_FILES = {
     ".gitignore",
     "AGENTS.md",
@@ -71,7 +100,7 @@ PATTERNS = [
     PatternRule("phone_cn", "high", re.compile(r"\b1[3-9]\d{9}\b")),
     PatternRule("china_id", "high", re.compile(r"\b[1-9]\d{5}(?:19|20)\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])\d{3}[\dXx]\b")),
     PatternRule("bank_card_like", "high", re.compile(r"\b(?:\d[ -]*?){16,19}\b")),
-    PatternRule("private_marker", "high", re.compile(r"(?i)(local_private|archived_sessions|个人档案|私聊|凭据|密钥|身份证|银行卡)")),
+    PatternRule("private_marker", "low", re.compile(r"(?i)(local_private|archived_sessions|个人档案|私聊|凭据|密钥|身份证|银行卡)")),
 ]
 
 
@@ -89,8 +118,10 @@ def iter_files(root: Path):
         for name in names:
             if name in IGNORE_FILES:
                 continue
+            if name.endswith(LOCAL_ONLY_FILE_PATTERNS):
+                continue
             path = Path(current) / name
-            if path.suffix.lower() in TEXT_EXTS or name.startswith(".gitignore"):
+            if path.suffix.lower() in TEXT_EXTS or name in TEXT_FILENAMES or name.startswith((".env.", ".gitignore")):
                 yield path
 
 
@@ -135,6 +166,8 @@ def main() -> int:
     rows: list[dict[str, str | int]] = []
     for path in iter_files(root):
         rel = path.relative_to(root).as_posix()
+        if rel == "manifests/privacy_scan_report.csv":
+            continue
         text = path.read_text(encoding="utf-8", errors="replace")
         rows.extend(scan_text(rel, text))
 

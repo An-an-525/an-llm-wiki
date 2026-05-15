@@ -3,11 +3,14 @@ _raw/
 _archives/
 inbox/private/
 private-wiki/
+_meta/
+local-index-cache/
 .trash/
 .claude/
 .claudian/
 .serena/
 .local_private/
+.cache/
 hot.md
 
 # Local environment and credentials

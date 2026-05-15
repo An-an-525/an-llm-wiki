@@ -75,14 +75,14 @@ Current public payload status:
 
 | Area | Current Count | Meaning |
 |---|---:|---|
-| `content` | 13 | Public curated markdown records currently shown by the frontend |
-| `library` | 6 | Resource/source/tool entries already displayable |
-| `paths` | 7 | Learning and replication routes already displayable |
-| `timeline` | 13 | Public timeline generated from visible records |
-| `works` | 0 | Needs curated project cards |
-| `feed` | 0 | Needs public update/news cards |
-| `journal` | 0 | Needs public devlog/reflection cards |
-| `reviewQueue` | 194 | Public-safe candidates that still need rewriting before display |
+| `content` | 50 | Public curated markdown records currently shown by the frontend |
+| `library` | 36 | Resource/source/tool entries already displayable |
+| `paths` | 8 | Learning and replication routes already displayable |
+| `timeline` | 50 | Public timeline generated from visible records |
+| `works` | 4 | Curated project records now include the archive platform, frontend, Coze-style builder research, and Xiaoan learning loop |
+| `feed` | 1 | Public update/news card started with the archive data update |
+| `journal` | 1 | Public devlog/reflection card started with the rebuild journal |
+| `reviewQueue` | 195 | Public-safe candidates that still need rewriting before display |
 
 ## 3. Public And Private Boundary
 

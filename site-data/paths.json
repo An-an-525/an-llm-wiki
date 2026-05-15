@@ -1,127 +1,128 @@
 [
   {
-    "id": "c_b335630551682c19",
-    "title": "An LLM Wiki",
-    "slug": "readme",
-    "summary": "A public, privacy-filtered Obsidian LLM Wiki rebuilt around Karpathy's llm-wiki pattern.",
+    "id": "c_da4e573202254f99",
+    "title": "GitHub 最佳实践定期学习",
+    "sourceTitle": "GitHub Best Practice Learning Loop",
+    "slug": "wiki-synthesis-github-best-practice-learning-loop",
+    "summary": "说明定期学习 GitHub 和官方文档的循环：围绕当前问题调研、提炼模式、写回 wiki 并验收。",
+    "sourceSummary": "定期从 GitHub 项目和官方文档学习，把可复用的最佳实践写回黑曜石资料库，并形成持续改进循环。",
     "tags": [
-      "llm-wiki",
-      "obsidian",
-      "public"
+      "github",
+      "research",
+      "automation",
+      "learning-path",
+      "curated",
+      "featured"
     ],
     "status": [
-      "featured",
-      "public"
+      "featured"
     ],
-    "createdAt": "2026-05-12",
-    "updatedAt": "2026-05-12",
-    "sourcePath": "README.md",
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": null,
+    "sourcePath": "wiki/synthesis/github-best-practice-learning-loop.md",
     "module": "paths",
     "category": "synthesis",
-    "type": "moc",
-    "contentType": "article",
-    "href": "/content/readme",
+    "type": "learning-path",
+    "phase": null,
+    "cover": null,
+    "contentType": "github",
+    "href": "/content/wiki-synthesis-github-best-practice-learning-loop",
     "contentLines": [
-      "# An LLM Wiki",
+      "# GitHub 最佳实践定期学习",
       "",
-      "This is a public-safe personal Obsidian knowledge base rebuilt around Andrej Karpathy's LLM Wiki pattern.",
+      "## 概览",
       "",
-      "## Start Here",
+      "说明定期学习 GitHub 和官方文档的循环：围绕当前问题调研、提炼模式、写回 wiki 并验收。",
       "",
-      "- [[wiki/index]] - curated wiki workbench",
-      "- [[wiki/topics/llm-wiki-moc]] - architecture and operation map",
-      "- [[wiki/topics/publication-maintenance-moc]] - publication and validation map",
-      "- [[wiki/sources/karpathy-llm-wiki-pattern]] - official architecture source",
-      "- [[wiki/sources/github-reference-projects]] - secondary implementation references",
-      "- [Kimi frontend reference](docs/kimi-frontend-reference.md) - public-safe product brief, data model, prompt patterns, and frontend acceptance criteria",
-      "- [Archive platform project constraints](docs/archive-platform-project-constraints.md) - frontend, backend, privacy, data, and agent operating constraints",
-      "- [Archive content style and ingest workflow](docs/archive-content-style-and-ingest-workflow.md) - content depth, writing standard, formal data workflow, and validation gates",
-      "- [Agent skill stack](docs/agent-skill-stack.md) - GitHub-sourced skills and task-specific skill chains for frontend, backend, app, QA, security, and release work",
-      "- [[AGENTS]] - agent maintenance rules",
-      "- [[CLAUDE]] - wiki schema",
-      "- [[log]] - append-only rebuild and maintenance log",
+      "## 读者可以获得什么",
       "",
-      "## Operating Model",
+      "- 理解「GitHub 最佳实践定期学习」在安的书房里的位置。",
+      "- 看清它解决的问题、适合的读者和后续复刻方向。",
+      "- 知道公开页面保留的是方法、结构和经验，不包含原始私有材料。",
       "",
-      "Raw material stays local. Public pages are compiled, linked, and source-aware Markdown notes. Sensitive local paths, credentials, private memory, raw conversations, and unreviewed imports are excluded from the public repository.",
+      "## 推荐阅读方式",
       "",
-      "## Current Rebuild",
+      "1. 先读概览，确认它和当前学习目标是否相关。",
+      "2. 再看关联页面，理解来源、项目、工具或工作流之间的关系。",
+      "3. 如果要复刻，先写下自己的目标、输入材料、边界和验收标准。",
+      "4. 完成后回到资料库，把新的经验整理成可追踪页面。",
       "",
-      "- Archive ID: `pre-karpathy-rebuild-20260512-143127`",
-      "- Migrated public-safe notes: 192",
-      "- Reviewed source files: 11147"
+      "## 发布边界",
+      "",
+      "本页只展示公开安全的整理结果。原始材料、账号状态、本机细节、私人对话和未复核内容不会进入公开展示。",
+      "",
+      "## 来源",
+      "",
+      "- [[wiki/sources/github-reference-projects]]",
+      "- [[wiki/sources/github-actions-scheduled-workflows]]",
+      "- [[wiki/concepts/upstream-reference-and-adaptation-policy]]"
     ],
     "links": [
       {
-        "target": "wiki/index",
-        "label": "wiki/index"
+        "target": "wiki/synthesis/lifecycle-automation-workflow",
+        "label": "wiki/synthesis/lifecycle-automation-workflow"
       },
       {
-        "target": "wiki/topics/llm-wiki-moc",
-        "label": "wiki/topics/llm-wiki-moc"
+        "target": "wiki/concepts/upstream-reference-and-adaptation-policy",
+        "label": "wiki/concepts/upstream-reference-and-adaptation-policy"
       },
       {
-        "target": "wiki/topics/publication-maintenance-moc",
-        "label": "wiki/topics/publication-maintenance-moc"
-      },
-      {
-        "target": "wiki/sources/karpathy-llm-wiki-pattern",
-        "label": "wiki/sources/karpathy-llm-wiki-pattern"
-      },
-      {
-        "target": "wiki/sources/github-reference-projects",
-        "label": "wiki/sources/github-reference-projects"
-      },
-      {
-        "target": "AGENTS",
-        "label": "AGENTS"
-      },
-      {
-        "target": "CLAUDE",
-        "label": "CLAUDE"
-      },
-      {
-        "target": "log",
-        "label": "log"
+        "target": "wiki/synthesis/lifecycle-package-backlog",
+        "label": "wiki/synthesis/lifecycle-package-backlog"
       }
     ],
     "sources": [
-      "[[wiki/sources/karpathy-llm-wiki-pattern]]"
+      "[[wiki/sources/github-reference-projects]]",
+      "[[wiki/sources/github-actions-scheduled-workflows]]",
+      "[[wiki/concepts/upstream-reference-and-adaptation-policy]]"
     ],
     "toc": [
       {
         "level": 1,
-        "title": "An LLM Wiki",
-        "anchor": "an-llm-wiki"
+        "title": "GitHub 最佳实践定期学习",
+        "anchor": "github-最佳实践定期学习"
       },
       {
         "level": 2,
-        "title": "Start Here",
-        "anchor": "start-here"
+        "title": "概览",
+        "anchor": "概览"
       },
       {
         "level": 2,
-        "title": "Operating Model",
-        "anchor": "operating-model"
+        "title": "读者可以获得什么",
+        "anchor": "读者可以获得什么"
       },
       {
         "level": 2,
-        "title": "Current Rebuild",
-        "anchor": "current-rebuild"
+        "title": "推荐阅读方式",
+        "anchor": "推荐阅读方式"
+      },
+      {
+        "level": 2,
+        "title": "发布边界",
+        "anchor": "发布边界"
+      },
+      {
+        "level": 2,
+        "title": "来源",
+        "anchor": "来源"
       }
     ],
-    "wordCount": 197,
+    "wordCount": 279,
     "readingMinutes": 1,
     "metrics": {
       "lineCount": 28,
-      "headingCount": 4,
-      "linkCount": 8,
-      "sourceCount": 1
+      "headingCount": 6,
+      "linkCount": 3,
+      "sourceCount": 3
     },
     "quality": {
       "hasSources": true,
       "hasToc": true,
-      "summaryLength": 88,
+      "summaryLength": 49,
+      "sourceTitle": "GitHub Best Practice Learning Loop",
+      "sourceSummary": "定期从 GitHub 项目和官方文档学习，把可复用的最佳实践写回黑曜石资料库，并形成持续改进循环。",
       "needsSourceReview": false,
       "displayTier": "showcase",
       "qualityScore": 100,
@@ -130,13 +131,15 @@
     },
     "publicSafety": "public-safe",
     "sourceLabels": [
-      "public wiki",
-      "source-backed"
+      "github references",
+      "official docs",
+      "automation"
     ],
+    "actionText": "先从这页挑一个相关页面继续读，再把下一步行动压缩成今天能完成的最小任务。",
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": [],
-    "goal": "A public, privacy-filtered Obsidian LLM Wiki rebuilt around Karpathy's llm-wiki pattern.",
+    "goal": "说明定期学习 GitHub 和官方文档的循环：围绕当前问题调研、提炼模式、写回 wiki 并验收。",
     "audience": "希望沿着公开资料路线学习、复刻或维护知识库的读者。",
     "prerequisites": [],
     "estimatedTime": "按主题自定",
@@ -145,148 +148,179 @@
     "steps": [
       {
         "id": "step-1",
-        "title": "An LLM Wiki",
-        "goal": "An LLM Wiki",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "Beginner Explanation",
+        "goal": "Beginner Explanation",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       },
       {
         "id": "step-2",
-        "title": "Start Here",
-        "goal": "Start Here",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "Weekly Flow",
+        "goal": "Weekly Flow",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       },
       {
         "id": "step-3",
-        "title": "Operating Model",
-        "goal": "Operating Model",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "Repository Review Checklist",
+        "goal": "Repository Review Checklist",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       },
       {
         "id": "step-4",
-        "title": "Current Rebuild",
-        "goal": "Current Rebuild",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "What Gets Written Back",
+        "goal": "What Gets Written Back",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
+        "optional": false
+      },
+      {
+        "id": "step-5",
+        "title": "Related",
+        "goal": "Related",
+        "description": "按本阶段说明完成一个可见小产出。",
+        "resources": [],
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       }
     ]
   },
   {
-    "id": "c_a48746cae70c44e7",
-    "title": "An LLM Wiki Index",
-    "slug": "index",
-    "summary": "Root navigation page for the public-safe Obsidian LLM Wiki.",
+    "id": "c_7df397376082e992",
+    "title": "知识库生命周期自动化",
+    "sourceTitle": "Lifecycle Automation Workflow",
+    "slug": "wiki-synthesis-lifecycle-automation-workflow",
+    "summary": "说明安的书房生命周期自动化：本地 intake、GitHub 学习、学习包构建、验收和流程复盘错峰运行。",
+    "sourceSummary": "资料库生命周期自动化链路：按两小时节奏分别收集、调研、写学习包、跑验收，并把重复问题写回流程。",
     "tags": [
+      "automation",
+      "lifecycle",
+      "validation",
       "llm-wiki",
-      "index"
+      "curated",
+      "featured"
     ],
     "status": [
-      "featured",
-      "public"
+      "featured"
     ],
-    "createdAt": "2026-05-12",
-    "updatedAt": "2026-05-12",
-    "sourcePath": "index.md",
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": null,
+    "sourcePath": "wiki/synthesis/lifecycle-automation-workflow.md",
     "module": "paths",
     "category": "synthesis",
-    "type": "moc",
+    "type": "learning-path",
+    "phase": null,
+    "cover": null,
     "contentType": "article",
-    "href": "/content/index",
+    "href": "/content/wiki-synthesis-lifecycle-automation-workflow",
     "contentLines": [
-      "# An LLM Wiki Index",
+      "# 知识库生命周期自动化",
       "",
-      "- [[README]] - overview",
-      "- [[wiki/index]] - main wiki workbench",
-      "- [[wiki/synthesis/karpathy-official-wiki-layer]] - official wiki layer contract",
-      "- [[wiki/topics/personal-archive-moc]] - personal archive and website backend map",
-      "- [[wiki/topics/llm-wiki-moc]] - architecture and operations",
-      "- [[wiki/topics/ai-agent-systems-moc]] - agent systems map",
-      "- [[wiki/topics/skills-and-tools-moc]] - skills and tooling map",
-      "- [[wiki/topics/publication-maintenance-moc]] - publication gates and restore evidence",
-      "- [[wiki/sources-and-data-policy]] - source and publication policy",
-      "- [[wiki/sources/karpathy-llm-wiki-pattern]] - official architecture source",
-      "- [raw_sources.csv](manifests/raw_sources.csv) - source registry",
-      "- [publication_review.csv](manifests/publication_review.csv) - migration and privacy review ledger",
-      "- [[log]] - maintenance log"
+      "## 概览",
+      "",
+      "说明安的书房生命周期自动化：本地 intake、GitHub 学习、学习包构建、验收和流程复盘错峰运行。",
+      "",
+      "## 读者可以获得什么",
+      "",
+      "- 理解「知识库生命周期自动化」在安的书房里的位置。",
+      "- 看清它解决的问题、适合的读者和后续复刻方向。",
+      "- 知道公开页面保留的是方法、结构和经验，不包含原始私有材料。",
+      "",
+      "## 推荐阅读方式",
+      "",
+      "1. 先读概览，确认它和当前学习目标是否相关。",
+      "2. 再看关联页面，理解来源、项目、工具或工作流之间的关系。",
+      "3. 如果要复刻，先写下自己的目标、输入材料、边界和验收标准。",
+      "4. 完成后回到资料库，把新的经验整理成可追踪页面。",
+      "",
+      "## 发布边界",
+      "",
+      "本页只展示公开安全的整理结果。原始材料、账号状态、本机细节、私人对话和未复核内容不会进入公开展示。",
+      "",
+      "## 来源",
+      "",
+      "- [[wiki/sources/github-actions-scheduled-workflows]]",
+      "- [[wiki/synthesis/lifecycle-replication-package-workflow]]",
+      "- [[wiki/concepts/tool-codex-validation-workflow]]"
     ],
     "links": [
       {
-        "target": "README",
-        "label": "README"
+        "target": "wiki/synthesis/github-best-practice-learning-loop",
+        "label": "wiki/synthesis/github-best-practice-learning-loop"
       },
       {
-        "target": "wiki/index",
-        "label": "wiki/index"
+        "target": "wiki/synthesis/lifecycle-automation-output-map",
+        "label": "wiki/synthesis/lifecycle-automation-output-map"
       },
       {
-        "target": "wiki/synthesis/karpathy-official-wiki-layer",
-        "label": "wiki/synthesis/karpathy-official-wiki-layer"
-      },
-      {
-        "target": "wiki/topics/personal-archive-moc",
-        "label": "wiki/topics/personal-archive-moc"
-      },
-      {
-        "target": "wiki/topics/llm-wiki-moc",
-        "label": "wiki/topics/llm-wiki-moc"
-      },
-      {
-        "target": "wiki/topics/ai-agent-systems-moc",
-        "label": "wiki/topics/ai-agent-systems-moc"
-      },
-      {
-        "target": "wiki/topics/skills-and-tools-moc",
-        "label": "wiki/topics/skills-and-tools-moc"
+        "target": "wiki/synthesis/lifecycle-replication-package-workflow",
+        "label": "wiki/synthesis/lifecycle-replication-package-workflow"
       },
       {
         "target": "wiki/topics/publication-maintenance-moc",
         "label": "wiki/topics/publication-maintenance-moc"
-      },
-      {
-        "target": "wiki/sources-and-data-policy",
-        "label": "wiki/sources-and-data-policy"
-      },
-      {
-        "target": "wiki/sources/karpathy-llm-wiki-pattern",
-        "label": "wiki/sources/karpathy-llm-wiki-pattern"
-      },
-      {
-        "target": "log",
-        "label": "log"
       }
     ],
     "sources": [
-      "[[wiki/index]]"
+      "[[wiki/sources/github-actions-scheduled-workflows]]",
+      "[[wiki/synthesis/lifecycle-replication-package-workflow]]",
+      "[[wiki/concepts/tool-codex-validation-workflow]]"
     ],
     "toc": [
       {
         "level": 1,
-        "title": "An LLM Wiki Index",
-        "anchor": "an-llm-wiki-index"
+        "title": "知识库生命周期自动化",
+        "anchor": "知识库生命周期自动化"
+      },
+      {
+        "level": 2,
+        "title": "概览",
+        "anchor": "概览"
+      },
+      {
+        "level": 2,
+        "title": "读者可以获得什么",
+        "anchor": "读者可以获得什么"
+      },
+      {
+        "level": 2,
+        "title": "推荐阅读方式",
+        "anchor": "推荐阅读方式"
+      },
+      {
+        "level": 2,
+        "title": "发布边界",
+        "anchor": "发布边界"
+      },
+      {
+        "level": 2,
+        "title": "来源",
+        "anchor": "来源"
       }
     ],
-    "wordCount": 106,
+    "wordCount": 283,
     "readingMinutes": 1,
     "metrics": {
-      "lineCount": 15,
-      "headingCount": 1,
-      "linkCount": 11,
-      "sourceCount": 1
+      "lineCount": 28,
+      "headingCount": 6,
+      "linkCount": 4,
+      "sourceCount": 3
     },
     "quality": {
       "hasSources": true,
       "hasToc": true,
-      "summaryLength": 59,
+      "summaryLength": 52,
+      "sourceTitle": "Lifecycle Automation Workflow",
+      "sourceSummary": "资料库生命周期自动化链路：按两小时节奏分别收集、调研、写学习包、跑验收，并把重复问题写回流程。",
       "needsSourceReview": false,
       "displayTier": "showcase",
       "qualityScore": 100,
@@ -295,13 +329,15 @@
     },
     "publicSafety": "public-safe",
     "sourceLabels": [
-      "public wiki",
-      "source-backed"
+      "automation",
+      "validation",
+      "public wiki"
     ],
+    "actionText": "先从这页挑一个相关页面继续读，再把下一步行动压缩成今天能完成的最小任务。",
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": [],
-    "goal": "Root navigation page for the public-safe Obsidian LLM Wiki.",
+    "goal": "说明安的书房生命周期自动化：本地 intake、GitHub 学习、学习包构建、验收和流程复盘错峰运行。",
     "audience": "希望沿着公开资料路线学习、复刻或维护知识库的读者。",
     "prerequisites": [],
     "estimatedTime": "按主题自定",
@@ -310,417 +346,710 @@
     "steps": [
       {
         "id": "step-1",
-        "title": "An LLM Wiki Index",
-        "goal": "An LLM Wiki Index",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "The Five Automations",
+        "goal": "The Five Automations",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
-        "optional": false
-      }
-    ]
-  },
-  {
-    "id": "c_0b2b8021fc47d672",
-    "title": "LLM Wiki Index",
-    "slug": "wiki-index",
-    "summary": "Short workbench for the rebuilt public-safe LLM Wiki.",
-    "tags": [
-      "llm-wiki",
-      "moc"
-    ],
-    "status": [
-      "featured",
-      "public"
-    ],
-    "createdAt": "2026-05-12",
-    "updatedAt": "2026-05-12",
-    "sourcePath": "wiki/index.md",
-    "module": "paths",
-    "category": "synthesis",
-    "type": "moc",
-    "contentType": "article",
-    "href": "/content/wiki-index",
-    "contentLines": [
-      "# LLM Wiki Index",
-      "",
-      "This is the short workbench for the public wiki. Raw sources and private staging stay outside the public graph.",
-      "",
-      "## Start Here",
-      "",
-      "- [[README]] - vault overview",
-      "- [[wiki/sources/karpathy-llm-wiki-pattern]] - official architecture source",
-      "- [[wiki/synthesis/karpathy-official-wiki-layer]] - public wiki layer contract",
-      "- [[wiki/sources-and-data-policy]] - source and publication boundary",
-      "- [[wiki/projects/root-maintenance-backlog]] - current maintenance backlog",
-      "- [[log]] - append-only maintenance log",
-      "",
-      "## Maps",
-      "",
-      "- [[wiki/topics/personal-archive-moc]] - public personal archive and website data map",
-      "- [[wiki/synthesis/archive-information-architecture]] - information backbone for projects, capabilities, timeline, and review queues",
-      "- [[wiki/topics/llm-wiki-moc]] - LLM Wiki architecture and operations",
-      "- [[wiki/topics/ai-agent-systems-moc]] - AI agent systems and framework notes",
-      "- [[wiki/topics/skills-and-tools-moc]] - migrated skills and reusable tooling notes",
-      "- [[wiki/topics/publication-maintenance-moc]] - publication checks, privacy gates, manifests, and restore records",
-      "",
-      "## Source Notes",
-      "",
-      "- [[wiki/sources/karpathy-llm-wiki-pattern]] - official pattern source",
-      "- [[wiki/sources/local-private-compile-2026-05-13]] - public-safe source record for the current local compile pass",
-      "- [[wiki/sources/github-reference-projects]] - secondary project index",
-      "- [[wiki/sources/obsidian-llm-wiki-local]] - local-first reference project",
-      "- [[wiki/sources/llm-wikid]] - vault-template reference project",
-      "- [[wiki/sources/pre-rebuild-vault-archive]] - private migration source record"
-    ],
-    "links": [
-      {
-        "target": "README",
-        "label": "README"
-      },
-      {
-        "target": "wiki/sources/karpathy-llm-wiki-pattern",
-        "label": "wiki/sources/karpathy-llm-wiki-pattern"
-      },
-      {
-        "target": "wiki/synthesis/karpathy-official-wiki-layer",
-        "label": "wiki/synthesis/karpathy-official-wiki-layer"
-      },
-      {
-        "target": "wiki/sources-and-data-policy",
-        "label": "wiki/sources-and-data-policy"
-      },
-      {
-        "target": "wiki/projects/root-maintenance-backlog",
-        "label": "wiki/projects/root-maintenance-backlog"
-      },
-      {
-        "target": "log",
-        "label": "log"
-      },
-      {
-        "target": "wiki/topics/personal-archive-moc",
-        "label": "wiki/topics/personal-archive-moc"
-      },
-      {
-        "target": "wiki/synthesis/archive-information-architecture",
-        "label": "wiki/synthesis/archive-information-architecture"
-      },
-      {
-        "target": "wiki/topics/llm-wiki-moc",
-        "label": "wiki/topics/llm-wiki-moc"
-      },
-      {
-        "target": "wiki/topics/ai-agent-systems-moc",
-        "label": "wiki/topics/ai-agent-systems-moc"
-      },
-      {
-        "target": "wiki/topics/skills-and-tools-moc",
-        "label": "wiki/topics/skills-and-tools-moc"
-      },
-      {
-        "target": "wiki/topics/publication-maintenance-moc",
-        "label": "wiki/topics/publication-maintenance-moc"
-      },
-      {
-        "target": "wiki/sources/karpathy-llm-wiki-pattern",
-        "label": "wiki/sources/karpathy-llm-wiki-pattern"
-      },
-      {
-        "target": "wiki/sources/local-private-compile-2026-05-13",
-        "label": "wiki/sources/local-private-compile-2026-05-13"
-      },
-      {
-        "target": "wiki/sources/github-reference-projects",
-        "label": "wiki/sources/github-reference-projects"
-      },
-      {
-        "target": "wiki/sources/obsidian-llm-wiki-local",
-        "label": "wiki/sources/obsidian-llm-wiki-local"
-      },
-      {
-        "target": "wiki/sources/llm-wikid",
-        "label": "wiki/sources/llm-wikid"
-      },
-      {
-        "target": "wiki/sources/pre-rebuild-vault-archive",
-        "label": "wiki/sources/pre-rebuild-vault-archive"
-      }
-    ],
-    "sources": [
-      "[[wiki/sources/karpathy-llm-wiki-pattern]]"
-    ],
-    "toc": [
-      {
-        "level": 1,
-        "title": "LLM Wiki Index",
-        "anchor": "llm-wiki-index"
-      },
-      {
-        "level": 2,
-        "title": "Start Here",
-        "anchor": "start-here"
-      },
-      {
-        "level": 2,
-        "title": "Maps",
-        "anchor": "maps"
-      },
-      {
-        "level": 2,
-        "title": "Source Notes",
-        "anchor": "source-notes"
-      }
-    ],
-    "wordCount": 197,
-    "readingMinutes": 1,
-    "metrics": {
-      "lineCount": 30,
-      "headingCount": 4,
-      "linkCount": 18,
-      "sourceCount": 1
-    },
-    "quality": {
-      "hasSources": true,
-      "hasToc": true,
-      "summaryLength": 53,
-      "needsSourceReview": false,
-      "displayTier": "showcase",
-      "qualityScore": 100,
-      "hiddenReasons": [],
-      "explicitlyCurated": true
-    },
-    "publicSafety": "public-safe",
-    "sourceLabels": [
-      "public wiki",
-      "source-backed"
-    ],
-    "displayTier": "showcase",
-    "qualityScore": 100,
-    "hiddenReasons": [],
-    "goal": "Short workbench for the rebuilt public-safe LLM Wiki.",
-    "audience": "希望沿着公开资料路线学习、复刻或维护知识库的读者。",
-    "prerequisites": [],
-    "estimatedTime": "按主题自定",
-    "difficulty": "intermediate",
-    "finalOutput": "形成一条可复用的公开学习或构建路径。",
-    "steps": [
-      {
-        "id": "step-1",
-        "title": "LLM Wiki Index",
-        "goal": "LLM Wiki Index",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
-        "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       },
       {
         "id": "step-2",
-        "title": "Start Here",
-        "goal": "Start Here",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "How The Chain Works",
+        "goal": "How The Chain Works",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       },
       {
         "id": "step-3",
-        "title": "Maps",
-        "goal": "Maps",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "What Each Automation Must Not Do",
+        "goal": "What Each Automation Must Not Do",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       },
       {
         "id": "step-4",
-        "title": "Source Notes",
-        "goal": "Source Notes",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "Acceptance Standard",
+        "goal": "Acceptance Standard",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
+        "optional": false
+      },
+      {
+        "id": "step-5",
+        "title": "Related",
+        "goal": "Related",
+        "description": "按本阶段说明完成一个可见小产出。",
+        "resources": [],
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       }
     ]
   },
   {
-    "id": "c_3d19f3d825d4e136",
-    "title": "AI Agent Systems MOC",
-    "slug": "wiki-topics-ai-agent-systems-moc",
-    "summary": "Map for public-safe AI agent framework and architecture notes migrated into the wiki.",
+    "id": "c_c9b1934ea666b76f",
+    "title": "生命周期复刻学习包流程",
+    "sourceTitle": "生命周期复刻学习包流程",
+    "slug": "wiki-synthesis-lifecycle-replication-package-workflow",
+    "summary": "说明如何把一个项目或工具经历整理成生命周期学习包，让新手能按步骤复刻并完成验收。",
+    "sourceSummary": "把安的项目经历整理成小白可复刻学习包的标准流程：先找证据和外部标准，再拆成目标、阶段、交付物、检查点和失败处理。",
     "tags": [
-      "ai-agent",
-      "moc",
-      "systems"
+      "learning-path",
+      "lifecycle",
+      "documentation",
+      "llm-wiki",
+      "curated",
+      "featured",
+      "beginner-friendly"
     ],
     "status": [
-      "featured",
-      "public"
+      "featured"
     ],
-    "createdAt": "2026-05-12",
-    "updatedAt": "2026-05-12",
-    "sourcePath": "wiki/topics/ai-agent-systems-moc.md",
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": null,
+    "sourcePath": "wiki/synthesis/lifecycle-replication-package-workflow.md",
     "module": "paths",
     "category": "synthesis",
-    "type": "moc",
+    "type": "learning-path",
+    "phase": null,
+    "cover": null,
     "contentType": "article",
-    "href": "/content/wiki-topics-ai-agent-systems-moc",
+    "href": "/content/wiki-synthesis-lifecycle-replication-package-workflow",
     "contentLines": [
-      "# AI Agent Systems MOC",
+      "# 生命周期复刻学习包流程",
       "",
-      "This map keeps the agent notes navigable without depending on old private vault paths.",
+      "这条谱系路线说明：怎样把安做过的一个项目，改写成别人能照着做的小型学习包。",
       "",
-      "## Frameworks",
+      "它参考了三个外部标准：Karpathy LLM Wiki 的原始层和编译层分离，Diátaxis 的教程、操作、参考、解释分离，以及 GitHub Skills 的任务式课程结构。三者合在一起，得到一个适合安的书房的规则：先有证据，再写教程；先让读者完成一个小作品，再讲复杂道理。",
       "",
-      "- [[wiki/topics/04-知识库-领域研究-Agent生态-Agent-生态-MOC]] - agent ecosystem overview",
-      "- [[wiki/topics/04-知识库-领域研究-Agent生态-AutoGen]]",
-      "- [[wiki/topics/04-知识库-领域研究-Agent生态-Browser-use]]",
-      "- [[wiki/topics/04-知识库-领域研究-Agent生态-CrewAI]]",
-      "- [[wiki/topics/04-知识库-领域研究-Agent生态-LangChain]]",
-      "- [[wiki/topics/04-知识库-领域研究-Agent生态-LlamaIndex]]",
-      "- [[wiki/topics/04-知识库-领域研究-Agent生态-MCP]]",
-      "- [[wiki/topics/04-知识库-领域研究-Agent生态-SWE-Agent]]",
+      "## 最终小作品",
       "",
-      "## Architecture Notes",
+      "读者完成这条路线后，应该得到一份学习包页面。它至少包含：",
       "",
-      "- [[wiki/concepts/agent-skill-governance]] - public-safe skill and rule governance",
-      "- [[wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agent_Computer_Interface_Best_Practices]]",
-      "- [[wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agent_Design_Patterns_2026]]",
-      "- [[wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agentic_Workflow_Optimization_2026]]",
-      "- [[wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-多Agent协调与受控委派-2026-04-11]]",
-      "- [[wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-多Agent通信信封与工件传递-2026-04-11]]",
+      "- 一个真实项目；",
+      "- 一个小白能完成的最小目标；",
+      "- 3 到 5 个阶段；",
+      "- 每阶段的交付物；",
+      "- 每阶段的检查点；",
+      "- 失败信号和修复动作；",
+      "- 来源和公开边界。",
       "",
-      "## Project Architecture",
+      "## 阶段一：确定一个真实项目",
       "",
-      "- [[wiki/projects/04-知识库-领域研究-AI-Agent技术-项目架构-an-clan_Project_Architecture]]",
-      "- [[wiki/projects/04-知识库-领域研究-AI-Agent技术-项目架构-mcc_Project_Architecture]]",
-      "- [[wiki/projects/04-知识库-领域研究-AI-Agent技术-项目架构-zongmen-gui_Project_Architecture]]"
+      "不要从“我要做一个 AI 教程”开始。太大。",
+      "",
+      "从一个真实项目开始，例如：",
+      "",
+      "- 个人资料库平台；",
+      "- 资料库展示前端；",
+      "- Coze 风格 Agent 搭建器研究；",
+      "- 小安本地模型学习闭环。",
+      "",
+      "交付物：写一句话说明这个项目是什么。",
+      "",
+      "检查点：这句话不依赖私有上下文，陌生读者也能听懂。",
+      "",
+      "失败信号：你只能用工具名解释项目，说明还没抓住真实问题。",
+      "",
+      "## 阶段二：写最终小作品",
+      "",
+      "问自己：读者读完后能做出什么？",
+      "",
+      "不要写“掌握资料库架构”。这太虚。要写：",
+      "",
+      "- 做出三张项目卡；",
+      "- 画出一个只读 Agent 工作流；",
+      "- 写出一页公开安全项目说明；",
+      "- 建一个最小 site-data JSON。",
+      "",
+      "交付物：一句“读者会做出什么”。",
+      "",
+      "检查点：这个结果能被看见、打开、运行或检查。",
+      "",
+      "## 阶段三：拆成 3 到 5 步",
+      "",
+      "GitHub Skills 的课程设计建议小步推进，不要让学习者一开始就被复杂度压倒。安的书房采用同样原则。",
+      "",
+      "每一步只做一件事：",
+      "",
+      "| 阶段 | 动作 | 交付物 |",
+      "|---|---|---|",
+      "| 1 | 选项目 | 项目一句话 |",
+      "| 2 | 提取证据 | 事实清单 |",
+      "| 3 | 写公开页 | wiki 页面 |",
+      "| 4 | 生成数据 | 前端卡片 |",
+      "| 5 | 验收 | 检查结果 |",
+      "",
+      "检查点：每个阶段都能单独完成。",
+      "",
+      "失败信号：一个阶段里塞了三件不同的事。",
+      "",
+      "## 阶段四：补失败处理",
+      "",
+      "学习包必须告诉读者哪里会错。",
+      "",
+      "常见失败：",
+      "",
+      "- 找不到来源；",
+      "- 写成自嗨复盘；",
+      "- 步骤太抽象；",
+      "- 公开内容依赖私有细节；",
+      "- 前端卡片没有下一步。",
+      "",
+      "每个失败都要有修复动作，例如：",
+      "",
+      "- 找不到来源：先标记为 `needs-source-review`；",
+      "- 步骤太抽象：改成一个可见交付物；",
+      "- 前端无下一步：补 `actionText`。",
+      "",
+      "## 阶段五：发布前验收",
+      "",
+      "验收不是走形式。它决定这条内容能不能进入前端核心展示。",
+      "",
+      "必须检查：",
+      "",
+      "- 隐私扫描无高风险；",
+      "- wiki 结构无断链；",
+      "- 前端数据能生成；",
+      "- 工坊详情页能打开；",
+      "- 小白能看懂下一步；",
+      "- 内容不是只改写别人的资料，而是结合安自己的证据。",
+      "",
+      "再用 [[wiki/concepts/content-critique-and-review-rubric]] 做一次反向挑刺：来源、小白、复刻、隐私、前端和自动化六项都能解释，才算可以进入核心展示。",
+      "",
+      "## 三层理解",
+      "",
+      "**心理层**：复刻路线给新手一个低压入口。人只要先完成一个小东西，后面就不再只是旁观。",
+      "",
+      "**社会层**：学习包把个人项目翻译成公共协作语言。未来 Kimi、Codex、读者和安自己，都能沿着同一套结构继续补内容。",
+      "",
+      "**哲学层**：经验只有被别人拿来行动时，才真正离开了个人记忆，成为知识。",
+      "",
+      "## 下一步练习",
+      "",
+      "选择 [[wiki/projects/lifecycle-frontend-archive-site]]，把它压缩成一条 5 步路线。每一步只写一个交付物和一个检查点。",
+      "",
+      "## Related",
+      "",
+      "- [[wiki/concepts/lifecycle-replication-package-template]]",
+      "- [[wiki/concepts/content-critique-and-review-rubric]]",
+      "- [[wiki/synthesis/lifecycle-package-backlog]]",
+      "- [[wiki/sources/tutorial-and-source-research-best-practices]]",
+      "- [[wiki/synthesis/github-best-practice-learning-loop]]"
     ],
     "links": [
       {
-        "target": "wiki/topics/04-知识库-领域研究-Agent生态-Agent-生态-MOC",
-        "label": "wiki/topics/04-知识库-领域研究-Agent生态-Agent-生态-MOC"
+        "target": "wiki/concepts/content-critique-and-review-rubric",
+        "label": "wiki/concepts/content-critique-and-review-rubric"
       },
       {
-        "target": "wiki/topics/04-知识库-领域研究-Agent生态-AutoGen",
-        "label": "wiki/topics/04-知识库-领域研究-Agent生态-AutoGen"
+        "target": "wiki/projects/lifecycle-frontend-archive-site",
+        "label": "wiki/projects/lifecycle-frontend-archive-site"
       },
       {
-        "target": "wiki/topics/04-知识库-领域研究-Agent生态-Browser-use",
-        "label": "wiki/topics/04-知识库-领域研究-Agent生态-Browser-use"
+        "target": "wiki/concepts/lifecycle-replication-package-template",
+        "label": "wiki/concepts/lifecycle-replication-package-template"
       },
       {
-        "target": "wiki/topics/04-知识库-领域研究-Agent生态-CrewAI",
-        "label": "wiki/topics/04-知识库-领域研究-Agent生态-CrewAI"
+        "target": "wiki/concepts/content-critique-and-review-rubric",
+        "label": "wiki/concepts/content-critique-and-review-rubric"
       },
       {
-        "target": "wiki/topics/04-知识库-领域研究-Agent生态-LangChain",
-        "label": "wiki/topics/04-知识库-领域研究-Agent生态-LangChain"
+        "target": "wiki/synthesis/lifecycle-package-backlog",
+        "label": "wiki/synthesis/lifecycle-package-backlog"
       },
       {
-        "target": "wiki/topics/04-知识库-领域研究-Agent生态-LlamaIndex",
-        "label": "wiki/topics/04-知识库-领域研究-Agent生态-LlamaIndex"
+        "target": "wiki/sources/tutorial-and-source-research-best-practices",
+        "label": "wiki/sources/tutorial-and-source-research-best-practices"
       },
       {
-        "target": "wiki/topics/04-知识库-领域研究-Agent生态-MCP",
-        "label": "wiki/topics/04-知识库-领域研究-Agent生态-MCP"
+        "target": "wiki/synthesis/github-best-practice-learning-loop",
+        "label": "wiki/synthesis/github-best-practice-learning-loop"
+      }
+    ],
+    "sources": [
+      "[[wiki/sources/karpathy-llm-wiki-pattern]]",
+      "[[wiki/sources/obsidian-properties]]",
+      "[[wiki/sources/diataxis-framework]]",
+      "[[wiki/sources/tutorial-and-source-research-best-practices]]",
+      "[[wiki/sources/local-private-compile-2026-05-13]]"
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "生命周期复刻学习包流程",
+        "anchor": "生命周期复刻学习包流程"
       },
       {
-        "target": "wiki/topics/04-知识库-领域研究-Agent生态-SWE-Agent",
-        "label": "wiki/topics/04-知识库-领域研究-Agent生态-SWE-Agent"
+        "level": 2,
+        "title": "最终小作品",
+        "anchor": "最终小作品"
+      },
+      {
+        "level": 2,
+        "title": "阶段一：确定一个真实项目",
+        "anchor": "阶段一确定一个真实项目"
+      },
+      {
+        "level": 2,
+        "title": "阶段二：写最终小作品",
+        "anchor": "阶段二写最终小作品"
+      },
+      {
+        "level": 2,
+        "title": "阶段三：拆成 3 到 5 步",
+        "anchor": "阶段三拆成-3-到-5-步"
+      },
+      {
+        "level": 2,
+        "title": "阶段四：补失败处理",
+        "anchor": "阶段四补失败处理"
+      },
+      {
+        "level": 2,
+        "title": "阶段五：发布前验收",
+        "anchor": "阶段五发布前验收"
+      },
+      {
+        "level": 2,
+        "title": "三层理解",
+        "anchor": "三层理解"
+      },
+      {
+        "level": 2,
+        "title": "下一步练习",
+        "anchor": "下一步练习"
+      },
+      {
+        "level": 2,
+        "title": "Related",
+        "anchor": "related"
+      }
+    ],
+    "wordCount": 1038,
+    "readingMinutes": 3,
+    "metrics": {
+      "lineCount": 120,
+      "headingCount": 10,
+      "linkCount": 7,
+      "sourceCount": 5
+    },
+    "quality": {
+      "hasSources": true,
+      "hasToc": true,
+      "summaryLength": 40,
+      "sourceTitle": "生命周期复刻学习包流程",
+      "sourceSummary": "把安的项目经历整理成小白可复刻学习包的标准流程：先找证据和外部标准，再拆成目标、阶段、交付物、检查点和失败处理。",
+      "needsSourceReview": false,
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "explicitlyCurated": true
+    },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "official pattern",
+      "local compile",
+      "learning design",
+      "github-skills"
+    ],
+    "whyItMattered": "它把安的项目经历从零散记录变成小白可照做的学习包，让读者不只看成果，还能走一遍更小的路径。",
+    "psychologicalLayer": "新手读项目最容易被成品压倒。复刻学习包把大项目切成小交付物，让读者先完成一个可见结果。",
+    "sociologicalLayer": "GitHub、开源教程和文档社区都强调可协作、可维护、可反馈。安的书房也要把个人经验写成别人能接手的格式。",
+    "philosophicalLayer": "知识的公共性，不在于它被公开，而在于别人能沿着它行动。",
+    "operationStory": [
+      "先把本地材料索引成私有证据，不直接公开原文。",
+      "再搜索官方文档、GitHub 示例和教程框架，确认外部最佳实践。",
+      "然后把项目经历改写成教程、操作指南、参考表和解释。",
+      "最后用前端详情页检查读者是否能按步骤复刻。"
+    ],
+    "failureModes": [
+      "把学习包写成目录，读者看完不知道做什么。",
+      "步骤太多，第一阶段就劝退小白。",
+      "只有安的经历，没有外部来源和公开参考。",
+      "只写成功路径，不写失败时怎样停下来。",
+      "用私有上下文支撑公开步骤，读者无法复刻。"
+    ],
+    "lessons": [
+      "一个学习包只服务一个具体目标。",
+      "教程要先让读者成功一次，再补解释和参考。",
+      "复刻路径要有检查点，否则步骤只是愿望。",
+      "公开边界和学习设计同样重要。"
+    ],
+    "actionText": "选择一个工坊项目，按 5 个阶段写出最小复刻路线：目标、材料、步骤、验收、下一步。",
+    "displayTier": "showcase",
+    "qualityScore": 100,
+    "hiddenReasons": [],
+    "goal": "说明如何把一个项目或工具经历整理成生命周期学习包，让新手能按步骤复刻并完成验收。",
+    "audience": "希望沿着公开资料路线学习、复刻或维护知识库的读者。",
+    "prerequisites": [],
+    "estimatedTime": "按主题自定",
+    "difficulty": "intermediate",
+    "finalOutput": "形成一条可复用的公开学习或构建路径。",
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "阶段一：确定一个真实项目",
+        "goal": "阶段一：确定一个真实项目",
+        "description": "不要从“我要做一个 AI 教程”开始。太大。",
+        "resources": [],
+        "completion": "这句话不依赖私有上下文，陌生读者也能听懂。",
+        "optional": false
+      },
+      {
+        "id": "step-2",
+        "title": "阶段二：写最终小作品",
+        "goal": "阶段二：写最终小作品",
+        "description": "问自己：读者读完后能做出什么？",
+        "resources": [],
+        "completion": "这个结果能被看见、打开、运行或检查。",
+        "optional": false
+      },
+      {
+        "id": "step-3",
+        "title": "阶段三：拆成 3 到 5 步",
+        "goal": "阶段三：拆成 3 到 5 步",
+        "description": "GitHub Skills 的课程设计建议小步推进，不要让学习者一开始就被复杂度压倒。安的书房采用同样原则。",
+        "resources": [],
+        "completion": "每个阶段都能单独完成。",
+        "optional": false
+      },
+      {
+        "id": "step-4",
+        "title": "阶段四：补失败处理",
+        "goal": "阶段四：补失败处理",
+        "description": "学习包必须告诉读者哪里会错。",
+        "resources": [],
+        "completion": "读完本节并完成对应交付物。",
+        "optional": false
+      },
+      {
+        "id": "step-5",
+        "title": "阶段五：发布前验收",
+        "goal": "阶段五：发布前验收",
+        "description": "验收不是走形式。它决定这条内容能不能进入前端核心展示。",
+        "resources": [],
+        "completion": "读完本节并完成对应交付物。",
+        "optional": false
+      }
+    ]
+  },
+  {
+    "id": "c_8a14bcb2a5e3fd90",
+    "title": "个人资料库公开路线图",
+    "sourceTitle": "个人资料库公开路线图",
+    "slug": "wiki-synthesis-personal-archive-public-roadmap",
+    "summary": "规划安的书房公开路线：从资料整理、项目展示、能力证明到后端服务和长期自动化维护。",
+    "sourceSummary": "个人资料库公开路线图：从本地整理、公开 wiki、站点数据到前端与未来 App 的分阶段推进路径。",
+    "tags": [
+      "archive",
+      "roadmap",
+      "synthesis",
+      "publication",
+      "curated"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": null,
+    "sourcePath": "wiki/synthesis/personal-archive-public-roadmap.md",
+    "module": "paths",
+    "category": "synthesis",
+    "type": "roadmap",
+    "phase": null,
+    "cover": null,
+    "contentType": "article",
+    "href": "/content/wiki-synthesis-personal-archive-public-roadmap",
+    "contentLines": [
+      "# 个人资料库公开路线图",
+      "",
+      "## 概览",
+      "",
+      "规划安的书房公开路线：从资料整理、项目展示、能力证明到后端服务和长期自动化维护。",
+      "",
+      "## 读者可以获得什么",
+      "",
+      "- 理解「个人资料库公开路线图」在安的书房里的位置。",
+      "- 看清它解决的问题、适合的读者和后续复刻方向。",
+      "- 知道公开页面保留的是方法、结构和经验，不包含原始私有材料。",
+      "",
+      "## 推荐阅读方式",
+      "",
+      "1. 先读概览，确认它和当前学习目标是否相关。",
+      "2. 再看关联页面，理解来源、项目、工具或工作流之间的关系。",
+      "3. 如果要复刻，先写下自己的目标、输入材料、边界和验收标准。",
+      "4. 完成后回到资料库，把新的经验整理成可追踪页面。",
+      "",
+      "## 发布边界",
+      "",
+      "本页只展示公开安全的整理结果。原始材料、账号状态、本机细节、私人对话和未复核内容不会进入公开展示。",
+      "",
+      "## 来源",
+      "",
+      "- [[wiki/sources/local-private-compile-2026-05-13]]",
+      "- [[wiki/projects/personal-archive-platform]]"
+    ],
+    "links": [
+      {
+        "target": "wiki/projects/personal-archive-platform",
+        "label": "wiki/projects/personal-archive-platform"
+      },
+      {
+        "target": "wiki/concepts/private-to-public-promotion-pipeline",
+        "label": "wiki/concepts/private-to-public-promotion-pipeline"
+      },
+      {
+        "target": "wiki/concepts/public-site-data-boundary",
+        "label": "wiki/concepts/public-site-data-boundary"
       },
       {
         "target": "wiki/concepts/agent-skill-governance",
         "label": "wiki/concepts/agent-skill-governance"
       },
       {
-        "target": "wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agent_Computer_Interface_Best_Practices",
-        "label": "wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agent_Computer_Interface_Best_Practices"
+        "target": "wiki/projects/personal-archive-frontend",
+        "label": "wiki/projects/personal-archive-frontend"
       },
       {
-        "target": "wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agent_Design_Patterns_2026",
-        "label": "wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agent_Design_Patterns_2026"
+        "target": "wiki/projects/coze-agent-builder-research",
+        "label": "wiki/projects/coze-agent-builder-research"
       },
       {
-        "target": "wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agentic_Workflow_Optimization_2026",
-        "label": "wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agentic_Workflow_Optimization_2026"
+        "target": "wiki/projects/xiaoan-local-model-learning-loop",
+        "label": "wiki/projects/xiaoan-local-model-learning-loop"
       },
       {
-        "target": "wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-多Agent协调与受控委派-2026-04-11",
-        "label": "wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-多Agent协调与受控委派-2026-04-11"
+        "target": "wiki/concepts/public-work-card-standard",
+        "label": "wiki/concepts/public-work-card-standard"
       },
       {
-        "target": "wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-多Agent通信信封与工件传递-2026-04-11",
-        "label": "wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-多Agent通信信封与工件传递-2026-04-11"
+        "target": "wiki/concepts/public-api-contract",
+        "label": "wiki/concepts/public-api-contract"
       },
       {
-        "target": "wiki/projects/04-知识库-领域研究-AI-Agent技术-项目架构-an-clan_Project_Architecture",
-        "label": "wiki/projects/04-知识库-领域研究-AI-Agent技术-项目架构-an-clan_Project_Architecture"
+        "target": "wiki/synthesis/archive-feed-public-data-update-2026-05-13",
+        "label": "wiki/synthesis/archive-feed-public-data-update-2026-05-13"
       },
       {
-        "target": "wiki/projects/04-知识库-领域研究-AI-Agent技术-项目架构-mcc_Project_Architecture",
-        "label": "wiki/projects/04-知识库-领域研究-AI-Agent技术-项目架构-mcc_Project_Architecture"
+        "target": "wiki/synthesis/archive-rebuild-public-journal",
+        "label": "wiki/synthesis/archive-rebuild-public-journal"
       },
       {
-        "target": "wiki/projects/04-知识库-领域研究-AI-Agent技术-项目架构-zongmen-gui_Project_Architecture",
-        "label": "wiki/projects/04-知识库-领域研究-AI-Agent技术-项目架构-zongmen-gui_Project_Architecture"
+        "target": "wiki/synthesis/public-tool-and-agent-inventory",
+        "label": "wiki/synthesis/public-tool-and-agent-inventory"
+      },
+      {
+        "target": "wiki/synthesis/public-tool-and-agent-inventory",
+        "label": "wiki/synthesis/public-tool-and-agent-inventory"
+      },
+      {
+        "target": "wiki/concepts/sensitive-context-rewrite-rules",
+        "label": "wiki/concepts/sensitive-context-rewrite-rules"
+      },
+      {
+        "target": "wiki/concepts/upstream-reference-and-adaptation-policy",
+        "label": "wiki/concepts/upstream-reference-and-adaptation-policy"
+      },
+      {
+        "target": "wiki/concepts/tool-obsidian-karpathy-wiki-compilation",
+        "label": "wiki/concepts/tool-obsidian-karpathy-wiki-compilation"
+      },
+      {
+        "target": "wiki/concepts/tool-codex-validation-workflow",
+        "label": "wiki/concepts/tool-codex-validation-workflow"
+      },
+      {
+        "target": "wiki/concepts/tool-browser-ui-testing-workflow",
+        "label": "wiki/concepts/tool-browser-ui-testing-workflow"
+      },
+      {
+        "target": "wiki/concepts/tool-github-publication-workflow",
+        "label": "wiki/concepts/tool-github-publication-workflow"
+      },
+      {
+        "target": "wiki/concepts/tool-privacy-scan-publication-gate",
+        "label": "wiki/concepts/tool-privacy-scan-publication-gate"
+      },
+      {
+        "target": "wiki/concepts/tool-local-private-wiki-compiler",
+        "label": "wiki/concepts/tool-local-private-wiki-compiler"
+      },
+      {
+        "target": "wiki/concepts/tool-agent-skill-stack-routing",
+        "label": "wiki/concepts/tool-agent-skill-stack-routing"
+      },
+      {
+        "target": "wiki/concepts/tool-coze-workflow-platform-study",
+        "label": "wiki/concepts/tool-coze-workflow-platform-study"
+      },
+      {
+        "target": "wiki/concepts/tool-local-model-experiment-toolchain",
+        "label": "wiki/concepts/tool-local-model-experiment-toolchain"
+      },
+      {
+        "target": "wiki/concepts/tool-site-data-generation-backend",
+        "label": "wiki/concepts/tool-site-data-generation-backend"
+      },
+      {
+        "target": "wiki/synthesis/growth-timeline-scattered-exploration-to-compiled-archive",
+        "label": "wiki/synthesis/growth-timeline-scattered-exploration-to-compiled-archive"
+      },
+      {
+        "target": "wiki/synthesis/growth-timeline-agent-workflow-phase",
+        "label": "wiki/synthesis/growth-timeline-agent-workflow-phase"
+      },
+      {
+        "target": "wiki/synthesis/growth-timeline-public-private-split",
+        "label": "wiki/synthesis/growth-timeline-public-private-split"
+      },
+      {
+        "target": "wiki/synthesis/growth-timeline-frontend-showcase-phase",
+        "label": "wiki/synthesis/growth-timeline-frontend-showcase-phase"
+      },
+      {
+        "target": "wiki/synthesis/growth-timeline-tool-governance-phase",
+        "label": "wiki/synthesis/growth-timeline-tool-governance-phase"
+      },
+      {
+        "target": "wiki/synthesis/lifecycle-replication-package-workflow",
+        "label": "wiki/synthesis/lifecycle-replication-package-workflow"
+      },
+      {
+        "target": "wiki/concepts/lifecycle-replication-package-template",
+        "label": "wiki/concepts/lifecycle-replication-package-template"
+      },
+      {
+        "target": "wiki/synthesis/lifecycle-package-backlog",
+        "label": "wiki/synthesis/lifecycle-package-backlog"
+      },
+      {
+        "target": "wiki/synthesis/github-best-practice-learning-loop",
+        "label": "wiki/synthesis/github-best-practice-learning-loop"
+      },
+      {
+        "target": "wiki/synthesis/lifecycle-automation-workflow",
+        "label": "wiki/synthesis/lifecycle-automation-workflow"
+      },
+      {
+        "target": "wiki/synthesis/lifecycle-automation-output-map",
+        "label": "wiki/synthesis/lifecycle-automation-output-map"
+      },
+      {
+        "target": "wiki/projects/lifecycle-personal-archive-platform",
+        "label": "wiki/projects/lifecycle-personal-archive-platform"
+      },
+      {
+        "target": "wiki/projects/lifecycle-frontend-archive-site",
+        "label": "wiki/projects/lifecycle-frontend-archive-site"
+      },
+      {
+        "target": "wiki/projects/lifecycle-coze-agent-builder",
+        "label": "wiki/projects/lifecycle-coze-agent-builder"
+      },
+      {
+        "target": "wiki/projects/lifecycle-xiaoan-local-model-loop",
+        "label": "wiki/projects/lifecycle-xiaoan-local-model-loop"
+      },
+      {
+        "target": "wiki/projects/lifecycle-agent-skill-governance",
+        "label": "wiki/projects/lifecycle-agent-skill-governance"
+      },
+      {
+        "target": "wiki/topics/personal-archive-moc",
+        "label": "wiki/topics/personal-archive-moc"
+      },
+      {
+        "target": "wiki/concepts/public-site-data-boundary",
+        "label": "wiki/concepts/public-site-data-boundary"
+      },
+      {
+        "target": "wiki/concepts/public-api-contract",
+        "label": "wiki/concepts/public-api-contract"
+      },
+      {
+        "target": "wiki/synthesis/public-tool-and-agent-inventory",
+        "label": "wiki/synthesis/public-tool-and-agent-inventory"
+      },
+      {
+        "target": "wiki/topics/publication-maintenance-moc",
+        "label": "wiki/topics/publication-maintenance-moc"
       }
     ],
     "sources": [
-      "[[wiki/sources/pre-rebuild-vault-archive]]"
+      "[[wiki/sources/local-private-compile-2026-05-13]]",
+      "[[wiki/projects/personal-archive-platform]]"
     ],
     "toc": [
       {
         "level": 1,
-        "title": "AI Agent Systems MOC",
-        "anchor": "ai-agent-systems-moc"
+        "title": "个人资料库公开路线图",
+        "anchor": "个人资料库公开路线图"
       },
       {
         "level": 2,
-        "title": "Frameworks",
-        "anchor": "frameworks"
+        "title": "概览",
+        "anchor": "概览"
       },
       {
         "level": 2,
-        "title": "Architecture Notes",
-        "anchor": "architecture-notes"
+        "title": "读者可以获得什么",
+        "anchor": "读者可以获得什么"
       },
       {
         "level": 2,
-        "title": "Project Architecture",
-        "anchor": "project-architecture"
+        "title": "推荐阅读方式",
+        "anchor": "推荐阅读方式"
+      },
+      {
+        "level": 2,
+        "title": "发布边界",
+        "anchor": "发布边界"
+      },
+      {
+        "level": 2,
+        "title": "来源",
+        "anchor": "来源"
       }
     ],
-    "wordCount": 358,
+    "wordCount": 280,
     "readingMinutes": 1,
     "metrics": {
-      "lineCount": 29,
-      "headingCount": 4,
-      "linkCount": 17,
-      "sourceCount": 1
+      "lineCount": 27,
+      "headingCount": 6,
+      "linkCount": 46,
+      "sourceCount": 2
     },
     "quality": {
       "hasSources": true,
       "hasToc": true,
-      "summaryLength": 85,
+      "summaryLength": 40,
+      "sourceTitle": "个人资料库公开路线图",
+      "sourceSummary": "个人资料库公开路线图：从本地整理、公开 wiki、站点数据到前端与未来 App 的分阶段推进路径。",
       "needsSourceReview": false,
       "displayTier": "showcase",
       "qualityScore": 100,
-      "hiddenReasons": [
-        "source:archive-only"
-      ],
+      "hiddenReasons": [],
       "explicitlyCurated": true
     },
     "publicSafety": "public-safe",
     "sourceLabels": [
       "public wiki",
-      "archive-derived"
+      "roadmap",
+      "publication"
     ],
+    "actionText": "先从这页挑一个相关页面继续读，再把下一步行动压缩成今天能完成的最小任务。",
     "displayTier": "showcase",
     "qualityScore": 100,
-    "hiddenReasons": [
-      "source:archive-only"
-    ],
-    "goal": "Map for public-safe AI agent framework and architecture notes migrated into the wiki.",
+    "hiddenReasons": [],
+    "goal": "规划安的书房公开路线：从资料整理、项目展示、能力证明到后端服务和长期自动化维护。",
     "audience": "希望沿着公开资料路线学习、复刻或维护知识库的读者。",
     "prerequisites": [],
     "estimatedTime": "按主题自定",
@@ -729,47 +1058,541 @@
     "steps": [
       {
         "id": "step-1",
-        "title": "AI Agent Systems MOC",
-        "goal": "AI Agent Systems MOC",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "Batch 1: Architecture And Boundary",
+        "goal": "Batch 1: Architecture And Boundary",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       },
       {
         "id": "step-2",
-        "title": "Frameworks",
-        "goal": "Frameworks",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "Batch 2: Project Evidence",
+        "goal": "Batch 2: Project Evidence",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       },
       {
         "id": "step-3",
-        "title": "Architecture Notes",
-        "goal": "Architecture Notes",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "Batch 3: Capability Pages",
+        "goal": "Batch 3: Capability Pages",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       },
       {
         "id": "step-4",
-        "title": "Project Architecture",
-        "goal": "Project Architecture",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "Batch 4: Website Display",
+        "goal": "Batch 4: Website Display",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
+        "optional": false
+      },
+      {
+        "id": "step-5",
+        "title": "Batch 5: Tool, Agent, And Attribution Standards",
+        "goal": "Batch 5: Tool, Agent, And Attribution Standards",
+        "description": "按本阶段说明完成一个可见小产出。",
+        "resources": [],
+        "completion": "读完本节并完成对应交付物。",
+        "optional": false
+      },
+      {
+        "id": "step-6",
+        "title": "Batch 6: Growth Timeline Events",
+        "goal": "Batch 6: Growth Timeline Events",
+        "description": "按本阶段说明完成一个可见小产出。",
+        "resources": [],
+        "completion": "读完本节并完成对应交付物。",
+        "optional": false
+      },
+      {
+        "id": "step-7",
+        "title": "Batch 7: Lifecycle Learning Packages",
+        "goal": "Batch 7: Lifecycle Learning Packages",
+        "description": "按本阶段说明完成一个可见小产出。",
+        "resources": [],
+        "completion": "读完本节并完成对应交付物。",
+        "optional": false
+      }
+    ]
+  },
+  {
+    "id": "c_dbf71cbbbf8132a0",
+    "title": "AI 辅助开发到可收费交付路线",
+    "sourceTitle": "AI 辅助开发到可收费交付路线",
+    "slug": "wiki-synthesis-vibe-coding-paid-delivery-path",
+    "summary": "给想靠 AI 做事、展示能力、未来尝试接单的小白看的路线：先做一个可验收的小交付，再整理案例、沟通边界和复盘记录。",
+    "sourceSummary": "给想靠 AI 做事、展示能力、未来尝试接单的小白看的路线：先做一个可验收的小交付，再整理案例、沟通边界和复盘记录。",
+    "tags": [
+      "learning-path",
+      "beginner-friendly",
+      "frontend",
+      "delivery",
+      "replication",
+      "curated",
+      "featured"
+    ],
+    "status": [
+      "featured"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": null,
+    "sourcePath": "wiki/synthesis/vibe-coding-paid-delivery-path.md",
+    "module": "paths",
+    "category": "synthesis",
+    "type": "learning-path",
+    "phase": null,
+    "cover": "/covers/path-vibe-paid-delivery.svg",
+    "contentType": "article",
+    "href": "/content/wiki-synthesis-vibe-coding-paid-delivery-path",
+    "contentLines": [
+      "# AI 辅助开发到可收费交付路线",
+      "",
+      "很多人说“我想靠 AI 做项目赚钱”。这句话本身没有错，但它太快了。快到人还没有作品，心里已经站在收入面前；快到交付、验收、沟通、维护这些真正决定信任的东西，全被兴奋盖过去。",
+      "",
+      "这条路线把目标往回拉一点：先不谈能赚多少钱，先做出一个别人能打开、能理解、能验收的小作品。钱从来不是按钮，钱是信任的副产品。信任来自你能稳定解决一个小问题，并且知道自己不能承诺什么。",
+      "",
+      "## 最终小作品",
+      "",
+      "你完成这条路线后，应该拥有一个最小可交付案例。它不需要宏大，但必须完整：",
+      "",
+      "- 一个真实用户或真实场景；",
+      "- 一个网页或 App 原型；",
+      "- 一个可打开的演示入口；",
+      "- 三到五个核心功能；",
+      "- 一份复刻步骤；",
+      "- 一份验收清单；",
+      "- 一段复盘，说明你做成了什么，没做什么。",
+      "",
+      "例子可以很小：",
+      "",
+      "| 小作品 | 适合谁 | 可验收结果 |",
+      "|---|---|---|",
+      "| 个人书房首页 | 想展示学习历程的人 | 首页、作品卡、详情页能打开 |",
+      "| 小店菜单页 | 本地商家 | 手机能看菜单，能跳转联系 |",
+      "| 课程资料柜 | 老师或学习者 | 资料按主题筛选，能搜索 |",
+      "| 小型发布页 | 想验证想法的人 | 一屏说明价值，收集反馈 |",
+      "",
+      "## 阶段一：把赚钱想象改写成真实小问题",
+      "",
+      "先写一个你能看见的场景。不要写“我要用 AI 赚钱”，要写“我想帮某个人把某件事变简单”。",
+      "",
+      "交付物：一张问题卡。",
+      "",
+      "检查点：这张卡必须回答四个问题：谁在用，卡在哪里，完成后看到什么，怎样判断做成了。",
+      "",
+      "示例：",
+      "",
+      "- 谁在用：一个想展示学习经历的新手；",
+      "- 卡在哪里：资料很多，但别人不知道从哪里看；",
+      "- 完成后看到什么：一个首页、三张作品卡、一个复刻路线；",
+      "- 怎样判断做成：读者能在三分钟内说出他应该先点哪里。",
+      "",
+      "安的提醒：人最容易被收益图景催眠。真正的开端，是把欲望翻译成一个小到能落地的问题。",
+      "",
+      "## 阶段二：选一个最小交付物",
+      "",
+      "不要一开始做完整平台。完整平台会把你拖进登录、权限、支付、后台、部署、客服、售后。小白第一阶段要避开这些。",
+      "",
+      "交付物：一个最小交付物定义。",
+      "",
+      "检查点：这个交付物七天内能做出第一版，且别人打开后不需要你在旁边解释十分钟。",
+      "",
+      "优先选这几类：",
+      "",
+      "1. 一页展示页；",
+      "2. 三到六张资料卡；",
+      "3. 一个搜索或筛选；",
+      "4. 一个详情页；",
+      "5. 一份下载或复制说明；",
+      "6. 一个只读对话入口。",
+      "",
+      "暂时避开：",
+      "",
+      "- 支付闭环；",
+      "- 复杂账号系统；",
+      "- 多人协作后台；",
+      "- 自动写入用户数据；",
+      "- 不受控的模型工具调用。",
+      "",
+      "这不是退缩。缩小范围，是为了让你第一次有机会真正完成。",
+      "",
+      "## 阶段三：用 AI 做第一版，但把判断权留在自己手里",
+      "",
+      "你可以让 AI 写代码、排版、生成数据、拆任务、做检查表。不要把判断交出去。",
+      "",
+      "交付物：第一版可打开页面。",
+      "",
+      "检查点：页面至少满足三件事：能打开，能看懂，有下一步。",
+      "",
+      "推荐工作流：",
+      "",
+      "1. 先写需求，不写代码：目标用户、页面模块、必须出现的内容、不要出现的内容。",
+      "2. 让 AI 生成页面结构：导航、首页、卡片、详情页、移动端入口。",
+      "3. 自己删掉废话：不懂的词、空泛口号、重复卡片、无意义图标。",
+      "4. 用浏览器检查：手机宽度、标题是否换行、按钮是否能点、图片是否重复。",
+      "5. 写一份变更记录：今天改了什么，为什么改。",
+      "",
+      "安的提醒：AI 很会把事情做得像完成了。你要训练自己看见“像完成”和“真完成”的差别。",
+      "",
+      "## 阶段四：让一个真实的人试用",
+      "",
+      "不要只问 AI 这个页面好不好。AI 会礼貌，真实用户会迷路。",
+      "",
+      "交付物：一份三人以内的试用记录。",
+      "",
+      "检查点：至少记录三种反应：他第一眼看懂了什么，哪里停住，下一步想点哪里。",
+      "",
+      "你可以这样问：",
+      "",
+      "- 你觉得这个页面是做什么的？",
+      "- 如果你想照着做，你会先点哪里？",
+      "- 哪个词让你不懂？",
+      "- 哪个地方像广告，不像真实经验？",
+      "- 你愿意把这个页面发给别人吗，为什么？",
+      "",
+      "心理层要注意：新手很怕被否定，所以容易只找会夸自己的人。你需要的不是安慰，而是可以修页面的反馈。",
+      "",
+      "## 阶段五：把作品包装成可交付案例",
+      "",
+      "一个可交付案例不是“我做了一个网页”。它至少要讲清楚问题、对象、过程、结果和边界。",
+      "",
+      "交付物：一页案例说明。",
+      "",
+      "检查点：陌生人读完后，能判断你适不适合接一个类似的小任务。",
+      "",
+      "案例结构：",
+      "",
+      "1. 项目背景：为谁解决什么问题；",
+      "2. 展示入口：可以打开的页面或截图；",
+      "3. 核心功能：三到五项，不写虚词；",
+      "4. 实现步骤：从需求到页面到验收；",
+      "5. 交付边界：包含什么，不包含什么；",
+      "6. 复盘：哪里做得好，哪里下次要改；",
+      "7. 下一步：如果继续做，先补哪一个功能。",
+      "",
+      "社会层要注意：市场不是因为你努力就信任你。市场看见的是证据、沟通、责任和可预期结果。",
+      "",
+      "## 阶段六：尝试一个小型可收费闭环",
+      "",
+      "这一步不能急。只有当你已经有可展示案例、交付边界和验收清单，才适合尝试小型收费。",
+      "",
+      "交付物：一个小型服务说明。",
+      "",
+      "检查点：说明里必须写清价格范围、交付范围、修改次数、交付时间和不承诺事项。没有这些，就先不要收钱。",
+      "",
+      "可尝试的低风险服务：",
+      "",
+      "- 帮别人做一页个人展示页；",
+      "- 帮小店做一个静态菜单页；",
+      "- 帮学习者整理一套资料卡；",
+      "- 帮创作者做一个作品集入口；",
+      "- 帮朋友把一个想法做成可点击原型。",
+      "",
+      "不要承诺：",
+      "",
+      "- 稳定盈利；",
+      "- 长期免费维护；",
+      "- 复杂后端安全；",
+      "- 支付和账号合规；",
+      "- 你还没有能力验收的功能。",
+      "",
+      "哲学层要注意：收钱意味着责任。钱不是证明你厉害，钱是别人把一部分不确定性交到你手里。",
+      "",
+      "## 阶段七：复盘，沉淀成下一条路线",
+      "",
+      "每次交付后，你要把经验写回自己的资料库或公开书房。否则你只是做完了一件事，没有留下可复用的方法。",
+      "",
+      "交付物：一篇复盘和一张下一步清单。",
+      "",
+      "检查点：复盘必须讲事实，不讲空泛感动。写清楚输入、动作、结果、失败、下次调整。",
+      "",
+      "复盘模板：",
+      "",
+      "| 问题 | 要写什么 |",
+      "|---|---|",
+      "| 做成了什么 | 能打开、能展示、能交付的部分 |",
+      "| 没做什么 | 这次主动砍掉的范围 |",
+      "| 哪里卡住 | 技术、表达、沟通、审美、验收 |",
+      "| 用户怎么说 | 真实反馈，不改写成漂亮话 |",
+      "| 下次先改什么 | 一个动作，不超过三项 |",
+      "",
+      "安的提醒：复盘不是自我审判。复盘是把混乱变成下一次的路标。",
+      "",
+      "## 对小白最重要的判断",
+      "",
+      "如果你现在没有作品，先别研究“怎么接大单”。先做一个小页面。",
+      "",
+      "如果你现在没有用户，先别研究“怎么规模化”。先让一个真实的人看懂。",
+      "",
+      "如果你现在没有验收标准，先别研究“怎么报价”。先写清楚什么叫完成。",
+      "",
+      "如果你现在没有复盘，先别急着做第二个。先把第一个留下来。",
+      "",
+      "## 安的提醒",
+      "",
+      "- 你可以有赚钱的愿望，但不要用赚钱遮住交付能力的空白。",
+      "- 小白靠 AI 起步，真正练的是判断、沟通和验收。",
+      "- 能收费的小作品，一定有清楚边界；没有边界，后面多半会变成纠缠。",
+      "- 不要卖自己维护不了的东西。诚实会慢，虚假会坏。",
+      "",
+      "## 相关内容",
+      "",
+      "- [[wiki/synthesis/lifecycle-replication-package-workflow]]",
+      "- [[wiki/projects/personal-archive-frontend]]",
+      "- [[wiki/projects/lifecycle-frontend-archive-site]]",
+      "- [[wiki/concepts/front-end-ai-building-for-beginners]]",
+      "- [[wiki/concepts/public-work-card-standard]]"
+    ],
+    "links": [
+      {
+        "target": "wiki/synthesis/lifecycle-replication-package-workflow",
+        "label": "wiki/synthesis/lifecycle-replication-package-workflow"
+      },
+      {
+        "target": "wiki/projects/personal-archive-frontend",
+        "label": "wiki/projects/personal-archive-frontend"
+      },
+      {
+        "target": "wiki/projects/lifecycle-frontend-archive-site",
+        "label": "wiki/projects/lifecycle-frontend-archive-site"
+      },
+      {
+        "target": "wiki/concepts/front-end-ai-building-for-beginners",
+        "label": "wiki/concepts/front-end-ai-building-for-beginners"
+      },
+      {
+        "target": "wiki/concepts/public-work-card-standard",
+        "label": "wiki/concepts/public-work-card-standard"
+      }
+    ],
+    "sources": [
+      "[[wiki/sources/tutorial-and-source-research-best-practices]]",
+      "[[wiki/sources/diataxis-framework]]",
+      "[[wiki/synthesis/lifecycle-replication-package-workflow]]",
+      "[[wiki/projects/personal-archive-frontend]]",
+      "[[wiki/projects/lifecycle-frontend-archive-site]]",
+      "https://skills.github.com/quickstart",
+      "https://diataxis.fr/",
+      "https://www.thegooddocsproject.dev/template",
+      "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "https://www.nngroup.com/articles/ten-usability-heuristics/"
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "AI 辅助开发到可收费交付路线",
+        "anchor": "ai-辅助开发到可收费交付路线"
+      },
+      {
+        "level": 2,
+        "title": "最终小作品",
+        "anchor": "最终小作品"
+      },
+      {
+        "level": 2,
+        "title": "阶段一：把赚钱想象改写成真实小问题",
+        "anchor": "阶段一把赚钱想象改写成真实小问题"
+      },
+      {
+        "level": 2,
+        "title": "阶段二：选一个最小交付物",
+        "anchor": "阶段二选一个最小交付物"
+      },
+      {
+        "level": 2,
+        "title": "阶段三：用 AI 做第一版，但把判断权留在自己手里",
+        "anchor": "阶段三用-ai-做第一版但把判断权留在自己手里"
+      },
+      {
+        "level": 2,
+        "title": "阶段四：让一个真实的人试用",
+        "anchor": "阶段四让一个真实的人试用"
+      },
+      {
+        "level": 2,
+        "title": "阶段五：把作品包装成可交付案例",
+        "anchor": "阶段五把作品包装成可交付案例"
+      },
+      {
+        "level": 2,
+        "title": "阶段六：尝试一个小型可收费闭环",
+        "anchor": "阶段六尝试一个小型可收费闭环"
+      },
+      {
+        "level": 2,
+        "title": "阶段七：复盘，沉淀成下一条路线",
+        "anchor": "阶段七复盘沉淀成下一条路线"
+      },
+      {
+        "level": 2,
+        "title": "对小白最重要的判断",
+        "anchor": "对小白最重要的判断"
+      },
+      {
+        "level": 2,
+        "title": "安的提醒",
+        "anchor": "安的提醒"
+      },
+      {
+        "level": 2,
+        "title": "相关内容",
+        "anchor": "相关内容"
+      }
+    ],
+    "wordCount": 2196,
+    "readingMinutes": 5,
+    "metrics": {
+      "lineCount": 197,
+      "headingCount": 12,
+      "linkCount": 5,
+      "sourceCount": 10
+    },
+    "quality": {
+      "hasSources": true,
+      "hasToc": true,
+      "summaryLength": 57,
+      "sourceTitle": "AI 辅助开发到可收费交付路线",
+      "sourceSummary": "给想靠 AI 做事、展示能力、未来尝试接单的小白看的路线：先做一个可验收的小交付，再整理案例、沟通边界和复盘记录。",
+      "needsSourceReview": false,
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "explicitlyCurated": true
+    },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "GitHub Skills",
+      "Diataxis",
+      "Good Docs",
+      "NN/g",
+      "Google helpful content",
+      "public project evidence"
+    ],
+    "whyItMattered": "很多小白想靠 AI 做项目赚钱，但真正的起点不是赚钱想象，而是做出一个别人能验收的小交付。",
+    "psychologicalLayer": "新手常被收益想象推着跑，心里焦急，手上却没有可验收成果。这条路线先降低羞耻感和完美主义，把注意力放回一个能完成的小闭环。",
+    "sociologicalLayer": "市场信任来自可展示的案例、清楚的边界、稳定沟通和可交接文档。会用 AI 不等于能交付，能交付才会被别人认真对待。",
+    "philosophicalLayer": "价值不是把工具叫得多响，而是替一个具体的人解决一个具体问题，并承担结果的边界。",
+    "operationStory": [
+      "安从三月后开始密集接触 AI，先在混乱中试工具、做页面、整理资料，再把一次次操作编成公开书房。",
+      "前端先行，读者只看见页面里的内容；后端和资料库是供内容生产使用的后台，不直接暴露给读者。",
+      "每个项目都要被改写成小白能读懂的页面：为什么做、怎么做、如何复刻、哪里会失败、下一步怎么验收。"
+    ],
+    "replicationSteps": [
+      "先找一个真实小问题，不做宏大平台。",
+      "用一句话写清楚读者或客户要看到什么结果。",
+      "让 AI 生成第一个页面或流程，但你负责判断、删减和验收。",
+      "把样品给一个真实的人看，记录他卡在哪里。",
+      "把交付范围缩成一页说明、一个演示链接和一份交接清单。",
+      "完成后写复盘：做成了什么，没做什么，下次如何改。"
+    ],
+    "failureModes": [
+      "把赚钱当目标，结果没有任何可演示作品。",
+      "一开始就做完整 App，七天后只剩半成品和焦虑。",
+      "照搬模板，不知道用户是谁，也不知道验收标准。",
+      "承诺长期维护、复杂后端、支付或账号系统，但自己无法保证质量。",
+      "只展示酷炫界面，不写交付边界、复刻步骤和失败处理。"
+    ],
+    "lessons": [
+      "小白的第一笔能力证明，不是大项目，而是一个能被别人看懂的小闭环。",
+      "AI 可以加快制作，但不能替你承担判断。",
+      "可收费的前提不是会聊天，而是能交付、能解释、能修改。",
+      "案例越小，边界越清楚，越容易形成信任。"
+    ],
+    "actionText": "今天只做第一步：选一个真实小问题，写出用户、结果、验收标准，不急着谈赚钱。",
+    "displayTier": "showcase",
+    "qualityScore": 100,
+    "hiddenReasons": [],
+    "goal": "给想靠 AI 做事、展示能力、未来尝试接单的小白看的路线：先做一个可验收的小交付，再整理案例、沟通边界和复盘记录。",
+    "audience": "想靠 AI 做出真实小作品、未来尝试接单或展示能力的小白",
+    "prerequisites": [
+      "会用中文描述需求",
+      "能打开网页",
+      "愿意记录失败",
+      "不承诺自己维护不了的东西"
+    ],
+    "estimatedTime": "7 天做出第一个可验收样品，30 天打磨成可展示案例",
+    "difficulty": "beginner",
+    "finalOutput": "一个可打开、可演示、可交付、可复盘的最小网页或 App 原型案例。",
+    "steps": [
+      {
+        "id": "step-1",
+        "title": "阶段一：把赚钱想象改写成真实小问题",
+        "goal": "阶段一：把赚钱想象改写成真实小问题",
+        "description": "先写一个你能看见的场景。不要写“我要用 AI 赚钱”，要写“我想帮某个人把某件事变简单”。",
+        "resources": [],
+        "completion": "这张卡必须回答四个问题：谁在用，卡在哪里，完成后看到什么，怎样判断做成了。",
+        "optional": false
+      },
+      {
+        "id": "step-2",
+        "title": "阶段二：选一个最小交付物",
+        "goal": "阶段二：选一个最小交付物",
+        "description": "不要一开始做完整平台。完整平台会把你拖进登录、权限、支付、后台、部署、客服、售后。小白第一阶段要避开这些。",
+        "resources": [],
+        "completion": "这个交付物七天内能做出第一版，且别人打开后不需要你在旁边解释十分钟。",
+        "optional": false
+      },
+      {
+        "id": "step-3",
+        "title": "阶段三：用 AI 做第一版，但把判断权留在自己手里",
+        "goal": "阶段三：用 AI 做第一版，但把判断权留在自己手里",
+        "description": "你可以让 AI 写代码、排版、生成数据、拆任务、做检查表。不要把判断交出去。",
+        "resources": [],
+        "completion": "页面至少满足三件事：能打开，能看懂，有下一步。",
+        "optional": false
+      },
+      {
+        "id": "step-4",
+        "title": "阶段四：让一个真实的人试用",
+        "goal": "阶段四：让一个真实的人试用",
+        "description": "不要只问 AI 这个页面好不好。AI 会礼貌，真实用户会迷路。",
+        "resources": [],
+        "completion": "至少记录三种反应：他第一眼看懂了什么，哪里停住，下一步想点哪里。",
+        "optional": false
+      },
+      {
+        "id": "step-5",
+        "title": "阶段五：把作品包装成可交付案例",
+        "goal": "阶段五：把作品包装成可交付案例",
+        "description": "一个可交付案例不是“我做了一个网页”。它至少要讲清楚问题、对象、过程、结果和边界。",
+        "resources": [],
+        "completion": "陌生人读完后，能判断你适不适合接一个类似的小任务。",
+        "optional": false
+      },
+      {
+        "id": "step-6",
+        "title": "阶段六：尝试一个小型可收费闭环",
+        "goal": "阶段六：尝试一个小型可收费闭环",
+        "description": "这一步不能急。只有当你已经有可展示案例、交付边界和验收清单，才适合尝试小型收费。",
+        "resources": [],
+        "completion": "说明里必须写清价格范围、交付范围、修改次数、交付时间和不承诺事项。没有这些，就先不要收钱。",
+        "optional": false
+      },
+      {
+        "id": "step-7",
+        "title": "阶段七：复盘，沉淀成下一条路线",
+        "goal": "阶段七：复盘，沉淀成下一条路线",
+        "description": "每次交付后，你要把经验写回自己的资料库或公开书房。否则你只是做完了一件事，没有留下可复用的方法。",
+        "resources": [],
+        "completion": "复盘必须讲事实，不讲空泛感动。写清楚输入、动作、结果、失败、下次调整。",
         "optional": false
       }
     ]
   },
   {
     "id": "c_87e2a1ac5dbe8a31",
-    "title": "LLM Wiki MOC",
+    "title": "公开知识库架构路线图与维护入口",
+    "sourceTitle": "LLM Wiki MOC",
     "slug": "wiki-topics-llm-wiki-moc",
-    "summary": "Map for the vault architecture, schema, source policy, and rebuild alignment notes.",
+    "summary": "LLM Wiki 总地图：连接官方来源、公开 wiki 层契约、架构偏差说明、维护规则和当前对齐审计。",
+    "sourceSummary": "LLM Wiki 总地图：连接官方来源、公开 wiki 层契约、架构偏差说明、维护规则和当前对齐审计。",
     "tags": [
       "llm-wiki",
       "moc",
@@ -780,39 +1603,43 @@
       "public"
     ],
     "createdAt": "2026-05-12",
-    "updatedAt": "2026-05-12",
+    "updatedAt": "2026-05-13",
+    "eventDate": null,
     "sourcePath": "wiki/topics/llm-wiki-moc.md",
     "module": "paths",
     "category": "synthesis",
     "type": "moc",
+    "phase": null,
+    "cover": null,
     "contentType": "article",
     "href": "/content/wiki-topics-llm-wiki-moc",
     "contentLines": [
-      "# LLM Wiki MOC",
+      "# 公开知识库架构路线图与维护入口",
       "",
-      "Use this page for the wiki operating model, not for raw migrated content.",
+      "## 概览",
       "",
-      "## Architecture",
+      "LLM Wiki 总地图：连接官方来源、公开 wiki 层契约、架构偏差说明、维护规则和当前对齐审计。",
       "",
-      "- [[wiki/sources/karpathy-llm-wiki-pattern]] - official pattern source",
-      "- [[wiki/synthesis/karpathy-official-wiki-layer]] - public wiki layer contract",
-      "- [[CLAUDE]] - local schema and page contract",
-      "- [[AGENTS]] - operating rules for future agents",
-      "- [[wiki/sources-and-data-policy]] - public/private source boundary",
+      "## 读者可以获得什么",
       "",
-      "## Rebuild Records",
+      "- 理解「公开知识库架构路线图与维护入口」在安的书房里的位置。",
+      "- 看清它解决的问题、适合的读者和后续复刻方向。",
+      "- 知道公开页面保留的是方法、结构和经验，不包含原始私有材料。",
       "",
-      "- [[wiki/projects/wiki-projects-karpathy-llm-wiki-alignment-2026-05-12]] - rebuild alignment note",
-      "- [[wiki/projects/root-maintenance-backlog]] - durable follow-up list",
-      "- [[wiki/sources/pre-rebuild-vault-archive]] - migration source record",
-      "- [[log]] - append-only operation log",
+      "## 推荐阅读方式",
       "",
-      "## Migrated LLM Wiki Notes",
+      "1. 先读概览，确认它和当前学习目标是否相关。",
+      "2. 再看关联页面，理解来源、项目、工具或工作流之间的关系。",
+      "3. 如果要复刻，先写下自己的目标、输入材料、边界和验收标准。",
+      "4. 完成后回到资料库，把新的经验整理成可追踪页面。",
       "",
-      "- [[wiki/topics/04-知识库-LLM-Wiki-articles-2026-04-11-Agentic-Wiki-编译样本]]",
-      "- [[wiki/topics/04-知识库-LLM-Wiki-articles-2026-04-14-多仓接入-样例]]",
-      "- [[wiki/topics/04-知识库-LLM-Wiki-index]]",
-      "- [[wiki/topics/04-知识库-LLM-Wiki-log]]"
+      "## 发布边界",
+      "",
+      "本页只展示公开安全的整理结果。原始材料、账号状态、本机细节、私人对话和未复核内容不会进入公开展示。",
+      "",
+      "## 来源",
+      "",
+      "- [[wiki/sources/karpathy-llm-wiki-pattern]]"
     ],
     "links": [
       {
@@ -874,37 +1701,49 @@
     "toc": [
       {
         "level": 1,
-        "title": "LLM Wiki MOC",
-        "anchor": "llm-wiki-moc"
+        "title": "公开知识库架构路线图与维护入口",
+        "anchor": "公开知识库架构路线图与维护入口"
       },
       {
         "level": 2,
-        "title": "Architecture",
-        "anchor": "architecture"
+        "title": "概览",
+        "anchor": "概览"
       },
       {
         "level": 2,
-        "title": "Rebuild Records",
-        "anchor": "rebuild-records"
+        "title": "读者可以获得什么",
+        "anchor": "读者可以获得什么"
       },
       {
         "level": 2,
-        "title": "Migrated LLM Wiki Notes",
-        "anchor": "migrated-llm-wiki-notes"
+        "title": "推荐阅读方式",
+        "anchor": "推荐阅读方式"
+      },
+      {
+        "level": 2,
+        "title": "发布边界",
+        "anchor": "发布边界"
+      },
+      {
+        "level": 2,
+        "title": "来源",
+        "anchor": "来源"
       }
     ],
-    "wordCount": 137,
+    "wordCount": 284,
     "readingMinutes": 1,
     "metrics": {
-      "lineCount": 25,
-      "headingCount": 4,
+      "lineCount": 26,
+      "headingCount": 6,
       "linkCount": 13,
       "sourceCount": 1
     },
     "quality": {
       "hasSources": true,
       "hasToc": true,
-      "summaryLength": 83,
+      "summaryLength": 51,
+      "sourceTitle": "LLM Wiki MOC",
+      "sourceSummary": "LLM Wiki 总地图：连接官方来源、公开 wiki 层契约、架构偏差说明、维护规则和当前对齐审计。",
       "needsSourceReview": false,
       "displayTier": "showcase",
       "qualityScore": 100,
@@ -919,7 +1758,7 @@
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": [],
-    "goal": "Map for the vault architecture, schema, source policy, and rebuild alignment notes.",
+    "goal": "LLM Wiki 总地图：连接官方来源、公开 wiki 层契约、架构偏差说明、维护规则和当前对齐审计。",
     "audience": "希望沿着公开资料路线学习、复刻或维护知识库的读者。",
     "prerequisites": [],
     "estimatedTime": "按主题自定",
@@ -928,47 +1767,41 @@
     "steps": [
       {
         "id": "step-1",
-        "title": "LLM Wiki MOC",
-        "goal": "LLM Wiki MOC",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "Architecture",
+        "goal": "Architecture",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       },
       {
         "id": "step-2",
-        "title": "Architecture",
-        "goal": "Architecture",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "Rebuild Records",
+        "goal": "Rebuild Records",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       },
       {
         "id": "step-3",
-        "title": "Rebuild Records",
-        "goal": "Rebuild Records",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
-        "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
-        "optional": false
-      },
-      {
-        "id": "step-4",
         "title": "Migrated LLM Wiki Notes",
         "goal": "Migrated LLM Wiki Notes",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       }
-    ]
+    ],
+    "actionText": "从「公开知识库架构路线图与维护入口」的第一个阶段开始，写下目标、交付物和验收方式。"
   },
   {
     "id": "c_74981be21c4f4c9f",
-    "title": "Personal Archive MOC",
+    "title": "个人资料库地图",
+    "sourceTitle": "个人资料库地图",
     "slug": "wiki-topics-personal-archive-moc",
-    "summary": "Map of the public personal archive platform, promotion workflow, frontend data boundary, and publication roadmap.",
+    "summary": "安的个人资料库地图：连接平台、展示层、公开提升流程、数据边界和后续发布路线。",
+    "sourceSummary": "安的个人资料库地图：连接平台、展示层、公开提升流程、数据边界和后续发布路线。",
     "tags": [
       "archive",
       "moc",
@@ -981,49 +1814,93 @@
     ],
     "createdAt": "2026-05-13",
     "updatedAt": "2026-05-13",
+    "eventDate": null,
     "sourcePath": "wiki/topics/personal-archive-moc.md",
     "module": "paths",
     "category": "synthesis",
     "type": "moc",
+    "phase": null,
+    "cover": null,
     "contentType": "article",
     "href": "/content/wiki-topics-personal-archive-moc",
     "contentLines": [
-      "# Personal Archive MOC",
+      "# 个人资料库地图",
       "",
-      "This map is the public navigation layer for the personal archive project.",
+      "这张地图是安的个人资料库公开导航层。它说明项目从哪里来、哪些内容能公开、哪些内容要先改写，以及展示页面怎样读取公开数据。",
       "",
-      "## Platform",
+      "## 平台主线",
       "",
-      "- [[wiki/projects/personal-archive-platform]] - public project overview",
-      "- [[wiki/synthesis/archive-information-architecture]] - information backbone",
-      "- [[wiki/synthesis/personal-archive-public-roadmap]] - staged publication plan",
-      "- [[wiki/synthesis/karpathy-official-wiki-layer]] - wiki layer contract",
+      "- [[wiki/projects/personal-archive-platform]] - 公开项目总览",
+      "- [[wiki/projects/personal-archive-frontend]] - 网站前端和生成数据后端",
+      "- [[wiki/synthesis/archive-information-architecture]] - 信息骨架",
+      "- [[wiki/synthesis/personal-archive-public-roadmap]] - 分阶段发布路线",
+      "- [[wiki/synthesis/karpathy-official-wiki-layer]] - wiki 层契约",
       "",
-      "## Promotion Workflow",
+      "## 公开提升流程",
       "",
-      "- [[wiki/synthesis/project-evidence-matrix]] - project evidence and readiness",
-      "- [[wiki/synthesis/capability-evidence-matrix]] - capability evidence and repeatable workflows",
-      "- [[wiki/synthesis/public-growth-timeline-framework]] - public timeline classification",
-      "- [[wiki/synthesis/information-review-queue]] - unresolved information decisions",
-      "- [[wiki/concepts/private-to-public-promotion-pipeline]] - how local-only review material becomes public pages",
-      "- [[wiki/sources/local-private-compile-2026-05-13]] - public-safe source record for the current compile pass",
-      "- [[wiki/sources-and-data-policy]] - source and publication boundary",
+      "- [[wiki/synthesis/lifecycle-replication-package-workflow]] - 可复制学习包标准流程",
+      "- [[wiki/concepts/lifecycle-replication-package-template]] - 可复用学习包模板",
+      "- [[wiki/synthesis/lifecycle-package-backlog]] - 学习包队列和下一批候选",
+      "- [[wiki/synthesis/lifecycle-automation-workflow]] - 两小时异步自动化链路",
+      "- [[wiki/synthesis/lifecycle-automation-output-map]] - 自动化产出写入位置",
+      "- [[wiki/synthesis/project-evidence-matrix]] - 项目证据与就绪度",
+      "- [[wiki/synthesis/capability-evidence-matrix]] - 能力证据和可复用流程",
+      "- [[wiki/synthesis/public-growth-timeline-framework]] - 公开年谱分类规则",
+      "- [[wiki/synthesis/information-review-queue]] - 尚未解决的信息决策",
+      "- [[wiki/concepts/private-to-public-promotion-pipeline]] - 本地复核材料怎样成为公开页面",
+      "- [[wiki/sources/local-private-compile-2026-05-13]] - 当前编译批次的公开安全来源记录",
+      "- [[wiki/sources-and-data-policy]] - 来源与发布边界",
       "",
-      "## Website Data",
+      "## 网站数据",
       "",
-      "- [[wiki/concepts/public-site-data-boundary]] - frontend/backend data contract",
-      "- [[wiki/topics/publication-maintenance-moc]] - validation and publication gates",
+      "- [[wiki/concepts/public-site-data-boundary]] - 前端/后端数据契约",
+      "- [[wiki/concepts/public-api-contract]] - 未来只读 API 形状",
+      "- [[wiki/concepts/public-work-card-standard]] - 公开项目卡最低标准",
+      "- [[wiki/concepts/sensitive-context-rewrite-rules]] - 本地上下文改写成公开经验的规则",
+      "- [[wiki/concepts/upstream-reference-and-adaptation-policy]] - 引用、改写和归属标注",
+      "- [[wiki/topics/publication-maintenance-moc]] - 验证与发布闸门",
       "",
-      "## Agent And Skills",
+      "## 精选项目起点",
       "",
-      "- [[wiki/concepts/agent-skill-governance]] - public-safe skill and rule governance",
-      "- [[wiki/topics/skills-and-tools-moc]] - public skills and tools map",
-      "- [[wiki/topics/ai-agent-systems-moc]] - public agent systems map"
+      "- [[wiki/projects/lifecycle-personal-archive-platform]] - 可复刻的资料库平台生命周期",
+      "- [[wiki/projects/lifecycle-frontend-archive-site]] - 可复刻的前端/后端数据生命周期",
+      "- [[wiki/projects/lifecycle-coze-agent-builder]] - 可复刻的 Agent 搭建器研究生命周期",
+      "- [[wiki/projects/lifecycle-xiaoan-local-model-loop]] - 可复刻的本地模型学习生命周期",
+      "- [[wiki/projects/lifecycle-agent-skill-governance]] - 可复刻的 Agent 技能治理生命周期",
+      "- [[wiki/projects/lifecycle-hanako-openhanako-creative-agent-desktop]] - 可复刻的创作型桌面 Agent 生命周期",
+      "- [[wiki/projects/lifecycle-agent-ide-learning-workflow]] - 可复刻的 Agent IDE 评估流程",
+      "- [[wiki/projects/coze-agent-builder-research]] - Coze 风格 Agent 搭建器架构研究",
+      "- [[wiki/projects/xiaoan-local-model-learning-loop]] - 本地模型实验治理与复盘闭环",
+      "- [[wiki/projects/personal-archive-frontend]] - 公开资料库网站前端",
+      "",
+      "## 公开更新与手记",
+      "",
+      "- [[wiki/synthesis/archive-feed-public-data-update-2026-05-13]] - 第一次公开数据更新",
+      "- [[wiki/synthesis/archive-rebuild-public-journal]] - 重建经验公开手记",
+      "- [[wiki/synthesis/public-tool-and-agent-inventory]] - 公开安全的工具与 Agent 清单",
+      "",
+      "## 成长年谱",
+      "",
+      "- [[wiki/synthesis/growth-timeline-scattered-exploration-to-compiled-archive]]",
+      "- [[wiki/synthesis/growth-timeline-agent-workflow-phase]]",
+      "- [[wiki/synthesis/growth-timeline-public-private-split]]",
+      "- [[wiki/synthesis/growth-timeline-frontend-showcase-phase]]",
+      "- [[wiki/synthesis/growth-timeline-tool-governance-phase]]",
+      "",
+      "## Agent 与技能",
+      "",
+      "- [[wiki/concepts/agent-skill-governance]] - 公开安全的技能与规则治理",
+      "- [[wiki/topics/skills-and-tools-moc]] - 公开技能与工具地图",
+      "- [[wiki/topics/ai-agent-systems-moc]] - 公开 Agent 系统地图"
     ],
     "links": [
       {
         "target": "wiki/projects/personal-archive-platform",
         "label": "wiki/projects/personal-archive-platform"
+      },
+      {
+        "target": "wiki/projects/personal-archive-frontend",
+        "label": "wiki/projects/personal-archive-frontend"
       },
       {
         "target": "wiki/synthesis/archive-information-architecture",
@@ -1036,6 +1913,26 @@
       {
         "target": "wiki/synthesis/karpathy-official-wiki-layer",
         "label": "wiki/synthesis/karpathy-official-wiki-layer"
+      },
+      {
+        "target": "wiki/synthesis/lifecycle-replication-package-workflow",
+        "label": "wiki/synthesis/lifecycle-replication-package-workflow"
+      },
+      {
+        "target": "wiki/concepts/lifecycle-replication-package-template",
+        "label": "wiki/concepts/lifecycle-replication-package-template"
+      },
+      {
+        "target": "wiki/synthesis/lifecycle-package-backlog",
+        "label": "wiki/synthesis/lifecycle-package-backlog"
+      },
+      {
+        "target": "wiki/synthesis/lifecycle-automation-workflow",
+        "label": "wiki/synthesis/lifecycle-automation-workflow"
+      },
+      {
+        "target": "wiki/synthesis/lifecycle-automation-output-map",
+        "label": "wiki/synthesis/lifecycle-automation-output-map"
       },
       {
         "target": "wiki/synthesis/project-evidence-matrix",
@@ -1070,8 +1967,96 @@
         "label": "wiki/concepts/public-site-data-boundary"
       },
       {
+        "target": "wiki/concepts/public-api-contract",
+        "label": "wiki/concepts/public-api-contract"
+      },
+      {
+        "target": "wiki/concepts/public-work-card-standard",
+        "label": "wiki/concepts/public-work-card-standard"
+      },
+      {
+        "target": "wiki/concepts/sensitive-context-rewrite-rules",
+        "label": "wiki/concepts/sensitive-context-rewrite-rules"
+      },
+      {
+        "target": "wiki/concepts/upstream-reference-and-adaptation-policy",
+        "label": "wiki/concepts/upstream-reference-and-adaptation-policy"
+      },
+      {
         "target": "wiki/topics/publication-maintenance-moc",
         "label": "wiki/topics/publication-maintenance-moc"
+      },
+      {
+        "target": "wiki/projects/lifecycle-personal-archive-platform",
+        "label": "wiki/projects/lifecycle-personal-archive-platform"
+      },
+      {
+        "target": "wiki/projects/lifecycle-frontend-archive-site",
+        "label": "wiki/projects/lifecycle-frontend-archive-site"
+      },
+      {
+        "target": "wiki/projects/lifecycle-coze-agent-builder",
+        "label": "wiki/projects/lifecycle-coze-agent-builder"
+      },
+      {
+        "target": "wiki/projects/lifecycle-xiaoan-local-model-loop",
+        "label": "wiki/projects/lifecycle-xiaoan-local-model-loop"
+      },
+      {
+        "target": "wiki/projects/lifecycle-agent-skill-governance",
+        "label": "wiki/projects/lifecycle-agent-skill-governance"
+      },
+      {
+        "target": "wiki/projects/lifecycle-hanako-openhanako-creative-agent-desktop",
+        "label": "wiki/projects/lifecycle-hanako-openhanako-creative-agent-desktop"
+      },
+      {
+        "target": "wiki/projects/lifecycle-agent-ide-learning-workflow",
+        "label": "wiki/projects/lifecycle-agent-ide-learning-workflow"
+      },
+      {
+        "target": "wiki/projects/coze-agent-builder-research",
+        "label": "wiki/projects/coze-agent-builder-research"
+      },
+      {
+        "target": "wiki/projects/xiaoan-local-model-learning-loop",
+        "label": "wiki/projects/xiaoan-local-model-learning-loop"
+      },
+      {
+        "target": "wiki/projects/personal-archive-frontend",
+        "label": "wiki/projects/personal-archive-frontend"
+      },
+      {
+        "target": "wiki/synthesis/archive-feed-public-data-update-2026-05-13",
+        "label": "wiki/synthesis/archive-feed-public-data-update-2026-05-13"
+      },
+      {
+        "target": "wiki/synthesis/archive-rebuild-public-journal",
+        "label": "wiki/synthesis/archive-rebuild-public-journal"
+      },
+      {
+        "target": "wiki/synthesis/public-tool-and-agent-inventory",
+        "label": "wiki/synthesis/public-tool-and-agent-inventory"
+      },
+      {
+        "target": "wiki/synthesis/growth-timeline-scattered-exploration-to-compiled-archive",
+        "label": "wiki/synthesis/growth-timeline-scattered-exploration-to-compiled-archive"
+      },
+      {
+        "target": "wiki/synthesis/growth-timeline-agent-workflow-phase",
+        "label": "wiki/synthesis/growth-timeline-agent-workflow-phase"
+      },
+      {
+        "target": "wiki/synthesis/growth-timeline-public-private-split",
+        "label": "wiki/synthesis/growth-timeline-public-private-split"
+      },
+      {
+        "target": "wiki/synthesis/growth-timeline-frontend-showcase-phase",
+        "label": "wiki/synthesis/growth-timeline-frontend-showcase-phase"
+      },
+      {
+        "target": "wiki/synthesis/growth-timeline-tool-governance-phase",
+        "label": "wiki/synthesis/growth-timeline-tool-governance-phase"
       },
       {
         "target": "wiki/concepts/agent-skill-governance",
@@ -1093,42 +2078,59 @@
     "toc": [
       {
         "level": 1,
-        "title": "Personal Archive MOC",
-        "anchor": "personal-archive-moc"
+        "title": "个人资料库地图",
+        "anchor": "个人资料库地图"
       },
       {
         "level": 2,
-        "title": "Platform",
-        "anchor": "platform"
+        "title": "平台主线",
+        "anchor": "平台主线"
       },
       {
         "level": 2,
-        "title": "Promotion Workflow",
-        "anchor": "promotion-workflow"
+        "title": "公开提升流程",
+        "anchor": "公开提升流程"
       },
       {
         "level": 2,
-        "title": "Website Data",
-        "anchor": "website-data"
+        "title": "网站数据",
+        "anchor": "网站数据"
       },
       {
         "level": 2,
-        "title": "Agent And Skills",
-        "anchor": "agent-and-skills"
+        "title": "精选项目起点",
+        "anchor": "精选项目起点"
+      },
+      {
+        "level": 2,
+        "title": "公开更新与手记",
+        "anchor": "公开更新与手记"
+      },
+      {
+        "level": 2,
+        "title": "成长年谱",
+        "anchor": "成长年谱"
+      },
+      {
+        "level": 2,
+        "title": "Agent 与技能",
+        "anchor": "agent-与技能"
       }
     ],
-    "wordCount": 169,
-    "readingMinutes": 1,
+    "wordCount": 698,
+    "readingMinutes": 2,
     "metrics": {
-      "lineCount": 31,
-      "headingCount": 5,
-      "linkCount": 16,
+      "lineCount": 68,
+      "headingCount": 8,
+      "linkCount": 44,
       "sourceCount": 2
     },
     "quality": {
       "hasSources": true,
       "hasToc": true,
-      "summaryLength": 113,
+      "summaryLength": 38,
+      "sourceTitle": "个人资料库地图",
+      "sourceSummary": "安的个人资料库地图：连接平台、展示层、公开提升流程、数据边界和后续发布路线。",
       "needsSourceReview": false,
       "displayTier": "showcase",
       "qualityScore": 100,
@@ -1144,7 +2146,7 @@
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": [],
-    "goal": "Map of the public personal archive platform, promotion workflow, frontend data boundary, and publication roadmap.",
+    "goal": "安的个人资料库地图：连接平台、展示层、公开提升流程、数据边界和后续发布路线。",
     "audience": "希望沿着公开资料路线学习、复刻或维护知识库的读者。",
     "prerequisites": [],
     "estimatedTime": "按主题自定",
@@ -1153,56 +2155,77 @@
     "steps": [
       {
         "id": "step-1",
-        "title": "Personal Archive MOC",
-        "goal": "Personal Archive MOC",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "平台主线",
+        "goal": "平台主线",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       },
       {
         "id": "step-2",
-        "title": "Platform",
-        "goal": "Platform",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "公开提升流程",
+        "goal": "公开提升流程",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       },
       {
         "id": "step-3",
-        "title": "Promotion Workflow",
-        "goal": "Promotion Workflow",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "网站数据",
+        "goal": "网站数据",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       },
       {
         "id": "step-4",
-        "title": "Website Data",
-        "goal": "Website Data",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "精选项目起点",
+        "goal": "精选项目起点",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       },
       {
         "id": "step-5",
-        "title": "Agent And Skills",
-        "goal": "Agent And Skills",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "公开更新与手记",
+        "goal": "公开更新与手记",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
+        "optional": false
+      },
+      {
+        "id": "step-6",
+        "title": "成长年谱",
+        "goal": "成长年谱",
+        "description": "按本阶段说明完成一个可见小产出。",
+        "resources": [],
+        "completion": "读完本节并完成对应交付物。",
+        "optional": false
+      },
+      {
+        "id": "step-7",
+        "title": "Agent 与技能",
+        "goal": "Agent 与技能",
+        "description": "按本阶段说明完成一个可见小产出。",
+        "resources": [],
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       }
-    ]
+    ],
+    "actionText": "从「个人资料库地图」的第一个阶段开始，写下目标、交付物和验收方式。"
   },
   {
     "id": "c_7e9d08f8f6eda5d4",
-    "title": "Publication Maintenance MOC",
+    "title": "发布维护地图",
+    "sourceTitle": "发布维护地图",
     "slug": "wiki-topics-publication-maintenance-moc",
-    "summary": "Map for publication gates, privacy scans, manifests, restore evidence, and root maintenance work.",
+    "summary": "发布维护地图：连接公开边界、发布决策树、隐私扫描、manifest、恢复演练和根问题维护。",
+    "sourceSummary": "发布维护地图：连接公开边界、发布决策树、隐私扫描、manifest、恢复演练和根问题维护。",
     "tags": [
       "publication",
       "maintenance",
@@ -1215,43 +2238,43 @@
     ],
     "createdAt": "2026-05-12",
     "updatedAt": "2026-05-12",
+    "eventDate": null,
     "sourcePath": "wiki/topics/publication-maintenance-moc.md",
     "module": "paths",
     "category": "synthesis",
     "type": "moc",
+    "phase": null,
+    "cover": null,
     "contentType": "article",
     "href": "/content/wiki-topics-publication-maintenance-moc",
     "contentLines": [
-      "# Publication Maintenance MOC",
+      "# 发布维护地图",
       "",
-      "Use this page before publishing or importing more content.",
+      "## 概览",
       "",
-      "## Policy",
+      "发布维护地图：连接公开边界、发布决策树、隐私扫描、manifest、恢复演练和根问题维护。",
       "",
-      "- [[wiki/sources-and-data-policy]] - public/private boundary",
-      "- [[wiki/concepts/private-to-public-promotion-pipeline]] - promotion workflow",
-      "- [[wiki/concepts/public-site-data-boundary]] - frontend/backend data boundary",
-      "- [[AGENTS]] - operating rules",
-      "- [[CLAUDE]] - schema and page format",
+      "## 读者可以获得什么",
       "",
-      "## Validation",
+      "- 理解「发布维护地图」在安的书房里的位置。",
+      "- 看清它解决的问题、适合的读者和后续复刻方向。",
+      "- 知道公开页面保留的是方法、结构和经验，不包含原始私有材料。",
       "",
-      "- `python scripts/wiki_check.py .` - structure and wikilink gate",
-      "- `python scripts/privacy_scan.py .` - high-risk privacy gate",
-      "- `python scripts/build_public_inventory.py .` - public inventory refresh",
+      "## 推荐阅读方式",
       "",
-      "## Manifests",
+      "1. 先读概览，确认它和当前学习目标是否相关。",
+      "2. 再看关联页面，理解来源、项目、工具或工作流之间的关系。",
+      "3. 如果要复刻，先写下自己的目标、输入材料、边界和验收标准。",
+      "4. 完成后回到资料库，把新的经验整理成可追踪页面。",
       "",
-      "- [raw_sources.csv](../../manifests/raw_sources.csv) - source registry",
-      "- [publication_review.csv](../../manifests/publication_review.csv) - migration/privacy decisions",
-      "- [privacy_scan_report.csv](../../manifests/privacy_scan_report.csv) - privacy scan output",
-      "- [wiki_check_report.json](../../manifests/wiki_check_report.json) - structure check output",
-      "- [restore_drill.csv](../../manifests/restore_drill.csv) - restore rehearsal evidence",
+      "## 发布边界",
       "",
-      "## Maintenance",
+      "本页只展示公开安全的整理结果。原始材料、账号状态、本机细节、私人对话和未复核内容不会进入公开展示。",
       "",
-      "- [[wiki/projects/root-maintenance-backlog]] - current root issues",
-      "- [[log]] - append-only operation log"
+      "## 来源",
+      "",
+      "- [[wiki/sources/karpathy-llm-wiki-pattern]]",
+      "- [[wiki/sources/pre-rebuild-vault-archive]]"
     ],
     "links": [
       {
@@ -1265,6 +2288,66 @@
       {
         "target": "wiki/concepts/public-site-data-boundary",
         "label": "wiki/concepts/public-site-data-boundary"
+      },
+      {
+        "target": "wiki/concepts/public-api-contract",
+        "label": "wiki/concepts/public-api-contract"
+      },
+      {
+        "target": "wiki/concepts/sensitive-context-rewrite-rules",
+        "label": "wiki/concepts/sensitive-context-rewrite-rules"
+      },
+      {
+        "target": "wiki/concepts/beginner-publication-decision-tree",
+        "label": "wiki/concepts/beginner-publication-decision-tree"
+      },
+      {
+        "target": "wiki/concepts/credential-and-token-publication-safety",
+        "label": "wiki/concepts/credential-and-token-publication-safety"
+      },
+      {
+        "target": "wiki/concepts/local-path-and-device-identity-redaction",
+        "label": "wiki/concepts/local-path-and-device-identity-redaction"
+      },
+      {
+        "target": "wiki/concepts/chat-log-to-public-lesson-rules",
+        "label": "wiki/concepts/chat-log-to-public-lesson-rules"
+      },
+      {
+        "target": "wiki/concepts/dataset-and-sft-sample-safety",
+        "label": "wiki/concepts/dataset-and-sft-sample-safety"
+      },
+      {
+        "target": "wiki/concepts/screenshot-asset-and-attribution-safety",
+        "label": "wiki/concepts/screenshot-asset-and-attribution-safety"
+      },
+      {
+        "target": "wiki/concepts/agent-tool-permission-and-trace-safety",
+        "label": "wiki/concepts/agent-tool-permission-and-trace-safety"
+      },
+      {
+        "target": "wiki/concepts/upstream-reference-and-adaptation-policy",
+        "label": "wiki/concepts/upstream-reference-and-adaptation-policy"
+      },
+      {
+        "target": "wiki/concepts/content-critique-and-review-rubric",
+        "label": "wiki/concepts/content-critique-and-review-rubric"
+      },
+      {
+        "target": "wiki/synthesis/lifecycle-automation-workflow",
+        "label": "wiki/synthesis/lifecycle-automation-workflow"
+      },
+      {
+        "target": "wiki/synthesis/lifecycle-automation-output-map",
+        "label": "wiki/synthesis/lifecycle-automation-output-map"
+      },
+      {
+        "target": "wiki/synthesis/lifecycle-automation-acceptance-2026-05-13",
+        "label": "wiki/synthesis/lifecycle-automation-acceptance-2026-05-13"
+      },
+      {
+        "target": "wiki/synthesis/lifecycle-replication-package-workflow",
+        "label": "wiki/synthesis/lifecycle-replication-package-workflow"
       },
       {
         "target": "AGENTS",
@@ -1290,42 +2373,49 @@
     "toc": [
       {
         "level": 1,
-        "title": "Publication Maintenance MOC",
-        "anchor": "publication-maintenance-moc"
+        "title": "发布维护地图",
+        "anchor": "发布维护地图"
       },
       {
         "level": 2,
-        "title": "Policy",
-        "anchor": "policy"
+        "title": "概览",
+        "anchor": "概览"
       },
       {
         "level": 2,
-        "title": "Validation",
-        "anchor": "validation"
+        "title": "读者可以获得什么",
+        "anchor": "读者可以获得什么"
       },
       {
         "level": 2,
-        "title": "Manifests",
-        "anchor": "manifests"
+        "title": "推荐阅读方式",
+        "anchor": "推荐阅读方式"
       },
       {
         "level": 2,
-        "title": "Maintenance",
-        "anchor": "maintenance"
+        "title": "发布边界",
+        "anchor": "发布边界"
+      },
+      {
+        "level": 2,
+        "title": "来源",
+        "anchor": "来源"
       }
     ],
-    "wordCount": 127,
+    "wordCount": 268,
     "readingMinutes": 1,
     "metrics": {
-      "lineCount": 30,
-      "headingCount": 5,
-      "linkCount": 7,
+      "lineCount": 27,
+      "headingCount": 6,
+      "linkCount": 22,
       "sourceCount": 2
     },
     "quality": {
       "hasSources": true,
       "hasToc": true,
-      "summaryLength": 97,
+      "summaryLength": 45,
+      "sourceTitle": "发布维护地图",
+      "sourceSummary": "发布维护地图：连接公开边界、发布决策树、隐私扫描、manifest、恢复演练和根问题维护。",
       "needsSourceReview": false,
       "displayTier": "showcase",
       "qualityScore": 100,
@@ -1340,7 +2430,7 @@
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": [],
-    "goal": "Map for publication gates, privacy scans, manifests, restore evidence, and root maintenance work.",
+    "goal": "发布维护地图：连接公开边界、发布决策树、隐私扫描、manifest、恢复演练和根问题维护。",
     "audience": "希望沿着公开资料路线学习、复刻或维护知识库的读者。",
     "prerequisites": [],
     "estimatedTime": "按主题自定",
@@ -1349,267 +2439,41 @@
     "steps": [
       {
         "id": "step-1",
-        "title": "Publication Maintenance MOC",
-        "goal": "Publication Maintenance MOC",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
-        "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
-        "optional": false
-      },
-      {
-        "id": "step-2",
         "title": "Policy",
         "goal": "Policy",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
-        "optional": false
-      },
-      {
-        "id": "step-3",
-        "title": "Validation",
-        "goal": "Validation",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
-        "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
-        "optional": false
-      },
-      {
-        "id": "step-4",
-        "title": "Manifests",
-        "goal": "Manifests",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
-        "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
-        "optional": false
-      },
-      {
-        "id": "step-5",
-        "title": "Maintenance",
-        "goal": "Maintenance",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
-        "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
-        "optional": false
-      }
-    ]
-  },
-  {
-    "id": "c_68d8f2407d41eb74",
-    "title": "Skills and Tools MOC",
-    "slug": "wiki-topics-skills-and-tools-moc",
-    "summary": "Map for migrated public-safe skills, tool notes, and reusable operational patterns.",
-    "tags": [
-      "skills",
-      "tools",
-      "moc"
-    ],
-    "status": [
-      "featured",
-      "public"
-    ],
-    "createdAt": "2026-05-12",
-    "updatedAt": "2026-05-12",
-    "sourcePath": "wiki/topics/skills-and-tools-moc.md",
-    "module": "paths",
-    "category": "synthesis",
-    "type": "moc",
-    "contentType": "tool",
-    "href": "/content/wiki-topics-skills-and-tools-moc",
-    "contentLines": [
-      "# Skills and Tools MOC",
-      "",
-      "This page is the public navigation layer for migrated skill notes.",
-      "",
-      "## Skill Indexes",
-      "",
-      "- [[wiki/concepts/agent-skill-governance]] - current public model for skill governance",
-      "- [[wiki/concepts/04-知识库-领域研究-AI-Agent技术-技能库-MuleRun_Skills_Hub_MOC]] - migrated skill knowledge network",
-      "- [[wiki/concepts/07-技能库-MuleRun_Skills_Hub]] - common source note for migrated skill entries",
-      "- [[wiki/concepts/07-技能库-说明-技能库说明]] - skill-library operating note",
-      "",
-      "## Frequently Used Skills",
-      "",
-      "- [[wiki/concepts/07-技能库-原子技能-browser-use]]",
-      "- [[wiki/concepts/07-技能库-原子技能-doc]]",
-      "- [[wiki/concepts/07-技能库-原子技能-frontend-skill]]",
-      "- [[wiki/concepts/07-技能库-原子技能-gh-address-comments]]",
-      "- [[wiki/concepts/07-技能库-原子技能-gh-fix-ci]]",
-      "- [[wiki/concepts/07-技能库-原子技能-pdf]]",
-      "- [[wiki/concepts/07-技能库-原子技能-screenshot]]",
-      "- [[wiki/concepts/07-技能库-原子技能-security-best-practices]]",
-      "- [[wiki/concepts/07-技能库-原子技能-security-threat-model]]",
-      "",
-      "## Tooling Areas",
-      "",
-      "- [[wiki/topics/03-资源-工具配置-AI工具总览]]",
-      "- [[wiki/topics/04-知识库-07-AI工具演化轨迹]]",
-      "- [[wiki/topics/02-领域-AI工具生态-记忆系统对比]]"
-    ],
-    "links": [
-      {
-        "target": "wiki/concepts/agent-skill-governance",
-        "label": "wiki/concepts/agent-skill-governance"
-      },
-      {
-        "target": "wiki/concepts/04-知识库-领域研究-AI-Agent技术-技能库-MuleRun_Skills_Hub_MOC",
-        "label": "wiki/concepts/04-知识库-领域研究-AI-Agent技术-技能库-MuleRun_Skills_Hub_MOC"
-      },
-      {
-        "target": "wiki/concepts/07-技能库-MuleRun_Skills_Hub",
-        "label": "wiki/concepts/07-技能库-MuleRun_Skills_Hub"
-      },
-      {
-        "target": "wiki/concepts/07-技能库-说明-技能库说明",
-        "label": "wiki/concepts/07-技能库-说明-技能库说明"
-      },
-      {
-        "target": "wiki/concepts/07-技能库-原子技能-browser-use",
-        "label": "wiki/concepts/07-技能库-原子技能-browser-use"
-      },
-      {
-        "target": "wiki/concepts/07-技能库-原子技能-doc",
-        "label": "wiki/concepts/07-技能库-原子技能-doc"
-      },
-      {
-        "target": "wiki/concepts/07-技能库-原子技能-frontend-skill",
-        "label": "wiki/concepts/07-技能库-原子技能-frontend-skill"
-      },
-      {
-        "target": "wiki/concepts/07-技能库-原子技能-gh-address-comments",
-        "label": "wiki/concepts/07-技能库-原子技能-gh-address-comments"
-      },
-      {
-        "target": "wiki/concepts/07-技能库-原子技能-gh-fix-ci",
-        "label": "wiki/concepts/07-技能库-原子技能-gh-fix-ci"
-      },
-      {
-        "target": "wiki/concepts/07-技能库-原子技能-pdf",
-        "label": "wiki/concepts/07-技能库-原子技能-pdf"
-      },
-      {
-        "target": "wiki/concepts/07-技能库-原子技能-screenshot",
-        "label": "wiki/concepts/07-技能库-原子技能-screenshot"
-      },
-      {
-        "target": "wiki/concepts/07-技能库-原子技能-security-best-practices",
-        "label": "wiki/concepts/07-技能库-原子技能-security-best-practices"
-      },
-      {
-        "target": "wiki/concepts/07-技能库-原子技能-security-threat-model",
-        "label": "wiki/concepts/07-技能库-原子技能-security-threat-model"
-      },
-      {
-        "target": "wiki/topics/03-资源-工具配置-AI工具总览",
-        "label": "wiki/topics/03-资源-工具配置-AI工具总览"
-      },
-      {
-        "target": "wiki/topics/04-知识库-07-AI工具演化轨迹",
-        "label": "wiki/topics/04-知识库-07-AI工具演化轨迹"
-      },
-      {
-        "target": "wiki/topics/02-领域-AI工具生态-记忆系统对比",
-        "label": "wiki/topics/02-领域-AI工具生态-记忆系统对比"
-      }
-    ],
-    "sources": [
-      "[[wiki/sources/pre-rebuild-vault-archive]]"
-    ],
-    "toc": [
-      {
-        "level": 1,
-        "title": "Skills and Tools MOC",
-        "anchor": "skills-and-tools-moc"
-      },
-      {
-        "level": 2,
-        "title": "Skill Indexes",
-        "anchor": "skill-indexes"
-      },
-      {
-        "level": 2,
-        "title": "Frequently Used Skills",
-        "anchor": "frequently-used-skills"
-      },
-      {
-        "level": 2,
-        "title": "Tooling Areas",
-        "anchor": "tooling-areas"
-      }
-    ],
-    "wordCount": 259,
-    "readingMinutes": 1,
-    "metrics": {
-      "lineCount": 28,
-      "headingCount": 4,
-      "linkCount": 16,
-      "sourceCount": 1
-    },
-    "quality": {
-      "hasSources": true,
-      "hasToc": true,
-      "summaryLength": 83,
-      "needsSourceReview": false,
-      "displayTier": "showcase",
-      "qualityScore": 100,
-      "hiddenReasons": [
-        "source:archive-only"
-      ],
-      "explicitlyCurated": true
-    },
-    "publicSafety": "public-safe",
-    "sourceLabels": [
-      "public wiki",
-      "archive-derived"
-    ],
-    "displayTier": "showcase",
-    "qualityScore": 100,
-    "hiddenReasons": [
-      "source:archive-only"
-    ],
-    "goal": "Map for migrated public-safe skills, tool notes, and reusable operational patterns.",
-    "audience": "希望沿着公开资料路线学习、复刻或维护知识库的读者。",
-    "prerequisites": [],
-    "estimatedTime": "按主题自定",
-    "difficulty": "intermediate",
-    "finalOutput": "形成一条可复用的公开学习或构建路径。",
-    "steps": [
-      {
-        "id": "step-1",
-        "title": "Skills and Tools MOC",
-        "goal": "Skills and Tools MOC",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
-        "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       },
       {
         "id": "step-2",
-        "title": "Skill Indexes",
-        "goal": "Skill Indexes",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "Validation",
+        "goal": "Validation",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       },
       {
         "id": "step-3",
-        "title": "Frequently Used Skills",
-        "goal": "Frequently Used Skills",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "Manifests",
+        "goal": "Manifests",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       },
       {
         "id": "step-4",
-        "title": "Tooling Areas",
-        "goal": "Tooling Areas",
-        "description": "从公开 wiki 页面章节生成的路线节点。",
+        "title": "Maintenance",
+        "goal": "Maintenance",
+        "description": "按本阶段说明完成一个可见小产出。",
         "resources": [],
-        "completion": "读完本节并能连接到相关公开页面。",
+        "completion": "读完本节并完成对应交付物。",
         "optional": false
       }
-    ]
+    ],
+    "actionText": "从「发布维护地图」的第一个阶段开始，写下目标、交付物和验收方式。"
   }
 ]

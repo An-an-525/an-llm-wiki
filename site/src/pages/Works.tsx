@@ -1,12 +1,11 @@
 import { useState, useMemo, useCallback } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Github,
   ExternalLink,
   Globe,
   Wrench,
-  Video,
   Layers,
   BookOpen,
   Code2,
@@ -18,14 +17,17 @@ import {
   Users,
   AlertTriangle,
   Lightbulb,
-  Route,
   ArrowRight,
+  ChevronDown,
+  SlidersHorizontal,
 } from 'lucide-react';
 import { format } from 'date-fns';
 import { zhCN } from 'date-fns/locale';
 import { works } from '@/data/mockWorks';
 import type { Work } from '@/types';
 import { EmptyState as LifecycleEmptyState, ErrorState } from '@/components/ui/lifecycle';
+import { resolveAssetUrl } from '@/lib/runtime';
+import { toPublicLabel } from '@/lib/publicLabels';
 
 const easeOut = [0, 0, 0.2, 1] as [number, number, number, number];
 
@@ -39,82 +41,56 @@ type WorkStatus = 'all' | 'in_progress' | 'completed' | 'archived';
 function inferWorkType(work: Work): WorkType {
   const stack = work.techStack.join(' ').toLowerCase();
   const title = work.title.toLowerCase();
-  if (title.includes('笔记') || title.includes('api') || stack.includes('cli') || stack.includes('node.js')) return 'tool';
-  if (stack.includes('electron') || stack.includes('react native') || title.includes('应用')) return 'miniapp';
-  if (stack.includes('three.js') || stack.includes('glsl') || stack.includes('css') || title.includes('实验')) return 'experiment';
-  if (stack.includes('next.js') || title.includes('博客') || title.includes('网站') || title.includes('作品集') || title.includes('藏馆')) return 'website';
+  if (title.includes('小安') || stack.includes('小安')) return 'prototype';
+  if (stack.includes('react') || stack.includes('vite') || title.includes('前端') || title.includes('网站') || title.includes('app')) return 'website';
+  if (title.includes('api') || title.includes('后端') || stack.includes('接口') || stack.includes('后端')) return 'miniapp';
+  if (title.includes('agent') || title.includes('智能体') || title.includes('coze') || stack.includes('智能体')) return 'opensource';
+  if (title.includes('学习包') || title.includes('复刻') || stack.includes('学习')) return 'resource';
+  if (title.includes('资料库') || title.includes('书房') || title.includes('藏馆') || stack.includes('资料库')) return 'tool';
+  if (stack.includes('three.js') || stack.includes('glsl') || title.includes('实验')) return 'experiment';
   return 'website';
 }
 
 const typeFilters: { key: WorkType; label: string; icon: React.ReactNode }[] = [
   { key: 'all', label: '全部', icon: <Layers size={13} strokeWidth={1.5} /> },
-  { key: 'website', label: '网站', icon: <Globe size={13} strokeWidth={1.5} /> },
-  { key: 'tool', label: '工具', icon: <Wrench size={13} strokeWidth={1.5} /> },
-  { key: 'video', label: '视频', icon: <Video size={13} strokeWidth={1.5} /> },
-  { key: 'miniapp', label: '小程序', icon: <Cpu size={13} strokeWidth={1.5} /> },
-  { key: 'resource', label: '资料包', icon: <BookOpen size={13} strokeWidth={1.5} /> },
-  { key: 'opensource', label: '开源项目', icon: <Code2 size={13} strokeWidth={1.5} /> },
-  { key: 'prototype', label: '系统原型', icon: <Cpu size={13} strokeWidth={1.5} /> },
+  { key: 'website', label: '网页与 App', icon: <Globe size={13} strokeWidth={1.5} /> },
+  { key: 'tool', label: '资料库', icon: <Wrench size={13} strokeWidth={1.5} /> },
+  { key: 'opensource', label: '智能体', icon: <Code2 size={13} strokeWidth={1.5} /> },
+  { key: 'resource', label: '复刻学习包', icon: <BookOpen size={13} strokeWidth={1.5} /> },
+  { key: 'prototype', label: '小安', icon: <Cpu size={13} strokeWidth={1.5} /> },
+  { key: 'miniapp', label: '后端接口', icon: <Cpu size={13} strokeWidth={1.5} /> },
   { key: 'experiment', label: '实验作品', icon: <FlaskConical size={13} strokeWidth={1.5} /> },
 ];
 
 const statusFilters: { key: WorkStatus; label: string }[] = [
   { key: 'all', label: '全部' },
-  { key: 'in_progress', label: '进行中' },
+  { key: 'in_progress', label: '建设中' },
   { key: 'completed', label: '已完成' },
-  { key: 'archived', label: '已归档' },
+  { key: 'archived', label: '阶段归档' },
 ];
 
 const statusConfig: Record<string, { label: string; bg: string; text: string }> = {
-  in_progress: { label: '进行中', bg: 'bg-[#FDF6F0]', text: 'text-[#C8956C]' },
+  in_progress: { label: '建设中', bg: 'bg-[#FDF6F0]', text: 'text-[#C8956C]' },
   completed: { label: '已完成', bg: 'bg-[#F0F7F2]', text: 'text-[#6B9E7C]' },
-  archived: { label: '已归档', bg: 'bg-light-gray', text: 'text-silver' },
+  archived: { label: '阶段归档', bg: 'bg-light-gray', text: 'text-silver' },
 };
 
 const typeBadgeConfig: Record<string, { label: string; bg: string }> = {
-  website: { label: '网站', bg: 'bg-[#E8EBF0]' },
-  tool: { label: '工具', bg: 'bg-[#F0EDE5]' },
+  website: { label: '网页与 App', bg: 'bg-[#E8EBF0]' },
+  tool: { label: '资料库', bg: 'bg-[#F0EDE5]' },
   video: { label: '视频', bg: 'bg-[#F5EDE8]' },
-  miniapp: { label: '小程序', bg: 'bg-[#E8F0EB]' },
-  resource: { label: '资料包', bg: 'bg-[#F0DDD8]' },
-  opensource: { label: '开源项目', bg: 'bg-[#E8EBF0]' },
-  prototype: { label: '系统原型', bg: 'bg-[#F5EDE8]' },
+  miniapp: { label: '后端接口', bg: 'bg-[#E8F0EB]' },
+  resource: { label: '复刻学习包', bg: 'bg-[#F0DDD8]' },
+  opensource: { label: '智能体', bg: 'bg-[#E8EBF0]' },
+  prototype: { label: '小安', bg: 'bg-[#F5EDE8]' },
   experiment: { label: '实验作品', bg: 'bg-[#F0EDE5]' },
 };
 
-/* ------------------------------------------------------------------ */
-/*  Page Guide                                                         */
-/* ------------------------------------------------------------------ */
-
-function PageGuide() {
-  return (
-    <motion.div
-      className="bg-[#F5EDE8] rounded-xl p-4 md:p-5 mb-6"
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, ease: easeOut, delay: 0.25 }}
-    >
-      <p className="text-[13px] font-sans text-silver leading-relaxed">
-        工坊展示我的作品、项目与实验。每件作品都记录了开发周期、技术选型、遇到的挑战与收获。
-        点击卡片可展开查看完整详情。
-      </p>
-    </motion.div>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  Stats                                                              */
-/* ------------------------------------------------------------------ */
-
-function useStats(allWorks: Work[]) {
-  return useMemo(() => {
-    const total = allWorks.length;
-    const completed = allWorks.filter((w) => w.status === 'completed').length;
-    const inProgress = allWorks.filter((w) => w.status === 'in_progress').length;
-    const archived = allWorks.filter((w) => w.status === 'archived').length;
-    return { total, completed, inProgress, archived };
-  }, [allWorks]);
-}
+const featuredWorkTitles = [
+  '个人资料库展示前端',
+  '个人资料库平台复刻学习包',
+  'Coze Agent Builder 复刻学习包',
+];
 
 /* ------------------------------------------------------------------ */
 /*  Work Card                                                          */
@@ -123,15 +99,12 @@ function useStats(allWorks: Work[]) {
 function WorkCard({
   work,
   index,
-  isExpanded,
-  onToggle,
 }: {
   work: Work & { inferredType: WorkType };
   index: number;
-  isExpanded: boolean;
-  onToggle: () => void;
 }) {
   const [hovered, setHovered] = useState(false);
+  const navigate = useNavigate();
   const cfg = statusConfig[work.status] || statusConfig.completed;
   const typeCfg = typeBadgeConfig[work.inferredType || 'website'] || typeBadgeConfig.website;
 
@@ -145,10 +118,10 @@ function WorkCard({
 
   const duration = work.duration;
   const teamSize = work.teamSize;
-  const challenges = work.challenges;
-  const learnings = work.learnings;
-  const relatedPathIds = work.relatedPathIds ?? [];
-  const relatedJournalIds = work.relatedJournalIds ?? [];
+  const firstFailureMode = work.failureModes?.find((item) => item?.trim())?.trim();
+  const firstReminder = work.anReminders?.find((item) => item?.trim())?.trim();
+  const replicationSteps = work.replicationSteps ?? [];
+  const detailUrl = `/content/${work.id}`;
 
   return (
     <motion.div
@@ -162,12 +135,12 @@ function WorkCard({
         className="bg-white rounded-xl border border-border-color overflow-hidden transition-all duration-250 hover:shadow-lg hover:-translate-y-0.5 hover:border-border-dark cursor-pointer card-tap"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        onClick={onToggle}
+        onClick={() => navigate(detailUrl)}
       >
         {/* Cover Image */}
         <div className="relative overflow-hidden aspect-[16/10]">
           <img
-            src={work.cover || '/work-portfolio.jpg'}
+            src={resolveAssetUrl(work.cover || '/work-portfolio.jpg')}
             alt={work.title}
             className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
             loading="lazy"
@@ -215,13 +188,6 @@ function WorkCard({
             <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-sans font-normal ${cfg.bg} ${cfg.text}`}>
               {cfg.label}
             </span>
-            {/* Journey label */}
-            {relatedPathIds.length > 0 && (
-              <span className="inline-flex items-center gap-1 text-[11px] text-[#C8956C] ml-auto">
-                <Route size={11} strokeWidth={1.5} />
-                学习路径作品
-              </span>
-            )}
           </div>
 
           {/* Title */}
@@ -250,36 +216,48 @@ function WorkCard({
             )}
           </div>
 
-          {/* Tech stack */}
-          <div className="flex flex-wrap gap-1.5 mb-4">
-            {work.techStack.map((tech) => (
+          <div className="flex flex-wrap gap-1.5 mb-3">
+            {work.techStack.slice(0, 3).map((tech) => (
               <span
                 key={tech}
                 className="px-2 py-0.5 rounded text-[11px] font-sans font-normal bg-cream text-silver"
               >
-                {tech}
+                {toPublicLabel(tech)}
               </span>
             ))}
           </div>
 
-          {/* Challenge & Learnings (one line each) */}
-          {challenges && (
-            <div className="flex items-start gap-1.5 text-[12px] text-graphite mb-1.5 bg-[#FDF6F0] rounded-lg px-2.5 py-1.5">
-              <AlertTriangle size={12} strokeWidth={1.5} className="text-[#C8956C] mt-0.5 shrink-0" />
-              <span className="line-clamp-1">最大的挑战：{challenges}</span>
-            </div>
-          )}
-          {learnings && (
+          {firstReminder ? (
             <div className="flex items-start gap-1.5 text-[12px] text-graphite mb-3 bg-[#F0F7F2] rounded-lg px-2.5 py-1.5">
               <Lightbulb size={12} strokeWidth={1.5} className="text-[#6B9E7C] mt-0.5 shrink-0" />
-              <span className="line-clamp-1">收获：{learnings}</span>
+              <span className="line-clamp-2">安的提醒：{firstReminder}</span>
             </div>
+          ) : firstFailureMode ? (
+            <div className="flex items-start gap-1.5 text-[12px] text-graphite mb-3 bg-[#FAF4F1] rounded-lg px-2.5 py-1.5">
+              <AlertTriangle size={12} strokeWidth={1.5} className="text-[#C47D6E] mt-0.5 shrink-0" />
+              <span className="line-clamp-2">容易失败：{firstFailureMode}</span>
+            </div>
+          ) : null}
+
+          {replicationSteps.length > 0 && (
+            <p className="mb-3 text-[12px] text-silver">
+              {replicationSteps.length} 段复刻记录
+            </p>
           )}
 
           {/* Footer: date + links */}
           <div className="flex items-center justify-between pt-3 border-t border-border-color">
             <span className="text-[11px] font-sans text-light-silver">{formattedDate}</span>
             <div className="flex items-center gap-1">
+              <Link
+                to={detailUrl}
+                className="inline-flex items-center gap-1.5 h-8 px-2.5 rounded-full border border-border-color text-[12px] font-sans text-silver hover:text-graphite hover:bg-cream hover:border-border-dark transition-all duration-150"
+                onClick={(e) => e.stopPropagation()}
+                aria-label={`查看${work.title}的复刻步骤`}
+              >
+                <BookOpen size={13} strokeWidth={1.5} />
+                复刻步骤
+              </Link>
               {work.github && (
                 <a
                   href={work.github}
@@ -299,7 +277,7 @@ function WorkCard({
                   rel="noopener noreferrer"
                   className="w-8 h-8 flex items-center justify-center rounded-full border border-border-color text-silver hover:text-graphite hover:bg-cream hover:border-border-dark transition-all duration-150"
                   onClick={(e) => e.stopPropagation()}
-                  aria-label="外部链接"
+                  aria-label="打开项目"
                 >
                   <ExternalLink size={14} strokeWidth={1.5} />
                 </a>
@@ -308,118 +286,6 @@ function WorkCard({
           </div>
         </div>
 
-        {/* Expanded detail */}
-        <AnimatePresence>
-          {isExpanded && (
-            <motion.div
-              className="px-5 pb-5 border-t border-border-color/60 pt-4"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: easeOut }}
-            >
-              <p className="text-[13px] font-sans text-graphite leading-[1.8] mb-4">
-                {work.description}
-              </p>
-
-              {/* Full challenges */}
-              {challenges && (
-                <div className="mb-3">
-                  <h4 className="text-[12px] font-sans font-medium text-graphite mb-1.5 flex items-center gap-1">
-                    <AlertTriangle size={12} strokeWidth={1.5} className="text-[#C47D6E]" />
-                    遇到的挑战
-                  </h4>
-                  <p className="text-[13px] text-silver leading-relaxed">{challenges}</p>
-                </div>
-              )}
-
-              {/* Full learnings */}
-              {learnings && (
-                <div className="mb-4">
-                  <h4 className="text-[12px] font-sans font-medium text-graphite mb-1.5 flex items-center gap-1">
-                    <Lightbulb size={12} strokeWidth={1.5} className="text-[#6B9E7C]" />
-                    学到的东西
-                  </h4>
-                  <p className="text-[13px] text-silver leading-relaxed">{learnings}</p>
-                </div>
-              )}
-
-              {/* Related paths */}
-              {relatedPathIds.length > 0 && (
-                <div className="mb-3">
-                  <h4 className="text-[12px] font-sans font-medium text-graphite mb-2 flex items-center gap-1">
-                    <Route size={12} strokeWidth={1.5} className="text-[#C8956C]" />
-                    关联路径
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {relatedPathIds.map((pid) => (
-                      <Link
-                        key={pid}
-                        to={`/paths/${pid}`}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 bg-light-pink rounded-lg text-[12px] font-sans text-graphite hover:bg-[#F0E5DE] transition-colors"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        查看路径
-                        <ArrowRight size={10} strokeWidth={1.5} />
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Related journal */}
-              {relatedJournalIds.length > 0 && (
-                <div className="mb-3">
-                  <h4 className="text-[12px] font-sans font-medium text-graphite mb-2 flex items-center gap-1">
-                    <BookOpen size={12} strokeWidth={1.5} className="text-[#C8956C]" />
-                    相关手记
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {relatedJournalIds.map((jid) => (
-                      <Link
-                        key={jid}
-                        to={`/journal`}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 bg-light-gray rounded-lg text-[12px] font-sans text-graphite hover:bg-light-pink transition-colors"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        查看手记
-                        <ArrowRight size={10} strokeWidth={1.5} />
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Links */}
-              <div className="flex items-center gap-4 pt-3 border-t border-border-color/60">
-                {work.github && (
-                  <a
-                    href={work.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[12px] font-sans text-silver hover:text-graphite transition-colors duration-150 flex items-center gap-1"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <Github size={12} strokeWidth={1.5} />
-                    GitHub
-                  </a>
-                )}
-                {work.link && (
-                  <a
-                    href={work.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[12px] font-sans text-silver hover:text-graphite transition-colors duration-150 flex items-center gap-1"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <ExternalLink size={12} strokeWidth={1.5} />
-                    查看项目
-                  </a>
-                )}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </motion.div>
   );
@@ -433,44 +299,35 @@ export default function WorksPage() {
   const [activeType, setActiveType] = useState<WorkType>('all');
   const [activeStatus, setActiveStatus] = useState<WorkStatus>('all');
   const [activeTags, setActiveTags] = useState<string[]>([]);
-  const [expandedWorkId, setExpandedWorkId] = useState<string | null>(null);
-
-  const stats = useStats(works);
+  const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
 
   // Extract all unique tags
-  const allTags = useMemo(() => {
+  const allTags = (() => {
     const tagSet = new Set<string>();
     works.forEach((w) => w.techStack.forEach((t) => tagSet.add(t)));
     return Array.from(tagSet).sort();
-  }, []);
+  })();
 
   // Enrich works with inferred type
-  const enrichedWorks = useMemo(
-    () =>
-      works.map((w) => ({
-        ...w,
-        inferredType: inferWorkType(w),
-      })),
-    []
-  );
+  const enrichedWorks = works.map((w) => ({
+    ...w,
+    inferredType: inferWorkType(w),
+  }));
 
   // Filter
-  const filtered = useMemo(() => {
-    let list = [...enrichedWorks];
-    if (activeType !== 'all') {
-      list = list.filter((w) => w.inferredType === activeType);
-    }
-    if (activeStatus !== 'all') {
-      list = list.filter((w) => w.status === activeStatus);
-    }
-    if (activeTags.length > 0) {
-      list = list.filter((w) => activeTags.some((t) => w.techStack.includes(t)));
-    }
-    return list;
-  }, [enrichedWorks, activeType, activeStatus, activeTags]);
+  let filtered = [...enrichedWorks];
+  if (activeType !== 'all') {
+    filtered = filtered.filter((w) => w.inferredType === activeType);
+  }
+  if (activeStatus !== 'all') {
+    filtered = filtered.filter((w) => w.status === activeStatus);
+  }
+  if (activeTags.length > 0) {
+    filtered = filtered.filter((w) => activeTags.some((t) => w.techStack.includes(t)));
+  }
 
   // Type counts
-  const typeCounts = useMemo(() => {
+  const typeCounts = (() => {
     const counts: Record<string, number> = { all: works.length };
     typeFilters.forEach((t) => {
       if (t.key !== 'all') {
@@ -478,10 +335,14 @@ export default function WorksPage() {
       }
     });
     return counts;
-  }, [enrichedWorks]);
+  })();
+
+  const visibleTypeFilters = typeFilters.filter(
+    (item) => item.key === 'all' || (typeCounts[item.key] ?? 0) > 0
+  );
 
   // Status counts
-  const statusCounts = useMemo(() => {
+  const statusCounts = (() => {
     const counts: Record<string, number> = { all: works.length };
     statusFilters.forEach((s) => {
       if (s.key !== 'all') {
@@ -489,7 +350,7 @@ export default function WorksPage() {
       }
     });
     return counts;
-  }, []);
+  })();
 
   const toggleTag = useCallback((tag: string) => {
     setActiveTags((prev) =>
@@ -503,11 +364,12 @@ export default function WorksPage() {
     setActiveTags([]);
   }, []);
 
-  const toggleExpand = useCallback((id: string) => {
-    setExpandedWorkId((prev) => (prev === id ? null : id));
-  }, []);
+  const advancedFilterCount = (activeStatus !== 'all' ? 1 : 0) + activeTags.length;
+  const featuredWorks = featuredWorkTitles
+    .map((title) => enrichedWorks.find((work) => work.title === title))
+    .filter(Boolean) as Array<Work & { inferredType: WorkType }>;
 
-  // TODO: 接入后端后使用 <PageSkeleton type="cards" /> 替代
+  // 数据源固定后，这里直接渲染内容；后端接入时可切换为统一生命周期骨架
 
   // Error boundary
   if (!works || !Array.isArray(works)) {
@@ -536,36 +398,53 @@ export default function WorksPage() {
             工坊
           </motion.h1>
           <motion.p
-            className="text-[15px] font-sans font-normal text-silver leading-relaxed text-center mb-4"
+            className="text-[15px] font-sans font-normal text-silver leading-relaxed text-center mb-4 max-w-[680px] mx-auto"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: easeOut, delay: 0.15 }}
           >
-            作品、项目与实验。每一件都是一段实践的结晶。
+            每张卡片都是一份资料包，点进去看背景、步骤和复盘。
           </motion.p>
-          <motion.p
-            className="text-[12px] font-sans font-normal text-light-silver text-center tracking-[0.02em] mb-6"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: easeOut, delay: 0.25 }}
-          >
-            {stats.total} 件作品 · {stats.completed} 已完成 · {stats.inProgress} 进行中
-            {stats.archived > 0 ? ` · ${stats.archived} 已归档` : ''}
-          </motion.p>
-
-          {/* Page Guide */}
-          <div className="max-w-[720px] mx-auto">
-            <PageGuide />
-          </div>
+          {featuredWorks.length > 0 && (
+            <motion.div
+              className="mx-auto mt-6 grid max-w-[1080px] grid-cols-1 gap-4 md:grid-cols-3"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, ease: easeOut, delay: 0.36 }}
+            >
+              {featuredWorks.map((work, index) => (
+                <Link
+                  key={work.id}
+                  to={`/content/${work.id}`}
+                  className="group rounded-xl border border-[#E8DDD4] bg-[#FCFAF7] p-5 text-left transition-all duration-200 hover:-translate-y-[2px] hover:border-[#C9AF96] hover:shadow-md"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="rounded-full bg-white px-2.5 py-1 text-[11px] text-[#9B7E68]">
+                      精选 {index + 1}
+                    </span>
+                    <ArrowRight
+                      size={15}
+                      strokeWidth={1.5}
+                      className="text-silver transition-transform duration-150 group-hover:translate-x-0.5"
+                    />
+                  </div>
+                  <h2 className="mt-4 font-serif text-[19px] leading-[1.45] text-ink">{work.title}</h2>
+                  <p className="mt-2 line-clamp-3 text-[13px] leading-[1.8] text-silver">
+                    {work.description}
+                  </p>
+                </Link>
+              ))}
+            </motion.div>
+          )}
         </div>
       </section>
 
       {/* ========== Sticky Filters ========== */}
-      <div className="sticky top-16 z-30 bg-white/90 backdrop-blur-[8px] border-b border-border-color">
+      <div className="sticky top-[var(--app-nav-height)] z-30 bg-white/90 backdrop-blur-[8px] border-b border-border-color">
         <div className="max-w-[1200px] mx-auto px-5 md:px-12 py-3">
           {/* Type filters with counts */}
           <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide mb-2 pb-2 -mx-4 px-4">
-            {typeFilters.map((t) => (
+            {visibleTypeFilters.map((t) => (
               <button
                 key={t.key}
                 onClick={() => setActiveType(t.key)}
@@ -584,41 +463,26 @@ export default function WorksPage() {
             ))}
           </div>
 
-          {/* Tag filters */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide">
-            <span className="text-[11px] font-sans text-light-silver mr-1 shrink-0">技术</span>
-            {allTags.map((tag) => (
-              <button
-                key={tag}
-                onClick={() => toggleTag(tag)}
-                className={
-                  activeTags.includes(tag)
-                    ? 'shrink-0 px-2.5 py-1 rounded-md text-[12px] font-sans font-normal bg-light-pink text-graphite transition-colors duration-150'
-                    : 'shrink-0 px-2.5 py-1 rounded-md text-[12px] font-sans font-normal text-silver bg-light-gray hover:bg-cream transition-colors duration-150'
-                }
-              >
-                {tag}
-              </button>
-            ))}
-          </div>
+          <div className="flex items-center justify-between gap-3 px-4">
+            <button
+              type="button"
+              onClick={() => setShowAdvancedFilters((value) => !value)}
+              className="inline-flex items-center gap-2 rounded-full border border-[#E8DDD4] bg-[#FBF8F4] px-3 py-1.5 text-[12px] text-graphite transition-colors hover:border-[#C9AF96] hover:text-ink"
+            >
+              <SlidersHorizontal size={14} strokeWidth={1.5} />
+              细分筛选
+              {advancedFilterCount > 0 && (
+                <span className="rounded-full bg-light-pink px-1.5 py-0.5 text-[11px] text-graphite">
+                  {advancedFilterCount}
+                </span>
+              )}
+              <ChevronDown
+                size={13}
+                strokeWidth={1.5}
+                className={`transition-transform duration-150 ${showAdvancedFilters ? 'rotate-180' : ''}`}
+              />
+            </button>
 
-          {/* Status filters with counts */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide mt-2">
-            <span className="text-[11px] font-sans text-light-silver mr-1">状态</span>
-            {statusFilters.map((s) => (
-              <button
-                key={s.key}
-                onClick={() => setActiveStatus(s.key)}
-                className={
-                  activeStatus === s.key
-                    ? 'px-2.5 py-0.5 rounded-full text-[12px] font-sans font-normal bg-light-pink text-graphite transition-colors duration-150'
-                    : 'px-2.5 py-0.5 rounded-full text-[12px] font-sans font-normal text-silver hover:text-graphite hover:bg-cream transition-colors duration-150'
-                }
-              >
-                {s.label}
-                <span className="text-[10px] text-light-silver ml-0.5">{statusCounts[s.key] || 0}</span>
-              </button>
-            ))}
             {(activeType !== 'all' || activeStatus !== 'all' || activeTags.length > 0) && (
               <button
                 onClick={clearFilters}
@@ -629,6 +493,55 @@ export default function WorksPage() {
               </button>
             )}
           </div>
+
+          <AnimatePresence initial={false}>
+            {showAdvancedFilters && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.2 }}
+                className="overflow-hidden"
+              >
+                <div className="mt-3 rounded-xl border border-border-color bg-[#FCFBF9] px-4 py-4">
+                  <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide">
+                    <span className="text-[11px] font-sans text-light-silver mr-1 shrink-0">状态</span>
+                    {statusFilters.map((s) => (
+                      <button
+                        key={s.key}
+                        onClick={() => setActiveStatus(s.key)}
+                        className={
+                          activeStatus === s.key
+                            ? 'px-2.5 py-0.5 rounded-full text-[12px] font-sans font-normal bg-light-pink text-graphite transition-colors duration-150'
+                            : 'px-2.5 py-0.5 rounded-full text-[12px] font-sans font-normal text-silver hover:text-graphite hover:bg-cream transition-colors duration-150'
+                        }
+                      >
+                        {s.label}
+                        <span className="text-[10px] text-light-silver ml-0.5">{statusCounts[s.key] || 0}</span>
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="mt-3 flex items-center gap-2 overflow-x-auto scrollbar-hide">
+                    <span className="text-[11px] font-sans text-light-silver mr-1 shrink-0">细分主题</span>
+                    {allTags.map((tag) => (
+                      <button
+                        key={tag}
+                        onClick={() => toggleTag(tag)}
+                        className={
+                          activeTags.includes(tag)
+                            ? 'shrink-0 px-2.5 py-1 rounded-md text-[12px] font-sans font-normal bg-light-pink text-graphite transition-colors duration-150'
+                            : 'shrink-0 px-2.5 py-1 rounded-md text-[12px] font-sans font-normal text-silver bg-light-gray hover:bg-cream transition-colors duration-150'
+                        }
+                      >
+                        {toPublicLabel(tag)}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
 
@@ -658,8 +571,6 @@ export default function WorksPage() {
                   key={work.id}
                   work={work}
                   index={index}
-                  isExpanded={expandedWorkId === work.id}
-                  onToggle={() => toggleExpand(work.id)}
                 />
               ))}
             </motion.div>

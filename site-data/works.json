@@ -1,9 +1,2252 @@
 [
   {
+    "id": "c_aa46832bfd11e952",
+    "title": "Coze 风格 Agent 搭建器研究",
+    "sourceTitle": "Coze 风格 Agent 搭建器研究",
+    "slug": "wiki-projects-coze-agent-builder-research",
+    "summary": "面向小白的 Coze 风格 Agent 搭建器研究：不追求完整复制平台，而是解释一个安全、可复核、能连接工具和知识库的最小 Agent 工作流如何搭起来。",
+    "sourceSummary": "面向小白的 Coze 风格 Agent 搭建器研究：不追求完整复制平台，而是解释一个安全、可复核、能连接工具和知识库的最小 Agent 工作流如何搭起来。",
+    "tags": [
+      "agent-builder",
+      "coze",
+      "workflow",
+      "rag",
+      "project",
+      "showcase",
+      "beginner-friendly"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": null,
+    "sourcePath": "wiki/projects/coze-agent-builder-research.md",
+    "module": "works",
+    "category": "project",
+    "type": "project",
+    "phase": null,
+    "cover": null,
+    "contentType": "case",
+    "href": "/content/wiki-projects-coze-agent-builder-research",
+    "contentLines": [
+      "# Coze 风格 Agent 搭建器研究",
+      "",
+      "这个项目最初看起来像一个“复刻 Coze”的计划，但真正值得展示的不是复刻界面，而是复刻它背后的工作流思想。",
+      "",
+      "对小白来说，Agent 搭建器可以先理解成一条会思考的流水线：用户说一句话，系统判断下一步，可能查资料，可能调用工具，可能需要人确认，最后给出回答。难点不在“让它动起来”，而在“让它动得可解释、可停止、可追责”。",
+      "",
+      "## 它是什么",
+      "",
+      "Coze 风格搭建器一般包含七个部分：",
+      "",
+      "- 角色配置：这个 Agent 是谁，要解决什么问题；",
+      "- 工作流：它按什么顺序行动；",
+      "- 工具：它能调用哪些外部能力；",
+      "- 知识库：它能读取哪些资料；",
+      "- 记忆和上下文：它怎样理解当前对话；",
+      "- 多 Agent 协作：什么时候把任务交给另一个角色；",
+      "- 发布渠道：最终在哪里给用户使用。",
+      "",
+      "这页不宣称已经做出完整平台。它展示的是一个最小、安全、能被新手理解的架构模型。",
+      "",
+      "## 为什么重要",
+      "",
+      "很多人第一次接触 Agent，会被“自动化”吸引：好像只要连几个节点，复杂任务就能自己完成。但真正能长期使用的 Agent，不是最自由的，而是边界最清楚的。",
+      "",
+      "如果没有边界，Agent 会出现三个问题：",
+      "",
+      "- 不知道哪些资料能读；",
+      "- 不知道哪些动作必须停下来确认；",
+      "- 出错后不知道是哪一步出了问题。",
+      "",
+      "所以这个项目的重点，是把 Agent 从“神秘助手”拆成一条透明流程。",
+      "",
+      "## 最小安全模型",
+      "",
+      "一个可复刻的最小流程可以这样设计：",
+      "",
+      "1. 用户输入问题。",
+      "2. 控制器判断要不要查资料。",
+      "3. 检索节点只读取公开资料。",
+      "4. 模型节点根据资料生成回答。",
+      "5. 如果要执行外部动作，先进入确认节点。",
+      "6. 输出答案，并标出依据来自哪里。",
+      "",
+      "这条流程很小，但它已经包含了 Agent 系统最重要的骨架：输入、判断、工具、来源、确认、输出。",
+      "",
+      "## 实现步骤",
+      "",
+      "可以把 Coze 风格搭建器拆成一个很小的本地原型：",
+      "",
+      "1. 先做节点定义。每个节点只包含 `id`、`名称`、`输入类型`、`输出类型`、`允许动作`、`失败处理`。",
+      "2. 做一张流程表。第一版只允许线性流程，不急着做复杂拖拽。",
+      "3. 做一个控制器。控制器负责读取当前节点、执行节点、记录结果、选择下一节点。",
+      "4. 做一个公开资料检索节点。它只能读公开 `site-data`，不能碰私有目录。",
+      "5. 做一个模型回答节点。它只能根据公开资料和用户问题生成回答。",
+      "6. 做一个人工确认节点。凡是写文件、调用外部接口、发布内容、高成本请求，都必须经过确认。",
+      "7. 做一份运行记录。记录节点名、输入摘要、输出摘要、状态、错误和下一步。",
+      "",
+      "这就是最小可复刻版本。它没有华丽画布，但已经能证明一个 Agent 工作流是否可靠。",
+      "",
+      "## 小白复刻路径",
+      "",
+      "1. 不要先做大平台，先写一句话目标：这个 Agent 要帮谁解决什么问题。",
+      "2. 画出五种节点：输入、模型、工具、检索、确认。",
+      "3. 给每个节点写输入和输出，例如“输入是用户问题，输出是检索关键词”。",
+      "4. 准备一个公开资料库，只放已经能公开的资料。",
+      "5. 跑一个问题，看它能不能给出带依据的回答。",
+      "6. 记录每一步发生了什么，哪里失败，下一步怎么修。",
+      "",
+      "## 一个可跑的示例流程",
+      "",
+      "示例任务：读者问“小白应该怎么开始做个人资料库？”",
+      "",
+      "1. 输入节点收到问题。",
+      "2. 控制器判断这是资料库入门问题。",
+      "3. 检索节点只搜索公开页面：个人资料库平台、展示前端、提示词工程、发布边界。",
+      "4. 模型节点生成回答，要求必须包含三段：先做什么、为什么这样做、怎样检查。",
+      "5. 确认节点检查回答里有没有访问材料、本机路径、未公开事实。",
+      "6. 输出节点把答案给读者，并给出下一步链接。",
+      "",
+      "这条流程适合小白，因为它把“智能”拆成了看得见的动作。每一步都能停下来检查。",
+      "",
+      "## 三层理解",
+      "",
+      "心理层：想做完整平台，常常是因为害怕遗漏；但系统越大，越容易失控。把目标缩成最小闭环，是把焦虑变成可验证行动。",
+      "",
+      "社会层：Agent 搭建器连接了普通用户、模型平台、工具生态和内容来源。它不是个人玩具，而是一个小型组织系统：谁有权限，谁提供资料，谁承担结果，都要写清楚。",
+      "",
+      "哲学层：真正的智能不是“随便行动”，而是在合适的地方停下来。一个能停下来的 Agent，才可能被信任。",
+      "",
+      "## 容易踩的坑",
+      "",
+      "- 只做拖拽界面，不做运行规则；",
+      "- 让 Agent 直接接触未整理资料；",
+      "- 没有确认节点；",
+      "- 没有运行记录；",
+      "- 同时做太多角色，最后每个都很浅。",
+      "",
+      "## 当前状态",
+      "",
+      "状态：建设中。当前页面是公开安全的架构研究，下一步需要把节点图、运行记录模板和一个示例流程补出来。",
+      "",
+      "## 相关",
+      "",
+      "- [[wiki/topics/ai-agent-systems-moc]]",
+      "- [[wiki/concepts/agent-skill-governance]]",
+      "- [[wiki/synthesis/project-evidence-matrix]]"
+    ],
+    "links": [
+      {
+        "target": "wiki/topics/ai-agent-systems-moc",
+        "label": "wiki/topics/ai-agent-systems-moc"
+      },
+      {
+        "target": "wiki/concepts/agent-skill-governance",
+        "label": "wiki/concepts/agent-skill-governance"
+      },
+      {
+        "target": "wiki/synthesis/project-evidence-matrix",
+        "label": "wiki/synthesis/project-evidence-matrix"
+      }
+    ],
+    "sources": [
+      "[[wiki/projects/04-知识库-项目-Coze复刻计划-Coze复刻计划]]",
+      "[[wiki/topics/ai-agent-systems-moc]]",
+      "[[wiki/concepts/agent-skill-governance]]"
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Coze 风格 Agent 搭建器研究",
+        "anchor": "coze-风格-agent-搭建器研究"
+      },
+      {
+        "level": 2,
+        "title": "它是什么",
+        "anchor": "它是什么"
+      },
+      {
+        "level": 2,
+        "title": "为什么重要",
+        "anchor": "为什么重要"
+      },
+      {
+        "level": 2,
+        "title": "最小安全模型",
+        "anchor": "最小安全模型"
+      },
+      {
+        "level": 2,
+        "title": "实现步骤",
+        "anchor": "实现步骤"
+      },
+      {
+        "level": 2,
+        "title": "小白复刻路径",
+        "anchor": "小白复刻路径"
+      },
+      {
+        "level": 2,
+        "title": "一个可跑的示例流程",
+        "anchor": "一个可跑的示例流程"
+      },
+      {
+        "level": 2,
+        "title": "三层理解",
+        "anchor": "三层理解"
+      },
+      {
+        "level": 2,
+        "title": "容易踩的坑",
+        "anchor": "容易踩的坑"
+      },
+      {
+        "level": 2,
+        "title": "当前状态",
+        "anchor": "当前状态"
+      },
+      {
+        "level": 2,
+        "title": "相关",
+        "anchor": "相关"
+      }
+    ],
+    "wordCount": 1446,
+    "readingMinutes": 4,
+    "metrics": {
+      "lineCount": 106,
+      "headingCount": 11,
+      "linkCount": 3,
+      "sourceCount": 3
+    },
+    "quality": {
+      "hasSources": true,
+      "hasToc": true,
+      "summaryLength": 77,
+      "sourceTitle": "Coze 风格 Agent 搭建器研究",
+      "sourceSummary": "面向小白的 Coze 风格 Agent 搭建器研究：不追求完整复制平台，而是解释一个安全、可复核、能连接工具和知识库的最小 Agent 工作流如何搭起来。",
+      "needsSourceReview": false,
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "explicitlyCurated": true
+    },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "archive-derived",
+      "agent builder"
+    ],
+    "whyItMattered": "它把一个很大的平台复刻想法，收缩成小白能理解的 Agent 工作流模型：输入、判断、调用工具、读取资料、确认风险、输出结果。真正重要的不是把界面画得像 Coze，而是理解一个 Agent 为什么能被信任。",
+    "psychologicalLayer": "这个项目背后有一种很典型的学习冲动：看到强大的平台，就想一次性复刻完整形态。真正的进步发生在缩小目标的那一刻，因为缩小目标会迫使人说清楚什么才是核心。",
+    "sociologicalLayer": "Coze 这类产品站在创作者工具、模型平台和自动化工作流之间。它不是单纯的聊天工具，而是把普通人的想法接到工具生态里。因此复刻它时，必须同时考虑使用者、平台规则、工具权限和知识来源。",
+    "philosophicalLayer": "一个可视化 Agent 画布并不天然带来理解。线条和节点只是表面，真正的理解来自每一步为什么发生、由谁允许、失败后如何停止。",
+    "operationStory": [
+      "先把 Coze 风格产品拆成配置、工作流、工具、知识库、对话状态、发布渠道几个部分。",
+      "再把目标从完整复刻收缩到最小闭环：用户输入进入流程，一个控制器选择下一步，一个工具或检索节点返回结果。",
+      "把高风险动作放到确认节点，避免 Agent 在没有边界的情况下自动执行。",
+      "把公开资料、私有资料和待复核资料分开，防止一个看似聪明的 Agent 读到不该公开的内容。"
+    ],
+    "replicationSteps": [
+      "画出五种节点：输入节点、模型节点、工具节点、检索节点、确认节点。",
+      "给每个节点写清楚输入、输出、失败状态和下一步。",
+      "先做一个最小流程：提问、检索公开资料、生成带来源的回答。",
+      "把写文件、发布、外部调用、高成本调用都放进确认清单。",
+      "每跑一次流程，都记录节点、输入类型、输出类型、状态和下一节点。"
+    ],
+    "failureModes": [
+      "只复刻画布界面，却没有节点权限和运行记录。",
+      "让所有 Agent 都能随意执行动作，最后没人知道责任归属。",
+      "把公开资料和私有资料混在同一个检索源里。",
+      "还没验证最小流程，就急着做完整平台。"
+    ],
+    "lessons": [
+      "Agent 搭建器的核心不是画布，而是运行契约。",
+      "多 Agent 协作要先有一个主控制器，再谈分工。",
+      "最小可验证流程比宏大的平台想象更可靠。"
+    ],
+    "nextPlan": "下一步把这页拆成一张最小节点图和一份运行记录模板，让前端可以展示一个新手能照着搭的 Agent 工作流。",
+    "anReminders": [
+      "不要被画布迷惑。一个 Agent 系统能不能用，关键在权限、来源、确认和失败处理，不在节点看起来多不多。",
+      "先做一个只读的公开资料问答流程，再考虑写入、发布、外部调用这些高风险能力。",
+      "每个节点都要能回答：它读什么，写什么，失败时谁负责。答不出来就不要让它自动运行。",
+      "多 Agent 并行只有在任务边界清楚时才有价值。边界不清时，并行只会放大混乱。"
+    ],
+    "actionText": "先看这页的目标和边界，再按最小步骤做一个缩小版本，并记录一次验收结果。",
+    "displayTier": "showcase",
+    "qualityScore": 100,
+    "hiddenReasons": [],
+    "projectStatus": "building",
+    "techStack": [
+      "agent-builder",
+      "coze",
+      "workflow",
+      "rag",
+      "project",
+      "showcase"
+    ]
+  },
+  {
+    "id": "c_a4cb0d271e33fb21",
+    "title": "Trae Antigravity Agent IDE 学习包",
+    "sourceTitle": "Lifecycle Package: Agent IDE Learning Workflow",
+    "slug": "wiki-projects-lifecycle-agent-ide-learning-workflow",
+    "summary": "把 Trae、Antigravity 等 Agent IDE 的使用经验整理成评估学习包，帮助新手比较工具并形成可复用流程。",
+    "sourceSummary": "把 Trae、Antigravity 等 Agent IDE 的使用整理成小白可复刻的评估学习包：先定任务，再记录流程、验收结果和是否值得保留。",
+    "tags": [
+      "project",
+      "agent",
+      "ide",
+      "workflow",
+      "lifecycle",
+      "learning",
+      "curated",
+      "featured"
+    ],
+    "status": [
+      "featured"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": null,
+    "sourcePath": "wiki/projects/lifecycle-agent-ide-learning-workflow.md",
+    "module": "works",
+    "category": "project",
+    "type": "project",
+    "phase": null,
+    "cover": null,
+    "contentType": "article",
+    "href": "/content/wiki-projects-lifecycle-agent-ide-learning-workflow",
+    "contentLines": [
+      "# Trae Antigravity Agent IDE 学习包",
+      "",
+      "## 概览",
+      "",
+      "把 Trae、Antigravity 等 Agent IDE 的使用经验整理成评估学习包，帮助新手比较工具并形成可复用流程。",
+      "",
+      "## 读者可以获得什么",
+      "",
+      "- 理解「Trae Antigravity Agent IDE 学习包」在安的书房里的位置。",
+      "- 看清它解决的问题、适合的读者和后续复刻方向。",
+      "- 知道公开页面保留的是方法、结构和经验，不包含原始私有材料。",
+      "",
+      "## 推荐阅读方式",
+      "",
+      "1. 先读概览，确认它和当前学习目标是否相关。",
+      "2. 再看关联页面，理解来源、项目、工具或工作流之间的关系。",
+      "3. 如果要复刻，先写下自己的目标、输入材料、边界和验收标准。",
+      "4. 完成后回到资料库，把新的经验整理成可追踪页面。",
+      "",
+      "## 发布边界",
+      "",
+      "本页只展示公开安全的整理结果。原始材料、账号状态、本机细节、私人对话和未复核内容不会进入公开展示。",
+      "",
+      "## 来源",
+      "",
+      "- [[wiki/sources/local-private-compile-2026-05-13]]",
+      "- [[wiki/synthesis/github-best-practice-learning-loop]]",
+      "- [[wiki/projects/lifecycle-agent-skill-governance]]"
+    ],
+    "links": [
+      {
+        "target": "wiki/projects/lifecycle-agent-skill-governance",
+        "label": "wiki/projects/lifecycle-agent-skill-governance"
+      },
+      {
+        "target": "wiki/synthesis/github-best-practice-learning-loop",
+        "label": "wiki/synthesis/github-best-practice-learning-loop"
+      },
+      {
+        "target": "wiki/topics/skills-and-tools-moc",
+        "label": "wiki/topics/skills-and-tools-moc"
+      }
+    ],
+    "sources": [
+      "[[wiki/sources/local-private-compile-2026-05-13]]",
+      "[[wiki/synthesis/github-best-practice-learning-loop]]",
+      "[[wiki/projects/lifecycle-agent-skill-governance]]"
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Trae Antigravity Agent IDE 学习包",
+        "anchor": "trae-antigravity-agent-ide-学习包"
+      },
+      {
+        "level": 2,
+        "title": "概览",
+        "anchor": "概览"
+      },
+      {
+        "level": 2,
+        "title": "读者可以获得什么",
+        "anchor": "读者可以获得什么"
+      },
+      {
+        "level": 2,
+        "title": "推荐阅读方式",
+        "anchor": "推荐阅读方式"
+      },
+      {
+        "level": 2,
+        "title": "发布边界",
+        "anchor": "发布边界"
+      },
+      {
+        "level": 2,
+        "title": "来源",
+        "anchor": "来源"
+      }
+    ],
+    "wordCount": 277,
+    "readingMinutes": 1,
+    "metrics": {
+      "lineCount": 28,
+      "headingCount": 6,
+      "linkCount": 3,
+      "sourceCount": 3
+    },
+    "quality": {
+      "hasSources": true,
+      "hasToc": true,
+      "summaryLength": 62,
+      "sourceTitle": "Lifecycle Package: Agent IDE Learning Workflow",
+      "sourceSummary": "把 Trae、Antigravity 等 Agent IDE 的使用整理成小白可复刻的评估学习包：先定任务，再记录流程、验收结果和是否值得保留。",
+      "needsSourceReview": false,
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "explicitlyCurated": true
+    },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "local compile",
+      "public-safe rewrite",
+      "agent workflow"
+    ],
+    "actionText": "先看这页的目标和边界，再按最小步骤做一个缩小版本，并记录一次验收结果。",
+    "displayTier": "showcase",
+    "qualityScore": 100,
+    "hiddenReasons": [],
+    "projectStatus": "research",
+    "techStack": [
+      "project",
+      "agent",
+      "ide",
+      "workflow",
+      "lifecycle",
+      "learning"
+    ],
+    "nextPlan": "",
+    "whyItMattered": "「Trae Antigravity Agent IDE 学习包」把一次真实项目整理成可学习、可展示、可复刻的公开资料，帮助读者理解目标、边界和结果。",
+    "operationStory": [
+      "先把原始材料、私有复核和公开展示分开，确认哪些信息可以安全讲给读者。",
+      "再把项目目标、关键步骤、失败点和验收方式整理成中文页面。",
+      "最后通过结构检查、隐私扫描和站点数据生成，确认资料可以进入前端展示。"
+    ],
+    "replicationSteps": [
+      "先明确目标读者、最小成果和公开边界。",
+      "整理公开安全的来源说明和替代示例。",
+      "按教程、操作步骤、参考表和解释四块组织内容。",
+      "运行发布前验收，确认页面可读、可追踪、可维护。"
+    ],
+    "failureModes": [
+      "只展示结果，不说明来源和验收。",
+      "把原始本地材料误当成公开资料。",
+      "页面没有复刻步骤，读者只能看热闹。"
+    ],
+    "lessons": [
+      "项目资料要从经历变成方法，才能真正被复用。",
+      "公开页面要把价值、边界和下一步讲清楚。",
+      "小批量高质量整理比一次性堆材料更稳。"
+    ],
+    "anReminders": [
+      "继续把「Trae Antigravity Agent IDE 学习包」补成更具体的实操案例。",
+      "每次新增本地证据，都先进入私有复核，再决定是否公开。"
+    ]
+  },
+  {
+    "id": "c_4e569ed065ab0782",
+    "title": "Agent 技能治理复刻学习包",
+    "sourceTitle": "Lifecycle Package: Agent Skill Governance",
+    "slug": "wiki-projects-lifecycle-agent-skill-governance",
+    "summary": "把 Agent 技能治理整理成复刻包：从规则、技能、验收和复盘四个层面建立稳定协作系统。",
+    "sourceSummary": "把 Agent 技能、规则、边界和验证整理成小白可复刻的治理学习包，帮助复杂协作不再只靠临时聊天记忆。",
+    "tags": [
+      "project",
+      "agent",
+      "skills",
+      "governance",
+      "lifecycle",
+      "learning",
+      "curated",
+      "featured"
+    ],
+    "status": [
+      "featured"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": null,
+    "sourcePath": "wiki/projects/lifecycle-agent-skill-governance.md",
+    "module": "works",
+    "category": "project",
+    "type": "project",
+    "phase": null,
+    "cover": null,
+    "contentType": "article",
+    "href": "/content/wiki-projects-lifecycle-agent-skill-governance",
+    "contentLines": [
+      "# Agent 技能治理复刻学习包",
+      "",
+      "## 概览",
+      "",
+      "把 Agent 技能治理整理成复刻包：从规则、技能、验收和复盘四个层面建立稳定协作系统。",
+      "",
+      "## 读者可以获得什么",
+      "",
+      "- 理解「Agent 技能治理复刻学习包」在安的书房里的位置。",
+      "- 看清它解决的问题、适合的读者和后续复刻方向。",
+      "- 知道公开页面保留的是方法、结构和经验，不包含原始私有材料。",
+      "",
+      "## 推荐阅读方式",
+      "",
+      "1. 先读概览，确认它和当前学习目标是否相关。",
+      "2. 再看关联页面，理解来源、项目、工具或工作流之间的关系。",
+      "3. 如果要复刻，先写下自己的目标、输入材料、边界和验收标准。",
+      "4. 完成后回到资料库，把新的经验整理成可追踪页面。",
+      "",
+      "## 发布边界",
+      "",
+      "本页只展示公开安全的整理结果。原始材料、账号状态、本机细节、私人对话和未复核内容不会进入公开展示。",
+      "",
+      "## 来源",
+      "",
+      "- [[wiki/concepts/agent-skill-governance]]",
+      "- [[wiki/synthesis/public-tool-and-agent-inventory]]",
+      "- [[wiki/topics/skills-and-tools-moc]]"
+    ],
+    "links": [
+      {
+        "target": "wiki/topics/skills-and-tools-moc",
+        "label": "wiki/topics/skills-and-tools-moc"
+      },
+      {
+        "target": "wiki/concepts/agent-skill-governance",
+        "label": "wiki/concepts/agent-skill-governance"
+      },
+      {
+        "target": "wiki/synthesis/public-tool-and-agent-inventory",
+        "label": "wiki/synthesis/public-tool-and-agent-inventory"
+      },
+      {
+        "target": "wiki/topics/skills-and-tools-moc",
+        "label": "wiki/topics/skills-and-tools-moc"
+      }
+    ],
+    "sources": [
+      "[[wiki/concepts/agent-skill-governance]]",
+      "[[wiki/synthesis/public-tool-and-agent-inventory]]",
+      "[[wiki/topics/skills-and-tools-moc]]"
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Agent 技能治理复刻学习包",
+        "anchor": "agent-技能治理复刻学习包"
+      },
+      {
+        "level": 2,
+        "title": "概览",
+        "anchor": "概览"
+      },
+      {
+        "level": 2,
+        "title": "读者可以获得什么",
+        "anchor": "读者可以获得什么"
+      },
+      {
+        "level": 2,
+        "title": "推荐阅读方式",
+        "anchor": "推荐阅读方式"
+      },
+      {
+        "level": 2,
+        "title": "发布边界",
+        "anchor": "发布边界"
+      },
+      {
+        "level": 2,
+        "title": "来源",
+        "anchor": "来源"
+      }
+    ],
+    "wordCount": 282,
+    "readingMinutes": 1,
+    "metrics": {
+      "lineCount": 28,
+      "headingCount": 6,
+      "linkCount": 4,
+      "sourceCount": 3
+    },
+    "quality": {
+      "hasSources": true,
+      "hasToc": true,
+      "summaryLength": 44,
+      "sourceTitle": "Lifecycle Package: Agent Skill Governance",
+      "sourceSummary": "把 Agent 技能、规则、边界和验证整理成小白可复刻的治理学习包，帮助复杂协作不再只靠临时聊天记忆。",
+      "needsSourceReview": false,
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "explicitlyCurated": true
+    },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public project",
+      "skill governance",
+      "agent workflow"
+    ],
+    "actionText": "先看这页的目标和边界，再按最小步骤做一个缩小版本，并记录一次验收结果。",
+    "displayTier": "showcase",
+    "qualityScore": 100,
+    "hiddenReasons": [],
+    "projectStatus": "maintaining",
+    "techStack": [
+      "project",
+      "agent",
+      "skills",
+      "governance",
+      "lifecycle",
+      "learning"
+    ],
+    "nextPlan": "",
+    "whyItMattered": "「Agent 技能治理复刻学习包」把一次真实项目整理成可学习、可展示、可复刻的公开资料，帮助读者理解目标、边界和结果。",
+    "operationStory": [
+      "先把原始材料、私有复核和公开展示分开，确认哪些信息可以安全讲给读者。",
+      "再把项目目标、关键步骤、失败点和验收方式整理成中文页面。",
+      "最后通过结构检查、隐私扫描和站点数据生成，确认资料可以进入前端展示。"
+    ],
+    "replicationSteps": [
+      "先明确目标读者、最小成果和公开边界。",
+      "整理公开安全的来源说明和替代示例。",
+      "按教程、操作步骤、参考表和解释四块组织内容。",
+      "运行发布前验收，确认页面可读、可追踪、可维护。"
+    ],
+    "failureModes": [
+      "只展示结果，不说明来源和验收。",
+      "把原始本地材料误当成公开资料。",
+      "页面没有复刻步骤，读者只能看热闹。"
+    ],
+    "lessons": [
+      "项目资料要从经历变成方法，才能真正被复用。",
+      "公开页面要把价值、边界和下一步讲清楚。",
+      "小批量高质量整理比一次性堆材料更稳。"
+    ],
+    "anReminders": [
+      "继续把「Agent 技能治理复刻学习包」补成更具体的实操案例。",
+      "每次新增本地证据，都先进入私有复核，再决定是否公开。"
+    ]
+  },
+  {
+    "id": "c_03a09220c2dc1fa2",
+    "title": "Coze Agent Builder 复刻学习包",
+    "sourceTitle": "Coze Agent Builder 复刻学习包",
+    "slug": "wiki-projects-lifecycle-coze-agent-builder",
+    "summary": "把 Coze 风格 Agent 搭建器研究整理成学习包，帮助读者理解工作流节点、调试、发布和安全边界。",
+    "sourceSummary": "把 Coze 风格 Agent 平台拆成小白可复刻的只读问答工作流：先画节点、写输入输出、加人工确认，再逐步扩展工具能力。",
+    "tags": [
+      "project",
+      "ai-agent",
+      "coze",
+      "workflow",
+      "lifecycle",
+      "learning",
+      "curated",
+      "featured",
+      "beginner-friendly"
+    ],
+    "status": [
+      "featured"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": null,
+    "sourcePath": "wiki/projects/lifecycle-coze-agent-builder.md",
+    "module": "works",
+    "category": "project",
+    "type": "project",
+    "phase": null,
+    "cover": null,
+    "contentType": "article",
+    "href": "/content/wiki-projects-lifecycle-coze-agent-builder",
+    "contentLines": [
+      "# Coze Agent Builder 复刻学习包",
+      "",
+      "这份学习包不是教你复制某个平台账号里的配置。它教你看懂 Agent Builder 的底层结构，并做一个最小版、可解释、可停止的智能体工作流。",
+      "",
+      "对小白来说，Agent Builder 可以先理解成“把一次 AI 回答拆成很多小格子”。每个格子负责一件事：接收问题、查资料、生成回答、请人确认、输出结果。复杂平台不过是在这些格子上加了更多工具和自动化。",
+      "",
+      "## 你会做出什么",
+      "",
+      "一个只读问答工作流：",
+      "",
+      "```text",
+      "用户问题 -> 任务理解 -> 公开资料检索 -> 回答草稿 -> 人工确认 -> 最终回答",
+      "```",
+      "",
+      "最小版本不接写入工具，不自动发布，不调用私有材料。它只回答公开资料里的问题。",
+      "",
+      "## 为什么从只读开始",
+      "",
+      "很多人一开始做 Agent，就想让它自动发消息、自动改文件、自动部署。这样很刺激，但不适合新手。因为你还没有看清：",
+      "",
+      "- 它读了什么；",
+      "- 它怎样判断；",
+      "- 它什么时候会错；",
+      "- 错了能不能停；",
+      "- 谁对最终结果负责。",
+      "",
+      "只读工作流能先训练你看结构。看懂结构后，再谈工具和自动化。",
+      "",
+      "## 小白复刻步骤",
+      "",
+      "### 第一步：画六个节点",
+      "",
+      "在纸上或白板工具里画六个框：",
+      "",
+      "| 节点 | 输入 | 输出 |",
+      "|---|---|---|",
+      "| 用户问题 | 读者的一句话 | 原始问题 |",
+      "| 任务理解 | 原始问题 | 问题类型 |",
+      "| 公开资料检索 | 问题类型 | 相关公开页面 |",
+      "| 回答草稿 | 公开资料 | 初稿 |",
+      "| 人工确认 | 初稿 | 通过或退回 |",
+      "| 最终回答 | 通过后的内容 | 给读者的答案 |",
+      "",
+      "完成标准：每个节点都能说清楚读什么、产出什么。",
+      "",
+      "### 第二步：写失败状态",
+      "",
+      "每个节点都要写失败状态：",
+      "",
+      "- 用户问题太模糊：请读者补充目标；",
+      "- 找不到公开资料：说明资料库没有收录；",
+      "- 回答草稿不确定：标明不确定；",
+      "- 人工确认失败：退回修改；",
+      "- 涉及私有材料：拒绝或转为公开边界说明。",
+      "",
+      "完成标准：工作流不怕失败，因为它知道在哪里停。",
+      "",
+      "### 第三步：跑一个公开问题",
+      "",
+      "用这个问题测试：",
+      "",
+      "> 我是新手，想看安的书房，应该从哪里开始？",
+      "",
+      "理想路径：",
+      "",
+      "1. 判断这是导航问题；",
+      "2. 检索首页、谱系、工坊；",
+      "3. 生成三条入口建议；",
+      "4. 人工确认没有泄露私有内容；",
+      "5. 输出给读者。",
+      "",
+      "完成标准：答案只基于公开页面。",
+      "",
+      "## 安实际提炼了什么",
+      "",
+      "安从 Coze 风格平台里提炼的不是“某个具体配置”，而是四个可复用概念：",
+      "",
+      "1. **节点**：把任务拆小；",
+      "2. **资料**：回答必须有来源；",
+      "3. **工具**：动作必须有权限；",
+      "4. **检查点**：关键位置让人确认。",
+      "",
+      "这四个概念比平台本身更重要。平台会变，结构会留下。",
+      "",
+      "## 三层理解",
+      "",
+      "**心理层**：复杂平台会让新手误以为自己必须一次学完。把 Agent 拆成只读问答流，会让注意力回到“我现在只学一件事”。",
+      "",
+      "**社会层**：Agent 不只是个人提示词，它像一个小组织：有人提问，有资料库，有工具，有审批，有记录。组织越小，边界越要清楚。",
+      "",
+      "**哲学层**：自动化真正的成熟，不是无人参与，而是知道哪些地方必须有人负责。",
+      "",
+      "## 下一步练习",
+      "",
+      "在 [[wiki/projects/coze-agent-builder-research]] 的基础上，画出你的第一个只读工作流。不要接外部工具。先让它回答一个公开资料问题，并记录失败路径。",
+      "",
+      "## Related",
+      "",
+      "- [[wiki/projects/coze-agent-builder-research]]",
+      "- [[wiki/concepts/tool-coze-workflow-platform-study]]",
+      "- [[wiki/topics/ai-agent-systems-moc]]",
+      "- [[wiki/sources/tutorial-and-source-research-best-practices]]"
+    ],
+    "links": [
+      {
+        "target": "wiki/projects/coze-agent-builder-research",
+        "label": "wiki/projects/coze-agent-builder-research"
+      },
+      {
+        "target": "wiki/projects/coze-agent-builder-research",
+        "label": "wiki/projects/coze-agent-builder-research"
+      },
+      {
+        "target": "wiki/concepts/tool-coze-workflow-platform-study",
+        "label": "wiki/concepts/tool-coze-workflow-platform-study"
+      },
+      {
+        "target": "wiki/topics/ai-agent-systems-moc",
+        "label": "wiki/topics/ai-agent-systems-moc"
+      },
+      {
+        "target": "wiki/sources/tutorial-and-source-research-best-practices",
+        "label": "wiki/sources/tutorial-and-source-research-best-practices"
+      }
+    ],
+    "sources": [
+      "[[wiki/projects/coze-agent-builder-research]]",
+      "[[wiki/topics/ai-agent-systems-moc]]",
+      "[[wiki/concepts/upstream-reference-and-adaptation-policy]]",
+      "[[wiki/sources/tutorial-and-source-research-best-practices]]"
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Coze Agent Builder 复刻学习包",
+        "anchor": "coze-agent-builder-复刻学习包"
+      },
+      {
+        "level": 2,
+        "title": "你会做出什么",
+        "anchor": "你会做出什么"
+      },
+      {
+        "level": 2,
+        "title": "为什么从只读开始",
+        "anchor": "为什么从只读开始"
+      },
+      {
+        "level": 2,
+        "title": "小白复刻步骤",
+        "anchor": "小白复刻步骤"
+      },
+      {
+        "level": 3,
+        "title": "第一步：画六个节点",
+        "anchor": "第一步画六个节点"
+      },
+      {
+        "level": 3,
+        "title": "第二步：写失败状态",
+        "anchor": "第二步写失败状态"
+      },
+      {
+        "level": 3,
+        "title": "第三步：跑一个公开问题",
+        "anchor": "第三步跑一个公开问题"
+      },
+      {
+        "level": 2,
+        "title": "安实际提炼了什么",
+        "anchor": "安实际提炼了什么"
+      },
+      {
+        "level": 2,
+        "title": "三层理解",
+        "anchor": "三层理解"
+      },
+      {
+        "level": 2,
+        "title": "下一步练习",
+        "anchor": "下一步练习"
+      },
+      {
+        "level": 2,
+        "title": "Related",
+        "anchor": "related"
+      }
+    ],
+    "wordCount": 973,
+    "readingMinutes": 3,
+    "metrics": {
+      "lineCount": 102,
+      "headingCount": 11,
+      "linkCount": 5,
+      "sourceCount": 4
+    },
+    "quality": {
+      "hasSources": true,
+      "hasToc": true,
+      "summaryLength": 51,
+      "sourceTitle": "Coze Agent Builder 复刻学习包",
+      "sourceSummary": "把 Coze 风格 Agent 平台拆成小白可复刻的只读问答工作流：先画节点、写输入输出、加人工确认，再逐步扩展工具能力。",
+      "needsSourceReview": false,
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "explicitlyCurated": true
+    },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public project",
+      "reference study",
+      "agent workflow",
+      "tutorial standard"
+    ],
+    "whyItMattered": "这个学习包把 Coze 风格平台从一个看起来复杂的工具，拆成小白能理解的工作流：输入、判断、资料、工具、检查、输出。",
+    "psychologicalLayer": "新手看 Agent 平台时容易被节点、插件和自动化吓住。把它拆成一条只读问答流，可以先获得控制感，再逐步增加能力。",
+    "sociologicalLayer": "Agent Builder 是平台化 AI 的缩影：个人不再只写提示词，而是在组织工具、资料、权限和人工检查。它像一个小型协作系统。",
+    "philosophicalLayer": "智能体的可信度不来自它能做多少事，而来自它在该停下来的地方能够停下来。",
+    "operationStory": [
+      "先把 Coze 风格平台当成架构样本，而不是直接复制某个账号里的配置。",
+      "再提取可公开讲的结构：节点、知识库、工具、流程、人工检查和运行记录。",
+      "然后把复杂 Agent 拆成只读问答流，让小白先理解输入怎样变成回答。",
+      "最后把权限、失败路径和人工确认写进学习包，防止自动化越界。"
+    ],
+    "replicationSteps": [
+      "画 6 个框：用户输入、任务理解、公开资料检索、回答生成、人工确认、最终输出。",
+      "给每个框写一句输入和一句输出。",
+      "标记哪些框只能读资料，哪些框未来可能调用工具。",
+      "加一个人工确认节点，任何发布或执行动作都必须经过它。",
+      "跑一个公开安全问题，例如：如何开始阅读安的书房。",
+      "记录正常路径和失败路径，失败时说明停在哪一步。"
+    ],
+    "failureModes": [
+      "把平台账号里的配置当成公开教程，泄露不该公开的运行细节。",
+      "一开始就让 Agent 自动执行写入、发布或远程操作。",
+      "没有人工确认节点，回答错了也继续向后走。",
+      "只画漂亮流程图，不写每个节点的输入、输出和失败状态。",
+      "把工具越多当成能力越强，忽略权限和边界。"
+    ],
+    "lessons": [
+      "Agent 工作流先从只读开始，可信之后再增加动作。",
+      "每个节点都要知道它读什么、写什么、失败时停在哪里。",
+      "人工确认不是低效，而是把责任留在人手里。",
+      "运行记录的价值是复盘，不是公开炫耀。"
+    ],
+    "actionText": "先画一个只读问答工作流：用户输入、公开资料检索、回答草稿、人工确认、最终输出。不要一开始接写入工具。",
+    "displayTier": "showcase",
+    "qualityScore": 100,
+    "hiddenReasons": [],
+    "projectStatus": "research",
+    "techStack": [
+      "project",
+      "ai-agent",
+      "coze",
+      "workflow",
+      "lifecycle",
+      "learning"
+    ],
+    "nextPlan": "",
+    "anReminders": [
+      "继续把「Coze Agent Builder 复刻学习包」补成更具体的实操案例。",
+      "每次新增本地证据，都先进入私有复核，再决定是否公开。"
+    ]
+  },
+  {
+    "id": "c_aa6d132c022d7d69",
+    "title": "资料库前端复刻学习包",
+    "sourceTitle": "资料库前端复刻学习包",
+    "slug": "wiki-projects-lifecycle-frontend-archive-site",
+    "summary": "把安的书房前端建设过程整理成复刻包，覆盖信息架构、数据契约、页面展示和发布验收。",
+    "sourceSummary": "把安的黑曜石公开层变成网站前端的复刻学习包：先做最小项目卡、详情页和公开数据链，再逐步扩展为个人书房 App。",
+    "tags": [
+      "project",
+      "frontend",
+      "site-data",
+      "lifecycle",
+      "learning",
+      "curated",
+      "featured",
+      "beginner-friendly"
+    ],
+    "status": [
+      "featured"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": null,
+    "sourcePath": "wiki/projects/lifecycle-frontend-archive-site.md",
+    "module": "works",
+    "category": "project",
+    "type": "project",
+    "phase": null,
+    "cover": null,
+    "contentType": "article",
+    "href": "/content/wiki-projects-lifecycle-frontend-archive-site",
+    "contentLines": [
+      "# 资料库前端复刻学习包",
+      "",
+      "这份学习包教你做一个最小版“个人书房前端”。它不要求你一开始做完整 App，也不要求你立刻接数据库。第一步只做一件事：让公开资料能被读者清楚地看见，并且不碰私有材料。",
+      "",
+      "GitHub Skills 的课程设计有一个很朴素的标准：学习者应该知道适合谁、会学到什么、会做出什么，并且在少量步骤里完成一个真实项目。这个标准很适合安的书房。前端不是展示技术名词的地方，它要让读者完成第一件小事：找到入口，理解项目，照着做一个更小版本。",
+      "",
+      "## 你会做出什么",
+      "",
+      "一个最小书房前端：",
+      "",
+      "| 区域 | 最小版本 | 验收方式 |",
+      "|---|---|---|",
+      "| 首页 | 说明安是谁、书房是什么、从哪里开始 | 首屏不堆技术词，小白 10 秒知道去哪 |",
+      "| 工坊 | 展示 3 张真实项目卡 | 每张卡能跳转详情页 |",
+      "| 详情页 | 显示实现步骤、复刻步骤、失败点 | 读者能做出一个更小版本 |",
+      "| 藏馆 | 展示 5 张资料卡 | 每张卡有适合谁和下一步 |",
+      "| 数据层 | 读取公开 JSON | 浏览器看不到私有材料 |",
+      "",
+      "## 安实际做了什么",
+      "",
+      "安的前端不是从空白开始的。Kimi 给过一个不错的视觉基线，它的价值在于模块多、列表饱满、有建议行动。但那个基线不能直接当最终内容，因为安的书房必须展示真实经验、中文内容、复刻步骤和公开边界。",
+      "",
+      "所以前端改造分成四步：",
+      "",
+      "1. **保留结构**：保留首页、藏馆、谱系、风信、工坊、手记、年谱、小安这些入口。",
+      "2. **替换数据**：从公开 wiki 生成 site-data，而不是手写假数据。",
+      "3. **加深详情**：工坊详情页必须出现操作历程、复刻路径、失败模式和安的提醒。",
+      "4. **做验收**：每次生成数据后跑隐私扫描、结构检查、前端构建和浏览器查看。",
+      "",
+      "## 小白复刻步骤",
+      "",
+      "### 第一步：只做三张项目卡",
+      "",
+      "不要先做全站。先准备三张卡：",
+      "",
+      "- 一个资料库项目；",
+      "- 一个前端项目；",
+      "- 一个 Agent 或工具项目。",
+      "",
+      "每张卡只写六句话：",
+      "",
+      "1. 这是什么；",
+      "2. 适合谁；",
+      "3. 为什么做；",
+      "4. 用了什么；",
+      "5. 读者下一步做什么；",
+      "6. 哪些内容没有公开。",
+      "",
+      "完成标准：页面能显示三张卡，点击能进入详情页。",
+      "",
+      "### 第二步：把详情页写深",
+      "",
+      "详情页至少要有：",
+      "",
+      "- 项目背景；",
+      "- 工具与材料；",
+      "- 安实际做过的操作；",
+      "- 小白复刻步骤；",
+      "- 失败点；",
+      "- 安的提醒；",
+      "- 下一步。",
+      "",
+      "完成标准：读者不需要看私有记录，也能做出一个简化版本。",
+      "",
+      "### 第三步：接公开数据",
+      "",
+      "先用一个本地 JSON 文件模拟后端。JSON 只放公开安全内容。以后换成服务器 API 时，字段不变，前端就不用重写。",
+      "",
+      "完成标准：前端只读取公开数据文件，不读取黑曜石原始目录。",
+      "",
+      "### 第四步：做移动端检查",
+      "",
+      "用手机宽度看：首页、工坊、藏馆、风信。重点看：",
+      "",
+      "- 底部导航能不能点；",
+      "- 卡片文字有没有挤在一起；",
+      "- 小安按钮有没有挡内容；",
+      "- 详情页长文是否能读下去。",
+      "",
+      "完成标准：不用放大缩小也能读。",
+      "",
+      "## 常见失败",
+      "",
+      "最常见的失败不是代码报错，而是内容看起来很多却没有用。",
+      "",
+      "- 只复制模板样式，没有真实项目；",
+      "- 每张卡都像说明书，没有安自己的判断；",
+      "- 详情页没有失败点，读者出错后无路可走；",
+      "- 前端展示了内部字段，读者看到一堆英文标签；",
+      "- 数据生成成功，但页面实际很空。",
+      "",
+      "## 三层理解",
+      "",
+      "**心理层**：新手不是怕步骤多，而是怕每一步不知道为什么存在。前端必须用卡片和路线降低混乱感。",
+      "",
+      "**社会层**：安的书房是公开展示，它面对的不只是自己，还有读者、GitHub、Kimi、未来 App 和协作者。公开界面越清楚，协作成本越低。",
+      "",
+      "**哲学层**：展示是一种选择。一个人的资料不是因为被放上网页才有价值，而是因为被整理成别人能理解、能复刻、能继续判断的形式。",
+      "",
+      "## 下一步练习",
+      "",
+      "用 [[wiki/projects/personal-archive-platform]] 做第一张工坊卡。只做最小版本，不追求完整页面。验收标准是：别人看完能说出这件事是什么、为什么重要、怎样做一个小版本。",
+      "",
+      "## Related",
+      "",
+      "- [[wiki/projects/personal-archive-frontend]]",
+      "- [[wiki/concepts/public-site-data-boundary]]",
+      "- [[wiki/concepts/public-api-contract]]",
+      "- [[wiki/sources/tutorial-and-source-research-best-practices]]"
+    ],
+    "links": [
+      {
+        "target": "wiki/projects/personal-archive-platform",
+        "label": "wiki/projects/personal-archive-platform"
+      },
+      {
+        "target": "wiki/projects/personal-archive-frontend",
+        "label": "wiki/projects/personal-archive-frontend"
+      },
+      {
+        "target": "wiki/concepts/public-site-data-boundary",
+        "label": "wiki/concepts/public-site-data-boundary"
+      },
+      {
+        "target": "wiki/concepts/public-api-contract",
+        "label": "wiki/concepts/public-api-contract"
+      },
+      {
+        "target": "wiki/sources/tutorial-and-source-research-best-practices",
+        "label": "wiki/sources/tutorial-and-source-research-best-practices"
+      }
+    ],
+    "sources": [
+      "[[wiki/projects/personal-archive-frontend]]",
+      "[[wiki/concepts/public-site-data-boundary]]",
+      "[[wiki/concepts/public-api-contract]]",
+      "[[wiki/sources/tutorial-and-source-research-best-practices]]"
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "资料库前端复刻学习包",
+        "anchor": "资料库前端复刻学习包"
+      },
+      {
+        "level": 2,
+        "title": "你会做出什么",
+        "anchor": "你会做出什么"
+      },
+      {
+        "level": 2,
+        "title": "安实际做了什么",
+        "anchor": "安实际做了什么"
+      },
+      {
+        "level": 2,
+        "title": "小白复刻步骤",
+        "anchor": "小白复刻步骤"
+      },
+      {
+        "level": 3,
+        "title": "第一步：只做三张项目卡",
+        "anchor": "第一步只做三张项目卡"
+      },
+      {
+        "level": 3,
+        "title": "第二步：把详情页写深",
+        "anchor": "第二步把详情页写深"
+      },
+      {
+        "level": 3,
+        "title": "第三步：接公开数据",
+        "anchor": "第三步接公开数据"
+      },
+      {
+        "level": 3,
+        "title": "第四步：做移动端检查",
+        "anchor": "第四步做移动端检查"
+      },
+      {
+        "level": 2,
+        "title": "常见失败",
+        "anchor": "常见失败"
+      },
+      {
+        "level": 2,
+        "title": "三层理解",
+        "anchor": "三层理解"
+      },
+      {
+        "level": 2,
+        "title": "下一步练习",
+        "anchor": "下一步练习"
+      },
+      {
+        "level": 2,
+        "title": "Related",
+        "anchor": "related"
+      }
+    ],
+    "wordCount": 1227,
+    "readingMinutes": 3,
+    "metrics": {
+      "lineCount": 109,
+      "headingCount": 12,
+      "linkCount": 5,
+      "sourceCount": 4
+    },
+    "quality": {
+      "hasSources": true,
+      "hasToc": true,
+      "summaryLength": 40,
+      "sourceTitle": "资料库前端复刻学习包",
+      "sourceSummary": "把安的黑曜石公开层变成网站前端的复刻学习包：先做最小项目卡、详情页和公开数据链，再逐步扩展为个人书房 App。",
+      "needsSourceReview": false,
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "explicitlyCurated": true
+    },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public project",
+      "frontend",
+      "generated data",
+      "tutorial standard"
+    ],
+    "whyItMattered": "这个项目把安的黑曜石资料库变成读者能打开的书房前端。它说明前端不是漂亮外壳，而是公开知识的最后一道筛选门。",
+    "psychologicalLayer": "小白最怕看见一堆文件和术语后不知道从哪里开始。前端要先替读者减负，把入口、路径和下一步摆清楚。",
+    "sociologicalLayer": "个人知识展示不再只是博客，它处在 GitHub、AI 工具、前端模板、移动 App 和公开协作的交叉处。谁能把资料变成清楚界面，谁就更容易让经验被复用。",
+    "philosophicalLayer": "展示不是把所有东西摆出来，而是决定哪些东西有资格被看见。好的前端是一盏灯，也是一道边界。",
+    "operationStory": [
+      "先确认前端不能直接读取整个黑曜石库，只能读取公开生成的数据包。",
+      "再把 Kimi 前端作为视觉基线，保留它模块饱满、入口清楚、卡片可跳转的优点。",
+      "然后把数据来源改成公开 wiki 生成的 site-data，让页面内容来自真实条目。",
+      "最后用构建、隐私扫描、移动端检查和浏览器验收确认页面不是假丰富。"
+    ],
+    "replicationSteps": [
+      "建一个最小前端，只保留首页、工坊、藏馆三个入口。",
+      "准备一份公开 JSON，里面只放三张真实项目卡片。",
+      "每张卡片写清楚项目是什么、适合谁、下一步做什么。",
+      "点击卡片进入详情页，详情页必须显示实现步骤、复刻步骤和失败点。",
+      "确认浏览器里看不到私有目录、原始材料和本地环境信息。",
+      "再逐步加入风信、谱系、年谱和小安入口。"
+    ],
+    "failureModes": [
+      "前端直接读取原始库，导致公开边界失控。",
+      "使用漂亮模板但继续展示假数据，读者看起来很多，实际无法学习。",
+      "卡片只写标题和摘要，没有行动建议，读者不知道为什么要点开。",
+      "详情页没有失败模式，读者照做出错后无法判断问题在哪里。",
+      "移动端底部入口和浮层互相遮挡，像 App 但不好用。"
+    ],
+    "lessons": [
+      "前端数据契约就是公开边界，不能只当技术细节。",
+      "卡片负责判断是否值得点开，详情页负责教学和复刻。",
+      "空状态比低质量填充好，假丰富会破坏读者信任。",
+      "每次生成数据后都要实际打开页面看，而不只看构建结果。"
+    ],
+    "anReminders": [
+      "先做三张真正有用的卡片，再谈一百张资料。",
+      "不要让前端替内容遮羞。内容浅，页面越漂亮越显假。",
+      "每个入口都要给小白一个下一步动作。",
+      "公开数据只应该来自公开层，后端以后也要保持这个边界。"
+    ],
+    "actionText": "先复刻一个只展示三张工坊卡片的最小页面，再接入公开 site-data，不要一开始追求全站完整。",
+    "displayTier": "showcase",
+    "qualityScore": 100,
+    "hiddenReasons": [],
+    "projectStatus": "building",
+    "techStack": [
+      "project",
+      "frontend",
+      "site-data",
+      "lifecycle",
+      "learning",
+      "curated"
+    ],
+    "nextPlan": ""
+  },
+  {
+    "id": "c_7a75673d492c3360",
+    "title": "Hanako 复刻学习包",
+    "sourceTitle": "Lifecycle Package: Hanako OpenHanako Creative Agent Desktop",
+    "slug": "wiki-projects-lifecycle-hanako-openhanako-creative-agent-desktop",
+    "summary": "把 Hanako/OpenHanako 创作型桌面 Agent 的探索整理成学习包，关注创作流程、插件生态和安全边界。",
+    "sourceSummary": "把 Hanako/OpenHanako 风格创作型桌面 Agent 的探索整理成小白可复刻学习包，重点讲界面、流程、资产和安全边界。",
+    "tags": [
+      "project",
+      "desktop-app",
+      "ai-agent",
+      "frontend",
+      "lifecycle",
+      "learning",
+      "curated",
+      "featured"
+    ],
+    "status": [
+      "featured"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": null,
+    "sourcePath": "wiki/projects/lifecycle-hanako-openhanako-creative-agent-desktop.md",
+    "module": "works",
+    "category": "project",
+    "type": "project",
+    "phase": null,
+    "cover": null,
+    "contentType": "article",
+    "href": "/content/wiki-projects-lifecycle-hanako-openhanako-creative-agent-desktop",
+    "contentLines": [
+      "# Hanako 复刻学习包",
+      "",
+      "## 概览",
+      "",
+      "把 Hanako/OpenHanako 创作型桌面 Agent 的探索整理成学习包，关注创作流程、插件生态和安全边界。",
+      "",
+      "## 读者可以获得什么",
+      "",
+      "- 理解「Hanako 复刻学习包」在安的书房里的位置。",
+      "- 看清它解决的问题、适合的读者和后续复刻方向。",
+      "- 知道公开页面保留的是方法、结构和经验，不包含原始私有材料。",
+      "",
+      "## 推荐阅读方式",
+      "",
+      "1. 先读概览，确认它和当前学习目标是否相关。",
+      "2. 再看关联页面，理解来源、项目、工具或工作流之间的关系。",
+      "3. 如果要复刻，先写下自己的目标、输入材料、边界和验收标准。",
+      "4. 完成后回到资料库，把新的经验整理成可追踪页面。",
+      "",
+      "## 发布边界",
+      "",
+      "本页只展示公开安全的整理结果。原始材料、账号状态、本机细节、私人对话和未复核内容不会进入公开展示。",
+      "",
+      "## 来源",
+      "",
+      "- [[wiki/sources/local-private-compile-2026-05-13]]",
+      "- [[wiki/synthesis/lifecycle-replication-package-workflow]]",
+      "- [[wiki/concepts/upstream-reference-and-adaptation-policy]]"
+    ],
+    "links": [
+      {
+        "target": "wiki/synthesis/lifecycle-package-backlog",
+        "label": "wiki/synthesis/lifecycle-package-backlog"
+      },
+      {
+        "target": "wiki/synthesis/lifecycle-replication-package-workflow",
+        "label": "wiki/synthesis/lifecycle-replication-package-workflow"
+      },
+      {
+        "target": "wiki/concepts/upstream-reference-and-adaptation-policy",
+        "label": "wiki/concepts/upstream-reference-and-adaptation-policy"
+      },
+      {
+        "target": "wiki/topics/personal-archive-moc",
+        "label": "wiki/topics/personal-archive-moc"
+      }
+    ],
+    "sources": [
+      "[[wiki/sources/local-private-compile-2026-05-13]]",
+      "[[wiki/synthesis/lifecycle-replication-package-workflow]]",
+      "[[wiki/concepts/upstream-reference-and-adaptation-policy]]"
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Hanako 复刻学习包",
+        "anchor": "hanako-复刻学习包"
+      },
+      {
+        "level": 2,
+        "title": "概览",
+        "anchor": "概览"
+      },
+      {
+        "level": 2,
+        "title": "读者可以获得什么",
+        "anchor": "读者可以获得什么"
+      },
+      {
+        "level": 2,
+        "title": "推荐阅读方式",
+        "anchor": "推荐阅读方式"
+      },
+      {
+        "level": 2,
+        "title": "发布边界",
+        "anchor": "发布边界"
+      },
+      {
+        "level": 2,
+        "title": "来源",
+        "anchor": "来源"
+      }
+    ],
+    "wordCount": 273,
+    "readingMinutes": 1,
+    "metrics": {
+      "lineCount": 28,
+      "headingCount": 6,
+      "linkCount": 4,
+      "sourceCount": 3
+    },
+    "quality": {
+      "hasSources": true,
+      "hasToc": true,
+      "summaryLength": 59,
+      "sourceTitle": "Lifecycle Package: Hanako OpenHanako Creative Agent Desktop",
+      "sourceSummary": "把 Hanako/OpenHanako 风格创作型桌面 Agent 的探索整理成小白可复刻学习包，重点讲界面、流程、资产和安全边界。",
+      "needsSourceReview": false,
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "explicitlyCurated": true
+    },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "local compile",
+      "public-safe rewrite",
+      "lifecycle package"
+    ],
+    "actionText": "先看这页的目标和边界，再按最小步骤做一个缩小版本，并记录一次验收结果。",
+    "displayTier": "showcase",
+    "qualityScore": 100,
+    "hiddenReasons": [],
+    "projectStatus": "research",
+    "techStack": [
+      "project",
+      "desktop-app",
+      "ai-agent",
+      "frontend",
+      "lifecycle",
+      "learning"
+    ],
+    "nextPlan": "",
+    "whyItMattered": "「Hanako 复刻学习包」把一次真实项目整理成可学习、可展示、可复刻的公开资料，帮助读者理解目标、边界和结果。",
+    "operationStory": [
+      "先把原始材料、私有复核和公开展示分开，确认哪些信息可以安全讲给读者。",
+      "再把项目目标、关键步骤、失败点和验收方式整理成中文页面。",
+      "最后通过结构检查、隐私扫描和站点数据生成，确认资料可以进入前端展示。"
+    ],
+    "replicationSteps": [
+      "先明确目标读者、最小成果和公开边界。",
+      "整理公开安全的来源说明和替代示例。",
+      "按教程、操作步骤、参考表和解释四块组织内容。",
+      "运行发布前验收，确认页面可读、可追踪、可维护。"
+    ],
+    "failureModes": [
+      "只展示结果，不说明来源和验收。",
+      "把原始本地材料误当成公开资料。",
+      "页面没有复刻步骤，读者只能看热闹。"
+    ],
+    "lessons": [
+      "项目资料要从经历变成方法，才能真正被复用。",
+      "公开页面要把价值、边界和下一步讲清楚。",
+      "小批量高质量整理比一次性堆材料更稳。"
+    ],
+    "anReminders": [
+      "继续把「Hanako 复刻学习包」补成更具体的实操案例。",
+      "每次新增本地证据，都先进入私有复核，再决定是否公开。"
+    ]
+  },
+  {
+    "id": "c_daadd85ef36cab39",
+    "title": "个人资料库平台复刻学习包",
+    "sourceTitle": "个人资料库平台复刻学习包",
+    "slug": "wiki-projects-lifecycle-personal-archive-platform",
+    "summary": "把个人资料库平台整理成完整学习包，说明如何从本地材料、非公开整理、公开资料层到网站展示形成闭环。",
+    "sourceSummary": "从本地散乱材料到公开个人书房的复刻学习包：建立四层结构，先私有整理，再公开改写，最后生成前端展示数据。",
+    "tags": [
+      "project",
+      "archive",
+      "lifecycle",
+      "learning",
+      "curated",
+      "featured",
+      "beginner-friendly"
+    ],
+    "status": [
+      "featured"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": null,
+    "sourcePath": "wiki/projects/lifecycle-personal-archive-platform.md",
+    "module": "works",
+    "category": "project",
+    "type": "project",
+    "phase": null,
+    "cover": null,
+    "contentType": "article",
+    "href": "/content/wiki-projects-lifecycle-personal-archive-platform",
+    "contentLines": [
+      "# 个人资料库平台复刻学习包",
+      "",
+      "这份学习包教你搭一个最小版个人资料库。它不是让你把所有文件搬到网上，而是让你学会把本地经验变成公开安全、能搜索、能复刻、能展示的知识。",
+      "",
+      "对安来说，资料库的真正问题不是“东西不够多”，而是“东西太多之后没有形状”。AI 工具、项目尝试、提示词、前端包、服务器设想、小安人格、时间线，全都混在一起时，人会产生一种奇怪的焦虑：明明做过很多，却说不清自己到底走到了哪里。",
+      "",
+      "资料库要解决的就是这个问题。",
+      "",
+      "## 你会做出什么",
+      "",
+      "一个四层资料库：",
+      "",
+      "| 层 | 放什么 | 是否公开 | 新手理解 |",
+      "|---|---|---|---|",
+      "| 原始层 | 原文件、聊天、截图、项目材料 | 不公开 | 证据仓库 |",
+      "| 私有编译层 | 私有摘要、风险、候选内容、时间线 | 不公开 | 工作台 |",
+      "| 公开 wiki | 改写后的项目、工具、路线、手记 | 可公开 | 书页 |",
+      "| 前端数据 | 给网页读取的 JSON 或 API | 可公开 | 展示柜 |",
+      "",
+      "这四层的意义很简单：证据留住，隐私守住，经验写出来，读者看得懂。",
+      "",
+      "## 最小复刻版本",
+      "",
+      "不要先整理全部资料。先选一个项目，比如“个人资料库展示前端”。",
+      "",
+      "### 第一步：写公开价值",
+      "",
+      "用三句话回答：",
+      "",
+      "1. 这个项目是什么；",
+      "2. 它为什么值得别人看；",
+      "3. 读者能照着做什么。",
+      "",
+      "完成标准：一个陌生读者能听懂，而不需要知道你的本地目录。",
+      "",
+      "### 第二步：提取安全证据",
+      "",
+      "只提取这些内容：",
+      "",
+      "- 用了哪些工具；",
+      "- 做了哪些步骤；",
+      "- 哪个决定改变了结果；",
+      "- 哪些失败值得提醒别人；",
+      "- 哪些来源可以公开引用。",
+      "",
+      "不要提取原始对话、本机信息、账号状态和真实访问材料。",
+      "",
+      "### 第三步：写公开页",
+      "",
+      "公开页至少包括：",
+      "",
+      "- 项目说明；",
+      "- 为什么重要；",
+      "- 安实际做了什么；",
+      "- 小白复刻步骤；",
+      "- 失败点；",
+      "- 安的提醒；",
+      "- 下一步。",
+      "",
+      "完成标准：读者不需要看任何私有材料，也能理解项目。",
+      "",
+      "### 第四步：生成前端数据",
+      "",
+      "只有公开页通过检查后，才生成前端数据。前端只读公开 JSON 或未来 API，不读私有层。",
+      "",
+      "完成标准：前端卡片能出现，详情页能打开，隐私扫描不报高风险。",
+      "",
+      "## 内容提取协作流程",
+      "",
+      "安的书房后续补内容时，按这个协作流程：",
+      "",
+      "1. **候选**：从本地资料、公开项目或 GitHub 参考中选一个主题。",
+      "2. **来源**：用资料搜索技能找官方文档、GitHub 项目或成熟教程。",
+      "3. **提取**：只提取事实、步骤、失败、判断和边界。",
+      "4. **改写**：用模块技能写成首页、藏馆、谱系、风信、工坊、手记或年谱内容。",
+      "5. **挑刺**：检查是否闭门造车、是否对小白不友好、是否泄露边界。",
+      "6. **生成**：跑 site-data，让前端读取。",
+      "7. **验收**：打开页面看卡片、详情、搜索和移动端。",
+      "",
+      "这个流程参考了 GitHub Skills 的课程设计：让学习者知道目标、步骤、成品和下一步；也参考 Diátaxis：不同内容承担不同任务，不混成一团。",
+      "",
+      "## 三层理解",
+      "",
+      "**心理层**：资料越多，人的掌控感越容易变成幻觉。真正能降低焦虑的，不是继续收藏，而是把材料放到正确层级里。",
+      "",
+      "**社会层**：个人资料一旦公开，就进入公共协作空间。读者、工具、搜索、GitHub、前端和未来 App 都会参与解释这些内容，所以来源和边界必须写清楚。",
+      "",
+      "**哲学层**：经验不是天然属于公共知识。它要经过选择、删减、承担边界，才可能变成别人可以走的路。",
+      "",
+      "## 常见失败",
+      "",
+      "- 想一次整理全部资料，结果一个页面都写不深；",
+      "- 把私有工作台当成公开展示；",
+      "- 只写“我做了什么”，不写“别人怎么复刻”；",
+      "- 只写方法，不写失败；",
+      "- 只写感悟，不写来源。",
+      "",
+      "## 下一步练习",
+      "",
+      "选一个公开安全项目，按这张表填写：",
+      "",
+      "| 问题 | 你的答案 |",
+      "|---|---|",
+      "| 项目是什么 |  |",
+      "| 读者为什么看 |  |",
+      "| 安做了哪三步 |  |",
+      "| 小白能复刻哪一步 |  |",
+      "| 哪些内容不能公开 |  |",
+      "| 用哪个来源支撑 |  |",
+      "",
+      "填完后，再写成一页公开 wiki。",
+      "",
+      "## Related",
+      "",
+      "- [[wiki/projects/personal-archive-platform]]",
+      "- [[wiki/synthesis/lifecycle-replication-package-workflow]]",
+      "- [[wiki/sources/tutorial-and-source-research-best-practices]]"
+    ],
+    "links": [
+      {
+        "target": "wiki/projects/personal-archive-platform",
+        "label": "wiki/projects/personal-archive-platform"
+      },
+      {
+        "target": "wiki/synthesis/lifecycle-replication-package-workflow",
+        "label": "wiki/synthesis/lifecycle-replication-package-workflow"
+      },
+      {
+        "target": "wiki/sources/tutorial-and-source-research-best-practices",
+        "label": "wiki/sources/tutorial-and-source-research-best-practices"
+      }
+    ],
+    "sources": [
+      "[[wiki/projects/personal-archive-platform]]",
+      "[[wiki/synthesis/lifecycle-replication-package-workflow]]",
+      "[[wiki/sources/karpathy-llm-wiki-pattern]]",
+      "[[wiki/sources/tutorial-and-source-research-best-practices]]"
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "个人资料库平台复刻学习包",
+        "anchor": "个人资料库平台复刻学习包"
+      },
+      {
+        "level": 2,
+        "title": "你会做出什么",
+        "anchor": "你会做出什么"
+      },
+      {
+        "level": 2,
+        "title": "最小复刻版本",
+        "anchor": "最小复刻版本"
+      },
+      {
+        "level": 3,
+        "title": "第一步：写公开价值",
+        "anchor": "第一步写公开价值"
+      },
+      {
+        "level": 3,
+        "title": "第二步：提取安全证据",
+        "anchor": "第二步提取安全证据"
+      },
+      {
+        "level": 3,
+        "title": "第三步：写公开页",
+        "anchor": "第三步写公开页"
+      },
+      {
+        "level": 3,
+        "title": "第四步：生成前端数据",
+        "anchor": "第四步生成前端数据"
+      },
+      {
+        "level": 2,
+        "title": "内容提取协作流程",
+        "anchor": "内容提取协作流程"
+      },
+      {
+        "level": 2,
+        "title": "三层理解",
+        "anchor": "三层理解"
+      },
+      {
+        "level": 2,
+        "title": "常见失败",
+        "anchor": "常见失败"
+      },
+      {
+        "level": 2,
+        "title": "下一步练习",
+        "anchor": "下一步练习"
+      },
+      {
+        "level": 2,
+        "title": "Related",
+        "anchor": "related"
+      }
+    ],
+    "wordCount": 1168,
+    "readingMinutes": 3,
+    "metrics": {
+      "lineCount": 117,
+      "headingCount": 12,
+      "linkCount": 3,
+      "sourceCount": 4
+    },
+    "quality": {
+      "hasSources": true,
+      "hasToc": true,
+      "summaryLength": 48,
+      "sourceTitle": "个人资料库平台复刻学习包",
+      "sourceSummary": "从本地散乱材料到公开个人书房的复刻学习包：建立四层结构，先私有整理，再公开改写，最后生成前端展示数据。",
+      "needsSourceReview": false,
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "explicitlyCurated": true
+    },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public project",
+      "lifecycle package",
+      "local compile",
+      "tutorial standard"
+    ],
+    "whyItMattered": "这个项目把安散落在本地的 AI 学习、项目、工具和时间线，整理成可以公开展示、可以复刻、也能保护隐私的个人书房。",
+    "psychologicalLayer": "资料太多会制造一种假充实感：好像什么都保存了，实际什么都找不到。四层资料库把混乱拆开，让安和读者都能知道下一步在哪里。",
+    "sociologicalLayer": "AI 学习发生在工具、平台、学校项目、GitHub 和前端展示之间。资料库的价值，是把个人操作变成别人可以理解的公共语言。",
+    "philosophicalLayer": "私人经验要成为知识，必须经过选择。公开不是把门打开，而是修一条可走的路。",
+    "operationStory": [
+      "先把资料分成原始层、私有编译层、公开 wiki 层和前端数据层。",
+      "再把本地有价值但不能公开的材料编译成私有复核页，只保留路径、类别、风险和摘要。",
+      "然后把安全内容改写成公开 wiki 页面，补来源、状态、复刻步骤和边界说明。",
+      "最后由 site-data 生成前端数据，让网站只展示已经通过检查的内容。"
+    ],
+    "replicationSteps": [
+      "选一个项目，不要一开始处理整个本地资料库。",
+      "写下这个项目的公开价值：别人为什么要看。",
+      "把原始材料留在私有层，只提取公开安全事实。",
+      "写一页公开项目说明，包含做法、失败和下一步。",
+      "补来源、公开安全状态和读者行动。",
+      "运行结构检查、隐私扫描和前端数据生成。",
+      "打开前端详情页，确认读者不需要私有上下文也能看懂。"
+    ],
+    "failureModes": [
+      "直接把原始材料搬到公开层，导致边界失控。",
+      "为了数量批量生成页面，结果每页都很浅。",
+      "只有个人叙述，没有来源和复刻步骤，读者无法判断可信度。",
+      "把内部目录结构当成前端导航，小白看不懂。",
+      "只做知识库，不做前端验收，最后公开页面仍然难读。"
+    ],
+    "lessons": [
+      "公开资料库需要私有工作台，不能把整理过程和展示结果混在一起。",
+      "来源标签不是装饰，它告诉读者这条经验从哪里来。",
+      "隐私检查不是发布之后的补救，而是内容生成的一部分。",
+      "先写深一个项目，比浅浅导入一百个文件更有价值。"
+    ],
+    "anReminders": [
+      "不要把保存资料当成拥有知识。能复述、能链接、能复刻，才算留下来。",
+      "不确定安全的内容先留在私有层。慢一点比泄露一次好。",
+      "写公开页时，先问小白能不能照着做一小步。",
+      "安的书房不是仓库，是给人走进去学习的地方。"
+    ],
+    "actionText": "先拿一个公开安全项目做练习：写 5 句摘要、列 3 条证据、删掉私有细节，再生成一张前端卡片。",
+    "displayTier": "showcase",
+    "qualityScore": 100,
+    "hiddenReasons": [],
+    "projectStatus": "maintaining",
+    "techStack": [
+      "project",
+      "archive",
+      "lifecycle",
+      "learning",
+      "curated",
+      "featured"
+    ],
+    "nextPlan": ""
+  },
+  {
+    "id": "c_a1c1cf7144d08f2c",
+    "title": "小安本地模型学习闭环复刻包",
+    "sourceTitle": "Lifecycle Package: Xiaoan Local Model Learning Loop",
+    "slug": "wiki-projects-lifecycle-xiaoan-local-model-loop",
+    "summary": "把小安本地模型学习闭环整理成复刻包，覆盖资料准备、实验记录、评估复盘和公开安全表达。",
+    "sourceSummary": "把小安本地模型实验整理成小白可复刻的安全学习包：先准备资料，再做小实验、记录评估和复盘边界。",
+    "tags": [
+      "project",
+      "local-model",
+      "ai-agent",
+      "lifecycle",
+      "learning",
+      "curated",
+      "featured"
+    ],
+    "status": [
+      "featured"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": null,
+    "sourcePath": "wiki/projects/lifecycle-xiaoan-local-model-loop.md",
+    "module": "works",
+    "category": "project",
+    "type": "project",
+    "phase": null,
+    "cover": null,
+    "contentType": "model",
+    "href": "/content/wiki-projects-lifecycle-xiaoan-local-model-loop",
+    "contentLines": [
+      "# 小安本地模型学习闭环复刻包",
+      "",
+      "## 概览",
+      "",
+      "把小安本地模型学习闭环整理成复刻包，覆盖资料准备、实验记录、评估复盘和公开安全表达。",
+      "",
+      "## 读者可以获得什么",
+      "",
+      "- 理解「小安本地模型学习闭环复刻包」在安的书房里的位置。",
+      "- 看清它解决的问题、适合的读者和后续复刻方向。",
+      "- 知道公开页面保留的是方法、结构和经验，不包含原始私有材料。",
+      "",
+      "## 推荐阅读方式",
+      "",
+      "1. 先读概览，确认它和当前学习目标是否相关。",
+      "2. 再看关联页面，理解来源、项目、工具或工作流之间的关系。",
+      "3. 如果要复刻，先写下自己的目标、输入材料、边界和验收标准。",
+      "4. 完成后回到资料库，把新的经验整理成可追踪页面。",
+      "",
+      "## 发布边界",
+      "",
+      "本页只展示公开安全的整理结果。原始材料、账号状态、本机细节、私人对话和未复核内容不会进入公开展示。",
+      "",
+      "## 来源",
+      "",
+      "- [[wiki/projects/xiaoan-local-model-learning-loop]]",
+      "- [[wiki/concepts/tool-local-model-experiment-toolchain]]",
+      "- [[wiki/synthesis/lifecycle-replication-package-workflow]]"
+    ],
+    "links": [
+      {
+        "target": "wiki/projects/xiaoan-local-model-learning-loop",
+        "label": "wiki/projects/xiaoan-local-model-learning-loop"
+      },
+      {
+        "target": "wiki/projects/xiaoan-local-model-learning-loop",
+        "label": "wiki/projects/xiaoan-local-model-learning-loop"
+      },
+      {
+        "target": "wiki/concepts/tool-local-model-experiment-toolchain",
+        "label": "wiki/concepts/tool-local-model-experiment-toolchain"
+      }
+    ],
+    "sources": [
+      "[[wiki/projects/xiaoan-local-model-learning-loop]]",
+      "[[wiki/concepts/tool-local-model-experiment-toolchain]]",
+      "[[wiki/synthesis/lifecycle-replication-package-workflow]]"
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "小安本地模型学习闭环复刻包",
+        "anchor": "小安本地模型学习闭环复刻包"
+      },
+      {
+        "level": 2,
+        "title": "概览",
+        "anchor": "概览"
+      },
+      {
+        "level": 2,
+        "title": "读者可以获得什么",
+        "anchor": "读者可以获得什么"
+      },
+      {
+        "level": 2,
+        "title": "推荐阅读方式",
+        "anchor": "推荐阅读方式"
+      },
+      {
+        "level": 2,
+        "title": "发布边界",
+        "anchor": "发布边界"
+      },
+      {
+        "level": 2,
+        "title": "来源",
+        "anchor": "来源"
+      }
+    ],
+    "wordCount": 292,
+    "readingMinutes": 1,
+    "metrics": {
+      "lineCount": 28,
+      "headingCount": 6,
+      "linkCount": 3,
+      "sourceCount": 3
+    },
+    "quality": {
+      "hasSources": true,
+      "hasToc": true,
+      "summaryLength": 42,
+      "sourceTitle": "Lifecycle Package: Xiaoan Local Model Learning Loop",
+      "sourceSummary": "把小安本地模型实验整理成小白可复刻的安全学习包：先准备资料，再做小实验、记录评估和复盘边界。",
+      "needsSourceReview": false,
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "explicitlyCurated": true
+    },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public project",
+      "local model workflow",
+      "safety"
+    ],
+    "actionText": "先看这页的目标和边界，再按最小步骤做一个缩小版本，并记录一次验收结果。",
+    "displayTier": "showcase",
+    "qualityScore": 100,
+    "hiddenReasons": [],
+    "projectStatus": "research",
+    "techStack": [
+      "project",
+      "local-model",
+      "ai-agent",
+      "lifecycle",
+      "learning",
+      "curated"
+    ],
+    "nextPlan": "",
+    "whyItMattered": "「小安本地模型学习闭环复刻包」把一次真实项目整理成可学习、可展示、可复刻的公开资料，帮助读者理解目标、边界和结果。",
+    "operationStory": [
+      "先把原始材料、私有复核和公开展示分开，确认哪些信息可以安全讲给读者。",
+      "再把项目目标、关键步骤、失败点和验收方式整理成中文页面。",
+      "最后通过结构检查、隐私扫描和站点数据生成，确认资料可以进入前端展示。"
+    ],
+    "replicationSteps": [
+      "先明确目标读者、最小成果和公开边界。",
+      "整理公开安全的来源说明和替代示例。",
+      "按教程、操作步骤、参考表和解释四块组织内容。",
+      "运行发布前验收，确认页面可读、可追踪、可维护。"
+    ],
+    "failureModes": [
+      "只展示结果，不说明来源和验收。",
+      "把原始本地材料误当成公开资料。",
+      "页面没有复刻步骤，读者只能看热闹。"
+    ],
+    "lessons": [
+      "项目资料要从经历变成方法，才能真正被复用。",
+      "公开页面要把价值、边界和下一步讲清楚。",
+      "小批量高质量整理比一次性堆材料更稳。"
+    ],
+    "anReminders": [
+      "继续把「小安本地模型学习闭环复刻包」补成更具体的实操案例。",
+      "每次新增本地证据，都先进入私有复核，再决定是否公开。"
+    ]
+  },
+  {
+    "id": "c_80365bf85dbdd242",
+    "title": "个人资料库展示前端",
+    "sourceTitle": "个人资料库展示前端",
+    "slug": "wiki-projects-personal-archive-frontend",
+    "summary": "面向中国读者的个人资料库展示前端：用网页和未来 App 的形式，把 AI 工具、项目经历、复刻路径和成长记录整理成新手也能看懂的公开展柜。",
+    "sourceSummary": "面向中国读者的个人资料库展示前端：用网页和未来 App 的形式，把 AI 工具、项目经历、复刻路径和成长记录整理成新手也能看懂的公开展柜。",
+    "tags": [
+      "frontend",
+      "archive",
+      "site-data",
+      "project",
+      "showcase",
+      "beginner-friendly"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": null,
+    "sourcePath": "wiki/projects/personal-archive-frontend.md",
+    "module": "works",
+    "category": "project",
+    "type": "project",
+    "phase": null,
+    "cover": null,
+    "contentType": "case",
+    "href": "/content/wiki-projects-personal-archive-frontend",
+    "contentLines": [
+      "# 个人资料库展示前端",
+      "",
+      "这个前端要解决的不是“怎么把页面做得更炫”，而是一个更根本的问题：一个人的工具使用、项目尝试、学习弯路和方法沉淀，怎样才能被别人看懂，也被未来的自己重新拿起来用。",
+      "",
+      "如果只把 Obsidian 当成文件夹浏览器，读者会迷路。如果只做作品集，真实的过程又会被抹平。这个项目要做的是中间那条路：保留路径、保留证据、保留失败，但把它们整理成清楚、克制、适合小白阅读的展柜。",
+      "",
+      "## 它是什么",
+      "",
+      "它是 `an-llm-wiki` 的公开展示层。读者看到的是网页，背后读的是由公共 wiki 生成的 `site-data`。",
+      "",
+      "当前模块包括：",
+      "",
+      "- 藏馆：工具、资料、概念和可阅读条目；",
+      "- 谱系：学习路线、复刻路线和主题地图；",
+      "- 工坊：做过或正在做的项目；",
+      "- 年谱：公开阶段和关键节点；",
+      "- 书房：这个资料库的边界、方法和说明。",
+      "",
+      "它不是本地原始材料的窗口，也不是把所有东西一股脑发布出去的入口。",
+      "",
+      "## 为什么重要",
+      "",
+      "小白最怕的不是内容少，而是看不出顺序。一个人说“我用了很多 AI 工具”，对别人没有帮助；但如果能说清楚“我先遇到什么问题、用什么工具、失败在哪里、后来怎么改”，这段经历就可以被学习。",
+      "",
+      "这个前端的核心任务就是把经历变成路径：",
+      "",
+      "- 把“我做过”改写成“你可以这样开始”；",
+      "- 把“我试过很多工具”改写成“这些工具分别解决什么问题”；",
+      "- 把“我踩过坑”改写成“你怎样提前避开”；",
+      "- 把“我还没完成”改写成“当前边界在哪里”。",
+      "",
+      "## 真实操作历程",
+      "",
+      "1. 先采用 Kimi 最新前端作为视觉起点，保留它比较好的空间感、导航和移动端体验。",
+      "2. 清理里面的示例内容，不把假内容当成真实项目。",
+      "3. 建立 `site-data`，让页面从公开 wiki 自动生成内容。",
+      "4. 增加 PWA 能力，让网页能被安装成近似 App 的入口。",
+      "5. 加入运行时数据刷新，让部署后的公开数据更新后，已经安装的人也能看到新内容。",
+      "6. 开始反向修正内容标准：不是“有卡片就行”，而是每张卡片都要能讲清楚故事和复刻方法。",
+      "",
+      "## 实现步骤",
+      "",
+      "如果把这个项目拆成工程步骤，它不是“先做一个漂亮首页”，而是下面这条链：",
+      "",
+      "1. 定义公开数据边界。前端只能读 `site-data`，不能直接读原始目录、私有整理层或本地路径。",
+      "2. 定义页面模块。首页负责建立气质和入口，藏馆负责资料卡，谱系负责路线，工坊负责项目，手记负责复盘，年谱负责真实时间线。",
+      "3. 建立数据适配层。公共 wiki 先生成统一 JSON，再由前端同步成组件能消费的数组。",
+      "4. 建立内容质量门槛。标题和摘要必须是中文，机械摘要、英文模板、内部维护痕迹不能进入展示层。",
+      "5. 建立详情页结构。项目详情必须展示一句话说明、工具材料、真实操作、复刻路径、安的提醒、三层理解、失败点和下一步。",
+      "6. 建立浏览器验收。每次改完都看首页、工坊、详情页、移动端和搜索，不只看构建是否通过。",
+      "",
+      "这条链的意义是：前端不是孤立页面，而是一套出版系统。页面越美，越要知道自己读的是什么数据。",
+      "",
+      "## 小白复刻路径",
+      "",
+      "1. 先写一个公开页面，不要先写前端数据。",
+      "2. 页面必须回答六个问题：这是什么，为什么做，做了什么，用了什么，怎么复刻，哪里会失败。",
+      "3. 给页面加上状态：想法、建设中、维护中、暂停、归档，不要假装全部完成。",
+      "4. 运行公开检查和隐私检查。",
+      "5. 生成 `site-data`。",
+      "6. 打开前端，检查卡片、详情页、搜索、筛选和手机视图。",
+      "7. 如果小白仍然看不懂，就回到页面重写，而不是继续加更多卡片。",
+      "",
+      "## 最小复刻版本",
+      "",
+      "如果一个读者想复刻这个项目，不需要一开始就做完整站点。最小版本只要四个文件和一条流程：",
+      "",
+      "1. 写一页项目 Markdown，包含背景、过程、复刻步骤、失败点。",
+      "2. 写一个脚本，把这页 Markdown 转成 JSON。",
+      "3. 写一个前端页面，读取 JSON 并渲染项目卡和详情。",
+      "4. 写一个检查脚本，发现敏感词、本机路径、机械摘要就阻止发布。",
+      "",
+      "做完这四步，就已经拥有“资料进入前端”的最小闭环。之后再加搜索、移动导航、PWA、小安对话框和服务器接口。",
+      "",
+      "## 安的提醒",
+      "",
+      "- 不要为了显得丰富而上架低质量内容。空白比假丰富更诚实。",
+      "- 不要让英文工程模板直接面对中文读者。能翻译成人话的才算整理过。",
+      "- 不要只讲工具名。每个工具都要回答“它帮我解决了什么问题”。",
+      "- 不要把复刻写成口号。复刻必须有步骤、检查点和失败处理。",
+      "",
+      "## 三层理解",
+      "",
+      "心理层：这个项目是在对抗“材料焦虑”。材料越多，人越容易误以为自己已经拥有知识；但真正能减少焦虑的，是少量清楚、可复核、可行动的页面。",
+      "",
+      "社会层：AI 时代的学习不是单人闭门读书。工具、模型、平台、前端、后端、自动化、公开展示会不断缠在一起。资料库必须给协作者和读者一个共同界面，否则经验只能留在本地。",
+      "",
+      "哲学层：记录不是收藏，展示也不是炫耀。资料库的责任，是让一段经历从“发生过”变成“可以被理解、可以被重复、可以被修正”。",
+      "",
+      "## 容易踩的坑",
+      "",
+      "- 把页面做得很满，但每张卡片都没有故事；",
+      "- 把英文工程词直接露给中文读者；",
+      "- 为了好看而放入不真实的完成状态；",
+      "- 把未经整理的材料当作内容导入；",
+      "- 只强调工具，不解释人的困惑、选择和代价。",
+      "",
+      "## 当前状态",
+      "",
+      "状态：建设中。",
+      "",
+      "现在已经有前端、PWA 外壳、生成数据和少量公开项目页，但内容还只是第一批。下一步要按项目一批批补，而不是一次性把所有本地材料倒进去。",
+      "",
+      "## 公开边界",
+      "",
+      "公开站点只展示经过改写的内容。原始材料、未整理记录、账号状态、本机细节和敏感值都不进入浏览器数据包。",
+      "",
+      "## 相关",
+      "",
+      "- [[wiki/projects/personal-archive-platform]]",
+      "- [[wiki/concepts/public-site-data-boundary]]",
+      "- [[wiki/concepts/public-api-contract]]",
+      "- [[wiki/concepts/public-work-card-standard]]"
+    ],
+    "links": [
+      {
+        "target": "wiki/projects/personal-archive-platform",
+        "label": "wiki/projects/personal-archive-platform"
+      },
+      {
+        "target": "wiki/concepts/public-site-data-boundary",
+        "label": "wiki/concepts/public-site-data-boundary"
+      },
+      {
+        "target": "wiki/concepts/public-api-contract",
+        "label": "wiki/concepts/public-api-contract"
+      },
+      {
+        "target": "wiki/concepts/public-work-card-standard",
+        "label": "wiki/concepts/public-work-card-standard"
+      }
+    ],
+    "sources": [
+      "[[wiki/projects/personal-archive-platform]]",
+      "[[wiki/concepts/public-site-data-boundary]]",
+      "[[wiki/topics/personal-archive-moc]]"
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "个人资料库展示前端",
+        "anchor": "个人资料库展示前端"
+      },
+      {
+        "level": 2,
+        "title": "它是什么",
+        "anchor": "它是什么"
+      },
+      {
+        "level": 2,
+        "title": "为什么重要",
+        "anchor": "为什么重要"
+      },
+      {
+        "level": 2,
+        "title": "真实操作历程",
+        "anchor": "真实操作历程"
+      },
+      {
+        "level": 2,
+        "title": "实现步骤",
+        "anchor": "实现步骤"
+      },
+      {
+        "level": 2,
+        "title": "小白复刻路径",
+        "anchor": "小白复刻路径"
+      },
+      {
+        "level": 2,
+        "title": "最小复刻版本",
+        "anchor": "最小复刻版本"
+      },
+      {
+        "level": 2,
+        "title": "安的提醒",
+        "anchor": "安的提醒"
+      },
+      {
+        "level": 2,
+        "title": "三层理解",
+        "anchor": "三层理解"
+      },
+      {
+        "level": 2,
+        "title": "容易踩的坑",
+        "anchor": "容易踩的坑"
+      },
+      {
+        "level": 2,
+        "title": "当前状态",
+        "anchor": "当前状态"
+      },
+      {
+        "level": 2,
+        "title": "公开边界",
+        "anchor": "公开边界"
+      },
+      {
+        "level": 2,
+        "title": "相关",
+        "anchor": "相关"
+      }
+    ],
+    "wordCount": 1789,
+    "readingMinutes": 4,
+    "metrics": {
+      "lineCount": 113,
+      "headingCount": 13,
+      "linkCount": 4,
+      "sourceCount": 3
+    },
+    "quality": {
+      "hasSources": true,
+      "hasToc": true,
+      "summaryLength": 69,
+      "sourceTitle": "个人资料库展示前端",
+      "sourceSummary": "面向中国读者的个人资料库展示前端：用网页和未来 App 的形式，把 AI 工具、项目经历、复刻路径和成长记录整理成新手也能看懂的公开展柜。",
+      "needsSourceReview": false,
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "explicitlyCurated": true
+    },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "frontend backend boundary",
+      "project constraints"
+    ],
+    "whyItMattered": "这个前端不是作品集外壳，而是把杂乱经历整理成可阅读、可搜索、可复刻的展柜。小白第一次打开时，应该知道我做过什么、为什么做、怎么照着走一遍，也应该知道哪些内容还没有整理好。",
+    "psychologicalLayer": "这个项目暴露的是一种常见焦虑：经历很多、工具很多、文件很多，却担心别人看不懂。解决办法不是继续堆材料，而是把注意力从“我有多少东西”转到“别人第一分钟能不能理解”。",
+    "sociologicalLayer": "今天的 AI 工具链很分散：前端生成、后端接口、知识库、Agent、部署平台各说各话。这个前端要做的，是给这些分散实践一个公共叙事，让外部读者不用进入本地环境也能理解路径。",
+    "philosophicalLayer": "资料库的价值不在于保存一切，而在于让经验脱离混乱之后仍然能被再次使用。能被复刻的经历，才开始从私人记忆变成公共知识。",
+    "operationStory": [
+      "先接收 Kimi 做出的视觉版本，把它当成界面参考，而不是把里面的示例内容当成真实资料。",
+      "把假数据替换成由 Obsidian 公共 wiki 生成的 site-data，让前端从同一份公开数据包读取藏馆、谱系、工坊和年谱。",
+      "加上 PWA 外壳、移动端底部导航、全局搜索和运行时数据刷新，让网页逐步具备 App 的使用方式。",
+      "把公开层、私有层和原始材料分开，避免为了展示而把未整理材料直接放到浏览器里。"
+    ],
+    "replicationSteps": [
+      "第一步，先写清楚资料库的边界：哪些能公开，哪些只能留在本地，哪些需要重新改写。",
+      "第二步，把每个项目写成一页公共 wiki：包含背景、工具、操作历程、复刻步骤、失败点和下一步。",
+      "第三步，运行公开检查和隐私检查，通过后生成 site-data。",
+      "第四步，前端只读取生成后的 JSON，不直接读取原始文件夹。",
+      "第五步，在浏览器里检查卡片、搜索、筛选、详情页和移动端导航，确认新手能顺着页面走。"
+    ],
+    "failureModes": [
+      "只做漂亮界面，不做内容结构，读者会看到很多卡片却不知道它们为什么重要。",
+      "把原始记录直接塞进网站，内容会显得脏、乱、长，还可能带出不该公开的细节。",
+      "用假项目填充空白，会短期好看，长期损害可信度。",
+      "只写工程名词，不解释人话，小白会在第一屏就离开。"
+    ],
+    "lessons": [
+      "前端不是装饰层，而是读者和资料库之间的翻译层。",
+      "空状态可以诚实存在，低质量内容不应该用来撑场面。",
+      "真正的展示不是把东西摆满，而是让每一件东西有来路、有解释、有下一步。"
+    ],
+    "nextPlan": "下一步先补 3 到 5 个高质量项目页，再补工具卡、提示词模式和手记；每一批都通过生成、检查、浏览器验证后再发布。",
+    "anReminders": [
+      "不要先追求页面数量。读者真正需要的是一条能走通的路线：从首页知道你是谁，从工坊知道你做过什么，从详情页知道怎样复刻。",
+      "不要把 Kimi 示例里的通用数据当成最终内容。模板可以学，事实必须来自安自己的公开资料。",
+      "每次新增内容，都要先问一句：小白看完后能不能做出一个最小版本。如果不能，这条内容暂时不上架。",
+      "前端的美感要服务于阅读顺序。文艺不是朦胧，文艺是让复杂经历有清楚的节奏。"
+    ],
+    "actionText": "先看这页的目标和边界，再按最小步骤做一个缩小版本，并记录一次验收结果。",
+    "displayTier": "showcase",
+    "qualityScore": 100,
+    "hiddenReasons": [],
+    "projectStatus": "building",
+    "techStack": [
+      "frontend",
+      "archive",
+      "site-data",
+      "project",
+      "showcase",
+      "beginner-friendly"
+    ]
+  },
+  {
     "id": "c_ac08a639fed4d6c8",
-    "title": "Personal Archive Platform",
+    "title": "个人资料库平台",
+    "sourceTitle": "个人资料库平台",
     "slug": "wiki-projects-personal-archive-platform",
-    "summary": "A public-safe project page for the personal archive platform that connects the Obsidian wiki layer to future website data.",
+    "summary": "面向公开展示和未来 App 的个人资料库平台：把本地 Obsidian 里的项目、工具、学习路径和复盘内容，经过筛选和改写后生成前端可用的公开数据。",
+    "sourceSummary": "面向公开展示和未来 App 的个人资料库平台：把本地 Obsidian 里的项目、工具、学习路径和复盘内容，经过筛选和改写后生成前端可用的公开数据。",
     "tags": [
       "archive",
       "llm-wiki",
@@ -16,73 +2259,129 @@
     ],
     "createdAt": "2026-05-13",
     "updatedAt": "2026-05-13",
+    "eventDate": null,
     "sourcePath": "wiki/projects/personal-archive-platform.md",
     "module": "works",
     "category": "project",
     "type": "project",
+    "phase": null,
+    "cover": null,
     "contentType": "case",
     "href": "/content/wiki-projects-personal-archive-platform",
     "contentLines": [
-      "# Personal Archive Platform",
+      "# 个人资料库平台",
       "",
-      "The personal archive platform is the public-facing version of this vault. Its job is to turn learning history, projects, tools, agent work, and reusable methods into a navigable knowledge base and future website.",
+      "这个平台的目标，是把一个人的 AI 使用历程整理成别人也能学习的资料库。",
       "",
-      "## What It Is",
+      "它不是简单的文件公开，也不是漂亮的作品集。文件公开会太乱，作品集又容易只剩结果。真正有价值的是中间部分：我为什么这样做，走过哪些步骤，用了什么工具，哪里失败，别人怎样从中复刻一条路。",
       "",
-      "The platform has four working layers:",
+      "## 它是什么",
       "",
-      "- local raw material that stays outside the public graph;",
-      "- a local compiled review layer for sensitive or unfinished material;",
-      "- `wiki/`, the public Karpathy-style compiled layer;",
-      "- `site-data/`, the generated data contract for the website.",
+      "平台分成四层：",
       "",
-      "The key design choice is that the website does not read the vault directly. It reads curated JSON generated from public wiki pages.",
+      "- 原始材料层：保留原始记录，不直接公开；",
+      "- 私有整理层：把敏感、未完成、需要复核的材料先整理清楚；",
+      "- 公开 wiki 层：把能公开的内容写成可读页面；",
+      "- 前端数据层：把公开页面生成网站和 App 能读取的数据。",
       "",
-      "## What It Proves",
+      "这四层的边界很重要。没有边界，资料库就会变成混乱的搬运；有了边界，内容才可能逐步变成可靠的知识。",
       "",
-      "This project demonstrates several capabilities:",
+      "## 模块分工",
       "",
-      "- turning messy personal material into structured source notes and concepts;",
-      "- designing a publication workflow with validation gates;",
-      "- building a frontend data boundary that can later move behind a server API;",
-      "- using agent-readable schema files to keep future maintenance consistent.",
+      "这个平台不是一个普通博客，也不是一个文件索引。每个模块都有明确职责：",
       "",
-      "## Current Public Scope",
+      "| 模块 | 读者问题 | 内容标准 |",
+      "|---|---|---|",
+      "| 首页 | 我来到哪里，安是谁，小安是什么 | 文艺、清楚、有个人信号，第一屏不放生硬术语 |",
+      "| 藏馆 | 有哪些资料、工具和概念值得看 | 每张卡要说明用途、适合谁、风险和下一步 |",
+      "| 谱系 | 我想复刻，应该按什么顺序走 | 必须有阶段、前置条件、交付物和验收 |",
+      "| 风信 | 外部信息和趋势让安改变了什么判断 | 每条都要有来源、认知变化和行动建议 |",
+      "| 工坊 | 安做过什么项目，怎么复刻 | 必须有真实操作、实现步骤、失败点和安的提醒 |",
+      "| 手记 | 这段经历留下了什么反思 | 可以文学，但必须回到具体事件和方法修正 |",
+      "| 年谱 | 安的 AI 学习从什么时候开始，怎样展开 | 使用真实日期，不用虚构节点填空 |",
       "",
-      "The first public scope is not a full autobiography. It is a governed archive of work patterns:",
+      "这样分工以后，读者不会被信息淹没。想找资料去藏馆，想照着做去谱系，想看项目去工坊，想理解安的变化去风信和手记。",
       "",
-      "- [[wiki/concepts/private-to-public-promotion-pipeline]] explains how local material becomes public pages.",
-      "- [[wiki/concepts/public-site-data-boundary]] defines what the frontend is allowed to consume.",
-      "- [[wiki/concepts/agent-skill-governance]] records how agent skills and rules are kept usable without publishing raw prompts.",
-      "- [[wiki/synthesis/personal-archive-public-roadmap]] describes the next content batches.",
+      "## 为什么重要",
       "",
-      "## What Stays Out",
+      "我真正想展示的不是“我有很多资料”，而是“这些资料怎样变成经验”。",
       "",
-      "Local setup details, raw private conversations, account state, unrevised personal records, and secret-like values do not belong in this page or in `site-data/`. They can inform rewritten lessons, but they are not public content.",
+      "一个新手来看的时候，最需要的是三件事：",
       "",
-      "## Related",
+      "1. 看得懂：不要全是英文术语和内部缩写；",
+      "2. 跟得上：知道先做什么，再做什么；",
+      "3. 能复刻：看完之后能照着做一个小版本。",
+      "",
+      "因此，平台的重点是把内容写成路径，而不是把仓库塞满。",
+      "",
+      "## 真实操作历程",
+      "",
+      "1. 先建立公开安全的 Obsidian wiki，保留 Karpathy 风格的原始层和编译层思想。",
+      "2. 再建立私有编译层，承接本地信息、个人资料、时间线和需要复核的材料。",
+      "3. 然后建立公开生成数据 `site-data`，只从公开 wiki 编译。",
+      "4. 接入前端，让网页只消费公开数据。",
+      "5. 最后开始按批次补高质量内容，每次补完都跑检查和浏览器验证。",
+      "",
+      "## 小白复刻路径",
+      "",
+      "1. 不要先公开所有文件，先写一页总规则。",
+      "2. 把材料分成四类：可公开、需改写、仅本地、丢弃。",
+      "3. 选一个项目，写成公开页面。",
+      "4. 页面必须包含：背景、工具、过程、复刻步骤、失败点、当前状态。",
+      "5. 通过检查后生成前端数据。",
+      "6. 打开页面，用小白视角读一遍：如果看不懂，就重写。",
+      "",
+      "## 标准实现流程",
+      "",
+      "如果别人想复刻这套平台，可以按下面的顺序做：",
+      "",
+      "1. 建一个公开 wiki，只放已经能公开的页面。",
+      "2. 写一张内容质量表，规定每类页面必须包含哪些字段。",
+      "3. 写一个隐私扫描脚本，拦截访问材料、本机路径、私人原文和身份信息。",
+      "4. 写一个结构检查脚本，保证每页有标题、状态、来源和链接。",
+      "5. 写一个数据生成脚本，把公开 wiki 编译成前端 JSON。",
+      "6. 前端只读这个 JSON，不直接读本地文件夹。",
+      "7. 给每个模块设定职责，不允许一个模块什么都装。",
+      "8. 每次新增内容后，跑检查、看页面、读一遍详情页。",
+      "",
+      "这套流程慢一点，但它能避免资料库后期变成难以维护的杂物堆。",
+      "",
+      "## 三层理解",
+      "",
+      "心理层：整理资料库的难点不是缺内容，而是面对过多内容时不知道取舍。取舍本身就是成长的一部分。",
+      "",
+      "社会层：当资料库要给别人看，它就不再是私人抽屉，而是一个公共接口。公共接口需要解释、来源、状态和边界。",
+      "",
+      "哲学层：公开不是把门打开，而是把路修好。路没修好时，越开放越容易让人迷路。",
+      "",
+      "## 当前公共范围",
+      "",
+      "现在优先公开三类内容：",
+      "",
+      "- 资料库平台和前端本身；",
+      "- Agent 搭建器、模型训练闭环等项目方法；",
+      "- 工具、技能、提示词和复刻路线。",
+      "",
+      "个人细节、原始记录、账号状态、本机细节和敏感值不进入公开前端。",
+      "",
+      "## 下一步",
+      "",
+      "先把少量核心项目写深，而不是一口气导入所有材料。每个项目都要能回答：",
+      "",
+      "- 这个项目是什么；",
+      "- 为什么值得看；",
+      "- 我具体做了什么；",
+      "- 新手怎么复刻；",
+      "- 哪些地方不能乱做；",
+      "- 下一步准备补什么。",
+      "",
+      "## 相关",
       "",
       "- [[wiki/topics/personal-archive-moc]]",
       "- [[wiki/synthesis/karpathy-official-wiki-layer]]",
       "- [[wiki/sources/local-private-compile-2026-05-13]]"
     ],
     "links": [
-      {
-        "target": "wiki/concepts/private-to-public-promotion-pipeline",
-        "label": "wiki/concepts/private-to-public-promotion-pipeline"
-      },
-      {
-        "target": "wiki/concepts/public-site-data-boundary",
-        "label": "wiki/concepts/public-site-data-boundary"
-      },
-      {
-        "target": "wiki/concepts/agent-skill-governance",
-        "label": "wiki/concepts/agent-skill-governance"
-      },
-      {
-        "target": "wiki/synthesis/personal-archive-public-roadmap",
-        "label": "wiki/synthesis/personal-archive-public-roadmap"
-      },
       {
         "target": "wiki/topics/personal-archive-moc",
         "label": "wiki/topics/personal-archive-moc"
@@ -104,47 +2403,74 @@
     "toc": [
       {
         "level": 1,
-        "title": "Personal Archive Platform",
-        "anchor": "personal-archive-platform"
+        "title": "个人资料库平台",
+        "anchor": "个人资料库平台"
       },
       {
         "level": 2,
-        "title": "What It Is",
-        "anchor": "what-it-is"
+        "title": "它是什么",
+        "anchor": "它是什么"
       },
       {
         "level": 2,
-        "title": "What It Proves",
-        "anchor": "what-it-proves"
+        "title": "模块分工",
+        "anchor": "模块分工"
       },
       {
         "level": 2,
-        "title": "Current Public Scope",
-        "anchor": "current-public-scope"
+        "title": "为什么重要",
+        "anchor": "为什么重要"
       },
       {
         "level": 2,
-        "title": "What Stays Out",
-        "anchor": "what-stays-out"
+        "title": "真实操作历程",
+        "anchor": "真实操作历程"
       },
       {
         "level": 2,
-        "title": "Related",
-        "anchor": "related"
+        "title": "小白复刻路径",
+        "anchor": "小白复刻路径"
+      },
+      {
+        "level": 2,
+        "title": "标准实现流程",
+        "anchor": "标准实现流程"
+      },
+      {
+        "level": 2,
+        "title": "三层理解",
+        "anchor": "三层理解"
+      },
+      {
+        "level": 2,
+        "title": "当前公共范围",
+        "anchor": "当前公共范围"
+      },
+      {
+        "level": 2,
+        "title": "下一步",
+        "anchor": "下一步"
+      },
+      {
+        "level": 2,
+        "title": "相关",
+        "anchor": "相关"
       }
     ],
-    "wordCount": 275,
-    "readingMinutes": 1,
+    "wordCount": 1454,
+    "readingMinutes": 4,
     "metrics": {
-      "lineCount": 42,
-      "headingCount": 6,
-      "linkCount": 7,
+      "lineCount": 111,
+      "headingCount": 11,
+      "linkCount": 3,
       "sourceCount": 3
     },
     "quality": {
       "hasSources": true,
       "hasToc": true,
-      "summaryLength": 122,
+      "summaryLength": 74,
+      "sourceTitle": "个人资料库平台",
+      "sourceSummary": "面向公开展示和未来 App 的个人资料库平台：把本地 Obsidian 里的项目、工具、学习路径和复盘内容，经过筛选和改写后生成前端可用的公开数据。",
       "needsSourceReview": false,
       "displayTier": "showcase",
       "qualityScore": 100,
@@ -157,31 +2483,41 @@
       "local compile",
       "architecture"
     ],
-    "whyItMattered": "It turns scattered work history into a governed archive that can feed a website without exposing local-only material.",
+    "whyItMattered": "这个平台要把分散的学习经历、工具实践、项目尝试和方法沉淀，整理成一个别人能看、自己能复盘、未来前端和 App 能读取的资料库。它的核心不是公开越多越好，而是公开得清楚、可信、能复刻。",
+    "psychologicalLayer": "平台化整理是在处理记忆负担。过去做过很多事，如果没有结构，就会变成压力；一旦被整理成路径，它们才会重新变成能力。",
+    "sociologicalLayer": "个人资料库并不只是个人空间。它会被朋友、协作者、前端开发者、未来的 Agent 和陌生读者共同使用，因此必须有共同语言、共同入口和共同边界。",
+    "philosophicalLayer": "一个资料库成熟的标志，不是它拥有多少内容，而是它知道哪些内容现在还不该展示。",
     "operationStory": [
-      "Split raw evidence, private compiled notes, public wiki pages, and frontend data.",
-      "Added validation scripts so publishing depends on structure and privacy gates.",
-      "Converted the website backend contract into generated site-data instead of direct vault reads."
+      "先把原始材料、私有编译层、公开 wiki 和前端数据分成四层。",
+      "用 Karpathy 的 LLM Wiki 思路，把 wiki 当作编译后的知识层，而不是原始文件堆。",
+      "建立公开检查、隐私检查和公共清单，发布前先过闸门。",
+      "把网站后端先设计成生成数据包，后续服务器只需要提供同样的公开 API。"
     ],
     "replicationSteps": [
-      "Define raw, private, public, and frontend data layers.",
-      "Write a source note before promoting claims.",
-      "Promote one project or concept at a time through structure and privacy checks."
+      "先建四层目录：原始材料、私有整理、公开 wiki、前端数据。",
+      "任何项目先写公开安全页面，再进入前端展示。",
+      "每页写清楚来源、状态、边界和复刻步骤。",
+      "运行结构检查、隐私检查和数据生成。",
+      "前端只读取生成后的公开数据，不直接读取本地材料。"
     ],
     "failureModes": [
-      "publishing raw notes",
-      "treating private review pages as public sources",
-      "letting frontend read the vault directly"
+      "把资料库做成文件仓库，读者不知道从哪里开始。",
+      "把个人材料直接公开，内容既难读又不安全。",
+      "只做技术架构，不写人的成长路径和选择过程。",
+      "没有验收流程，后期越补数据越乱。"
     ],
-    "lessons": [
-      "compiled pages beat raw dumps",
-      "public data needs a narrow contract",
-      "promotion should be reviewable"
+    "nextPlan": "下一步围绕真实项目补内容：先补项目页，再补工具卡和提示词模式，最后用路线页把它们串起来。",
+    "anReminders": [
+      "平台的核心不是把资料堆到 GitHub，而是建立一条从本地材料到公开知识的可验证通道。",
+      "私人材料可以多，公开内容必须少而精。公开页面要替读者节省判断成本。",
+      "每个模块都要有职责：藏馆放资料，谱系放路线，风信放趋势与认知变化，工坊放项目案例，手记放复盘，年谱放真实时间。",
+      "不要让工具替你决定什么值得公开。公开是一种判断，不是一次导出。"
     ],
+    "actionText": "先看这页的目标和边界，再按最小步骤做一个缩小版本，并记录一次验收结果。",
     "displayTier": "showcase",
     "qualityScore": 100,
     "hiddenReasons": [],
-    "projectStatus": "archived",
+    "projectStatus": "building",
     "techStack": [
       "archive",
       "llm-wiki",
@@ -189,6 +2525,280 @@
       "showcase",
       "beginner-friendly"
     ],
-    "nextPlan": ""
+    "lessons": [
+      "项目资料要从经历变成方法，才能真正被复用。",
+      "公开页面要把价值、边界和下一步讲清楚。",
+      "小批量高质量整理比一次性堆材料更稳。"
+    ]
+  },
+  {
+    "id": "c_a925023b1e6214f9",
+    "title": "小安本地模型学习闭环",
+    "sourceTitle": "小安本地模型学习闭环",
+    "slug": "wiki-projects-xiaoan-local-model-learning-loop",
+    "summary": "本地模型实验的公开安全总结：用任务状态、数据检查、小样本试跑、指标比较和复盘，把一次训练变成可以继续学习的闭环。",
+    "sourceSummary": "本地模型实验的公开安全总结：用任务状态、数据检查、小样本试跑、指标比较和复盘，把一次训练变成可以继续学习的闭环。",
+    "tags": [
+      "local-model",
+      "learning-loop",
+      "sft",
+      "evaluation",
+      "project",
+      "showcase",
+      "beginner-friendly"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": null,
+    "sourcePath": "wiki/projects/xiaoan-local-model-learning-loop.md",
+    "module": "works",
+    "category": "project",
+    "type": "project",
+    "phase": null,
+    "cover": null,
+    "contentType": "model",
+    "href": "/content/wiki-projects-xiaoan-local-model-learning-loop",
+    "contentLines": [
+      "# 小安本地模型学习闭环",
+      "",
+      "这个项目不是要展示一次模型训练有多复杂，而是要说明：本地模型实验如果没有闭环，很快就会变成一堆难以回忆的文件和日志。",
+      "",
+      "对小白来说，可以把本地模型训练理解成一次“教一个模型做得更好”的实验。但实验不是按下开始按钮就结束了。你需要知道目标是什么，数据从哪里来，格式是否正确，试跑有没有问题，结果怎么比较，下一步为什么这样改。",
+      "",
+      "## 它是什么",
+      "",
+      "这个闭环分成五个部分：",
+      "",
+      "- 任务状态：现在做到了哪一步；",
+      "- 数据准备：数据来源、格式和质量是否能用；",
+      "- 小样本试跑：先用小规模测试排除明显错误；",
+      "- 训练与比较：记录可比较的结果；",
+      "- 复盘：把这次实验变成下一次实验的起点。",
+      "",
+      "公开页面只讲流程和经验，不公开原始记录、运行细节和本机信息。",
+      "",
+      "## 为什么重要",
+      "",
+      "模型实验很容易让人产生“跑完就是进步”的错觉。事实上，如果没有记录，就算训练完成，也很难回答：",
+      "",
+      "- 这次到底改了什么；",
+      "- 数据有没有问题；",
+      "- 指标为什么变化；",
+      "- 下一轮应该保留什么；",
+      "- 哪个问题还没有解决。",
+      "",
+      "这个项目的价值，是把一次实验变成一条可继续的学习链。",
+      "",
+      "## 小白复刻路径",
+      "",
+      "1. 写下目标：例如“希望模型更会回答某类问题”。",
+      "2. 列出数据审核清单：来源、格式、重复、噪声、风险、样例质量。",
+      "3. 先跑 10 到 50 条小样本，看格式和流程能不能通。",
+      "4. 再跑正式训练，并记录配置和指标。",
+      "5. 用同一张表比较每次结果。",
+      "6. 写复盘：保留什么，问题是什么，原因可能是什么，下一步做什么。",
+      "",
+      "## 实现步骤",
+      "",
+      "一个可复刻的本地模型学习闭环，可以按这张表推进：",
+      "",
+      "| 阶段 | 要做什么 | 验收方式 |",
+      "|---|---|---|",
+      "| 目标定义 | 写一句模型要改进的能力 | 能说清任务场景和读者对象 |",
+      "| 数据审核 | 抽样检查来源、重复、噪声和风险 | 至少看过一批样例，不只看文件数量 |",
+      "| 格式检查 | 验证输入输出字段是否统一 | 小样本能被脚本读取 |",
+      "| 小样本试跑 | 用少量数据跑通流程 | 失败能定位到数据、配置或脚本 |",
+      "| 正式实验 | 固定参数，记录结果 | 每轮都有可比较指标 |",
+      "| 复盘归档 | 写 Keep、Problem、Cause、Next | 下一轮能直接接上 |",
+      "",
+      "这张表的价值在于，它把“模型训练”变成可解释的学习过程。小白不需要先懂所有技术名词，只要先知道每一步为什么存在。",
+      "",
+      "## 最小复刻版本",
+      "",
+      "如果读者只想做一个最小版本，不需要马上训练大模型。可以这样做：",
+      "",
+      "1. 准备 20 条公开安全的问答样例。",
+      "2. 写一张数据检查表：问题是否清楚，回答是否具体，是否含隐私，是否可公开。",
+      "3. 用一个普通模型先做回答对比，不训练，只观察差距。",
+      "4. 把差距分类：知识不足、表达不清、边界不明、步骤不完整。",
+      "5. 根据分类改提示词或改数据。",
+      "6. 写一页复盘，说明下一轮要改哪里。",
+      "",
+      "这已经是学习闭环。训练只是其中一种后续手段，不是唯一入口。",
+      "",
+      "## 三层理解",
+      "",
+      "心理层：长任务最容易丢失上下文。任务状态和复盘不是形式主义，而是在给未来的自己留路标。",
+      "",
+      "社会层：本地模型实验看似是个人行为，实际上依赖很多外部秩序：开源社区、数据规范、评测方法、硬件条件。记录标准越清楚，越容易和外部经验接上。",
+      "",
+      "哲学层：一次实验真正的成果，不只是模型参数变化，而是人对过程的理解变得更清楚。",
+      "",
+      "## 容易踩的坑",
+      "",
+      "- 数据还没看清就开始训练；",
+      "- 只记录成功，不记录失败；",
+      "- 每轮指标不一致；",
+      "- 复盘太长，下一次根本读不下去；",
+      "- 把内部细节当成公开内容。",
+      "",
+      "## 当前状态",
+      "",
+      "状态：暂停整理。公开页面已经能说明流程，下一步需要补数据审核清单和复盘模板。",
+      "",
+      "## 相关",
+      "",
+      "- [[wiki/synthesis/capability-evidence-matrix]]",
+      "- [[wiki/synthesis/project-evidence-matrix]]",
+      "- [[wiki/concepts/private-to-public-promotion-pipeline]]"
+    ],
+    "links": [
+      {
+        "target": "wiki/synthesis/capability-evidence-matrix",
+        "label": "wiki/synthesis/capability-evidence-matrix"
+      },
+      {
+        "target": "wiki/synthesis/project-evidence-matrix",
+        "label": "wiki/synthesis/project-evidence-matrix"
+      },
+      {
+        "target": "wiki/concepts/private-to-public-promotion-pipeline",
+        "label": "wiki/concepts/private-to-public-promotion-pipeline"
+      }
+    ],
+    "sources": [
+      "[[wiki/projects/05-外部信息-项目文档-xiaoan-finetune-TASK_STATE]]",
+      "[[wiki/projects/05-外部信息-项目文档-xiaoan-finetune-data-knowledge-lessons]]",
+      "[[wiki/synthesis/capability-evidence-matrix]]"
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "小安本地模型学习闭环",
+        "anchor": "小安本地模型学习闭环"
+      },
+      {
+        "level": 2,
+        "title": "它是什么",
+        "anchor": "它是什么"
+      },
+      {
+        "level": 2,
+        "title": "为什么重要",
+        "anchor": "为什么重要"
+      },
+      {
+        "level": 2,
+        "title": "小白复刻路径",
+        "anchor": "小白复刻路径"
+      },
+      {
+        "level": 2,
+        "title": "实现步骤",
+        "anchor": "实现步骤"
+      },
+      {
+        "level": 2,
+        "title": "最小复刻版本",
+        "anchor": "最小复刻版本"
+      },
+      {
+        "level": 2,
+        "title": "三层理解",
+        "anchor": "三层理解"
+      },
+      {
+        "level": 2,
+        "title": "容易踩的坑",
+        "anchor": "容易踩的坑"
+      },
+      {
+        "level": 2,
+        "title": "当前状态",
+        "anchor": "当前状态"
+      },
+      {
+        "level": 2,
+        "title": "相关",
+        "anchor": "相关"
+      }
+    ],
+    "wordCount": 1180,
+    "readingMinutes": 3,
+    "metrics": {
+      "lineCount": 92,
+      "headingCount": 10,
+      "linkCount": 3,
+      "sourceCount": 3
+    },
+    "quality": {
+      "hasSources": true,
+      "hasToc": true,
+      "summaryLength": 56,
+      "sourceTitle": "小安本地模型学习闭环",
+      "sourceSummary": "本地模型实验的公开安全总结：用任务状态、数据检查、小样本试跑、指标比较和复盘，把一次训练变成可以继续学习的闭环。",
+      "needsSourceReview": false,
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "explicitlyCurated": true
+    },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "archive-derived",
+      "training governance"
+    ],
+    "whyItMattered": "它展示了本地模型实验最容易被忽略的一点：训练本身不是全部，真正让人进步的是目标、数据、检查、指标和复盘形成闭环。没有闭环，模型跑完一次就只剩一堆难以解释的文件。",
+    "psychologicalLayer": "本地模型实验容易给人一种掌控感：机器在跑，进度在动，好像事情就在前进。但真正的掌控来自可解释的记录，来自知道下一步为什么这样做。",
+    "sociologicalLayer": "模型训练不是孤立行为，它依赖开源模型、数据格式、评测习惯、硬件条件和社区经验。一个人的实验如果没有记录标准，就很难和外部经验对接。",
+    "philosophicalLayer": "模型不会自动把经验变成知识。只有当人把失败写成下一步，实验才真的留下了东西。",
+    "operationStory": [
+      "把一次长任务拆成任务状态、数据准备、格式检查、试跑、训练、指标提取和复盘。",
+      "用检查点记录当前阶段，减少长任务中途丢失上下文的问题。",
+      "把结果写成 Keep、Problem、Root Cause、Next Action，方便下一轮实验直接接上。",
+      "把原始记录和运行细节留在本地，只公开方法、结构和经验。"
+    ],
+    "replicationSteps": [
+      "先写训练目标：希望模型在哪一种任务上变好。",
+      "准备数据前先写审核清单，确认来源、格式、风险和样例质量。",
+      "先跑小样本试验，不要一开始就跑完整训练。",
+      "每次训练后记录同一组指标，避免前后无法比较。",
+      "写四行复盘：保留什么，问题是什么，原因可能是什么，下一步做什么。"
+    ],
+    "failureModes": [
+      "数据没有审核就进入训练，后面很难判断问题来自数据还是配置。",
+      "每次实验记录方式不同，结果无法横向比较。",
+      "只看一个分数，以为模型已经变好。",
+      "没有复盘，下一轮实验重复踩同一个坑。"
+    ],
+    "nextPlan": "下一步把这个闭环整理成两张公开表：一张数据审核清单，一张训练复盘模板，供小白照着做。",
+    "anReminders": [
+      "不要把模型跑起来当成成功。能解释目标、数据、结果和下一步，才算一次有效实验。",
+      "小样本试跑不是偷懒，它是在保护时间和注意力。长任务最怕带着错误跑很久。",
+      "不要公开原始数据、训练细节和本机环境。公开页只讲方法、结构和可复刻的判断。",
+      "小安不是神秘人格，它要有资料来源、回答边界和复盘机制。"
+    ],
+    "actionText": "先看这页的目标和边界，再按最小步骤做一个缩小版本，并记录一次验收结果。",
+    "displayTier": "showcase",
+    "qualityScore": 100,
+    "hiddenReasons": [],
+    "projectStatus": "paused",
+    "techStack": [
+      "local-model",
+      "learning-loop",
+      "sft",
+      "evaluation",
+      "project",
+      "showcase"
+    ],
+    "lessons": [
+      "项目资料要从经历变成方法，才能真正被复用。",
+      "公开页面要把价值、边界和下一步讲清楚。",
+      "小批量高质量整理比一次性堆材料更稳。"
+    ]
   }
 ]

@@ -4,7 +4,7 @@ import type { SiteConfig, NavItem } from '@/types';
  * 核心导航：藏馆 · 风信 · 手记 · 书房
  *
  * 藏馆 — 资源收藏（资料、工具、教程）
- * 风信 — 最近的AI动向、趋势、信息
+ * 风信 — 信息、趋势与安的认知觉醒
  * 手记 — 日记和认知感悟
  * 书房 — 个人信息展示（年谱/时间线、关于安、个人标签）
  */
@@ -20,9 +20,9 @@ export const navItems: NavItem[] = [
 ];
 
 export const siteConfig: SiteConfig = {
-  title: '藏馆',
-  subtitle: '一座关于资料、路径、作品与成长的个人藏馆',
-  description: '藏馆是一个个人公开资料与路径系统，用于收藏资料、整理资源、梳理复刻路径、展示作品、记录成长和聚合信息。',
+  title: '安的书房',
+  subtitle: '一座关于资料、路径、作品与成长的个人书房',
+  description: '安的书房是一个个人公开资料与路径系统，用于收藏资料、整理资源、梳理复刻路径、展示作品、记录成长，并沉淀信息趋势带来的认知变化。',
   navItems,
   modules: {
     library: { enabled: true, label: '藏馆' },

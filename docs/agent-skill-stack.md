@@ -1,7 +1,32 @@
 # Agent Skill Stack
 
-This is the external-skill baseline for future work on `an-llm-wiki`. It exists
-so local Codex, Kimi, and later cloud agents do not invent process from scratch.
+This file is the local skill baseline for future work on `an-llm-wiki`.
+
+It now aligns with the official Codex best-practice model used across OpenAI
+Codex docs and the `openai/codex` GitHub repo:
+
+- durable repo rules live in `AGENTS.md`
+- repeatable methods become repo-local or user-local skills
+- automations run only after the method is stable manually
+
+Canonical alignment note:
+
+- `docs/codex-github-best-practice-alignment.md`
+
+This means the goal is no longer “use more skills”. The goal is “use the
+smallest correct skill chain that produces a reviewable result”.
+
+## 0. Official Codex Baseline
+
+Use these rules before choosing or adding skills:
+
+1. Put durable repository guidance in `AGENTS.md`, not in every prompt.
+2. Keep `AGENTS.md` short and practical. Link deeper docs when needed.
+3. Turn repeated work into a skill only after the workflow works manually.
+4. Keep each skill scoped to one job with a clear trigger, input, output, and
+   done condition.
+5. Use automations only after the workflow is predictable.
+6. Validate skill changes with at least a smoke test and a small trigger set.
 
 ## 1. Sources
 
@@ -9,6 +34,8 @@ Use GitHub-hosted skills first:
 
 - Official OpenAI skills catalog: `https://github.com/openai/skills`
 - Community Codex skills catalog: `https://github.com/vadimcomanescu/codex-skills`
+- Content and research skills from `https://github.com/claude-office-skills/skills`
+- UX writing skill from `https://github.com/content-designer/ux-writing-skill`
 
 Project-specific rules may wrap these skills, but they should not replace them
 without a clear reason.
@@ -98,6 +125,54 @@ Use these together with local privacy gates before publishing or deploying.
 Use this for prompt patterns, Kimi instructions, agent workflows, and future
 frontend content generation prompts.
 
+### Knowledge Content And Review
+
+Use the smallest chain that fits the task:
+
+1. Extraction:
+   - `data-extractor`
+   - `doc-parser`
+   - `an-source-research-and-extraction`
+2. Challenge and evidence strengthening, only when needed:
+   - `deep-research`
+   - `academic-search`
+3. Compile or rewrite:
+   - `archive-content-curator`
+   - `content-writer`
+4. Public-facing polish, only when the result is reader-visible:
+   - `brand-guidelines`
+   - `ux-writing-skill`
+   - matching module curator skill
+5. Safety and release:
+   - `security-best-practices`
+   - local privacy and publication gates
+6. Optional specialization:
+   - `information-architect` for taxonomy or routing changes
+   - `senior-prompt-engineer` for reusable prompt systems
+
+The written rule is `docs/knowledge-content-source-and-review-standard.md`.
+
+Frontend visibility rule: the reader only sees the website or future App. Do not
+write public content that depends on local Obsidian, local file paths, private
+wiki pages, or generated JSON. If a fact matters to the reader, it belongs in a
+frontend detail page or a public GitHub/official/source link.
+
+The local module skills live under the local Codex skills directory in the
+`an-study-room` group. Restart Codex after adding or changing skills so future
+sessions can discover them from the skill index.
+
+## 3.5 AGENTS vs Skill vs Automation
+
+Use the right surface for the right kind of knowledge:
+
+- `AGENTS.md`: durable repo rules, verification rules, do-not rules
+- `SKILL.md`: a repeatable method for one bounded job
+- automation: cadence, environment, and scheduling for a stable method
+
+Do not put long task scripts into `AGENTS.md`.
+Do not turn unstable workflows into automations.
+Do not create umbrella skills that try to absorb the whole project.
+
 ### Git And Release Notes
 
 - `devtools/git-commit-helper`
@@ -158,3 +233,7 @@ External skills do not override these project constraints:
 
 After installing or updating skills, restart Codex so the new skill metadata is
 available in future sessions.
+
+When a skill keeps misfiring or stays unused, do not keep adding prompt text
+around it. Either tighten the skill description, split the skill, or remove it
+from the active chain.

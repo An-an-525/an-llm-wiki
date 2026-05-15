@@ -1,6 +1,6 @@
 ---
-title: Agent Skill Governance
-aliases: ["Skill Governance", "Agent Rules Governance"]
+title: Agent 技能治理
+aliases: ["技能治理", "Agent 规则治理", "Skill Governance", "Agent Rules Governance"]
 tags: [agent, skills, governance, llm-wiki, curated]
 category: concept
 type: operating-model
@@ -14,51 +14,81 @@ sources:
   - "[[wiki/topics/skills-and-tools-moc]]"
 publicSafety: public-safe
 sourceLabels: [public wiki, agent workflow, skills]
-whyItMattered: "It lets the archive preserve agent operating knowledge without publishing raw rules, prompts, or local state."
+reviewStatus: challenged
+reviewNotes: "已检查来源、公开边界、小白可读性和前端展示适配；后续可继续补强复刻细节。"
+whyItMattered: "它把反复出现的 Agent 工作方式沉淀成可维护的技能和规则，同时避免公开原始提示词、本地状态和私有执行细节。"
+actionText: "先读完这页的边界和做法，再用一个最小例子试一次，把结果和问题记录下来。"
 operationStory:
-  - "Separate current active rules from historical recovered rules."
-  - "Turn repeated workflows into skills only when they are reusable."
-  - "Keep sensitive execution context outside the public wiki."
+  - "先区分当前正在使用的规则和历史恢复出来的旧规则，避免把过期流程当成现行标准。"
+  - "只有当一个流程会反复使用、能被验收、能保护边界时，才把它写成技能。"
+  - "把敏感执行上下文留在非公开层，公开层只讲任务、边界、产出和检查方法。"
 replicationSteps:
-  - "Document the trigger for a skill."
-  - "State what the skill must protect."
-  - "Keep commands and validation gates concrete."
-  - "Link public skills to public concepts, not local-only state."
-failureModes: [treating old rules as current policy, publishing raw prompt text, creating skills for one-off actions, skipping validation]
-lessons: [skills are reusable process assets, historical rules need promotion, public governance should be compact]
-summary: "A public-safe model for preserving agent and skill knowledge without exposing local prompts or private runtime state."
+  - "写清楚这个技能什么时候触发，什么时候不触发。"
+  - "写清楚它要保护什么边界，比如隐私、密钥、公开内容质量或前端验收。"
+  - "把验证动作写具体，不只写“检查一下”。"
+  - "公开页面只链接公开概念，不依赖本地状态、聊天记忆或非公开文件。"
+failureModes: ["把旧规则当成当前规则", "把原始提示词直接公开", "为一次性动作创建技能", "跳过验证就宣布完成"]
+lessons: ["技能是可复用的流程资产", "历史规则需要经过复核才能重新启用", "公开治理页面要短、清楚、可执行"]
+summary: "面向公开资料库的 Agent 技能治理方法：把可复用流程写成技能，把私有提示词、本地状态和执行细节留在非公开层。"
 ---
 
-# Agent Skill Governance
+# Agent 技能治理
 
-Agent skill governance is the practice of turning repeated agent workflows into durable process assets while keeping local runtime state out of the public archive.
+Agent 技能治理，就是把反复出现的 Agent 工作方式写成稳定的流程资产。它解决的不是“怎样让 Agent 看起来更强”，而是“怎样让 Agent 的行为可复用、可检查、可交接，同时不把本地运行状态和私有规则暴露出去”。
 
-## What Belongs In Public
+对小白来说，可以把技能理解成一张工作说明书：遇到什么任务时使用，能读哪些材料，不能碰哪些边界，最后用什么标准验收。
 
-Public pages can describe:
+## 公开页面应该写什么
 
-- the problem a skill solves;
-- when to use it;
-- what boundaries it protects;
-- what validation commands prove it worked;
-- how it connects to the wiki and website workflow.
+公开页面可以写：
 
-This is enough for future agents and collaborators to understand the operating model.
+- 这个技能解决什么问题；
+- 什么时候使用，什么时候不要使用；
+- 它保护哪些边界；
+- 它会产出什么；
+- 怎样判断这次运行是合格的；
+- 它和资料库、前端、后端、小安有什么关系。
 
-## What Stays Local
+这些内容足够让未来的协作者理解工作方式，也不会把私有上下文暴露出去。
 
-Raw prompts, memory files, private session notes, unrevised rule packs, account-specific setup, and local tool state should stay in local-only layers. They may inform a rewritten public operating model, but they are not themselves public documentation.
+## 什么必须留在非公开层
 
-## Current Pattern
+以下内容不应该进入公开页面：
 
-The archive now uses a skill-style approach for local private compilation. The public lesson is not the private source list; it is the repeatable boundary:
+- 原始提示词；
+- 本地记忆文件；
+- 私有会话记录；
+- 没有复核的旧规则；
+- 账号绑定和运行状态；
+- 能还原本机环境的路径、日志和配置。
 
-- index local material;
-- compile local review pages;
-- rewrite safe concepts into `wiki/`;
-- regenerate public data only after gates pass.
+它们可以启发公开方法，但不能作为公开文档本身。
 
-## Related
+## 当前做法
+
+安的书房现在把技能分成两层：
+
+1. 非公开层保存真实执行上下文、历史规则和待复核材料。
+2. 公开层只写经过改写的技能原则、使用场景、边界和验收。
+
+这条边界很重要。读者需要学习的是怎样组织 Agent 工作流，而不是看到安的私有提示词或本地状态。
+
+## 小白怎样复刻
+
+1. 先选一个经常重复的任务，例如“检查前端页面是否能让小白看懂”。
+2. 写触发条件：什么时候应该使用这个流程。
+3. 写输入材料：允许读取哪些公开页面或数据。
+4. 写禁止事项：哪些内容不能读取、不能公开、不能猜。
+5. 写输出结构：结果要包含问题、修改建议、验收结果。
+6. 写验收方式：用浏览器、构建、隐私检查或人工复核证明它完成了。
+
+如果一个流程不能写出这六项，就先不要叫它技能。
+
+## 安的提醒
+
+技能不是给 Agent 戴头衔。技能是把一段混乱经验压缩成下一次能重复使用的秩序。它越清楚，越能保护人；它越神秘，越容易把错误包装成能力。
+
+## 相关
 
 - [[wiki/topics/skills-and-tools-moc]]
 - [[wiki/topics/ai-agent-systems-moc]]

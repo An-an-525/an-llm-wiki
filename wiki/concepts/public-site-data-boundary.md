@@ -1,5 +1,5 @@
 ---
-title: Public Site Data Boundary
+title: 公开站点数据边界
 aliases: ["Frontend Data Boundary", "site-data Boundary"]
 tags: [frontend, backend, site-data, publication, curated]
 category: concept
@@ -13,7 +13,10 @@ sources:
   - "[[wiki/synthesis/karpathy-official-wiki-layer]]"
 publicSafety: public-safe
 sourceLabels: [public wiki, frontend backend boundary, architecture]
+reviewStatus: challenged
+reviewNotes: "已检查来源、公开边界、小白可读性和前端展示适配；后续可继续补强复刻细节。"
 whyItMattered: "It prevents the future website from depending on private vault structure or unreviewed Markdown."
+actionText: "先读完这页的边界和做法，再用一个最小例子试一次，把结果和问题记录下来。"
 operationStory:
   - "The public wiki remains the human-editable compiled layer."
   - "The generator turns curated wiki pages into JSON."
@@ -24,10 +27,10 @@ replicationSteps:
   - "Treat every new public field as a publication surface."
 failureModes: [direct vault reads, exposing review manifests, mixing draft and curated data, serving local-only directories]
 lessons: [data contracts are publication policy, generated JSON should be narrower than the vault, backend work starts with field boundaries]
-summary: "The architecture boundary that keeps the website consuming curated public JSON instead of raw Obsidian content."
+summary: "公开站点数据边界：网站只消费从公开 wiki 编译出的 JSON，不直接读取原始资料、私有层或本地审查队列。"
 ---
 
-# Public Site Data Boundary
+# 公开站点数据边界
 
 The public site data boundary is the backend contract for the future archive website. It keeps the web layer small, predictable, and safer to deploy.
 
@@ -49,6 +52,18 @@ Public data can include:
 
 Public data should not include local-only source locations, review-only queue details, raw transcripts, account state, or unreviewed personal records.
 
+## API Shape
+
+The current file transport can later become a read-only API without changing the publication boundary. The first server should expose only generated public records:
+
+- `GET /api/site-data`;
+- `GET /api/content`;
+- `GET /api/content/:slug`;
+- `GET /api/search?q=...`;
+- `GET /api/modules`.
+
+The detailed contract is [[wiki/concepts/public-api-contract]].
+
 ## Why This Is A Backend Decision
 
 Even without a deployed server, the data generator is already acting as a backend. It chooses which pages are visible, which fields are exposed, and which items stay hidden. Treating it as a backend contract now makes the later server simpler.
@@ -56,5 +71,7 @@ Even without a deployed server, the data generator is already acting as a backen
 ## Related
 
 - [[wiki/projects/personal-archive-platform]]
+- [[wiki/projects/personal-archive-frontend]]
+- [[wiki/concepts/public-api-contract]]
 - [[wiki/concepts/private-to-public-promotion-pipeline]]
 - [[wiki/topics/personal-archive-moc]]

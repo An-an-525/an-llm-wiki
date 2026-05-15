@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-label="做后端">
+  <rect width="640" height="420" fill="#EEF2F1"/>
+  <rect x="74" y="78" width="492" height="264" rx="22" fill="#FFFDF9" stroke="#B7C7C0" stroke-width="3"/>
+  <path d="M154 154h120m92 0h120M154 210h332M154 266h210" stroke="#6B9E7C" stroke-width="13" stroke-linecap="round"/>
+  <rect x="104" y="132" width="34" height="34" rx="8" fill="#C8956C"/>
+  <rect x="104" y="188" width="34" height="34" rx="8" fill="#8A9BB8"/>
+  <rect x="104" y="244" width="34" height="34" rx="8" fill="#6B9E7C"/>
+  <path d="M430 250l46-38 46 38" fill="none" stroke="#C8956C" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="92" y="54" fill="#2F3A36" font-family="serif" font-size="30">做后端</text>
+  <text x="96" y="384" fill="#67716D" font-family="sans-serif" font-size="20">接口、数据、服务边界与部署</text>
+</svg>

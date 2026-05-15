@@ -1,1 +1,440 @@
-[]
+[
+  {
+    "id": "c_c0ee2b2b6fed41a1",
+    "title": "聊天记录转公开经验规则",
+    "sourceTitle": "聊天记录转公开经验规则",
+    "slug": "wiki-concepts-chat-log-to-public-lesson-rules",
+    "summary": "把 AI 对话、工具讨论和本地操作记录改写成公开经验的规则：保留问题、决策、方法和验收，删除原文和身份细节。",
+    "sourceSummary": "把 AI 对话、工具讨论和本地操作记录改写成公开经验的规则：保留问题、决策、方法和验收，删除原文和身份细节。",
+    "tags": [
+      "chat",
+      "publication",
+      "rewrite",
+      "learning",
+      "beginner-friendly",
+      "curated"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": null,
+    "sourcePath": "wiki/concepts/chat-log-to-public-lesson-rules.md",
+    "module": "journal",
+    "category": "concept",
+    "type": "standard",
+    "phase": null,
+    "cover": null,
+    "contentType": "article",
+    "href": "/content/wiki-concepts-chat-log-to-public-lesson-rules",
+    "contentLines": [
+      "# 聊天记录转公开经验规则",
+      "",
+      "聊天记录不是公开页面。它通常包含身份、上下文、临时情绪、工具输出、失败尝试和未复核判断。公开资料库要做的是把对话编译成经验，而不是把对话搬出来。",
+      "",
+      "## 保留什么",
+      "",
+      "保留四类信息：",
+      "",
+      "- 问题：当时要解决什么；",
+      "- 决策：最终选了什么做法；",
+      "- 方法：别人怎样复刻；",
+      "- 验收：怎样判断做对了。",
+      "",
+      "如果一句话不能支持这四类信息，就不应该进入公开页面。",
+      "",
+      "## 删除什么",
+      "",
+      "删除或改写：",
+      "",
+      "- 对话原文；",
+      "- 私人称呼和身份线索；",
+      "- 本机环境细节；",
+      "- 未复核的推断；",
+      "- 账号状态；",
+      "- 工具调用的原始 trace；",
+      "- 可能还原私人活动的时间和位置组合。",
+      "",
+      "## 公开页面结构",
+      "",
+      "推荐结构：",
+      "",
+      "1. 这次经验解决什么问题；",
+      "2. 背后的真实工作流是什么；",
+      "3. 新手怎样复刻；",
+      "4. 哪些内容被隐藏；",
+      "5. 如何验收；",
+      "6. 还需要哪些来源复核。",
+      "",
+      "这样读者得到的是可学习的经验，而不是一段离开上下文就无法判断的对话。",
+      "",
+      "## Related",
+      "",
+      "- [[wiki/concepts/sensitive-context-rewrite-rules]]",
+      "- [[wiki/synthesis/lifecycle-replication-package-workflow]]",
+      "- [[wiki/concepts/beginner-publication-decision-tree]]"
+    ],
+    "links": [
+      {
+        "target": "wiki/concepts/sensitive-context-rewrite-rules",
+        "label": "wiki/concepts/sensitive-context-rewrite-rules"
+      },
+      {
+        "target": "wiki/synthesis/lifecycle-replication-package-workflow",
+        "label": "wiki/synthesis/lifecycle-replication-package-workflow"
+      },
+      {
+        "target": "wiki/concepts/beginner-publication-decision-tree",
+        "label": "wiki/concepts/beginner-publication-decision-tree"
+      }
+    ],
+    "sources": [
+      "[[wiki/concepts/sensitive-context-rewrite-rules]]",
+      "[[wiki/concepts/private-to-public-promotion-pipeline]]",
+      "[[wiki/synthesis/lifecycle-replication-package-workflow]]"
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "聊天记录转公开经验规则",
+        "anchor": "聊天记录转公开经验规则"
+      },
+      {
+        "level": 2,
+        "title": "保留什么",
+        "anchor": "保留什么"
+      },
+      {
+        "level": 2,
+        "title": "删除什么",
+        "anchor": "删除什么"
+      },
+      {
+        "level": 2,
+        "title": "公开页面结构",
+        "anchor": "公开页面结构"
+      },
+      {
+        "level": 2,
+        "title": "Related",
+        "anchor": "related"
+      }
+    ],
+    "wordCount": 326,
+    "readingMinutes": 1,
+    "metrics": {
+      "lineCount": 45,
+      "headingCount": 5,
+      "linkCount": 3,
+      "sourceCount": 3
+    },
+    "quality": {
+      "hasSources": true,
+      "hasToc": true,
+      "summaryLength": 54,
+      "sourceTitle": "聊天记录转公开经验规则",
+      "sourceSummary": "把 AI 对话、工具讨论和本地操作记录改写成公开经验的规则：保留问题、决策、方法和验收，删除原文和身份细节。",
+      "needsSourceReview": false,
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "explicitlyCurated": true
+    },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "rewrite standard",
+      "learning package"
+    ],
+    "actionText": "先读完这页的边界和做法，再用一个最小例子试一次，把结果和问题记录下来。",
+    "displayTier": "showcase",
+    "qualityScore": 100,
+    "hiddenReasons": [],
+    "date": "2026-05-13",
+    "visibility": "public",
+    "bodyLines": [
+      "# 聊天记录转公开经验规则",
+      "",
+      "聊天记录不是公开页面。它通常包含身份、上下文、临时情绪、工具输出、失败尝试和未复核判断。公开资料库要做的是把对话编译成经验，而不是把对话搬出来。",
+      "",
+      "## 保留什么",
+      "",
+      "保留四类信息：",
+      "",
+      "- 问题：当时要解决什么；",
+      "- 决策：最终选了什么做法；",
+      "- 方法：别人怎样复刻；",
+      "- 验收：怎样判断做对了。",
+      "",
+      "如果一句话不能支持这四类信息，就不应该进入公开页面。",
+      "",
+      "## 删除什么",
+      "",
+      "删除或改写：",
+      "",
+      "- 对话原文；",
+      "- 私人称呼和身份线索；",
+      "- 本机环境细节；",
+      "- 未复核的推断；",
+      "- 账号状态；",
+      "- 工具调用的原始 trace；",
+      "- 可能还原私人活动的时间和位置组合。",
+      "",
+      "## 公开页面结构",
+      "",
+      "推荐结构：",
+      "",
+      "1. 这次经验解决什么问题；",
+      "2. 背后的真实工作流是什么；",
+      "3. 新手怎样复刻；",
+      "4. 哪些内容被隐藏；",
+      "5. 如何验收；",
+      "6. 还需要哪些来源复核。",
+      "",
+      "这样读者得到的是可学习的经验，而不是一段离开上下文就无法判断的对话。",
+      "",
+      "## Related",
+      "",
+      "- [[wiki/concepts/sensitive-context-rewrite-rules]]",
+      "- [[wiki/synthesis/lifecycle-replication-package-workflow]]",
+      "- [[wiki/concepts/beginner-publication-decision-tree]]"
+    ]
+  },
+  {
+    "id": "c_39f87b8318fd7f9d",
+    "title": "资料库重建公开手记",
+    "sourceTitle": "资料库重建公开手记",
+    "slug": "wiki-synthesis-archive-rebuild-public-journal",
+    "summary": "记录资料库重建的公开手记，把一次系统重建转化为信息架构和发布安全经验。",
+    "sourceSummary": "记录资料库重建的公开手记，把一次系统迁移改写成信息架构、发布安全和内容整理方法。",
+    "tags": [
+      "journal",
+      "archive",
+      "llm-wiki",
+      "reflection",
+      "curated"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": null,
+    "sourcePath": "wiki/synthesis/archive-rebuild-public-journal.md",
+    "module": "journal",
+    "category": "synthesis",
+    "type": "journal",
+    "phase": null,
+    "cover": null,
+    "contentType": "article",
+    "href": "/content/wiki-synthesis-archive-rebuild-public-journal",
+    "contentLines": [
+      "# 资料库重建公开手记",
+      "",
+      "这次重建一开始像是清理文件，但真正重要的变化不在文件数量，而在观念：资料库不再只是“把东西存起来”的地方，而是一个让信息分阶段、分边界、分用途流动的系统。",
+      "",
+      "## 发生了什么",
+      "",
+      "现在这间书房把资料分成四层：",
+      "",
+      "- 原始证据层：保留本地材料，不直接公开；",
+      "- 非公开复核层：整理个人信息、敏感线索、待判断上下文；",
+      "- 公开资料层：只放经过改写、脱敏、带来源的页面；",
+      "- 展示数据层：把公开资料变成网站和未来 App 能读取的数据。",
+      "",
+      "这四层让资料库更容易继续生长，也让敏感上下文更不容易误进入公开页面。",
+      "",
+      "## 为什么重要",
+      "",
+      "非公开资料库只需要帮助自己回忆，公开资料库必须面对读者。这个差别会改变写法：公开页面不能只说“我做过”，还要说清发生了什么、为什么重要、别人怎样复刻、哪些内容被刻意省略。",
+      "",
+      "Karpathy 风格的知识库思路有一个关键点：公开 wiki 是编译产物，不是原始材料堆。原始材料可以复杂、杂乱、带上下文；公开页面必须经过选择、压缩、链接和验证。",
+      "",
+      "## 最大的经验",
+      "",
+      "最难的不是继续收集材料，而是判断哪些材料能变成公开知识，同时不携带不该公开的私人上下文。",
+      "",
+      "所以当前流程选择小批次提升，而不是一次性倒入全部内容。一个弱质量的大批量导入会让图谱变大，但也会让它更不可信。",
+      "",
+      "## 复刻路径",
+      "",
+      "1. 先把原始来源和公开页面分开。",
+      "2. 建立非公开复核层，用来处理有价值但不适合公开的上下文。",
+      "3. 把能公开的部分改写成带来源标签的页面。",
+      "4. 每个公开页面都连接到地图、项目或概念，不做孤岛。",
+      "5. 重新生成前端展示数据。",
+      "6. 依次运行结构检查、隐私检查、公开清单、单元测试、前端检查和构建。",
+      "",
+      "## 当前状态",
+      "",
+      "现在公开资料库已经有第一批项目、公开数据边界、接口契约、作品卡标准和逐渐成形的信息骨架。它还不完整，但已经有一个能继续接收高质量内容的形状。",
+      "",
+      "## 安的提醒",
+      "",
+      "重建不是为了把过去擦掉，而是为了让过去不再以混乱的方式压在未来身上。资料越多，越需要边界；边界越清楚，经验越可能被别人真正看懂。",
+      "",
+      "## 相关",
+      "",
+      "- [[wiki/synthesis/archive-information-architecture]]",
+      "- [[wiki/concepts/private-to-public-promotion-pipeline]]",
+      "- [[wiki/projects/personal-archive-platform]]"
+    ],
+    "links": [
+      {
+        "target": "wiki/synthesis/archive-information-architecture",
+        "label": "wiki/synthesis/archive-information-architecture"
+      },
+      {
+        "target": "wiki/concepts/private-to-public-promotion-pipeline",
+        "label": "wiki/concepts/private-to-public-promotion-pipeline"
+      },
+      {
+        "target": "wiki/projects/personal-archive-platform",
+        "label": "wiki/projects/personal-archive-platform"
+      }
+    ],
+    "sources": [
+      "[[wiki/sources/karpathy-llm-wiki-pattern]]",
+      "[[wiki/projects/personal-archive-platform]]",
+      "[[wiki/synthesis/archive-information-architecture]]"
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "资料库重建公开手记",
+        "anchor": "资料库重建公开手记"
+      },
+      {
+        "level": 2,
+        "title": "发生了什么",
+        "anchor": "发生了什么"
+      },
+      {
+        "level": 2,
+        "title": "为什么重要",
+        "anchor": "为什么重要"
+      },
+      {
+        "level": 2,
+        "title": "最大的经验",
+        "anchor": "最大的经验"
+      },
+      {
+        "level": 2,
+        "title": "复刻路径",
+        "anchor": "复刻路径"
+      },
+      {
+        "level": 2,
+        "title": "当前状态",
+        "anchor": "当前状态"
+      },
+      {
+        "level": 2,
+        "title": "安的提醒",
+        "anchor": "安的提醒"
+      },
+      {
+        "level": 2,
+        "title": "相关",
+        "anchor": "相关"
+      }
+    ],
+    "wordCount": 718,
+    "readingMinutes": 2,
+    "metrics": {
+      "lineCount": 49,
+      "headingCount": 8,
+      "linkCount": 3,
+      "sourceCount": 3
+    },
+    "quality": {
+      "hasSources": true,
+      "hasToc": true,
+      "summaryLength": 35,
+      "sourceTitle": "资料库重建公开手记",
+      "sourceSummary": "记录资料库重建的公开手记，把一次系统迁移改写成信息架构、发布安全和内容整理方法。",
+      "needsSourceReview": false,
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "explicitlyCurated": true
+    },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "public journal",
+      "archive rebuild"
+    ],
+    "whyItMattered": "它把一次技术重建转化为公开经验：怎样保留信息价值，同时不把私人上下文和敏感材料带到展示层。",
+    "operationStory": [
+      "把原始证据、非公开复核页、公开资料页和前端生成数据分开。",
+      "只有经过改写、带来源标签、写清公开边界的页面才进入公开层。",
+      "用结构检查、隐私检查、公开清单和前端构建作为发布前闸门。"
+    ],
+    "replicationSteps": [
+      "重建前先保存原始资料归档。",
+      "建立非公开编译层和公开编译层。",
+      "一次只提升一个公开安全主题。",
+      "结构检查和隐私检查通过后，再生成展示数据。"
+    ],
+    "actionText": "先从这页挑一个相关页面继续读，再把下一步行动压缩成今天能完成的最小任务。",
+    "displayTier": "showcase",
+    "qualityScore": 100,
+    "hiddenReasons": [],
+    "date": "2026-05-13",
+    "visibility": "public",
+    "bodyLines": [
+      "# 资料库重建公开手记",
+      "",
+      "这次重建一开始像是清理文件，但真正重要的变化不在文件数量，而在观念：资料库不再只是“把东西存起来”的地方，而是一个让信息分阶段、分边界、分用途流动的系统。",
+      "",
+      "## 发生了什么",
+      "",
+      "现在这间书房把资料分成四层：",
+      "",
+      "- 原始证据层：保留本地材料，不直接公开；",
+      "- 非公开复核层：整理个人信息、敏感线索、待判断上下文；",
+      "- 公开资料层：只放经过改写、脱敏、带来源的页面；",
+      "- 展示数据层：把公开资料变成网站和未来 App 能读取的数据。",
+      "",
+      "这四层让资料库更容易继续生长，也让敏感上下文更不容易误进入公开页面。",
+      "",
+      "## 为什么重要",
+      "",
+      "非公开资料库只需要帮助自己回忆，公开资料库必须面对读者。这个差别会改变写法：公开页面不能只说“我做过”，还要说清发生了什么、为什么重要、别人怎样复刻、哪些内容被刻意省略。",
+      "",
+      "Karpathy 风格的知识库思路有一个关键点：公开 wiki 是编译产物，不是原始材料堆。原始材料可以复杂、杂乱、带上下文；公开页面必须经过选择、压缩、链接和验证。",
+      "",
+      "## 最大的经验",
+      "",
+      "最难的不是继续收集材料，而是判断哪些材料能变成公开知识，同时不携带不该公开的私人上下文。",
+      "",
+      "所以当前流程选择小批次提升，而不是一次性倒入全部内容。一个弱质量的大批量导入会让图谱变大，但也会让它更不可信。",
+      "",
+      "## 复刻路径",
+      "",
+      "1. 先把原始来源和公开页面分开。",
+      "2. 建立非公开复核层，用来处理有价值但不适合公开的上下文。",
+      "3. 把能公开的部分改写成带来源标签的页面。",
+      "4. 每个公开页面都连接到地图、项目或概念，不做孤岛。",
+      "5. 重新生成前端展示数据。",
+      "6. 依次运行结构检查、隐私检查、公开清单、单元测试、前端检查和构建。",
+      "",
+      "## 当前状态",
+      "",
+      "现在公开资料库已经有第一批项目、公开数据边界、接口契约、作品卡标准和逐渐成形的信息骨架。它还不完整，但已经有一个能继续接收高质量内容的形状。",
+      "",
+      "## 安的提醒",
+      "",
+      "重建不是为了把过去擦掉，而是为了让过去不再以混乱的方式压在未来身上。资料越多，越需要边界；边界越清楚，经验越可能被别人真正看懂。",
+      "",
+      "## 相关",
+      "",
+      "- [[wiki/synthesis/archive-information-architecture]]",
+      "- [[wiki/concepts/private-to-public-promotion-pipeline]]",
+      "- [[wiki/projects/personal-archive-platform]]"
+    ]
+  }
+]

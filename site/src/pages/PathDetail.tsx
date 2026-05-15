@@ -1,6 +1,8 @@
 import { useState, useMemo } from 'react';
 import { useParams, Link } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import {
   ArrowLeft,
   CheckCircle2,
@@ -23,6 +25,7 @@ import {
 } from 'lucide-react';
 import { paths, pathDetails } from '@/data/mockPaths';
 import { libraryItems } from '@/data/mockLibrary';
+import { resolveAssetUrl } from '@/lib/runtime';
 import type { Path, PathStage } from '@/types';
 import type { PathDetail as PathDetailData } from '@/data/mockPaths';
 
@@ -51,6 +54,53 @@ function getProgress(path: Path) {
   const inProgress = path.stages.filter((s) => s.status === 'in_progress').length;
   const currentStage = inProgress > 0 ? completed + 1 : completed;
   return { completed, total, currentStage, percent: total > 0 ? (completed / total) * 100 : 0 };
+}
+
+function PathMarkdownBody({ children }: { children: string }) {
+  return (
+    <ReactMarkdown
+      remarkPlugins={[remarkGfm]}
+      components={{
+        h1: ({ ...props }) => (
+          <h1 className="font-serif text-[26px] text-ink mb-5 leading-tight" {...props} />
+        ),
+        h2: ({ ...props }) => (
+          <h2 className="font-serif text-[22px] text-ink mt-9 mb-4 leading-tight" {...props} />
+        ),
+        h3: ({ ...props }) => (
+          <h3 className="text-[16px] font-sans font-medium text-graphite mt-6 mb-2" {...props} />
+        ),
+        p: ({ ...props }) => (
+          <p className="text-[15px] text-graphite leading-[1.85] mb-4" {...props} />
+        ),
+        ul: ({ ...props }) => (
+          <ul className="list-disc pl-6 my-4 space-y-1.5" {...props} />
+        ),
+        ol: ({ ...props }) => (
+          <ol className="list-decimal pl-6 my-4 space-y-1.5" {...props} />
+        ),
+        li: ({ ...props }) => (
+          <li className="text-[15px] text-graphite leading-[1.8]" {...props} />
+        ),
+        table: ({ ...props }) => (
+          <div className="my-5 overflow-x-auto">
+            <table className="w-full border border-border-color text-[14px] text-graphite" {...props} />
+          </div>
+        ),
+        th: ({ ...props }) => (
+          <th className="border-b border-border-color bg-cream px-3 py-2 text-left font-medium" {...props} />
+        ),
+        td: ({ ...props }) => (
+          <td className="border-b border-border-color px-3 py-2" {...props} />
+        ),
+        a: ({ ...props }) => (
+          <a className="text-graphite underline transition-colors hover:text-[#C47D6E]" target="_blank" rel="noopener noreferrer" {...props} />
+        ),
+      }}
+    >
+      {children}
+    </ReactMarkdown>
+  );
 }
 
 const stageStatusMap: Record<string, { label: string; color: string }> = {
@@ -392,7 +442,7 @@ function StageCard({
       {/* Estimated time */}
       <div className="flex items-center gap-1 text-[11px] text-silver mb-3">
         <Clock size={11} strokeWidth={1.5} />
-        <span>预计 2-4 周</span>
+        <span>本阶段只做一个可验收小产出</span>
       </div>
 
       {/* Expand toggle */}
@@ -495,9 +545,9 @@ function StageNode({ stage, index }: { stage: PathStage; index: number }) {
 
   return (
     <motion.div
-      className="relative flex items-start"
-      initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      className="relative flex min-w-0 items-start"
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.5, ease: easeOut, delay: index * 0.1 }}
     >
@@ -562,7 +612,7 @@ function StageNode({ stage, index }: { stage: PathStage; index: number }) {
       </div>
 
       {/* Mobile: all on the right */}
-      <div className="flex md:hidden w-full items-start">
+      <div className="flex md:hidden w-full min-w-0 items-start">
         <div className="w-[36px] shrink-0 flex flex-col items-center">
           <motion.div
             className={`relative flex items-center justify-center rounded-full border-2 ${
@@ -582,7 +632,7 @@ function StageNode({ stage, index }: { stage: PathStage; index: number }) {
             {isCompleted && <CheckCircle2 size={8} strokeWidth={3} className="text-white" />}
           </motion.div>
         </div>
-        <div className="flex-1 ml-3">
+        <div className="ml-3 min-w-0 flex-1">
           <StageCard
             stage={stage}
             expanded={expanded}
@@ -781,7 +831,7 @@ export default function PathDetail() {
             >
               <div className="rounded-xl overflow-hidden shadow-lg aspect-[16/10]">
                 <img
-                  src={path.cover}
+                  src={resolveAssetUrl(path.cover)}
                   alt={path.title}
                   className="w-full h-full object-cover"
                 />
@@ -808,7 +858,7 @@ export default function PathDetail() {
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.4, ease: easeOut }}
           >
-            <p className="text-[15px] text-graphite leading-[1.8]">{detail.longDescription}</p>
+            <PathMarkdownBody>{detail.longDescription}</PathMarkdownBody>
           </motion.div>
         )}
 

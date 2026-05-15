@@ -37,6 +37,19 @@ export interface Resource {
   description?: string;
 }
 
+export type LibraryReaderCategory =
+  | 'frontend'
+  | 'backend'
+  | 'tools'
+  | 'agents'
+  | 'xiaoan'
+  | 'prompts'
+  | 'archive'
+  | 'security'
+  | 'learning'
+  | 'sources'
+  | 'other';
+
 export interface PathStage {
   id: string;
   title: string;
@@ -62,6 +75,7 @@ export interface Path {
   whoFor?: string;
   prerequisites?: string[];
   outcomes?: string[];
+  actionText?: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -71,6 +85,7 @@ export interface FeedItem {
   type: 'resource' | 'path_update' | 'work' | 'journal' | 'milestone';
   title: string;
   content: string;
+  body?: string;
   link?: string;
   source?: string;
   importanceLevel?: 'critical' | 'important' | 'normal';
@@ -84,6 +99,7 @@ export interface TimelineEvent {
   date: string;
   title: string;
   description: string;
+  body?: string;
   category: 'milestone' | 'learning' | 'work' | 'life';
   importance: 'normal' | 'important' | 'major';
   cover?: string;
@@ -91,6 +107,7 @@ export interface TimelineEvent {
   achievements?: string[];
   reflection?: string;
   stage?: string;
+  actionText?: string;
   relatedPathIds?: string[];
 }
 
@@ -107,6 +124,20 @@ export interface Work {
   teamSize?: string;
   challenges?: string;
   learnings?: string;
+  whyItMattered?: string;
+  operationStory?: string[];
+  replicationSteps?: string[];
+  failureModes?: string[];
+  lessons?: string[];
+  anReminders?: string[];
+  actionText?: string;
+  nextPlan?: string;
+  psychologicalLayer?: string;
+  sociologicalLayer?: string;
+  philosophicalLayer?: string;
+  sourceLabels?: string[];
+  publicSafety?: string;
+  body?: string;
   relatedPathIds?: string[];
   relatedJournalIds?: string[];
   createdAt: string;
@@ -123,6 +154,7 @@ export interface JournalEntry {
   cover?: string;
   readingTime?: number;
   keyTakeaways?: string[];
+  actionText?: string;
   difficulty?: 'easy' | 'medium' | 'hard';
   relatedPathIds?: string[];
   createdAt: string;
@@ -134,6 +166,8 @@ export interface LibraryItem {
   title: string;
   description: string;
   type: 'article' | 'video' | 'book' | 'course' | 'tool' | 'doc';
+  readerCategory?: LibraryReaderCategory;
+  readerCategoryLabel?: string;
   tags: string[];
   links: { label: string; url: string }[];
   rating?: number;
@@ -148,6 +182,10 @@ export interface LibraryItem {
   pros?: string[];
   cons?: string[];
   whoFor?: string;
+  actionText?: string;
+  body?: string;
+  sourceLabels?: string[];
+  publicSafety?: string;
   createdAt: string;
   updatedAt: string;
 }

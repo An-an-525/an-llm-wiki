@@ -13,6 +13,8 @@ sources:
   - "[[wiki/sources/pre-rebuild-vault-archive]]"
 publicSafety: public-safe
 sourceLabels: [local compile, privacy filtered, source record]
+reviewStatus: challenged
+reviewNotes: "已检查来源、公开边界、小白可读性和前端展示适配；后续可继续补强复刻细节。"
 summary: "Public-safe source record for the local-only private compile pass that informed the next public wiki pages."
 ---
 

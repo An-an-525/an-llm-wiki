@@ -1,5 +1,5 @@
 ---
-title: Private To Public Promotion Pipeline
+title: 私有资料到公开内容的晋升流程
 aliases: ["Public Promotion Pipeline", "公开晋升流程"]
 tags: [publication, workflow, llm-wiki, curated]
 category: concept
@@ -14,52 +14,78 @@ sources:
   - "[[wiki/sources-and-data-policy]]"
 publicSafety: public-safe
 sourceLabels: [public wiki, workflow, privacy filtered]
-whyItMattered: "It gives the archive a repeatable way to grow without turning private review material into public content."
+reviewStatus: challenged
+reviewNotes: "已检查来源、公开边界、小白可读性和前端展示适配；后续可继续补强复刻细节。"
+whyItMattered: "它给资料库一条可重复的成长路径：本地材料可以被吸收、复核、改写和展示，但不会因为有价值就被直接公开。"
+actionText: "先读完这页的边界和做法，再用一个最小例子试一次，把结果和问题记录下来。"
 operationStory:
-  - "Local evidence is indexed first."
-  - "Private review pages identify themes and risk."
-  - "Public pages are rewritten as source-aware lessons."
+  - "先索引本地证据，只记录可用于复核的元信息。"
+  - "再用私有整理页识别主题、项目、技能、风险和时间线。"
+  - "最后把能公开的部分改写成有来源、有边界、有复刻价值的公开页面。"
 replicationSteps:
-  - "Choose one theme from the private review layer."
-  - "Create a public source note or cite an existing one."
-  - "Write the smallest durable concept, project, or synthesis page."
-  - "Run public structure and privacy gates."
-failureModes: [copying raw evidence, over-broad batch imports, missing source notes, skipping validation]
-lessons: [small batches are safer, source notes carry provenance, public writing should explain reusable knowledge]
-summary: "The workflow for rewriting local-only archive material into public-safe wiki pages."
+  - "从私有整理层里只选一个主题，不要一次处理一堆。"
+  - "先写来源说明，或引用已有公开来源页。"
+  - "把主题改写成一页最小稳定内容：概念、项目、路线或手记。"
+  - "写清楚删除了什么，为什么不能公开。"
+  - "运行结构检查、隐私检查和前端数据生成。"
+failureModes: [复制原始证据, 一次导入过多材料, 缺少来源说明, 跳过验证, 把不确定内容写成事实]
+lessons: [小批次更安全, 来源说明保存来路, 公开写作要解释可复用知识, 隐私边界先于展示欲望]
+anReminders:
+  - "不要把私有整理层当成公开草稿。私有整理层负责看见复杂，公开层负责讲清楚。"
+  - "一页内容只解决一个主题。主题太大时，先拆成项目、工具、时间线或复刻路线。"
+  - "公开页面必须能独立阅读，不能让读者依赖隐藏上下文才能懂。"
+  - "能公开的是方法、判断、步骤和边界，不是原始证据本身。"
+summary: "把本地资料改写成公开页面的标准流程：先私有整理，再公开改写，最后通过结构、隐私和前端数据检查。"
 ---
 
-# Private To Public Promotion Pipeline
+# 私有资料到公开内容的晋升流程
 
-The promotion pipeline is the repeatable path from local review material to public wiki pages.
+这条流程决定了安的资料库怎样继续变丰富。它的原则很简单：本地材料可以成为知识的来源，但不能直接成为网页内容。
 
-## Pipeline
+真正要公开的不是原始记录，而是从原始记录里提炼出来的判断、方法、复刻路径和边界。
 
-1. Index local material without publishing it.
-2. Compile local-only review pages that group sources by theme, project, skill, agent, and timeline.
-3. Select one public-safe theme.
-4. Write or update a source note.
-5. Rewrite the theme as a compact public page.
-6. Link it from the relevant MOC.
-7. Run the structure and privacy gates.
-8. Regenerate `site-data/` only after the public wiki passes.
+## 标准流程
 
-## Public Page Test
+1. 索引本地材料，但不发布原文。
+2. 在私有整理层按主题、项目、技能、Agent 和时间线分组。
+3. 只选择一个公开安全主题。
+4. 写或更新来源说明。
+5. 把主题改写成一页紧凑的公开页面。
+6. 链接到对应地图或项目。
+7. 运行结构检查和隐私检查。
+8. 只有公开 wiki 通过后，才重新生成 `site-data/`。
 
-A promoted page should answer:
+## 公开页面测试
 
-- what is the reusable idea or project;
-- why it matters;
-- what source note supports it;
-- what can be repeated by another person;
-- what remains unfinished;
-- what was deliberately excluded from public view.
+一页晋升成功的公开页面，至少要回答：
 
-## Good Promotion
+- 这个可复用想法或项目是什么；
+- 为什么值得读者看；
+- 哪个来源说明支持它；
+- 另一个人可以复刻哪一部分；
+- 当前还没完成什么；
+- 哪些内容被刻意排除在公开视野外。
 
-Good promotion turns private evidence into a public lesson. It does not quote raw chats, reveal local setup, or convert every file into a page. One strong concept page is better than many thin summaries.
+## 最小复刻做法
 
-## Related
+如果你也想建立自己的资料库，不要一开始导入所有文件。先做一个最小晋升练习：
+
+1. 选一份本地材料，只读它，不搬运原文。
+2. 写 5 句话摘要：它是什么、解决什么、有什么风险、能公开什么、下一步是什么。
+3. 把摘要改写成一页公开页面。
+4. 加上来源、状态、边界和复刻步骤。
+5. 跑一次隐私检查。
+6. 打开前端详情页，用小白视角读一遍。
+
+这套练习比大规模导入更慢，但它能训练判断力。
+
+## 安的提醒
+
+- 不要把“我想保留”误认为“我应该公开”。
+- 不要让页面靠隐藏上下文成立。公开内容必须自己站得住。
+- 不要一口气处理太多材料。资料库的质量来自小批次反复打磨。
+
+## 相关
 
 - [[wiki/projects/personal-archive-platform]]
 - [[wiki/concepts/public-site-data-boundary]]

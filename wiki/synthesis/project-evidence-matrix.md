@@ -12,7 +12,10 @@ sources:
   - "[[wiki/sources/local-private-compile-2026-05-13]]"
 publicSafety: public-safe
 sourceLabels: [public wiki, project evidence, local compile]
+reviewStatus: challenged
+reviewNotes: "已检查来源、公开边界、小白可读性和前端展示适配；后续可继续补强复刻细节。"
 whyItMattered: "It ranks project information by public readiness instead of turning every local trace into a showcase item."
+actionText: "先从这页挑一个相关页面继续读，再把下一步行动压缩成今天能完成的最小任务。"
 operationStory:
   - "Grouped private project evidence into public-safe project themes."
   - "Separated ready architecture themes from sensitive or identity-heavy project traces."
@@ -23,7 +26,7 @@ replicationSteps:
   - "Write a public page only if the reusable lesson is clear."
 failureModes: [thin project summaries, private setup leakage, treating assets as project proof, missing unfinished status]
 lessons: [project pages need evidence, risk status matters, public value should be explicit]
-summary: "Public-safe matrix of project themes, evidence strength, privacy risk, and next promotion action."
+summary: "项目证据矩阵：用证据强度、公开风险和下一步动作连接项目页、来源页和后续学习包。"
 ---
 
 # Project Evidence Matrix
@@ -32,14 +35,19 @@ This matrix tracks what project information is ready to become public knowledge.
 
 | Project theme | Evidence strength | Public readiness | Next action |
 |---|---|---|---|
-| Personal archive platform | Strong | Published seed page | Expand with screenshots and deployment notes after server plan is stable |
+| Personal archive platform | Strong | Published seed page | Expand with deployment notes after server plan is stable |
+| Personal archive lifecycle package | Strong | Published beginner package | Keep adding real examples from private-safe promoted projects |
+| Personal archive frontend | Strong | Published project page | Add richer work cards, search behavior, and first public journal entry |
+| Frontend archive lifecycle package | Strong | Published beginner package | Verify future server still follows the same data contract |
 | Private-to-public knowledge pipeline | Strong | Published concept | Add examples from future promoted pages |
-| Public site data backend | Strong | Published concept | Convert into API schema when a server is introduced |
+| Public site data backend | Strong | Published concept and API contract | Keep the future server read-only until private operations are separated |
 | Agent and skill governance | Strong | Published concept | Add public examples of reusable skills |
-| Coze/agent builder research | Medium | Needs rewrite | Write a public architecture comparison without local project state |
-| Xiaoan/local model learning loop | Medium | Needs source review | Separate public training lessons from private runtime and memory traces |
+| Agent skill governance lifecycle package | Strong | Published beginner package | Add one real skill promotion case |
+| Coze/agent builder research | Medium | Published curated rewrite | Next: define a minimal safe workflow graph |
+| Coze agent builder lifecycle package | Medium | Published beginner package | Add a public-safe workflow diagram |
+| Xiaoan/local model learning loop | Medium | Published public-safe summary | Next: split data review and retrospective memory into checklists |
+| Xiaoan local model lifecycle package | Medium | Published beginner package | Add public-safe data review checklist |
 | AI agent systems research | Strong | Partly public | Consolidate migrated framework notes into cleaner comparison pages |
-| Frontend archive website | Strong | Needs integration | Link current frontend implementation to the public data boundary |
 | Campus or school-related projects | Medium | Private by default | Publish only generic product lessons after removing identity context |
 | Automation and data processing scripts | Strong | Needs curation | Promote repeatable workflows, not local file paths |
 
@@ -52,5 +60,13 @@ This matrix tracks what project information is ready to become public knowledge.
 ## Related
 
 - [[wiki/projects/personal-archive-platform]]
+- [[wiki/projects/lifecycle-personal-archive-platform]]
+- [[wiki/projects/lifecycle-frontend-archive-site]]
+- [[wiki/projects/lifecycle-coze-agent-builder]]
+- [[wiki/projects/lifecycle-xiaoan-local-model-loop]]
+- [[wiki/projects/lifecycle-agent-skill-governance]]
+- [[wiki/projects/personal-archive-frontend]]
+- [[wiki/projects/coze-agent-builder-research]]
+- [[wiki/projects/xiaoan-local-model-learning-loop]]
 - [[wiki/synthesis/personal-archive-public-roadmap]]
 - [[wiki/concepts/private-to-public-promotion-pipeline]]

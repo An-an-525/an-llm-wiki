@@ -12,13 +12,38 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 
-PRIVATE_OUT = Path("inbox/private/local-recovery-2026-05-12/local-discovery")
+try:
+    from local_index_cache import LEGACY_LOCAL_DISCOVERY_DIR, local_index_cache_dir
+except ModuleNotFoundError:
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from local_index_cache import LEGACY_LOCAL_DISCOVERY_DIR, local_index_cache_dir
+
+PRIVATE_OUT = LEGACY_LOCAL_DISCOVERY_DIR
 ROOTS_FILE = PRIVATE_OUT / "roots.csv"
 
 MAX_TEXT_SCAN_BYTES = 2_000_000
 MAX_HASH_BYTES = 2_000_000
 MAX_FINDINGS_PER_FILE = 80
 MAX_DATES_PER_FILE = 40
+
+INVENTORY_FIELDS = [
+    "root_id",
+    "absolute_path",
+    "relative_path",
+    "name",
+    "extension",
+    "kind",
+    "category",
+    "size_bytes",
+    "modified_at",
+    "sha256",
+    "hash_status",
+    "content_scan",
+    "risk_flags",
+    "first_seen_at",
+    "last_seen_at",
+    "scan_status",
+]
 
 TEXT_EXTS = {
     ".bat",
@@ -137,6 +162,10 @@ def iso_mtime(path: Path) -> str:
     return datetime.fromtimestamp(path.stat().st_mtime, timezone.utc).isoformat(timespec="seconds")
 
 
+def utc_now() -> str:
+    return datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+
 def safe_rel(path: Path, root: Path) -> str:
     try:
         return path.relative_to(root).as_posix()
@@ -217,8 +246,12 @@ def discover_roots(vault_root: Path) -> list[Path]:
     return roots
 
 
+def roots_file(vault_root: Path) -> Path:
+    return local_index_cache_dir(vault_root) / "roots.csv"
+
+
 def ensure_roots_file(vault_root: Path) -> None:
-    roots_path = vault_root / ROOTS_FILE
+    roots_path = roots_file(vault_root)
     roots_path.parent.mkdir(parents=True, exist_ok=True)
     existing_rows: list[dict[str, str]] = []
     if roots_path.exists():
@@ -245,7 +278,7 @@ def ensure_roots_file(vault_root: Path) -> None:
 
 def read_roots(vault_root: Path) -> list[dict[str, str]]:
     ensure_roots_file(vault_root)
-    with (vault_root / ROOTS_FILE).open("r", encoding="utf-8", newline="") as f:
+    with roots_file(vault_root).open("r", encoding="utf-8", newline="") as f:
         rows = list(csv.DictReader(f))
     results = []
     for row in rows:
@@ -401,11 +434,34 @@ def read_csv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(f))
 
 
+def normalize_inventory_row(row: dict[str, str], seen_at: str) -> dict[str, str]:
+    normalized = {field: row.get(field, "") for field in INVENTORY_FIELDS}
+    normalized["first_seen_at"] = normalized.get("first_seen_at") or normalized.get("last_seen_at") or seen_at
+    normalized["last_seen_at"] = normalized.get("last_seen_at") or seen_at
+    normalized["scan_status"] = normalized.get("scan_status") or "legacy"
+    return normalized
+
+
+def source_key(row: dict[str, str]) -> tuple[str, str]:
+    return row.get("root_id", ""), row.get("relative_path", "")
+
+
+def same_file_metadata(row: dict[str, str], size: int, modified_at: str) -> bool:
+    return row.get("size_bytes") == str(size) and row.get("modified_at") == modified_at
+
+
+def remove_rows_for_source(rows: list[dict[str, str]], root_id: str, rel: str) -> list[dict[str, str]]:
+    return [row for row in rows if row.get("root_id") != root_id or row.get("relative_path") != rel]
+
+
 def hydrate_stats(inventory_rows: list[dict[str, str]]) -> tuple[dict[str, Counter], dict[str, str]]:
     root_stats: dict[str, Counter] = defaultdict(Counter)
     root_latest: dict[str, str] = {}
     for row in inventory_rows:
         root_id = row.get("root_id", "")
+        if row.get("scan_status") == "missing":
+            root_stats[root_id]["missing_files"] += 1
+            continue
         size = int(row.get("size_bytes") or 0)
         modified_at = row.get("modified_at", "")
         root_stats[root_id]["files"] += 1
@@ -427,6 +483,7 @@ def write_reports(
     finding_rows: list[dict[str, str]],
     timeline_rows: list[dict[str, str]],
 ) -> None:
+    root_stats, root_latest = hydrate_stats(inventory_rows)
     root_rows: list[dict[str, str]] = []
     findings_by_root = Counter(row["root_id"] for row in finding_rows)
     timeline_by_root = Counter(row["root_id"] for row in timeline_rows)
@@ -443,6 +500,7 @@ def write_reports(
                 "latest_modified_at": root_latest.get(root_id, ""),
                 "findings": str(findings_by_root[root_id]),
                 "timeline_rows": str(timeline_by_root[root_id]),
+                "missing_files": str(stats["missing_files"]),
                 "kind_counts": json.dumps({k[5:]: v for k, v in stats.items() if k.startswith("kind:")}, ensure_ascii=False, sort_keys=True),
                 "category_counts": json.dumps({k[9:]: v for k, v in stats.items() if k.startswith("category:")}, ensure_ascii=False, sort_keys=True),
             }
@@ -450,13 +508,13 @@ def write_reports(
 
     write_csv(
         out / "local_roots.csv",
-        ["root_id", "path", "profile", "files", "bytes", "latest_modified_at", "findings", "timeline_rows", "kind_counts", "category_counts"],
+        ["root_id", "path", "profile", "files", "bytes", "latest_modified_at", "findings", "timeline_rows", "missing_files", "kind_counts", "category_counts"],
         root_rows,
     )
     write_csv(
         out / "local_source_inventory.csv",
-        ["root_id", "absolute_path", "relative_path", "name", "extension", "kind", "category", "size_bytes", "modified_at", "sha256", "hash_status", "content_scan", "risk_flags"],
-        inventory_rows,
+        INVENTORY_FIELDS,
+        [{field: row.get(field, "") for field in INVENTORY_FIELDS} for row in inventory_rows],
     )
     write_csv(
         out / "local_sensitive_findings.csv",
@@ -469,12 +527,15 @@ def write_reports(
         timeline_rows,
     )
 
+    active_inventory_rows = [row for row in inventory_rows if row.get("scan_status") != "missing"]
     summary = {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "roots": len(roots),
         "roots_with_files": sum(1 for root in roots if root_stats[root["root_id"]]["files"]),
         "files": len(inventory_rows),
-        "bytes": sum(int(r["size_bytes"]) for r in inventory_rows),
+        "active_files": len(active_inventory_rows),
+        "missing_files": sum(1 for row in inventory_rows if row.get("scan_status") == "missing"),
+        "bytes": sum(int(r["size_bytes"]) for r in active_inventory_rows),
         "findings": len(finding_rows),
         "high_findings": sum(1 for r in finding_rows if r["severity"] == "high"),
         "timeline_rows": len(timeline_rows),
@@ -491,8 +552,9 @@ def write_reports(
 
 
 def build(vault_root: Path, reset: bool = False, root_ids: list[str] | None = None) -> int:
-    out = vault_root / PRIVATE_OUT
+    out = local_index_cache_dir(vault_root)
     out.mkdir(parents=True, exist_ok=True)
+    scan_started_at = utc_now()
     roots = read_roots(vault_root)
     selected_roots = roots
     if root_ids:
@@ -503,7 +565,10 @@ def build(vault_root: Path, reset: bool = False, root_ids: list[str] | None = No
             print(f"missing_root_ids: {', '.join(missing)}")
             return 1
 
-    inventory_rows: list[dict[str, str]] = [] if reset and not root_ids else read_csv(out / "local_source_inventory.csv")
+    inventory_rows: list[dict[str, str]] = [] if reset and not root_ids else [
+        normalize_inventory_row(row, scan_started_at)
+        for row in read_csv(out / "local_source_inventory.csv")
+    ]
     finding_rows: list[dict[str, str]] = [] if reset and not root_ids else read_csv(out / "local_sensitive_findings.csv")
     timeline_rows: list[dict[str, str]] = [] if reset and not root_ids else read_csv(out / "local_timeline_index.csv")
     if reset and root_ids:
@@ -513,12 +578,15 @@ def build(vault_root: Path, reset: bool = False, root_ids: list[str] | None = No
         timeline_rows = [row for row in timeline_rows if row.get("root_id", "").casefold() not in wanted]
     root_stats, root_latest = hydrate_stats(inventory_rows)
     root_paths = {row["root_id"]: row["path"] for row in roots}
-    indexed_files = {(row.get("root_id", ""), row.get("relative_path", "")) for row in inventory_rows}
+    existing_by_key = {source_key(row): row for row in inventory_rows}
 
     for root_row in selected_roots:
         root_id = root_row["root_id"]
         root_path = Path(root_row["path"])
         root_new_files = 0
+        root_modified_files = 0
+        root_unchanged_files = 0
+        root_seen_keys: set[tuple[str, str]] = set()
         for path in iter_files(root_path):
             try:
                 stat = path.stat()
@@ -526,15 +594,29 @@ def build(vault_root: Path, reset: bool = False, root_ids: list[str] | None = No
                 continue
             size = int(stat.st_size)
             rel = safe_rel(path, root_path)
-            if (root_id, rel) in indexed_files:
+            key = (root_id, rel)
+            root_seen_keys.add(key)
+            modified_at = iso_mtime(path)
+            existing = existing_by_key.get(key)
+            if existing and same_file_metadata(existing, size, modified_at):
+                existing["absolute_path"] = str(path)
+                existing["last_seen_at"] = scan_started_at
+                flags = {flag for flag in existing.get("risk_flags", "").split(";") if flag}
+                flags.discard("source-missing")
+                existing["risk_flags"] = ";".join(sorted(flags))
+                existing["scan_status"] = "restored" if existing.get("scan_status") == "missing" else "unchanged"
+                root_unchanged_files += 1
                 continue
             kind = file_kind(path)
             category = category_for(root_id, rel, path)
-            modified_at = iso_mtime(path)
             risk_flags = path_risk_flags(path, rel)
             sha256, hash_status = sha256_file(path, size, kind, risk_flags)
             content_scan = "not-text"
             content_groups: Counter = Counter()
+
+            if existing:
+                finding_rows = remove_rows_for_source(finding_rows, root_id, rel)
+                timeline_rows = remove_rows_for_source(timeline_rows, root_id, rel)
 
             if kind == "text":
                 text, content_scan = read_text_sample(path, size)
@@ -569,21 +651,44 @@ def build(vault_root: Path, reset: bool = False, root_ids: list[str] | None = No
                 "hash_status": hash_status,
                 "content_scan": content_scan,
                 "risk_flags": ";".join(sorted(set(risk_flags))),
+                "first_seen_at": existing.get("first_seen_at", scan_started_at) if existing else scan_started_at,
+                "last_seen_at": scan_started_at,
+                "scan_status": "modified" if existing else "new",
             }
-            inventory_rows.append(row)
-            indexed_files.add((root_id, rel))
-            root_new_files += 1
-            root_stats[root_id]["files"] += 1
-            root_stats[root_id][f"kind:{kind}"] += 1
-            root_stats[root_id][f"category:{category}"] += 1
-            root_stats[root_id]["bytes"] += size
-            if not root_latest.get(root_id) or modified_at > root_latest[root_id]:
-                root_latest[root_id] = modified_at
-            if root_new_files % 1000 == 0:
+            if existing:
+                existing.clear()
+                existing.update(row)
+                root_modified_files += 1
+            else:
+                inventory_rows.append(row)
+                existing_by_key[key] = row
+                root_new_files += 1
+            processed_changes = root_new_files + root_modified_files
+            if processed_changes > 0 and processed_changes % 1000 == 0:
                 write_reports(out, roots, root_paths, root_stats, root_latest, inventory_rows, finding_rows, timeline_rows)
-                print(f"checkpoint_root: {root_id} new_files={root_new_files} total_files={root_stats[root_id]['files']}")
+                print(
+                    f"checkpoint_root: {root_id} new_files={root_new_files} "
+                    f"modified_files={root_modified_files} unchanged_files={root_unchanged_files}"
+                )
+        root_missing_files = 0
+        for row in inventory_rows:
+            if row.get("root_id") != root_id:
+                continue
+            key = source_key(row)
+            if key in root_seen_keys or row.get("scan_status") == "missing":
+                continue
+            row["scan_status"] = "missing"
+            row["last_seen_at"] = scan_started_at
+            flags = {flag for flag in row.get("risk_flags", "").split(";") if flag}
+            flags.add("source-missing")
+            row["risk_flags"] = ";".join(sorted(flags))
+            root_missing_files += 1
         write_reports(out, roots, root_paths, root_stats, root_latest, inventory_rows, finding_rows, timeline_rows)
-        print(f"scanned_root: {root_id} new_files={root_new_files} total_files={root_stats[root_id]['files']} findings={sum(1 for row in finding_rows if row['root_id'] == root_id)}")
+        print(
+            f"scanned_root: {root_id} new_files={root_new_files} modified_files={root_modified_files} "
+            f"unchanged_files={root_unchanged_files} missing_files={root_missing_files} "
+            f"findings={sum(1 for row in finding_rows if row['root_id'] == root_id)}"
+        )
 
     write_reports(out, roots, root_paths, root_stats, root_latest, inventory_rows, finding_rows, timeline_rows)
     (out / "README.md").write_text(
@@ -598,7 +703,7 @@ def build(vault_root: Path, reset: bool = False, root_ids: list[str] | None = No
     print(f"local_discovery_findings: {len(finding_rows)}")
     print(f"local_discovery_high_findings: {summary.get('high_findings', 0)}")
     print(f"local_discovery_timeline_rows: {len(timeline_rows)}")
-    print(f"local_discovery_dir: {out}")
+    print(f"local_index_cache_dir: {out}")
     return 0
 
 

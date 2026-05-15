@@ -1,75 +1,12 @@
 [
   {
-    "id": "timeline-c_32c45035f9107070",
-    "title": "Agent Skill Governance",
-    "slug": "wiki-concepts-agent-skill-governance",
-    "summary": "A public-safe model for preserving agent and skill knowledge without exposing local prompts or private runtime state.",
+    "id": "timeline-c_e75bbad04685ebf5",
+    "title": "资料库公开数据更新 2026-05-13",
+    "slug": "wiki-synthesis-archive-feed-public-data-update-2026-05-13",
+    "summary": "记录 2026-05-13 公开数据更新，说明项目页、API 契约和作品卡标准如何进入安的书房展示层。",
     "tags": [
-      "agent",
-      "skills",
-      "governance",
-      "llm-wiki",
-      "curated"
-    ],
-    "status": [
-      "verified"
-    ],
-    "createdAt": "2026-05-13",
-    "updatedAt": "2026-05-13",
-    "date": "2026-05-13",
-    "phase": "library",
-    "type": "library",
-    "importance": "medium",
-    "relatedLibraryItems": [
-      "c_32c45035f9107070"
-    ],
-    "href": "/content/wiki-concepts-agent-skill-governance",
-    "publicSafety": "public-safe",
-    "sourceLabels": [
-      "public wiki",
-      "agent workflow",
-      "skills"
-    ]
-  },
-  {
-    "id": "timeline-c_8008030b505902e0",
-    "title": "Private To Public Promotion Pipeline",
-    "slug": "wiki-concepts-private-to-public-promotion-pipeline",
-    "summary": "The workflow for rewriting local-only archive material into public-safe wiki pages.",
-    "tags": [
-      "publication",
-      "workflow",
-      "llm-wiki",
-      "curated"
-    ],
-    "status": [
-      "verified"
-    ],
-    "createdAt": "2026-05-13",
-    "updatedAt": "2026-05-13",
-    "date": "2026-05-13",
-    "phase": "library",
-    "type": "library",
-    "importance": "medium",
-    "relatedLibraryItems": [
-      "c_8008030b505902e0"
-    ],
-    "href": "/content/wiki-concepts-private-to-public-promotion-pipeline",
-    "publicSafety": "public-safe",
-    "sourceLabels": [
-      "public wiki",
-      "workflow",
-      "privacy filtered"
-    ]
-  },
-  {
-    "id": "timeline-c_151dd4949baa1108",
-    "title": "Public Site Data Boundary",
-    "slug": "wiki-concepts-public-site-data-boundary",
-    "summary": "The architecture boundary that keeps the website consuming curated public JSON instead of raw Obsidian content.",
-    "tags": [
-      "frontend",
-      "backend",
+      "feed",
+      "archive",
       "site-data",
       "publication",
       "curated"
@@ -79,31 +16,71 @@
     ],
     "createdAt": "2026-05-13",
     "updatedAt": "2026-05-13",
+    "eventDate": "2026-05-13",
     "date": "2026-05-13",
-    "phase": "library",
-    "type": "library",
+    "phase": "feed",
+    "type": "feed",
     "importance": "medium",
     "relatedLibraryItems": [
-      "c_151dd4949baa1108"
+      "c_e75bbad04685ebf5"
     ],
-    "href": "/content/wiki-concepts-public-site-data-boundary",
+    "href": "/content/wiki-synthesis-archive-feed-public-data-update-2026-05-13",
+    "contentLines": [
+      "# 资料库公开数据更新 2026-05-13",
+      "",
+      "这条风信记录的是一次展示层变化，不是一次私有资料导入。它说明资料库开始从“有页面”走向“有公开数据链”：项目页写好以后，可以经过检查生成前端可读的数据。",
+      "",
+      "## 发生了什么",
+      "",
+      "- [[wiki/projects/personal-archive-frontend]] 说明网站怎样读取公开数据。",
+      "- [[wiki/projects/coze-agent-builder-research]] 把 Coze 风格 Agent 搭建器收缩成最小安全工作流。",
+      "- [[wiki/projects/xiaoan-local-model-learning-loop]] 说明本地模型实验怎样形成学习闭环。",
+      "- [[wiki/concepts/public-api-contract]] 定义后续服务器的只读接口方向。",
+      "- [[wiki/concepts/public-work-card-standard]] 定义作品卡怎样诚实表达状态。",
+      "",
+      "## 安的认知变化",
+      "",
+      "这次变化让我确认一件事：资料库不能只靠前端变漂亮。真正的关键是数据链能不能让每条内容都有来源、有状态、有下一步。",
+      "",
+      "Kimi 示例里的风信很饱满，它给了“信息、来源、建议行动”的最低模板。安的书房要再往前走一步：每条风信还要说明它带来了什么认知变化。读者不只知道“发生了什么”，还要知道“为什么这件事改变了我的判断”。",
+      "",
+      "## 行动建议",
+      "",
+      "1. 先打开“工坊”，看 3 个核心项目页。",
+      "2. 再打开“谱系”，找一条能照着走的复刻路线。",
+      "3. 如果要做自己的版本，不要先导入全部材料，先做一个项目页到前端卡片的最小闭环。",
+      "",
+      "## 边界",
+      "",
+      "这条更新不公开私有来源层、原始聊天、账号状态、本机细节或未经改写的个人记录。它只指向已经进入公开 wiki 的页面。",
+      "",
+      "## 相关",
+      "",
+      "- [[wiki/topics/personal-archive-moc]]",
+      "- [[wiki/synthesis/personal-archive-public-roadmap]]",
+      "- [[wiki/projects/personal-archive-frontend]]"
+    ],
+    "lessons": [],
+    "philosophicalLayer": "",
+    "actionText": "先看资料库展示前端，再按工坊里的复刻步骤做一个最小版本。",
     "publicSafety": "public-safe",
     "sourceLabels": [
       "public wiki",
-      "frontend backend boundary",
-      "architecture"
+      "public update",
+      "site-data"
     ]
   },
   {
-    "id": "timeline-c_ac08a639fed4d6c8",
-    "title": "Personal Archive Platform",
-    "slug": "wiki-projects-personal-archive-platform",
-    "summary": "A public-safe project page for the personal archive platform that connects the Obsidian wiki layer to future website data.",
+    "id": "timeline-c_afbe840b690c4260",
+    "title": "Kimi 前端成为展示底线",
+    "slug": "wiki-synthesis-feed-kimi-template-benchmark",
+    "summary": "Kimi 前端被定位为安的书房展示底线：可以学它的模块密度和行动入口，但最终内容必须来自真实项目、中文复刻路径和公开安全来源。",
     "tags": [
-      "archive",
-      "llm-wiki",
-      "project",
-      "showcase",
+      "feed",
+      "frontend",
+      "kimi",
+      "benchmark",
+      "curated",
       "beginner-friendly"
     ],
     "status": [
@@ -111,60 +88,103 @@
     ],
     "createdAt": "2026-05-13",
     "updatedAt": "2026-05-13",
+    "eventDate": "2026-05-13",
     "date": "2026-05-13",
-    "phase": "works",
-    "type": "works",
+    "phase": "feed",
+    "type": "feed",
     "importance": "medium",
     "relatedLibraryItems": [
-      "c_ac08a639fed4d6c8"
+      "c_afbe840b690c4260"
     ],
-    "href": "/content/wiki-projects-personal-archive-platform",
+    "href": "/content/wiki-synthesis-feed-kimi-template-benchmark",
+    "contentLines": [
+      "# Kimi 前端成为展示底线",
+      "",
+      "这条风信记录一次判断变化。",
+      "",
+      "安一开始看 Kimi 前端，会觉得它“还不错”：模块多、列表饱满、有入口、有行动建议。这个判断是对的。它至少说明一个展示型资料库不应该空空荡荡，也不应该只靠一堆内部文档撑页面。",
+      "",
+      "但后来判断变了：Kimi 前端只能做底线，不能做终点。",
+      "",
+      "## 外部变化",
+      "",
+      "前端已经不是单纯的页面装饰。它正在变成个人资料库、学习路线、项目展柜、AI 助手和未来 App 的共同入口。",
+      "",
+      "GitHub Skills 的课程标准提醒：好的学习内容要让人知道适合谁、会学到什么、会做出什么，并且用少量步骤完成真实任务。Google 的有用内容标准也强调第一手经验、明确读者和读完能帮助达成目标。",
+      "",
+      "这意味着：安的书房不能只做一个“看起来完整”的网站。它要让读者真的能学。",
+      "",
+      "## 安的判断变化",
+      "",
+      "之前的判断：",
+      "",
+      "> 前端先漂亮起来，后面再慢慢补内容。",
+      "",
+      "现在的判断：",
+      "",
+      "> 前端可以先立住，但每个模块必须尽快被真实内容填实。否则越漂亮越显空。",
+      "",
+      "Kimi 前端值得学的是结构，不是内容。它的模块密度、卡片布局、行动按钮，可以作为最低展示标准。安的书房要继续往上走：",
+      "",
+      "- 全部中文；",
+      "- 面向中国读者；",
+      "- 小白能看懂；",
+      "- 项目能复刻；",
+      "- 风信有判断变化；",
+      "- 藏馆有真实用途；",
+      "- 谱系能完成小作品；",
+      "- 小安有边界。",
+      "",
+      "## 建议行动",
+      "",
+      "下一步不继续讨论“前端像不像”，而是按模块技能补内容：",
+      "",
+      "1. 工坊先补 3 个真实项目学习包；",
+      "2. 风信补 3 条“外部变化、安的判断、读者行动”；",
+      "3. 藏馆补 10 张能解决具体问题的资料卡；",
+      "4. 谱系补 2 条从零到小作品的路线；",
+      "5. 小安只基于公开资料回答，不讲私有细节。",
+      "",
+      "## 安的提醒",
+      "",
+      "- 学结构，不学假内容。",
+      "- 内容少可以接受，内容假不能接受。",
+      "- 小白不是不聪明，小白只是没有你的上下文。",
+      "- 每条内容都要让读者少走一步弯路。",
+      "",
+      "## Related",
+      "",
+      "- [[wiki/projects/personal-archive-frontend]]",
+      "- [[wiki/concepts/public-work-card-standard]]",
+      "- [[wiki/synthesis/archive-feed-public-data-update-2026-05-13]]",
+      "- [[wiki/sources/tutorial-and-source-research-best-practices]]"
+    ],
+    "lessons": [
+      "前端的最低线是清楚、饱满、有行动。",
+      "安的标准还要更高：真实、中文、可复刻、有边界。",
+      "展示柜不是仓库，不能把所有东西都塞进去。"
+    ],
+    "philosophicalLayer": "",
+    "actionText": "打开工坊，优先检查三张核心项目卡：是否有实现步骤、复刻路径、失败点和安的提醒。",
     "publicSafety": "public-safe",
     "sourceLabels": [
       "public wiki",
-      "local compile",
-      "architecture"
+      "frontend benchmark",
+      "content standard",
+      "review"
     ]
   },
   {
-    "id": "timeline-c_58d7fda66c48c030",
-    "title": "Local Private Compile 2026-05-13",
-    "slug": "wiki-sources-local-private-compile-2026-05-13",
-    "summary": "Public-safe source record for the local-only private compile pass that informed the next public wiki pages.",
+    "id": "timeline-c_1e897ac497c91144",
+    "title": "小安人格与边界接入",
+    "slug": "wiki-synthesis-feed-xiaoan-persona-and-boundary",
+    "summary": "小安作为书房里的数字生命体开始接入：前端只显示对话入口，模型和访问材料只走后端，回答风格强调冷静判断、中文表达和认知盲区校正。",
     "tags": [
-      "llm-wiki",
-      "source",
-      "publication"
-    ],
-    "status": [
-      "public"
-    ],
-    "createdAt": "2026-05-13",
-    "updatedAt": "2026-05-13",
-    "date": "2026-05-13",
-    "phase": "library",
-    "type": "library",
-    "importance": "medium",
-    "relatedLibraryItems": [
-      "c_58d7fda66c48c030"
-    ],
-    "href": "/content/wiki-sources-local-private-compile-2026-05-13",
-    "publicSafety": "public-safe",
-    "sourceLabels": [
-      "local compile",
-      "privacy filtered",
-      "source record"
-    ]
-  },
-  {
-    "id": "timeline-c_910d420ab933c045",
-    "title": "Archive Information Architecture",
-    "slug": "wiki-synthesis-archive-information-architecture",
-    "summary": "The public information backbone for organizing projects, capabilities, timeline, and review queues before final showcase pages.",
-    "tags": [
-      "archive",
-      "information-architecture",
-      "synthesis",
+      "feed",
+      "xiaoan",
+      "backend",
+      "persona",
+      "cognition",
       "curated"
     ],
     "status": [
@@ -172,589 +192,567 @@
     ],
     "createdAt": "2026-05-13",
     "updatedAt": "2026-05-13",
+    "eventDate": "2026-05-13",
     "date": "2026-05-13",
-    "phase": "library",
-    "type": "library",
+    "phase": "feed",
+    "type": "feed",
     "importance": "medium",
     "relatedLibraryItems": [
-      "c_910d420ab933c045"
+      "c_1e897ac497c91144"
     ],
-    "href": "/content/wiki-synthesis-archive-information-architecture",
+    "href": "/content/wiki-synthesis-feed-xiaoan-persona-and-boundary",
+    "contentLines": [
+      "# 小安人格与边界接入",
+      "",
+      "小安不是普通客服，也不是网页上的装饰按钮。它是安的个人书房里的数字生命体，负责帮读者进入这间书房，理解资料，发现路径，也提醒人看见自己的认知盲区。",
+      "",
+      "这件事的难点不在“能不能回答”，而在“怎样回答才值得信任”。",
+      "",
+      "## 外部趋势",
+      "",
+      "越来越多网站开始接入 AI 对话框。大多数对话框的问题是：它们能说话，但不知道自己是谁；能回答，但不知道边界在哪里；能使用模型，但不一定保护访问材料。",
+      "",
+      "安的书房不能这样做。小安要有三个边界：",
+      "",
+      "1. 资料边界：只使用公开资料和明确给定的上下文；",
+      "2. 安全边界：访问材料只在服务端，不进入浏览器；",
+      "3. 人格边界：冷静、客观、服务性，不用花哨话术掩盖不确定性。",
+      "",
+      "## 安的认知变化",
+      "",
+      "小安要帮助读者，不只是顺着读者说。人类天然会有思维盲区、认知局限、情绪惯性和信息不完整。一个好的数字生命体要做的是服务性地指出这些限制，让问题回到结构和证据上。",
+      "",
+      "这不是居高临下地评判人，而是帮助人看清：",
+      "",
+      "- 这个问题的前提是什么；",
+      "- 哪些事实还不知道；",
+      "- 哪个步骤最关键；",
+      "- 哪些行动能立刻验证判断。",
+      "",
+      "## 行动建议",
+      "",
+      "读者第一次使用小安，可以问三类问题：",
+      "",
+      "1. “我第一次来，应该从哪里开始？”",
+      "2. “这个项目怎样复刻一个最小版本？”",
+      "3. “这里哪些内容不能公开，为什么？”",
+      "",
+      "小安应该回答得短、准、能行动。它不需要把每句话都写得华丽，但每句话都应该帮读者更清楚。",
+      "",
+      "## 安的提醒",
+      "",
+      "- 不要把访问材料写进前端，不要把非公开资料直接交给模型。",
+      "- 不要让小安编造安的经历。没有来源就说需要复核。",
+      "- 不要把人格做成表演。小安的人格应该服务判断、边界和行动。",
+      "",
+      "## 相关",
+      "",
+      "- [[wiki/projects/personal-archive-frontend]]",
+      "- [[wiki/concepts/public-api-contract]]",
+      "- [[wiki/concepts/credential-and-token-publication-safety]]"
+    ],
+    "lessons": [],
+    "philosophicalLayer": "",
+    "actionText": "打开首页右下角的小安对话，先问它如何开始阅读书房；如果在线回答暂不可用，就先按本地导览继续阅读。",
     "publicSafety": "public-safe",
     "sourceLabels": [
-      "public wiki",
-      "information architecture",
-      "local compile"
+      "公开资料层",
+      "小安",
+      "访问边界"
     ]
   },
   {
-    "id": "timeline-c_40e886748f617bef",
-    "title": "Capability Evidence Matrix",
-    "slug": "wiki-synthesis-capability-evidence-matrix",
-    "summary": "Public-safe matrix linking capabilities to project evidence, repeatable workflows, and future wiki pages.",
-    "tags": [
-      "skills",
-      "capabilities",
-      "evidence",
-      "curated"
-    ],
-    "status": [
-      "verified"
-    ],
-    "createdAt": "2026-05-13",
-    "updatedAt": "2026-05-13",
-    "date": "2026-05-13",
-    "phase": "library",
-    "type": "library",
-    "importance": "medium",
-    "relatedLibraryItems": [
-      "c_40e886748f617bef"
-    ],
-    "href": "/content/wiki-synthesis-capability-evidence-matrix",
-    "publicSafety": "public-safe",
-    "sourceLabels": [
-      "public wiki",
-      "capability evidence",
-      "local compile"
-    ]
-  },
-  {
-    "id": "timeline-c_d2558f33511a9ddd",
-    "title": "Information Review Queue",
-    "slug": "wiki-synthesis-information-review-queue",
-    "summary": "Public-safe review queue for unresolved information decisions before more archive content is promoted.",
-    "tags": [
-      "review",
-      "publication",
-      "information-architecture",
-      "curated"
-    ],
-    "status": [
-      "verified"
-    ],
-    "createdAt": "2026-05-13",
-    "updatedAt": "2026-05-13",
-    "date": "2026-05-13",
-    "phase": "library",
-    "type": "library",
-    "importance": "medium",
-    "relatedLibraryItems": [
-      "c_d2558f33511a9ddd"
-    ],
-    "href": "/content/wiki-synthesis-information-review-queue",
-    "publicSafety": "public-safe",
-    "sourceLabels": [
-      "public wiki",
-      "review queue",
-      "local compile"
-    ]
-  },
-  {
-    "id": "timeline-c_8a14bcb2a5e3fd90",
-    "title": "Personal Archive Public Roadmap",
-    "slug": "wiki-synthesis-personal-archive-public-roadmap",
-    "summary": "A staged roadmap for growing the public personal archive from safe architecture pages into project and capability pages.",
-    "tags": [
-      "archive",
-      "roadmap",
-      "synthesis",
-      "publication",
-      "curated"
-    ],
-    "status": [
-      "verified"
-    ],
-    "createdAt": "2026-05-13",
-    "updatedAt": "2026-05-13",
-    "date": "2026-05-13",
-    "phase": "library",
-    "type": "library",
-    "importance": "medium",
-    "relatedLibraryItems": [
-      "c_8a14bcb2a5e3fd90"
-    ],
-    "href": "/content/wiki-synthesis-personal-archive-public-roadmap",
-    "publicSafety": "public-safe",
-    "sourceLabels": [
-      "public wiki",
-      "roadmap",
-      "publication"
-    ]
-  },
-  {
-    "id": "timeline-c_43043860b6d67e12",
-    "title": "Project Evidence Matrix",
-    "slug": "wiki-synthesis-project-evidence-matrix",
-    "summary": "Public-safe matrix of project themes, evidence strength, privacy risk, and next promotion action.",
-    "tags": [
-      "projects",
-      "evidence",
-      "synthesis",
-      "curated"
-    ],
-    "status": [
-      "verified"
-    ],
-    "createdAt": "2026-05-13",
-    "updatedAt": "2026-05-13",
-    "date": "2026-05-13",
-    "phase": "library",
-    "type": "library",
-    "importance": "medium",
-    "relatedLibraryItems": [
-      "c_43043860b6d67e12"
-    ],
-    "href": "/content/wiki-synthesis-project-evidence-matrix",
-    "publicSafety": "public-safe",
-    "sourceLabels": [
-      "public wiki",
-      "project evidence",
-      "local compile"
-    ]
-  },
-  {
-    "id": "timeline-c_4ffbf9e307e04258",
-    "title": "Public Growth Timeline Framework",
-    "slug": "wiki-synthesis-public-growth-timeline-framework",
-    "summary": "A framework for turning private timeline evidence into public milestones without exposing sensitive personal material.",
+    "id": "timeline-c_7c6915fcd01a5729",
+    "title": "个人书房前端展示阶段",
+    "slug": "wiki-synthesis-growth-timeline-frontend-showcase-phase",
+    "summary": "2026 年 5 月 13 日，安的资料库开始变成个人书房网站：前端以中文展示项目、路径、年谱，并为小安对话和未来 App 预留后端接口。",
     "tags": [
       "timeline",
       "growth",
-      "publication",
-      "curated"
-    ],
-    "status": [
-      "verified"
-    ],
-    "createdAt": "2026-05-13",
-    "updatedAt": "2026-05-13",
-    "date": "2026-05-13",
-    "phase": "library",
-    "type": "library",
-    "importance": "medium",
-    "relatedLibraryItems": [
-      "c_4ffbf9e307e04258"
-    ],
-    "href": "/content/wiki-synthesis-public-growth-timeline-framework",
-    "publicSafety": "public-safe",
-    "sourceLabels": [
-      "public wiki",
-      "timeline framework",
-      "local compile"
-    ]
-  },
-  {
-    "id": "timeline-c_74981be21c4f4c9f",
-    "title": "Personal Archive MOC",
-    "slug": "wiki-topics-personal-archive-moc",
-    "summary": "Map of the public personal archive platform, promotion workflow, frontend data boundary, and publication roadmap.",
-    "tags": [
+      "frontend",
       "archive",
-      "moc",
-      "llm-wiki",
       "curated"
     ],
     "status": [
-      "featured",
       "verified"
     ],
     "createdAt": "2026-05-13",
     "updatedAt": "2026-05-13",
+    "eventDate": "2026-05-13",
     "date": "2026-05-13",
-    "phase": "paths",
-    "type": "paths",
-    "importance": "high",
-    "relatedLibraryItems": [
-      "c_74981be21c4f4c9f"
-    ],
-    "href": "/content/wiki-topics-personal-archive-moc",
-    "publicSafety": "public-safe",
-    "sourceLabels": [
-      "public wiki",
-      "map",
-      "archive"
-    ]
-  },
-  {
-    "id": "timeline-c_b335630551682c19",
-    "title": "An LLM Wiki",
-    "slug": "readme",
-    "summary": "A public, privacy-filtered Obsidian LLM Wiki rebuilt around Karpathy's llm-wiki pattern.",
-    "tags": [
-      "llm-wiki",
-      "obsidian",
-      "public"
-    ],
-    "status": [
-      "featured",
-      "public"
-    ],
-    "createdAt": "2026-05-12",
-    "updatedAt": "2026-05-12",
-    "date": "2026-05-12",
-    "phase": "paths",
-    "type": "paths",
-    "importance": "high",
-    "relatedLibraryItems": [
-      "c_b335630551682c19"
-    ],
-    "href": "/content/readme",
-    "publicSafety": "public-safe",
-    "sourceLabels": [
-      "public wiki",
-      "source-backed"
-    ]
-  },
-  {
-    "id": "timeline-c_a48746cae70c44e7",
-    "title": "An LLM Wiki Index",
-    "slug": "index",
-    "summary": "Root navigation page for the public-safe Obsidian LLM Wiki.",
-    "tags": [
-      "llm-wiki",
-      "index"
-    ],
-    "status": [
-      "featured",
-      "public"
-    ],
-    "createdAt": "2026-05-12",
-    "updatedAt": "2026-05-12",
-    "date": "2026-05-12",
-    "phase": "paths",
-    "type": "paths",
-    "importance": "high",
-    "relatedLibraryItems": [
-      "c_a48746cae70c44e7"
-    ],
-    "href": "/content/index",
-    "publicSafety": "public-safe",
-    "sourceLabels": [
-      "public wiki",
-      "source-backed"
-    ]
-  },
-  {
-    "id": "timeline-c_0b2b8021fc47d672",
-    "title": "LLM Wiki Index",
-    "slug": "wiki-index",
-    "summary": "Short workbench for the rebuilt public-safe LLM Wiki.",
-    "tags": [
-      "llm-wiki",
-      "moc"
-    ],
-    "status": [
-      "featured",
-      "public"
-    ],
-    "createdAt": "2026-05-12",
-    "updatedAt": "2026-05-12",
-    "date": "2026-05-12",
-    "phase": "paths",
-    "type": "paths",
-    "importance": "high",
-    "relatedLibraryItems": [
-      "c_0b2b8021fc47d672"
-    ],
-    "href": "/content/wiki-index",
-    "publicSafety": "public-safe",
-    "sourceLabels": [
-      "public wiki",
-      "source-backed"
-    ]
-  },
-  {
-    "id": "timeline-c_ad9a9fc54757ca67",
-    "title": "Sources and Data Policy",
-    "slug": "wiki-sources-and-data-policy",
-    "summary": "Source, privacy, and publication rules for this public-safe wiki.",
-    "tags": [
-      "llm-wiki",
-      "sources",
-      "privacy"
-    ],
-    "status": [
-      "public"
-    ],
-    "createdAt": "2026-05-12",
-    "updatedAt": "2026-05-12",
-    "date": "2026-05-12",
-    "phase": "library",
-    "type": "library",
+    "phase": "前端展示",
+    "type": "event",
     "importance": "medium",
     "relatedLibraryItems": [
-      "c_ad9a9fc54757ca67"
+      "c_7c6915fcd01a5729"
     ],
-    "href": "/content/wiki-sources-and-data-policy",
+    "href": "/content/wiki-synthesis-growth-timeline-frontend-showcase-phase",
+    "contentLines": [
+      "# 个人书房前端展示阶段",
+      "",
+      "这个阶段把“资料库”推向“书房”：它不再只是本地能搜到的文件，而是一个别人可以打开、浏览、理解和复刻的入口。",
+      "",
+      "## 发生了什么",
+      "",
+      "前端开始以生成数据为核心：公开 wiki 经过校验后生成 `site-data`，再进入 React 页面。这样做的好处是边界清楚：页面展示的是已经整理过的公开内容，不去读本地原始层。",
+      "",
+      "## 公开经验",
+      "",
+      "前端是一面镜子。它会立刻暴露内容是否空泛：项目有没有真实过程，路线能不能复刻，年谱是不是按真实阶段排列，文字是否像给中国读者看的。",
+      "",
+      "心理层：页面一旦摆出来，整理者会更清楚自己到底想让别人看见什么，也会更容易发现哪些内容只是堆积。",
+      "",
+      "社会层：网站和未来 App 会让个人知识进入公共学习场景。小白读者需要的不是术语密度，而是入口、顺序和安全感。",
+      "",
+      "哲学层：展示不是装饰，它是一种承诺：你愿意把自己的路修到别人也能走。",
+      "",
+      "## Related",
+      "",
+      "- [[wiki/projects/personal-archive-frontend]]",
+      "- [[wiki/concepts/public-site-data-boundary]]",
+      "- [[wiki/synthesis/archive-feed-public-data-update-2026-05-13]]"
+    ],
+    "lessons": [],
+    "philosophicalLayer": "",
+    "actionText": "先从这页挑一个相关页面继续读，再把下一步行动压缩成今天能完成的最小任务。",
     "publicSafety": "public-safe",
     "sourceLabels": [
       "public wiki",
-      "source-backed"
+      "growth timeline",
+      "frontend"
     ]
   },
   {
-    "id": "timeline-c_34b380dfec2c06c0",
-    "title": "GitHub Reference Projects",
-    "slug": "wiki-sources-github-reference-projects",
-    "summary": "Secondary engineering references for local-first LLM Wiki implementations.",
+    "id": "timeline-c_7a8ed176fea7d035",
+    "title": "公开层与私有层分开",
+    "slug": "wiki-synthesis-growth-timeline-public-private-split",
+    "summary": "2026 年 5 月 12 日，安把资料库拆成原始层、私有编译层、公开 wiki 和前端数据层，让展示变得安全而可维护。",
     "tags": [
-      "llm-wiki",
-      "github",
-      "source"
-    ],
-    "status": [
-      "public"
-    ],
-    "createdAt": "2026-05-12",
-    "updatedAt": "2026-05-12",
-    "date": "2026-05-12",
-    "phase": "library",
-    "type": "library",
-    "importance": "medium",
-    "relatedLibraryItems": [
-      "c_34b380dfec2c06c0"
-    ],
-    "href": "/content/wiki-sources-github-reference-projects",
-    "publicSafety": "public-safe",
-    "sourceLabels": [
-      "public wiki",
-      "source-backed"
-    ]
-  },
-  {
-    "id": "timeline-c_08b81444115464f6",
-    "title": "Karpathy LLM Wiki Pattern",
-    "slug": "wiki-sources-karpathy-llm-wiki-pattern",
-    "summary": "Official pattern source for this vault architecture.",
-    "tags": [
-      "llm-wiki",
-      "source",
-      "obsidian"
-    ],
-    "status": [
-      "public"
-    ],
-    "createdAt": "2026-05-12",
-    "updatedAt": "2026-05-12",
-    "date": "2026-05-12",
-    "phase": "library",
-    "type": "library",
-    "importance": "medium",
-    "relatedLibraryItems": [
-      "c_08b81444115464f6"
-    ],
-    "href": "/content/wiki-sources-karpathy-llm-wiki-pattern",
-    "publicSafety": "public-safe",
-    "sourceLabels": [
-      "public wiki",
-      "source-backed"
-    ]
-  },
-  {
-    "id": "timeline-c_d1f1b66d423fc694",
-    "title": "llm-wikid",
-    "slug": "wiki-sources-llm-wikid",
-    "summary": "Secondary GitHub reference for Obsidian vault template and wiki maintenance conventions.",
-    "tags": [
-      "llm-wiki",
-      "github",
-      "source"
-    ],
-    "status": [
-      "public"
-    ],
-    "createdAt": "2026-05-12",
-    "updatedAt": "2026-05-12",
-    "date": "2026-05-12",
-    "phase": "library",
-    "type": "library",
-    "importance": "medium",
-    "relatedLibraryItems": [
-      "c_d1f1b66d423fc694"
-    ],
-    "href": "/content/wiki-sources-llm-wikid",
-    "publicSafety": "public-safe",
-    "sourceLabels": [
-      "public wiki",
-      "source-backed"
-    ]
-  },
-  {
-    "id": "timeline-c_55208509a7f3108b",
-    "title": "obsidian-llm-wiki-local",
-    "slug": "wiki-sources-obsidian-llm-wiki-local",
-    "summary": "Secondary GitHub reference for local-first LLM Wiki implementation ideas.",
-    "tags": [
-      "llm-wiki",
-      "github",
-      "source"
-    ],
-    "status": [
-      "public"
-    ],
-    "createdAt": "2026-05-12",
-    "updatedAt": "2026-05-12",
-    "date": "2026-05-12",
-    "phase": "library",
-    "type": "library",
-    "importance": "medium",
-    "relatedLibraryItems": [
-      "c_55208509a7f3108b"
-    ],
-    "href": "/content/wiki-sources-obsidian-llm-wiki-local",
-    "publicSafety": "public-safe",
-    "sourceLabels": [
-      "public wiki",
-      "source-backed"
-    ]
-  },
-  {
-    "id": "timeline-c_e408088da7f9f832",
-    "title": "Pre-Rebuild Vault Archive",
-    "slug": "wiki-sources-pre-rebuild-vault-archive",
-    "summary": "Local private archive used as the source for public-safe migration.",
-    "tags": [
-      "llm-wiki",
-      "source",
-      "archive"
-    ],
-    "status": [
-      "public"
-    ],
-    "createdAt": "2026-05-12",
-    "updatedAt": "2026-05-12",
-    "date": "2026-05-12",
-    "phase": "library",
-    "type": "library",
-    "importance": "medium",
-    "relatedLibraryItems": [
-      "c_e408088da7f9f832"
-    ],
-    "href": "/content/wiki-sources-pre-rebuild-vault-archive",
-    "publicSafety": "public-safe",
-    "sourceLabels": [
-      "public wiki"
-    ]
-  },
-  {
-    "id": "timeline-c_3d19f3d825d4e136",
-    "title": "AI Agent Systems MOC",
-    "slug": "wiki-topics-ai-agent-systems-moc",
-    "summary": "Map for public-safe AI agent framework and architecture notes migrated into the wiki.",
-    "tags": [
-      "ai-agent",
-      "moc",
-      "systems"
-    ],
-    "status": [
-      "featured",
-      "public"
-    ],
-    "createdAt": "2026-05-12",
-    "updatedAt": "2026-05-12",
-    "date": "2026-05-12",
-    "phase": "paths",
-    "type": "paths",
-    "importance": "high",
-    "relatedLibraryItems": [
-      "c_3d19f3d825d4e136"
-    ],
-    "href": "/content/wiki-topics-ai-agent-systems-moc",
-    "publicSafety": "public-safe",
-    "sourceLabels": [
-      "public wiki",
-      "archive-derived"
-    ]
-  },
-  {
-    "id": "timeline-c_87e2a1ac5dbe8a31",
-    "title": "LLM Wiki MOC",
-    "slug": "wiki-topics-llm-wiki-moc",
-    "summary": "Map for the vault architecture, schema, source policy, and rebuild alignment notes.",
-    "tags": [
-      "llm-wiki",
-      "moc",
-      "architecture"
-    ],
-    "status": [
-      "featured",
-      "public"
-    ],
-    "createdAt": "2026-05-12",
-    "updatedAt": "2026-05-12",
-    "date": "2026-05-12",
-    "phase": "paths",
-    "type": "paths",
-    "importance": "high",
-    "relatedLibraryItems": [
-      "c_87e2a1ac5dbe8a31"
-    ],
-    "href": "/content/wiki-topics-llm-wiki-moc",
-    "publicSafety": "public-safe",
-    "sourceLabels": [
-      "public wiki",
-      "source-backed"
-    ]
-  },
-  {
-    "id": "timeline-c_7e9d08f8f6eda5d4",
-    "title": "Publication Maintenance MOC",
-    "slug": "wiki-topics-publication-maintenance-moc",
-    "summary": "Map for publication gates, privacy scans, manifests, restore evidence, and root maintenance work.",
-    "tags": [
-      "publication",
-      "maintenance",
+      "timeline",
+      "growth",
       "privacy",
-      "moc"
+      "publication",
+      "curated"
     ],
     "status": [
-      "featured",
-      "public"
+      "verified"
     ],
-    "createdAt": "2026-05-12",
-    "updatedAt": "2026-05-12",
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": "2026-05-12",
     "date": "2026-05-12",
-    "phase": "paths",
-    "type": "paths",
-    "importance": "high",
+    "phase": "公开边界建立",
+    "type": "event",
+    "importance": "medium",
     "relatedLibraryItems": [
-      "c_7e9d08f8f6eda5d4"
+      "c_7a8ed176fea7d035"
     ],
-    "href": "/content/wiki-topics-publication-maintenance-moc",
+    "href": "/content/wiki-synthesis-growth-timeline-public-private-split",
+    "contentLines": [
+      "# 公开层与私有层分开",
+      "",
+      "这个阶段是整座书房真正能对外打开的前提。",
+      "",
+      "## 发生了什么",
+      "",
+      "安不再把“有用”直接等同于“可以公开”。本地证据、私有复核、公开 wiki 和网站数据各有边界：前者保存完整性，后者承担表达和展示。",
+      "",
+      "## 公开经验",
+      "",
+      "公开资料库之所以能变丰富，不是因为它暴露一切，而是因为私有材料有了安全的停放处。该留下的留在本地，该公开的经过改写，该展示的再编译成前端数据。",
+      "",
+      "心理层：人很容易把“我想被理解”和“我必须说出全部”混在一起。分层结构让表达变得更稳。",
+      "",
+      "社会层：个人资料一旦上线，就进入公共空间。读者、朋友、协作者和搜索引擎都会成为观看者，边界必须先于热情。",
+      "",
+      "哲学层：透明不是没有门，透明是知道哪些门可以打开，哪些门必须有锁。",
+      "",
+      "## Related",
+      "",
+      "- [[wiki/concepts/private-to-public-promotion-pipeline]]",
+      "- [[wiki/concepts/sensitive-context-rewrite-rules]]",
+      "- [[wiki/topics/publication-maintenance-moc]]"
+    ],
+    "lessons": [],
+    "philosophicalLayer": "",
+    "actionText": "先从这页挑一个相关页面继续读，再把下一步行动压缩成今天能完成的最小任务。",
     "publicSafety": "public-safe",
     "sourceLabels": [
       "public wiki",
-      "source-backed"
+      "growth timeline",
+      "privacy boundary"
     ]
   },
   {
-    "id": "timeline-c_68d8f2407d41eb74",
-    "title": "Skills and Tools MOC",
-    "slug": "wiki-topics-skills-and-tools-moc",
-    "summary": "Map for migrated public-safe skills, tool notes, and reusable operational patterns.",
+    "id": "timeline-c_d5b86e0ba3ac7433",
+    "title": "从工具清单到能力治理",
+    "slug": "wiki-synthesis-growth-timeline-tool-governance-phase",
+    "summary": "2026 年 4 月下旬，安开始把工具使用整理成能力地图：每个工具都要说明任务、证据、风险和复刻价值。",
     "tags": [
-      "skills",
+      "timeline",
+      "growth",
       "tools",
-      "moc"
+      "governance",
+      "curated"
     ],
     "status": [
-      "featured",
-      "public"
+      "verified"
     ],
-    "createdAt": "2026-05-12",
-    "updatedAt": "2026-05-12",
-    "date": "2026-05-12",
-    "phase": "paths",
-    "type": "paths",
-    "importance": "high",
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": "2026-04-20",
+    "date": "2026-04-20",
+    "phase": "工具治理",
+    "type": "event",
+    "importance": "medium",
     "relatedLibraryItems": [
-      "c_68d8f2407d41eb74"
+      "c_d5b86e0ba3ac7433"
     ],
-    "href": "/content/wiki-topics-skills-and-tools-moc",
+    "href": "/content/wiki-synthesis-growth-timeline-tool-governance-phase",
+    "contentLines": [
+      "# 从工具清单到能力治理",
+      "",
+      "这个阶段解决的是一个很常见的问题：工具越来越多，人的判断越来越散。",
+      "",
+      "## 发生了什么",
+      "",
+      "安开始把工具栈按角色组织：",
+      "",
+      "- 知识编译；",
+      "- 代码修改和验证；",
+      "- 浏览器调试；",
+      "- 工作流平台研究；",
+      "- 本地模型实验；",
+      "- 发布前隐私与结构检查。",
+      "",
+      "## 公开经验",
+      "",
+      "工具只有连接到任务、项目、流程和失败模式时，才真正对读者有用。否则它只是一个名字，像书架上没读过的书脊。",
+      "",
+      "心理层：工具清单会给人一种虚假的掌控感，好像拥有名字就拥有能力。真正的能力，是知道什么时候不用它。",
+      "",
+      "社会层：AI 工具更新很快，普通读者更需要稳定的判断框架，而不是追逐每天的新名词。",
+      "",
+      "哲学层：技术治理不是让工具变少，而是让工具回到人的目的之下。",
+      "",
+      "## Related",
+      "",
+      "- [[wiki/synthesis/public-tool-and-agent-inventory]]",
+      "- [[wiki/synthesis/capability-evidence-matrix]]",
+      "- [[wiki/topics/skills-and-tools-moc]]"
+    ],
+    "lessons": [],
+    "philosophicalLayer": "",
+    "actionText": "先从这页挑一个相关页面继续读，再把下一步行动压缩成今天能完成的最小任务。",
     "publicSafety": "public-safe",
     "sourceLabels": [
       "public wiki",
-      "archive-derived"
+      "growth timeline",
+      "tools"
+    ]
+  },
+  {
+    "id": "timeline-c_3daa666ae97fd4e7",
+    "title": "从单次提问到 Agent 工作流",
+    "slug": "wiki-synthesis-feed-agent-workflow-awakening",
+    "summary": "安从单次提问转向 Agent 工作流：把任务拆成角色、输入、边界、输出和验收，让 AI 协作从临时聊天变成可复刻流程。",
+    "tags": [
+      "feed",
+      "agent",
+      "workflow",
+      "cognition",
+      "curated",
+      "beginner-friendly"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": "2026-04-10",
+    "date": "2026-04-10",
+    "phase": "feed",
+    "type": "feed",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_3daa666ae97fd4e7"
+    ],
+    "href": "/content/wiki-synthesis-feed-agent-workflow-awakening",
+    "contentLines": [
+      "# 从单次提问到 Agent 工作流",
+      "",
+      "这条风信记录的是安对 Agent 的一次关键理解：模型回答问题只是起点，真正能改变工作方式的是流程。",
+      "",
+      "单次提问像临时请人帮忙。Agent 工作流像安排一个小团队：谁看资料，谁写内容，谁检查安全，谁验收页面。它看起来更复杂，但如果分工清楚，反而更稳定。",
+      "",
+      "## 外部趋势",
+      "",
+      "很多 AI 产品正在从“聊天框”走向“工作流”：工具调用、知识库、浏览器操作、代码修改、自动验收、多 Agent 协作都在进入普通人的界面。",
+      "",
+      "这意味着学习重点也变了。以前只要学会提问，现在还要学会：",
+      "",
+      "1. 定义任务边界；",
+      "2. 管理资料来源；",
+      "3. 记录过程；",
+      "4. 控制风险动作；",
+      "5. 验收结果。",
+      "",
+      "## 安的认知变化",
+      "",
+      "安开始意识到，Agent 不应该被当成一个更会说话的助手。它更像一种工作组织方式。",
+      "",
+      "如果没有边界，Agent 会把混乱放大。如果边界清楚，Agent 能把复杂任务拆成几段可以检查的行动。这里的差别，不在模型多聪明，而在人有没有把工作讲清楚。",
+      "",
+      "## 行动建议",
+      "",
+      "想复刻这条路，可以先做一个最小 Agent 工作流：",
+      "",
+      "1. 只选一个任务：把一页项目经历改写成公开案例。",
+      "2. 设置一个内容角色：负责写故事和步骤。",
+      "3. 设置一个安全角色：负责检查隐私和边界。",
+      "4. 设置一个验收角色：负责判断小白能不能复刻。",
+      "5. 每个角色只输出一份短清单。",
+      "6. 最后由人决定是否发布。",
+      "",
+      "这已经是多 Agent 思维。重点不是角色多，而是责任清楚。",
+      "",
+      "## 安的提醒",
+      "",
+      "- 不要为了“多子代理并行”而并行。并行只适合互不抢文件、互不依赖结论的任务。",
+      "- 不要把旧规则当成永久法律。规则要服务目标，目标变了，规则也要复核。",
+      "- 不要让 Agent 替你承担判断。最终发布什么，仍然是人的责任。",
+      "",
+      "## 相关",
+      "",
+      "- [[wiki/projects/coze-agent-builder-research]]",
+      "- [[wiki/concepts/agent-skill-governance]]",
+      "- [[wiki/concepts/prompt-engineering-operating-patterns-for-beginners]]"
+    ],
+    "lessons": [],
+    "philosophicalLayer": "",
+    "actionText": "先读 Coze 风格 Agent 搭建器研究，再照着画一个只读的最小工作流。",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "agent workflow",
+      "cognition"
+    ]
+  },
+  {
+    "id": "timeline-c_4f381ddba62bb0f1",
+    "title": "从单次提问到 Agent 工作流",
+    "slug": "wiki-synthesis-growth-timeline-agent-workflow-phase",
+    "summary": "2026 年 4 月前后，安开始把 AI 使用从临时提问升级为 Agent 工作流：拆角色、写技能、定输出、跑验收。",
+    "tags": [
+      "timeline",
+      "growth",
+      "agent",
+      "workflow",
+      "curated"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": "2026-04-10",
+    "date": "2026-04-10",
+    "phase": "Agent 工作流成形",
+    "type": "event",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_4f381ddba62bb0f1"
+    ],
+    "href": "/content/wiki-synthesis-growth-timeline-agent-workflow-phase",
+    "contentLines": [
+      "# 从单次提问到 Agent 工作流",
+      "",
+      "这个阶段的变化，是从“问 AI 一个问题”变成“组织一组 Agent 完成一件事”。",
+      "",
+      "## 发生了什么",
+      "",
+      "安开始把 Agent 当成工作流里的参与者，而不是神秘的万能按钮。每个 Agent 都需要范围、交付物和验收门槛；每个技能都要说明什么时候用、怎么用、怎样判断做完。",
+      "",
+      "## 公开经验",
+      "",
+      "Agent 协作要想可靠，至少要有四件事：",
+      "",
+      "- 一个明确负责人；",
+      "- 一个清楚的写入范围；",
+      "- 一个可以交接的结果；",
+      "- 一个真正跑过的验证。",
+      "",
+      "心理层：从“让 AI 替我做”转向“我来设计 AI 怎么协作”，人的位置会变得更稳。焦虑感会下降，因为你不再把结果完全交给黑箱。",
+      "",
+      "社会层：多人协作里需要分工，人与 Agent 的协作也一样。没有边界的智能，很容易变成没有责任的热闹。",
+      "",
+      "哲学层：工具越强，越需要人给它结构。自由不是让所有东西同时发生，而是知道哪一步该由谁承担。",
+      "",
+      "## Related",
+      "",
+      "- [[wiki/concepts/agent-skill-governance]]",
+      "- [[wiki/synthesis/public-tool-and-agent-inventory]]",
+      "- [[wiki/projects/coze-agent-builder-research]]"
+    ],
+    "lessons": [],
+    "philosophicalLayer": "",
+    "actionText": "先从这页挑一个相关页面继续读，再把下一步行动压缩成今天能完成的最小任务。",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "growth timeline",
+      "agent workflow"
+    ]
+  },
+  {
+    "id": "timeline-c_775c7158d941f221",
+    "title": "三月之后的 AI 认知觉醒",
+    "slug": "wiki-synthesis-feed-ai-march-awakening",
+    "summary": "2026 年 3 月之后，安开始系统接触 AI，并逐渐意识到真正要建设的不是工具清单，而是一套能保存上下文、复盘行动、让别人复刻的个人书房。",
+    "tags": [
+      "feed",
+      "cognition",
+      "ai",
+      "timeline",
+      "beginner-friendly",
+      "curated"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": "2026-03-15",
+    "date": "2026-03-15",
+    "phase": "feed",
+    "type": "feed",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_775c7158d941f221"
+    ],
+    "href": "/content/wiki-synthesis-feed-ai-march-awakening",
+    "contentLines": [
+      "# 三月之后的 AI 认知觉醒",
+      "",
+      "这条风信不是技术新闻，而是安自己的认知转折。",
+      "",
+      "2026 年 3 月之后，AI 不再只是一个可以问问题的工具。它开始变成一种新的学习环境：你问什么、怎样保存资料、如何判断答案、能不能复盘过程，都会影响你最后得到的是知识，还是一堆散掉的聊天。",
+      "",
+      "## 外部趋势",
+      "",
+      "AI 工具越来越像一组工作台：有写代码的，有做前端的，有整理资料的，有做 Agent 的，有连接后端的。工具越多，表面上越自由，实际上越需要秩序。",
+      "",
+      "小白最容易误会的一点是：以为多试几个工具，就等于进步。真正的进步发生在你能回答三个问题的时候：",
+      "",
+      "1. 这个工具帮我解决什么问题；",
+      "2. 它在哪一步容易误导我；",
+      "3. 我怎样把这次使用变成下次能复用的方法。",
+      "",
+      "## 安的认知变化",
+      "",
+      "安开始意识到，AI 时代的学习不是“我知道更多”，而是“我能把过程保存下来”。如果一次操作只留在聊天窗口里，它很快会变成无法复盘的烟。",
+      "",
+      "所以资料库的方向开始出现：把项目、工具、提示词、失败和判断整理成页面。页面不是为了显得正式，而是为了让未来的自己和外部读者都能重新进入现场。",
+      "",
+      "## 行动建议",
+      "",
+      "如果你也是从零开始接触 AI，可以照着做一个很小的练习：",
+      "",
+      "1. 写下你最常问 AI 的 5 类问题。",
+      "2. 给每类问题配一个真实场景。",
+      "3. 标出哪些回答你无法判断真假。",
+      "4. 选一类问题，写一页“我怎样提问、怎样判断、怎样复盘”的记录。",
+      "5. 过一周再看这页，删掉空话，留下能复用的步骤。",
+      "",
+      "## 安的提醒",
+      "",
+      "- 不要急着把自己包装成专家。先把一次真实学习写清楚。",
+      "- 不要把 AI 当成永远正确的老师。它更像一面镜子，会放大你的问题，也会暴露你的盲区。",
+      "- 不要让工具数量遮住主线。你的主线应该是问题、行动、验收和复盘。",
+      "",
+      "## 相关",
+      "",
+      "- [[wiki/synthesis/growth-timeline-scattered-exploration-to-compiled-archive]]",
+      "- [[wiki/projects/personal-archive-platform]]",
+      "- [[wiki/concepts/prompt-engineering-operating-patterns-for-beginners]]"
+    ],
+    "lessons": [],
+    "philosophicalLayer": "",
+    "actionText": "从年谱进入三月节点，再看个人资料库平台，理解为什么安要把零散探索编译成书房。",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "cognition",
+      "timeline"
+    ]
+  },
+  {
+    "id": "timeline-c_4a46947637c1bf68",
+    "title": "从分散探索到编译资料库",
+    "slug": "wiki-synthesis-growth-timeline-scattered-exploration-to-compiled-archive",
+    "summary": "2026 年 3 月之后，安从零散试用 AI 工具，逐步意识到需要把操作、项目和决定编译成可复看的资料库。",
+    "tags": [
+      "timeline",
+      "growth",
+      "archive",
+      "curated"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": "2026-03-15",
+    "date": "2026-03-15",
+    "phase": "AI 入门探索",
+    "type": "event",
+    "importance": "medium",
+    "relatedLibraryItems": [
+      "c_4a46947637c1bf68"
+    ],
+    "href": "/content/wiki-synthesis-growth-timeline-scattered-exploration-to-compiled-archive",
+    "contentLines": [
+      "# 从分散探索到编译资料库",
+      "",
+      "这个阶段不是一个精确到某一天的成就，而是一段开始：安基本在 2026 年 3 月之后真正进入 AI 工具的世界。最初的状态很像站在一间巨大的器材室门口，什么都想摸一下，却还不知道哪一件会变成自己的方法。",
+      "",
+      "## 发生了什么",
+      "",
+      "早期材料里有许多工具名、笔记、项目痕迹和临时决定。真正有价值的动作，不是把它们全部公开，而是把它们分组：哪些是项目，哪些是能力，哪些只是一次试错，哪些可以沉淀成别人也能照着走的路线。",
+      "",
+      "## 公开经验",
+      "",
+      "对新手来说，成长不应该只写成“我变厉害了”。它更适合写成一组可观察的模式：",
+      "",
+      "- 我用了什么工具；",
+      "- 我为什么换了另一种做法；",
+      "- 我怎样把一次失败写成下次的提醒；",
+      "- 我怎样确认哪些内容能公开，哪些内容应该留下来复核。",
+      "",
+      "心理层：刚开始学习 AI 的人，常常会被工具数量吓到，以为自己必须立刻掌握全部。这个阶段最重要的不是全会，而是把注意力从“收藏更多”转到“留下一个小闭环”。",
+      "",
+      "社会层：AI 工具的热潮容易制造焦虑，大家都在展示结果，却很少展示从不懂到能操作的中间层。个人书房要补的正是这段中间层。",
+      "",
+      "哲学层：经验如果不被整理，只是一阵经过身体的风；经验被写成路径，才开始成为能被自己和别人重新使用的能力。",
+      "",
+      "## 边界",
+      "",
+      "这一页不公开私人传记或原始个人记录。它只把可公开的项目证据和学习方式编成阶段说明。",
+      "",
+      "## Related",
+      "",
+      "- [[wiki/synthesis/public-growth-timeline-framework]]",
+      "- [[wiki/projects/personal-archive-platform]]",
+      "- [[wiki/synthesis/archive-rebuild-public-journal]]"
+    ],
+    "lessons": [],
+    "philosophicalLayer": "",
+    "actionText": "先从这页挑一个相关页面继续读，再把下一步行动压缩成今天能完成的最小任务。",
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "growth timeline",
+      "archive"
     ]
   }
 ]

@@ -10,7 +10,13 @@ from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
-LOCAL_DISCOVERY_DIR = Path("inbox/private/local-recovery-2026-05-12/local-discovery")
+try:
+    from local_index_cache import LEGACY_LOCAL_DISCOVERY_DIR, local_index_cache_dir
+except ModuleNotFoundError:
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from local_index_cache import LEGACY_LOCAL_DISCOVERY_DIR, local_index_cache_dir
+
+LOCAL_DISCOVERY_DIR = LEGACY_LOCAL_DISCOVERY_DIR
 MAX_MEMBERS_PER_ARCHIVE = 2000
 
 SENSITIVE_TERMS = re.compile(r"(?i)(credential|cookie|secret|session|token|password|passwd|key|\.env|auth)")
@@ -66,11 +72,12 @@ def zip_modified(info: zipfile.ZipInfo) -> str:
 
 
 def build(root: Path) -> int:
-    local_dir = root / LOCAL_DISCOVERY_DIR
+    local_dir = local_index_cache_dir(root)
     inventory = read_csv(local_dir / "local_source_inventory.csv")
     archive_rows = [row for row in inventory if row.get("kind") == "archive" and row.get("extension", "").lower() == ".zip"]
     member_rows: list[dict[str, str]] = []
     failures: list[dict[str, str]] = []
+    truncations: list[dict[str, str]] = []
     archive_counter: Counter = Counter()
 
     for archive in archive_rows:
@@ -104,6 +111,15 @@ def build(root: Path) -> int:
                     )
                 if len(infos) > MAX_MEMBERS_PER_ARCHIVE:
                     archive_counter["archives_truncated"] += 1
+                    truncations.append(
+                        {
+                            "root_id": archive.get("root_id", ""),
+                            "archive_relative_path": archive.get("relative_path", ""),
+                            "members_total_seen": str(len(infos)),
+                            "members_indexed": str(MAX_MEMBERS_PER_ARCHIVE),
+                            "reason": f"max-members-{MAX_MEMBERS_PER_ARCHIVE}",
+                        }
+                    )
         except (OSError, zipfile.BadZipFile, zipfile.LargeZipFile, RuntimeError) as exc:
             failures.append({"root_id": archive.get("root_id", ""), "archive_relative_path": archive.get("relative_path", ""), "error": type(exc).__name__})
 
@@ -113,6 +129,11 @@ def build(root: Path) -> int:
         member_rows,
     )
     write_csv(local_dir / "local_archive_failures.csv", ["root_id", "archive_relative_path", "error"], failures)
+    write_csv(
+        local_dir / "local_archive_truncations.csv",
+        ["root_id", "archive_relative_path", "members_total_seen", "members_indexed", "reason"],
+        truncations,
+    )
     summary = {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "archive_files_indexed": len(archive_rows),
@@ -128,6 +149,7 @@ def build(root: Path) -> int:
     print(f"archive_files_indexed: {len(archive_rows)}")
     print(f"archive_members_indexed: {len(member_rows)}")
     print(f"archive_failures: {len(failures)}")
+    print(f"archive_truncations: {len(truncations)}")
     print(f"archive_inventory: {local_dir / 'local_archive_inventory.csv'}")
     return 0
 

@@ -1,12 +1,10 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { Link } from 'react-router';
-import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import {
   Github,
-  Mail,
-  Twitter,
   Archive,
   Route,
   Wind,
@@ -14,9 +12,8 @@ import {
   BookOpen,
   Clock,
   ChevronRight,
-  ChevronDown,
-  Sparkles,
 } from 'lucide-react';
+import { resolveAssetUrl } from '@/lib/runtime';
 
 /* ------------------------------------------------------------------ */
 /*  Easing                                                             */
@@ -100,44 +97,23 @@ function SectionLabel({ text }: { text: string }) {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Page Guide                                                         */
-/* ------------------------------------------------------------------ */
-function PageGuide() {
-  return (
-    <motion.div
-      className="bg-[#F5EDE8] rounded-xl p-4 md:p-5 mb-8"
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, ease: easeOut, delay: 0.15 }}
-    >
-      <div className="flex items-start gap-3">
-        <div className="w-8 h-8 rounded-full bg-white/70 flex items-center justify-center shrink-0 mt-0.5">
-          <Sparkles size={16} strokeWidth={1.5} className="text-[#C8956C]" />
-        </div>
-        <p className="text-[13px] font-sans text-silver leading-relaxed">
-          你好，欢迎来到我的藏馆。这里是我整理知识、记录成长的地方。以下是对这座藏馆的全方位介绍，帮助你快速了解它的结构与使用方法。
-        </p>
-      </div>
-    </motion.div>
-  );
-}
-
-/* ------------------------------------------------------------------ */
 /*  Content data                                                       */
 /* ------------------------------------------------------------------ */
-const siteIntroMarkdown = `这里是我的公开藏馆。
+const siteIntroMarkdown = `我是安。这里是我的个人书房，也是一个慢慢成形的公开资料库。
 
-它不是博客，不是导航站，也不是作品集。它是所有这些的集合，但又不是简单拼凑——而是一个有机生长的知识空间。
+它不是普通博客，不是资料导航，也不是只展示结果的作品集。它更像一张摊开的书桌：一边放着做过的项目，一边放着工具、笔记、复盘、失败记录和可以复刻的小路。
 
-藏馆收录我整理的资料与工具，谱系记录我的学习路径与复刻路线，风信聚合值得关注的信息，工坊展示我的作品与实验，手记留存我的思考与成长，年谱勾勒时间线上的关键节点。
+我真正想留下的，不是“我用过很多工具”这件事，而是这些工具怎样改变了我的学习方式：怎样从散乱收藏走向整理，怎样从临时提问走向有边界的协作，怎样把一次混乱的尝试改写成别人也能照着走的小版本。
 
-这些内容彼此关联：一条谱系可能引用藏馆中的多个资源，一篇手记可能记录某个作品的开发过程，年谱上的节点可能是某条路径的起点。`;
+所以你会在这里看到藏馆、谱系、工坊、手记和年谱。每个房间都能单独打开，不要求读者被一张复杂关系网牵着走。`;
 
 const whyMarkdown = `信息过载的时代，收藏不等于掌握，阅读不等于理解。
 
-我需要一个地方，不仅要存放资料，还要记录我是如何一步步走过来的——哪些路走通了，哪些坑其实可以避开，什么工具在什么场景下真正好用。
+我需要一个地方，不只存放资料，还要记录我如何一步步走过来：哪些路走通了，哪些坑本来可以避开，什么工具在什么场景下真正好用，哪些看似高级的东西其实只是增加了负担。
 
-这座藏馆是我对自己学习历程的诚实记录，也是对同样在路上的人的参考。`;
+这座书房也是一个心理上的整理动作。材料越多，人越容易焦虑；只有当材料被写成清楚的路径，经验才会重新变成力量。
+
+它也有社会性：公开页面要给朋友、读者、协作者和未来的自己看。读者不该被内部术语挡在门外，也不该看到未经整理的私密材料。公开不是把门打开就完了，而是把路修到别人能走。`;
 
 const modules = [
   {
@@ -185,92 +161,8 @@ const modules = [
 ];
 
 const socialLinks = [
-  { icon: Github, label: 'GitHub', href: 'https://github.com/yourname', handle: 'github.com/yourname' },
-  { icon: Mail, label: 'Email', href: 'mailto:yourname@example.com', handle: 'yourname@example.com' },
-  { icon: Twitter, label: 'Twitter / X', href: 'https://twitter.com/yourname', handle: '@yourname' },
+  { icon: Github, label: 'GitHub', href: 'https://github.com/An-an-525/an-llm-wiki', handle: 'An-an-525/an-llm-wiki' },
 ];
-
-/* ------------------------------------------------------------------ */
-/*  FAQ data                                                           */
-/* ------------------------------------------------------------------ */
-
-const faqItems = [
-  {
-    question: '藏馆是做什么的？',
-    answer: '藏馆是我的个人公开知识管理系统。它集资料收藏、学习路径、作品展示、思考记录和成长追踪于一体。不同于普通博客，藏馆强调知识之间的关联性——资料、路径、作品、手记、年谱彼此链接，形成一个有机的整体。',
-  },
-  {
-    question: '谱系是什么意思？',
-    answer: '谱系是可复刻的学习与构建路径。每条谱系都标注了难度等级、预计完成时间、适合人群和前置条件，按阶段组织，每个阶段都有明确的学习目标和推荐资源。你可以跟随一条谱系从头走到尾，也可以从中截取某个阶段深入学习。',
-  },
-  {
-    question: '这些资源都是免费的吗？',
-    answer: '藏馆中大部分资源都是免费获取的（如开源文档、公开文章等）。少数推荐的书籍或课程可能需要付费购买，但通常会注明免费替代品。谱系中的路径设计也尽量使用免费资源，降低学习门槛。',
-  },
-  {
-    question: '内容会更新吗？',
-    answer: '会持续更新。谱系会根据我的最新学习心得进行调整，藏馆会随着我发现新的优质资源而扩充，工坊会在完成新项目后添加作品，手记会不定期记录新的思考，年谱则随着时间推移自然生长。',
-  },
-];
-
-/* ------------------------------------------------------------------ */
-/*  FAQ Accordion Item                                                 */
-/* ------------------------------------------------------------------ */
-
-function FAQItem({
-  question,
-  answer,
-  isOpen,
-  onToggle,
-  index,
-}: {
-  question: string;
-  answer: string;
-  isOpen: boolean;
-  onToggle: () => void;
-  index: number;
-}) {
-  return (
-    <motion.div
-      className="border border-[#E5E5E3] rounded-xl overflow-hidden bg-white"
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.3, ease: easeOut, delay: index * 0.06 }}
-    >
-      <button
-        onClick={onToggle}
-        className="w-full flex items-center justify-between p-4 md:p-5 text-left hover:bg-[#FAF9F7] transition-colors duration-150"
-      >
-        <span className="text-[14px] font-sans font-medium text-graphite pr-4">
-          {question}
-        </span>
-        <motion.span
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.2 }}
-          className="shrink-0"
-        >
-          <ChevronDown size={16} strokeWidth={1.5} className="text-silver" />
-        </motion.span>
-      </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: easeOut }}
-            className="overflow-hidden"
-          >
-            <div className="px-4 md:px-5 pb-4 md:pb-5 border-t border-[#F0F0EE] pt-3">
-              <p className="text-[13px] font-sans text-silver leading-[1.8]">{answer}</p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
-  );
-}
 
 /* ------------------------------------------------------------------ */
 /*  Content Map Section                                                */
@@ -282,10 +174,10 @@ function ContentMapSection() {
       <div className="bg-light-pink rounded-xl -mx-5 md:-mx-8 px-5 md:px-8 py-10">
         <SectionLabel text="内容如何组织" />
         <h2 className="font-serif text-[22px] md:text-[28px] text-ink leading-[1.4] mb-3">
-          六个互相关联的板块
+          六个可以单独打开的房间
         </h2>
         <p className="text-[13px] font-sans text-silver mb-6 md:mb-8 leading-relaxed">
-          每个板块都有自己的定位，但它们之间通过链接相互关联，形成一个完整的知识网络。
+          项目、资料、复盘、失败记录和复刻小路，各自站住。
         </p>
         <motion.div
           className="space-y-3"
@@ -328,38 +220,6 @@ function ContentMapSection() {
             );
           })}
         </motion.div>
-      </div>
-    </AnimatedSection>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  FAQ Section                                                        */
-/* ------------------------------------------------------------------ */
-
-function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  return (
-    <AnimatedSection delay={0} className="mt-10 md:mt-16">
-      <SectionLabel text="常见问题" />
-      <h2 className="font-serif text-[22px] md:text-[28px] text-ink leading-[1.4] mb-3">
-        你可能想知道的
-      </h2>
-      <p className="text-[13px] font-sans text-silver mb-6 leading-relaxed">
-        如果你是第一次来，这些问题可能会帮到你。
-      </p>
-      <div className="space-y-3">
-        {faqItems.map((faq, i) => (
-          <FAQItem
-            key={i}
-            question={faq.question}
-            answer={faq.answer}
-            isOpen={openIndex === i}
-            onToggle={() => setOpenIndex(openIndex === i ? null : i)}
-            index={i}
-          />
-        ))}
       </div>
     </AnimatedSection>
   );
@@ -426,7 +286,7 @@ export default function About() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, ease: easeOut }}
           >
-            认识一个人，从他说的话开始
+            认识安，从这间书房开始
           </motion.p>
         </div>
       </section>
@@ -438,30 +298,37 @@ export default function About() {
         animate="visible"
         variants={containerVariants}
       >
-        {/* ── Page Guide ── */}
-        <motion.div variants={staggerItem}>
-          <PageGuide />
-        </motion.div>
-
         {/* ── Avatar Section ── */}
         <motion.section
           variants={avatarVariants}
           className="flex flex-col items-center mb-14"
         >
-          <motion.img
-            src="/avatar.jpg"
-            alt="头像"
-            className="w-[100px] h-[100px] md:w-[120px] md:h-[120px] rounded-full object-cover border-[3px] border-light-pink shadow-md mb-4"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.25, ease: easeOut }}
-          />
+          <div className="mb-4 flex items-center justify-center gap-5">
+            <motion.img
+              src={resolveAssetUrl('/avatar-an.jpg')}
+              alt="安的头像"
+              className="w-[104px] h-[104px] md:w-[124px] md:h-[124px] rounded-full object-cover border-[3px] border-light-pink shadow-md"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.25, ease: easeOut }}
+            />
+            <div className="flex flex-col items-center gap-2">
+              <motion.img
+                src={resolveAssetUrl('/avatar-xiaoan.jpg')}
+                alt="小安的头像"
+                className="w-[72px] h-[72px] md:w-[84px] md:h-[84px] rounded-full object-cover border-[3px] border-white shadow-md"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.25, ease: easeOut }}
+              />
+              <span className="text-[12px] font-serif text-silver">小安 · 数字生命体</span>
+            </div>
+          </div>
           <motion.p
             className="font-serif text-[24px] font-normal text-ink mb-1"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1, duration: 0.5, ease: easeOut }}
           >
-            {' '}
+            安
           </motion.p>
           <motion.p
             className="text-[12px] font-sans text-silver tracking-[0.02em]"
@@ -469,7 +336,7 @@ export default function About() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.15, duration: 0.5, ease: easeOut }}
           >
-            独立开发者 / 设计师 / 学习者
+            资料库建造者 / 工具实践者 / 仍在路上的学习者
           </motion.p>
         </motion.section>
 
@@ -477,7 +344,7 @@ export default function About() {
         <AnimatedSection delay={0}>
           <SectionLabel text="关于本站" />
           <h2 className="font-serif text-[22px] md:text-[28px] text-ink leading-[1.4] mb-4 md:mb-6">
-            一座关于资料、路径、作品与成长的个人藏馆
+            一座关于资料、路径、作品与成长的个人书房
           </h2>
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
@@ -501,14 +368,11 @@ export default function About() {
         {/* ── Content Map Section ── */}
         <ContentMapSection />
 
-        {/* ── FAQ Section ── */}
-        <FAQSection />
-
         {/* ── Contact Section ── */}
         <AnimatedSection delay={0} className="mt-10 md:mt-16 pt-6 md:pt-8 border-t border-border-color">
-          <SectionLabel text="联系方式" />
+          <SectionLabel text="公开入口" />
           <h3 className="font-serif text-[22px] font-normal text-ink mb-6 leading-[1.5]">
-            找到我
+            查看这间书房的公开仓库
           </h3>
           <motion.div
             className="flex flex-wrap gap-4"

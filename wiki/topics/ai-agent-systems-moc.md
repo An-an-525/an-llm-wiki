@@ -30,6 +30,10 @@ This map keeps the agent notes navigable without depending on old private vault 
 ## Architecture Notes
 
 - [[wiki/concepts/agent-skill-governance]] - public-safe skill and rule governance
+- [[wiki/projects/lifecycle-agent-skill-governance]] - copyable skill governance learning package
+- [[wiki/projects/lifecycle-coze-agent-builder]] - copyable Coze-style agent-builder study package
+- [[wiki/projects/lifecycle-agent-ide-learning-workflow]] - copyable agent IDE learning workflow
+- [[wiki/projects/coze-agent-builder-research]] - Coze-style agent builder and workflow architecture
 - [[wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agent_Computer_Interface_Best_Practices]]
 - [[wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agent_Design_Patterns_2026]]
 - [[wiki/topics/04-知识库-领域研究-AI-Agent技术-架构设计-Agentic_Workflow_Optimization_2026]]
@@ -38,6 +42,9 @@ This map keeps the agent notes navigable without depending on old private vault 
 
 ## Project Architecture
 
+- [[wiki/projects/xiaoan-local-model-learning-loop]] - local model learning loop and experiment governance
+- [[wiki/projects/lifecycle-xiaoan-local-model-loop]] - copyable local-model learning loop package
+- [[wiki/projects/lifecycle-hanako-openhanako-creative-agent-desktop]] - creative agent desktop app learning package
 - [[wiki/projects/04-知识库-领域研究-AI-Agent技术-项目架构-an-clan_Project_Architecture]]
 - [[wiki/projects/04-知识库-领域研究-AI-Agent技术-项目架构-mcc_Project_Architecture]]
 - [[wiki/projects/04-知识库-领域研究-AI-Agent技术-项目架构-zongmen-gui_Project_Architecture]]

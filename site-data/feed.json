@@ -1,1 +1,907 @@
-[]
+[
+  {
+    "id": "c_e75bbad04685ebf5",
+    "title": "资料库公开数据更新 2026-05-13",
+    "sourceTitle": "资料库公开数据更新 2026-05-13",
+    "slug": "wiki-synthesis-archive-feed-public-data-update-2026-05-13",
+    "summary": "记录 2026-05-13 公开数据更新，说明项目页、API 契约和作品卡标准如何进入安的书房展示层。",
+    "sourceSummary": "资料库公开展示层的一次更新：项目页、只读 API 契约和作品卡标准已经进入同一条公开数据链。",
+    "tags": [
+      "feed",
+      "archive",
+      "site-data",
+      "publication",
+      "curated"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": "2026-05-13",
+    "sourcePath": "wiki/synthesis/archive-feed-public-data-update-2026-05-13.md",
+    "module": "feed",
+    "category": "event",
+    "type": "feed",
+    "phase": null,
+    "cover": null,
+    "contentType": "article",
+    "href": "/content/wiki-synthesis-archive-feed-public-data-update-2026-05-13",
+    "contentLines": [
+      "# 资料库公开数据更新 2026-05-13",
+      "",
+      "这条风信记录的是一次展示层变化，不是一次私有资料导入。它说明资料库开始从“有页面”走向“有公开数据链”：项目页写好以后，可以经过检查生成前端可读的数据。",
+      "",
+      "## 发生了什么",
+      "",
+      "- [[wiki/projects/personal-archive-frontend]] 说明网站怎样读取公开数据。",
+      "- [[wiki/projects/coze-agent-builder-research]] 把 Coze 风格 Agent 搭建器收缩成最小安全工作流。",
+      "- [[wiki/projects/xiaoan-local-model-learning-loop]] 说明本地模型实验怎样形成学习闭环。",
+      "- [[wiki/concepts/public-api-contract]] 定义后续服务器的只读接口方向。",
+      "- [[wiki/concepts/public-work-card-standard]] 定义作品卡怎样诚实表达状态。",
+      "",
+      "## 安的认知变化",
+      "",
+      "这次变化让我确认一件事：资料库不能只靠前端变漂亮。真正的关键是数据链能不能让每条内容都有来源、有状态、有下一步。",
+      "",
+      "Kimi 示例里的风信很饱满，它给了“信息、来源、建议行动”的最低模板。安的书房要再往前走一步：每条风信还要说明它带来了什么认知变化。读者不只知道“发生了什么”，还要知道“为什么这件事改变了我的判断”。",
+      "",
+      "## 行动建议",
+      "",
+      "1. 先打开“工坊”，看 3 个核心项目页。",
+      "2. 再打开“谱系”，找一条能照着走的复刻路线。",
+      "3. 如果要做自己的版本，不要先导入全部材料，先做一个项目页到前端卡片的最小闭环。",
+      "",
+      "## 边界",
+      "",
+      "这条更新不公开私有来源层、原始聊天、账号状态、本机细节或未经改写的个人记录。它只指向已经进入公开 wiki 的页面。",
+      "",
+      "## 相关",
+      "",
+      "- [[wiki/topics/personal-archive-moc]]",
+      "- [[wiki/synthesis/personal-archive-public-roadmap]]",
+      "- [[wiki/projects/personal-archive-frontend]]"
+    ],
+    "links": [
+      {
+        "target": "wiki/projects/personal-archive-frontend",
+        "label": "wiki/projects/personal-archive-frontend"
+      },
+      {
+        "target": "wiki/projects/coze-agent-builder-research",
+        "label": "wiki/projects/coze-agent-builder-research"
+      },
+      {
+        "target": "wiki/projects/xiaoan-local-model-learning-loop",
+        "label": "wiki/projects/xiaoan-local-model-learning-loop"
+      },
+      {
+        "target": "wiki/concepts/public-api-contract",
+        "label": "wiki/concepts/public-api-contract"
+      },
+      {
+        "target": "wiki/concepts/public-work-card-standard",
+        "label": "wiki/concepts/public-work-card-standard"
+      },
+      {
+        "target": "wiki/topics/personal-archive-moc",
+        "label": "wiki/topics/personal-archive-moc"
+      },
+      {
+        "target": "wiki/synthesis/personal-archive-public-roadmap",
+        "label": "wiki/synthesis/personal-archive-public-roadmap"
+      },
+      {
+        "target": "wiki/projects/personal-archive-frontend",
+        "label": "wiki/projects/personal-archive-frontend"
+      }
+    ],
+    "sources": [
+      "[[wiki/projects/personal-archive-frontend]]",
+      "[[wiki/concepts/public-api-contract]]",
+      "[[wiki/concepts/public-work-card-standard]]"
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "资料库公开数据更新 2026-05-13",
+        "anchor": "资料库公开数据更新-2026-05-13"
+      },
+      {
+        "level": 2,
+        "title": "发生了什么",
+        "anchor": "发生了什么"
+      },
+      {
+        "level": 2,
+        "title": "安的认知变化",
+        "anchor": "安的认知变化"
+      },
+      {
+        "level": 2,
+        "title": "行动建议",
+        "anchor": "行动建议"
+      },
+      {
+        "level": 2,
+        "title": "边界",
+        "anchor": "边界"
+      },
+      {
+        "level": 2,
+        "title": "相关",
+        "anchor": "相关"
+      }
+    ],
+    "wordCount": 451,
+    "readingMinutes": 2,
+    "metrics": {
+      "lineCount": 33,
+      "headingCount": 6,
+      "linkCount": 8,
+      "sourceCount": 3
+    },
+    "quality": {
+      "hasSources": true,
+      "hasToc": true,
+      "summaryLength": 51,
+      "sourceTitle": "资料库公开数据更新 2026-05-13",
+      "sourceSummary": "资料库公开展示层的一次更新：项目页、只读 API 契约和作品卡标准已经进入同一条公开数据链。",
+      "needsSourceReview": false,
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "explicitlyCurated": true
+    },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "public update",
+      "site-data"
+    ],
+    "whyItMattered": "这是资料库第一次把公开项目页、前端数据和后端契约连成一条线：读者不只看到页面，也能看到内容怎样从公开 wiki 进入展示层。",
+    "operationStory": [
+      "把已经改写过的项目页加入公开展示数据。",
+      "补出只读 API 契约，为后续服务器和 App 对接预留边界。",
+      "补出作品卡标准，让前端能诚实展示建设中、暂停和已完成项目。"
+    ],
+    "replicationSteps": [
+      "先写一页公开安全更新，说明新增内容和读者行动。",
+      "把更新页链接到它总结的项目页、契约页和标准页。",
+      "重新生成 site-data，让风信页面渲染真实记录。"
+    ],
+    "actionText": "先看资料库展示前端，再按工坊里的复刻步骤做一个最小版本。",
+    "displayTier": "showcase",
+    "qualityScore": 100,
+    "hiddenReasons": [],
+    "source": "an-llm-wiki",
+    "publishedAt": "2026-05-13",
+    "importance": "medium",
+    "archivedToLibrary": true
+  },
+  {
+    "id": "c_3daa666ae97fd4e7",
+    "title": "从单次提问到 Agent 工作流",
+    "sourceTitle": "从单次提问到 Agent 工作流",
+    "slug": "wiki-synthesis-feed-agent-workflow-awakening",
+    "summary": "安从单次提问转向 Agent 工作流：把任务拆成角色、输入、边界、输出和验收，让 AI 协作从临时聊天变成可复刻流程。",
+    "sourceSummary": "安从单次提问转向 Agent 工作流：把任务拆成角色、输入、边界、输出和验收，让 AI 协作从临时聊天变成可复刻流程。",
+    "tags": [
+      "feed",
+      "agent",
+      "workflow",
+      "cognition",
+      "curated",
+      "beginner-friendly"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": "2026-04-10",
+    "sourcePath": "wiki/synthesis/feed-agent-workflow-awakening.md",
+    "module": "feed",
+    "category": "event",
+    "type": "feed",
+    "phase": null,
+    "cover": null,
+    "contentType": "article",
+    "href": "/content/wiki-synthesis-feed-agent-workflow-awakening",
+    "contentLines": [
+      "# 从单次提问到 Agent 工作流",
+      "",
+      "这条风信记录的是安对 Agent 的一次关键理解：模型回答问题只是起点，真正能改变工作方式的是流程。",
+      "",
+      "单次提问像临时请人帮忙。Agent 工作流像安排一个小团队：谁看资料，谁写内容，谁检查安全，谁验收页面。它看起来更复杂，但如果分工清楚，反而更稳定。",
+      "",
+      "## 外部趋势",
+      "",
+      "很多 AI 产品正在从“聊天框”走向“工作流”：工具调用、知识库、浏览器操作、代码修改、自动验收、多 Agent 协作都在进入普通人的界面。",
+      "",
+      "这意味着学习重点也变了。以前只要学会提问，现在还要学会：",
+      "",
+      "1. 定义任务边界；",
+      "2. 管理资料来源；",
+      "3. 记录过程；",
+      "4. 控制风险动作；",
+      "5. 验收结果。",
+      "",
+      "## 安的认知变化",
+      "",
+      "安开始意识到，Agent 不应该被当成一个更会说话的助手。它更像一种工作组织方式。",
+      "",
+      "如果没有边界，Agent 会把混乱放大。如果边界清楚，Agent 能把复杂任务拆成几段可以检查的行动。这里的差别，不在模型多聪明，而在人有没有把工作讲清楚。",
+      "",
+      "## 行动建议",
+      "",
+      "想复刻这条路，可以先做一个最小 Agent 工作流：",
+      "",
+      "1. 只选一个任务：把一页项目经历改写成公开案例。",
+      "2. 设置一个内容角色：负责写故事和步骤。",
+      "3. 设置一个安全角色：负责检查隐私和边界。",
+      "4. 设置一个验收角色：负责判断小白能不能复刻。",
+      "5. 每个角色只输出一份短清单。",
+      "6. 最后由人决定是否发布。",
+      "",
+      "这已经是多 Agent 思维。重点不是角色多，而是责任清楚。",
+      "",
+      "## 安的提醒",
+      "",
+      "- 不要为了“多子代理并行”而并行。并行只适合互不抢文件、互不依赖结论的任务。",
+      "- 不要把旧规则当成永久法律。规则要服务目标，目标变了，规则也要复核。",
+      "- 不要让 Agent 替你承担判断。最终发布什么，仍然是人的责任。",
+      "",
+      "## 相关",
+      "",
+      "- [[wiki/projects/coze-agent-builder-research]]",
+      "- [[wiki/concepts/agent-skill-governance]]",
+      "- [[wiki/concepts/prompt-engineering-operating-patterns-for-beginners]]"
+    ],
+    "links": [
+      {
+        "target": "wiki/projects/coze-agent-builder-research",
+        "label": "wiki/projects/coze-agent-builder-research"
+      },
+      {
+        "target": "wiki/concepts/agent-skill-governance",
+        "label": "wiki/concepts/agent-skill-governance"
+      },
+      {
+        "target": "wiki/concepts/prompt-engineering-operating-patterns-for-beginners",
+        "label": "wiki/concepts/prompt-engineering-operating-patterns-for-beginners"
+      }
+    ],
+    "sources": [
+      "[[wiki/synthesis/growth-timeline-agent-workflow-phase]]",
+      "[[wiki/concepts/agent-skill-governance]]",
+      "[[wiki/projects/coze-agent-builder-research]]"
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "从单次提问到 Agent 工作流",
+        "anchor": "从单次提问到-agent-工作流"
+      },
+      {
+        "level": 2,
+        "title": "外部趋势",
+        "anchor": "外部趋势"
+      },
+      {
+        "level": 2,
+        "title": "安的认知变化",
+        "anchor": "安的认知变化"
+      },
+      {
+        "level": 2,
+        "title": "行动建议",
+        "anchor": "行动建议"
+      },
+      {
+        "level": 2,
+        "title": "安的提醒",
+        "anchor": "安的提醒"
+      },
+      {
+        "level": 2,
+        "title": "相关",
+        "anchor": "相关"
+      }
+    ],
+    "wordCount": 569,
+    "readingMinutes": 2,
+    "metrics": {
+      "lineCount": 48,
+      "headingCount": 6,
+      "linkCount": 3,
+      "sourceCount": 3
+    },
+    "quality": {
+      "hasSources": true,
+      "hasToc": true,
+      "summaryLength": 59,
+      "sourceTitle": "从单次提问到 Agent 工作流",
+      "sourceSummary": "安从单次提问转向 Agent 工作流：把任务拆成角色、输入、边界、输出和验收，让 AI 协作从临时聊天变成可复刻流程。",
+      "needsSourceReview": false,
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "explicitlyCurated": true
+    },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "agent workflow",
+      "cognition"
+    ],
+    "whyItMattered": "安开始从单次提问转向 Agent 工作流：不再只问模型答案，而是让任务有角色、边界、步骤、产出和验收。",
+    "operationStory": [
+      "把任务从一句请求拆成角色、输入、边界、输出和验收。",
+      "开始使用技能和规则约束 Agent，而不是每次都重新解释上下文。",
+      "意识到多 Agent 并行只有在任务边界清楚时才有意义。"
+    ],
+    "replicationSteps": [
+      "选一个真实任务，例如整理一页项目说明。",
+      "写清角色：谁负责内容，谁负责安全，谁负责前端验收。",
+      "写清输入：只能使用哪些公开材料。",
+      "写清输出：最后必须交付什么文件或页面。",
+      "写清验收：怎样判断这次工作不是空话。"
+    ],
+    "actionText": "先读 Coze 风格 Agent 搭建器研究，再照着画一个只读的最小工作流。",
+    "displayTier": "showcase",
+    "qualityScore": 100,
+    "hiddenReasons": [],
+    "source": "an-llm-wiki",
+    "publishedAt": "2026-05-13",
+    "importance": "medium",
+    "archivedToLibrary": true
+  },
+  {
+    "id": "c_775c7158d941f221",
+    "title": "三月之后的 AI 认知觉醒",
+    "sourceTitle": "三月之后的 AI 认知觉醒",
+    "slug": "wiki-synthesis-feed-ai-march-awakening",
+    "summary": "2026 年 3 月之后，安开始系统接触 AI，并逐渐意识到真正要建设的不是工具清单，而是一套能保存上下文、复盘行动、让别人复刻的个人书房。",
+    "sourceSummary": "2026 年 3 月之后，安开始系统接触 AI，并逐渐意识到真正要建设的不是工具清单，而是一套能保存上下文、复盘行动、让别人复刻的个人书房。",
+    "tags": [
+      "feed",
+      "cognition",
+      "ai",
+      "timeline",
+      "beginner-friendly",
+      "curated"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": "2026-03-15",
+    "sourcePath": "wiki/synthesis/feed-ai-march-awakening.md",
+    "module": "feed",
+    "category": "event",
+    "type": "feed",
+    "phase": null,
+    "cover": null,
+    "contentType": "article",
+    "href": "/content/wiki-synthesis-feed-ai-march-awakening",
+    "contentLines": [
+      "# 三月之后的 AI 认知觉醒",
+      "",
+      "这条风信不是技术新闻，而是安自己的认知转折。",
+      "",
+      "2026 年 3 月之后，AI 不再只是一个可以问问题的工具。它开始变成一种新的学习环境：你问什么、怎样保存资料、如何判断答案、能不能复盘过程，都会影响你最后得到的是知识，还是一堆散掉的聊天。",
+      "",
+      "## 外部趋势",
+      "",
+      "AI 工具越来越像一组工作台：有写代码的，有做前端的，有整理资料的，有做 Agent 的，有连接后端的。工具越多，表面上越自由，实际上越需要秩序。",
+      "",
+      "小白最容易误会的一点是：以为多试几个工具，就等于进步。真正的进步发生在你能回答三个问题的时候：",
+      "",
+      "1. 这个工具帮我解决什么问题；",
+      "2. 它在哪一步容易误导我；",
+      "3. 我怎样把这次使用变成下次能复用的方法。",
+      "",
+      "## 安的认知变化",
+      "",
+      "安开始意识到，AI 时代的学习不是“我知道更多”，而是“我能把过程保存下来”。如果一次操作只留在聊天窗口里，它很快会变成无法复盘的烟。",
+      "",
+      "所以资料库的方向开始出现：把项目、工具、提示词、失败和判断整理成页面。页面不是为了显得正式，而是为了让未来的自己和外部读者都能重新进入现场。",
+      "",
+      "## 行动建议",
+      "",
+      "如果你也是从零开始接触 AI，可以照着做一个很小的练习：",
+      "",
+      "1. 写下你最常问 AI 的 5 类问题。",
+      "2. 给每类问题配一个真实场景。",
+      "3. 标出哪些回答你无法判断真假。",
+      "4. 选一类问题，写一页“我怎样提问、怎样判断、怎样复盘”的记录。",
+      "5. 过一周再看这页，删掉空话，留下能复用的步骤。",
+      "",
+      "## 安的提醒",
+      "",
+      "- 不要急着把自己包装成专家。先把一次真实学习写清楚。",
+      "- 不要把 AI 当成永远正确的老师。它更像一面镜子，会放大你的问题，也会暴露你的盲区。",
+      "- 不要让工具数量遮住主线。你的主线应该是问题、行动、验收和复盘。",
+      "",
+      "## 相关",
+      "",
+      "- [[wiki/synthesis/growth-timeline-scattered-exploration-to-compiled-archive]]",
+      "- [[wiki/projects/personal-archive-platform]]",
+      "- [[wiki/concepts/prompt-engineering-operating-patterns-for-beginners]]"
+    ],
+    "links": [
+      {
+        "target": "wiki/synthesis/growth-timeline-scattered-exploration-to-compiled-archive",
+        "label": "wiki/synthesis/growth-timeline-scattered-exploration-to-compiled-archive"
+      },
+      {
+        "target": "wiki/projects/personal-archive-platform",
+        "label": "wiki/projects/personal-archive-platform"
+      },
+      {
+        "target": "wiki/concepts/prompt-engineering-operating-patterns-for-beginners",
+        "label": "wiki/concepts/prompt-engineering-operating-patterns-for-beginners"
+      }
+    ],
+    "sources": [
+      "[[wiki/synthesis/growth-timeline-scattered-exploration-to-compiled-archive]]",
+      "[[wiki/synthesis/an-public-study-room-portrait]]",
+      "[[wiki/projects/personal-archive-platform]]"
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "三月之后的 AI 认知觉醒",
+        "anchor": "三月之后的-ai-认知觉醒"
+      },
+      {
+        "level": 2,
+        "title": "外部趋势",
+        "anchor": "外部趋势"
+      },
+      {
+        "level": 2,
+        "title": "安的认知变化",
+        "anchor": "安的认知变化"
+      },
+      {
+        "level": 2,
+        "title": "行动建议",
+        "anchor": "行动建议"
+      },
+      {
+        "level": 2,
+        "title": "安的提醒",
+        "anchor": "安的提醒"
+      },
+      {
+        "level": 2,
+        "title": "相关",
+        "anchor": "相关"
+      }
+    ],
+    "wordCount": 599,
+    "readingMinutes": 2,
+    "metrics": {
+      "lineCount": 43,
+      "headingCount": 6,
+      "linkCount": 3,
+      "sourceCount": 3
+    },
+    "quality": {
+      "hasSources": true,
+      "hasToc": true,
+      "summaryLength": 70,
+      "sourceTitle": "三月之后的 AI 认知觉醒",
+      "sourceSummary": "2026 年 3 月之后，安开始系统接触 AI，并逐渐意识到真正要建设的不是工具清单，而是一套能保存上下文、复盘行动、让别人复刻的个人书房。",
+      "needsSourceReview": false,
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "explicitlyCurated": true
+    },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "cognition",
+      "timeline"
+    ],
+    "whyItMattered": "2026 年 3 月之后，安开始系统接触 AI。真正的变化不是用了某个工具，而是意识到学习方式会被工具链重塑：问题、资料、行动和复盘必须连成一条路。",
+    "operationStory": [
+      "从零散试用 AI 工具开始，先感受到效率提升，也感受到信息变多后的混乱。",
+      "逐渐发现真正难的不是问模型问题，而是保存上下文、判断答案、复盘过程。",
+      "开始把一次次临时操作整理成页面、路径和项目，而不是让经验散在聊天里。"
+    ],
+    "replicationSteps": [
+      "记录你第一次系统使用 AI 的时间和场景。",
+      "写下当时最强烈的三个问题：不会什么，想做什么，害怕什么。",
+      "把使用过的工具按任务分类，而不是按名字收藏。",
+      "挑一个真实任务，写成一页项目复盘。",
+      "把复盘改写成别人也能照着走的最小步骤。"
+    ],
+    "actionText": "从年谱进入三月节点，再看个人资料库平台，理解为什么安要把零散探索编译成书房。",
+    "displayTier": "showcase",
+    "qualityScore": 100,
+    "hiddenReasons": [],
+    "source": "an-llm-wiki",
+    "publishedAt": "2026-05-13",
+    "importance": "medium",
+    "archivedToLibrary": true
+  },
+  {
+    "id": "c_afbe840b690c4260",
+    "title": "Kimi 前端成为展示底线",
+    "sourceTitle": "Kimi 前端成为展示底线",
+    "slug": "wiki-synthesis-feed-kimi-template-benchmark",
+    "summary": "Kimi 前端被定位为安的书房展示底线：可以学它的模块密度和行动入口，但最终内容必须来自真实项目、中文复刻路径和公开安全来源。",
+    "sourceSummary": "Kimi 前端被定位为安的书房展示底线：可以学它的模块密度和行动入口，但最终内容必须来自真实项目、中文复刻路径和公开安全来源。",
+    "tags": [
+      "feed",
+      "frontend",
+      "kimi",
+      "benchmark",
+      "curated",
+      "beginner-friendly"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": "2026-05-13",
+    "sourcePath": "wiki/synthesis/feed-kimi-template-benchmark.md",
+    "module": "feed",
+    "category": "event",
+    "type": "feed",
+    "phase": null,
+    "cover": null,
+    "contentType": "article",
+    "href": "/content/wiki-synthesis-feed-kimi-template-benchmark",
+    "contentLines": [
+      "# Kimi 前端成为展示底线",
+      "",
+      "这条风信记录一次判断变化。",
+      "",
+      "安一开始看 Kimi 前端，会觉得它“还不错”：模块多、列表饱满、有入口、有行动建议。这个判断是对的。它至少说明一个展示型资料库不应该空空荡荡，也不应该只靠一堆内部文档撑页面。",
+      "",
+      "但后来判断变了：Kimi 前端只能做底线，不能做终点。",
+      "",
+      "## 外部变化",
+      "",
+      "前端已经不是单纯的页面装饰。它正在变成个人资料库、学习路线、项目展柜、AI 助手和未来 App 的共同入口。",
+      "",
+      "GitHub Skills 的课程标准提醒：好的学习内容要让人知道适合谁、会学到什么、会做出什么，并且用少量步骤完成真实任务。Google 的有用内容标准也强调第一手经验、明确读者和读完能帮助达成目标。",
+      "",
+      "这意味着：安的书房不能只做一个“看起来完整”的网站。它要让读者真的能学。",
+      "",
+      "## 安的判断变化",
+      "",
+      "之前的判断：",
+      "",
+      "> 前端先漂亮起来，后面再慢慢补内容。",
+      "",
+      "现在的判断：",
+      "",
+      "> 前端可以先立住，但每个模块必须尽快被真实内容填实。否则越漂亮越显空。",
+      "",
+      "Kimi 前端值得学的是结构，不是内容。它的模块密度、卡片布局、行动按钮，可以作为最低展示标准。安的书房要继续往上走：",
+      "",
+      "- 全部中文；",
+      "- 面向中国读者；",
+      "- 小白能看懂；",
+      "- 项目能复刻；",
+      "- 风信有判断变化；",
+      "- 藏馆有真实用途；",
+      "- 谱系能完成小作品；",
+      "- 小安有边界。",
+      "",
+      "## 建议行动",
+      "",
+      "下一步不继续讨论“前端像不像”，而是按模块技能补内容：",
+      "",
+      "1. 工坊先补 3 个真实项目学习包；",
+      "2. 风信补 3 条“外部变化、安的判断、读者行动”；",
+      "3. 藏馆补 10 张能解决具体问题的资料卡；",
+      "4. 谱系补 2 条从零到小作品的路线；",
+      "5. 小安只基于公开资料回答，不讲私有细节。",
+      "",
+      "## 安的提醒",
+      "",
+      "- 学结构，不学假内容。",
+      "- 内容少可以接受，内容假不能接受。",
+      "- 小白不是不聪明，小白只是没有你的上下文。",
+      "- 每条内容都要让读者少走一步弯路。",
+      "",
+      "## Related",
+      "",
+      "- [[wiki/projects/personal-archive-frontend]]",
+      "- [[wiki/concepts/public-work-card-standard]]",
+      "- [[wiki/synthesis/archive-feed-public-data-update-2026-05-13]]",
+      "- [[wiki/sources/tutorial-and-source-research-best-practices]]"
+    ],
+    "links": [
+      {
+        "target": "wiki/projects/personal-archive-frontend",
+        "label": "wiki/projects/personal-archive-frontend"
+      },
+      {
+        "target": "wiki/concepts/public-work-card-standard",
+        "label": "wiki/concepts/public-work-card-standard"
+      },
+      {
+        "target": "wiki/synthesis/archive-feed-public-data-update-2026-05-13",
+        "label": "wiki/synthesis/archive-feed-public-data-update-2026-05-13"
+      },
+      {
+        "target": "wiki/sources/tutorial-and-source-research-best-practices",
+        "label": "wiki/sources/tutorial-and-source-research-best-practices"
+      }
+    ],
+    "sources": [
+      "[[wiki/projects/personal-archive-frontend]]",
+      "[[wiki/concepts/public-work-card-standard]]",
+      "[[wiki/synthesis/archive-feed-public-data-update-2026-05-13]]",
+      "[[wiki/sources/tutorial-and-source-research-best-practices]]"
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "Kimi 前端成为展示底线",
+        "anchor": "kimi-前端成为展示底线"
+      },
+      {
+        "level": 2,
+        "title": "外部变化",
+        "anchor": "外部变化"
+      },
+      {
+        "level": 2,
+        "title": "安的判断变化",
+        "anchor": "安的判断变化"
+      },
+      {
+        "level": 2,
+        "title": "建议行动",
+        "anchor": "建议行动"
+      },
+      {
+        "level": 2,
+        "title": "安的提醒",
+        "anchor": "安的提醒"
+      },
+      {
+        "level": 2,
+        "title": "Related",
+        "anchor": "related"
+      }
+    ],
+    "wordCount": 621,
+    "readingMinutes": 2,
+    "metrics": {
+      "lineCount": 60,
+      "headingCount": 6,
+      "linkCount": 4,
+      "sourceCount": 4
+    },
+    "quality": {
+      "hasSources": true,
+      "hasToc": true,
+      "summaryLength": 63,
+      "sourceTitle": "Kimi 前端成为展示底线",
+      "sourceSummary": "Kimi 前端被定位为安的书房展示底线：可以学它的模块密度和行动入口，但最终内容必须来自真实项目、中文复刻路径和公开安全来源。",
+      "needsSourceReview": false,
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "explicitlyCurated": true
+    },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "public wiki",
+      "frontend benchmark",
+      "content standard",
+      "review"
+    ],
+    "whyItMattered": "Kimi 的前端提醒安：一个展示型资料库不能只有规则和目录。它必须有饱满模块、清楚入口、建议行动和真实内容。",
+    "operationStory": [
+      "先承认 Kimi 前端在模块数量、列表密度和行动建议上有参考价值。",
+      "再把它降级为展示底线，不把示例内容当作安的真实内容。",
+      "然后用安的公开项目、时间线和学习路径替换通用数据。",
+      "最后用模块技能和来源审查，把每条内容写到小白能复刻。"
+    ],
+    "lessons": [
+      "前端的最低线是清楚、饱满、有行动。",
+      "安的标准还要更高：真实、中文、可复刻、有边界。",
+      "展示柜不是仓库，不能把所有东西都塞进去。"
+    ],
+    "actionText": "打开工坊，优先检查三张核心项目卡：是否有实现步骤、复刻路径、失败点和安的提醒。",
+    "displayTier": "showcase",
+    "qualityScore": 100,
+    "hiddenReasons": [],
+    "source": "an-llm-wiki",
+    "publishedAt": "2026-05-13",
+    "importance": "medium",
+    "archivedToLibrary": true
+  },
+  {
+    "id": "c_1e897ac497c91144",
+    "title": "小安人格与边界接入",
+    "sourceTitle": "小安人格与边界接入",
+    "slug": "wiki-synthesis-feed-xiaoan-persona-and-boundary",
+    "summary": "小安作为书房里的数字生命体开始接入：前端只显示对话入口，模型和访问材料只走后端，回答风格强调冷静判断、中文表达和认知盲区校正。",
+    "sourceSummary": "小安作为书房里的数字生命体开始接入：前端只显示对话入口，模型和访问材料只走后端，回答风格强调冷静判断、中文表达和认知盲区校正。",
+    "tags": [
+      "feed",
+      "xiaoan",
+      "backend",
+      "persona",
+      "cognition",
+      "curated"
+    ],
+    "status": [
+      "verified"
+    ],
+    "createdAt": "2026-05-13",
+    "updatedAt": "2026-05-13",
+    "eventDate": "2026-05-13",
+    "sourcePath": "wiki/synthesis/feed-xiaoan-persona-and-boundary.md",
+    "module": "feed",
+    "category": "event",
+    "type": "feed",
+    "phase": null,
+    "cover": null,
+    "contentType": "article",
+    "href": "/content/wiki-synthesis-feed-xiaoan-persona-and-boundary",
+    "contentLines": [
+      "# 小安人格与边界接入",
+      "",
+      "小安不是普通客服，也不是网页上的装饰按钮。它是安的个人书房里的数字生命体，负责帮读者进入这间书房，理解资料，发现路径，也提醒人看见自己的认知盲区。",
+      "",
+      "这件事的难点不在“能不能回答”，而在“怎样回答才值得信任”。",
+      "",
+      "## 外部趋势",
+      "",
+      "越来越多网站开始接入 AI 对话框。大多数对话框的问题是：它们能说话，但不知道自己是谁；能回答，但不知道边界在哪里；能使用模型，但不一定保护访问材料。",
+      "",
+      "安的书房不能这样做。小安要有三个边界：",
+      "",
+      "1. 资料边界：只使用公开资料和明确给定的上下文；",
+      "2. 安全边界：访问材料只在服务端，不进入浏览器；",
+      "3. 人格边界：冷静、客观、服务性，不用花哨话术掩盖不确定性。",
+      "",
+      "## 安的认知变化",
+      "",
+      "小安要帮助读者，不只是顺着读者说。人类天然会有思维盲区、认知局限、情绪惯性和信息不完整。一个好的数字生命体要做的是服务性地指出这些限制，让问题回到结构和证据上。",
+      "",
+      "这不是居高临下地评判人，而是帮助人看清：",
+      "",
+      "- 这个问题的前提是什么；",
+      "- 哪些事实还不知道；",
+      "- 哪个步骤最关键；",
+      "- 哪些行动能立刻验证判断。",
+      "",
+      "## 行动建议",
+      "",
+      "读者第一次使用小安，可以问三类问题：",
+      "",
+      "1. “我第一次来，应该从哪里开始？”",
+      "2. “这个项目怎样复刻一个最小版本？”",
+      "3. “这里哪些内容不能公开，为什么？”",
+      "",
+      "小安应该回答得短、准、能行动。它不需要把每句话都写得华丽，但每句话都应该帮读者更清楚。",
+      "",
+      "## 安的提醒",
+      "",
+      "- 不要把访问材料写进前端，不要把非公开资料直接交给模型。",
+      "- 不要让小安编造安的经历。没有来源就说需要复核。",
+      "- 不要把人格做成表演。小安的人格应该服务判断、边界和行动。",
+      "",
+      "## 相关",
+      "",
+      "- [[wiki/projects/personal-archive-frontend]]",
+      "- [[wiki/concepts/public-api-contract]]",
+      "- [[wiki/concepts/credential-and-token-publication-safety]]"
+    ],
+    "links": [
+      {
+        "target": "wiki/projects/personal-archive-frontend",
+        "label": "wiki/projects/personal-archive-frontend"
+      },
+      {
+        "target": "wiki/concepts/public-api-contract",
+        "label": "wiki/concepts/public-api-contract"
+      },
+      {
+        "target": "wiki/concepts/credential-and-token-publication-safety",
+        "label": "wiki/concepts/credential-and-token-publication-safety"
+      }
+    ],
+    "sources": [
+      "[[wiki/projects/personal-archive-frontend]]",
+      "[[wiki/concepts/public-api-contract]]",
+      "[[wiki/concepts/credential-and-token-publication-safety]]"
+    ],
+    "toc": [
+      {
+        "level": 1,
+        "title": "小安人格与边界接入",
+        "anchor": "小安人格与边界接入"
+      },
+      {
+        "level": 2,
+        "title": "外部趋势",
+        "anchor": "外部趋势"
+      },
+      {
+        "level": 2,
+        "title": "安的认知变化",
+        "anchor": "安的认知变化"
+      },
+      {
+        "level": 2,
+        "title": "行动建议",
+        "anchor": "行动建议"
+      },
+      {
+        "level": 2,
+        "title": "安的提醒",
+        "anchor": "安的提醒"
+      },
+      {
+        "level": 2,
+        "title": "相关",
+        "anchor": "相关"
+      }
+    ],
+    "wordCount": 578,
+    "readingMinutes": 2,
+    "metrics": {
+      "lineCount": 48,
+      "headingCount": 6,
+      "linkCount": 3,
+      "sourceCount": 3
+    },
+    "quality": {
+      "hasSources": true,
+      "hasToc": true,
+      "summaryLength": 63,
+      "sourceTitle": "小安人格与边界接入",
+      "sourceSummary": "小安作为书房里的数字生命体开始接入：前端只显示对话入口，模型和访问材料只走后端，回答风格强调冷静判断、中文表达和认知盲区校正。",
+      "needsSourceReview": false,
+      "displayTier": "showcase",
+      "qualityScore": 100,
+      "hiddenReasons": [],
+      "explicitlyCurated": true
+    },
+    "publicSafety": "public-safe",
+    "sourceLabels": [
+      "公开资料层",
+      "小安",
+      "访问边界"
+    ],
+    "whyItMattered": "小安不只是聊天按钮，而是安的个人书房里的数字生命体。它需要人格、模型接口、访问边界和公开资料范围，不能把访问材料或私有上下文暴露给浏览器。",
+    "operationStory": [
+      "前端只保留小安对话框，不保存访问材料。",
+      "模型访问材料只留在服务端环境里，浏览器只发问题和公开内容 ID。",
+      "小安人格改成冷静、克制、客观理性，同时保留文学、心理、社会和哲学深度。",
+      "加入认知盲区提醒：小安要服务性地帮助用户看见前提、局限和关键杠杆。"
+    ],
+    "replicationSteps": [
+      "先做一个前端对话框，离线时用本地导览回答。",
+      "再做一个服务端接口，访问材料只放服务器环境变量。",
+      "写系统提示词，规定人格、语言、边界和禁止事项。",
+      "把公开资料作为上下文，不把私有资料直接送给模型。",
+      "上线前跑隐私扫描，确认前端包里没有访问材料。"
+    ],
+    "actionText": "打开首页右下角的小安对话，先问它如何开始阅读书房；如果在线回答暂不可用，就先按本地导览继续阅读。",
+    "displayTier": "showcase",
+    "qualityScore": 100,
+    "hiddenReasons": [],
+    "source": "an-llm-wiki",
+    "publishedAt": "2026-05-13",
+    "importance": "medium",
+    "archivedToLibrary": true
+  }
+]

@@ -60,11 +60,33 @@ Run from `site/`:
 ```powershell
 npm ci
 npm run dev
+npm run dev:api
 npm run lint
 npm run build
+npm run desktop:dev
+npm run desktop:build
+npm run desktop:deploy
 ```
 
 `npm run dev` and `npm run build` copy `../site-data` into `site/public/site-data`.
+
+`npm run desktop:dev` starts the Tauri desktop shell against the Vite dev
+server on `http://127.0.0.1:5173`. If the same site is already running on that
+port, Tauri reuses it instead of starting a second Vite process. `npm run
+desktop:build` creates a Windows installer under
+`site/src-tauri/target/release/bundle/nsis/`.
+`npm run desktop:deploy` uploads the current `dist/` release to the remote
+`study-room` static frontend path after verifying desktop release metadata is
+present.
+
+`npm run dev:api` starts the local Xiaoan chat proxy at
+`POST /api/xiaoan/chat`. Configure it with `XIAOAN_RELAY_BASE_URL`,
+`XIAOAN_RELAY_API_KEY`, `XIAOAN_MODEL`, `XIAOAN_SERVER_PORT`, and
+`XIAOAN_ALLOWED_ORIGIN`. Tauri desktop packaging also needs
+`tauri://localhost`, `http://tauri.localhost`, or `https://tauri.localhost`
+in the allowed origin set when the public Xiaoan service is deployed behind a
+separate domain. See `../docs/backend/xiaoan-chat-proxy.md` for the Chinese
+setup and deployment notes.
 
 ## Publication Boundary
 

@@ -8,12 +8,12 @@ import {
   X,
   Users,
   ListChecks,
-  Sparkles,
-  Compass,
 } from 'lucide-react';
 import { paths } from '@/data/mockPaths';
+import { resolveAssetUrl } from '@/lib/runtime';
 import type { Path } from '@/types';
 import { EmptyState as LifecycleEmptyState, ErrorState } from '@/components/ui/lifecycle';
+import { audienceConfig, getAudienceTierFromPathDifficulty } from '@/lib/audience';
 
 const easeOut = [0, 0, 0.2, 1] as [number, number, number, number];
 
@@ -22,9 +22,21 @@ const easeOut = [0, 0, 0.2, 1] as [number, number, number, number];
 /* ------------------------------------------------------------------ */
 
 const difficultyMap: Record<string, { label: string; color: string; sort: number }> = {
-  beginner: { label: '入门', color: 'bg-[#F2F2F0] text-graphite', sort: 0 },
-  intermediate: { label: '进阶', color: 'bg-[#F5EDE8] text-graphite', sort: 1 },
-  advanced: { label: '高级', color: 'bg-[#E8E0E0] text-graphite', sort: 2 },
+  beginner: {
+    label: audienceConfig.beginner.label,
+    color: 'bg-[#6B9E7C]/10 text-[#6B9E7C] border border-[#6B9E7C]/20',
+    sort: 0,
+  },
+  intermediate: {
+    label: audienceConfig.geek.label,
+    color: 'bg-[#C8956C]/10 text-[#C8956C] border border-[#C8956C]/20',
+    sort: 1,
+  },
+  advanced: {
+    label: audienceConfig.master.label,
+    color: 'bg-[#C47D6E]/10 text-[#C47D6E] border border-[#C47D6E]/20',
+    sort: 2,
+  },
 };
 
 const statusMap: Record<string, { label: string; color: string; dot: string }> = {
@@ -37,82 +49,6 @@ function getProgress(path: Path) {
   const total = path.stages.length;
   const completed = path.stages.filter((s) => s.status === 'completed').length;
   return { completed, total, percent: total > 0 ? (completed / total) * 100 : 0 };
-}
-
-/* ------------------------------------------------------------------ */
-/*  Page Guide Card                                                    */
-/* ------------------------------------------------------------------ */
-
-function PageGuide() {
-  return (
-    <motion.div
-      className="bg-[#F5EDE8] rounded-xl p-4 md:p-5 mb-6"
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, ease: easeOut, delay: 0.2 }}
-    >
-      <div className="flex items-start gap-3">
-        <div className="w-8 h-8 rounded-full bg-white/70 flex items-center justify-center shrink-0 mt-0.5">
-          <Compass size={16} strokeWidth={1.5} className="text-[#C8956C]" />
-        </div>
-        <div>
-          <p className="text-[14px] font-sans font-medium text-graphite mb-1">
-            谱系是可复刻的学习与构建路径
-          </p>
-          <p className="text-[13px] font-sans text-silver leading-relaxed">
-            每条路径都标注了难度、预计时间、适合人群和前置条件。选择一条开始，按步骤逐步推进。对小白友好，从入门路径开始即可。
-          </p>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  Start Here Banner                                                  */
-/* ------------------------------------------------------------------ */
-
-function StartHereBanner({
-  beginnerPaths,
-}: {
-  beginnerPaths: Path[];
-}) {
-  if (beginnerPaths.length === 0) return null;
-
-  return (
-    <motion.div
-      className="bg-gradient-to-r from-[#FDF6F0] to-[#F5EDE8] rounded-xl p-5 md:p-6 mb-8 border border-[#F0E5DC]"
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: easeOut }}
-    >
-      <div className="flex items-start gap-3 md:gap-4">
-            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm">
-              <Sparkles size={18} strokeWidth={1.5} className="text-[#C8956C]" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <h3 className="text-[15px] font-sans font-medium text-graphite mb-1.5">
-                初次来访？从这里开始
-              </h3>
-              <p className="text-[13px] font-sans text-silver leading-relaxed mb-3">
-                以下是为初学者准备的路径，无需前置知识，跟着步骤一步步来即可。
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {beginnerPaths.slice(0, 3).map((p) => (
-                  <Link
-                    key={p.id}
-                    to={`/paths/${p.id}`}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white rounded-lg text-[12px] font-sans text-graphite hover:shadow-sm transition-shadow duration-150 border border-[#E5E5E3]"
-                  >
-                    {p.title}
-                    <ArrowRight size={11} strokeWidth={1.5} className="text-silver" />
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-    </motion.div>
-  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -152,13 +88,13 @@ function FilterBar({
 
   const diffOptions: { key: DifficultyFilter; label: string }[] = [
     { key: 'all', label: '全部' },
-    { key: 'beginner', label: '入门' },
-    { key: 'intermediate', label: '进阶' },
-    { key: 'advanced', label: '高级' },
+    { key: 'beginner', label: audienceConfig.beginner.label },
+    { key: 'intermediate', label: audienceConfig.geek.label },
+    { key: 'advanced', label: audienceConfig.master.label },
   ];
 
   return (
-    <div className="sticky top-16 z-30 bg-white/80 backdrop-blur-md border-b border-[#E5E5E3]">
+    <div className="sticky top-[var(--app-nav-height)] z-30 bg-white/80 backdrop-blur-md border-b border-[#E5E5E3]">
       <div className="max-w-[1200px] mx-auto px-5 md:px-12 py-3.5 flex flex-col md:flex-row md:items-center gap-3 justify-between">
         {/* Filters */}
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
@@ -187,9 +123,9 @@ function FilterBar({
             ))}
           </div>
 
-          {/* Difficulty filters */}
+          {/* Path level filters */}
           <div className="flex items-center gap-1 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide">
-            <span className="text-[12px] text-light-silver mr-1 shrink-0">难度</span>
+            <span className="text-[12px] text-light-silver mr-1 shrink-0">路径层级</span>
             {diffOptions.map((opt) => (
               <button
                 key={opt.key}
@@ -241,6 +177,8 @@ function PathGridCard({ path, index }: { path: Path; index: number }) {
   const diff = difficultyMap[path.difficulty];
   const status = statusMap[path.status];
   const progress = getProgress(path);
+  const audienceTier = getAudienceTierFromPathDifficulty(path.difficulty);
+  const audienceHint = audienceConfig[audienceTier].hint;
 
   const whoFor = path.whoFor;
   const prerequisites = path.prerequisites ?? [];
@@ -258,14 +196,17 @@ function PathGridCard({ path, index }: { path: Path; index: number }) {
         {/* Row 1: Cover image + Status badge + Difficulty badge */}
         <div className="relative aspect-[16/10] overflow-hidden">
           <img
-            src={path.cover}
+            src={resolveAssetUrl(path.cover)}
             alt={path.title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
           <div className="absolute top-3 left-3 flex gap-1.5">
-            <span className={`text-[11px] px-2 py-0.5 rounded-full ${diff?.color || ''}`}>
+            <span
+              className={`text-[11px] px-2 py-0.5 rounded-full ${diff?.color || ''}`}
+              title={audienceHint}
+            >
               {diff?.label}
             </span>
           </div>
@@ -296,12 +237,12 @@ function PathGridCard({ path, index }: { path: Path; index: number }) {
             {path.description}
           </p>
 
-          {/* Row 4: 适合人群 */}
+          {/* Row 4: audience */}
           {whoFor && (
             <div className="flex items-center gap-1.5 mb-2.5">
               <Users size={12} strokeWidth={1.5} className="text-[#C8956C]" />
               <span className="text-[12px] text-graphite">
-                适合：{whoFor}
+                {whoFor}
               </span>
             </div>
           )}
@@ -420,13 +361,7 @@ export default function PathsPage() {
     return counts;
   }, []);
 
-  // Check if user has started any path
-  const hasStarted = paths.some((p) => p.status === 'in_progress' || p.status === 'completed');
-
-  // Beginner paths for "Start Here" banner
-  const beginnerPaths = paths.filter((p) => p.difficulty === 'beginner');
-
-  // TODO: 接入后端后使用 <PageSkeleton type="cards" /> 替代
+  // 数据源固定后，这里直接渲染内容；后端接入时可切换为统一生命周期骨架
 
   // Error boundary
   if (!paths || !Array.isArray(paths)) {
@@ -463,14 +398,8 @@ export default function PathsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: easeOut, delay: 0.15 }}
           >
-            可复刻的学习路径与成长路线。每条谱系都是一段从起点到终点的完整旅程。
+            一条路径只负责一件事：从哪里开始，怎样做出一个小成果。
           </motion.p>
-
-          {/* Page Guide */}
-          <PageGuide />
-
-          {/* Start Here Banner */}
-          {!hasStarted && <StartHereBanner beginnerPaths={beginnerPaths} />}
         </div>
       </section>
 
@@ -519,7 +448,7 @@ export default function PathsPage() {
                 key="empty"
                 icon={Search}
                 title="未找到匹配的路径"
-                description="尝试调整筛选条件、切换难度等级，或清除搜索关键词"
+                description="换一个筛选，或清空搜索词。"
                 action={{
                   label: '清除全部筛选',
                   onClick: () => {
@@ -534,24 +463,6 @@ export default function PathsPage() {
         </div>
       </section>
 
-      {/* ====== Philosophy Section ====== */}
-      <motion.section
-        className="bg-[#FAF9F7] py-12"
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.4, ease: easeOut }}
-      >
-        <div className="max-w-[720px] mx-auto px-5 md:px-12 text-center">
-          <h3 className="font-serif text-[20px] text-ink mb-4">关于谱系</h3>
-          <p className="text-[14px] text-silver leading-[1.8] mb-4">
-            每条谱系都是对某个领域学习路线的系统梳理。它们不是标准答案，而是我在实践中总结出的可行路径。你可以跟随一条谱系从头走到尾，也可以从中截取某个阶段深入学习。谱系会持续更新，反映最新的学习心得和资源发现。
-          </p>
-          <p className="text-[13px] text-light-silver leading-[1.7]">
-            初学者建议从「入门」难度的路径开始，按顺序完成每个阶段。每完成一个阶段，你都会获得扎实的技能提升。
-          </p>
-        </div>
-      </motion.section>
     </div>
   );
 }

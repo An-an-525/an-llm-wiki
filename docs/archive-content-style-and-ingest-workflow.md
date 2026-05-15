@@ -25,6 +25,13 @@ The goal is not to sound grand. The goal is to make a beginner understand why
 the work mattered, how it was done, what it reveals, and how to copy the useful
 part without copying the chaos.
 
+No knowledge item may be written from private intuition alone. Use
+`docs/knowledge-content-source-and-review-standard.md` as the binding source and
+review gate: every serious concept, tutorial, trend, tool card, project card,
+prompt pattern, Xiaoan rule, or replication path needs explicit evidence,
+external or public references where appropriate, privacy review, and a challenge
+step before it can become frontend core content.
+
 ## 2. Reader Model
 
 Write for four readers at once:
@@ -112,12 +119,21 @@ Do not add raw source material directly to `site-data/`, and do not hand-edit
 Use these skills or skill-like rules in this order:
 
 1. `llm-wiki` - keep the raw/private/public compilation model intact.
-2. `archive-content-curator` - rewrite one candidate into a high-quality public record.
-3. `wiki-lint` - check frontmatter, links, provenance, and index health.
-4. frontend data contract checks - confirm the record matches `site/src/types/index.ts`.
-5. privacy and publication gates - confirm no secret values, account material, local absolute paths, or raw chats leak.
-6. frontend verification - confirm the page, card, filter, search, and detail view render correctly.
-7. GitHub publication - commit only after the public inventory and privacy report remain clean.
+2. `data-extractor` or `doc-parser` - extract concrete facts from source material without copying raw private text.
+3. `deep-research` and, when concepts touch psychology, sociology, philosophy, cognition, education, or research claims, `academic-search` - build source context and challenge weak claims.
+4. `archive-content-curator` - rewrite one candidate into a public-safe record.
+5. `content-writer` - shape it into a readable Chinese tutorial, article, project story, route, feed note, or card.
+6. `brand-guidelines` - align it with “安的个人书房”: literary, calm, precise, reflective, not performative.
+7. `ux-writing-skill` - make frontend-visible copy purposeful, concise, conversational, and clear.
+8. `seo-optimizer` - check title, summary, page structure, internal links, and public discoverability.
+9. The matching module skill - 首页、藏馆、谱系、风信、工坊、手记、年谱、小安 each has its own gate.
+10. `wiki-lint` - check frontmatter, links, provenance, and index health.
+11. frontend data contract checks - confirm the record matches `site/src/types/index.ts`.
+12. privacy and publication gates - confirm no secret values, account material, local absolute paths, or raw chats leak.
+13. frontend verification - confirm the page, card, filter, search, and detail view render correctly.
+14. GitHub publication - commit only after the public inventory and privacy report remain clean.
+
+Hard frontend rule: readers only see the website or future App. Never write a public item that says or implies “open the local Obsidian vault”, “look at `wiki/...`”, or “check the local file path”. If a source matters, rewrite it into the page body or link to a public GitHub/official/source website.
 
 ## 7. Structured Record Contract
 
@@ -142,15 +158,41 @@ Existing frontend fields remain mandatory: `id`, `title`, `slug`, `summary`,
 `tags`, `status`, `createdAt`, `updatedAt`, and module-specific fields. The
 current TypeScript contract lives in `site/src/types/index.ts`.
 
+For `藏馆` records, the reader-facing category must be an action-oriented
+Chinese label before any precise technical keyword. The reader is usually asking
+"what can I do with AI here?", not "what framework category is this?" Use these
+primary labels:
+
+| Label | Use For |
+|---|---|
+| 做前端 | 页面、交互、移动端、可安装网页、视觉与浏览器体验 |
+| 做后端 | API、数据生成、服务、部署边界 |
+| 用工具 | 软件、平台、调试器、浏览器验收、开发工作台 |
+| 搭智能体 | Agent、工作流、多步协作、技能治理 |
+| 问小安 | 数字生命体、人格、对话和模型边界 |
+| 写提示词 | 提示词模板、输入槽、输出格式、质量检查 |
+| 整理资料 | Obsidian、公开层、私有层、来源和知识整理 |
+| 走学习路线 | 复刻路线、教程阶段、交付物和验收 |
+| 保护隐私 | 隐私、访问材料、发布前扫描和公开改写 |
+| 看参考资料 | 官方文档、上游项目、框架来源 |
+
+Precise technical tags may remain in source pages for search and provenance, but
+the frontend should translate or hide them when they would confuse a beginner.
+
 ## 8. Project Constraints
 
 - No filler content. If a page has no real value yet, show a designed empty state.
 - No fake "finished" status. Unfinished work should be visibly unfinished.
 - No raw dump promotion. Every display item must be rewritten.
+- No closed-door knowledge claims. Personal experience, official documents,
+  GitHub references, field best practices, and critique notes must be separated
+  so readers can see what is evidence, what is adaptation, and what is An's
+  judgment.
 - No ungrounded depth. Psychological, sociological, and philosophical layers must attach to evidence.
 - No invisible source. Every meaningful claim should have a source label or a clear "archive-derived" status.
 - No single giant page. Use cards, timelines, routes, detail pages, and search.
 - No frontend-only truth. The backend data contract must carry the meaning, not only the UI copy.
+- No backend-only truth. If a reader needs it, it must appear in the frontend detail page, not only in Obsidian, a manifest, or an internal markdown file.
 - No unsafe public material. Omit secret values, account material, raw chats, and local absolute paths.
 
 ## 9. Acceptance Gates
@@ -160,6 +202,8 @@ current TypeScript contract lives in `site/src/types/index.ts`.
 - A beginner can explain the item after reading it.
 - The owner can recover the original decision or lesson.
 - The item contains at least one concrete operation and one replication step.
+- The item identifies source types and has passed a challenge review, or is kept
+  out of the frontend core display until that review exists.
 - The deeper interpretation is tied to evidence.
 - The status is honest.
 
@@ -178,6 +222,7 @@ Run from the vault root:
 ```powershell
 python scripts/wiki_check.py .
 python scripts/privacy_scan.py .
+python scripts/check_public_content_quality.py .
 python scripts/build_site_data.py .
 python scripts/build_public_inventory.py .
 ```
@@ -195,6 +240,7 @@ npm run build
 - Empty modules explain exactly what data is missing.
 - Sample data is never presented as confirmed production content.
 - Every page makes the archive easier to learn from, not just larger.
+- A reader can understand the item without opening local Obsidian, local files, private folders, or generated JSON.
 
 ## 10. Recommended Addition Sequence
 

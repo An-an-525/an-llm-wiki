@@ -1,35 +1,8 @@
 [
   {
-    "id": "c_b335630551682c19",
-    "title": "An LLM Wiki",
-    "summary": "A public, privacy-filtered Obsidian LLM Wiki rebuilt around Karpathy's llm-wiki pattern.",
-    "tags": [
-      "llm-wiki",
-      "obsidian",
-      "public"
-    ],
-    "module": "paths",
-    "type": "article",
-    "href": "/content/readme",
-    "sourcePath": "README.md"
-  },
-  {
-    "id": "c_a48746cae70c44e7",
-    "title": "An LLM Wiki Index",
-    "summary": "Root navigation page for the public-safe Obsidian LLM Wiki.",
-    "tags": [
-      "llm-wiki",
-      "index"
-    ],
-    "module": "paths",
-    "type": "article",
-    "href": "/content/index",
-    "sourcePath": "index.md"
-  },
-  {
     "id": "c_32c45035f9107070",
-    "title": "Agent Skill Governance",
-    "summary": "A public-safe model for preserving agent and skill knowledge without exposing local prompts or private runtime state.",
+    "title": "Agent 技能治理",
+    "summary": "说明如何把 Agent 的技能、规则、来源和验收沉淀为可维护体系，避免依赖临时提示词和聊天记忆。",
     "tags": [
       "agent",
       "skills",
@@ -43,9 +16,189 @@
     "sourcePath": "wiki/concepts/agent-skill-governance.md"
   },
   {
+    "id": "c_4586e405ff41215c",
+    "title": "Agent 工具权限与轨迹安全",
+    "summary": "Agent 工具权限、调用轨迹和日志的公开安全规则：公开讲任务、边界和验收，不公开原始轨迹、账号状态或本地运行细节。",
+    "tags": [
+      "agent",
+      "tools",
+      "security",
+      "publication",
+      "beginner-friendly",
+      "curated"
+    ],
+    "module": "library",
+    "type": "tool",
+    "href": "/content/wiki-concepts-agent-tool-permission-and-trace-safety",
+    "sourcePath": "wiki/concepts/agent-tool-permission-and-trace-safety.md"
+  },
+  {
+    "id": "c_2de44b7c3fbbfaaa",
+    "title": "Agent 工作流入门",
+    "summary": "给小白看的 Agent 工作流入门：把智能体拆成输入、检索、模型、确认和输出五个节点，先跑通一个可解释的小流程。",
+    "tags": [
+      "agent",
+      "workflow",
+      "beginner-friendly",
+      "curated",
+      "featured"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-concepts-agent-workflow-for-beginners",
+    "sourcePath": "wiki/concepts/agent-workflow-for-beginners.md"
+  },
+  {
+    "id": "c_bdacfef5837cc94f",
+    "title": "AI 小白复刻工作流",
+    "summary": "给小白看的 AI 复刻工作流：从看懂目标、拆解步骤、做最小版、验收结果到记录失败，把资料变成行动。",
+    "tags": [
+      "learning",
+      "workflow",
+      "beginner-friendly",
+      "curated",
+      "featured"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-concepts-ai-beginner-replication-workflow",
+    "sourcePath": "wiki/concepts/ai-beginner-replication-workflow.md"
+  },
+  {
+    "id": "c_e19e065834df0e3c",
+    "title": "个人书房后端入门",
+    "summary": "给小白看的个人书房后端入门：先理解列表、详情和搜索三个只读接口，再学会把公开内容稳定送到前端。",
+    "tags": [
+      "backend",
+      "api",
+      "beginner-friendly",
+      "curated",
+      "featured"
+    ],
+    "module": "library",
+    "type": "api",
+    "href": "/content/wiki-concepts-backend-api-for-personal-archive-beginners",
+    "sourcePath": "wiki/concepts/backend-api-for-personal-archive-beginners.md"
+  },
+  {
+    "id": "c_13a47e9decb60900",
+    "title": "新手公开发布决策树",
+    "summary": "一页式新手决策树：判断本地资料能不能进入公开 wiki、需要改写到什么程度、什么时候只能留在私有层。",
+    "tags": [
+      "publication",
+      "privacy",
+      "decision-tree",
+      "beginner-friendly",
+      "curated"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-concepts-beginner-publication-decision-tree",
+    "sourcePath": "wiki/concepts/beginner-publication-decision-tree.md"
+  },
+  {
+    "id": "c_c0ee2b2b6fed41a1",
+    "title": "聊天记录转公开经验规则",
+    "summary": "把 AI 对话、工具讨论和本地操作记录改写成公开经验的规则：保留问题、决策、方法和验收，删除原文和身份细节。",
+    "tags": [
+      "chat",
+      "publication",
+      "rewrite",
+      "learning",
+      "beginner-friendly",
+      "curated"
+    ],
+    "module": "journal",
+    "type": "article",
+    "href": "/content/wiki-concepts-chat-log-to-public-lesson-rules",
+    "sourcePath": "wiki/concepts/chat-log-to-public-lesson-rules.md"
+  },
+  {
+    "id": "c_af016a34e6b34d3e",
+    "title": "内容挑刺与学习资料审查清单",
+    "summary": "安的书房公开内容审查清单：用来源、小白可读性、复刻路径、隐私边界、前端展示和自动化验收挑刺每一份学习资料。",
+    "tags": [
+      "review",
+      "learning",
+      "publication",
+      "quality",
+      "beginner-friendly",
+      "curated"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-concepts-content-critique-and-review-rubric",
+    "sourcePath": "wiki/concepts/content-critique-and-review-rubric.md"
+  },
+  {
+    "id": "c_2f2729e427fc3a6f",
+    "title": "访问材料发布安全",
+    "summary": "给新手看的访问材料发布安全规则：公开页只讲判断方法、处理流程和风险等级，不展示任何可用于登录、调用或绕过限制的内容。",
+    "tags": [
+      "security",
+      "publication",
+      "privacy",
+      "beginner-friendly",
+      "curated"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-concepts-credential-and-token-publication-safety",
+    "sourcePath": "wiki/concepts/credential-and-token-publication-safety.md"
+  },
+  {
+    "id": "c_ff3ef25259f51573",
+    "title": "数据集与微调样本发布安全",
+    "summary": "面向本地模型和微调实验的发布安全规则：公开讲数据设计、评估方法和替代练习，不发布私人样本、未授权文本或可识别记录。",
+    "tags": [
+      "dataset",
+      "model",
+      "publication",
+      "privacy",
+      "beginner-friendly",
+      "curated"
+    ],
+    "module": "library",
+    "type": "model",
+    "href": "/content/wiki-concepts-dataset-and-sft-sample-safety",
+    "sourcePath": "wiki/concepts/dataset-and-sft-sample-safety.md"
+  },
+  {
+    "id": "c_879f0bbdab6bb080",
+    "title": "AI 前端搭建入门",
+    "summary": "给小白看的 AI 前端搭建入口：先理解首页、卡片、详情页和搜索四个部件，再复刻一个能打开、能阅读、能验收的最小页面。",
+    "tags": [
+      "frontend",
+      "ai",
+      "beginner-friendly",
+      "curated",
+      "featured"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-concepts-front-end-ai-building-for-beginners",
+    "sourcePath": "wiki/concepts/front-end-ai-building-for-beginners.md"
+  },
+  {
+    "id": "c_ed0156c58c36a067",
+    "title": "本机路径与设备身份改写",
+    "summary": "把本机位置、设备身份、安装痕迹和项目目录改写成公开安全来源标签的方法，避免读者看到可定位的个人环境。",
+    "tags": [
+      "privacy",
+      "redaction",
+      "publication",
+      "beginner-friendly",
+      "curated"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-concepts-local-path-and-device-identity-redaction",
+    "sourcePath": "wiki/concepts/local-path-and-device-identity-redaction.md"
+  },
+  {
     "id": "c_8008030b505902e0",
-    "title": "Private To Public Promotion Pipeline",
-    "summary": "The workflow for rewriting local-only archive material into public-safe wiki pages.",
+    "title": "私有资料到公开内容的晋升流程",
+    "summary": "说明本地非公开资料如何经过筛选、改写、来源标注和验收，晋升为公开安全的中文资料页。",
     "tags": [
       "publication",
       "workflow",
@@ -58,9 +211,41 @@
     "sourcePath": "wiki/concepts/private-to-public-promotion-pipeline.md"
   },
   {
+    "id": "c_2ba13b04a2a1672a",
+    "title": "面向小白的提示词工程操作模式",
+    "summary": "一套给中文小白也能理解的提示词工程模式：把提示词写成有角色、材料、边界、输出和验收的操作单。",
+    "tags": [
+      "prompt-engineering",
+      "agent",
+      "workflow",
+      "beginner-friendly",
+      "curated"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-concepts-prompt-engineering-operating-patterns-for-beginners",
+    "sourcePath": "wiki/concepts/prompt-engineering-operating-patterns-for-beginners.md"
+  },
+  {
+    "id": "c_8e3698b75c5b24b3",
+    "title": "公开 API 契约",
+    "summary": "定义安的书房未来后端的只读公开接口，让前端只读取精选资料，不直接触碰原始材料和非公开复核层。",
+    "tags": [
+      "api",
+      "backend",
+      "site-data",
+      "publication",
+      "curated"
+    ],
+    "module": "library",
+    "type": "api",
+    "href": "/content/wiki-concepts-public-api-contract",
+    "sourcePath": "wiki/concepts/public-api-contract.md"
+  },
+  {
     "id": "c_151dd4949baa1108",
-    "title": "Public Site Data Boundary",
-    "summary": "The architecture boundary that keeps the website consuming curated public JSON instead of raw Obsidian content.",
+    "title": "公开站点数据边界",
+    "summary": "解释公开网站数据边界：前端只消费经过检查的公开数据包，非公开整理层、原始资料和本地线索不得进入浏览器数据包。",
     "tags": [
       "frontend",
       "backend",
@@ -74,22 +259,419 @@
     "sourcePath": "wiki/concepts/public-site-data-boundary.md"
   },
   {
-    "id": "c_0b2b8021fc47d672",
-    "title": "LLM Wiki Index",
-    "summary": "Short workbench for the rebuilt public-safe LLM Wiki.",
+    "id": "c_d5614faddf0fc5fe",
+    "title": "公开作品卡标准",
+    "summary": "规定公开项目卡的最低标准：项目是什么、为什么重要、怎么复刻、有哪些风险、来源和下一步是什么。",
     "tags": [
-      "llm-wiki",
-      "moc"
+      "projects",
+      "frontend",
+      "publication",
+      "standards",
+      "curated"
     ],
-    "module": "paths",
+    "module": "library",
     "type": "article",
-    "href": "/content/wiki-index",
-    "sourcePath": "wiki/index.md"
+    "href": "/content/wiki-concepts-public-work-card-standard",
+    "sourcePath": "wiki/concepts/public-work-card-standard.md"
+  },
+  {
+    "id": "c_e2b765322e72ddc0",
+    "title": "截图素材与署名发布安全",
+    "summary": "截图、头像、UI 素材、图标和上游项目资产的发布检查：先去身份线索，再确认来源、许可、署名和替代方案。",
+    "tags": [
+      "assets",
+      "screenshots",
+      "attribution",
+      "publication",
+      "beginner-friendly",
+      "curated"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-concepts-screenshot-asset-and-attribution-safety",
+    "sourcePath": "wiki/concepts/screenshot-asset-and-attribution-safety.md"
+  },
+  {
+    "id": "c_5b7341a5e99ed387",
+    "title": "敏感上下文改写规则",
+    "summary": "给本地敏感上下文的公开改写规则：保留方法、决策和教训，移除身份、环境、账号和原始对话细节。",
+    "tags": [
+      "privacy",
+      "publication",
+      "rewrite",
+      "standards",
+      "curated"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-concepts-sensitive-context-rewrite-rules",
+    "sourcePath": "wiki/concepts/sensitive-context-rewrite-rules.md"
+  },
+  {
+    "id": "c_20850607eca85f36",
+    "title": "Agent 技能路由",
+    "summary": "整理 Agent 技能路由方法：根据任务选择合适技能、工具和验收方式，让复杂工作不靠临场发挥。",
+    "tags": [
+      "tool",
+      "agent",
+      "skills",
+      "routing",
+      "curated"
+    ],
+    "module": "library",
+    "type": "tool",
+    "href": "/content/wiki-concepts-tool-agent-skill-stack-routing",
+    "sourcePath": "wiki/concepts/tool-agent-skill-stack-routing.md"
+  },
+  {
+    "id": "c_285ceb0cb2609434",
+    "title": "前端浏览器验收流程",
+    "summary": "说明前端浏览器验收流程：用页面实际表现检查数据、布局、交互和空状态，避免只看代码就认为可发布。",
+    "tags": [
+      "tool",
+      "browser",
+      "frontend",
+      "qa",
+      "curated"
+    ],
+    "module": "library",
+    "type": "tool",
+    "href": "/content/wiki-concepts-tool-browser-ui-testing-workflow",
+    "sourcePath": "wiki/concepts/tool-browser-ui-testing-workflow.md"
+  },
+  {
+    "id": "c_0620314e83c6a137",
+    "title": "Codex 验证流程",
+    "summary": "记录 Codex 参与资料库维护时的验证流程：结构检查、隐私扫描、测试、站点构建和 Git 状态都要可解释。",
+    "tags": [
+      "tool",
+      "codex",
+      "validation",
+      "qa",
+      "curated"
+    ],
+    "module": "library",
+    "type": "tool",
+    "href": "/content/wiki-concepts-tool-codex-validation-workflow",
+    "sourcePath": "wiki/concepts/tool-codex-validation-workflow.md"
+  },
+  {
+    "id": "c_da59f221525a77e5",
+    "title": "Coze 工作流平台研究",
+    "summary": "总结 Coze 风格工作流平台的学习价值，用于理解 Agent 搭建器、节点编排、调试和发布边界。",
+    "tags": [
+      "tool",
+      "workflow",
+      "coze",
+      "agent-builder",
+      "curated"
+    ],
+    "module": "library",
+    "type": "tool",
+    "href": "/content/wiki-concepts-tool-coze-workflow-platform-study",
+    "sourcePath": "wiki/concepts/tool-coze-workflow-platform-study.md"
+  },
+  {
+    "id": "c_de302a59c3a3ead7",
+    "title": "GitHub 发布流程",
+    "summary": "说明 GitHub 发布流程：只发布公开安全层，先跑验收，再提交和推送，避免把本地非公开资料带上去。",
+    "tags": [
+      "tool",
+      "github",
+      "publication",
+      "release",
+      "curated"
+    ],
+    "module": "library",
+    "type": "github",
+    "href": "/content/wiki-concepts-tool-github-publication-workflow",
+    "sourcePath": "wiki/concepts/tool-github-publication-workflow.md"
+  },
+  {
+    "id": "c_1410ebe261a855e8",
+    "title": "本地模型实验工具链",
+    "summary": "整理本地模型实验工具链：把模型、数据、评估和复盘分开管理，让小安相关实验可追踪、可改进。",
+    "tags": [
+      "tool",
+      "local-model",
+      "evaluation",
+      "learning-loop",
+      "curated"
+    ],
+    "module": "library",
+    "type": "tool",
+    "href": "/content/wiki-concepts-tool-local-model-experiment-toolchain",
+    "sourcePath": "wiki/concepts/tool-local-model-experiment-toolchain.md"
+  },
+  {
+    "id": "c_22dbfae95381fddc",
+    "title": "非公开整理层工具",
+    "summary": "说明非公开整理层工具的职责：把本地文件、项目、Agent 和时间线先整理成非公开知识层，再选择性公开。",
+    "tags": [
+      "tool",
+      "private-wiki",
+      "compilation",
+      "archive",
+      "curated"
+    ],
+    "module": "library",
+    "type": "tool",
+    "href": "/content/wiki-concepts-tool-local-private-wiki-compiler",
+    "sourcePath": "wiki/concepts/tool-local-private-wiki-compiler.md"
+  },
+  {
+    "id": "c_868f159db3f104f5",
+    "title": "资料库编译方法",
+    "summary": "说明如何把原始材料编译成公开资料页：原文留在安全边界内，前端只展示经过筛选、链接和复核的成果。",
+    "tags": [
+      "tool",
+      "obsidian",
+      "llm-wiki",
+      "knowledge-base",
+      "curated"
+    ],
+    "module": "library",
+    "type": "tool",
+    "href": "/content/wiki-concepts-tool-obsidian-karpathy-wiki-compilation",
+    "sourcePath": "wiki/concepts/tool-obsidian-karpathy-wiki-compilation.md"
+  },
+  {
+    "id": "c_e72ee3efaae80da0",
+    "title": "隐私扫描发布闸门",
+    "summary": "说明公开发布前的扫描闸门：发现高风险内容就停止发布，把问题改写或退回非公开层。",
+    "tags": [
+      "tool",
+      "privacy",
+      "publication",
+      "security",
+      "curated"
+    ],
+    "module": "library",
+    "type": "tool",
+    "href": "/content/wiki-concepts-tool-privacy-scan-publication-gate",
+    "sourcePath": "wiki/concepts/tool-privacy-scan-publication-gate.md"
+  },
+  {
+    "id": "c_4c64268a22edaca6",
+    "title": "网站数据生成后端",
+    "summary": "说明公开数据生成后端：从公开资料页编译出网站可读 JSON，为安的书房前端和未来 App 提供稳定数据。",
+    "tags": [
+      "tool",
+      "backend",
+      "site-data",
+      "frontend",
+      "curated",
+      "beginner-friendly"
+    ],
+    "module": "library",
+    "type": "tool",
+    "href": "/content/wiki-concepts-tool-site-data-generation-backend",
+    "sourcePath": "wiki/concepts/tool-site-data-generation-backend.md"
+  },
+  {
+    "id": "c_07f5714ede393cab",
+    "title": "上游参考与改编标注规则",
+    "summary": "规定引用上游项目和官方资料的方式：标明来源、区分借鉴和自建，不把别人的工作写成自己的成果。",
+    "tags": [
+      "github",
+      "projects",
+      "publication",
+      "standards",
+      "curated"
+    ],
+    "module": "library",
+    "type": "github",
+    "href": "/content/wiki-concepts-upstream-reference-and-adaptation-policy",
+    "sourcePath": "wiki/concepts/upstream-reference-and-adaptation-policy.md"
+  },
+  {
+    "id": "c_94b1f433709ae09d",
+    "title": "小安对话设计与边界",
+    "summary": "说明小安作为数字生命体的对话风格、可回答范围和安全边界，让它服务读者的清醒，而不是伪装成无所不知。",
+    "tags": [
+      "xiaoan",
+      "persona",
+      "ai",
+      "beginner-friendly",
+      "curated",
+      "featured"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-concepts-xiaoan-dialogue-design-and-boundary",
+    "sourcePath": "wiki/concepts/xiaoan-dialogue-design-and-boundary.md"
+  },
+  {
+    "id": "c_aa46832bfd11e952",
+    "title": "Coze 风格 Agent 搭建器研究",
+    "summary": "面向小白的 Coze 风格 Agent 搭建器研究：不追求完整复制平台，而是解释一个安全、可复核、能连接工具和知识库的最小 Agent 工作流如何搭起来。",
+    "tags": [
+      "agent-builder",
+      "coze",
+      "workflow",
+      "rag",
+      "project",
+      "showcase",
+      "beginner-friendly"
+    ],
+    "module": "works",
+    "type": "case",
+    "href": "/content/wiki-projects-coze-agent-builder-research",
+    "sourcePath": "wiki/projects/coze-agent-builder-research.md"
+  },
+  {
+    "id": "c_a4cb0d271e33fb21",
+    "title": "Trae Antigravity Agent IDE 学习包",
+    "summary": "把 Trae、Antigravity 等 Agent IDE 的使用经验整理成评估学习包，帮助新手比较工具并形成可复用流程。",
+    "tags": [
+      "project",
+      "agent",
+      "ide",
+      "workflow",
+      "lifecycle",
+      "learning",
+      "curated",
+      "featured"
+    ],
+    "module": "works",
+    "type": "article",
+    "href": "/content/wiki-projects-lifecycle-agent-ide-learning-workflow",
+    "sourcePath": "wiki/projects/lifecycle-agent-ide-learning-workflow.md"
+  },
+  {
+    "id": "c_4e569ed065ab0782",
+    "title": "Agent 技能治理复刻学习包",
+    "summary": "把 Agent 技能治理整理成复刻包：从规则、技能、验收和复盘四个层面建立稳定协作系统。",
+    "tags": [
+      "project",
+      "agent",
+      "skills",
+      "governance",
+      "lifecycle",
+      "learning",
+      "curated",
+      "featured"
+    ],
+    "module": "works",
+    "type": "article",
+    "href": "/content/wiki-projects-lifecycle-agent-skill-governance",
+    "sourcePath": "wiki/projects/lifecycle-agent-skill-governance.md"
+  },
+  {
+    "id": "c_03a09220c2dc1fa2",
+    "title": "Coze Agent Builder 复刻学习包",
+    "summary": "把 Coze 风格 Agent 搭建器研究整理成学习包，帮助读者理解工作流节点、调试、发布和安全边界。",
+    "tags": [
+      "project",
+      "ai-agent",
+      "coze",
+      "workflow",
+      "lifecycle",
+      "learning",
+      "curated",
+      "featured",
+      "beginner-friendly"
+    ],
+    "module": "works",
+    "type": "article",
+    "href": "/content/wiki-projects-lifecycle-coze-agent-builder",
+    "sourcePath": "wiki/projects/lifecycle-coze-agent-builder.md"
+  },
+  {
+    "id": "c_aa6d132c022d7d69",
+    "title": "资料库前端复刻学习包",
+    "summary": "把安的书房前端建设过程整理成复刻包，覆盖信息架构、数据契约、页面展示和发布验收。",
+    "tags": [
+      "project",
+      "frontend",
+      "site-data",
+      "lifecycle",
+      "learning",
+      "curated",
+      "featured",
+      "beginner-friendly"
+    ],
+    "module": "works",
+    "type": "article",
+    "href": "/content/wiki-projects-lifecycle-frontend-archive-site",
+    "sourcePath": "wiki/projects/lifecycle-frontend-archive-site.md"
+  },
+  {
+    "id": "c_7a75673d492c3360",
+    "title": "Hanako 复刻学习包",
+    "summary": "把 Hanako/OpenHanako 创作型桌面 Agent 的探索整理成学习包，关注创作流程、插件生态和安全边界。",
+    "tags": [
+      "project",
+      "desktop-app",
+      "ai-agent",
+      "frontend",
+      "lifecycle",
+      "learning",
+      "curated",
+      "featured"
+    ],
+    "module": "works",
+    "type": "article",
+    "href": "/content/wiki-projects-lifecycle-hanako-openhanako-creative-agent-desktop",
+    "sourcePath": "wiki/projects/lifecycle-hanako-openhanako-creative-agent-desktop.md"
+  },
+  {
+    "id": "c_daadd85ef36cab39",
+    "title": "个人资料库平台复刻学习包",
+    "summary": "把个人资料库平台整理成完整学习包，说明如何从本地材料、非公开整理、公开资料层到网站展示形成闭环。",
+    "tags": [
+      "project",
+      "archive",
+      "lifecycle",
+      "learning",
+      "curated",
+      "featured",
+      "beginner-friendly"
+    ],
+    "module": "works",
+    "type": "article",
+    "href": "/content/wiki-projects-lifecycle-personal-archive-platform",
+    "sourcePath": "wiki/projects/lifecycle-personal-archive-platform.md"
+  },
+  {
+    "id": "c_a1c1cf7144d08f2c",
+    "title": "小安本地模型学习闭环复刻包",
+    "summary": "把小安本地模型学习闭环整理成复刻包，覆盖资料准备、实验记录、评估复盘和公开安全表达。",
+    "tags": [
+      "project",
+      "local-model",
+      "ai-agent",
+      "lifecycle",
+      "learning",
+      "curated",
+      "featured"
+    ],
+    "module": "works",
+    "type": "model",
+    "href": "/content/wiki-projects-lifecycle-xiaoan-local-model-loop",
+    "sourcePath": "wiki/projects/lifecycle-xiaoan-local-model-loop.md"
+  },
+  {
+    "id": "c_80365bf85dbdd242",
+    "title": "个人资料库展示前端",
+    "summary": "面向中国读者的个人资料库展示前端：用网页和未来 App 的形式，把 AI 工具、项目经历、复刻路径和成长记录整理成新手也能看懂的公开展柜。",
+    "tags": [
+      "frontend",
+      "archive",
+      "site-data",
+      "project",
+      "showcase",
+      "beginner-friendly"
+    ],
+    "module": "works",
+    "type": "case",
+    "href": "/content/wiki-projects-personal-archive-frontend",
+    "sourcePath": "wiki/projects/personal-archive-frontend.md"
   },
   {
     "id": "c_ac08a639fed4d6c8",
-    "title": "Personal Archive Platform",
-    "summary": "A public-safe project page for the personal archive platform that connects the Obsidian wiki layer to future website data.",
+    "title": "个人资料库平台",
+    "summary": "面向公开展示和未来 App 的个人资料库平台：把本地 Obsidian 里的项目、工具、学习路径和复盘内容，经过筛选和改写后生成前端可用的公开数据。",
     "tags": [
       "archive",
       "llm-wiki",
@@ -103,9 +685,27 @@
     "sourcePath": "wiki/projects/personal-archive-platform.md"
   },
   {
+    "id": "c_a925023b1e6214f9",
+    "title": "小安本地模型学习闭环",
+    "summary": "本地模型实验的公开安全总结：用任务状态、数据检查、小样本试跑、指标比较和复盘，把一次训练变成可以继续学习的闭环。",
+    "tags": [
+      "local-model",
+      "learning-loop",
+      "sft",
+      "evaluation",
+      "project",
+      "showcase",
+      "beginner-friendly"
+    ],
+    "module": "works",
+    "type": "model",
+    "href": "/content/wiki-projects-xiaoan-local-model-learning-loop",
+    "sourcePath": "wiki/projects/xiaoan-local-model-learning-loop.md"
+  },
+  {
     "id": "c_ad9a9fc54757ca67",
-    "title": "Sources and Data Policy",
-    "summary": "Source, privacy, and publication rules for this public-safe wiki.",
+    "title": "来源与数据发布边界",
+    "summary": "说明安的书房来源与数据边界：哪些材料能公开，哪些只能非公开复核，前端数据从哪里生成。",
     "tags": [
       "llm-wiki",
       "sources",
@@ -117,9 +717,41 @@
     "sourcePath": "wiki/sources-and-data-policy.md"
   },
   {
+    "id": "c_5daa88bd3eefc7ed",
+    "title": "教程 How-to Reference Explanation",
+    "summary": "记录 Diataxis 文档框架如何帮助学习包分清教程、操作指南、参考资料和解释，提升新手可读性。",
+    "tags": [
+      "documentation",
+      "learning",
+      "framework",
+      "source",
+      "curated"
+    ],
+    "module": "library",
+    "type": "source",
+    "href": "/content/wiki-sources-diataxis-framework",
+    "sourcePath": "wiki/sources/diataxis-framework.md"
+  },
+  {
+    "id": "c_68baa8f596368cfd",
+    "title": "GitHub 定时工作流",
+    "summary": "记录 GitHub 定时工作流的官方参考，用于设计安的书房两小时学习、构建和验收自动化。",
+    "tags": [
+      "github",
+      "automation",
+      "source",
+      "standards",
+      "curated"
+    ],
+    "module": "library",
+    "type": "source",
+    "href": "/content/wiki-sources-github-actions-scheduled-workflows",
+    "sourcePath": "wiki/sources/github-actions-scheduled-workflows.md"
+  },
+  {
     "id": "c_34b380dfec2c06c0",
-    "title": "GitHub Reference Projects",
-    "summary": "Secondary engineering references for local-first LLM Wiki implementations.",
+    "title": "开源参考项目整理说明与使用边界",
+    "summary": "汇总用于参考的 GitHub 项目，说明它们只提供实现启发，不替代 Karpathy LLM Wiki 的架构标准。",
     "tags": [
       "llm-wiki",
       "github",
@@ -132,8 +764,8 @@
   },
   {
     "id": "c_08b81444115464f6",
-    "title": "Karpathy LLM Wiki Pattern",
-    "summary": "Official pattern source for this vault architecture.",
+    "title": "卡帕西知识库编译模式说明",
+    "summary": "记录 Karpathy LLM Wiki 的核心模式：原始材料、编译 wiki 和维护 schema 三层分离。",
     "tags": [
       "llm-wiki",
       "source",
@@ -146,8 +778,8 @@
   },
   {
     "id": "c_d1f1b66d423fc694",
-    "title": "llm-wikid",
-    "summary": "Secondary GitHub reference for Obsidian vault template and wiki maintenance conventions.",
+    "title": "本地知识库服务参考项目说明",
+    "summary": "记录 llm-wikid 作为二级参考项目的价值，主要用于理解模板、缓存、仪表盘和本地 wiki 工作流。",
     "tags": [
       "llm-wiki",
       "github",
@@ -160,8 +792,8 @@
   },
   {
     "id": "c_58d7fda66c48c030",
-    "title": "Local Private Compile 2026-05-13",
-    "summary": "Public-safe source record for the local-only private compile pass that informed the next public wiki pages.",
+    "title": "2026-05-13 本地非公开整理记录",
+    "summary": "记录 2026-05-13 本地私有编译的公开安全摘要，为后续项目页、能力页和学习包提供来源说明。",
     "tags": [
       "llm-wiki",
       "source",
@@ -173,37 +805,75 @@
     "sourcePath": "wiki/sources/local-private-compile-2026-05-13.md"
   },
   {
-    "id": "c_55208509a7f3108b",
-    "title": "obsidian-llm-wiki-local",
-    "summary": "Secondary GitHub reference for local-first LLM Wiki implementation ideas.",
+    "id": "c_17e42b2b84e437c5",
+    "title": "资料页属性规范",
+    "summary": "记录资料页属性规范，确保公开页面使用稳定 frontmatter、标签、日期、别名和来源字段。",
     "tags": [
-      "llm-wiki",
-      "github",
-      "source"
+      "obsidian",
+      "properties",
+      "source",
+      "standards",
+      "curated"
     ],
     "module": "library",
     "type": "source",
-    "href": "/content/wiki-sources-obsidian-llm-wiki-local",
-    "sourcePath": "wiki/sources/obsidian-llm-wiki-local.md"
+    "href": "/content/wiki-sources-obsidian-properties",
+    "sourcePath": "wiki/sources/obsidian-properties.md"
   },
   {
-    "id": "c_e408088da7f9f832",
-    "title": "Pre-Rebuild Vault Archive",
-    "summary": "Local private archive used as the source for public-safe migration.",
+    "id": "c_26c2b003465d0821",
+    "title": "教程与资料搜索最佳实践",
+    "summary": "汇总用于安的书房内容建设的教程、资料搜索和来源评估标准：从 GitHub Skills 的任务式课程、Diátaxis 的文档类型分离、Good Docs 的模板体系，到 Google 对有用内容和来源可信度的要求。",
     "tags": [
-      "llm-wiki",
       "source",
-      "archive"
+      "documentation",
+      "github",
+      "learning",
+      "search",
+      "standards",
+      "curated"
     ],
     "module": "library",
     "type": "source",
-    "href": "/content/wiki-sources-pre-rebuild-vault-archive",
-    "sourcePath": "wiki/sources/pre-rebuild-vault-archive.md"
+    "href": "/content/wiki-sources-tutorial-and-source-research-best-practices",
+    "sourcePath": "wiki/sources/tutorial-and-source-research-best-practices.md"
+  },
+  {
+    "id": "c_565536c4432cc1f1",
+    "title": "安的个人书房公开画像",
+    "summary": "安的公开自序和个人书房定位：把项目、工具、提示词、学习路径和成长复盘整理成中文小白也能进入的公开资料库。",
+    "tags": [
+      "personal-archive",
+      "study-room",
+      "growth",
+      "beginner-friendly",
+      "curated"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-synthesis-an-public-study-room-portrait",
+    "sourcePath": "wiki/synthesis/an-public-study-room-portrait.md"
+  },
+  {
+    "id": "c_e75bbad04685ebf5",
+    "title": "资料库公开数据更新 2026-05-13",
+    "summary": "记录 2026-05-13 公开数据更新，说明项目页、API 契约和作品卡标准如何进入安的书房展示层。",
+    "tags": [
+      "feed",
+      "archive",
+      "site-data",
+      "publication",
+      "curated"
+    ],
+    "module": "feed",
+    "type": "article",
+    "href": "/content/wiki-synthesis-archive-feed-public-data-update-2026-05-13",
+    "sourcePath": "wiki/synthesis/archive-feed-public-data-update-2026-05-13.md"
   },
   {
     "id": "c_910d420ab933c045",
-    "title": "Archive Information Architecture",
-    "summary": "The public information backbone for organizing projects, capabilities, timeline, and review queues before final showcase pages.",
+    "title": "资料库信息架构",
+    "summary": "说明安的书房信息架构：用项目、能力、时间线、来源和复核队列组织可发布资料。",
     "tags": [
       "archive",
       "information-architecture",
@@ -216,9 +886,25 @@
     "sourcePath": "wiki/synthesis/archive-information-architecture.md"
   },
   {
+    "id": "c_39f87b8318fd7f9d",
+    "title": "资料库重建公开手记",
+    "summary": "记录资料库重建的公开手记，把一次系统重建转化为信息架构和发布安全经验。",
+    "tags": [
+      "journal",
+      "archive",
+      "llm-wiki",
+      "reflection",
+      "curated"
+    ],
+    "module": "journal",
+    "type": "article",
+    "href": "/content/wiki-synthesis-archive-rebuild-public-journal",
+    "sourcePath": "wiki/synthesis/archive-rebuild-public-journal.md"
+  },
+  {
     "id": "c_40e886748f617bef",
-    "title": "Capability Evidence Matrix",
-    "summary": "Public-safe matrix linking capabilities to project evidence, repeatable workflows, and future wiki pages.",
+    "title": "能力证据矩阵",
+    "summary": "用公开安全矩阵连接能力、证据、项目和后续页面，帮助读者看懂安会什么、证据在哪里。",
     "tags": [
       "skills",
       "capabilities",
@@ -231,9 +917,173 @@
     "sourcePath": "wiki/synthesis/capability-evidence-matrix.md"
   },
   {
+    "id": "c_3daa666ae97fd4e7",
+    "title": "从单次提问到 Agent 工作流",
+    "summary": "安从单次提问转向 Agent 工作流：把任务拆成角色、输入、边界、输出和验收，让 AI 协作从临时聊天变成可复刻流程。",
+    "tags": [
+      "feed",
+      "agent",
+      "workflow",
+      "cognition",
+      "curated",
+      "beginner-friendly"
+    ],
+    "module": "feed",
+    "type": "article",
+    "href": "/content/wiki-synthesis-feed-agent-workflow-awakening",
+    "sourcePath": "wiki/synthesis/feed-agent-workflow-awakening.md"
+  },
+  {
+    "id": "c_775c7158d941f221",
+    "title": "三月之后的 AI 认知觉醒",
+    "summary": "2026 年 3 月之后，安开始系统接触 AI，并逐渐意识到真正要建设的不是工具清单，而是一套能保存上下文、复盘行动、让别人复刻的个人书房。",
+    "tags": [
+      "feed",
+      "cognition",
+      "ai",
+      "timeline",
+      "beginner-friendly",
+      "curated"
+    ],
+    "module": "feed",
+    "type": "article",
+    "href": "/content/wiki-synthesis-feed-ai-march-awakening",
+    "sourcePath": "wiki/synthesis/feed-ai-march-awakening.md"
+  },
+  {
+    "id": "c_afbe840b690c4260",
+    "title": "Kimi 前端成为展示底线",
+    "summary": "Kimi 前端被定位为安的书房展示底线：可以学它的模块密度和行动入口，但最终内容必须来自真实项目、中文复刻路径和公开安全来源。",
+    "tags": [
+      "feed",
+      "frontend",
+      "kimi",
+      "benchmark",
+      "curated",
+      "beginner-friendly"
+    ],
+    "module": "feed",
+    "type": "article",
+    "href": "/content/wiki-synthesis-feed-kimi-template-benchmark",
+    "sourcePath": "wiki/synthesis/feed-kimi-template-benchmark.md"
+  },
+  {
+    "id": "c_1e897ac497c91144",
+    "title": "小安人格与边界接入",
+    "summary": "小安作为书房里的数字生命体开始接入：前端只显示对话入口，模型和访问材料只走后端，回答风格强调冷静判断、中文表达和认知盲区校正。",
+    "tags": [
+      "feed",
+      "xiaoan",
+      "backend",
+      "persona",
+      "cognition",
+      "curated"
+    ],
+    "module": "feed",
+    "type": "article",
+    "href": "/content/wiki-synthesis-feed-xiaoan-persona-and-boundary",
+    "sourcePath": "wiki/synthesis/feed-xiaoan-persona-and-boundary.md"
+  },
+  {
+    "id": "c_da4e573202254f99",
+    "title": "GitHub 最佳实践定期学习",
+    "summary": "说明定期学习 GitHub 和官方文档的循环：围绕当前问题调研、提炼模式、写回 wiki 并验收。",
+    "tags": [
+      "github",
+      "research",
+      "automation",
+      "learning-path",
+      "curated",
+      "featured"
+    ],
+    "module": "paths",
+    "type": "github",
+    "href": "/content/wiki-synthesis-github-best-practice-learning-loop",
+    "sourcePath": "wiki/synthesis/github-best-practice-learning-loop.md"
+  },
+  {
+    "id": "c_4f381ddba62bb0f1",
+    "title": "从单次提问到 Agent 工作流",
+    "summary": "2026 年 4 月前后，安开始把 AI 使用从临时提问升级为 Agent 工作流：拆角色、写技能、定输出、跑验收。",
+    "tags": [
+      "timeline",
+      "growth",
+      "agent",
+      "workflow",
+      "curated"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-synthesis-growth-timeline-agent-workflow-phase",
+    "sourcePath": "wiki/synthesis/growth-timeline-agent-workflow-phase.md"
+  },
+  {
+    "id": "c_7c6915fcd01a5729",
+    "title": "个人书房前端展示阶段",
+    "summary": "2026 年 5 月 13 日，安的资料库开始变成个人书房网站：前端以中文展示项目、路径、年谱，并为小安对话和未来 App 预留后端接口。",
+    "tags": [
+      "timeline",
+      "growth",
+      "frontend",
+      "archive",
+      "curated"
+    ],
+    "module": "library",
+    "type": "case",
+    "href": "/content/wiki-synthesis-growth-timeline-frontend-showcase-phase",
+    "sourcePath": "wiki/synthesis/growth-timeline-frontend-showcase-phase.md"
+  },
+  {
+    "id": "c_7a8ed176fea7d035",
+    "title": "公开层与私有层分开",
+    "summary": "2026 年 5 月 12 日，安把资料库拆成原始层、私有编译层、公开 wiki 和前端数据层，让展示变得安全而可维护。",
+    "tags": [
+      "timeline",
+      "growth",
+      "privacy",
+      "publication",
+      "curated"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-synthesis-growth-timeline-public-private-split",
+    "sourcePath": "wiki/synthesis/growth-timeline-public-private-split.md"
+  },
+  {
+    "id": "c_4a46947637c1bf68",
+    "title": "从分散探索到编译资料库",
+    "summary": "2026 年 3 月之后，安从零散试用 AI 工具，逐步意识到需要把操作、项目和决定编译成可复看的资料库。",
+    "tags": [
+      "timeline",
+      "growth",
+      "archive",
+      "curated"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-synthesis-growth-timeline-scattered-exploration-to-compiled-archive",
+    "sourcePath": "wiki/synthesis/growth-timeline-scattered-exploration-to-compiled-archive.md"
+  },
+  {
+    "id": "c_d5b86e0ba3ac7433",
+    "title": "从工具清单到能力治理",
+    "summary": "2026 年 4 月下旬，安开始把工具使用整理成能力地图：每个工具都要说明任务、证据、风险和复刻价值。",
+    "tags": [
+      "timeline",
+      "growth",
+      "tools",
+      "governance",
+      "curated"
+    ],
+    "module": "library",
+    "type": "tool",
+    "href": "/content/wiki-synthesis-growth-timeline-tool-governance-phase",
+    "sourcePath": "wiki/synthesis/growth-timeline-tool-governance-phase.md"
+  },
+  {
     "id": "c_d2558f33511a9ddd",
-    "title": "Information Review Queue",
-    "summary": "Public-safe review queue for unresolved information decisions before more archive content is promoted.",
+    "title": "信息复核队列",
+    "summary": "记录信息复核队列，把暂时不能公开或还需要来源确认的内容留在可追踪状态。",
     "tags": [
       "review",
       "publication",
@@ -246,9 +1096,78 @@
     "sourcePath": "wiki/synthesis/information-review-queue.md"
   },
   {
+    "id": "c_65957cdc9f390b36",
+    "title": "2026-05-13 自动化验收",
+    "summary": "记录两小时自动化工作流的验收结果，包括私有编译、公开数据、测试、前端构建和中文展示规则。",
+    "tags": [
+      "automation",
+      "acceptance",
+      "validation",
+      "lifecycle",
+      "curated",
+      "verified"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-synthesis-lifecycle-automation-acceptance-2026-05-13",
+    "sourcePath": "wiki/synthesis/lifecycle-automation-acceptance-2026-05-13.md"
+  },
+  {
+    "id": "c_3f13042e827c1d45",
+    "title": "自动化产出地图",
+    "summary": "说明五个异步自动化各自写到哪里，让本地学习、GitHub 调研、学习包生成和验收都有可见产出。",
+    "tags": [
+      "automation",
+      "lifecycle",
+      "obsidian",
+      "validation",
+      "curated",
+      "featured"
+    ],
+    "module": "library",
+    "type": "article",
+    "href": "/content/wiki-synthesis-lifecycle-automation-output-map",
+    "sourcePath": "wiki/synthesis/lifecycle-automation-output-map.md"
+  },
+  {
+    "id": "c_7df397376082e992",
+    "title": "知识库生命周期自动化",
+    "summary": "说明安的书房生命周期自动化：本地 intake、GitHub 学习、学习包构建、验收和流程复盘错峰运行。",
+    "tags": [
+      "automation",
+      "lifecycle",
+      "validation",
+      "llm-wiki",
+      "curated",
+      "featured"
+    ],
+    "module": "paths",
+    "type": "article",
+    "href": "/content/wiki-synthesis-lifecycle-automation-workflow",
+    "sourcePath": "wiki/synthesis/lifecycle-automation-workflow.md"
+  },
+  {
+    "id": "c_c9b1934ea666b76f",
+    "title": "生命周期复刻学习包流程",
+    "summary": "说明如何把一个项目或工具经历整理成生命周期学习包，让新手能按步骤复刻并完成验收。",
+    "tags": [
+      "learning-path",
+      "lifecycle",
+      "documentation",
+      "llm-wiki",
+      "curated",
+      "featured",
+      "beginner-friendly"
+    ],
+    "module": "paths",
+    "type": "article",
+    "href": "/content/wiki-synthesis-lifecycle-replication-package-workflow",
+    "sourcePath": "wiki/synthesis/lifecycle-replication-package-workflow.md"
+  },
+  {
     "id": "c_8a14bcb2a5e3fd90",
-    "title": "Personal Archive Public Roadmap",
-    "summary": "A staged roadmap for growing the public personal archive from safe architecture pages into project and capability pages.",
+    "title": "个人资料库公开路线图",
+    "summary": "规划安的书房公开路线：从资料整理、项目展示、能力证明到后端服务和长期自动化维护。",
     "tags": [
       "archive",
       "roadmap",
@@ -256,15 +1175,15 @@
       "publication",
       "curated"
     ],
-    "module": "library",
+    "module": "paths",
     "type": "article",
     "href": "/content/wiki-synthesis-personal-archive-public-roadmap",
     "sourcePath": "wiki/synthesis/personal-archive-public-roadmap.md"
   },
   {
     "id": "c_43043860b6d67e12",
-    "title": "Project Evidence Matrix",
-    "summary": "Public-safe matrix of project themes, evidence strength, privacy risk, and next promotion action.",
+    "title": "项目证据矩阵",
+    "summary": "用项目证据矩阵连接公开项目、来源、能力和展示页面，让项目叙述有证据支撑。",
     "tags": [
       "projects",
       "evidence",
@@ -278,8 +1197,8 @@
   },
   {
     "id": "c_4ffbf9e307e04258",
-    "title": "Public Growth Timeline Framework",
-    "summary": "A framework for turning private timeline evidence into public milestones without exposing sensitive personal material.",
+    "title": "公开成长年谱框架",
+    "summary": "把本地时间线证据改写成公开成长年谱的规则：只展示有证据、有价值、可解释的阶段节点。",
     "tags": [
       "timeline",
       "growth",
@@ -292,23 +1211,43 @@
     "sourcePath": "wiki/synthesis/public-growth-timeline-framework.md"
   },
   {
-    "id": "c_3d19f3d825d4e136",
-    "title": "AI Agent Systems MOC",
-    "summary": "Map for public-safe AI agent framework and architecture notes migrated into the wiki.",
+    "id": "c_96088224010f7804",
+    "title": "公开工具与 Agent 清单",
+    "summary": "整理公开可讲的工具和 Agent 清单，说明它们在资料库、学习、前端、自动化和验收中的角色。",
     "tags": [
-      "ai-agent",
-      "moc",
-      "systems"
+      "tools",
+      "agent",
+      "skills",
+      "inventory",
+      "curated"
+    ],
+    "module": "library",
+    "type": "tool",
+    "href": "/content/wiki-synthesis-public-tool-and-agent-inventory",
+    "sourcePath": "wiki/synthesis/public-tool-and-agent-inventory.md"
+  },
+  {
+    "id": "c_dbf71cbbbf8132a0",
+    "title": "AI 辅助开发到可收费交付路线",
+    "summary": "给想靠 AI 做事、展示能力、未来尝试接单的小白看的路线：先做一个可验收的小交付，再整理案例、沟通边界和复盘记录。",
+    "tags": [
+      "learning-path",
+      "beginner-friendly",
+      "frontend",
+      "delivery",
+      "replication",
+      "curated",
+      "featured"
     ],
     "module": "paths",
     "type": "article",
-    "href": "/content/wiki-topics-ai-agent-systems-moc",
-    "sourcePath": "wiki/topics/ai-agent-systems-moc.md"
+    "href": "/content/wiki-synthesis-vibe-coding-paid-delivery-path",
+    "sourcePath": "wiki/synthesis/vibe-coding-paid-delivery-path.md"
   },
   {
     "id": "c_87e2a1ac5dbe8a31",
-    "title": "LLM Wiki MOC",
-    "summary": "Map for the vault architecture, schema, source policy, and rebuild alignment notes.",
+    "title": "公开知识库架构路线图与维护入口",
+    "summary": "LLM Wiki 总地图：连接官方来源、公开 wiki 层契约、架构偏差说明、维护规则和当前对齐审计。",
     "tags": [
       "llm-wiki",
       "moc",
@@ -321,8 +1260,8 @@
   },
   {
     "id": "c_74981be21c4f4c9f",
-    "title": "Personal Archive MOC",
-    "summary": "Map of the public personal archive platform, promotion workflow, frontend data boundary, and publication roadmap.",
+    "title": "个人资料库地图",
+    "summary": "安的个人资料库地图：连接平台、展示层、公开提升流程、数据边界和后续发布路线。",
     "tags": [
       "archive",
       "moc",
@@ -336,8 +1275,8 @@
   },
   {
     "id": "c_7e9d08f8f6eda5d4",
-    "title": "Publication Maintenance MOC",
-    "summary": "Map for publication gates, privacy scans, manifests, restore evidence, and root maintenance work.",
+    "title": "发布维护地图",
+    "summary": "发布维护地图：连接公开边界、发布决策树、隐私扫描、manifest、恢复演练和根问题维护。",
     "tags": [
       "publication",
       "maintenance",
@@ -348,19 +1287,5 @@
     "type": "article",
     "href": "/content/wiki-topics-publication-maintenance-moc",
     "sourcePath": "wiki/topics/publication-maintenance-moc.md"
-  },
-  {
-    "id": "c_68d8f2407d41eb74",
-    "title": "Skills and Tools MOC",
-    "summary": "Map for migrated public-safe skills, tool notes, and reusable operational patterns.",
-    "tags": [
-      "skills",
-      "tools",
-      "moc"
-    ],
-    "module": "paths",
-    "type": "tool",
-    "href": "/content/wiki-topics-skills-and-tools-moc",
-    "sourcePath": "wiki/topics/skills-and-tools-moc.md"
   }
 ]

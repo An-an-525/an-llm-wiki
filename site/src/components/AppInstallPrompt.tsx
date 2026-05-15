@@ -7,18 +7,49 @@ type BeforeInstallPromptEvent = Event & {
   userChoice: Promise<{ outcome: 'accepted' | 'dismissed'; platform: string }>;
 };
 
-const DISMISS_KEY = 'an-llm-wiki-install-dismissed';
+const DISMISS_KEY = 'an-study-room-install-dismissed';
+const DISMISS_UNTIL_KEY = 'an-study-room-install-dismissed-until';
+const INSTALLED_KEY = 'an-study-room-install-accepted';
+const LEGACY_DISMISS_KEY = 'an-llm-wiki-install-dismissed';
+const LEGACY_INSTALLED_KEY = 'an-llm-wiki-install-accepted';
+const DISMISS_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
+
+function matchesDisplayMode(mode: string) {
+  return window.matchMedia(`(display-mode: ${mode})`).matches;
+}
 
 function isStandaloneDisplay() {
   return (
-    window.matchMedia('(display-mode: standalone)').matches ||
+    matchesDisplayMode('window-controls-overlay') ||
+    matchesDisplayMode('standalone') ||
+    matchesDisplayMode('fullscreen') ||
+    matchesDisplayMode('minimal-ui') ||
     ('standalone' in window.navigator && window.navigator.standalone === true)
   );
 }
 
+function wasAccepted() {
+  try {
+    return (
+      window.localStorage.getItem(INSTALLED_KEY) === 'true' ||
+      window.localStorage.getItem(LEGACY_INSTALLED_KEY) === 'true'
+    );
+  } catch {
+    return false;
+  }
+}
+
 function wasDismissed() {
   try {
-    return window.localStorage.getItem(DISMISS_KEY) === 'true';
+    const dismissedUntil = Number(window.localStorage.getItem(DISMISS_UNTIL_KEY) || '0');
+    if (Number.isFinite(dismissedUntil) && dismissedUntil > Date.now()) {
+      return true;
+    }
+
+    return (
+      window.localStorage.getItem(DISMISS_KEY) === 'true' ||
+      window.localStorage.getItem(LEGACY_DISMISS_KEY) === 'true'
+    );
   } catch {
     return false;
   }
@@ -27,16 +58,42 @@ function wasDismissed() {
 export default function AppInstallPrompt() {
   const [promptEvent, setPromptEvent] = useState<BeforeInstallPromptEvent | null>(null);
   const [dismissed, setDismissed] = useState(wasDismissed);
-  const [installed, setInstalled] = useState(isStandaloneDisplay);
+  const [installed, setInstalled] = useState(() => isStandaloneDisplay() || wasAccepted());
 
   useEffect(() => {
+    if (isStandaloneDisplay()) {
+      try {
+        window.localStorage.setItem(INSTALLED_KEY, 'true');
+        window.localStorage.removeItem(DISMISS_KEY);
+        window.localStorage.removeItem(DISMISS_UNTIL_KEY);
+        window.localStorage.removeItem(LEGACY_INSTALLED_KEY);
+        window.localStorage.removeItem(LEGACY_DISMISS_KEY);
+      } catch {
+        // Ignore storage failures on browsers with restricted storage.
+      }
+    }
+
     const handleBeforeInstallPrompt = (event: Event) => {
       event.preventDefault();
+      if (wasAccepted() || wasDismissed() || isStandaloneDisplay()) {
+        return;
+      }
+      setDismissed(false);
       setPromptEvent(event as BeforeInstallPromptEvent);
     };
     const handleInstalled = () => {
       setInstalled(true);
+      setDismissed(false);
       setPromptEvent(null);
+      try {
+        window.localStorage.setItem(INSTALLED_KEY, 'true');
+        window.localStorage.removeItem(DISMISS_KEY);
+        window.localStorage.removeItem(DISMISS_UNTIL_KEY);
+        window.localStorage.removeItem(LEGACY_INSTALLED_KEY);
+        window.localStorage.removeItem(LEGACY_DISMISS_KEY);
+      } catch {
+        // Ignore storage failures; the installed app still works.
+      }
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
@@ -49,8 +106,23 @@ export default function AppInstallPrompt() {
 
   const hide = () => {
     setDismissed(true);
+    setPromptEvent(null);
     try {
       window.localStorage.setItem(DISMISS_KEY, 'true');
+      window.localStorage.removeItem(DISMISS_UNTIL_KEY);
+      window.localStorage.removeItem(LEGACY_DISMISS_KEY);
+    } catch {
+      // Ignore storage failures; the prompt can simply appear again next session.
+    }
+  };
+
+  const dismissTemporarily = () => {
+    setDismissed(true);
+    setPromptEvent(null);
+    try {
+      window.localStorage.setItem(DISMISS_UNTIL_KEY, String(Date.now() + DISMISS_COOLDOWN_MS));
+      window.localStorage.removeItem(DISMISS_KEY);
+      window.localStorage.removeItem(LEGACY_DISMISS_KEY);
     } catch {
       // Ignore storage failures; the prompt can simply appear again next session.
     }
@@ -62,6 +134,17 @@ export default function AppInstallPrompt() {
     const choice = await promptEvent.userChoice;
     if (choice.outcome === 'accepted') {
       setInstalled(true);
+      try {
+        window.localStorage.setItem(INSTALLED_KEY, 'true');
+        window.localStorage.removeItem(DISMISS_KEY);
+        window.localStorage.removeItem(DISMISS_UNTIL_KEY);
+        window.localStorage.removeItem(LEGACY_INSTALLED_KEY);
+        window.localStorage.removeItem(LEGACY_DISMISS_KEY);
+      } catch {
+        // Ignore storage failures; the prompt will simply rely on runtime state.
+      }
+    } else {
+      dismissTemporarily();
     }
     setPromptEvent(null);
   };

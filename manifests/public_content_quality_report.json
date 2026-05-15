@@ -1,0 +1,13 @@
+{
+  "vault": ".",
+  "pages_checked": 280,
+  "strict_pages": 75,
+  "legacy_pages": 192,
+  "learning_pages": 94,
+  "frontend_data_checks": 1,
+  "blocking_findings": 0,
+  "warnings": 0,
+  "legacy_warnings": 0,
+  "report_csv": "manifests/public_content_quality_report.csv",
+  "report_json": "manifests/public_content_quality_report.json"
+}

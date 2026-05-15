@@ -13,7 +13,10 @@ sources:
   - "[[wiki/synthesis/karpathy-official-wiki-layer]]"
 publicSafety: public-safe
 sourceLabels: [public wiki, information architecture, local compile]
+reviewStatus: challenged
+reviewNotes: "已检查来源、公开边界、小白可读性和前端展示适配；后续可继续补强复刻细节。"
 whyItMattered: "It makes information retrievable before it is made presentational."
+actionText: "先从这页挑一个相关页面继续读，再把下一步行动压缩成今天能完成的最小任务。"
 operationStory:
   - "Separated source coverage, project evidence, capability evidence, timeline evidence, and review queues."
   - "Kept sensitive local material in private review layers while creating public navigation pages."
@@ -24,7 +27,7 @@ replicationSteps:
   - "Only then write display pages."
 failureModes: [publishing before evidence is grouped, confusing file counts with knowledge, hiding uncertainty]
 lessons: [information first, presentation second, every public claim needs an evidence route]
-summary: "The public information backbone for organizing projects, capabilities, timeline, and review queues before final showcase pages."
+summary: "安的书房公开信息架构：用项目、能力、时间线、来源和复核队列组织可展示资料，而不是堆原始记录。"
 ---
 
 # Archive Information Architecture

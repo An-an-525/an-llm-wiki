@@ -12,13 +12,15 @@ import { libraryItems } from '@/data/mockLibrary';
 import { paths } from '@/data/mockPaths';
 import { works } from '@/data/mockWorks';
 import { journalEntries } from '@/data/mockJournal';
+import { feedItems } from '@/data/mockFeed';
+import { timelineEvents } from '@/data/mockTimeline';
 // ImagePlaceholder available for future use when search results include images
 
 type SearchResult = {
   id: string;
   title: string;
   description: string;
-  type: 'library' | 'path' | 'work' | 'journal';
+  type: 'library' | 'path' | 'work' | 'journal' | 'feed' | 'timeline' | 'about';
   typeLabel: string;
   url: string;
 };
@@ -28,6 +30,9 @@ const typeConfig = {
   path: { label: '谱系', icon: GitBranch, color: 'text-emerald-500 bg-emerald-50' },
   work: { label: '工坊', icon: Hammer, color: 'text-amber-500 bg-amber-50' },
   journal: { label: '手记', icon: FileText, color: 'text-purple-500 bg-purple-50' },
+  feed: { label: '风信', icon: FileText, color: 'text-sky-500 bg-sky-50' },
+  timeline: { label: '年谱', icon: FileText, color: 'text-rose-500 bg-rose-50' },
+  about: { label: '书房', icon: FileText, color: 'text-stone-500 bg-stone-50' },
 };
 
 // 统一搜索数据源
@@ -78,6 +83,37 @@ function getAllSearchables(): SearchResult[] {
     });
   });
 
+  feedItems.forEach((item) => {
+    results.push({
+      id: item.id,
+      title: item.title,
+      description: item.content,
+      type: 'feed',
+      typeLabel: '风信',
+      url: `/content/${item.id}`,
+    });
+  });
+
+  timelineEvents.forEach((item) => {
+    results.push({
+      id: item.id,
+      title: item.title,
+      description: item.description,
+      type: 'timeline',
+      typeLabel: '年谱',
+      url: `/content/${item.id}`,
+    });
+  });
+
+  results.push({
+    id: 'about',
+    title: '安的书房',
+    description: '先认识安和小安，再开始看资料、路线和作品。',
+    type: 'about',
+    typeLabel: '书房',
+    url: '/about',
+  });
+
   return results;
 }
 
@@ -99,7 +135,9 @@ interface SearchOverlayProps {
 export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
   const [query, setQuery] = useState('');
   const [activeType, setActiveType] = useState<string>('all');
+  const [activeIndex, setActiveIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const resultRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const navigate = useNavigate();
   const debouncedQuery = useDebounce(query, 150);
 
@@ -124,6 +162,13 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
     }
     return results.slice(0, 12); // 最多显示12条
   }, [debouncedQuery, activeType, allResults]);
+
+  useEffect(() => {
+    const node = resultRefs.current[activeIndex];
+    if (node) {
+      node.scrollIntoView({ block: 'nearest' });
+    }
+  }, [activeIndex]);
 
   // 按类型分组统计
   const counts = useMemo(() => {
@@ -151,7 +196,33 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
   // Escape 关闭
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') closeSearch();
+      if (e.key === 'Escape') {
+        closeSearch();
+        return;
+      }
+
+      if (!debouncedQuery.trim() || filtered.length === 0) return;
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        setActiveIndex((current) => Math.min(current + 1, filtered.length - 1));
+        return;
+      }
+
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        setActiveIndex((current) => Math.max(current - 1, 0));
+        return;
+      }
+
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const target = filtered[activeIndex];
+        if (target) {
+          closeSearch();
+          navigate(target.url);
+        }
+      }
     };
     if (isOpen) {
       document.addEventListener('keydown', handleKey);
@@ -161,7 +232,7 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
       document.removeEventListener('keydown', handleKey);
       document.body.style.overflow = '';
     };
-  }, [isOpen, closeSearch]);
+  }, [isOpen, closeSearch, debouncedQuery, filtered, activeIndex, navigate]);
 
   const handleResultClick = useCallback(
     (url: string) => {
@@ -202,13 +273,21 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                 ref={inputRef}
                 type="text"
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="搜索藏馆、谱系、工坊、手记..."
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setActiveIndex(0);
+                  resultRefs.current = [];
+                }}
+                placeholder="搜索书房、藏馆、谱系、工坊、风信、年谱..."
                 className="flex-1 text-[15px] bg-transparent outline-none placeholder:text-[#B8B8B6] text-[#1E1E1E]"
               />
               {query && (
                 <button
-                  onClick={() => setQuery('')}
+                  onClick={() => {
+                    setQuery('');
+                    setActiveIndex(0);
+                    resultRefs.current = [];
+                  }}
                   className="p-1 text-[#B8B8B6] hover:text-[#1E1E1E] transition-colors"
                 >
                   <X size={16} />
@@ -228,10 +307,18 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                   { key: 'path', label: '谱系', count: counts.path || 0 },
                   { key: 'work', label: '工坊', count: counts.work || 0 },
                   { key: 'journal', label: '手记', count: counts.journal || 0 },
-                ].map((t) => (
+                  { key: 'feed', label: '风信', count: counts.feed || 0 },
+                  { key: 'timeline', label: '年谱', count: counts.timeline || 0 },
+                ]
+                  .filter((t) => t.key === 'all' || t.count > 0)
+                  .map((t) => (
                   <button
                     key={t.key}
-                    onClick={() => setActiveType(t.key)}
+                    onClick={() => {
+                      setActiveType(t.key);
+                      setActiveIndex(0);
+                      resultRefs.current = [];
+                    }}
                     className={`px-3 py-1 rounded-full text-[12px] whitespace-nowrap transition-colors ${
                       activeType === t.key
                         ? 'bg-[#1E1E1E] text-white'
@@ -258,11 +345,15 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                     输入关键词开始搜索
                   </p>
                   <div className="flex flex-wrap justify-center gap-2 mt-4 px-8">
-                    {['React', '设计', 'AI工具', '独立开发', '读书笔记'].map(
+                    {['前端', '小安', '智能体', '复刻', '年谱'].map(
                       (tag) => (
                         <button
-                          key={tag}
-                          onClick={() => setQuery(tag)}
+                        key={tag}
+                          onClick={() => {
+                            setQuery(tag);
+                            setActiveIndex(0);
+                            resultRefs.current = [];
+                          }}
                           className="px-3 py-1 text-[12px] text-[#8A8A88] bg-[#F2F2F0] rounded-full hover:bg-[#E5E5E3] transition-colors"
                         >
                           {tag}
@@ -288,11 +379,17 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                     return (
                       <motion.button
                         key={result.id}
+                        ref={(node) => {
+                          resultRefs.current[idx] = node;
+                        }}
                         initial={{ opacity: 0, x: -8 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: idx * 0.03, duration: 0.2 }}
                         onClick={() => handleResultClick(result.url)}
-                        className="w-full flex items-start gap-3 px-4 py-3 text-left hover:bg-[#FAF9F7] transition-colors group"
+                        onMouseEnter={() => setActiveIndex(idx)}
+                        className={`w-full flex items-start gap-3 px-4 py-3 text-left transition-colors group ${
+                          activeIndex === idx ? 'bg-[#FAF9F7]' : 'hover:bg-[#FAF9F7]'
+                        }`}
                       >
                         <div
                           className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${config.color}`}
@@ -326,18 +423,16 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
             {/* Footer */}
             <div className="flex items-center justify-between px-4 py-2.5 border-t border-[#F5EDE8] bg-[#FAF9F7]">
               <span className="text-[11px] text-[#B8B8B6]">
-                {filtered.length > 0 ? `找到 ${filtered.length} 条结果` : '萦思藏馆搜索'}
+                {filtered.length > 0 ? `找到 ${filtered.length} 条结果` : '安的书房搜索'}
               </span>
-              <div className="flex items-center gap-2 text-[11px] text-[#B8B8B6]">
-                <kbd className="px-1 py-0.5 bg-white rounded border border-[#E5E5E3]">
-                  ↑↓
-                </kbd>
-                <span>选择</span>
-                <kbd className="px-1 py-0.5 bg-white rounded border border-[#E5E5E3]">
-                  Enter
-                </kbd>
-                <span>打开</span>
-              </div>
+              {filtered.length > 0 && (
+                <div className="flex items-center gap-2 text-[11px] text-[#B8B8B6]">
+                  <kbd className="px-1 py-0.5 bg-white rounded border border-[#E5E5E3]">↑↓</kbd>
+                  <span>选择</span>
+                  <kbd className="px-1 py-0.5 bg-white rounded border border-[#E5E5E3]">Enter</kbd>
+                  <span>打开</span>
+                </div>
+              )}
             </div>
           </motion.div>
         </motion.div>

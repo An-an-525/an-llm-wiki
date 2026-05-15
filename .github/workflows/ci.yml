@@ -1,0 +1,53 @@
+name: site-ci
+
+on:
+  push:
+    paths:
+      - 'site/**'
+      - '.github/workflows/ci.yml'
+      - '.github/workflows/desktop-release.yml'
+  pull_request:
+    paths:
+      - 'site/**'
+      - '.github/workflows/ci.yml'
+      - '.github/workflows/desktop-release.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  site-quality:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install Rust stable
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint frontend
+        run: npm run lint
+
+      - name: Build frontend
+        run: npm run build
+
+      - name: Check desktop shell
+        run: cargo check --manifest-path src-tauri/Cargo.toml

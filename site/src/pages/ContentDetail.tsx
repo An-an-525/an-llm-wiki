@@ -1,4 +1,4 @@
-import { useMemo, useState, useCallback } from 'react';
+import { useMemo, useState, useCallback, type ReactNode } from 'react';
 import { useParams, Link, useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
@@ -21,11 +21,12 @@ import {
   Calendar,
 } from 'lucide-react';
 import { libraryItems } from '@/data/mockLibrary';
-import { paths } from '@/data/mockPaths';
+import { pathDetails, paths } from '@/data/mockPaths';
 import { works } from '@/data/mockWorks';
 import { journalEntries } from '@/data/mockJournal';
 import { feedItems } from '@/data/mockFeed';
 import { timelineEvents } from '@/data/mockTimeline';
+import { resolveAssetUrl } from '@/lib/runtime';
 import type {
   LibraryItem,
   Path,
@@ -114,17 +115,24 @@ function unifyLibraryItem(item: LibraryItem): UnifiedContent {
     status: statusMap[item.status] || item.status,
     createdAt: item.createdAt,
     updatedAt: item.updatedAt,
+    cover: item.cover,
+    body: item.body,
     metadata: {
       rating: item.rating,
       links: item.links,
       libraryType: item.type,
+      readerCategory: item.readerCategory,
+      readerCategoryLabel: item.readerCategoryLabel,
       status: item.status,
+      sourceLabels: item.sourceLabels,
+      publicSafety: item.publicSafety,
     },
     original: item,
   };
 }
 
 function unifyPath(item: Path): UnifiedContent {
+  const detail = pathDetails[item.id];
   const statusMap: Record<string, string> = {
     in_progress: '进行中',
     completed: '已完成',
@@ -140,11 +148,13 @@ function unifyPath(item: Path): UnifiedContent {
     createdAt: item.createdAt,
     updatedAt: item.updatedAt,
     cover: item.cover,
+    body: detail?.longDescription,
     metadata: {
       difficulty: item.difficulty,
       estimatedTime: item.estimatedTime,
       stages: item.stages,
       status: item.status,
+      detail,
     },
     original: item,
   };
@@ -166,6 +176,7 @@ function unifyWork(item: Work): UnifiedContent {
     createdAt: item.createdAt,
     updatedAt: item.updatedAt,
     cover: item.cover,
+    body: item.body,
     metadata: {
       link: item.link,
       github: item.github,
@@ -206,31 +217,44 @@ function unifyFeed(item: FeedItem): UnifiedContent {
     status: '动态',
     createdAt: item.createdAt,
     updatedAt: item.createdAt,
-    body: item.content,
+    body: item.body || item.content,
     metadata: {
       feedType: item.type,
       link: item.link,
+      actionText: item.actionText,
     },
     original: item,
   };
 }
 
 function unifyTimeline(item: TimelineEvent): UnifiedContent {
+  const categoryLabel: Record<TimelineEvent['category'], string> = {
+    milestone: '关键节点',
+    learning: '学习变化',
+    work: '作品推进',
+    life: '生活记录',
+  };
   return {
     id: item.id,
     type: 'timeline',
     title: item.title,
     description: item.description,
-    tags: item.relatedLinks || [],
+    tags: [categoryLabel[item.category] || '年谱'],
     status: item.importance === 'major' ? '重要' : item.importance === 'important' ? '精选' : '记录',
     createdAt: item.date,
     updatedAt: item.date,
     cover: item.cover,
-    body: item.description,
+    body: item.body || item.description,
     metadata: {
       category: item.category,
+      categoryLabel: categoryLabel[item.category] || '年谱',
       importance: item.importance,
       date: item.date,
+      relatedLinks: item.relatedLinks,
+      achievements: item.achievements,
+      reflection: item.reflection,
+      stage: item.stage,
+      actionText: item.actionText,
     },
     original: item,
   };
@@ -255,31 +279,6 @@ function getBreadcrumb(content: UnifiedContent) {
 /* ═══════════════════════════════════════════
    Related content finder
    ═══════════════════════════════════════════ */
-
-function findRelated(content: UnifiedContent): UnifiedContent[] {
-  const allContents: UnifiedContent[] = [
-    ...libraryItems.map(unifyLibraryItem),
-    ...paths.map(unifyPath),
-    ...works.map(unifyWork),
-    ...journalEntries.map(unifyJournal),
-    ...feedItems.map(unifyFeed),
-    ...timelineEvents.map(unifyTimeline),
-  ];
-
-  // Filter out self, then score by tag overlap
-  const candidates = allContents
-    .filter((c) => c.id !== content.id)
-    .map((c) => {
-      const overlap = c.tags.filter((t) => content.tags.includes(t)).length;
-      return { content: c, score: overlap };
-    })
-    .filter((c) => c.score > 0)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 3)
-    .map((c) => c.content);
-
-  return candidates;
-}
 
 /* ═══════════════════════════════════════════
    Status badge color
@@ -339,6 +338,36 @@ function formatDetailDate(dateStr: string): string {
   });
 }
 
+function isInternalReaderLink(url: string): boolean {
+  return /^\/content\/[A-Za-z0-9_-]+$/i.test(url);
+}
+
+function looksLikeInternalReaderLabel(label: string): boolean {
+  return /^(?:wiki|private-wiki|_raw|_archives|inbox|site-data|manifests|scripts|docs)\//i.test(label)
+    || /^\/?content\/[A-Za-z0-9_-]+$/i.test(label);
+}
+
+function readerLinkLabel(label: string, url: string): string {
+  const trimmed = label.trim();
+  if (trimmed && !looksLikeInternalReaderLabel(trimmed)) {
+    return trimmed;
+  }
+  return isInternalReaderLink(url) ? '相关书页' : '外部来源';
+}
+
+function readerLinkMeta(url: string): string {
+  if (isInternalReaderLink(url)) {
+    return '站内延伸阅读';
+  }
+
+  try {
+    const host = new URL(url).hostname.replace(/^www\./i, '');
+    return host ? `外部参考 · ${host}` : '外部参考';
+  } catch {
+    return '外部参考';
+  }
+}
+
 /* ═══════════════════════════════════════════
    Markdown Styles wrapper
    ═══════════════════════════════════════════ */
@@ -348,6 +377,12 @@ function MarkdownBody({ children }: { children: string }) {
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
       components={{
+        h1: ({ ...props }) => (
+          <h1
+            className="font-serif text-[28px] text-ink mt-2 mb-6 leading-tight"
+            {...props}
+          />
+        ),
         h2: ({ ...props }) => (
           <h2
             className="font-serif text-[24px] text-ink mt-12 mb-5 leading-tight"
@@ -437,6 +472,7 @@ function MarkdownBody({ children }: { children: string }) {
           <img
             className="w-full rounded-lg shadow-sm my-3"
             {...props}
+            src={resolveAssetUrl(typeof props.src === 'string' ? props.src : '')}
             alt={props.alt || ''}
           />
         ),
@@ -448,37 +484,13 @@ function MarkdownBody({ children }: { children: string }) {
 }
 
 /* ═══════════════════════════════════════════
-   Related Card
-   ═══════════════════════════════════════════ */
-
-function RelatedCard({ content }: { content: UnifiedContent }) {
-  const breadcrumb = getBreadcrumb(content);
-  return (
-    <Link
-      to={`/content/${content.id}`}
-      className="group block bg-white border border-border-color rounded-xl p-5 hover:shadow-md hover:border-border-dark transition-all duration-250"
-      style={{ transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' }}
-    >
-      <span className="text-[11px] font-sans text-silver mb-2 block">
-        {breadcrumb.section}
-      </span>
-      <h4 className="text-[15px] font-sans font-medium text-graphite group-hover:text-ink transition-colors duration-150 line-clamp-2 mb-2">
-        {content.title}
-      </h4>
-      <p className="text-[13px] font-sans text-silver line-clamp-2">
-        {content.description}
-      </p>
-    </Link>
-  );
-}
-
-/* ═══════════════════════════════════════════
    Resource Detail Body
    ═══════════════════════════════════════════ */
 
 function ResourceBody({ content }: { content: UnifiedContent }) {
   const item = content.original as LibraryItem;
   const statusColor = getStatusColor(content.status);
+  const visibleLinks = (item.links ?? []).filter((link) => link.url.startsWith('http'));
   const typeLabels: Record<string, string> = {
     article: '文章',
     video: '视频',
@@ -490,103 +502,203 @@ function ResourceBody({ content }: { content: UnifiedContent }) {
 
   return (
     <div className="max-w-[800px] mx-auto">
-      {/* Link card */}
-      {item.links?.map(
-        (link) =>
-          link.url !== '#' && (
-            <a
-              key={link.label}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-between p-5 bg-white border border-border-color rounded-xl mb-6 hover:shadow-md hover:border-border-dark transition-all duration-250 group"
-              style={{ transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' }}
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-light-pink flex items-center justify-center shrink-0">
-                  <ExternalLink size={18} strokeWidth={1.5} className="text-silver" />
+      {content.cover && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.45, ease: easeOut }}
+          className="mb-6"
+        >
+          <img
+            src={resolveAssetUrl(content.cover)}
+            alt={content.title}
+            className="w-full aspect-[16/7] object-cover rounded-xl shadow-sm border border-border-color"
+          />
+        </motion.div>
+      )}
+
+      {/* External source cards only */}
+      {visibleLinks.map((link) => {
+        const cardLabel = readerLinkLabel(link.label, link.url);
+        const metaLabel = readerLinkMeta(link.url);
+
+        const cardContent = (
+          <>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg bg-light-pink flex items-center justify-center shrink-0">
+                <ExternalLink size={18} strokeWidth={1.5} className="text-silver" />
+              </div>
+              <div>
+                <div className="text-[14px] font-sans font-medium text-graphite group-hover:text-ink transition-colors">
+                  {cardLabel}
                 </div>
-                <div>
-                  <div className="text-[14px] font-sans font-medium text-graphite group-hover:text-ink transition-colors">
-                    {link.label}
-                  </div>
-                  <div className="text-[12px] font-sans text-silver truncate max-w-[300px] sm:max-w-[400px]">
-                    {link.url}
-                  </div>
+                <div className="text-[12px] font-sans text-silver truncate max-w-[300px] sm:max-w-[400px]">
+                  {metaLabel}
                 </div>
               </div>
-              <ExternalLink
-                size={16}
-                strokeWidth={1.5}
-                className="text-light-silver group-hover:text-graphite transition-colors shrink-0"
-              />
-            </a>
-          )
-      )}
+            </div>
+            <ExternalLink
+              size={16}
+              strokeWidth={1.5}
+              className="text-light-silver group-hover:text-graphite transition-colors shrink-0"
+            />
+          </>
+        );
 
-      {/* Description */}
-      <p className="text-[15px] font-sans text-graphite leading-[1.75] mb-6">
-        {content.description}
-      </p>
+        const cardClassName = 'flex items-center justify-between p-5 bg-white border border-border-color rounded-xl mb-6 hover:shadow-md hover:border-border-dark transition-all duration-250 group';
+        const cardStyle = { transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' as const };
 
-      {/* Metadata table */}
-      <div className="bg-white border border-border-color rounded-xl overflow-hidden">
-        <div className="grid grid-cols-1 sm:grid-cols-2">
-          <div className="px-5 py-3.5 border-b sm:border-r border-border-color">
-            <span className="text-[12px] font-sans text-silver block mb-1">类型</span>
-            <span className="text-[14px] font-sans text-graphite">
-              {typeLabels[item.type] || item.type}
-            </span>
-          </div>
-          <div className="px-5 py-3.5 border-b border-border-color">
-            <span className="text-[12px] font-sans text-silver block mb-1">标签</span>
-            <div className="flex flex-wrap gap-1">
-              {content.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-[11px] font-sans text-graphite bg-light-pink px-2 py-0.5 rounded-sm"
-                >
-                  {tag}
-                </span>
-              ))}
+        return (
+          <a
+            key={`${link.url}-${cardLabel}`}
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cardClassName}
+            style={cardStyle}
+          >
+            {cardContent}
+          </a>
+        );
+      })}
+
+      <div className="mt-8 space-y-5">
+        <DetailSection title="摘要">
+          <p className="text-[15px] font-sans text-graphite leading-[1.8] mb-4">
+            {content.description}
+          </p>
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+            <div className="rounded-xl bg-cream px-4 py-3">
+              <p className="mb-1 text-[12px] text-silver">读这页的人</p>
+              <p className="text-[14px] text-graphite leading-[1.8]">
+                {item.whoFor || item.recommendedFor || '想从安的公开资料中学习并复刻最小版本的人'}
+              </p>
+            </div>
+            <div className="rounded-xl bg-[#F5EDE8] px-4 py-3">
+              <p className="mb-1 text-[12px] text-silver">可用线索</p>
+              <p className="text-[14px] text-graphite leading-[1.8]">
+                {item.actionText || '从用途、来源和边界判断是否继续深入。'}
+              </p>
             </div>
           </div>
-          <div className="px-5 py-3.5 border-b sm:border-r border-border-color">
-            <span className="text-[12px] font-sans text-silver block mb-1">评分</span>
-            <StarRating rating={item.rating} />
-          </div>
-          <div className="px-5 py-3.5 border-b border-border-color">
-            <span className="text-[12px] font-sans text-silver block mb-1">状态</span>
-            <span
-              className={`inline-block text-[12px] font-sans px-2.5 py-0.5 rounded-full ${statusColor.bg} ${statusColor.text}`}
-            >
-              {content.status}
-            </span>
-          </div>
-          <div className="px-5 py-3.5 sm:border-r border-border-color">
-            <span className="text-[12px] font-sans text-silver block mb-1">收藏时间</span>
-            <span className="text-[14px] font-sans text-graphite">
-              {formatDetailDate(content.createdAt)}
-            </span>
-          </div>
-          <div className="px-5 py-3.5">
-            <span className="text-[12px] font-sans text-silver block mb-1">更新时间</span>
-            <span className="text-[14px] font-sans text-graphite">
-              {formatDetailDate(content.updatedAt)}
-            </span>
-          </div>
-        </div>
-      </div>
+        </DetailSection>
 
-      {/* My notes */}
-      {item.description && (
-        <div className="mt-8">
-          <h3 className="font-serif text-[18px] font-medium text-ink mb-3">个人笔记</h3>
-          <p className="text-[15px] font-sans text-graphite leading-[1.75] italic">
-            {item.description}
-          </p>
-        </div>
-      )}
+        {item.useCase && (
+          <DetailSection title="用途">
+            <p className="text-[15px] font-sans text-graphite leading-[1.8]">
+              {item.useCase}
+            </p>
+          </DetailSection>
+        )}
+
+          <DetailSection title="资料卡">
+          <div className="overflow-hidden rounded-xl border border-border-color">
+            <div className="grid grid-cols-1 sm:grid-cols-2">
+              <div className="border-b border-border-color px-5 py-3.5 sm:border-r">
+                <span className="mb-1 block text-[12px] font-sans text-silver">藏馆大类</span>
+                <span className="text-[14px] font-sans text-graphite">
+                  {item.readerCategoryLabel || '其他'}
+                </span>
+              </div>
+              <div className="border-b border-border-color px-5 py-3.5">
+                <span className="mb-1 block text-[12px] font-sans text-silver">资料形态</span>
+                <span className="text-[14px] font-sans text-graphite">
+                  {typeLabels[item.type] || item.type}
+                </span>
+              </div>
+              <div className="border-b border-border-color px-5 py-3.5 sm:border-r">
+                <span className="mb-1 block text-[12px] font-sans text-silver">关键词</span>
+                <div className="flex flex-wrap gap-1">
+                  {content.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-sm bg-light-pink px-2 py-0.5 text-[11px] font-sans text-graphite"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="border-b border-border-color px-5 py-3.5">
+                <span className="mb-1 block text-[12px] font-sans text-silver">评分</span>
+                <StarRating rating={item.rating} />
+              </div>
+              <div className="border-b border-border-color px-5 py-3.5 sm:border-r">
+                <span className="mb-1 block text-[12px] font-sans text-silver">状态</span>
+                <span
+                  className={`inline-block rounded-full px-2.5 py-0.5 text-[12px] font-sans ${statusColor.bg} ${statusColor.text}`}
+                >
+                  {content.status}
+                </span>
+              </div>
+              <div className="border-b border-border-color px-5 py-3.5">
+                <span className="mb-1 block text-[12px] font-sans text-silver">收藏时间</span>
+                <span className="text-[14px] font-sans text-graphite">
+                  {formatDetailDate(content.createdAt)}
+                </span>
+              </div>
+              <div className="px-5 py-3.5 sm:border-r">
+                <span className="mb-1 block text-[12px] font-sans text-silver">更新时间</span>
+                <span className="text-[14px] font-sans text-graphite">
+                  {formatDetailDate(content.updatedAt)}
+                </span>
+              </div>
+              <div className="px-5 py-3.5">
+                <span className="mb-1 block text-[12px] font-sans text-silver">时间</span>
+                <span className="text-[14px] font-sans text-graphite">
+                  {item.timeToLearn || '按你的节奏阅读'}
+                </span>
+              </div>
+            </div>
+          </div>
+        </DetailSection>
+
+        {(item.pros?.length || item.cons?.length) && (
+          <DetailSection title="保留与复核">
+            {item.pros && item.pros.length > 0 && (
+              <div className="mb-4">
+                <p className="text-[13px] font-sans font-medium text-graphite mb-2">值得保留的价值</p>
+                <DetailList items={item.pros} />
+              </div>
+            )}
+            {item.cons && item.cons.length > 0 && (
+              <div>
+                <p className="text-[13px] font-sans font-medium text-graphite mb-2">需要继续复核的地方</p>
+                <DetailList items={item.cons} />
+              </div>
+            )}
+          </DetailSection>
+        )}
+
+        {(item.sourceLabels?.length || item.publicSafety) && (
+          <DetailSection title="来源">
+            {item.sourceLabels && item.sourceLabels.length > 0 && (
+              <p className="text-[14px] font-sans text-graphite leading-relaxed">
+                来源类型：{item.sourceLabels.join(' / ')}
+              </p>
+            )}
+            {item.publicSafety && (
+              <p className="mt-2 text-[13px] font-sans text-silver leading-relaxed">
+                展示状态：{item.publicSafety}
+              </p>
+            )}
+          </DetailSection>
+        )}
+
+        {item.myThoughts && item.myThoughts !== item.description && (
+          <DetailSection title="安的判断">
+            <p className="text-[15px] font-sans text-graphite leading-[1.8]">
+              {item.myThoughts}
+            </p>
+          </DetailSection>
+        )}
+
+        {item.body && (
+          <DetailSection title="正文">
+            <MarkdownBody>{item.body}</MarkdownBody>
+          </DetailSection>
+        )}
+      </div>
     </div>
   );
 }
@@ -678,6 +790,7 @@ function PathStageItem({ stage, index }: { stage: PathStage; index: number }) {
 }
 
 function PathBody({ content }: { content: UnifiedContent }) {
+  const path = content.original as Path;
   const stages = (content.metadata.stages as PathStage[]) || [];
   const difficultyLabel: Record<string, string> = {
     beginner: '初级',
@@ -687,28 +800,64 @@ function PathBody({ content }: { content: UnifiedContent }) {
 
   return (
     <div className="max-w-[800px] mx-auto">
-      {/* Overview */}
-      <div className="flex flex-wrap gap-4 mb-6">
-        <div className="flex items-center gap-1.5 text-[13px] font-sans text-silver">
-          <Clock size={14} strokeWidth={1.5} />
-          <span>{(content.metadata.estimatedTime as string) || '未知'}</span>
+      <DetailSection title="摘要">
+        <div className="mb-4 flex flex-wrap gap-4">
+          <div className="flex items-center gap-1.5 text-[13px] font-sans text-silver">
+            <Clock size={14} strokeWidth={1.5} />
+            <span>{(content.metadata.estimatedTime as string) || '未知'}</span>
+          </div>
+          <div className="flex items-center gap-1.5 text-[13px] font-sans text-silver">
+            <Tag size={14} strokeWidth={1.5} />
+            <span>{difficultyLabel[content.metadata.difficulty as string] || content.metadata.difficulty as string}</span>
+          </div>
         </div>
-        <div className="flex items-center gap-1.5 text-[13px] font-sans text-silver">
-          <Tag size={14} strokeWidth={1.5} />
-          <span>{difficultyLabel[content.metadata.difficulty as string] || content.metadata.difficulty as string}</span>
+        <p className="text-[15px] font-sans text-graphite leading-[1.8] mb-4">
+          {content.description}
+        </p>
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+          <div className="rounded-xl bg-cream px-4 py-3">
+            <p className="mb-1 text-[12px] text-silver">读这条路的人</p>
+            <p className="text-[14px] text-graphite leading-[1.8]">
+              {path.whoFor || '想照着路线做出一个最小成果的人'}
+            </p>
+          </div>
+          <div className="rounded-xl bg-[#F5EDE8] px-4 py-3">
+            <p className="mb-1 text-[12px] text-silver">第一步</p>
+            <p className="text-[14px] text-graphite leading-[1.8]">
+              {path.actionText || '从第一阶段开始，完成一个最小交付物。'}
+            </p>
+          </div>
+        </div>
+      </DetailSection>
+
+      {/* Stages */}
+      <div className="mt-5">
+        <h3 className="mb-4 font-serif text-[18px] font-medium text-ink">学习阶段</h3>
+        <div className="space-y-3">
+          {stages.map((stage, index) => (
+            <PathStageItem key={stage.id} stage={stage} index={index} />
+          ))}
         </div>
       </div>
 
-      <p className="text-[15px] font-sans text-graphite leading-[1.75] mb-8">
-        {content.description}
-      </p>
+      <div className="mt-8 space-y-5">
+        {path.prerequisites && path.prerequisites.length > 0 && (
+          <DetailSection title="准备">
+            <DetailList items={path.prerequisites} />
+          </DetailSection>
+        )}
 
-      {/* Stages */}
-      <h3 className="font-serif text-[18px] font-medium text-ink mb-4">学习阶段</h3>
-      <div className="space-y-3">
-        {stages.map((stage, index) => (
-          <PathStageItem key={stage.id} stage={stage} index={index} />
-        ))}
+        {path.outcomes && path.outcomes.length > 0 && (
+          <DetailSection title="完成后应该得到什么">
+            <DetailList items={path.outcomes} />
+          </DetailSection>
+        )}
+
+        {content.body && (
+          <DetailSection title="延伸笔记">
+            <MarkdownBody>{content.body}</MarkdownBody>
+          </DetailSection>
+        )}
       </div>
     </div>
   );
@@ -718,8 +867,63 @@ function PathBody({ content }: { content: UnifiedContent }) {
    Work Detail Body
    ═══════════════════════════════════════════ */
 
+function DetailSection({
+  title,
+  children,
+}: {
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <section className="bg-white border border-border-color rounded-xl p-5 md:p-6">
+      <h3 className="font-serif text-[18px] text-ink mb-4">{title}</h3>
+      {children}
+    </section>
+  );
+}
+
+function DetailList({ items, ordered = false }: { items?: string[]; ordered?: boolean }) {
+  const visible = (items ?? []).filter(Boolean);
+  if (visible.length === 0) return null;
+  const ListTag = ordered ? 'ol' : 'ul';
+
+  return (
+    <ListTag className={ordered ? 'space-y-3 list-decimal pl-5' : 'space-y-3 list-disc pl-5'}>
+      {visible.map((item) => (
+        <li key={item} className="text-[14px] font-sans text-graphite leading-[1.8]">
+          {item}
+        </li>
+      ))}
+    </ListTag>
+  );
+}
+
+function ThoughtLayer({
+  title,
+  children,
+}: {
+  title: string;
+  children?: string;
+}) {
+  if (!children) return null;
+  return (
+    <div className="bg-cream rounded-xl p-4">
+      <h4 className="text-[13px] font-sans font-medium text-graphite mb-2">{title}</h4>
+      <p className="text-[14px] font-sans text-silver leading-[1.8]">{children}</p>
+    </div>
+  );
+}
+
 function WorkBody({ content }: { content: UnifiedContent }) {
   const work = content.original as Work;
+  const hasStructuredDepth =
+    work.whyItMattered ||
+    work.operationStory?.length ||
+    work.replicationSteps?.length ||
+    work.anReminders?.length ||
+    work.psychologicalLayer ||
+    work.sociologicalLayer ||
+    work.philosophicalLayer;
 
   return (
     <div className="max-w-[1000px] mx-auto">
@@ -732,57 +936,133 @@ function WorkBody({ content }: { content: UnifiedContent }) {
           className="mb-8"
         >
           <img
-            src={content.cover}
+            src={resolveAssetUrl(content.cover)}
             alt={content.title}
             className="w-full aspect-video object-cover rounded-xl shadow-md"
           />
         </motion.div>
       )}
 
-      {/* Tech stack */}
-      <div className="mb-6">
-        <h3 className="text-[13px] font-sans text-silver mb-2">技术栈</h3>
-        <div className="flex flex-wrap gap-2">
-          {work.techStack.map((tech) => (
-            <span
-              key={tech}
-              className="text-[13px] font-sans text-graphite bg-light-pink px-3 py-1 rounded-lg"
+      <div className="space-y-5">
+        <DetailSection title="先用一句话说清楚">
+          <p className="text-[15px] font-sans text-graphite leading-[1.8] mb-4">
+            {content.description}
+          </p>
+          {work.whyItMattered && (
+            <p className="text-[14px] font-sans text-silver leading-[1.8]">
+              {work.whyItMattered}
+            </p>
+          )}
+          {work.actionText && (
+            <div className="mt-4 rounded-xl bg-[#F5EDE8] px-4 py-3">
+              <p className="mb-1 text-[12px] text-silver">第一步</p>
+              <p className="text-[14px] text-graphite leading-[1.8]">{work.actionText}</p>
+            </div>
+          )}
+        </DetailSection>
+
+        <DetailSection title="工具与材料">
+          <div className="flex flex-wrap gap-2 mb-4">
+            {work.techStack.map((tech) => (
+              <span
+                key={tech}
+                className="text-[13px] font-sans text-graphite bg-light-pink px-3 py-1 rounded-lg"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+          {work.sourceLabels && work.sourceLabels.length > 0 && (
+            <p className="text-[13px] font-sans text-silver leading-relaxed">
+              来源类型：{work.sourceLabels.join(' / ')}
+            </p>
+          )}
+        </DetailSection>
+
+        {work.operationStory && work.operationStory.length > 0 && (
+          <DetailSection title="操作历程">
+            <DetailList items={work.operationStory} ordered />
+          </DetailSection>
+        )}
+
+        {work.replicationSteps && work.replicationSteps.length > 0 && (
+          <DetailSection title="复刻路径">
+            <DetailList items={work.replicationSteps} ordered />
+          </DetailSection>
+        )}
+
+        {work.anReminders && work.anReminders.length > 0 && (
+          <DetailSection title="提醒">
+            <DetailList items={work.anReminders} />
+          </DetailSection>
+        )}
+
+        {(work.psychologicalLayer || work.sociologicalLayer || work.philosophicalLayer) && (
+          <DetailSection title="三层理解">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <ThoughtLayer title="心理层">{work.psychologicalLayer}</ThoughtLayer>
+              <ThoughtLayer title="社会层">{work.sociologicalLayer}</ThoughtLayer>
+              <ThoughtLayer title="哲学层">{work.philosophicalLayer}</ThoughtLayer>
+            </div>
+          </DetailSection>
+        )}
+
+        {work.failureModes && work.failureModes.length > 0 && (
+          <DetailSection title="容易失手的地方">
+            <DetailList items={work.failureModes} />
+          </DetailSection>
+        )}
+
+        {work.lessons && work.lessons.length > 0 && (
+          <DetailSection title="留下来的东西">
+            <DetailList items={work.lessons} />
+          </DetailSection>
+        )}
+
+        {work.nextPlan && (
+          <DetailSection title="后续">
+            <p className="text-[14px] font-sans text-graphite leading-[1.8]">
+              {work.nextPlan}
+            </p>
+          </DetailSection>
+        )}
+
+        {!hasStructuredDepth && (
+          <p className="text-[15px] font-sans text-graphite leading-[1.75]">
+            {content.description}
+          </p>
+        )}
+
+        {work.body && (
+          <DetailSection title="公开笔记">
+            <MarkdownBody>{work.body}</MarkdownBody>
+          </DetailSection>
+        )}
+
+        <div className="flex flex-wrap gap-3">
+          {work.github && (
+            <a
+              href={work.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 text-[14px] font-sans text-graphite bg-white border border-border-color rounded-lg hover:bg-light-gray transition-colors duration-150"
             >
-              {tech}
-            </span>
-          ))}
+              <Github size={16} strokeWidth={1.5} />
+              GitHub
+            </a>
+          )}
+          {work.link && (
+            <a
+              href={work.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 text-[14px] font-sans text-white bg-ink rounded-lg hover:opacity-85 transition-opacity duration-150"
+            >
+              <Globe size={16} strokeWidth={1.5} />
+              查看项目
+            </a>
+          )}
         </div>
-      </div>
-
-      {/* Description */}
-      <p className="text-[15px] font-sans text-graphite leading-[1.75] mb-8">
-        {content.description}
-      </p>
-
-      {/* Links */}
-      <div className="flex flex-wrap gap-3">
-        {work.github && (
-          <a
-            href={work.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2.5 text-[14px] font-sans text-graphite bg-white border border-border-color rounded-lg hover:bg-light-gray transition-colors duration-150"
-          >
-            <Github size={16} strokeWidth={1.5} />
-            GitHub
-          </a>
-        )}
-        {work.link && (
-          <a
-            href={work.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2.5 text-[14px] font-sans text-white bg-ink rounded-lg hover:opacity-85 transition-opacity duration-150"
-          >
-            <Globe size={16} strokeWidth={1.5} />
-            访问网站
-          </a>
-        )}
       </div>
     </div>
   );
@@ -812,22 +1092,45 @@ function JournalBody({ content }: { content: UnifiedContent }) {
 
 function FeedBody({ content }: { content: UnifiedContent }) {
   const feed = content.original as FeedItem;
+  const sourceLink = feed.link || '';
+  const visibleLink = sourceLink && sourceLink.startsWith('http') ? sourceLink : '';
+  const actionText = typeof content.metadata.actionText === 'string' ? content.metadata.actionText : '';
 
   return (
     <div className="max-w-[720px] mx-auto">
-      <p className="text-[15px] font-sans text-graphite leading-[1.75] mb-6">
-        {content.description}
-      </p>
+      <DetailSection title="摘要">
+        <p className="text-[15px] font-sans text-graphite leading-[1.8]">
+          {content.description}
+        </p>
+      </DetailSection>
 
-      {feed.link && feed.link !== '#' && (
-        <Link
-          to={feed.link}
-          className="inline-flex items-center gap-2 px-4 py-2.5 text-[14px] font-sans text-graphite bg-white border border-border-color rounded-lg hover:bg-light-gray transition-colors duration-150"
-        >
-          <ChevronRight size={16} strokeWidth={1.5} />
-          查看相关页面
-        </Link>
+      {content.body && (
+        <DetailSection title="安的判断">
+          <MarkdownBody>{content.body}</MarkdownBody>
+        </DetailSection>
       )}
+
+      {actionText && (
+        <DetailSection title="今天可以做什么">
+          <p className="text-[15px] font-sans text-graphite leading-[1.8]">
+            {actionText}
+          </p>
+        </DetailSection>
+      )}
+
+      {visibleLink ? (
+        <div className="mt-6">
+          <a
+            href={visibleLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 text-[14px] font-sans text-graphite bg-white border border-border-color rounded-lg hover:bg-light-gray transition-colors duration-150"
+          >
+            <ChevronRight size={16} strokeWidth={1.5} />
+            查看外部来源
+          </a>
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -837,22 +1140,66 @@ function FeedBody({ content }: { content: UnifiedContent }) {
    ═══════════════════════════════════════════ */
 
 function TimelineBody({ content }: { content: UnifiedContent }) {
+  const metadata = content.metadata as {
+    categoryLabel?: string;
+    reflection?: string;
+    stage?: string;
+    actionText?: string;
+    relatedLinks?: string[];
+    achievements?: string[];
+  };
+
   return (
     <div className="max-w-[720px] mx-auto">
-      <div className="flex items-center gap-4 mb-6">
-        <div className="flex items-center gap-1.5 text-[13px] font-sans text-silver">
-          <Calendar size={14} strokeWidth={1.5} />
-          <span>{content.metadata.date as string}</span>
+      <DetailSection title="节点说明">
+        <div className="mb-4 flex flex-wrap items-center gap-4">
+          <div className="flex items-center gap-1.5 text-[13px] font-sans text-silver">
+            <Calendar size={14} strokeWidth={1.5} />
+            <span>{content.metadata.date as string}</span>
+          </div>
+          <div className="flex items-center gap-1.5 text-[13px] font-sans text-silver">
+            <Tag size={14} strokeWidth={1.5} />
+            <span>{metadata.categoryLabel || content.metadata.category as string}</span>
+          </div>
+          {metadata.stage && (
+            <div className="flex items-center gap-1.5 text-[13px] font-sans text-silver">
+              <span>{metadata.stage}</span>
+            </div>
+          )}
         </div>
-        <div className="flex items-center gap-1.5 text-[13px] font-sans text-silver">
-          <Tag size={14} strokeWidth={1.5} />
-          <span>{content.metadata.category as string}</span>
-        </div>
-      </div>
+        <p className="text-[15px] font-sans text-graphite leading-[1.8]">
+          {content.description}
+        </p>
+      </DetailSection>
 
-      <p className="text-[15px] font-sans text-graphite leading-[1.75]">
-        {content.description}
-      </p>
+      {content.body && (
+        <DetailSection title="完整年谱记录">
+          <MarkdownBody>{content.body}</MarkdownBody>
+        </DetailSection>
+      )}
+
+      {metadata.reflection && (
+        <DetailSection title="当时的判断">
+          <p className="text-[15px] font-sans text-graphite leading-[1.8]">
+            {metadata.reflection}
+          </p>
+        </DetailSection>
+      )}
+
+      {metadata.achievements && metadata.achievements.length > 0 && (
+        <DetailSection title="留下的结果">
+          <DetailList items={metadata.achievements} />
+        </DetailSection>
+      )}
+
+      {metadata.actionText && (
+        <DetailSection title="后续动作">
+          <p className="text-[15px] font-sans text-graphite leading-[1.8]">
+            {metadata.actionText}
+          </p>
+        </DetailSection>
+      )}
+
     </div>
   );
 }
@@ -864,16 +1211,19 @@ function TimelineBody({ content }: { content: UnifiedContent }) {
 export default function ContentDetail() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const [savedIds, setSavedIds] = useState<string[]>(() => {
+    try {
+      return JSON.parse(localStorage.getItem('an-study-room-saved') || '[]') as string[];
+    } catch {
+      return [];
+    }
+  });
+  const [shareLabel, setShareLabel] = useState('分享');
 
   const content = useMemo(() => {
     if (!id) return null;
     return unifyContent(id);
   }, [id]);
-
-  const related = useMemo(() => {
-    if (!content) return [];
-    return findRelated(content);
-  }, [content]);
 
   const handleBack = useCallback(() => {
     navigate(-1);
@@ -899,6 +1249,36 @@ export default function ContentDetail() {
 
   const breadcrumb = getBreadcrumb(content);
   const statusColor = getStatusColor(content.status);
+  const isSaved = savedIds.includes(content.id);
+
+  const toggleSaved = () => {
+    setSavedIds((current) => {
+      const saved = new Set(current);
+      if (saved.has(content.id)) {
+        saved.delete(content.id);
+      } else {
+        saved.add(content.id);
+      }
+      const next = Array.from(saved);
+      localStorage.setItem('an-study-room-saved', JSON.stringify(next));
+      return next;
+    });
+  };
+
+  const shareContent = async () => {
+    const url = window.location.href;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: content.title, text: content.description, url });
+      } else {
+        await navigator.clipboard.writeText(url);
+        setShareLabel('已复制链接');
+        window.setTimeout(() => setShareLabel('分享'), 1800);
+      }
+    } catch {
+      setShareLabel('分享');
+    }
+  };
 
   return (
     <div className="min-h-[100dvh]">
@@ -998,7 +1378,7 @@ export default function ContentDetail() {
               className="mb-4"
             >
               <img
-                src={content.cover}
+                src={resolveAssetUrl(content.cover)}
                 alt={content.title}
                 className="w-full aspect-[16/9] object-cover rounded-xl shadow-md"
               />
@@ -1037,13 +1417,21 @@ export default function ContentDetail() {
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <button className="inline-flex items-center gap-1.5 px-3 py-2 text-[13px] font-sans text-graphite bg-white border border-border-color rounded-lg hover:bg-light-gray transition-colors duration-150">
+              <button
+                type="button"
+                onClick={toggleSaved}
+                className="inline-flex items-center gap-1.5 px-3 py-2 text-[13px] font-sans text-graphite bg-white border border-border-color rounded-lg hover:bg-light-gray transition-colors duration-150"
+              >
                 <Bookmark size={14} strokeWidth={1.5} />
-                收藏
+                {isSaved ? '已收藏' : '收藏'}
               </button>
-              <button className="inline-flex items-center gap-1.5 px-3 py-2 text-[13px] font-sans text-graphite bg-white border border-border-color rounded-lg hover:bg-light-gray transition-colors duration-150">
+              <button
+                type="button"
+                onClick={() => void shareContent()}
+                className="inline-flex items-center gap-1.5 px-3 py-2 text-[13px] font-sans text-graphite bg-white border border-border-color rounded-lg hover:bg-light-gray transition-colors duration-150"
+              >
                 <Share2 size={14} strokeWidth={1.5} />
-                分享
+                {shareLabel}
               </button>
             </div>
             <button
@@ -1056,20 +1444,6 @@ export default function ContentDetail() {
           </div>
         </div>
       </section>
-
-      {/* ── Related Content ── */}
-      {related.length > 0 && (
-        <section className="bg-cream px-5 md:px-12 py-12">
-          <div className="max-w-[1200px] mx-auto">
-            <h2 className="font-serif text-[22px] text-ink mb-6">相关推荐</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {related.map((item) => (
-                <RelatedCard key={item.id} content={item} />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
     </div>
   );
 }

@@ -32,6 +32,32 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    --app-safe-top: max(env(safe-area-inset-top, 0px), 0px);
+    --app-nav-height: calc(4rem + var(--app-safe-top));
+    --app-safe-bottom: env(safe-area-inset-bottom, 0px);
+    --mobile-nav-height: calc(56px + var(--app-safe-bottom));
+    --xiaoan-floating-bottom: calc(var(--mobile-nav-height) + 12px);
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      --app-safe-top: max(env(safe-area-inset-top, 0px), 0px);
+      --app-nav-height: calc(4rem + var(--app-safe-top));
+    }
+  }
+
+  html[data-platform='android'].android-standalone {
+    --app-safe-top: max(env(safe-area-inset-top, 0px), 24px);
+    --app-safe-bottom: 0px;
+    --app-nav-height: calc(4rem + var(--app-safe-top));
+    --mobile-nav-height: 56px;
+    --xiaoan-floating-bottom: 68px;
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --xiaoan-floating-bottom: 1.5rem;
+    }
   }
 
   html {

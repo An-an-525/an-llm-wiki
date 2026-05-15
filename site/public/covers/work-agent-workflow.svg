@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-label="智能体工作流项目">
+  <rect width="640" height="420" fill="#F4F0E6"/>
+  <rect x="94" y="118" width="120" height="70" rx="16" fill="#FFFDF9" stroke="#C8956C" stroke-width="3"/>
+  <rect x="260" y="224" width="120" height="70" rx="16" fill="#FFFDF9" stroke="#6B9E7C" stroke-width="3"/>
+  <rect x="426" y="118" width="120" height="70" rx="16" fill="#FFFDF9" stroke="#8A9BB8" stroke-width="3"/>
+  <path d="M214 154c38 8 56 34 72 70M380 260c42-16 58-46 78-72" fill="none" stroke="#B8A87F" stroke-width="9" stroke-linecap="round"/>
+  <text x="92" y="54" fill="#3C3530" font-family="serif" font-size="30">智能体工作流</text>
+  <text x="96" y="384" fill="#7A716B" font-family="sans-serif" font-size="20">从单次提问走向可复用的协作流程</text>
+</svg>

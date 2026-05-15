@@ -14,6 +14,7 @@ export interface PathDetail {
   createdAt: string;
   updatedAt: string;
   whoFor?: string;
+  actionText?: string;
   prerequisites: { title: string; description: string }[];
   outcomes: string[];
   longDescription: string;

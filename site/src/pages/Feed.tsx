@@ -29,11 +29,11 @@ type FeedType = 'all' | 'resource' | 'path_update' | 'work' | 'journal' | 'miles
 
 const typeFilters: { key: FeedType; label: string }[] = [
   { key: 'all', label: '全部' },
-  { key: 'resource', label: '资源收藏' },
-  { key: 'path_update', label: '路径更新' },
-  { key: 'work', label: '新作品' },
+  { key: 'resource', label: '资料' },
+  { key: 'path_update', label: '方法变化' },
+  { key: 'work', label: '项目进展' },
   { key: 'journal', label: '手记' },
-  { key: 'milestone', label: '里程碑' },
+  { key: 'milestone', label: '认知节点' },
 ];
 
 const typeConfig: Record<
@@ -49,21 +49,21 @@ const typeConfig: Record<
   resource: {
     icon: <Bookmark size={13} strokeWidth={1.5} />,
     dotColor: '#C8956C',
-    label: '资源',
+    label: '资料',
     bg: 'bg-[#F5EDE8]',
     hoverText: 'hover:text-[#C8956C]',
   },
   path_update: {
     icon: <TrendingUp size={13} strokeWidth={1.5} />,
     dotColor: '#6B9E7C',
-    label: '路径',
+    label: '方法变化',
     bg: 'bg-[#E8F0EB]',
     hoverText: 'hover:text-[#6B9E7C]',
   },
   work: {
     icon: <Sparkles size={13} strokeWidth={1.5} />,
     dotColor: '#C47D6E',
-    label: '作品',
+    label: '项目进展',
     bg: 'bg-[#F0DDD8]',
     hoverText: 'hover:text-[#C47D6E]',
   },
@@ -77,7 +77,7 @@ const typeConfig: Record<
   milestone: {
     icon: <Star size={13} strokeWidth={1.5} />,
     dotColor: '#B8A87F',
-    label: '里程碑',
+    label: '认知节点',
     bg: 'bg-[#F0EDE5]',
     hoverText: 'hover:text-[#B8A87F]',
   },
@@ -209,7 +209,7 @@ export default function Feed() {
     setVisibleCount(ITEMS_PER_PAGE);
   }, []);
 
-  // TODO: 接入后端后使用 <PageSkeleton type="feed" /> 替代
+  // 数据源固定后，这里直接渲染内容；后端接入时可切换为统一生命周期骨架
 
   // Error boundary
   if (!feedItems || !Array.isArray(feedItems)) {
@@ -243,13 +243,13 @@ export default function Feed() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: easeOut, delay: 0.15 }}
           >
-            风信汇聚AI资讯、工具更新、路径进展与我的动态。重要消息会高亮显示，每条都标注了来源与建议行动。
+            最近的变化、判断与书房更新。
           </motion.p>
         </div>
       </section>
 
       {/* ========== Sticky Filters ========== */}
-      <div className="sticky top-16 z-30 bg-white/90 backdrop-blur-[8px] border-b border-border-color">
+      <div className="sticky top-[var(--app-nav-height)] z-30 bg-white/90 backdrop-blur-[8px] border-b border-border-color">
         <div className="max-w-[720px] mx-auto px-5 md:px-12 py-3">
           {/* Result count */}
           <div className="flex items-center justify-between mb-2">
@@ -313,7 +313,7 @@ export default function Feed() {
                 {visibleItems.groups.map((group, gIdx) => (
                   <div key={format(group.date, 'yyyy-MM-dd')} className="mb-8">
                     {/* Date header - sticky */}
-                    <div className="sticky top-[124px] md:top-[128px] z-20 bg-white/95 backdrop-blur-[4px] py-2 mb-2 border-b border-border-color/60">
+                    <div className="sticky top-[calc(var(--app-nav-height)+60px)] z-20 bg-white/95 backdrop-blur-[4px] py-2 mb-2 border-b border-border-color/60">
                       <span className="text-[12px] font-sans font-normal text-silver tracking-[0.02em] uppercase">
                         {group.dateLabel}
                       </span>
@@ -407,10 +407,9 @@ export default function Feed() {
 
                               {/* Action text */}
                               {item.actionText && (
-                                <div className="flex items-start gap-1.5 mb-2 bg-[#F5EDE8]/50 rounded-lg px-3 py-2">
+                                <div className="flex items-start gap-1.5 mb-2 rounded-lg border border-[#E8DDD4] bg-white px-3 py-2">
                                   <ArrowRight size={12} strokeWidth={1.5} className="text-[#C8956C] mt-0.5 shrink-0" />
                                   <p className="text-[12px] font-sans text-graphite leading-relaxed">
-                                    <span className="text-silver">建议：</span>
                                     {item.actionText}
                                   </p>
                                 </div>
@@ -456,7 +455,7 @@ export default function Feed() {
                     </button>
                   ) : filtered.length > 0 ? (
                     <p className="text-[12px] font-sans text-light-silver tracking-[0.02em]">
-                      —— 已展示全部动态 ——
+                      已展示全部动态
                     </p>
                   ) : null}
                 </div>

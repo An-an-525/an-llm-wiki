@@ -1,32 +1,20 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { Link } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Search,
   ChevronDown,
   ExternalLink,
-  Bookmark,
   RotateCcw,
-  Star,
-  Info,
   Sparkles,
-  Zap,
+  SlidersHorizontal,
 } from 'lucide-react';
 import { libraryItems } from '@/data/mockLibrary';
-import type { LibraryItem } from '@/types';
+import type { LibraryItem, LibraryReaderCategory } from '@/types';
 import { EmptyState as LifecycleEmptyState, ErrorState } from '@/components/ui/lifecycle';
+import { toPublicLabel } from '@/lib/publicLabels';
 
 const easeOut = [0, 0, 0.2, 1] as [number, number, number, number];
-
-/* ── difficulty config ── */
-const difficultyConfig: Record<
-  string,
-  { label: string; bg: string; text: string; border: string }
-> = {
-  easy: { label: '简单', bg: 'bg-[#6B9E7C]/10', text: 'text-[#6B9E7C]', border: 'border-[#6B9E7C]/30' },
-  medium: { label: '中等', bg: 'bg-[#C8956C]/10', text: 'text-[#C8956C]', border: 'border-[#C8956C]/30' },
-  hard: { label: '困难', bg: 'bg-[#C47D6E]/10', text: 'text-[#C47D6E]', border: 'border-[#C47D6E]/30' },
-};
 
 /* ── status helpers ── */
 const statusConfig: Record<
@@ -38,24 +26,33 @@ const statusConfig: Record<
   todo: { label: '待验证', bg: 'bg-[#A0A0A0]', text: 'text-white' },
 };
 
-/* ── type helpers ── */
-const typeConfig: Record<string, { label: string; color: string }> = {
-  doc: { label: '文档', color: '#C8956C' },
-  article: { label: '文章', color: '#C47D6E' },
-  video: { label: '视频', color: '#8A9BB8' },
-  book: { label: '书籍', color: '#B8A87F' },
-  course: { label: '教程', color: '#6B9E7C' },
-  tool: { label: '工具', color: '#8AAE9B' },
+/* ── beginner category helpers ── */
+const categoryConfig: Record<LibraryReaderCategory, { label: string; color: string; hint: string }> = {
+  frontend: { label: '前端', color: '#C8956C', hint: '页面、交互、移动端和可安装网页' },
+  backend: { label: '后端', color: '#8A9BB8', hint: '接口、数据生成、服务边界' },
+  tools: { label: '工具', color: '#8AAE9B', hint: '软件、平台和工作台' },
+  agents: { label: '智能体', color: '#B8A87F', hint: '多步工作流和工具调用' },
+  xiaoan: { label: '小安', color: '#C47D6E', hint: '数字生命体、人格和对话边界' },
+  prompts: { label: '提示词', color: '#9C8FB8', hint: '目标、上下文、约束和验收' },
+  archive: { label: '资料整理', color: '#6B9E7C', hint: '把散乱材料整理成公开书页' },
+  security: { label: '边界', color: '#A06A62', hint: '发布前检查、改写和边界' },
+  learning: { label: '学习路线', color: '#9A8E6A', hint: '从一个最小成果开始复刻' },
+  sources: { label: '来源', color: '#7C8FA6', hint: '官方文档、项目和来源说明' },
+  other: { label: '其他', color: '#A0A0A0', hint: '暂未归入上面大类的内容' },
 };
 
-const typeFilters = [
+const categoryFilters = [
   { key: 'all', label: '全部' },
-  { key: 'tool', label: 'AI工具' },
-  { key: 'doc', label: '文档' },
-  { key: 'course', label: '教程' },
-  { key: 'article', label: '文章' },
-  { key: 'video', label: '视频' },
-  { key: 'book', label: '书籍' },
+  { key: 'frontend', label: '前端' },
+  { key: 'backend', label: '后端' },
+  { key: 'tools', label: '工具' },
+  { key: 'agents', label: '智能体' },
+  { key: 'xiaoan', label: '小安' },
+  { key: 'prompts', label: '提示词' },
+  { key: 'archive', label: '资料整理' },
+  { key: 'learning', label: '学习路线' },
+  { key: 'security', label: '边界' },
+  { key: 'sources', label: '来源' },
 ] as const;
 
 const statusFilters = [
@@ -67,63 +64,12 @@ const statusFilters = [
 
 /* ── sort options ── */
 const sortOptions = [
-  { key: 'recommendFirst', label: '推荐优先' },
+  { key: 'recommendFirst', label: '书房顺序' },
   { key: 'newest', label: '最新收藏' },
   { key: 'oldest', label: '最早收藏' },
   { key: 'rating', label: '最高评分' },
   { key: 'name', label: '名称排序' },
 ] as const;
-
-/* ── extract all tags ── */
-const allTags = Array.from(
-  new Set(libraryItems.flatMap((item) => item.tags))
-).sort();
-
-/* ── format date ── */
-function formatDate(dateStr: string): string {
-  const d = new Date(dateStr);
-  const now = new Date();
-  const diffMs = now.getTime() - d.getTime();
-  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-  if (diffDays < 1) return '今天';
-  if (diffDays === 1) return '昨天';
-  if (diffDays < 7) return `${diffDays} 天前`;
-  if (diffDays < 30) return `${Math.floor(diffDays / 7)} 周前`;
-  if (diffDays < 365) return `${Math.floor(diffDays / 30)} 个月前`;
-  return `${Math.floor(diffDays / 365)} 年前`;
-}
-
-/* ── StarRating ── */
-function StarRating({ rating }: { rating?: number }) {
-  if (!rating) return null;
-  return (
-    <div className="flex items-center gap-0.5">
-      {Array.from({ length: 5 }, (_, i) => (
-        <Star
-          key={i}
-          size={11}
-          strokeWidth={1.5}
-          className={i < rating ? 'text-[#C8956C] fill-[#C8956C]' : 'text-light-silver'}
-        />
-      ))}
-    </div>
-  );
-}
-
-/* ── DifficultyBadge ── */
-function DifficultyBadge({ difficulty }: { difficulty: LibraryItem['difficulty'] }) {
-  const cfg = difficultyConfig[difficulty || 'easy'];
-  return (
-    <span
-      className={`inline-flex items-center gap-1 text-[11px] font-sans font-normal px-2 py-0.5 rounded-full border ${cfg.bg} ${cfg.text} ${cfg.border}`}
-    >
-      {difficulty === 'easy' && <Zap size={10} strokeWidth={2} />}
-      {difficulty === 'medium' && <Zap size={10} strokeWidth={2} />}
-      {difficulty === 'hard' && <Zap size={10} strokeWidth={2} />}
-      {cfg.label}
-    </span>
-  );
-}
 
 /* ── RecommendedBadge ── */
 function RecommendedBadge({ text }: { text?: string }) {
@@ -135,94 +81,6 @@ function RecommendedBadge({ text }: { text?: string }) {
   );
 }
 
-/* ── GuideCard ── */
-function GuideCard() {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, ease: easeOut, delay: 0.35 }}
-      className="mb-6 bg-[#F5EDE8] border border-[#E5E5E3] rounded-xl p-4 md:p-5"
-    >
-      <div className="flex items-start gap-3">
-        <Info size={18} strokeWidth={1.5} className="text-[#C8956C] mt-0.5 shrink-0" />
-        <div className="space-y-3">
-          <p className="text-[13px] font-sans text-graphite leading-relaxed">
-            藏馆收录我亲测过的工具、教程、文档与资源。每条资源标注了上手难度、适用场景和我的真实评价，帮你快速判断是否适合自己。
-          </p>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <div className="flex items-center gap-1.5">
-              <span className="inline-block w-2 h-2 rounded-full bg-[#6B9E7C]" />
-              <span className="text-[11px] font-sans text-silver">简单 · 适合新手</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <span className="inline-block w-2 h-2 rounded-full bg-[#C8956C]" />
-              <span className="text-[11px] font-sans text-silver">中等 · 需要基础</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <span className="inline-block w-2 h-2 rounded-full bg-[#C47D6E]" />
-              <span className="text-[11px] font-sans text-silver">困难 · 深入进阶</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-/* ── NewbiePicks ── */
-function NewbiePicks({ items }: { items: LibraryItem[] }) {
-  if (items.length === 0) return null;
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, ease: easeOut }}
-      className="mb-8"
-    >
-      <div className="flex items-center gap-2 mb-3">
-        <Sparkles size={16} strokeWidth={1.5} className="text-[#C8956C]" />
-        <h3 className="text-[15px] font-sans font-medium text-graphite">新手推荐</h3>
-        <span className="text-[12px] font-sans text-silver">上手简单且亲测好用</span>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {items.map((item, index) => (
-          <motion.div
-            key={item.id}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.08, duration: 0.3, ease: easeOut }}
-          >
-            <Link
-              to={`/content/${item.id}`}
-              className="group block bg-white border border-border-color rounded-xl p-4 hover:shadow-md hover:border-border-dark transition-all duration-250 card-tap"
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-[11px] font-sans font-normal px-2 py-0.5 rounded-sm bg-[#F5EDE8] text-[#C8956C]">
-                  新手推荐
-                </span>
-                <DifficultyBadge difficulty={item.difficulty} />
-              </div>
-              <h4 className="text-[14px] font-sans font-medium text-graphite group-hover:text-ink transition-colors duration-150 mb-1 truncate">
-                {item.title}
-              </h4>
-              <p className="text-[12px] font-sans text-silver leading-relaxed line-clamp-2 mb-2">
-                {item.description}
-              </p>
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-sans text-light-silver">
-                  {item.timeToLearn}
-                </span>
-                <StarRating rating={item.rating} />
-              </div>
-            </Link>
-          </motion.div>
-        ))}
-      </div>
-    </motion.div>
-  );
-}
-
 /* ── Card component ── */
 function LibraryCard({
   item,
@@ -231,9 +89,10 @@ function LibraryCard({
   item: LibraryItem;
   index: number;
 }) {
-  const typeInfo = typeConfig[item.type] || { label: item.type, color: '#A0A0A0' };
+  const categoryInfo = categoryConfig[item.readerCategory || 'other'];
   const statusInfo = statusConfig[item.status];
   const isExternal = item.links.some((l) => l.url.startsWith('http'));
+  const useCase = item.useCase?.trim();
 
   return (
     <motion.div
@@ -248,26 +107,26 @@ function LibraryCard({
       style={{ transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' }}
     >
       {/* Top color bar */}
-      <div className="h-1 w-full" style={{ backgroundColor: typeInfo.color }} />
+      <div className="h-1 w-full" style={{ backgroundColor: categoryInfo.color }} />
 
       <div className="p-5 flex flex-col flex-1">
-        {/* Row 1: Type tag + Status badge + Difficulty badge */}
+        {/* Row 1: category + status */}
         <div className="flex items-center flex-wrap gap-2 mb-2.5">
           <span
             className="text-[11px] font-sans font-normal px-2.5 py-0.5 rounded-sm"
             style={{
-              backgroundColor: typeInfo.color + '18',
-              color: typeInfo.color,
+              backgroundColor: categoryInfo.color + '18',
+              color: categoryInfo.color,
             }}
+            title={categoryInfo.hint}
           >
-            {typeInfo.label}
+            {categoryInfo.label}
           </span>
           <span
             className={`text-[11px] font-sans font-normal px-2.5 py-0.5 rounded-full ${statusInfo.bg} ${statusInfo.text}`}
           >
             {statusInfo.label}
           </span>
-          <DifficultyBadge difficulty={item.difficulty} />
           {item.isRecommended && <RecommendedBadge text="推荐" />}
         </div>
 
@@ -284,43 +143,37 @@ function LibraryCard({
           {item.description}
         </p>
 
-        {/* Row 4: Use case */}
-        <div className="bg-[#F5EDE8]/60 rounded-lg px-3 py-2 mb-2.5">
-          <p className="text-[12px] font-sans text-graphite leading-relaxed">
-            <span className="text-silver">适合：</span>
-            {item.whoFor}
-          </p>
-        </div>
-
-        {/* Row 5: Tags */}
-        <div className="flex flex-wrap gap-1.5 mb-2.5">
-          {item.tags.slice(0, 3).map((tag) => (
-            <span
-              key={tag}
-              className="text-[11px] font-sans text-silver bg-light-pink hover:bg-[#EDE5E0] px-2 py-0.5 rounded-sm transition-colors duration-150"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* Row 6: My thoughts */}
-        {item.myThoughts && (
-          <p className="text-[12px] font-sans text-light-silver italic leading-relaxed mb-3 line-clamp-2 border-l-2 border-light-pink pl-3">
-            {item.myThoughts}
-          </p>
+        {useCase && (
+          <div className="rounded-lg bg-[#F6F2EC] px-3 py-2 mb-3">
+            <p className="text-[12px] font-sans text-graphite leading-relaxed line-clamp-2">
+              {useCase}
+            </p>
+          </div>
         )}
 
-        {/* Row 7: Bottom bar */}
+        {/* Row 4: Tags */}
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          {item.tags.slice(0, 3).map((tag) => (
+              <span
+                key={tag}
+                className="text-[11px] font-sans text-silver bg-light-pink hover:bg-[#EDE5E0] px-2 py-0.5 rounded-sm transition-colors duration-150"
+              >
+                {toPublicLabel(tag)}
+              </span>
+            ))}
+          </div>
+
+        {/* Row 5: Bottom bar */}
         <div className="flex items-center justify-between pt-3 border-t border-[#F0F0EE] mt-auto">
           <div className="flex items-center gap-2 flex-wrap">
-            <StarRating rating={item.rating} />
             <span className="text-[11px] font-sans text-light-silver">
               {item.timeToLearn}
             </span>
-            <span className="text-[11px] font-sans text-light-silver">
-              {formatDate(item.updatedAt)}
-            </span>
+            {item.publicSafety && (
+              <span className="text-[11px] font-sans text-light-silver">
+                {item.publicSafety}
+              </span>
+            )}
           </div>
           <div className="flex items-center gap-1.5">
             {isExternal && (
@@ -335,12 +188,6 @@ function LibraryCard({
                 <ExternalLink size={13} strokeWidth={1.5} />
               </a>
             )}
-            <button
-              className="p-1 text-light-silver hover:text-favorite transition-colors duration-150"
-              aria-label="收藏"
-            >
-              <Bookmark size={13} strokeWidth={1.5} />
-            </button>
           </div>
         </div>
       </div>
@@ -382,28 +229,27 @@ function ResultCountBar({
 }
 
 /* ── compute filter counts ── */
-function useFilterCounts(items: LibraryItem[]) {
-  return useMemo(() => {
-    const counts = {
-      type: {} as Record<string, number>,
-      status: {} as Record<string, number>,
-    };
-    typeFilters.forEach((f) => {
-      if (f.key === 'all') {
-        counts.type[f.key] = items.length;
-      } else {
-        counts.type[f.key] = items.filter((i) => i.type === f.key).length;
-      }
-    });
-    statusFilters.forEach((f) => {
-      if (f.key === 'all') {
-        counts.status[f.key] = items.length;
-      } else {
-        counts.status[f.key] = items.filter((i) => i.status === f.key).length;
-      }
-    });
-    return counts;
-  }, [items]);
+function useFilterCounts(items: LibraryItem[], signature: string) {
+  void signature;
+  const counts = {
+    category: {} as Record<string, number>,
+    status: {} as Record<string, number>,
+  };
+  categoryFilters.forEach((f) => {
+    if (f.key === 'all') {
+      counts.category[f.key] = items.length;
+    } else {
+      counts.category[f.key] = items.filter((i) => (i.readerCategory || 'other') === f.key).length;
+    }
+  });
+  statusFilters.forEach((f) => {
+    if (f.key === 'all') {
+      counts.status[f.key] = items.length;
+    } else {
+      counts.status[f.key] = items.filter((i) => i.status === f.key).length;
+    }
+  });
+  return counts;
 }
 
 /* ── Main Library Page ── */
@@ -414,81 +260,92 @@ export default function Library() {
   const [activeStatus, setActiveStatus] = useState<string>('all');
   const [sortBy, setSortBy] = useState<string>('recommendFirst');
   const [showSortDropdown, setShowSortDropdown] = useState(false);
+  const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
   const [displayCount, setDisplayCount] = useState(9);
+  const librarySignature = libraryItems
+    .map((item) => `${item.id}:${item.updatedAt}:${item.status}:${item.tags.join(',')}`)
+    .join('|');
 
-  const counts = useFilterCounts(libraryItems);
+  const counts = useFilterCounts(libraryItems, librarySignature);
+  const allTags = Array.from(new Set(libraryItems.flatMap((item) => item.tags))).sort();
+  const visibleCategoryFilters = categoryFilters.filter(
+    (item) => item.key === 'all' || (counts.category[item.key] ?? 0) > 0
+  );
+  let filteredItems = [...libraryItems];
 
-  const filteredItems = useMemo(() => {
-    let items = [...libraryItems];
+  // Search
+  if (searchQuery.trim()) {
+    const q = searchQuery.toLowerCase();
+    filteredItems = filteredItems.filter(
+      (item) =>
+        item.title.toLowerCase().includes(q) ||
+        item.description.toLowerCase().includes(q) ||
+        (item.useCase || '').toLowerCase().includes(q) ||
+        (item.actionText || '').toLowerCase().includes(q) ||
+        item.tags.some((t) => t.toLowerCase().includes(q)) ||
+        (item.readerCategoryLabel || '').toLowerCase().includes(q) ||
+        (item.whoFor || '').toLowerCase().includes(q) ||
+        (item.myThoughts || '').toLowerCase().includes(q) ||
+        (item.sourceLabels || []).some((label) => label.toLowerCase().includes(q))
+    );
+  }
 
-    // Search
-    if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase();
-      items = items.filter(
-        (item) =>
-          item.title.toLowerCase().includes(q) ||
-          item.description.toLowerCase().includes(q) ||
-          item.tags.some((t) => t.toLowerCase().includes(q)) ||
-          (item.whoFor || '').toLowerCase().includes(q) ||
-          (item.myThoughts || '').toLowerCase().includes(q)
+  // Beginner category filter
+  if (activeType !== 'all') {
+    filteredItems = filteredItems.filter((item) => (item.readerCategory || 'other') === activeType);
+  }
+
+  // Tag filter
+  if (activeTag) {
+    filteredItems = filteredItems.filter((item) => item.tags.includes(activeTag));
+  }
+
+  // Status filter
+  if (activeStatus !== 'all') {
+    filteredItems = filteredItems.filter((item) => item.status === activeStatus);
+  }
+
+  // Sort
+  switch (sortBy) {
+    case 'recommendFirst':
+      filteredItems.sort((a, b) => {
+        if (a.isRecommended && !b.isRecommended) return -1;
+        if (!a.isRecommended && b.isRecommended) return 1;
+        if (a.difficulty === 'easy' && b.difficulty !== 'easy') return -1;
+        if (a.difficulty !== 'easy' && b.difficulty === 'easy') return 1;
+        return (b.rating || 0) - (a.rating || 0);
+      });
+      break;
+    case 'newest':
+      filteredItems.sort(
+        (a, b) =>
+          new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
       );
-    }
-
-    // Type filter
-    if (activeType !== 'all') {
-      items = items.filter((item) => item.type === activeType);
-    }
-
-    // Tag filter
-    if (activeTag) {
-      items = items.filter((item) => item.tags.includes(activeTag));
-    }
-
-    // Status filter
-    if (activeStatus !== 'all') {
-      items = items.filter((item) => item.status === activeStatus);
-    }
-
-    // Sort
-    switch (sortBy) {
-      case 'recommendFirst':
-        items.sort((a, b) => {
-          if (a.isRecommended && !b.isRecommended) return -1;
-          if (!a.isRecommended && b.isRecommended) return 1;
-          if (a.difficulty === 'easy' && b.difficulty !== 'easy') return -1;
-          if (a.difficulty !== 'easy' && b.difficulty === 'easy') return 1;
-          return (b.rating || 0) - (a.rating || 0);
-        });
-        break;
-      case 'newest':
-        items.sort(
-          (a, b) =>
-            new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
-        );
-        break;
-      case 'oldest':
-        items.sort(
-          (a, b) =>
-            new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime()
-        );
-        break;
-      case 'rating':
-        items.sort((a, b) => (b.rating || 0) - (a.rating || 0));
-        break;
-      case 'name':
-        items.sort((a, b) => a.title.localeCompare(b.title, 'zh-CN'));
-        break;
-    }
-
-    return items;
-  }, [searchQuery, activeType, activeTag, activeStatus, sortBy]);
+      break;
+    case 'oldest':
+      filteredItems.sort(
+        (a, b) =>
+          new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime()
+      );
+      break;
+    case 'rating':
+      filteredItems.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+      break;
+    case 'name':
+      filteredItems.sort((a, b) => a.title.localeCompare(b.title, 'zh-CN'));
+      break;
+  }
 
   const displayedItems = filteredItems.slice(0, displayCount);
   const hasMore = displayCount < filteredItems.length;
-  const currentSortLabel = sortOptions.find((s) => s.key === sortBy)?.label || '推荐优先';
+  const currentSortLabel = sortOptions.find((s) => s.key === sortBy)?.label || '书房顺序';
+  const advancedFilterCount = (activeStatus !== 'all' ? 1 : 0) + (activeTag ? 1 : 0);
 
   const isFiltered =
-    searchQuery !== '' || activeType !== 'all' || activeTag !== null || activeStatus !== 'all';
+    searchQuery !== '' ||
+    activeType !== 'all' ||
+    activeTag !== null ||
+    activeStatus !== 'all';
 
   const clearFilters = useCallback(() => {
     setSearchQuery('');
@@ -502,25 +359,7 @@ export default function Library() {
     setDisplayCount((prev) => prev + 9);
   }, []);
 
-  // Newbie picks: easy + recommended items (only when no filter/search)
-  const newbiePicks = useMemo(() => {
-    if (isFiltered) return [];
-    return libraryItems
-      .filter((item) => item.isRecommended && item.difficulty === 'easy')
-      .slice(0, 3);
-  }, [isFiltered]);
-
-  // TODO: 接入后端后使用 <PageSkeleton type="grid" /> 替代
-
-  // Stats
-  const totalItems = libraryItems.length;
-  const totalTags = allTags.length;
-  const typeCount = Object.keys(typeConfig).length;
-  const thisMonthCount = libraryItems.filter((item) => {
-    const d = new Date(item.createdAt);
-    const now = new Date();
-    return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
-  }).length;
+  // 数据源固定后，这里直接渲染内容；后端接入时可切换为统一生命周期骨架
 
   // Error boundary
   if (!libraryItems || !Array.isArray(libraryItems)) {
@@ -554,43 +393,8 @@ export default function Library() {
             transition={{ duration: 0.4, ease: easeOut, delay: 0.2 }}
             className="text-[15px] text-silver mb-6"
           >
-            收藏的资料、工具、文章与资源。按主题分类，持续更新。
+            前端、后端、工具、智能体、提示词、资料整理和边界。
           </motion.p>
-
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, ease: easeOut, delay: 0.3 }}
-            className="flex flex-wrap gap-6 md:gap-8"
-          >
-            {[
-              { value: totalItems, label: '资源' },
-              { value: typeCount, label: '分类' },
-              { value: totalTags, label: '标签' },
-              { value: thisMonthCount, label: '本月新增' },
-            ].map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35 + i * 0.08, duration: 0.3, ease: easeOut }}
-                className="flex items-baseline gap-1.5"
-              >
-                <span className="text-[22px] font-sans font-medium text-ink">
-                  {stat.value}
-                </span>
-                <span className="text-[13px] font-sans text-silver">
-                  {stat.label}
-                </span>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Page Guide */}
-          <div className="mt-6">
-            <GuideCard />
-          </div>
 
           <div className="border-b border-border-color" />
         </div>
@@ -601,7 +405,7 @@ export default function Library() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3, delay: 0.4 }}
-        className="sticky top-16 z-40 bg-white border-b border-border-color px-5 md:px-12 py-4"
+        className="sticky top-[var(--app-nav-height)] z-40 bg-white border-b border-border-color px-5 md:px-12 py-4"
       >
         <div className="max-w-[1200px] mx-auto space-y-3">
           {/* Row 1: Search + Sort */}
@@ -614,7 +418,7 @@ export default function Library() {
               />
               <input
                 type="text"
-                placeholder="搜索资源、文章、工具..."
+                placeholder="搜索资料、工具、路线..."
                 value={searchQuery}
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
@@ -633,7 +437,7 @@ export default function Library() {
               />
               <input
                 type="text"
-                placeholder="搜索资源、文章、工具..."
+                placeholder="搜索资料、工具、路线..."
                 value={searchQuery}
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
@@ -687,9 +491,9 @@ export default function Library() {
             </div>
           </div>
 
-          {/* Row 2: Type filter tabs with counts */}
+          {/* Row 2: category filter tabs with counts */}
           <div className="flex items-center gap-1.5 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide">
-            {typeFilters.map((t) => (
+            {visibleCategoryFilters.map((t) => (
               <button
                 key={t.key}
                 onClick={() => {
@@ -704,62 +508,108 @@ export default function Library() {
               >
                 {t.label}
                 <span className="ml-1 text-[11px] text-light-silver">
-                  ({counts.type[t.key] || 0})
+                  ({counts.category[t.key] || 0})
                 </span>
               </button>
             ))}
           </div>
 
-          {/* Row 3: Status filter + Tags */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide">
-            {/* Status with counts */}
-            <div className="flex items-center gap-1 shrink-0 pr-3 border-r border-border-color">
-              {statusFilters.map((s) => (
-                <button
-                  key={s.key}
-                  onClick={() => {
-                    setActiveStatus(s.key);
-                    setDisplayCount(9);
-                  }}
-                  className={`shrink-0 px-3 py-1 text-[12px] font-sans rounded-full transition-colors duration-150 ${
-                    activeStatus === s.key
-                      ? 'bg-graphite text-white'
-                      : 'text-silver hover:text-graphite hover:bg-light-gray'
-                  }`}
-                >
-                  {s.label}
-                  <span className="ml-0.5 text-[10px] opacity-70">
-                    {counts.status[s.key] || 0}
-                  </span>
-                </button>
-              ))}
-            </div>
+          <div className="flex items-center justify-between gap-3 px-4">
+            <button
+              type="button"
+              onClick={() => setShowAdvancedFilters((value) => !value)}
+              className="inline-flex items-center gap-2 rounded-full border border-[#E8DDD4] bg-[#FBF8F4] px-3 py-1.5 text-[12px] text-graphite transition-colors hover:border-[#C9AF96] hover:text-ink"
+            >
+              <SlidersHorizontal size={14} strokeWidth={1.5} />
+              细分筛选
+              {advancedFilterCount > 0 && (
+                <span className="rounded-full bg-light-pink px-1.5 py-0.5 text-[11px] text-graphite">
+                  {advancedFilterCount}
+                </span>
+              )}
+              <ChevronDown
+                size={13}
+                strokeWidth={1.5}
+                className={`transition-transform duration-150 ${showAdvancedFilters ? 'rotate-180' : ''}`}
+              />
+            </button>
 
-            {/* Tags */}
-            <div className="flex items-center gap-1.5 overflow-x-auto">
-              {allTags.map((tag) => (
-                <button
-                  key={tag}
-                  onClick={() => {
-                    setActiveTag((prev) => (prev === tag ? null : tag));
-                    setDisplayCount(9);
-                  }}
-                  className={`shrink-0 px-2.5 py-1 text-[11px] font-sans rounded-sm transition-colors duration-150 ${
-                    activeTag === tag
-                      ? 'bg-light-pink text-graphite'
-                      : 'text-silver bg-light-gray hover:bg-[#E8E8E6]'
-                  }`}
-                >
-                  {tag}
-                </button>
-              ))}
-            </div>
+            {(activeStatus !== 'all' || activeTag !== null) && (
+              <button
+                onClick={() => {
+                  setActiveTag(null);
+                  setActiveStatus('all');
+                  setDisplayCount(9);
+                }}
+                className="text-[12px] font-sans text-silver hover:text-graphite transition-colors duration-150 flex items-center gap-1"
+              >
+                <RotateCcw size={12} strokeWidth={1.5} />
+                清除细分
+              </button>
+            )}
           </div>
+
+          <AnimatePresence initial={false}>
+            {showAdvancedFilters && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.2 }}
+                className="overflow-hidden"
+              >
+                <div className="mt-3 rounded-xl border border-border-color bg-[#FCFBF9] px-4 py-4">
+                  <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-hide">
+                    <span className="text-[11px] font-sans text-light-silver mr-1 shrink-0">状态</span>
+                    {statusFilters.map((s) => (
+                      <button
+                        key={s.key}
+                        onClick={() => {
+                          setActiveStatus(s.key);
+                          setDisplayCount(9);
+                        }}
+                        className={`shrink-0 px-3 py-1 text-[12px] font-sans rounded-full transition-colors duration-150 ${
+                          activeStatus === s.key
+                            ? 'bg-graphite text-white'
+                            : 'text-silver hover:text-graphite hover:bg-light-gray'
+                        }`}
+                      >
+                        {s.label}
+                        <span className="ml-0.5 text-[10px] opacity-70">
+                          {counts.status[s.key] || 0}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="mt-3 flex items-center gap-1.5 overflow-x-auto scrollbar-hide">
+                    <span className="text-[11px] font-sans text-light-silver mr-1 shrink-0">细分主题</span>
+                    {allTags.map((tag) => (
+                      <button
+                        key={tag}
+                        onClick={() => {
+                          setActiveTag((prev) => (prev === tag ? null : tag));
+                          setDisplayCount(9);
+                        }}
+                        className={`shrink-0 px-2.5 py-1 text-[11px] font-sans rounded-sm transition-colors duration-150 ${
+                          activeTag === tag
+                            ? 'bg-light-pink text-graphite'
+                            : 'text-silver bg-light-gray hover:bg-[#E8E8E6]'
+                        }`}
+                      >
+                        {toPublicLabel(tag)}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </motion.section>
 
       {/* ── Card Grid ── */}
-      <section className="px-5 md:px-12 py-8 pb-16">
+      <section id="library-grid" className="px-5 md:px-12 py-8 pb-16">
         <div className="max-w-[1200px] mx-auto">
           {/* Result count */}
           <ResultCountBar
@@ -768,11 +618,6 @@ export default function Library() {
             onClear={clearFilters}
             isFiltered={isFiltered}
           />
-
-          {/* Newbie picks */}
-          {!isFiltered && newbiePicks.length > 0 && (
-            <NewbiePicks items={newbiePicks} />
-          )}
 
           <AnimatePresence mode="wait">
             {filteredItems.length === 0 ? (
@@ -814,7 +659,7 @@ export default function Library() {
                 </button>
               ) : (
                 <span className="text-[12px] font-sans text-light-silver">
-                  —— 已展示全部资源 ——
+                  已展示全部资源
                 </span>
               )}
             </div>

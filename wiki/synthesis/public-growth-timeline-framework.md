@@ -1,5 +1,5 @@
 ---
-title: Public Growth Timeline Framework
+title: 公开成长年谱框架
 aliases: ["公开成长时间线框架", "Growth Timeline Framework"]
 tags: [timeline, growth, publication, curated]
 category: synthesis
@@ -12,53 +12,60 @@ sources:
   - "[[wiki/sources/local-private-compile-2026-05-13]]"
 publicSafety: public-safe
 sourceLabels: [public wiki, timeline framework, local compile]
-whyItMattered: "It preserves growth information without publishing private memories or raw personal records."
+reviewStatus: challenged
+reviewNotes: "已检查来源、公开边界、小白可读性和前端展示适配；后续可继续补强复刻细节。"
+whyItMattered: "它让安可以讲成长，但不把私人记忆、原始记录和无法复核的日期直接推到公共页面。"
+actionText: "先从这页挑一个相关页面继续读，再把下一步行动压缩成今天能完成的最小任务。"
 operationStory:
-  - "Separated real events from file modification dates and quoted dates."
-  - "Kept private identity details out of the public timeline."
-  - "Defined timeline entries as reviewed narrative milestones."
+  - "把真实事件、文件日期、计划日期和引用日期分开。"
+  - "把私人身份细节留在本地复核层，不进入公开年谱。"
+  - "把年谱条目定义为经过复核的叙事节点，而不是所有文件时间的集合。"
 replicationSteps:
-  - "Classify each date as event, artifact date, plan date, or uncertain reference."
-  - "Publish only milestones with clear public value."
-  - "Link milestones to projects or capabilities."
-failureModes: [treating every file date as life history, exposing personal records, writing vague self-narrative]
-lessons: [timeline data needs classification, public growth should connect to work evidence, uncertainty should be visible]
-summary: "A framework for turning private timeline evidence into public milestones without exposing sensitive personal material."
+  - "先判断每个日期是真实事件、资料日期、计划日期还是不确定引用。"
+  - "只公开对读者有价值、能连接项目或能力的节点。"
+  - "每个节点都写清楚证据、边界和下一步。"
+failureModes: [把每个文件日期当成人生史, 暴露私人记录, 写成空泛自述]
+lessons: [年谱数据需要分类, 公开成长要连接作品证据, 不确定性应该被标出来]
+summary: "把本地时间线证据改写成公开成长年谱的规则：只展示有证据、有价值、可解释的阶段节点。"
 ---
 
-# Public Growth Timeline Framework
+# 公开成长年谱框架
 
-The archive contains many time signals. Not all of them are public growth events. This framework defines how to turn timeline evidence into public milestones.
+资料库里有很多时间信号，但不是每个日期都是成长事件。这个框架用来把本地时间线证据改写成公开年谱：让读者看到真实阶段，又不误把文件时间、计划时间或私人记录当成公共历史。
 
-## Date Types
+## 日期类型
 
-| Type | Meaning | Public handling |
+| 类型 | 含义 | 公开处理 |
 |---|---|---|
-| Event date | A real project, learning, release, or decision date | Can become a milestone after review |
-| Artifact date | A file creation or modification date | Use only as supporting evidence |
-| Plan date | A planned task, schedule, or target | Mark as plan, not completed history |
-| Reference date | A date quoted inside a source | Verify before treating as an event |
-| Uncertain date | Ambiguous or extracted without context | Keep in review queue |
+| 事件日期 | 真实项目、学习、发布或决定发生的时间 | 复核后可进入年谱 |
+| 资料日期 | 文件创建、修改或归档时间 | 只能作为辅助证据 |
+| 计划日期 | 任务计划、排期或目标时间 | 标记为计划，不能写成完成史 |
+| 引用日期 | 来源里提到的日期 | 复核后再判断是否为事件 |
+| 不确定日期 | 缺少上下文的抽取结果 | 留在复核队列 |
 
-## Public Milestone Shape
+## 公开节点形状
 
-A public milestone should include:
+一个公开年谱节点应该说明：
 
-- what changed;
-- which project or capability it connects to;
-- what evidence supports it;
-- what remains private;
-- what the next public artifact should be.
+- 发生了什么变化；
+- 它连接哪个项目、能力或工具；
+- 有什么证据支撑；
+- 哪些内容仍然留在私有层；
+- 下一步应该形成什么公开页面或展示卡片。
 
-## First Public Timeline Themes
+## 第一批公开主题
 
-- building the personal archive platform;
-- establishing the public data boundary;
-- consolidating agent and skill governance;
-- moving from raw local evidence to reviewed public knowledge.
+- [[wiki/synthesis/growth-timeline-scattered-exploration-to-compiled-archive]]：从分散探索到编译资料库。
+- [[wiki/synthesis/growth-timeline-agent-workflow-phase]]：从单次提问到 Agent 工作流。
+- [[wiki/synthesis/growth-timeline-public-private-split]]：原始层、私有层、公开层和展示层分开。
+- [[wiki/synthesis/growth-timeline-frontend-showcase-phase]]：把 wiki 变成个人书房前端的数据来源。
+- [[wiki/synthesis/growth-timeline-tool-governance-phase]]：把工具栈整理成有证据的能力地图。
+- 后续只在来源和隐私闸门通过后，发布精选项目、公开更新和手记。
 
 ## Related
 
 - [[wiki/synthesis/project-evidence-matrix]]
 - [[wiki/synthesis/capability-evidence-matrix]]
 - [[wiki/synthesis/information-review-queue]]
+- [[wiki/synthesis/archive-feed-public-data-update-2026-05-13]]
+- [[wiki/synthesis/archive-rebuild-public-journal]]

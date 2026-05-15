@@ -33,7 +33,12 @@ const categoryConfig: Record<
   life: { label: '生活', color: '#8A9BB8', icon: Heart },
 };
 
-const yearFilters = ['all', '2025', '2024', '2023', '2022'];
+const yearFilters = [
+  'all',
+  ...Array.from(new Set(timelineEvents.map((event) => event.date.slice(0, 4))))
+    .filter(Boolean)
+    .sort((a, b) => Number(b) - Number(a)),
+];
 const categoryFilters = ['all', 'milestone', 'learning', 'work', 'life'];
 
 const importanceColors: Record<string, string> = {
@@ -53,13 +58,12 @@ const importanceSize: Record<string, number> = {
 /* ------------------------------------------------------------------ */
 
 function getYearFromDate(dateStr: string): string {
-  return dateStr.split('.')[0];
+  return dateStr.match(/^(\d{4})/)?.[1] ?? dateStr;
 }
 
 function getMonthFromDate(dateStr: string): string {
-  const parts = dateStr.split('.');
-  if (parts.length < 2) return '';
-  return parseInt(parts[1], 10) + ' 月';
+  const match = dateStr.match(/^\d{4}[-./](\d{1,2})/);
+  return match ? `${parseInt(match[1], 10)} 月` : '';
 }
 
 function groupByYear(events: typeof timelineEvents) {
@@ -71,25 +75,6 @@ function groupByYear(events: typeof timelineEvents) {
   }
   const sortedYears = Object.keys(groups).sort((a, b) => parseInt(b) - parseInt(a));
   return sortedYears.map((year) => ({ year, events: groups[year] }));
-}
-
-/* ------------------------------------------------------------------ */
-/*  Page Guide                                                        */
-/* ------------------------------------------------------------------ */
-
-function PageGuide() {
-  return (
-    <motion.div
-      className="bg-[#F5EDE8] rounded-xl p-4 md:p-5 mb-6 max-w-[720px] mx-auto"
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, ease: easeOut, delay: 0.25 }}
-    >
-      <p className="text-[13px] font-sans text-silver leading-relaxed">
-        年谱记录我的成长历程与关键节点。每个阶段都标注了成果、反思与关联的学习路径。
-      </p>
-    </motion.div>
-  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -248,6 +233,14 @@ function TimelineCard({
           ))}
         </div>
       )}
+
+      <Link
+        to={`/content/${event.id}`}
+        className="mt-3 inline-flex items-center gap-1 text-[12px] font-sans text-graphite hover:text-favorite transition-colors duration-150"
+      >
+        查看年谱详情
+        <ArrowRight size={12} strokeWidth={1.5} />
+      </Link>
     </motion.div>
   );
 }
@@ -552,6 +545,9 @@ export default function Timeline() {
     const max = Math.max(...years);
     return `${min} — ${max}`;
   }, []);
+  const showYearFilters = yearFilters.length > 2;
+  const showCategoryFilters =
+    categoryFilters.filter((cat) => cat !== 'all' && (categoryCounts[cat] || 0) > 0).length > 1;
 
   return (
     <div className="pt-16 md:pt-[96px]">
@@ -571,7 +567,7 @@ export default function Timeline() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15, duration: 0.5, ease: easeOut }}
         >
-          成长的重要节点，从过去到现在。每一步都算数。
+          从 2026 年 3 月之后开始，一步步看见这间书房怎样从零散尝试变成可复读的路径与作品。
         </motion.p>
         <motion.div
           className="flex items-center justify-center gap-2 text-[12px] font-sans text-silver"
@@ -592,60 +588,61 @@ export default function Timeline() {
           {yearRange}
         </motion.span>
 
-        <PageGuide />
       </section>
 
       {/* 2. Filter Bar */}
-      <section className="sticky top-16 md:top-16 z-30 bg-white/92 backdrop-blur-md border-b border-border-color">
+      <section className="sticky top-[var(--app-nav-height)] z-30 bg-white/92 backdrop-blur-md border-b border-border-color">
         <div className="max-w-[900px] mx-auto px-5 md:px-6 py-3">
-          {/* Year filters with counts */}
-          <div className="flex items-center gap-1 overflow-x-auto no-scrollbar mb-2 pb-1">
-            {yearFilters.map((year) => (
-              <button
-                key={year}
-                onClick={() => setActiveYear(year)}
-                className={`shrink-0 text-[13px] font-sans px-3.5 py-1.5 rounded-lg transition-colors duration-150 ${
-                  activeYear === year
-                    ? 'bg-light-pink text-graphite'
-                    : 'text-silver hover:text-graphite hover:bg-light-gray'
-                }`}
-              >
-                {year === 'all' ? '全部' : year}
-                <span className="text-[11px] text-light-silver ml-0.5">
-                  {yearCounts[year] || 0}
-                </span>
-              </button>
-            ))}
-          </div>
-
-          {/* Category filters with color dots and counts */}
-          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
-            {categoryFilters.map((cat) => {
-              const config = categoryConfig[cat];
-              return (
+          {showYearFilters && (
+            <div className="flex items-center gap-1 overflow-x-auto no-scrollbar mb-2 pb-1">
+              {yearFilters.map((year) => (
                 <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`shrink-0 inline-flex items-center gap-1.5 text-[13px] font-sans px-3 py-1.5 rounded-lg transition-colors duration-150 ${
-                    activeCategory === cat
+                  key={year}
+                  onClick={() => setActiveYear(year)}
+                  className={`shrink-0 text-[13px] font-sans px-3.5 py-1.5 rounded-lg transition-colors duration-150 ${
+                    activeYear === year
                       ? 'bg-light-pink text-graphite'
                       : 'text-silver hover:text-graphite hover:bg-light-gray'
                   }`}
                 >
-                  {cat !== 'all' && config && (
-                    <span
-                      className="w-2 h-2 rounded-full"
-                      style={{ backgroundColor: config.color }}
-                    />
-                  )}
-                  {cat === 'all' ? '全部' : config?.label}
-                  <span className="text-[11px] text-light-silver">
-                    {categoryCounts[cat] || 0}
+                  {year === 'all' ? '全部' : year}
+                  <span className="text-[11px] text-light-silver ml-0.5">
+                    {yearCounts[year] || 0}
                   </span>
                 </button>
-              );
-            })}
-          </div>
+              ))}
+            </div>
+          )}
+
+          {showCategoryFilters && (
+            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+              {categoryFilters.map((cat) => {
+                const config = categoryConfig[cat];
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
+                    className={`shrink-0 inline-flex items-center gap-1.5 text-[13px] font-sans px-3 py-1.5 rounded-lg transition-colors duration-150 ${
+                      activeCategory === cat
+                        ? 'bg-light-pink text-graphite'
+                        : 'text-silver hover:text-graphite hover:bg-light-gray'
+                    }`}
+                  >
+                    {cat !== 'all' && config && (
+                      <span
+                        className="w-2 h-2 rounded-full"
+                        style={{ backgroundColor: config.color }}
+                      />
+                    )}
+                    {cat === 'all' ? '全部' : config?.label}
+                    <span className="text-[11px] text-light-silver">
+                      {categoryCounts[cat] || 0}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </div>
       </section>
 
