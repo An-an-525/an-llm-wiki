@@ -164,6 +164,25 @@ const socialLinks = [
   { icon: Github, label: 'GitHub', href: 'https://github.com/An-an-525/an-llm-wiki', handle: 'An-an-525/an-llm-wiki' },
 ];
 
+const entryGuide = [
+  {
+    label: '结论',
+    text: '这是一间公开书房：先看方法和作品，不追逐零散资料。',
+  },
+  {
+    label: '原因',
+    text: '资料只有被整理成路径、项目和复盘，才会真正降低理解成本。',
+  },
+  {
+    label: '下一步',
+    text: '第一次来，先读书房说明，再选一个工坊项目，最后走一条谱系路线。',
+  },
+  {
+    label: '边界',
+    text: '这里不展示访问材料、原始私密记录和未公开细节，只保留可复核的公开线索。',
+  },
+];
+
 /* ------------------------------------------------------------------ */
 /*  Content Map Section                                                */
 /* ------------------------------------------------------------------ */
@@ -220,6 +239,21 @@ function ContentMapSection() {
             );
           })}
         </motion.div>
+      </div>
+    </AnimatedSection>
+  );
+}
+
+function EntryGuideSection() {
+  return (
+    <AnimatedSection delay={0} className="mb-10 md:mb-14">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+        {entryGuide.map((item) => (
+          <div key={item.label} className="rounded-xl border border-border-color bg-[#FAF9F7] px-4 py-3">
+            <p className="mb-1 text-[12px] font-sans text-silver">{item.label}</p>
+            <p className="text-[14px] font-sans text-graphite leading-[1.75]">{item.text}</p>
+          </div>
+        ))}
       </div>
     </AnimatedSection>
   );
@@ -340,6 +374,8 @@ export default function About() {
           </motion.p>
         </motion.section>
 
+        <EntryGuideSection />
+
         {/* ── Site Introduction ── */}
         <AnimatedSection delay={0}>
           <SectionLabel text="关于本站" />
@@ -356,7 +392,7 @@ export default function About() {
 
         {/* ── Why This Site ── */}
         <AnimatedSection delay={0} className="mt-10 md:mt-16">
-          <SectionLabel text="为什么建造这座藏馆" />
+          <SectionLabel text="为什么建造这间书房" />
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={markdownComponents}

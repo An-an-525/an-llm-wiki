@@ -5,6 +5,7 @@ import { ArrowUp } from 'lucide-react';
 import Navbar from './Navbar';
 import MobileNav from './MobileNav';
 import AppUpdateBanner from './AppUpdateBanner';
+import AppInstallPrompt from './AppInstallPrompt';
 import XiaoanChat from './XiaoanChat';
 import { NetworkStatus } from './ui/lifecycle';
 import { refreshSiteData } from '@/data/siteData.generated';
@@ -13,13 +14,14 @@ import { isExternalHttpUrl, openExternalUrl, runtimeConfig } from '@/lib/runtime
 const routeTitles: Array<[RegExp, string]> = [
   [/^\/$/, '首页'],
   [/^\/library/, '藏馆'],
-  [/^\/paths\/[^/]+/, '谱系详情'],
+  [/^\/paths\/[^/]+/, '路径详情'],
   [/^\/paths/, '谱系'],
   [/^\/feed/, '风信'],
   [/^\/works/, '工坊'],
   [/^\/journal/, '手记'],
   [/^\/timeline/, '年谱'],
   [/^\/about/, '书房'],
+  [/^\/xiaoan/, '小安'],
   [/^\/install/, '安装与版本'],
   [/^\/content\/[^/]+/, '内容详情'],
 ];
@@ -137,6 +139,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div className="min-h-[100dvh] flex flex-col">
       <NetworkStatus />
       <AppUpdateBanner />
+      <AppInstallPrompt />
       <Navbar />
       <main className="flex-1 pb-[calc(var(--mobile-nav-height)+1rem)] md:pb-0">
         <AnimatePresence mode="wait">

@@ -125,7 +125,7 @@ function FilterBar({
 
           {/* Path level filters */}
           <div className="flex items-center gap-1 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide">
-            <span className="text-[12px] text-light-silver mr-1 shrink-0">路径层级</span>
+            <span className="text-[12px] text-light-silver mr-1 shrink-0">适合阶段</span>
             {diffOptions.map((opt) => (
               <button
                 key={opt.key}
@@ -268,7 +268,7 @@ function PathGridCard({ path, index }: { path: Path; index: number }) {
             <div className="flex items-center justify-between text-[11px] text-silver mb-1">
               <span className="flex items-center gap-1">
                 <ListChecks size={11} strokeWidth={1.5} />
-                {progress.completed}/{progress.total} 步骤已完成
+                已整理 {progress.completed}/{progress.total} 步
               </span>
               <span>{Math.round(progress.percent)}%</span>
             </div>
@@ -366,7 +366,7 @@ export default function PathsPage() {
   // Error boundary
   if (!paths || !Array.isArray(paths)) {
     return (
-      <div className="min-h-[100dvh] pt-[96px] px-5 md:px-12">
+      <div className="min-h-[100dvh] pt-[calc(var(--app-nav-height)+32px)] px-5 md:px-12">
         <ErrorState
           title="加载失败"
           description="数据加载异常，请刷新页面重试"
@@ -380,7 +380,7 @@ export default function PathsPage() {
     <div className="min-h-[100dvh] bg-white">
       {/* ====== Page Header ====== */}
       <section
-        className="pt-[96px] pb-6"
+        className="pt-[calc(var(--app-nav-height)+32px)] pb-6"
         style={{ background: 'linear-gradient(180deg, #FAF9F7 0%, #FFFFFF 60%)' }}
       >
         <div className="max-w-[1200px] mx-auto px-5 md:px-12">

@@ -13,6 +13,8 @@ const INSTALLED_KEY = 'an-study-room-install-accepted';
 const LEGACY_DISMISS_KEY = 'an-llm-wiki-install-dismissed';
 const LEGACY_INSTALLED_KEY = 'an-llm-wiki-install-accepted';
 const DISMISS_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
+const INSTALL_PROMPT_SEEN_KEY = 'an-study-room-install-prompt-seen';
+const MAX_PROMPT_SHOWS = 2;
 
 function matchesDisplayMode(mode: string) {
   return window.matchMedia(`(display-mode: ${mode})`).matches;
@@ -55,6 +57,19 @@ function wasDismissed() {
   }
 }
 
+function promptSeenCount() {
+  try {
+    const raw = Number(window.localStorage.getItem(INSTALL_PROMPT_SEEN_KEY) || '0');
+    return Number.isFinite(raw) ? raw : 0;
+  } catch {
+    return 0;
+  }
+}
+
+function shouldSuppressInstallPrompt() {
+  return wasAccepted() || wasDismissed() || isStandaloneDisplay() || promptSeenCount() >= MAX_PROMPT_SHOWS;
+}
+
 export default function AppInstallPrompt() {
   const [promptEvent, setPromptEvent] = useState<BeforeInstallPromptEvent | null>(null);
   const [dismissed, setDismissed] = useState(wasDismissed);
@@ -75,11 +90,16 @@ export default function AppInstallPrompt() {
 
     const handleBeforeInstallPrompt = (event: Event) => {
       event.preventDefault();
-      if (wasAccepted() || wasDismissed() || isStandaloneDisplay()) {
+      if (shouldSuppressInstallPrompt()) {
         return;
       }
       setDismissed(false);
       setPromptEvent(event as BeforeInstallPromptEvent);
+      try {
+        window.localStorage.setItem(INSTALL_PROMPT_SEEN_KEY, String(promptSeenCount() + 1));
+      } catch {
+        // Ignore storage failures; the browser can still manage the native prompt.
+      }
     };
     const handleInstalled = () => {
       setInstalled(true);
@@ -91,6 +111,7 @@ export default function AppInstallPrompt() {
         window.localStorage.removeItem(DISMISS_UNTIL_KEY);
         window.localStorage.removeItem(LEGACY_INSTALLED_KEY);
         window.localStorage.removeItem(LEGACY_DISMISS_KEY);
+        window.localStorage.removeItem(INSTALL_PROMPT_SEEN_KEY);
       } catch {
         // Ignore storage failures; the installed app still works.
       }
@@ -140,6 +161,7 @@ export default function AppInstallPrompt() {
         window.localStorage.removeItem(DISMISS_UNTIL_KEY);
         window.localStorage.removeItem(LEGACY_INSTALLED_KEY);
         window.localStorage.removeItem(LEGACY_DISMISS_KEY);
+        window.localStorage.removeItem(INSTALL_PROMPT_SEEN_KEY);
       } catch {
         // Ignore storage failures; the prompt will simply rely on runtime state.
       }
@@ -154,7 +176,7 @@ export default function AppInstallPrompt() {
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed left-4 right-4 bottom-[72px] z-[55] mx-auto max-w-[420px] rounded-xl border border-[#E5E5E3] bg-white/95 px-3 py-3 shadow-[0_12px_32px_rgba(30,30,30,0.12)] backdrop-blur-md md:bottom-6 md:left-auto md:right-6"
+        className="fixed left-4 right-4 bottom-[var(--xiaoan-floating-bottom)] z-[55] mx-auto max-w-[420px] rounded-xl border border-[#E5E5E3] bg-white/95 px-3 py-3 shadow-[0_12px_32px_rgba(30,30,30,0.12)] backdrop-blur-md md:bottom-6 md:left-auto md:right-6"
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 16 }}
@@ -165,7 +187,7 @@ export default function AppInstallPrompt() {
             <Download size={17} strokeWidth={1.6} />
           </div>
           <div className="min-w-0 flex-1">
-            <p className="text-[13px] font-medium leading-snug text-[#1E1E1E]">安装藏馆</p>
+            <p className="text-[13px] font-medium leading-snug text-[#1E1E1E]">安装安的书房</p>
             <p className="mt-0.5 text-[11px] leading-snug text-[#8A8A88]">像 App 一样从桌面打开</p>
           </div>
           <button

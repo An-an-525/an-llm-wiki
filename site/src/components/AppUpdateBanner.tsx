@@ -38,7 +38,7 @@ export default function AppUpdateBanner() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 12 }}
           transition={{ duration: 0.2 }}
-          className="fixed bottom-[88px] left-4 right-4 z-[68] mx-auto max-w-[360px] rounded-2xl border border-[#E8DDD4] bg-white/96 px-4 py-3 shadow-[0_14px_34px_rgba(67,52,43,0.12)] backdrop-blur-md md:bottom-6 md:left-auto md:right-6"
+          className="fixed bottom-[var(--xiaoan-floating-bottom)] left-4 right-4 z-[68] mx-auto max-w-[360px] rounded-2xl border border-[#E8DDD4] bg-white/96 px-4 py-3 shadow-[0_14px_34px_rgba(67,52,43,0.12)] backdrop-blur-md md:bottom-6 md:left-auto md:right-6"
         >
           <div className="flex items-start gap-3">
             <div className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-xl bg-[#F5EDE8] text-[#9B6848]">

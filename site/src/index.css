@@ -48,16 +48,30 @@
 
   html[data-platform='android'],
   html.android-standalone {
-    --app-safe-top: max(env(safe-area-inset-top, 0px), 32px);
+    --app-safe-top: max(env(safe-area-inset-top, 0px), 0px);
     --app-safe-bottom: 0px;
     --app-nav-height: calc(4rem + var(--app-safe-top));
     --mobile-nav-height: 56px;
     --xiaoan-floating-bottom: 68px;
   }
 
+  html[data-platform='android'][data-display-mode='standalone'],
+  html[data-platform='android'][data-display-mode='fullscreen'],
+  html[data-platform='android'].android-standalone {
+    --app-safe-top: max(env(safe-area-inset-top, 0px), 24px);
+    --app-nav-height: calc(4rem + var(--app-safe-top));
+  }
+
   html[data-platform='android'] body,
   html.android-standalone body {
     background: #ffffff;
+  }
+
+  html.xiaoan-dialog-open .mobile-bottom-nav {
+    display: none;
+    pointer-events: none;
+    transform: translateY(100%);
+    opacity: 0;
   }
 
   @media (min-width: 768px) {
@@ -76,7 +90,7 @@
     @apply bg-white text-graphite font-sans antialiased;
     font-size: 15px;
     line-height: 1.75;
-    letter-spacing: 0.01em;
+    letter-spacing: 0;
     overscroll-behavior-y: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

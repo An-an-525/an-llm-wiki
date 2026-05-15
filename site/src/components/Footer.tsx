@@ -8,10 +8,10 @@ export default function Footer() {
         {/* Top row: site name + description */}
         <div className="mb-8">
           <h3 className="font-serif text-[18px] font-normal text-ink mb-2">
-            藏馆
+            安的书房
           </h3>
           <p className="text-[13px] font-sans font-normal text-silver leading-relaxed">
-            一座关于资料、路径、作品与成长的个人藏馆
+            把 AI 学习、项目、工具、复盘和复刻路线整理成中文可读的公开展柜。
           </p>
         </div>
 

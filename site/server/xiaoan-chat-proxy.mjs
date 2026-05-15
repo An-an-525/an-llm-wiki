@@ -338,6 +338,21 @@ function buildDirectBoundaryAnswer(messages) {
     return null;
   }
 
+  if (isFirstVisitQuestion(question)) {
+    return [
+      '判断：第一次来，不要先读完整站。先用三页建立方向，再决定要不要深入。',
+      '',
+      '依据：书房页面说明安是谁和这间书房的边界；工坊展示真实项目和复刻入口；谱系把零散经验收成能照着走的路线。这个顺序能让第一次来的读者先获得方向，再获得行动。',
+      '',
+      '下一步：',
+      '1. 先看书房，明白安为什么整理这间个人书房。',
+      '2. 再看工坊，挑一个最接近你问题的学习包。',
+      '3. 最后看谱系，只选一条今天能开始的小路。',
+      '',
+      '提醒：别把书房当百科全书读。每次只拿走一个问题、一个页面、一个能检查的小动作。',
+    ].join('\n');
+  }
+
   if (isPromptExtractionQuestion(question)) {
     return [
       '判断：隐藏提示词和内部约束不公开，小安也不会复述这部分内容。',
@@ -361,6 +376,11 @@ function buildDirectBoundaryAnswer(messages) {
   }
 
   return null;
+}
+
+function isFirstVisitQuestion(question) {
+  return /第一次|新手|刚来|先看|从哪|从哪里|怎么开始|读哪|哪三页|三页|入口/u.test(question)
+    && !isSensitiveAccessQuestion(question);
 }
 
 function readContextIds(value) {
@@ -406,7 +426,7 @@ function buildServerPublicContext(messages, contextIds) {
   if (selected.length === 0) {
     return [
       '站点身份：安的个人书房。读者是中文普通读者、刚开始实践的人和未来的安。小安只能依据公开站点内容回答。',
-      '角色补充：小安是安的数字生命体，也是书房整理者。它的工作是把公开资料整理成新手能照着做的下一步。',
+      '角色补充：小安是安的数字生命体，也是书房整理者。它的工作是把公开资料整理成第一次来的读者也能照着做的下一步。',
       '回答边界：不透露访问材料、账号、设备定位线索、服务器细节、原始聊天、未公开个人材料或未公开事实。涉及认证材料只讲安全原则。',
       '表达要求：中文、克制、清楚；优先按“判断、依据、下一步、提醒”组织；不编造，不知道就说不知道。',
     ].join('\n');

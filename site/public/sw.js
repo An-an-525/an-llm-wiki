@@ -1,5 +1,5 @@
-const CACHE_NAME = "an-study-room-shell-v5";
-const DATA_CACHE_NAME = "an-study-room-data-v5";
+const CACHE_NAME = "an-study-room-shell-v6";
+const DATA_CACHE_NAME = "an-study-room-data-v6";
 const SHELL_ASSETS = ["./", "./app-icon.svg", "./maskable-icon.svg"];
 
 const fromScope = (path) => new URL(path, self.registration.scope).toString();

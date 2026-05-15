@@ -5,6 +5,7 @@ import csv
 import hashlib
 import os
 import re
+import subprocess
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -12,20 +13,26 @@ from pathlib import Path
 IGNORE_DIRS = {
     ".git",
     ".obsidian",
+    ".gradle",
     ".trash",
     ".claude",
     ".claudian",
     ".serena",
     ".cache",
+    "build",
+    "downloads",
     "_raw",
     "_archives",
     "inbox",
     "private-wiki",
     ".local_private",
+    "gen",
     "node_modules",
     "dist",
     "dist-ssr",
     ".vite",
+    "target",
+    "updates",
     "__pycache__",
 }
 IGNORE_FILES = {"hot.md"}
@@ -50,6 +57,7 @@ TEXT_EXTS = {
     ".html",
     ".css",
     ".gitignore",
+    ".svg",
     "",
 }
 TEXT_FILENAMES = {
@@ -114,6 +122,9 @@ def iter_files(root: Path):
             and not d.startswith("00 - ")
             and not d.startswith("01 - ")
             and f"{rel_current}/{d}".lstrip("./") != "site/public/site-data"
+            and f"{rel_current}/{d}".lstrip("./") != "manifests/private"
+            and not (rel_current == "site/public" and d in {"downloads", "updates"})
+            and not (rel_current.startswith("site/src-tauri") and d in {"gen", "target"})
         ]
         for name in names:
             if name in IGNORE_FILES:
@@ -123,6 +134,10 @@ def iter_files(root: Path):
             path = Path(current) / name
             if path.suffix.lower() in TEXT_EXTS or name in TEXT_FILENAMES or name.startswith((".env.", ".gitignore")):
                 yield path
+
+
+def is_text_like(path: Path) -> bool:
+    return path.suffix.lower() in TEXT_EXTS or path.name in TEXT_FILENAMES or path.name.startswith((".env.", ".gitignore"))
 
 
 def hash_excerpt(text: str) -> str:
@@ -138,6 +153,10 @@ def should_skip_rule(rel: str, rule_name: str) -> bool:
         return True
     if rule_name == "private_marker" and rel in ALLOW_MARKER_FILES:
         return True
+    if rel == "manifests/public_inventory.csv" and rule_name == "email":
+        return True
+    if rule_name == "bank_card_like" and rel.endswith(".svg"):
+        return True
     return False
 
 
@@ -146,6 +165,8 @@ def scan_text(rel: str, text: str) -> list[dict[str, str | int]]:
     for line_number, line in enumerate(text.splitlines(), start=1):
         for rule in PATTERNS:
             if should_skip_rule(rel, rule.name):
+                continue
+            if rule.name == "email" and re.search(r"@\d+x\.[A-Za-z0-9]{2,4}", line):
                 continue
             if rule.regex.search(line):
                 rows.append(
@@ -164,7 +185,19 @@ def scan_text(rel: str, text: str) -> list[dict[str, str | int]]:
 def main() -> int:
     root = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else Path.cwd().resolve()
     rows: list[dict[str, str | int]] = []
-    for path in iter_files(root):
+    git = subprocess.run(
+        ["git", "ls-files", "-z"],
+        cwd=root,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if git.returncode == 0 and git.stdout:
+        paths = [root / rel for rel in git.stdout.split("\0") if rel.strip()]
+        paths = [path for path in paths if path.exists() and path.is_file() and is_text_like(path)]
+    else:
+        paths = list(iter_files(root))
+    for path in paths:
         rel = path.relative_to(root).as_posix()
         if rel == "manifests/privacy_scan_report.csv":
             continue

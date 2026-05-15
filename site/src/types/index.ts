@@ -122,6 +122,8 @@ export interface Work {
   github?: string;
   duration?: string;
   teamSize?: string;
+  whoFor?: string;
+  recommendedFor?: string;
   challenges?: string;
   learnings?: string;
   whyItMattered?: string;

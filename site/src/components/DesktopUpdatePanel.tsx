@@ -65,10 +65,10 @@ export default function DesktopUpdatePanel() {
       <div className="rounded-2xl border border-[#E8DDD4] bg-[#FBFAF7] p-5">
         <div className="flex items-center gap-3">
           <Smartphone size={18} strokeWidth={1.6} className="text-[#9B6848]" />
-          <h3 className="font-serif text-[17px] text-ink">桌面端应用内更新</h3>
+          <h3 className="font-serif text-[17px] text-ink">桌面版更新</h3>
         </div>
         <p className="mt-3 text-[13px] leading-[1.9] text-graphite">
-          这个能力只在 Windows 桌面安装版里启用。网页刷新内容，Android 下载安装包。
+          这个检查只在安装后的 Windows 版本里出现。网页直接刷新，Android 继续用安装包更新。
         </p>
       </div>
     );
@@ -96,7 +96,7 @@ export default function DesktopUpdatePanel() {
       setSnapshot({
         supported: true,
         status: 'error',
-        message: (formatted.message || '安装更新失败。').replace('检查更新', '安装更新'),
+        message: (formatted.message || '暂时没有完成安装更新。当前版本仍可继续使用。').replace('检查更新', '安装更新'),
         details: formatted.details,
       });
     }
@@ -108,17 +108,20 @@ export default function DesktopUpdatePanel() {
     <div className="rounded-2xl border border-[#E8DDD4] bg-[#FBFAF7] p-5">
       <div className="flex items-center gap-3">
         <Download size={18} strokeWidth={1.6} className="text-[#9B6848]" />
-        <h3 className="font-serif text-[17px] text-ink">桌面端应用内更新</h3>
+        <h3 className="font-serif text-[17px] text-ink">桌面版更新</h3>
       </div>
       <p className="mt-3 text-[13px] leading-[1.9] text-graphite">
-        Windows 桌面版读取远程更新清单。检测到新版本后，可以在应用内下载并重启。
+        读到新版时可以在应用里下载。读不到也不用紧张，当前版本照常阅读。
       </p>
 
       <div className="mt-4 rounded-xl border border-[#E8DDD4] bg-white px-4 py-3">
-        <p className="text-[12px] text-silver">当前状态</p>
+        <p className="text-[12px] text-silver">检查结果</p>
         <p className="mt-1 text-[14px] text-ink">{snapshot.message || '等待检查'}</p>
         {snapshot.details ? (
-          <p className="mt-2 break-all text-[11px] leading-[1.7] text-silver">{snapshot.details}</p>
+          <details className="mt-2 text-[11px] leading-[1.7] text-silver">
+            <summary className="cursor-pointer select-none text-[#9B7E68]">查看诊断信息</summary>
+            <p className="mt-1 break-all">{snapshot.details}</p>
+          </details>
         ) : null}
         {snapshot.version ? (
           <p className="mt-2 text-[12px] text-graphite">
@@ -147,7 +150,7 @@ export default function DesktopUpdatePanel() {
           className="inline-flex items-center gap-2 rounded-full border border-[#D8C6B8] bg-white px-4 py-2 text-[12px] text-graphite disabled:opacity-60"
         >
           <RefreshCw size={14} strokeWidth={1.6} className={snapshot.status === 'checking' ? 'animate-spin' : ''} />
-          检查更新
+          重新检查
         </button>
         {snapshot.status === 'available' ? (
           <button

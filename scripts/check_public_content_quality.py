@@ -22,6 +22,37 @@ LOCAL_PATH_RE = re.compile(
 )
 INTERNAL_DISPLAY_RE = re.compile(r"(?i)(?:wiki|private-wiki|_raw|_archives|inbox(?:/private)?|site-data|manifests|scripts|docs)/")
 CONTENT_ROUTE_RE = re.compile(r"(?i)^/?content/[A-Za-z0-9_-]+$")
+BACKSTAGE_READER_TERMS = [
+    "本地资料库",
+    "本地黑曜石",
+    "黑曜石资料库",
+    "黑曜石仓库",
+    "黑曜石原始目录",
+    "Obsidian vault",
+    "Markdown 资料库",
+    "公开资料层",
+    "原始资料层",
+    "网站数据层",
+    "网站内容包",
+    "非公开整理层",
+    "整理前材料",
+    "资料整理库",
+    "后台文档",
+    "后台材料",
+    "后台痕迹",
+    "后台 wiki",
+    "内部字段",
+    "内部文档",
+    "内部整理页",
+    "维护文档",
+    "原始库",
+    "私有目录",
+    "private-wiki",
+    "_raw",
+    "_archives",
+    "inbox/private",
+]
+BACKSTAGE_ALLOWED_PATH_RE = re.compile(r"(?i)(?:sourcePath|target|id|slug|href|url|links?\[\d+\]\.url|related.*Ids?)$")
 
 REQUIRED_FRONTMATTER = {
     "title",
@@ -265,6 +296,8 @@ def check_public_adapter(root: Path) -> list[Finding]:
     findings: list[Finding] = []
     rel = adapter_path.relative_to(root).as_posix()
     for value_path, text in iter_public_adapter_strings(payload):
+        if BACKSTAGE_ALLOWED_PATH_RE.search(value_path):
+            continue
         if INTERNAL_DISPLAY_RE.search(text):
             findings.append(
                 finding(
@@ -298,6 +331,19 @@ def check_public_adapter(root: Path) -> list[Finding]:
                     "Replace it with a public-safe description before syncing the frontend.",
                 )
             )
+        for term in BACKSTAGE_READER_TERMS:
+            if term.lower() in text.lower():
+                findings.append(
+                    finding(
+                        rel,
+                        "frontend-data",
+                        "error",
+                        "backstage-term-in-reader-text",
+                        f"Reader-facing adapter text still exposes backstage wording {term!r} at {value_path}.",
+                        "Rewrite backend, vault, and pipeline language into reader-facing Chinese before syncing the frontend.",
+                    )
+                )
+                break
     return findings
 
 

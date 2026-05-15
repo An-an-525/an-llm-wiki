@@ -353,7 +353,7 @@ function readerLinkLabel(label: string, url: string): string {
   if (trimmed && !looksLikeInternalReaderLabel(trimmed)) {
     return trimmed;
   }
-  return isInternalReaderLink(url) ? '相关书页' : '外部来源';
+  return isInternalReaderLink(url) ? '相关资料页' : '外部来源';
 }
 
 function readerLinkMeta(url: string): string {
@@ -405,9 +405,9 @@ function ReaderTracks({ tracks }: { tracks: ReaderTrack[] }) {
   return (
     <section className="mb-6 rounded-xl border border-[#E8DDD4] bg-[#FCFAF7] p-4 md:p-5">
       <div className="mb-3 flex items-center justify-between gap-3">
-        <h2 className="font-serif text-[18px] text-ink">三种读法</h2>
+        <h2 className="font-serif text-[18px] text-ink">阅读顺序</h2>
         <span className="shrink-0 rounded-full bg-white px-2.5 py-1 text-[11px] text-[#9B7E68]">
-          先选一条路
+          先读一层就够
         </span>
       </div>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
@@ -571,15 +571,15 @@ function ResourceBody({ content }: { content: UnifiedContent }) {
       <ReaderTracks
         tracks={[
           {
-            label: '小白',
+            label: '先读',
             text: item.actionText || item.useCase || content.description,
           },
           {
-            label: '极客',
+            label: '照做',
             text: item.pros?.[0] || '看用途、来源和边界，判断它能放进哪一步工作流。',
           },
           {
-            label: '码神',
+            label: '深读',
             text: item.cons?.[0] || item.publicSafety || '看限制和维护成本，决定是否进入长期方法库。',
           },
         ]}
@@ -1089,7 +1089,7 @@ function WorkPacketMap({
           </h2>
         </div>
         <p className="max-w-[360px] text-[12px] leading-relaxed text-silver md:text-right">
-          小白先走前两格，想深入再看边界和复盘。不要一上来读完整原文。
+          第一次读先走前两格，想深入再看边界和复盘。不要一上来读完整原文。
         </p>
       </div>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-4">
@@ -1198,22 +1198,22 @@ function WorkBody({ content }: { content: UnifiedContent }) {
           )}
         </DetailSection>
 
-        <DetailSection title="三层读者怎么读" tone="soft">
+        <DetailSection title="三种读法" tone="soft">
           <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
             <div className="rounded-lg bg-cream px-4 py-3">
-              <p className="mb-1 text-[12px] text-silver">小白先完成</p>
+              <p className="mb-1 text-[12px] text-silver">先做出小版本</p>
               <p className="text-[14px] leading-[1.8] text-graphite">
                 {firstReplicationStep || '照着页面做出一个能被别人打开、看懂、复述的小版本。'}
               </p>
             </div>
             <div className="rounded-lg bg-[#F5EDE8] px-4 py-3">
-              <p className="mb-1 text-[12px] text-silver">极客看结构</p>
+              <p className="mb-1 text-[12px] text-silver">再看结构</p>
               <p className="text-[14px] leading-[1.8] text-graphite">
                 {firstOperation || '看工具、数据、页面和验收如何分层，不被单个工具牵着走。'}
               </p>
             </div>
             <div className="rounded-lg bg-[#F7F3EC] px-4 py-3">
-              <p className="mb-1 text-[12px] text-silver">码神看边界</p>
+              <p className="mb-1 text-[12px] text-silver">最后看边界</p>
               <p className="text-[14px] leading-[1.8] text-graphite">
                 {firstFailureMode || '看失败模式、公开边界、数据契约和后续维护成本。'}
               </p>

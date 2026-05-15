@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { AlertTriangle, CheckCircle2, Download, RefreshCw, Smartphone } from 'lucide-react';
+import { CheckCircle2, Download, RefreshCw, Smartphone } from 'lucide-react';
 import {
   isExternalHttpUrl,
   openExternalUrl,
@@ -150,7 +150,7 @@ export default function AndroidUpdatePanel() {
     } catch (error) {
       setState({
         status: 'error',
-        message: '检查 Android 版本失败。',
+        message: '暂时没有读到 Android 版本。当前内容仍可继续使用。',
         details: error instanceof Error ? error.message : String(error),
       });
     }
@@ -165,7 +165,7 @@ export default function AndroidUpdatePanel() {
   const apkUrl = resolveAndroidApkUrl(state.release);
   const remoteVersion = android?.version || state.release?.version || '未发布';
   const releaseNotes = useMemo(() => android?.releaseNotes || [], [android?.releaseNotes]);
-  const statusIcon = state.status === 'current' ? CheckCircle2 : state.status === 'error' ? AlertTriangle : Smartphone;
+  const statusIcon = state.status === 'current' ? CheckCircle2 : state.status === 'error' ? RefreshCw : Smartphone;
   const StatusIcon = statusIcon;
   const canDownload = state.status === 'available' || state.status === 'current';
 
@@ -173,26 +173,30 @@ export default function AndroidUpdatePanel() {
     <div className="rounded-2xl border border-[#E8DDD4] bg-[#FBFAF7] p-5">
       <div className="flex items-center gap-3">
         <StatusIcon size={18} strokeWidth={1.6} className="text-[#9B6848]" />
-        <h3 className="font-serif text-[17px] text-ink">Android 版本更新</h3>
+        <h3 className="font-serif text-[17px] text-ink">Android 安装包</h3>
       </div>
       <p className="mt-3 text-[13px] leading-[1.9] text-graphite">
-        Android 读取公网版本清单。发现新版后打开 APK 下载页，由你确认安装。
+        手机端先用安装包分发。发现新版后下载 APK，由你确认安装；读不到清单时，当前内容仍能继续看。
       </p>
 
       <div className="mt-4 rounded-xl border border-[#E8DDD4] bg-white px-4 py-3">
-        <p className="text-[12px] text-silver">当前状态</p>
+        <p className="text-[12px] text-silver">检查结果</p>
         <p className="mt-1 text-[14px] text-ink">{state.message}</p>
         <div className="mt-3 grid gap-2 text-[12px] leading-[1.7] text-graphite">
-          <p>{isAndroidRuntime ? `本机版本：${config.appVersion}` : '当前环境：网页预览'}</p>
+          <p>{isAndroidRuntime ? `当前版本：${config.appVersion}` : '当前环境：网页预览'}</p>
           <p>远程版本：{remoteVersion}</p>
           <p>清单时间：{formatGeneratedAt(state.release?.generatedAt)}</p>
-          <p>安装包：{apkFile?.name || '未提供'} · {formatBytes(apkFile?.bytes)}</p>
+          <p>安装包大小：{formatBytes(apkFile?.bytes)}</p>
         </div>
-        {apkFile?.sha256 ? (
-          <p className="mt-2 break-all text-[11px] leading-[1.7] text-silver">SHA-256：{apkFile.sha256}</p>
-        ) : null}
-        {state.details ? (
-          <p className="mt-2 break-all text-[11px] leading-[1.7] text-silver">{state.details}</p>
+        {apkFile?.sha256 || apkFile?.name || state.details ? (
+          <details className="mt-2 text-[11px] leading-[1.7] text-silver">
+            <summary className="cursor-pointer select-none text-[#9B7E68]">
+              {state.details ? '查看诊断信息' : '查看安装包校验信息'}
+            </summary>
+            {apkFile?.name ? <p className="mt-1 break-all">文件：{apkFile.name}</p> : null}
+            {apkFile?.sha256 ? <p className="mt-1 break-all">SHA-256：{apkFile.sha256}</p> : null}
+            {state.details ? <p className="mt-1 break-all">诊断：{state.details}</p> : null}
+          </details>
         ) : null}
       </div>
 
@@ -212,7 +216,7 @@ export default function AndroidUpdatePanel() {
           className="inline-flex items-center gap-2 rounded-full border border-[#D8C6B8] bg-white px-4 py-2 text-[12px] text-graphite disabled:opacity-60"
         >
           <RefreshCw size={14} strokeWidth={1.6} className={state.status === 'checking' ? 'animate-spin' : ''} />
-          检查版本
+          重新检查
         </button>
         {canDownload ? (
           <button

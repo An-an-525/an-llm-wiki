@@ -18,6 +18,7 @@ import { zhCN } from 'date-fns/locale';
 import { feedItems } from '@/data/mockFeed';
 import type { FeedItem } from '@/types';
 import { EmptyState as LifecycleEmptyState, ErrorState } from '@/components/ui/lifecycle';
+import { toPublicLabel } from '@/lib/publicLabels';
 
 const easeOut = [0, 0, 0.2, 1] as [number, number, number, number];
 
@@ -112,6 +113,38 @@ function getDateLabel(d: Date): string {
 
 function getTimeString(d: Date): string {
   return format(d, 'HH:mm');
+}
+
+function getFeedGuidance(item: FeedItem) {
+  const firstBodyLine = item.body
+    ?.split('\n')
+    .map((line) => line.replace(/^#+\s*/, '').trim())
+    .find((line) => line && !line.startsWith('-'));
+
+  const judgmentByType: Record<FeedItem['type'], string> = {
+    resource: '从“先收藏”转为“先判断适用场景，再决定是否深入”。',
+    path_update: '从记录步骤转为提炼可复刻的方法变化。',
+    work: '从展示进展转为说明这个项目下一步怎么验证。',
+    journal: '从表达感受转为留下一个可执行的复盘动作。',
+    milestone: '从单个事件转为标记一次认知或工作方式的改变。',
+  };
+
+  return {
+    conclusion: item.content,
+    judgment: firstBodyLine || judgmentByType[item.type],
+    reason: item.importanceLevel === 'critical'
+      ? '这条变化会影响后续阅读顺序或行动优先级，需要先处理。'
+      : item.source
+        ? `来源于${item.source}，适合作为当前判断的更新信号。`
+        : '它能帮助读者把信息放回安的学习路径里，而不是只停在动态本身。',
+    action: item.actionText || (item.link ? '打开关联页面，先完成一个最小阅读或复刻动作。' : '先记下一个可执行动作，再决定是否继续深入。'),
+  };
+}
+
+function shortText(value: string, max = 88) {
+  const text = value.replace(/\s+/g, ' ').trim();
+  if (text.length <= max) return text;
+  return `${text.slice(0, max).replace(/[，。；、\s]+$/u, '')}…`;
 }
 
 /* ------------------------------------------------------------------ */
@@ -214,7 +247,7 @@ export default function Feed() {
   // Error boundary
   if (!feedItems || !Array.isArray(feedItems)) {
     return (
-      <div className="min-h-[100dvh] pt-[96px] px-5 md:px-12">
+      <div className="min-h-[100dvh] pt-[calc(var(--app-nav-height)+32px)] px-5 md:px-12">
         <ErrorState
           title="加载失败"
           description="数据加载异常，请刷新页面重试"
@@ -227,7 +260,7 @@ export default function Feed() {
   return (
     <div className="min-h-[100dvh] bg-white">
       {/* ========== Header ========== */}
-      <section className="pt-[96px] md:pt-[144px] pb-8">
+      <section className="pt-[calc(var(--app-nav-height)+32px)] md:pt-[calc(var(--app-nav-height)+80px)] pb-8">
         <div className="max-w-[720px] mx-auto px-5 md:px-12 text-center">
           <motion.h1
             className="font-serif text-[28px] md:text-[36px] font-normal text-ink leading-[1.3] tracking-[-0.01em] mb-3"
@@ -243,7 +276,7 @@ export default function Feed() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: easeOut, delay: 0.15 }}
           >
-            最近的变化、判断与书房更新。
+            风信只收会改变判断的消息：发生了什么，安因此怎么调整，读者现在做哪一步。
           </motion.p>
         </div>
       </section>
@@ -332,6 +365,7 @@ export default function Feed() {
                         const impCfg = importanceConfig[item.importanceLevel || 'normal'];
                         const itemDate = parseDate(item.createdAt);
                         const isCritical = item.importanceLevel === 'critical';
+                        const guidance = getFeedGuidance(item);
 
                         return (
                           <motion.div
@@ -370,11 +404,12 @@ export default function Feed() {
                                 <span className="text-[11px] font-sans text-light-silver">
                                   {getTimeString(itemDate)}
                                 </span>
-                                {/* Source badge */}
-                                <span className="inline-flex items-center gap-1 text-[11px] font-sans text-silver bg-light-gray px-2 py-0.5 rounded">
-                                  <Radio size={10} strokeWidth={1.5} />
-                                  {item.source}
-                                </span>
+                                {item.source && (
+                                  <span className="inline-flex items-center gap-1 text-[11px] font-sans text-silver bg-light-gray px-2 py-0.5 rounded">
+                                    <Radio size={10} strokeWidth={1.5} />
+                                    {toPublicLabel(item.source)}
+                                  </span>
+                                )}
                                 {/* Importance badge */}
                                 {isCritical && (
                                   <span className="inline-flex items-center gap-1 text-[11px] font-sans text-[#C47D6E] bg-[#C47D6E]/10 px-2 py-0.5 rounded">
@@ -392,28 +427,37 @@ export default function Feed() {
 
                               {/* Title */}
                               <Link
-                                to={item.link || '#'}
+                                to={item.link || `/content/${item.id}`}
                                 className={`block text-[15px] font-sans font-medium text-graphite leading-[1.6] mb-1 transition-colors duration-200 ${cfg.hoverText}`}
                               >
                                 {item.title}
                               </Link>
 
-                              {/* Content */}
-                              {item.content && (
-                                <p className="text-[13px] font-sans font-normal text-silver leading-[1.7] mb-2 line-clamp-2">
-                                  {item.content}
-                                </p>
-                              )}
-
-                              {/* Action text */}
-                              {item.actionText && (
-                                <div className="flex items-start gap-1.5 mb-2 rounded-lg border border-[#E8DDD4] bg-white px-3 py-2">
-                                  <ArrowRight size={12} strokeWidth={1.5} className="text-[#C8956C] mt-0.5 shrink-0" />
-                                  <p className="text-[12px] font-sans text-graphite leading-relaxed">
-                                    {item.actionText}
+                              <div className="mb-2 space-y-2">
+                                <div className="rounded-lg bg-[#FAF9F7] px-3 py-2">
+                                  <p className="mb-1 text-[11px] font-sans text-silver">发生了什么</p>
+                                  <p className="text-[13px] font-sans font-normal text-graphite leading-[1.7] line-clamp-2">
+                                    {shortText(guidance.conclusion, 94)}
                                   </p>
                                 </div>
-                              )}
+                                <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+                                  <div className="rounded-lg border border-[#F0F0EE] bg-white px-3 py-2">
+                                    <p className="mb-1 text-[11px] font-sans text-silver">安的判断</p>
+                                    <p className="text-[12px] font-sans text-graphite leading-relaxed">
+                                      {shortText(guidance.judgment, 76)}
+                                    </p>
+                                  </div>
+                                  <div className="rounded-lg border border-[#E8DDD4] bg-white px-3 py-2">
+                                    <p className="mb-1 text-[11px] font-sans text-silver">读者行动</p>
+                                    <p className="text-[12px] font-sans text-graphite leading-relaxed">
+                                      {shortText(guidance.action, 76)}
+                                    </p>
+                                  </div>
+                                </div>
+                                <p className="text-[12px] leading-relaxed text-silver">
+                                  为什么现在看：{shortText(guidance.reason, 88)}
+                                </p>
+                              </div>
 
                               {/* Tags + link */}
                               <div className="flex items-center gap-2 flex-wrap mt-2">
@@ -422,12 +466,12 @@ export default function Feed() {
                                     key={tag}
                                     className="px-2 py-0.5 rounded text-[11px] font-sans font-normal bg-light-gray text-silver hover:bg-light-pink transition-colors duration-150"
                                   >
-                                    {tag}
+                                    {toPublicLabel(tag)}
                                   </span>
                                 ))}
-                                {item.link && (
+                                {(item.link || item.id) && (
                                   <Link
-                                    to={item.link}
+                                    to={item.link || `/content/${item.id}`}
                                     className="text-[12px] font-sans text-silver hover:text-graphite transition-colors duration-150 ml-auto flex items-center gap-0.5"
                                   >
                                     查看

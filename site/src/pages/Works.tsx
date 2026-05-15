@@ -51,36 +51,36 @@ function inferWorkType(work: Work): WorkType {
 
 const typeFilters: { key: WorkType; label: string; icon: React.ReactNode }[] = [
   { key: 'all', label: '全部', icon: <Layers size={13} strokeWidth={1.5} /> },
-  { key: 'website', label: '前端', icon: <Globe size={13} strokeWidth={1.5} /> },
-  { key: 'miniapp', label: '后端', icon: <Cpu size={13} strokeWidth={1.5} /> },
-  { key: 'tool', label: '工具', icon: <Wrench size={13} strokeWidth={1.5} /> },
-  { key: 'opensource', label: '智能体', icon: <Code2 size={13} strokeWidth={1.5} /> },
-  { key: 'resource', label: '学习路线', icon: <BookOpen size={13} strokeWidth={1.5} /> },
-  { key: 'experiment', label: '工具实验', icon: <FlaskConical size={13} strokeWidth={1.5} /> },
+  { key: 'website', label: '能打开的页面', icon: <Globe size={13} strokeWidth={1.5} /> },
+  { key: 'miniapp', label: '能更新的服务', icon: <Cpu size={13} strokeWidth={1.5} /> },
+  { key: 'tool', label: '能复用的工具', icon: <Wrench size={13} strokeWidth={1.5} /> },
+  { key: 'opensource', label: '能协作的智能体', icon: <Code2 size={13} strokeWidth={1.5} /> },
+  { key: 'resource', label: '能照做的流程', icon: <BookOpen size={13} strokeWidth={1.5} /> },
+  { key: 'experiment', label: '工具评测', icon: <FlaskConical size={13} strokeWidth={1.5} /> },
 ];
 
 const statusFilters: { key: WorkStatus; label: string }[] = [
   { key: 'all', label: '全部' },
-  { key: 'in_progress', label: '建设中' },
-  { key: 'completed', label: '已完成' },
-  { key: 'archived', label: '阶段归档' },
+  { key: 'in_progress', label: '现在可读' },
+  { key: 'completed', label: '可照做' },
+  { key: 'archived', label: '只作参考' },
 ];
 
 const statusConfig: Record<string, { label: string; bg: string; text: string }> = {
-  in_progress: { label: '建设中', bg: 'bg-[#FDF6F0]', text: 'text-[#C8956C]' },
-  completed: { label: '已完成', bg: 'bg-[#F0F7F2]', text: 'text-[#6B9E7C]' },
-  archived: { label: '阶段归档', bg: 'bg-light-gray', text: 'text-silver' },
+  in_progress: { label: '现在可读', bg: 'bg-[#FDF6F0]', text: 'text-[#C8956C]' },
+  completed: { label: '可照做', bg: 'bg-[#F0F7F2]', text: 'text-[#6B9E7C]' },
+  archived: { label: '只作参考', bg: 'bg-light-gray', text: 'text-silver' },
 };
 
 const typeBadgeConfig: Record<string, { label: string; bg: string }> = {
-  website: { label: '前端', bg: 'bg-[#E8EBF0]' },
-  tool: { label: '工具', bg: 'bg-[#F0EDE5]' },
+  website: { label: '能打开的页面', bg: 'bg-[#E8EBF0]' },
+  tool: { label: '能复用的工具', bg: 'bg-[#F0EDE5]' },
   video: { label: '视频', bg: 'bg-[#F5EDE8]' },
-  miniapp: { label: '后端', bg: 'bg-[#E8F0EB]' },
-  resource: { label: '学习路线', bg: 'bg-[#F0DDD8]' },
-  opensource: { label: '智能体', bg: 'bg-[#E8EBF0]' },
-  prototype: { label: '智能体', bg: 'bg-[#F5EDE8]' },
-  experiment: { label: '工具实验', bg: 'bg-[#F0EDE5]' },
+  miniapp: { label: '能更新的服务', bg: 'bg-[#E8F0EB]' },
+  resource: { label: '能照做的流程', bg: 'bg-[#F0DDD8]' },
+  opensource: { label: '能协作的智能体', bg: 'bg-[#E8EBF0]' },
+  prototype: { label: '能协作的智能体', bg: 'bg-[#F5EDE8]' },
+  experiment: { label: '工具评测', bg: 'bg-[#F0EDE5]' },
 };
 
 const featuredWorkTitles = [

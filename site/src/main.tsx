@@ -32,6 +32,7 @@ window.addEventListener('an-runtime-config-updated', applyRuntimeSafeArea)
 window.setTimeout(applyRuntimeSafeArea, 50)
 window.setTimeout(applyRuntimeSafeArea, 250)
 window.setTimeout(applyRuntimeSafeArea, 1000)
+window.addEventListener('pageshow', applyRuntimeSafeArea)
 
 createRoot(document.getElementById('root')!).render(
   <HashRouter>

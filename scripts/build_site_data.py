@@ -435,7 +435,7 @@ def refresh_body_fields(item: dict[str, Any], lines: list[str]) -> None:
 def apply_public_display_defaults(item: dict[str, Any]) -> None:
     title = item.get("title", "这页资料")
     if item.get("module") == "works":
-        defaults = {
+        fallback_defaults = {
             "whyItMattered": f"「{title}」把一次真实项目整理成可学习、可展示、可复刻的公开资料，帮助读者理解目标、边界和结果。",
             "operationStory": [
                 "先把原始材料、私有复核和公开展示分开，确认哪些信息可以安全讲给读者。",
@@ -463,12 +463,28 @@ def apply_public_display_defaults(item: dict[str, Any]) -> None:
                 "每次新增本地证据，都先进入私有复核，再决定是否公开。",
             ],
         }
-        for field, value in defaults.items():
+        is_learning_package = (
+            "lifecycle" in item.get("tags", [])
+            or "learning" in item.get("tags", [])
+            or "学习包" in title
+        )
+        required_depth_missing = []
+        for field in ["whyItMattered", "operationStory", "replicationSteps", "failureModes", "lessons", "anReminders"]:
+            value = item.get(field)
+            if isinstance(value, list):
+                if not list_is_chinese_ready(value):
+                    required_depth_missing.append(field)
+            elif not chinese_reader_ready(str(value or "")):
+                required_depth_missing.append(field)
+        if is_learning_package and required_depth_missing:
+            item.setdefault("hiddenReasons", []).append("requires-handwritten-depth")
+            item["displayTier"] = "hidden"
+        for field, value in fallback_defaults.items():
             current = item.get(field)
             if isinstance(value, list):
-                if not list_is_chinese_ready(current):
+                if not is_learning_package and not list_is_chinese_ready(current):
                     item[field] = value
-            elif not chinese_reader_ready(str(current or "")):
+            elif not is_learning_package and not chinese_reader_ready(str(current or "")):
                 item[field] = value
     if item.get("module") in {"works", "journal", "paths"} and not body_lines_are_chinese_ready(item.get("contentLines")):
         lines = generated_public_body(item)

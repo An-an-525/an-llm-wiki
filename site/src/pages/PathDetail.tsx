@@ -156,6 +156,46 @@ function InfoBar({ path, detail }: { path: Path; detail?: PathDetailData }) {
   );
 }
 
+function PathGuide({ path, detail }: { path: Path; detail?: PathDetailData }) {
+  const firstStage = path.stages[0];
+  const firstPitfall = detail?.pitfalls?.[0]?.description;
+  const nextStep = path.actionText || firstStage?.deliverable || '从第一阶段开始，完成一个可验收的小产出。';
+
+  return (
+    <motion.div
+      className="mb-8 rounded-xl border border-[#E8DDD4] bg-[#FAF9F7] p-5 md:p-6"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.4, ease: easeOut }}
+    >
+      <h2 className="mb-4 font-serif text-[20px] text-ink">先读这四件事</h2>
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+        <div className="rounded-lg bg-white px-3 py-2.5">
+          <p className="mb-1 text-[12px] text-silver">先看什么</p>
+          <p className="text-[14px] text-graphite leading-[1.75]">{path.description}</p>
+        </div>
+        <div className="rounded-lg bg-white px-3 py-2.5">
+          <p className="mb-1 text-[12px] text-silver">适合谁</p>
+          <p className="text-[14px] text-graphite leading-[1.75]">
+            {path.whoFor || '适合想照着路线做出一个最小成果的人。'}
+          </p>
+        </div>
+        <div className="rounded-lg bg-white px-3 py-2.5">
+          <p className="mb-1 text-[12px] text-silver">下一步</p>
+          <p className="text-[14px] text-graphite leading-[1.75]">{nextStep}</p>
+        </div>
+        <div className="rounded-lg bg-white px-3 py-2.5">
+          <p className="mb-1 text-[12px] text-silver">风险</p>
+          <p className="text-[14px] text-graphite leading-[1.75]">
+            {firstPitfall || '不要跳过前置条件，也不要把路径当作保证结果的承诺。'}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /*  Before You Start (Prerequisites)                                   */
 /* ------------------------------------------------------------------ */
@@ -716,7 +756,7 @@ export default function PathDetail() {
 
   if (!path || !progress) {
     return (
-      <div className="min-h-[100dvh] flex items-center justify-center pt-16">
+      <div className="min-h-[100dvh] flex items-center justify-center pt-[calc(var(--app-nav-height)+16px)]">
         <div className="text-center">
           <h1 className="font-serif text-[36px] text-ink mb-4">谱系未找到</h1>
           <p className="text-silver text-[15px] mb-6">该路径不存在或已被移除</p>
@@ -738,7 +778,7 @@ export default function PathDetail() {
   return (
     <div className="min-h-[100dvh]">
       {/* ====== Hero Header ====== */}
-      <section className="bg-[#FAF9F7] pt-[96px] pb-8">
+      <section className="bg-[#FAF9F7] pt-[calc(var(--app-nav-height)+32px)] pb-8">
         <div className="max-w-[1200px] mx-auto px-5 md:px-12">
           {/* Breadcrumb + Back */}
           <motion.div
@@ -846,6 +886,8 @@ export default function PathDetail() {
 
       {/* ====== Main Content ====== */}
       <div className="max-w-[800px] mx-auto px-5 md:px-12 py-10">
+        <PathGuide path={path} detail={detail} />
+
         {/* Before You Start */}
         <BeforeYouStart detail={detail} />
 

@@ -17,22 +17,22 @@ export const audienceConfig: Record<
   }
 > = {
   beginner: {
-    label: '入门',
-    hint: '看目标、步骤和最小成果',
+    label: '第一次做',
+    hint: '先看目标、步骤和最小成果',
     bg: 'bg-[#6B9E7C]/10',
     text: 'text-[#6B9E7C]',
     border: 'border-[#6B9E7C]/30',
   },
   geek: {
-    label: '进阶',
-    hint: '看结构、边界和方法',
+    label: '已会一点',
+    hint: '先看结构、边界和方法',
     bg: 'bg-[#C8956C]/10',
     text: 'text-[#C8956C]',
     border: 'border-[#C8956C]/30',
   },
   master: {
-    label: '深水',
-    hint: '看系统、治理和长期维护',
+    label: '想深入',
+    hint: '先看系统、治理和长期维护',
     bg: 'bg-[#C47D6E]/10',
     text: 'text-[#C47D6E]',
     border: 'border-[#C47D6E]/30',

@@ -14,6 +14,7 @@ const Timeline = lazy(() => import('@/pages/Timeline'));
 const About = lazy(() => import('@/pages/About'));
 const ContentDetail = lazy(() => import('@/pages/ContentDetail'));
 const Install = lazy(() => import('@/pages/Install'));
+const Xiaoan = lazy(() => import('@/pages/Xiaoan'));
 
 export default function App() {
   return (
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="/journal" element={<Journal />} />
           <Route path="/timeline" element={<Timeline />} />
           <Route path="/about" element={<About />} />
+          <Route path="/xiaoan" element={<Xiaoan />} />
           <Route path="/install" element={<Install />} />
           <Route path="/content/:id" element={<ContentDetail />} />
         </Routes>

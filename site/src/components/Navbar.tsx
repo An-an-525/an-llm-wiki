@@ -95,6 +95,7 @@ export default function Navbar() {
           transition: 'background-color 200ms ease, border-bottom 150ms ease',
           height: 'var(--app-nav-height)',
           paddingTop: 'var(--app-safe-top)',
+          boxSizing: 'border-box',
         }}
       >
         <div className="w-full max-w-[1200px] mx-auto px-5 md:px-12 flex items-center justify-between">

@@ -41,6 +41,7 @@ check_karpathy_alignment = load_module("check_karpathy_alignment", ROOT / "scrip
 raw_warehouse = load_module("raw_warehouse", ROOT / "scripts" / "raw_warehouse.py")
 build_raw_warehouse_plan = load_module("build_raw_warehouse_plan", ROOT / "scripts" / "build_raw_warehouse_plan.py")
 check_raw_warehouse = load_module("check_raw_warehouse", ROOT / "scripts" / "check_raw_warehouse.py")
+build_raw_call_index = load_module("build_raw_call_index", ROOT / "scripts" / "build_raw_call_index.py")
 
 
 @contextlib.contextmanager
@@ -171,6 +172,10 @@ class LocalOnlyExclusionTests(unittest.TestCase):
             generated.parent.mkdir(parents=True)
             generated.write_text("token=abcd1234abcd1234\n", encoding="utf-8")
 
+            private_manifest = root / "manifests" / "private" / "raw_call_sources.csv"
+            private_manifest.parent.mkdir(parents=True)
+            private_manifest.write_text("token=abcd1234abcd1234\n", encoding="utf-8")
+
             public = root / "wiki" / "note.md"
             public.parent.mkdir(parents=True)
             public.write_text("safe\n", encoding="utf-8")
@@ -189,6 +194,8 @@ class LocalOnlyExclusionTests(unittest.TestCase):
             (root / "site" / "dist" / "index.html").write_text("built\n", encoding="utf-8")
             (root / "site" / "public" / "site-data").mkdir(parents=True)
             (root / "site" / "public" / "site-data" / "index.json").write_text("generated\n", encoding="utf-8")
+            (root / "manifests" / "private").mkdir(parents=True)
+            (root / "manifests" / "private" / "raw_call_sources.csv").write_text("private\n", encoding="utf-8")
             (root / "wiki").mkdir()
             (root / "wiki" / "note.md").write_text("public\n", encoding="utf-8")
 
@@ -201,6 +208,7 @@ class LocalOnlyExclusionTests(unittest.TestCase):
             self.assertNotIn("_raw", inventory)
             self.assertNotIn("site/dist", inventory)
             self.assertNotIn("site/public/site-data", inventory)
+            self.assertNotIn("manifests/private", inventory)
 
     def test_public_inventory_skips_private_wiki(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -243,6 +251,36 @@ class PrivateWikiCheckTests(unittest.TestCase):
         block = check_private_wiki.frontmatter(text)
         self.assertEqual(set(), check_private_wiki.REQUIRED_KEYS - check_private_wiki.frontmatter_keys(block))
         self.assertTrue(check_private_wiki.has_private_visibility(block))
+
+
+class RawCallIndexTests(unittest.TestCase):
+    def test_raw_call_index_redacts_secret_values_in_private_pages(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / "_raw" / "ai-tools-2026" / "deepseek-pricing-api.md"
+            source.parent.mkdir(parents=True)
+            source.write_text(
+                "# DeepSeek Pricing\n\n"
+                "API key: sk-testvalue1234567890abc\n"
+                "Base URL: https://relay.example.com/v1\n"
+                "C:\\\\Users\\\\someone\\\\secret.txt\n",
+                encoding="utf-8",
+            )
+
+            old_argv = build_raw_call_index.sys.argv
+            build_raw_call_index.sys.argv = ["build_raw_call_index.py", str(root)]
+            try:
+                with contextlib.redirect_stdout(io.StringIO()):
+                    self.assertEqual(0, build_raw_call_index.main())
+            finally:
+                build_raw_call_index.sys.argv = old_argv
+
+            index_text = (root / "private-wiki" / "raw-calls" / "index.md").read_text(encoding="utf-8")
+            manifest = (root / "manifests" / "private" / "raw_call_sources.csv").read_text(encoding="utf-8")
+            self.assertIn("secret-shaped", index_text)
+            self.assertIn("model-pricing", manifest)
+            self.assertNotIn("sk-testvalue1234567890abc", index_text)
+            self.assertNotIn("C:\\\\Users\\\\someone", index_text)
 
 
 class PublicContentQualityTests(unittest.TestCase):

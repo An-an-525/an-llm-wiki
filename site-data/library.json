@@ -208,7 +208,7 @@
       "verified"
     ],
     "createdAt": "2026-05-13",
-    "updatedAt": "2026-05-13",
+    "updatedAt": "2026-05-15",
     "eventDate": null,
     "sourcePath": "wiki/concepts/agent-tool-permission-and-trace-safety.md",
     "module": "library",
@@ -245,6 +245,12 @@
       "- 账号或授权状态；",
       "- 私有文件内容；",
       "- 可以还原操作过程的细节组合。",
+      "",
+      "## 协作日志也要脱敏",
+      "",
+      "小鲸鱼、小安、Codex 和审阅子代理可以长期协作，但协作日志只记录任务、判断和验收，不记录完整调用轨迹。公开时可以说“用了本地事实采集和人工复核”，不能把账号状态、本地路径组合、原始私聊、工具输出全文或密钥线索写进页面。",
+      "",
+      "如果一条日志同时暴露“谁、在哪台机器、用什么路径、连哪个服务、拿了什么访问材料”，即使没有明文密钥，也应视为高风险材料，只能留在私有复核层。",
       "",
       "## 权限原则",
       "",
@@ -299,6 +305,11 @@
       },
       {
         "level": 2,
+        "title": "协作日志也要脱敏",
+        "anchor": "协作日志也要脱敏"
+      },
+      {
+        "level": 2,
         "title": "权限原则",
         "anchor": "权限原则"
       },
@@ -308,11 +319,11 @@
         "anchor": "related"
       }
     ],
-    "wordCount": 282,
+    "wordCount": 443,
     "readingMinutes": 1,
     "metrics": {
-      "lineCount": 42,
-      "headingCount": 5,
+      "lineCount": 48,
+      "headingCount": 6,
       "linkCount": 3,
       "sourceCount": 3
     },
@@ -7755,7 +7766,7 @@
       "verified"
     ],
     "createdAt": "2026-05-13",
-    "updatedAt": "2026-05-13",
+    "updatedAt": "2026-05-14",
     "eventDate": null,
     "sourcePath": "wiki/synthesis/lifecycle-automation-acceptance-2026-05-13.md",
     "module": "library",
@@ -7801,13 +7812,14 @@
       "",
       "## Active Automations",
       "",
-      "| Automation | Rhythm | Status | Role |",
-      "|---|---|---|---|",
-      "| LLM Wiki Local Source Intake | Every 2 hours at +05 | active | Update private local source and activity maps |",
-      "| LLM Wiki GitHub Best Practice Watch | Every 2 hours at +25 | active | Learn from official docs and maintained GitHub projects |",
-      "| LLM Wiki Lifecycle Package Builder | Every 2 hours at +40 | active | Build or improve one beginner learning package |",
-      "| LLM Wiki Acceptance Gate | Every 2 hours at +55 | active | Run validation gates and record blockers |",
-      "| LLM Wiki Workflow Retrospective | Every 2 hours at +58 | active | Improve the workflow and templates |",
+      "| Automation | Rhythm | Status | Role | Expected artifact path(s) | Push summary checked |",
+      "|---|---|---|---|---|---|",
+      "| LLM Wiki Local Source Intake | Every 2 hours at +05 | active | Update private local source and activity maps | `private-wiki/automation/recent-activity.md` and intake companions | pending |",
+      "| LLM Wiki GitHub Best Practice Watch | Every 2 hours at +25 | active | Learn from official docs and maintained GitHub projects | `wiki/sources/*.md` plus backlog/workflow updates | pending |",
+      "| LLM Wiki Lifecycle Package Builder | Every 2 hours at +40 | active | Build or improve one beginner learning package | `wiki/projects/lifecycle-*.md` or `wiki/synthesis/*.md` | pending |",
+      "| LLM Wiki Acceptance Gate | Every 2 hours at +55 | active | Run validation gates and record blockers | `wiki/synthesis/lifecycle-automation-acceptance-YYYY-MM-DD.md` | pending |",
+      "| LLM Wiki Workflow Retrospective | Every 2 hours at +58 | active | Improve the workflow and templates | `private-wiki/automation/lifecycle-loop-operating-procedure.md` or todo/workflow updates | pending |",
+      "| LLM Wiki Cycle Delivery Push | Every 2 hours at +59 | active target | Push the Chinese cycle summary to the owner | local desktop automation log hub summary | yes |",
       "",
       "## Boundary",
       "",
@@ -7818,6 +7830,7 @@
       "- Add a persistent acceptance ledger if repeated runs need history beyond individual notes.",
       "- Add one real package from a newly detected local activity signal.",
       "- Keep GitHub research tied to backlog items instead of collecting references.",
+      "- Verify that every active automation leaves a Chinese desktop log and a push summary, not just a generic “updated something”.",
       "",
       "## Related",
       "",
@@ -7886,10 +7899,10 @@
         "anchor": "related"
       }
     ],
-    "wordCount": 383,
-    "readingMinutes": 1,
+    "wordCount": 479,
+    "readingMinutes": 2,
     "metrics": {
-      "lineCount": 58,
+      "lineCount": 60,
       "headingCount": 8,
       "linkCount": 3,
       "sourceCount": 3
@@ -7936,7 +7949,7 @@
       "featured"
     ],
     "createdAt": "2026-05-13",
-    "updatedAt": "2026-05-13",
+    "updatedAt": "2026-05-14",
     "eventDate": null,
     "sourcePath": "wiki/synthesis/lifecycle-automation-output-map.md",
     "module": "library",
@@ -7969,6 +7982,17 @@
       "| +55 min | Acceptance gate | validation report, blockers, inventory refresh |",
       "| +58 min | Workflow retrospective | improved process pages, templates, and automation prompts |",
       "",
+      "## Exact Artifact Map",
+      "",
+      "| Worker | Objective output | Exact artifact path(s) | Push summary sink |",
+      "|---|---|---|---|",
+      "| Local source intake | Refresh private discovery surfaces | `private-wiki/automation/recent-activity.md`, `private-wiki/automation/local-source-incremental-watch.md`, `private-wiki/automation/pipeline-health.md`, `private-wiki/automation/intake-run-log.md` | desktop automation log hub / intake report |",
+      "| GitHub best-practice watch | Turn one reference into one local improvement | `wiki/sources/*.md`, workflow/backlog updates | desktop automation log hub / best-practice report |",
+      "| Lifecycle package builder | Produce one exact beginner-readable page | `wiki/projects/lifecycle-*.md` or `wiki/synthesis/*.md` | desktop automation log hub / package report |",
+      "| Acceptance gate | Record pass/fail and blockers | `wiki/synthesis/lifecycle-automation-acceptance-YYYY-MM-DD.md`, `manifests/*` | desktop automation log hub / gate report |",
+      "| Workflow retrospective | Change one workflow rule or record no-change | `private-wiki/automation/lifecycle-loop-operating-procedure.md`, `private-wiki/todos/lifecycle-workflow-todo.md` | desktop automation log hub / retrospective report |",
+      "| Delivery push | Summarize the whole cycle to the owner | local desktop automation log hub summary files | current thread |",
+      "",
       "## Output Rule",
       "",
       "Every automation must leave an Obsidian-visible result:",
@@ -7978,6 +8002,8 @@
       "- generated website backend data goes to `site-data/`;",
       "- machine reports go to `manifests/`;",
       "- failures go to a backlog or acceptance record.",
+      "",
+      "Every automation should also leave one human-readable Chinese log in the desktop log hub, so the owner does not have to inspect manifests to know what changed.",
       "",
       "## Recent App Activity",
       "",
@@ -8033,6 +8059,11 @@
       },
       {
         "level": 2,
+        "title": "Exact Artifact Map",
+        "anchor": "exact-artifact-map"
+      },
+      {
+        "level": 2,
         "title": "Output Rule",
         "anchor": "output-rule"
       },
@@ -8057,11 +8088,11 @@
         "anchor": "related"
       }
     ],
-    "wordCount": 278,
-    "readingMinutes": 1,
+    "wordCount": 454,
+    "readingMinutes": 2,
     "metrics": {
-      "lineCount": 49,
-      "headingCount": 7,
+      "lineCount": 62,
+      "headingCount": 8,
       "linkCount": 4,
       "sourceCount": 3
     },

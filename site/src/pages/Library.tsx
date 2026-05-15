@@ -31,11 +31,11 @@ const statusConfig: Record<
 type BeginnerLibraryCategory = Exclude<LibraryReaderCategory, 'xiaoan'>;
 
 const categoryConfig: Record<BeginnerLibraryCategory, { label: string; color: string; hint: string }> = {
-  frontend: { label: '前端', color: '#C8956C', hint: '页面、交互、移动端和可安装网页' },
-  backend: { label: '后端', color: '#8A9BB8', hint: '接口、数据出口、服务边界和稳定更新' },
-  tools: { label: '工具', color: '#8AAE9B', hint: '软件、平台、浏览器、命令行和工作台' },
-  agents: { label: '智能体', color: '#B8A87F', hint: '能按步骤协作的 AI 工作流' },
-  prompts: { label: '提示词', color: '#9C8FB8', hint: '目标、材料、约束、输出和验收' },
+  frontend: { label: '做网页', color: '#C8956C', hint: '页面、交互、手机阅读和可安装网页' },
+  backend: { label: '管资料', color: '#8A9BB8', hint: '把公开内容稳定送到网页和 App' },
+  tools: { label: '用工具', color: '#8AAE9B', hint: '软件、平台、浏览器和工作台' },
+  agents: { label: '搭智能体', color: '#B8A87F', hint: '能按步骤协作的 AI 工作流' },
+  prompts: { label: '写提示词', color: '#9C8FB8', hint: '目标、材料、约束、输出和验收' },
   archive: { label: '资料整理', color: '#6B9E7C', hint: '把散乱材料整理成公开书页' },
   learning: { label: '学习路线', color: '#9A8E6A', hint: '从一个最小成果开始复刻' },
   security: { label: '边界保护', color: '#A06A62', hint: '发布前检查、改写和保护隐私' },
@@ -45,11 +45,11 @@ const categoryConfig: Record<BeginnerLibraryCategory, { label: string; color: st
 
 const categoryFilters = [
   { key: 'all', label: '全部' },
-  { key: 'frontend', label: '前端' },
-  { key: 'backend', label: '后端' },
-  { key: 'tools', label: '工具' },
-  { key: 'agents', label: '智能体' },
-  { key: 'prompts', label: '提示词' },
+  { key: 'frontend', label: '做网页' },
+  { key: 'backend', label: '管资料' },
+  { key: 'tools', label: '用工具' },
+  { key: 'agents', label: '搭智能体' },
+  { key: 'prompts', label: '写提示词' },
   { key: 'archive', label: '整理资料' },
   { key: 'learning', label: '学习路线' },
   { key: 'security', label: '边界保护' },
@@ -458,7 +458,7 @@ export default function Library() {
             transition={{ duration: 0.4, ease: easeOut, delay: 0.2 }}
             className="text-[15px] text-silver mb-6"
           >
-            按前端、后端、工具、智能体、提示词、资料整理、学习路线、边界保护和参考资料来找。
+            想做页面就看“做网页”，想让内容稳定更新就看“管资料”，不知道选哪张卡，先打开推荐资料包。
           </motion.p>
 
           <div className="border-b border-border-color" />

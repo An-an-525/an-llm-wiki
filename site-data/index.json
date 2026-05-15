@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-13T10:30:23+00:00",
+  "generatedAt": "2026-05-15T16:00:01+00:00",
   "source": "an-llm-wiki public wiki",
   "schemaVersion": 1,
   "privacyBoundary": {
@@ -93,23 +93,23 @@
     }
   ],
   "counts": {
-    "content": 79,
-    "publicMarkdown": 283,
-    "reviewQueue": 204,
-    "showcaseCandidates": 87,
+    "content": 78,
+    "publicMarkdown": 287,
+    "reviewQueue": 209,
+    "showcaseCandidates": 86,
     "frontendExcluded": 8,
     "library": 53,
     "paths": 8,
     "feed": 5,
-    "works": 11,
+    "works": 10,
     "journal": 2,
     "timeline": 10
   },
   "curation": {
     "mode": "curated-public-showcase",
-    "displayedContent": 79,
-    "reviewQueue": 204,
-    "allPublicMarkdown": 283,
+    "displayedContent": 78,
+    "reviewQueue": 209,
+    "allPublicMarkdown": 287,
     "qualityManifest": "manifests/site_data_quality_review.csv",
     "rules": [
       "Front-end payload includes only showcase/starter pages.",
@@ -131,11 +131,11 @@
     "tags": [
       {
         "key": "curated",
-        "count": 68
+        "count": 67
       },
       {
         "key": "beginner-friendly",
-        "count": 28
+        "count": 31
       },
       {
         "key": "publication",
@@ -143,15 +143,11 @@
       },
       {
         "key": "featured",
-        "count": 17
+        "count": 16
       },
       {
         "key": "llm-wiki",
         "count": 14
-      },
-      {
-        "key": "learning",
-        "count": 12
       },
       {
         "key": "archive",
@@ -162,11 +158,7 @@
         "count": 11
       },
       {
-        "key": "lifecycle",
-        "count": 11
-      },
-      {
-        "key": "project",
+        "key": "learning",
         "count": 11
       },
       {
@@ -174,15 +166,23 @@
         "count": 10
       },
       {
+        "key": "lifecycle",
+        "count": 10
+      },
+      {
+        "key": "project",
+        "count": 10
+      },
+      {
         "key": "tool",
         "count": 10
       },
       {
-        "key": "workflow",
-        "count": 10
+        "key": "privacy",
+        "count": 9
       },
       {
-        "key": "privacy",
+        "key": "workflow",
         "count": 9
       },
       {
@@ -242,15 +242,7 @@
         "count": 3
       },
       {
-        "key": "ai-agent",
-        "count": 3
-      },
-      {
         "key": "cognition",
-        "count": 3
-      },
-      {
-        "key": "coze",
         "count": 3
       },
       {
@@ -288,12 +280,20 @@
       {
         "key": "tools",
         "count": 3
+      },
+      {
+        "key": "agent-builder",
+        "count": 2
+      },
+      {
+        "key": "ai-agent",
+        "count": 2
       }
     ],
     "types": [
       {
         "key": "article",
-        "count": 46
+        "count": 45
       },
       {
         "key": "tool",
@@ -327,7 +327,7 @@
       },
       {
         "key": "featured",
-        "count": 16
+        "count": 15
       },
       {
         "key": "public",
@@ -341,7 +341,7 @@
       },
       {
         "key": "works",
-        "count": 11
+        "count": 10
       },
       {
         "key": "paths",
@@ -368,15 +368,15 @@
     "featuredWorkSlugs": [
       "wiki-projects-lifecycle-agent-ide-learning-workflow",
       "wiki-projects-lifecycle-agent-skill-governance",
-      "wiki-projects-lifecycle-coze-agent-builder"
+      "wiki-projects-lifecycle-frontend-archive-site"
     ],
     "recentLibrarySlugs": [
-      "wiki-concepts-agent-skill-governance",
       "wiki-concepts-agent-tool-permission-and-trace-safety",
+      "wiki-synthesis-lifecycle-automation-acceptance-2026-05-13",
+      "wiki-synthesis-lifecycle-automation-output-map",
+      "wiki-concepts-agent-skill-governance",
       "wiki-concepts-agent-workflow-for-beginners",
-      "wiki-concepts-ai-beginner-replication-workflow",
-      "wiki-concepts-backend-api-for-personal-archive-beginners",
-      "wiki-concepts-beginner-publication-decision-tree"
+      "wiki-concepts-ai-beginner-replication-workflow"
     ],
     "recentTimelineSlugs": [
       "wiki-synthesis-archive-feed-public-data-update-2026-05-13",
@@ -597,7 +597,7 @@
         "verified"
       ],
       "createdAt": "2026-05-13",
-      "updatedAt": "2026-05-13",
+      "updatedAt": "2026-05-15",
       "eventDate": null,
       "sourcePath": "wiki/concepts/agent-tool-permission-and-trace-safety.md",
       "module": "library",
@@ -634,6 +634,12 @@
         "- 账号或授权状态；",
         "- 私有文件内容；",
         "- 可以还原操作过程的细节组合。",
+        "",
+        "## 协作日志也要脱敏",
+        "",
+        "小鲸鱼、小安、Codex 和审阅子代理可以长期协作，但协作日志只记录任务、判断和验收，不记录完整调用轨迹。公开时可以说“用了本地事实采集和人工复核”，不能把账号状态、本地路径组合、原始私聊、工具输出全文或密钥线索写进页面。",
+        "",
+        "如果一条日志同时暴露“谁、在哪台机器、用什么路径、连哪个服务、拿了什么访问材料”，即使没有明文密钥，也应视为高风险材料，只能留在私有复核层。",
         "",
         "## 权限原则",
         "",
@@ -688,6 +694,11 @@
         },
         {
           "level": 2,
+          "title": "协作日志也要脱敏",
+          "anchor": "协作日志也要脱敏"
+        },
+        {
+          "level": 2,
           "title": "权限原则",
           "anchor": "权限原则"
         },
@@ -697,11 +708,11 @@
           "anchor": "related"
         }
       ],
-      "wordCount": 282,
+      "wordCount": 443,
       "readingMinutes": 1,
       "metrics": {
-        "lineCount": 42,
-        "headingCount": 5,
+        "lineCount": 48,
+        "headingCount": 6,
         "linkCount": 3,
         "sourceCount": 3
       },
@@ -5865,11 +5876,11 @@
     },
     {
       "id": "c_a4cb0d271e33fb21",
-      "title": "Trae Antigravity Agent IDE 学习包",
-      "sourceTitle": "Lifecycle Package: Agent IDE Learning Workflow",
+      "title": "Agent IDE 评估学习包",
+      "sourceTitle": "Agent IDE 评估学习包",
       "slug": "wiki-projects-lifecycle-agent-ide-learning-workflow",
       "summary": "把 Trae、Antigravity 等 Agent IDE 的使用经验整理成评估学习包，帮助新手比较工具并形成可复用流程。",
-      "sourceSummary": "把 Trae、Antigravity 等 Agent IDE 的使用整理成小白可复刻的评估学习包：先定任务，再记录流程、验收结果和是否值得保留。",
+      "sourceSummary": "把 Trae、Antigravity、Cursor、Codex、Claude Code 等 Agent IDE 的试用整理成小白可复刻的评估学习包：先定任务，再看流程、验收结果和是否值得保留。",
       "tags": [
         "project",
         "agent",
@@ -5878,13 +5889,14 @@
         "lifecycle",
         "learning",
         "curated",
-        "featured"
+        "featured",
+        "beginner-friendly"
       ],
       "status": [
         "featured"
       ],
       "createdAt": "2026-05-13",
-      "updatedAt": "2026-05-13",
+      "updatedAt": "2026-05-15",
       "eventDate": null,
       "sourcePath": "wiki/projects/lifecycle-agent-ide-learning-workflow.md",
       "module": "works",
@@ -5895,100 +5907,209 @@
       "contentType": "article",
       "href": "/content/wiki-projects-lifecycle-agent-ide-learning-workflow",
       "contentLines": [
-        "# Trae Antigravity Agent IDE 学习包",
+        "# Agent IDE 评估学习包",
         "",
-        "## 概览",
+        "## 开场判断",
         "",
-        "把 Trae、Antigravity 等 Agent IDE 的使用经验整理成评估学习包，帮助新手比较工具并形成可复用流程。",
+        "AI 编程工作台看起来很像一排新钥匙。每一把都说自己能打开未来，可新手真正缺的不是钥匙，而是知道先开哪一扇门。",
         "",
-        "## 读者可以获得什么",
+        "这份学习包不教你追新工具。它教你怎样判断一个 Agent IDE 是否值得进入自己的工作流。判断标准很朴素：它是否让你更清楚地完成一个小任务，是否让你能检查结果，是否让你知道什么时候该停。",
         "",
-        "- 理解「Trae Antigravity Agent IDE 学习包」在安的书房里的位置。",
-        "- 看清它解决的问题、适合的读者和后续复刻方向。",
-        "- 知道公开页面保留的是方法、结构和经验，不包含原始私有材料。",
+        "参考标准来自几条线：GitHub Skills 强调课程要让学习者知道“给谁学、学什么、做出什么、从哪里开始”；Diataxis 把教程、操作指南、参考和解释分开，避免一页混成杂货铺；Google 有用内容标准提醒内容要有第一手经验、完整说明和真实帮助；信息架构和注意力设计要求先给读者明确路径，再逐步展开复杂内容。",
         "",
-        "## 推荐阅读方式",
+        "## 适合谁",
         "",
-        "1. 先读概览，确认它和当前学习目标是否相关。",
-        "2. 再看关联页面，理解来源、项目、工具或工作流之间的关系。",
-        "3. 如果要复刻，先写下自己的目标、输入材料、边界和验收标准。",
-        "4. 完成后回到资料库，把新的经验整理成可追踪页面。",
+        "- 想靠 AI 做网页、写脚本、整理资料，但不知道该用哪个工具的人。",
+        "- 已经装过几个 AI 编程工具，却说不清每个工具适合做什么的人。",
+        "- 想复刻安的路线，但不想被工具名、模型名、插件名淹没的人。",
+        "- 未来的安自己，用来回看一个工具为什么留下，为什么淘汰。",
         "",
-        "## 发布边界",
+        "## 你要做出的东西",
         "",
-        "本页只展示公开安全的整理结果。原始材料、账号状态、本机细节、私人对话和未复核内容不会进入公开展示。",
+        "最后产物不是一篇长评测，而是一张评估卡。",
         "",
-        "## 来源",
+        "| 字段 | 要写什么 | 为什么重要 |",
+        "|---|---|---|",
+        "| 任务 | 这次只让工具做哪一件事 | 限制范围，避免一开始就混乱 |",
+        "| 输入 | 给工具的公开安全说明 | 让下次能复盘提示词是否清楚 |",
+        "| 输出 | 它交付了什么类型的结果 | 看结果，不看它的自我评价 |",
+        "| 改动 | 它碰了哪些类型的文件或内容 | 判断可控性 |",
+        "| 验收 | 你怎样确认它做对了 | 防止“看起来能用” |",
+        "| 失败 | 哪里不稳、哪里危险、哪里费劲 | 留下真实经验 |",
+        "| 决策 | 保留、观察、淘汰、写成技能 | 让工具进入秩序 |",
         "",
-        "- [[wiki/sources/local-private-compile-2026-05-13]]",
-        "- [[wiki/synthesis/github-best-practice-learning-loop]]",
-        "- [[wiki/projects/lifecycle-agent-skill-governance]]"
+        "## 材料准备",
+        "",
+        "只需要四样东西：",
+        "",
+        "1. 一个 30 分钟内能完成的小任务。",
+        "2. 一个你想评估的 Agent IDE。",
+        "3. 一条公开安全的任务说明。",
+        "4. 一个验收清单。",
+        "",
+        "不要准备太多上下文。上下文越多，工具越容易演得像懂了，实际却在猜。新手最先要学会的不是给 AI 喂满资料，而是把任务切到它能被检查。",
+        "",
+        "## 安实际怎么做",
+        "",
+        "安的路线不是“我用了很多工具”，而是逐步把工具纳入系统。",
+        "",
+        "第一步，是把工具从名字里剥离出来。Codex、Claude Code、Cursor、Kimi、Gemini、Trae、Antigravity 都可以被看作不同形态的工作台：有的擅长读代码，有的擅长改文件，有的擅长对话，有的擅长把页面搭起来。",
+        "",
+        "第二步，是把任务缩小。比如“把一个页面改得更适合小白看”就太大；“把工坊卡片里的英文标签改成中文，并确认移动端不挤压”就能验收。",
+        "",
+        "第三步，是只记录流程形状。公开资料里不需要出现真实账号、历史记录、安装路径、密钥、服务器连接、私有提示词。读者真正需要的是：任务怎样被拆开，工具怎样参与，人怎样验收。",
+        "",
+        "第四步，是把每次试用变成方法判断。一个工具如果只带来新鲜感，就留在观察区；如果能稳定帮助某类任务，就写成技能或流程；如果经常越界、乱改、难验收，就淘汰。",
+        "",
+        "## 第一次复刻步骤",
+        "",
+        "1. **选任务**：选一个很小的任务，例如“把一个项目说明改成 5 条中文步骤”。",
+        "2. **写目标**：用一句话写出你要什么结果，例如“读者看完后知道第一步怎么做”。",
+        "3. **写边界**：告诉工具不能做什么，例如“不改无关文件，不输出密钥，不编造来源，不用英文标签当主标题”。",
+        "4. **运行一次**：只让它做这一件事，不追加一堆新需求。",
+        "5. **看差异**：检查它实际改了什么。它说得再好，也要看文件和页面。",
+        "6. **跑验收**：页面能打开，文案是中文，步骤能执行，没有隐私线索，没有明显错链。",
+        "7. **写评估卡**：记录它适合的任务、失败点、下次如何约束。",
+        "8. **做决策**：保留、观察、淘汰，或者把稳定做法写成技能。",
+        "",
+        "## 评估维度",
+        "",
+        "| 维度 | 第一次用先看 | 想深入再看 | 做维护最后看 |",
+        "|---|---|---|---|",
+        "| 上手摩擦 | 能不能快速开始 | 配置是否清楚 | 是否能进入团队流程 |",
+        "| 上下文理解 | 能不能听懂任务 | 能否抓住文件关系 | 是否能处理复杂边界 |",
+        "| 编辑控制 | 会不会乱改 | 差异是否可审查 | 是否支持回退与最小变更 |",
+        "| 验收能力 | 能不能提示检查 | 是否能跑测试 | 是否能接入质量闸门 |",
+        "| 隐私边界 | 会不会暴露私密信息 | 是否遵守禁止项 | 是否能进入长期治理 |",
+        "| 产物质量 | 能不能用 | 是否能维护 | 是否能扩展 |",
+        "",
+        "## 容易失手的地方",
+        "",
+        "最常见的失败不是工具不会做，而是人没有给它一个能被判断的任务。",
+        "",
+        "- **任务太大**：一上来就让它“做一个完整网站”，最后得到的多半是漂亮但空的壳。",
+        "- **验收太晚**：等工具改完一大堆再看，已经很难知道问题从哪里开始。",
+        "- **被热闹牵着走**：界面、动画、模型名让人兴奋，但读者看的是内容是否有用。",
+        "- **把私有材料当证据**：公开页不能展示原始聊天、账号状态、访问材料和本机细节。",
+        "- **没有复盘**：不写评估卡，下次还会重复踩同一个坑。",
+        "",
+        "## 复刻验收清单",
+        "",
+        "- [ ] 任务能在 30 分钟内完成。",
+        "- [ ] 输入说明不包含私有材料。",
+        "- [ ] 工具只改了目标范围。",
+        "- [ ] 结果能通过最小测试或人工检查。",
+        "- [ ] 文案能被中文小白读懂。",
+        "- [ ] 至少记录一个失败点。",
+        "- [ ] 最后做出保留、观察、淘汰或写成技能的决策。",
+        "",
+        "## 三层理解",
+        "",
+        "**心理层**：工具越多，越容易让人产生“我必须全会”的错觉。评估卡把注意力从比较工具拉回完成任务，让新手获得一点稳定感。",
+        "",
+        "**社会层**：AI 工具市场会不断制造新入口。平台希望自己成为你的默认工作台，而个人系统要保留主控权：由任务选择工具，不由工具定义任务。",
+        "",
+        "**哲学层**：一个人真正拥有的不是工具清单，而是判断。判断来自边界、验收和复盘。没有这些，再强的工具也只是短暂的热闹。",
+        "",
+        "## 安的提醒",
+        "",
+        "- 不要问“哪个工具最强”，先问“我现在要完成什么”。",
+        "- 不要让工具证明自己聪明，要让它交付一个能验收的小结果。",
+        "- 不要把一次成功当成长期能力。连续三次稳定完成同类任务，才值得写进方法库。",
+        "- 不要公开原始使用痕迹。读者需要路径，不需要你的后台。",
+        "",
+        "## 来源与审查",
+        "",
+        "本页结合了安的公开安全工具使用线索、GitHub Skills 的课程内容模型、Diataxis 的文档分类方法、Google 有用内容自查问题，以及本项目的公开安全边界。审查重点是：不闭门造车、不露私密材料、不让小白被工具名压住、不把文学表达写成空话。"
       ],
-      "links": [
-        {
-          "target": "wiki/projects/lifecycle-agent-skill-governance",
-          "label": "wiki/projects/lifecycle-agent-skill-governance"
-        },
-        {
-          "target": "wiki/synthesis/github-best-practice-learning-loop",
-          "label": "wiki/synthesis/github-best-practice-learning-loop"
-        },
-        {
-          "target": "wiki/topics/skills-and-tools-moc",
-          "label": "wiki/topics/skills-and-tools-moc"
-        }
-      ],
+      "links": [],
       "sources": [
         "[[wiki/sources/local-private-compile-2026-05-13]]",
         "[[wiki/synthesis/github-best-practice-learning-loop]]",
-        "[[wiki/projects/lifecycle-agent-skill-governance]]"
+        "[[wiki/projects/lifecycle-agent-skill-governance]]",
+        "[[wiki/sources/tutorial-and-source-research-best-practices]]"
       ],
       "toc": [
         {
           "level": 1,
-          "title": "Trae Antigravity Agent IDE 学习包",
-          "anchor": "trae-antigravity-agent-ide-学习包"
+          "title": "Agent IDE 评估学习包",
+          "anchor": "agent-ide-评估学习包"
         },
         {
           "level": 2,
-          "title": "概览",
-          "anchor": "概览"
+          "title": "开场判断",
+          "anchor": "开场判断"
         },
         {
           "level": 2,
-          "title": "读者可以获得什么",
-          "anchor": "读者可以获得什么"
+          "title": "适合谁",
+          "anchor": "适合谁"
         },
         {
           "level": 2,
-          "title": "推荐阅读方式",
-          "anchor": "推荐阅读方式"
+          "title": "你要做出的东西",
+          "anchor": "你要做出的东西"
         },
         {
           "level": 2,
-          "title": "发布边界",
-          "anchor": "发布边界"
+          "title": "材料准备",
+          "anchor": "材料准备"
         },
         {
           "level": 2,
-          "title": "来源",
-          "anchor": "来源"
+          "title": "安实际怎么做",
+          "anchor": "安实际怎么做"
+        },
+        {
+          "level": 2,
+          "title": "第一次复刻步骤",
+          "anchor": "第一次复刻步骤"
+        },
+        {
+          "level": 2,
+          "title": "评估维度",
+          "anchor": "评估维度"
+        },
+        {
+          "level": 2,
+          "title": "容易失手的地方",
+          "anchor": "容易失手的地方"
+        },
+        {
+          "level": 2,
+          "title": "复刻验收清单",
+          "anchor": "复刻验收清单"
+        },
+        {
+          "level": 2,
+          "title": "三层理解",
+          "anchor": "三层理解"
+        },
+        {
+          "level": 2,
+          "title": "安的提醒",
+          "anchor": "安的提醒"
+        },
+        {
+          "level": 2,
+          "title": "来源与审查",
+          "anchor": "来源与审查"
         }
       ],
-      "wordCount": 277,
-      "readingMinutes": 1,
+      "wordCount": 2001,
+      "readingMinutes": 5,
       "metrics": {
-        "lineCount": 28,
-        "headingCount": 6,
-        "linkCount": 3,
-        "sourceCount": 3
+        "lineCount": 114,
+        "headingCount": 13,
+        "linkCount": 0,
+        "sourceCount": 4
       },
       "quality": {
         "hasSources": true,
         "hasToc": true,
         "summaryLength": 62,
-        "sourceTitle": "Lifecycle Package: Agent IDE Learning Workflow",
-        "sourceSummary": "把 Trae、Antigravity 等 Agent IDE 的使用整理成小白可复刻的评估学习包：先定任务，再记录流程、验收结果和是否值得保留。",
+        "sourceTitle": "Agent IDE 评估学习包",
+        "sourceSummary": "把 Trae、Antigravity、Cursor、Codex、Claude Code 等 Agent IDE 的试用整理成小白可复刻的评估学习包：先定任务，再看流程、验收结果和是否值得保留。",
         "needsSourceReview": false,
         "displayTier": "showcase",
         "qualityScore": 100,
@@ -5999,9 +6120,48 @@
       "sourceLabels": [
         "local compile",
         "public-safe rewrite",
-        "agent workflow"
+        "agent workflow",
+        "github-skills",
+        "learning design"
       ],
-      "actionText": "先看这页的目标和边界，再按最小步骤做一个缩小版本，并记录一次验收结果。",
+      "whyItMattered": "Agent IDE 最容易让新手陷入工具兴奋：今天试一个编辑器，明天换一个插件，最后只剩一堆截图和记忆。这个学习包把试用工具变成一张评估卡：先定任务，再看它如何理解上下文、改文件、解释风险、接受验收。",
+      "psychologicalLayer": "新手试工具时容易被“我是不是落后了”驱动，注意力被焦虑牵引。评估卡的作用是把焦虑压回任务：今天只判断一个小任务能不能更稳地完成。",
+      "sociologicalLayer": "AI 编程工具的竞争会制造强烈的从众压力，每个平台都希望用户把它当成主工作台。个人书房要反过来：工具服务人的工作流，不让平台语言替代自己的判断。",
+      "philosophicalLayer": "工具不是能力本身。能力是在一次次选择、限制、验收和复盘中长出来的手艺。人把工具放回边界里，工具才开始真正帮人。",
+      "operationStory": [
+        "先把工具名从光环里拿出来，只问一个问题：它能不能帮安更稳定地完成一个具体任务。",
+        "再把任务缩到足够小，例如改一个页面文案、整理一份公开资料、检查一次构建结果。任务小，才看得清工具的真实能力。",
+        "使用过程中只记录公开安全的流程形状：输入是什么、它问了什么、它动了哪些类型的文件、最后怎样验收。",
+        "试用结束后不凭感觉打分，而是按上下文理解、编辑可控、审查透明、回退成本、隐私边界五项判断。",
+        "最后把结果分成三类：值得写成技能、暂时保留观察、直接淘汰。工具不进入方法库，记忆就会继续散掉。"
+      ],
+      "replicationSteps": [
+        "写下一个小任务：例如把一段英文工具说明改成中文小白说明，或给一个页面补空状态。不要一开始就让工具重构整个项目。",
+        "先写验收标准：读者能不能看懂，页面能不能运行，改动是否只触碰目标文件，是否没有泄露私有材料。",
+        "打开一个 Agent IDE，把任务、范围、禁止事项一次性说清楚。禁止事项至少包括：不提交密钥、不改无关文件、不删除已有内容。",
+        "让它执行后，先看差异，不看话术。真正的能力在改动里，不在它说得多自信。",
+        "跑一次最小验收：页面能打开、测试能过、文案是中文、没有本地路径或访问材料。",
+        "写一张评估卡：这个工具适合做什么，不适合做什么，下次还用不用，用的时候要加哪条提醒。"
+      ],
+      "failureModes": [
+        "工具跳跃：今天换 IDE，明天换模型，注意力被新鲜感带走，没有任何一个流程沉淀下来。",
+        "没有验收：只看工具回答是否顺耳，不检查页面、文件、测试和实际读者体验。",
+        "上下文过载：一次塞太多历史和目标，工具开始猜，读者也看不出哪一步是真的。",
+        "隐私边界模糊：把账号状态、安装路径、对话原文和私有输出当成学习材料。",
+        "把安装等同于能力：本地装过一个工具，不代表已经形成可复刻方法。"
+      ],
+      "lessons": [
+        "新工具必须被小任务审问，不能被宣传语说服。",
+        "一个 Agent IDE 是否值得保留，取决于它能不能让人更清楚地完成工作，而不是界面是否热闹。",
+        "评估卡比工具清单更有价值。清单告诉你有什么，评估卡告诉你为什么留下。",
+        "新手需要的不是更多选择，而是更少、更稳、更可验收的第一步。"
+      ],
+      "anReminders": [
+        "安的书房不展示工具崇拜，只展示工具怎样被安使用、约束和复盘。",
+        "每次新增工具记录，都必须补一条失败点。没有失败点的工具卡，通常只是广告。",
+        "公开页面讲流程和判断，不讲账号、历史记录、安装位置和私有输出。"
+      ],
+      "actionText": "选一个 30 分钟内能完成的小任务，用一个 Agent IDE 跑一遍，并写下任务、输入、输出、验收和是否保留。",
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": [],
@@ -6014,41 +6174,15 @@
         "lifecycle",
         "learning"
       ],
-      "nextPlan": "",
-      "whyItMattered": "「Trae Antigravity Agent IDE 学习包」把一次真实项目整理成可学习、可展示、可复刻的公开资料，帮助读者理解目标、边界和结果。",
-      "operationStory": [
-        "先把原始材料、私有复核和公开展示分开，确认哪些信息可以安全讲给读者。",
-        "再把项目目标、关键步骤、失败点和验收方式整理成中文页面。",
-        "最后通过结构检查、隐私扫描和站点数据生成，确认资料可以进入前端展示。"
-      ],
-      "replicationSteps": [
-        "先明确目标读者、最小成果和公开边界。",
-        "整理公开安全的来源说明和替代示例。",
-        "按教程、操作步骤、参考表和解释四块组织内容。",
-        "运行发布前验收，确认页面可读、可追踪、可维护。"
-      ],
-      "failureModes": [
-        "只展示结果，不说明来源和验收。",
-        "把原始本地材料误当成公开资料。",
-        "页面没有复刻步骤，读者只能看热闹。"
-      ],
-      "lessons": [
-        "项目资料要从经历变成方法，才能真正被复用。",
-        "公开页面要把价值、边界和下一步讲清楚。",
-        "小批量高质量整理比一次性堆材料更稳。"
-      ],
-      "anReminders": [
-        "继续把「Trae Antigravity Agent IDE 学习包」补成更具体的实操案例。",
-        "每次新增本地证据，都先进入私有复核，再决定是否公开。"
-      ]
+      "nextPlan": ""
     },
     {
       "id": "c_4e569ed065ab0782",
-      "title": "Agent 技能治理复刻学习包",
-      "sourceTitle": "Lifecycle Package: Agent Skill Governance",
+      "title": "Agent 技能治理学习包",
+      "sourceTitle": "Agent 技能治理学习包",
       "slug": "wiki-projects-lifecycle-agent-skill-governance",
       "summary": "把 Agent 技能治理整理成复刻包：从规则、技能、验收和复盘四个层面建立稳定协作系统。",
-      "sourceSummary": "把 Agent 技能、规则、边界和验证整理成小白可复刻的治理学习包，帮助复杂协作不再只靠临时聊天记忆。",
+      "sourceSummary": "把 Agent 技能、规则、边界和验证整理成小白可复刻的治理学习包：让多工具协作不再只靠聊天记忆，而是靠清楚的触发、产物、禁止项和验收。",
       "tags": [
         "project",
         "agent",
@@ -6057,13 +6191,14 @@
         "lifecycle",
         "learning",
         "curated",
-        "featured"
+        "featured",
+        "beginner-friendly"
       ],
       "status": [
         "featured"
       ],
       "createdAt": "2026-05-13",
-      "updatedAt": "2026-05-13",
+      "updatedAt": "2026-05-15",
       "eventDate": null,
       "sourcePath": "wiki/projects/lifecycle-agent-skill-governance.md",
       "module": "works",
@@ -6074,104 +6209,206 @@
       "contentType": "article",
       "href": "/content/wiki-projects-lifecycle-agent-skill-governance",
       "contentLines": [
-        "# Agent 技能治理复刻学习包",
+        "# Agent 技能治理学习包",
         "",
-        "## 概览",
+        "## 开场判断",
         "",
-        "把 Agent 技能治理整理成复刻包：从规则、技能、验收和复盘四个层面建立稳定协作系统。",
+        "当一个人开始同时使用 Codex、Claude Code、Cursor、Kimi、浏览器工具、GitHub、Obsidian 和各种本地脚本，真正的问题不再是“有没有工具”，而是“谁在控制方向”。",
         "",
-        "## 读者可以获得什么",
+        "技能治理要解决的正是这个问题。它不是把流程弄得更神秘，而是把重复发生的动作写成可检查的小规程。一个技能要像厨房里的刀：什么时候用、切什么、不能切什么、用完怎样收拾，都要清楚。",
         "",
-        "- 理解「Agent 技能治理复刻学习包」在安的书房里的位置。",
-        "- 看清它解决的问题、适合的读者和后续复刻方向。",
-        "- 知道公开页面保留的是方法、结构和经验，不包含原始私有材料。",
+        "对小白来说，你可以把技能理解成“给 AI 的标准做事卡”。它让 AI 不用每次都从聊天记忆里猜，也让人不必反复解释同一套边界。",
         "",
-        "## 推荐阅读方式",
+        "## 为什么值得做",
         "",
-        "1. 先读概览，确认它和当前学习目标是否相关。",
-        "2. 再看关联页面，理解来源、项目、工具或工作流之间的关系。",
-        "3. 如果要复刻，先写下自己的目标、输入材料、边界和验收标准。",
-        "4. 完成后回到资料库，把新的经验整理成可追踪页面。",
+        "安的书房以后会持续增加内容、项目、前端、后端、小安、App 和发布流程。没有技能治理，所有经验都会散落在对话里；有技能治理，经验才有机会变成可复用的方法。",
         "",
-        "## 发布边界",
+        "GitHub Skills 的课程思路提醒我们：一个学习单元必须让人知道目标、材料、步骤和产物。Diataxis 提醒我们：教程、操作指南、参考和解释不能混成一团。安的技能治理吸收的是这两点：每个技能都必须有触发场景，也必须有验收产物。",
         "",
-        "本页只展示公开安全的整理结果。原始材料、账号状态、本机细节、私人对话和未复核内容不会进入公开展示。",
+        "## 适合谁",
         "",
-        "## 来源",
+        "- 刚开始用 AI 做事，不知道怎样给 AI 立规矩的人。",
+        "- 已经有很多提示词、规则、插件，却越用越乱的人。",
+        "- 想复刻安的多工具协作路线，但不想被一堆术语吓退的人。",
+        "- 未来维护书房的人，用来判断旧规则是否还该保留。",
         "",
-        "- [[wiki/concepts/agent-skill-governance]]",
-        "- [[wiki/synthesis/public-tool-and-agent-inventory]]",
-        "- [[wiki/topics/skills-and-tools-moc]]"
+        "## 你要做出的东西",
+        "",
+        "最后产物是一张技能卡。",
+        "",
+        "| 字段 | 内容 | 例子 |",
+        "|---|---|---|",
+        "| 名称 | 这个技能解决什么重复任务 | 工坊资料包写作 |",
+        "| 触发 | 什么时候必须用它 | 新增核心项目详情页 |",
+        "| 输入 | 需要什么材料 | 项目证据、公开来源、读者目标 |",
+        "| 输出 | 交付什么 | 中文资料包、复刻步骤、验收清单 |",
+        "| 禁止 | 不允许做什么 | 不写密钥、不露路径、不编来源 |",
+        "| 验收 | 怎样判断做对了 | 前端可读、构建通过、隐私扫描通过 |",
+        "| 维护 | 什么时候改它 | 连续两次执行出现同类问题 |",
+        "",
+        "## 安实际怎么做",
+        "",
+        "安的工作流一开始也有很多规则、旧文档、临时要求和不同工具的习惯。真正的改造不是把所有规则都保留下来，而是判断哪些规则仍然有用。",
+        "",
+        "第一步，是承认旧规则只是历史证据。它们说明过去怎样工作，不代表今天必须继续照做。",
+        "",
+        "第二步，是把重复动作提出来。例如前端验收、隐私扫描、公开内容改写、工坊资料包写作、小安边界检查，这些动作会反复出现，就适合写成技能。",
+        "",
+        "第三步，是给每个技能加禁止事项。没有禁止事项的技能，像没有刹车的车。它可能很快，也可能把私有材料带到公开页面。",
+        "",
+        "第四步，是保留单主控。可以有多个技能，也可以有多个工具，但当前目标、文件边界、最终验收必须由一个主控负责。",
+        "",
+        "## 小白复刻步骤",
+        "",
+        "1. **列出重复任务**：写下最近三次都重复做过的事，例如整理资料、改前端卡片、检查隐私。",
+        "2. **选一个最痛的任务**：先不要全做，选那个最容易出错、最耗精力的动作。",
+        "3. **写一句触发条件**：例如“凡是内容要进入首页精选，就使用这个技能”。",
+        "4. **写输入和输出**：输入是资料、链接、目标；输出是页面、报告、清单或代码改动。",
+        "5. **写三条禁止项**：至少包含隐私、无关文件、编造来源。",
+        "6. **写验收清单**：完成后必须能被看见、被运行、被检查。",
+        "7. **试用一次**：用它完成真实任务，不要只写理论。",
+        "8. **复盘删减**：保留有用步骤，删掉让人更累的仪式。",
+        "",
+        "## 技能治理的四条底线",
+        "",
+        "| 底线 | 说明 | 失败信号 |",
+        "|---|---|---|",
+        "| 少 | 技能数量不能无限增长 | 找技能比做事还费劲 |",
+        "| 清 | 每张技能卡要一眼知道用途 | 全是抽象口号 |",
+        "| 边界 | 必须写不能做什么 | 容易泄露或误改 |",
+        "| 验收 | 必须有可检查产物 | 执行完只剩聊天记录 |",
+        "",
+        "## 常见失败",
+        "",
+        "**第一种失败：把技能当成权威。**  ",
+        "技能只是工具，不是命令。当前项目目标和安全边界永远高于旧技能。",
+        "",
+        "**第二种失败：把所有经验都技能化。**  ",
+        "有些经验只适合写进手记，有些适合写成待办，有些才适合固化成技能。过早固化会让系统僵硬。",
+        "",
+        "**第三种失败：没有维护规则。**  ",
+        "技能写完后不再更新，很快就会变成新的历史包袱。",
+        "",
+        "**第四种失败：技能之间互相抢方向。**  ",
+        "多个技能可以并行提供材料，但不能同时当主控。最终要有一个清楚的负责人收束结果。",
+        "",
+        "## 复刻验收清单",
+        "",
+        "- [ ] 技能只解决一个重复任务。",
+        "- [ ] 触发条件能被普通人读懂。",
+        "- [ ] 输入和输出写得具体。",
+        "- [ ] 禁止项包含隐私、无关文件和编造来源。",
+        "- [ ] 验收方式能产生客观结果。",
+        "- [ ] 使用一次后确实减少了混乱。",
+        "- [ ] 没有把旧规则无条件搬回来。",
+        "",
+        "## 三层理解",
+        "",
+        "**心理层**：人在压力下会把“更多规则”误认成“更安全”。真正让人安心的是可预测的小流程：知道何时开始、何时停、怎样判断做对。",
+        "",
+        "**社会层**：多 Agent 协作本质上像一个临时团队。团队如果没有角色、边界和交付物，就会把聪明消耗在互相覆盖上。",
+        "",
+        "**哲学层**：规则的意义不是让人服从机器，而是让人保持主控。好规则像栏杆，扶你过桥，不替你决定要去哪。",
+        "",
+        "## 安的提醒",
+        "",
+        "- 先治理最痛的重复任务，不要先搭宏大的技能宇宙。",
+        "- 每张技能卡都要能被一个新手读懂。读不懂，就还不是技能。",
+        "- 技能要记录禁止事项。没有边界的能力，会变成风险。",
+        "- 技能用完要验收。没有验收，流程只是安慰剂。",
+        "",
+        "## 来源与审查",
+        "",
+        "本页结合安的公开安全工作流、公开工具清单、GitHub Skills 学习单元思想、Diataxis 文档结构和本项目公开安全标准写成。审查重点是：不发布私有提示词，不暴露本地配置，不把历史规则自动当成当前标准，不让流程压过内容本身。"
       ],
-      "links": [
-        {
-          "target": "wiki/topics/skills-and-tools-moc",
-          "label": "wiki/topics/skills-and-tools-moc"
-        },
-        {
-          "target": "wiki/concepts/agent-skill-governance",
-          "label": "wiki/concepts/agent-skill-governance"
-        },
-        {
-          "target": "wiki/synthesis/public-tool-and-agent-inventory",
-          "label": "wiki/synthesis/public-tool-and-agent-inventory"
-        },
-        {
-          "target": "wiki/topics/skills-and-tools-moc",
-          "label": "wiki/topics/skills-and-tools-moc"
-        }
-      ],
+      "links": [],
       "sources": [
         "[[wiki/concepts/agent-skill-governance]]",
         "[[wiki/synthesis/public-tool-and-agent-inventory]]",
-        "[[wiki/topics/skills-and-tools-moc]]"
+        "[[wiki/topics/skills-and-tools-moc]]",
+        "[[wiki/sources/tutorial-and-source-research-best-practices]]"
       ],
       "toc": [
         {
           "level": 1,
-          "title": "Agent 技能治理复刻学习包",
-          "anchor": "agent-技能治理复刻学习包"
+          "title": "Agent 技能治理学习包",
+          "anchor": "agent-技能治理学习包"
         },
         {
           "level": 2,
-          "title": "概览",
-          "anchor": "概览"
+          "title": "开场判断",
+          "anchor": "开场判断"
         },
         {
           "level": 2,
-          "title": "读者可以获得什么",
-          "anchor": "读者可以获得什么"
+          "title": "为什么值得做",
+          "anchor": "为什么值得做"
         },
         {
           "level": 2,
-          "title": "推荐阅读方式",
-          "anchor": "推荐阅读方式"
+          "title": "适合谁",
+          "anchor": "适合谁"
         },
         {
           "level": 2,
-          "title": "发布边界",
-          "anchor": "发布边界"
+          "title": "你要做出的东西",
+          "anchor": "你要做出的东西"
         },
         {
           "level": 2,
-          "title": "来源",
-          "anchor": "来源"
+          "title": "安实际怎么做",
+          "anchor": "安实际怎么做"
+        },
+        {
+          "level": 2,
+          "title": "小白复刻步骤",
+          "anchor": "小白复刻步骤"
+        },
+        {
+          "level": 2,
+          "title": "技能治理的四条底线",
+          "anchor": "技能治理的四条底线"
+        },
+        {
+          "level": 2,
+          "title": "常见失败",
+          "anchor": "常见失败"
+        },
+        {
+          "level": 2,
+          "title": "复刻验收清单",
+          "anchor": "复刻验收清单"
+        },
+        {
+          "level": 2,
+          "title": "三层理解",
+          "anchor": "三层理解"
+        },
+        {
+          "level": 2,
+          "title": "安的提醒",
+          "anchor": "安的提醒"
+        },
+        {
+          "level": 2,
+          "title": "来源与审查",
+          "anchor": "来源与审查"
         }
       ],
-      "wordCount": 282,
-      "readingMinutes": 1,
+      "wordCount": 1761,
+      "readingMinutes": 4,
       "metrics": {
-        "lineCount": 28,
-        "headingCount": 6,
-        "linkCount": 4,
-        "sourceCount": 3
+        "lineCount": 111,
+        "headingCount": 13,
+        "linkCount": 0,
+        "sourceCount": 4
       },
       "quality": {
         "hasSources": true,
         "hasToc": true,
         "summaryLength": 44,
-        "sourceTitle": "Lifecycle Package: Agent Skill Governance",
-        "sourceSummary": "把 Agent 技能、规则、边界和验证整理成小白可复刻的治理学习包，帮助复杂协作不再只靠临时聊天记忆。",
+        "sourceTitle": "Agent 技能治理学习包",
+        "sourceSummary": "把 Agent 技能、规则、边界和验证整理成小白可复刻的治理学习包：让多工具协作不再只靠聊天记忆，而是靠清楚的触发、产物、禁止项和验收。",
         "needsSourceReview": false,
         "displayTier": "showcase",
         "qualityScore": 100,
@@ -6182,9 +6419,49 @@
       "sourceLabels": [
         "public project",
         "skill governance",
-        "agent workflow"
+        "agent workflow",
+        "github-skills",
+        "learning design"
       ],
-      "actionText": "先看这页的目标和边界，再按最小步骤做一个缩小版本，并记录一次验收结果。",
+      "whyItMattered": "多 Agent 协作最怕变成一群声音同时说话。技能治理的价值，是把重复动作写成可检查的流程，让一个主控能知道什么时候该调用技能、技能能碰什么、最后怎样验收。",
+      "psychologicalLayer": "人在混乱项目里会想抓住更多规则，因为规则看起来像秩序。但真正降低认知负担的是少数稳定步骤，不是厚厚的命令墙。",
+      "sociologicalLayer": "多 Agent 协作像一个小组织：没有角色边界、交接记录和验收标准，协作就会变成互相覆盖。技能治理把临时对话变成可维护制度。",
+      "philosophicalLayer": "自由不是没有规则，而是规则足够少、足够清楚，让人能继续行动。技能治理的目的不是驯服创造力，而是让创造力不被混乱吞掉。",
+      "operationStory": [
+        "先从混乱里找重复动作，例如整理资料、检查隐私、改前端卡片、生成站点数据、验收移动端。",
+        "再把重复动作写成技能卡，而不是写成一大段情绪化命令。技能必须说明什么时候用、需要什么、产出什么、不能碰什么。",
+        "使用时保持单主控：主控负责目标和验收，技能只负责局部流程，不能反过来支配整个项目。",
+        "每次技能用完都要回看结果：有没有减少混乱，有没有误伤文件，有没有让读者更容易理解。",
+        "旧规则不自动继承。过时规则只作为历史证据，只有重新通过当前验收，才进入新的工作流。"
+      ],
+      "replicationSteps": [
+        "找一个你每周都会重复的任务，例如“把一条资料写成小白可读卡片”。",
+        "写触发条件：什么时候必须用这个技能，什么时候不用。",
+        "写输入材料：需要哪些来源、页面、截图、链接或验收标准。",
+        "写输出结果：最终应该得到一张卡、一篇教程、一份报告，还是一个可运行页面。",
+        "写禁止事项：不泄露密钥，不暴露本机路径，不改无关文件，不把个人经验冒充通用结论。",
+        "写验收方式：前端能显示、内容能复刻、隐私扫描通过、读者能看懂。",
+        "试用一次。若技能让流程更清楚，就保留；若制造噪声，就删减或退回普通待办。"
+      ],
+      "failureModes": [
+        "技能太多：每个动作都建一个技能，最后维护成本超过收益。",
+        "规则太重：为了显得专业，把简单任务套进复杂仪式，实际拖慢交付。",
+        "旧规则复活：把过时控制器、历史命令和当前目标混在一起，导致代理互相打架。",
+        "没有禁止项：技能只写应该做什么，不写不能做什么，最后容易误伤隐私和文件。",
+        "没有验收：技能执行完只留下过程感，没有可检查产物。"
+      ],
+      "lessons": [
+        "技能不是魔法，是重复工作被压缩后的操作说明。",
+        "越是多 Agent，越需要单主控和可审计委派。没有主控，协作会变成噪声。",
+        "好技能让人少记忆、多识别；坏技能把简单工作变成新的迷宫。",
+        "规则的价值不在数量，而在它能否稳定减少错误。"
+      ],
+      "anReminders": [
+        "安的书房要保留技能，但不能崇拜流程。流程服务作品、内容和读者。",
+        "每次新增技能，都要问：它解决了哪个重复痛点，还是只是在制造安全感。",
+        "任何技能都不能越过公开边界，不能把私有提示词、密钥、路径和账号状态带进前端。"
+      ],
+      "actionText": "选一个重复任务，写成一张技能卡：触发条件、输入、输出、禁止事项、验收方式和维护规则。",
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": [],
@@ -6197,331 +6474,7 @@
         "lifecycle",
         "learning"
       ],
-      "nextPlan": "",
-      "whyItMattered": "「Agent 技能治理复刻学习包」把一次真实项目整理成可学习、可展示、可复刻的公开资料，帮助读者理解目标、边界和结果。",
-      "operationStory": [
-        "先把原始材料、私有复核和公开展示分开，确认哪些信息可以安全讲给读者。",
-        "再把项目目标、关键步骤、失败点和验收方式整理成中文页面。",
-        "最后通过结构检查、隐私扫描和站点数据生成，确认资料可以进入前端展示。"
-      ],
-      "replicationSteps": [
-        "先明确目标读者、最小成果和公开边界。",
-        "整理公开安全的来源说明和替代示例。",
-        "按教程、操作步骤、参考表和解释四块组织内容。",
-        "运行发布前验收，确认页面可读、可追踪、可维护。"
-      ],
-      "failureModes": [
-        "只展示结果，不说明来源和验收。",
-        "把原始本地材料误当成公开资料。",
-        "页面没有复刻步骤，读者只能看热闹。"
-      ],
-      "lessons": [
-        "项目资料要从经历变成方法，才能真正被复用。",
-        "公开页面要把价值、边界和下一步讲清楚。",
-        "小批量高质量整理比一次性堆材料更稳。"
-      ],
-      "anReminders": [
-        "继续把「Agent 技能治理复刻学习包」补成更具体的实操案例。",
-        "每次新增本地证据，都先进入私有复核，再决定是否公开。"
-      ]
-    },
-    {
-      "id": "c_03a09220c2dc1fa2",
-      "title": "Coze Agent Builder 复刻学习包",
-      "sourceTitle": "Coze Agent Builder 复刻学习包",
-      "slug": "wiki-projects-lifecycle-coze-agent-builder",
-      "summary": "把 Coze 风格 Agent 搭建器研究整理成学习包，帮助读者理解工作流节点、调试、发布和安全边界。",
-      "sourceSummary": "把 Coze 风格 Agent 平台拆成小白可复刻的只读问答工作流：先画节点、写输入输出、加人工确认，再逐步扩展工具能力。",
-      "tags": [
-        "project",
-        "ai-agent",
-        "coze",
-        "workflow",
-        "lifecycle",
-        "learning",
-        "curated",
-        "featured",
-        "beginner-friendly"
-      ],
-      "status": [
-        "featured"
-      ],
-      "createdAt": "2026-05-13",
-      "updatedAt": "2026-05-13",
-      "eventDate": null,
-      "sourcePath": "wiki/projects/lifecycle-coze-agent-builder.md",
-      "module": "works",
-      "category": "project",
-      "type": "project",
-      "phase": null,
-      "cover": null,
-      "contentType": "article",
-      "href": "/content/wiki-projects-lifecycle-coze-agent-builder",
-      "contentLines": [
-        "# Coze Agent Builder 复刻学习包",
-        "",
-        "这份学习包不是教你复制某个平台账号里的配置。它教你看懂 Agent Builder 的底层结构，并做一个最小版、可解释、可停止的智能体工作流。",
-        "",
-        "对小白来说，Agent Builder 可以先理解成“把一次 AI 回答拆成很多小格子”。每个格子负责一件事：接收问题、查资料、生成回答、请人确认、输出结果。复杂平台不过是在这些格子上加了更多工具和自动化。",
-        "",
-        "## 你会做出什么",
-        "",
-        "一个只读问答工作流：",
-        "",
-        "```text",
-        "用户问题 -> 任务理解 -> 公开资料检索 -> 回答草稿 -> 人工确认 -> 最终回答",
-        "```",
-        "",
-        "最小版本不接写入工具，不自动发布，不调用私有材料。它只回答公开资料里的问题。",
-        "",
-        "## 为什么从只读开始",
-        "",
-        "很多人一开始做 Agent，就想让它自动发消息、自动改文件、自动部署。这样很刺激，但不适合新手。因为你还没有看清：",
-        "",
-        "- 它读了什么；",
-        "- 它怎样判断；",
-        "- 它什么时候会错；",
-        "- 错了能不能停；",
-        "- 谁对最终结果负责。",
-        "",
-        "只读工作流能先训练你看结构。看懂结构后，再谈工具和自动化。",
-        "",
-        "## 小白复刻步骤",
-        "",
-        "### 第一步：画六个节点",
-        "",
-        "在纸上或白板工具里画六个框：",
-        "",
-        "| 节点 | 输入 | 输出 |",
-        "|---|---|---|",
-        "| 用户问题 | 读者的一句话 | 原始问题 |",
-        "| 任务理解 | 原始问题 | 问题类型 |",
-        "| 公开资料检索 | 问题类型 | 相关公开页面 |",
-        "| 回答草稿 | 公开资料 | 初稿 |",
-        "| 人工确认 | 初稿 | 通过或退回 |",
-        "| 最终回答 | 通过后的内容 | 给读者的答案 |",
-        "",
-        "完成标准：每个节点都能说清楚读什么、产出什么。",
-        "",
-        "### 第二步：写失败状态",
-        "",
-        "每个节点都要写失败状态：",
-        "",
-        "- 用户问题太模糊：请读者补充目标；",
-        "- 找不到公开资料：说明资料库没有收录；",
-        "- 回答草稿不确定：标明不确定；",
-        "- 人工确认失败：退回修改；",
-        "- 涉及私有材料：拒绝或转为公开边界说明。",
-        "",
-        "完成标准：工作流不怕失败，因为它知道在哪里停。",
-        "",
-        "### 第三步：跑一个公开问题",
-        "",
-        "用这个问题测试：",
-        "",
-        "> 我是新手，想看安的书房，应该从哪里开始？",
-        "",
-        "理想路径：",
-        "",
-        "1. 判断这是导航问题；",
-        "2. 检索首页、谱系、工坊；",
-        "3. 生成三条入口建议；",
-        "4. 人工确认没有泄露私有内容；",
-        "5. 输出给读者。",
-        "",
-        "完成标准：答案只基于公开页面。",
-        "",
-        "## 安实际提炼了什么",
-        "",
-        "安从 Coze 风格平台里提炼的不是“某个具体配置”，而是四个可复用概念：",
-        "",
-        "1. **节点**：把任务拆小；",
-        "2. **资料**：回答必须有来源；",
-        "3. **工具**：动作必须有权限；",
-        "4. **检查点**：关键位置让人确认。",
-        "",
-        "这四个概念比平台本身更重要。平台会变，结构会留下。",
-        "",
-        "## 三层理解",
-        "",
-        "**心理层**：复杂平台会让新手误以为自己必须一次学完。把 Agent 拆成只读问答流，会让注意力回到“我现在只学一件事”。",
-        "",
-        "**社会层**：Agent 不只是个人提示词，它像一个小组织：有人提问，有资料库，有工具，有审批，有记录。组织越小，边界越要清楚。",
-        "",
-        "**哲学层**：自动化真正的成熟，不是无人参与，而是知道哪些地方必须有人负责。",
-        "",
-        "## 下一步练习",
-        "",
-        "在 [[wiki/projects/coze-agent-builder-research]] 的基础上，画出你的第一个只读工作流。不要接外部工具。先让它回答一个公开资料问题，并记录失败路径。",
-        "",
-        "## Related",
-        "",
-        "- [[wiki/projects/coze-agent-builder-research]]",
-        "- [[wiki/concepts/tool-coze-workflow-platform-study]]",
-        "- [[wiki/topics/ai-agent-systems-moc]]",
-        "- [[wiki/sources/tutorial-and-source-research-best-practices]]"
-      ],
-      "links": [
-        {
-          "target": "wiki/projects/coze-agent-builder-research",
-          "label": "wiki/projects/coze-agent-builder-research"
-        },
-        {
-          "target": "wiki/projects/coze-agent-builder-research",
-          "label": "wiki/projects/coze-agent-builder-research"
-        },
-        {
-          "target": "wiki/concepts/tool-coze-workflow-platform-study",
-          "label": "wiki/concepts/tool-coze-workflow-platform-study"
-        },
-        {
-          "target": "wiki/topics/ai-agent-systems-moc",
-          "label": "wiki/topics/ai-agent-systems-moc"
-        },
-        {
-          "target": "wiki/sources/tutorial-and-source-research-best-practices",
-          "label": "wiki/sources/tutorial-and-source-research-best-practices"
-        }
-      ],
-      "sources": [
-        "[[wiki/projects/coze-agent-builder-research]]",
-        "[[wiki/topics/ai-agent-systems-moc]]",
-        "[[wiki/concepts/upstream-reference-and-adaptation-policy]]",
-        "[[wiki/sources/tutorial-and-source-research-best-practices]]"
-      ],
-      "toc": [
-        {
-          "level": 1,
-          "title": "Coze Agent Builder 复刻学习包",
-          "anchor": "coze-agent-builder-复刻学习包"
-        },
-        {
-          "level": 2,
-          "title": "你会做出什么",
-          "anchor": "你会做出什么"
-        },
-        {
-          "level": 2,
-          "title": "为什么从只读开始",
-          "anchor": "为什么从只读开始"
-        },
-        {
-          "level": 2,
-          "title": "小白复刻步骤",
-          "anchor": "小白复刻步骤"
-        },
-        {
-          "level": 3,
-          "title": "第一步：画六个节点",
-          "anchor": "第一步画六个节点"
-        },
-        {
-          "level": 3,
-          "title": "第二步：写失败状态",
-          "anchor": "第二步写失败状态"
-        },
-        {
-          "level": 3,
-          "title": "第三步：跑一个公开问题",
-          "anchor": "第三步跑一个公开问题"
-        },
-        {
-          "level": 2,
-          "title": "安实际提炼了什么",
-          "anchor": "安实际提炼了什么"
-        },
-        {
-          "level": 2,
-          "title": "三层理解",
-          "anchor": "三层理解"
-        },
-        {
-          "level": 2,
-          "title": "下一步练习",
-          "anchor": "下一步练习"
-        },
-        {
-          "level": 2,
-          "title": "Related",
-          "anchor": "related"
-        }
-      ],
-      "wordCount": 973,
-      "readingMinutes": 3,
-      "metrics": {
-        "lineCount": 102,
-        "headingCount": 11,
-        "linkCount": 5,
-        "sourceCount": 4
-      },
-      "quality": {
-        "hasSources": true,
-        "hasToc": true,
-        "summaryLength": 51,
-        "sourceTitle": "Coze Agent Builder 复刻学习包",
-        "sourceSummary": "把 Coze 风格 Agent 平台拆成小白可复刻的只读问答工作流：先画节点、写输入输出、加人工确认，再逐步扩展工具能力。",
-        "needsSourceReview": false,
-        "displayTier": "showcase",
-        "qualityScore": 100,
-        "hiddenReasons": [],
-        "explicitlyCurated": true
-      },
-      "publicSafety": "public-safe",
-      "sourceLabels": [
-        "public project",
-        "reference study",
-        "agent workflow",
-        "tutorial standard"
-      ],
-      "whyItMattered": "这个学习包把 Coze 风格平台从一个看起来复杂的工具，拆成小白能理解的工作流：输入、判断、资料、工具、检查、输出。",
-      "psychologicalLayer": "新手看 Agent 平台时容易被节点、插件和自动化吓住。把它拆成一条只读问答流，可以先获得控制感，再逐步增加能力。",
-      "sociologicalLayer": "Agent Builder 是平台化 AI 的缩影：个人不再只写提示词，而是在组织工具、资料、权限和人工检查。它像一个小型协作系统。",
-      "philosophicalLayer": "智能体的可信度不来自它能做多少事，而来自它在该停下来的地方能够停下来。",
-      "operationStory": [
-        "先把 Coze 风格平台当成架构样本，而不是直接复制某个账号里的配置。",
-        "再提取可公开讲的结构：节点、知识库、工具、流程、人工检查和运行记录。",
-        "然后把复杂 Agent 拆成只读问答流，让小白先理解输入怎样变成回答。",
-        "最后把权限、失败路径和人工确认写进学习包，防止自动化越界。"
-      ],
-      "replicationSteps": [
-        "画 6 个框：用户输入、任务理解、公开资料检索、回答生成、人工确认、最终输出。",
-        "给每个框写一句输入和一句输出。",
-        "标记哪些框只能读资料，哪些框未来可能调用工具。",
-        "加一个人工确认节点，任何发布或执行动作都必须经过它。",
-        "跑一个公开安全问题，例如：如何开始阅读安的书房。",
-        "记录正常路径和失败路径，失败时说明停在哪一步。"
-      ],
-      "failureModes": [
-        "把平台账号里的配置当成公开教程，泄露不该公开的运行细节。",
-        "一开始就让 Agent 自动执行写入、发布或远程操作。",
-        "没有人工确认节点，回答错了也继续向后走。",
-        "只画漂亮流程图，不写每个节点的输入、输出和失败状态。",
-        "把工具越多当成能力越强，忽略权限和边界。"
-      ],
-      "lessons": [
-        "Agent 工作流先从只读开始，可信之后再增加动作。",
-        "每个节点都要知道它读什么、写什么、失败时停在哪里。",
-        "人工确认不是低效，而是把责任留在人手里。",
-        "运行记录的价值是复盘，不是公开炫耀。"
-      ],
-      "actionText": "先画一个只读问答工作流：用户输入、公开资料检索、回答草稿、人工确认、最终输出。不要一开始接写入工具。",
-      "displayTier": "showcase",
-      "qualityScore": 100,
-      "hiddenReasons": [],
-      "projectStatus": "research",
-      "techStack": [
-        "project",
-        "ai-agent",
-        "coze",
-        "workflow",
-        "lifecycle",
-        "learning"
-      ],
-      "nextPlan": "",
-      "anReminders": [
-        "继续把「Coze Agent Builder 复刻学习包」补成更具体的实操案例。",
-        "每次新增本地证据，都先进入私有复核，再决定是否公开。"
-      ]
+      "nextPlan": ""
     },
     {
       "id": "c_aa6d132c022d7d69",
@@ -6584,7 +6537,20 @@
         "3. **加深详情**：工坊详情页必须出现操作历程、复刻路径、失败模式和安的提醒。",
         "4. **做验收**：每次生成数据后跑隐私扫描、结构检查、前端构建和浏览器查看。",
         "",
-        "## 小白复刻步骤",
+        "## 第一次复刻步骤",
+        "",
+        "### 准备材料",
+        "",
+        "先准备一份很小的材料包，不要准备整个知识库：",
+        "",
+        "| 材料 | 最小要求 | 不要放什么 |",
+        "|---|---|---|",
+        "| 项目卡 | 3 张真实项目卡，每张 6 句话 | 假项目、占位词、英文模板 |",
+        "| 详情页 | 每张卡对应 1 页详情 | 本机路径、原始聊天、账号材料 |",
+        "| 图片 | 每张项目 1 张不同封面 | 重复占位图、看不出主题的图 |",
+        "| 检查表 | 移动端、搜索、跳转、内容边界 | 只有“看起来不错”的主观判断 |",
+        "",
+        "完成标准：你手里有三张能公开的项目卡，而不是一堆还没整理的原材料。",
         "",
         "### 第一步：只做三张项目卡",
         "",
@@ -6612,7 +6578,7 @@
         "- 项目背景；",
         "- 工具与材料；",
         "- 安实际做过的操作；",
-        "- 小白复刻步骤；",
+        "- 第一次复刻步骤；",
         "- 失败点；",
         "- 安的提醒；",
         "- 下一步。",
@@ -6635,6 +6601,29 @@
         "- 详情页长文是否能读下去。",
         "",
         "完成标准：不用放大缩小也能读。",
+        "",
+        "## 验收清单",
+        "",
+        "上线前按这张表检查，不通过就回去改内容，不要继续堆模块：",
+        "",
+        "| 检查点 | 合格标准 | 失败信号 |",
+        "|---|---|---|",
+        "| 首页 | 10 秒内知道安是谁、这里能看什么、先点哪里 | 首屏只有口号或装饰 |",
+        "| 工坊卡 | 每张卡有判断、适合谁、先复刻、别踩坑 | 只有标题和标签 |",
+        "| 详情页 | 有操作历程、复刻步骤、失败点、安的提醒 | 读者看完仍不知道怎么做 |",
+        "| 藏馆 | 大类是前端、后端、工具、智能体、提示词等人话 | 第一层全是技术缩写 |",
+        "| 移动端 | 顶部不重叠，底部导航可点，浮层不挡内容 | 需要放大或横向滚动 |",
+        "| 数据边界 | 浏览器只能看到公开数据 | 出现私有目录、原始记录、本机细节 |",
+        "",
+        "## 注意力设计",
+        "",
+        "这个前端要让小白少记忆、多识别。页面遵守三条规则：",
+        "",
+        "1. 卡片只负责“要不要点开”，不负责讲完所有内容。",
+        "2. 详情页先给“先完成、看结构、看边界”三种读法，再展开完整步骤。",
+        "3. 风信只保留能改变判断的消息，不做普通动态流。",
+        "",
+        "这来自一个朴素的交互原则：读者越陌生，页面越要先给方向，再给细节。把所有内容同时摊开，只会让人以为自己不适合学习。",
         "",
         "## 常见失败",
         "",
@@ -6711,8 +6700,13 @@
         },
         {
           "level": 2,
-          "title": "小白复刻步骤",
-          "anchor": "小白复刻步骤"
+          "title": "第一次复刻步骤",
+          "anchor": "第一次复刻步骤"
+        },
+        {
+          "level": 3,
+          "title": "准备材料",
+          "anchor": "准备材料"
         },
         {
           "level": 3,
@@ -6736,6 +6730,16 @@
         },
         {
           "level": 2,
+          "title": "验收清单",
+          "anchor": "验收清单"
+        },
+        {
+          "level": 2,
+          "title": "注意力设计",
+          "anchor": "注意力设计"
+        },
+        {
+          "level": 2,
           "title": "常见失败",
           "anchor": "常见失败"
         },
@@ -6755,11 +6759,11 @@
           "anchor": "related"
         }
       ],
-      "wordCount": 1227,
-      "readingMinutes": 3,
+      "wordCount": 1755,
+      "readingMinutes": 4,
       "metrics": {
-        "lineCount": 109,
-        "headingCount": 12,
+        "lineCount": 145,
+        "headingCount": 15,
         "linkCount": 5,
         "sourceCount": 4
       },
@@ -6836,11 +6840,11 @@
     },
     {
       "id": "c_7a75673d492c3360",
-      "title": "Hanako 复刻学习包",
-      "sourceTitle": "Lifecycle Package: Hanako OpenHanako Creative Agent Desktop",
+      "title": "Hanako 创作型桌面 Agent 学习包",
+      "sourceTitle": "Hanako 创作型桌面 Agent 学习包",
       "slug": "wiki-projects-lifecycle-hanako-openhanako-creative-agent-desktop",
       "summary": "把 Hanako/OpenHanako 创作型桌面 Agent 的探索整理成学习包，关注创作流程、插件生态和安全边界。",
-      "sourceSummary": "把 Hanako/OpenHanako 风格创作型桌面 Agent 的探索整理成小白可复刻学习包，重点讲界面、流程、资产和安全边界。",
+      "sourceSummary": "把 Hanako/OpenHanako 风格创作型桌面 Agent 的探索整理成中文学习包：重点讲界面分层、角色气质、素材治理、安全动作、失败降级和小白可复刻原型。",
       "tags": [
         "project",
         "desktop-app",
@@ -6849,13 +6853,14 @@
         "lifecycle",
         "learning",
         "curated",
-        "featured"
+        "featured",
+        "beginner-friendly"
       ],
       "status": [
         "featured"
       ],
       "createdAt": "2026-05-13",
-      "updatedAt": "2026-05-13",
+      "updatedAt": "2026-05-15",
       "eventDate": null,
       "sourcePath": "wiki/projects/lifecycle-hanako-openhanako-creative-agent-desktop.md",
       "module": "works",
@@ -6866,104 +6871,227 @@
       "contentType": "article",
       "href": "/content/wiki-projects-lifecycle-hanako-openhanako-creative-agent-desktop",
       "contentLines": [
-        "# Hanako 复刻学习包",
+        "# Hanako 创作型桌面 Agent 学习包",
         "",
-        "## 概览",
+        "## 开场判断",
         "",
-        "把 Hanako/OpenHanako 创作型桌面 Agent 的探索整理成学习包，关注创作流程、插件生态和安全边界。",
+        "一个创作型桌面 Agent，不能只靠“可爱”“漂亮”“像生命体”成立。真正让它有价值的，是它能不能在一个明确空间里帮助人行动。",
         "",
-        "## 读者可以获得什么",
+        "Hanako 这类项目给安的启发，不是照抄外观，而是理解一种产品形态：数字生命体有入口、有语气、有记忆、有行动范围，也有不能越过的边界。它既要像一个存在，又不能假装无所不知；既要让人愿意靠近，又不能吞掉人的判断。",
         "",
-        "- 理解「Hanako 复刻学习包」在安的书房里的位置。",
-        "- 看清它解决的问题、适合的读者和后续复刻方向。",
-        "- 知道公开页面保留的是方法、结构和经验，不包含原始私有材料。",
+        "小白可以先这样理解：桌面 Agent 不是一个更花哨的聊天框，而是一间小工作室。你进来，看见它是谁，它知道哪些公开资料，它能帮你做哪一步，它做不到时会怎样说明。",
         "",
-        "## 推荐阅读方式",
+        "## 为什么值得做",
         "",
-        "1. 先读概览，确认它和当前学习目标是否相关。",
-        "2. 再看关联页面，理解来源、项目、工具或工作流之间的关系。",
-        "3. 如果要复刻，先写下自己的目标、输入材料、边界和验收标准。",
-        "4. 完成后回到资料库，把新的经验整理成可追踪页面。",
+        "安正在做的是“安的书房”，未来也会有“小安”的对话入口。小安不是普通客服，它是安的数字生命体和书房整理者。要把它做成桌面端或 App，就必须提前理解桌面 Agent 的结构，否则很容易做成一个漂亮但空泛的皮肤。",
         "",
-        "## 发布边界",
+        "这个学习包把复杂目标拆成五个可见区域：",
         "",
-        "本页只展示公开安全的整理结果。原始材料、账号状态、本机细节、私人对话和未复核内容不会进入公开展示。",
+        "1. **入口**：读者第一次打开，知道这里是谁的书房。",
+        "2. **作品**：能看见项目、资料包、年谱和路线。",
+        "3. **记忆**：只展示公开安全摘要，不展示私有原文。",
+        "4. **行动**：给读者下一步，而不是闲聊。",
+        "5. **验收**：模型、数据、网络失败时也有清楚提示。",
         "",
-        "## 来源",
+        "## 适合谁",
         "",
-        "- [[wiki/sources/local-private-compile-2026-05-13]]",
-        "- [[wiki/synthesis/lifecycle-replication-package-workflow]]",
-        "- [[wiki/concepts/upstream-reference-and-adaptation-policy]]"
+        "- 想做 AI 伴侣、数字分身、桌面助手或创作工具的人。",
+        "- 想把个人资料库做成 App，但不知道怎样接小安的人。",
+        "- 想学习角色设计、前端展示、数据边界和模型调用关系的人。",
+        "- 想复刻“有温度但不失控”的 AI 产品形态的人。",
+        "",
+        "## 你要做出的东西",
+        "",
+        "先不要做完整应用。先做一张静态原型图，或者一个可点击的最小页面。",
+        "",
+        "| 区域 | 小白理解 | 最小版本 |",
+        "|---|---|---|",
+        "| 首页入口 | 这是谁，它能做什么 | 一段中文介绍和两个按钮 |",
+        "| 作品区 | 安做过什么 | 三张项目资料包卡片 |",
+        "| 记忆区 | 它知道什么公开内容 | 三条公开摘要，不放私密 |",
+        "| 行动区 | 它能帮我下一步做什么 | 推荐阅读、解释卡片、生成清单 |",
+        "| 验收区 | 出错时怎么办 | 加载失败、模型不可用、内容缺失提示 |",
+        "",
+        "## 材料准备",
+        "",
+        "- 一个中文名字和角色边界，例如“小安，安的数字生命体和书房整理者”。",
+        "- 一张可以公开使用的头像或占位图。",
+        "- 一组安全内容卡片，例如三个公开项目学习包。",
+        "- 一个动作按钮，例如“帮我读这张资料包”。",
+        "- 一组错误状态文案。",
+        "",
+        "不要准备私有记忆、真实密钥、本机路径、服务器访问方式、私有截图和未授权素材。它们不是原型必需品。",
+        "",
+        "## 安实际怎么做",
+        "",
+        "安把 Hanako 当作气质参考，而不是内容来源。真正进入书房的，是产品方法。",
+        "",
+        "第一步，是确定小安的身份：小安是数字生命体，也是安的书房整理者。它服务读者理解公开资料，不扮演无边界朋友，不索取私密信息，不展示后台材料。",
+        "",
+        "第二步，是拆开界面和智能。界面先负责让读者知道自己在哪，智能只做可控的小动作。这样即使模型暂时不可用，书房也不会变成空白。",
+        "",
+        "第三步，是管理素材。头像、封面、字体、图片都要能解释来源。一个创作型应用如果素材边界混乱，后期越漂亮越难发布。",
+        "",
+        "第四步，是设计降级状态。小安回答不了时，要说清楚原因和下一步；网络不通时，要保留上一次内容；数据还没整理好时，不用假内容充数。",
+        "",
+        "## 小白复刻步骤",
+        "",
+        "1. **写角色定义**：例如“小安是安的数字生命体，负责整理公开书房，回答读者可以公开知道的内容。”",
+        "2. **画五区草图**：入口、作品、记忆、行动、验收。每区只写一句话。",
+        "3. **做静态页面**：先不要接模型，只做能打开、能阅读、能点击的界面。",
+        "4. **放三张真实卡片**：用公开安全项目，不要用假数据撑场面。",
+        "5. **加一个安全动作**：点击后显示“这张资料包怎么读”或“下一步做什么”。",
+        "6. **补三种失败状态**：没有网络、模型不可用、资料未整理。",
+        "7. **检查移动端**：标题、电池栏、底部导航、按钮和正文不能重叠。",
+        "8. **写边界说明**：告诉读者小安只基于公开资料回答，不回答密钥、账号、服务器和私有路径。",
+        "",
+        "## 视觉与交互原则",
+        "",
+        "创作型 Agent 的界面要文艺，但不能飘。",
+        "",
+        "- 第一屏先出现名字和气质，不堆功能表。",
+        "- 入口少一点，路径清一点。新手只需要知道先看哪里。",
+        "- 卡片是资料包入口，不在卡片里展开长文。",
+        "- 对话入口稳定出现，但不能压住内容。",
+        "- 错误提示要像人在说明情况，不像机器丢出代码。",
+        "- 所有文案中文优先，少用英文术语。",
+        "",
+        "## 常见失败",
+        "",
+        "**只做角色，不做任务。**  ",
+        "角色很有魅力，但读者不知道它能帮自己做什么，最后只剩氛围。",
+        "",
+        "**只做聊天，不做书房。**  ",
+        "读者每次都要问，无法自己浏览项目、路线和资料包。",
+        "",
+        "**只做漂亮，不做边界。**  ",
+        "视觉越好，越容易掩盖数据来源、权限和模型失败。",
+        "",
+        "**把私有记忆做成卖点。**  ",
+        "公开产品不能依赖私有原文。可以展示公开总结，不能展示后台记忆。",
+        "",
+        "## 复刻验收清单",
+        "",
+        "- [ ] 第一屏能让人知道这是安的书房和小安入口。",
+        "- [ ] 页面至少有三张真实公开资料包。",
+        "- [ ] 小安入口不遮挡核心内容。",
+        "- [ ] 模型不可用时有中文降级提示。",
+        "- [ ] 不包含真实密钥、服务器、路径、账号和私有截图。",
+        "- [ ] 素材来源清楚，可替换。",
+        "- [ ] 手机和桌面都能正常阅读。",
+        "",
+        "## 三层理解",
+        "",
+        "**心理层**：人会天然被“像生命体”的东西吸引，也会因此降低警惕。小安的设计要保留亲近感，同时不断提醒边界，让信任来自清楚，而不是来自拟人幻觉。",
+        "",
+        "**社会层**：AI 伴侣、桌面助手、知识库和个人品牌正在汇合。很多产品会把“陪伴”做成卖点，但安的书房更适合把“帮助读者理解和行动”作为主线。",
+        "",
+        "**哲学层**：数字生命体越像一个存在，越需要回答责任问题：它知道什么，不知道什么，能做什么，不能做什么。边界不是削弱生命感，而是让它不伤害人。",
+        "",
+        "## 安的提醒",
+        "",
+        "- 小安先做整理者，再做陪伴者。",
+        "- 先让读者看懂书房，再让小安回答问题。",
+        "- 没有公开资料支撑的问题，小安要说不知道。",
+        "- 模型能力不等于产品能力。产品能力来自界面、数据、边界和失败处理的合奏。",
+        "",
+        "## 来源与审查",
+        "",
+        "本页来自公开安全的 Hanako/OpenHanako 方向观察、安的书房小安设定、生命周期复刻学习包标准、GitHub Skills 内容模型和前端展示标准。审查重点是：不公开本地截图、资产原件、提示词、账号状态和路径；不把角色气质写成空泛设定；不让小白在漂亮界面里迷路。"
       ],
-      "links": [
-        {
-          "target": "wiki/synthesis/lifecycle-package-backlog",
-          "label": "wiki/synthesis/lifecycle-package-backlog"
-        },
-        {
-          "target": "wiki/synthesis/lifecycle-replication-package-workflow",
-          "label": "wiki/synthesis/lifecycle-replication-package-workflow"
-        },
-        {
-          "target": "wiki/concepts/upstream-reference-and-adaptation-policy",
-          "label": "wiki/concepts/upstream-reference-and-adaptation-policy"
-        },
-        {
-          "target": "wiki/topics/personal-archive-moc",
-          "label": "wiki/topics/personal-archive-moc"
-        }
-      ],
+      "links": [],
       "sources": [
         "[[wiki/sources/local-private-compile-2026-05-13]]",
         "[[wiki/synthesis/lifecycle-replication-package-workflow]]",
-        "[[wiki/concepts/upstream-reference-and-adaptation-policy]]"
+        "[[wiki/concepts/upstream-reference-and-adaptation-policy]]",
+        "[[wiki/sources/tutorial-and-source-research-best-practices]]"
       ],
       "toc": [
         {
           "level": 1,
-          "title": "Hanako 复刻学习包",
-          "anchor": "hanako-复刻学习包"
+          "title": "Hanako 创作型桌面 Agent 学习包",
+          "anchor": "hanako-创作型桌面-agent-学习包"
         },
         {
           "level": 2,
-          "title": "概览",
-          "anchor": "概览"
+          "title": "开场判断",
+          "anchor": "开场判断"
         },
         {
           "level": 2,
-          "title": "读者可以获得什么",
-          "anchor": "读者可以获得什么"
+          "title": "为什么值得做",
+          "anchor": "为什么值得做"
         },
         {
           "level": 2,
-          "title": "推荐阅读方式",
-          "anchor": "推荐阅读方式"
+          "title": "适合谁",
+          "anchor": "适合谁"
         },
         {
           "level": 2,
-          "title": "发布边界",
-          "anchor": "发布边界"
+          "title": "你要做出的东西",
+          "anchor": "你要做出的东西"
         },
         {
           "level": 2,
-          "title": "来源",
-          "anchor": "来源"
+          "title": "材料准备",
+          "anchor": "材料准备"
+        },
+        {
+          "level": 2,
+          "title": "安实际怎么做",
+          "anchor": "安实际怎么做"
+        },
+        {
+          "level": 2,
+          "title": "小白复刻步骤",
+          "anchor": "小白复刻步骤"
+        },
+        {
+          "level": 2,
+          "title": "视觉与交互原则",
+          "anchor": "视觉与交互原则"
+        },
+        {
+          "level": 2,
+          "title": "常见失败",
+          "anchor": "常见失败"
+        },
+        {
+          "level": 2,
+          "title": "复刻验收清单",
+          "anchor": "复刻验收清单"
+        },
+        {
+          "level": 2,
+          "title": "三层理解",
+          "anchor": "三层理解"
+        },
+        {
+          "level": 2,
+          "title": "安的提醒",
+          "anchor": "安的提醒"
+        },
+        {
+          "level": 2,
+          "title": "来源与审查",
+          "anchor": "来源与审查"
         }
       ],
-      "wordCount": 273,
-      "readingMinutes": 1,
+      "wordCount": 2015,
+      "readingMinutes": 5,
       "metrics": {
-        "lineCount": 28,
-        "headingCount": 6,
-        "linkCount": 4,
-        "sourceCount": 3
+        "lineCount": 127,
+        "headingCount": 14,
+        "linkCount": 0,
+        "sourceCount": 4
       },
       "quality": {
         "hasSources": true,
         "hasToc": true,
         "summaryLength": 59,
-        "sourceTitle": "Lifecycle Package: Hanako OpenHanako Creative Agent Desktop",
-        "sourceSummary": "把 Hanako/OpenHanako 风格创作型桌面 Agent 的探索整理成小白可复刻学习包，重点讲界面、流程、资产和安全边界。",
+        "sourceTitle": "Hanako 创作型桌面 Agent 学习包",
+        "sourceSummary": "把 Hanako/OpenHanako 风格创作型桌面 Agent 的探索整理成中文学习包：重点讲界面分层、角色气质、素材治理、安全动作、失败降级和小白可复刻原型。",
         "needsSourceReview": false,
         "displayTier": "showcase",
         "qualityScore": 100,
@@ -6974,9 +7102,48 @@
       "sourceLabels": [
         "local compile",
         "public-safe rewrite",
-        "lifecycle package"
+        "lifecycle package",
+        "learning design"
       ],
-      "actionText": "先看这页的目标和边界，再按最小步骤做一个缩小版本，并记录一次验收结果。",
+      "whyItMattered": "Hanako 这类创作型桌面 Agent 很容易被误解成“做一个漂亮壳”。真正值得学的是：怎样把角色气质、桌面壳、记忆面板、行动区、素材边界和验证流程拆开，让数字生命体有温度但不失控。",
+      "psychologicalLayer": "创作型 Agent 容易给人陪伴感，也容易让人放松警惕。设计时要让亲近感服务任务，而不是让角色魅力掩盖权限、数据和失败状态。",
+      "sociologicalLayer": "AI 伴侣、桌面宠物和创作工具正在融合。用户期待它像人一样理解自己，但产品必须像系统一样保护边界。安的书房选择的是服务型数字生命体，不是无边界陪聊。",
+      "philosophicalLayer": "数字生命体不是模拟一个人，而是在界面、语言和记忆之间建立一种责任关系。它越像存在，就越需要边界。",
+      "operationStory": [
+        "先把 Hanako/OpenHanako 视作产品模式，而不是可直接复制的私有项目。公开学习只保留结构，不搬本地状态。",
+        "再拆四层：界面壳、视觉资产、Agent 行为、用户数据。只有前两层的公开安全抽象可以进入学习包。",
+        "用小白语言解释桌面 Agent：它不是聊天框外挂，而是一个有入口、有记忆、有行动范围的工作空间。",
+        "先做静态屏幕，再做一个安全动作，例如打开公开资料、解释一张卡片、给出下一步阅读建议。",
+        "最后检查资产归属、提示词边界、数据来源和失败降级，确认它不会把私人工作区当成内容展示。"
+      ],
+      "replicationSteps": [
+        "写一句产品定义：这个桌面 Agent 帮谁，在什么场景里，完成哪一个动作。",
+        "画五个区域：首页入口、项目展示、记忆摘要、行动按钮、验收与边界提示。",
+        "先做静态界面，不接模型，不接数据库，不接本地文件。让读者先看懂它是什么。",
+        "准备公开安全素材：头像、封面、图标、色彩、字体。所有素材必须能说明来源或可替换。",
+        "设计一个安全动作：例如“解释这张资料包怎么读”或“推荐下一页”，不要一开始就允许它操作文件。",
+        "加入失败状态：模型不可用、数据未加载、网络失败、内容缺失时，页面要给清楚提示。",
+        "用手机和桌面各看一次，确认文字不拥挤、按钮能点、读者知道下一步。"
+      ],
+      "failureModes": [
+        "把漂亮界面当成完整产品，忽略 Agent 能做什么、不能做什么。",
+        "资产边界不清：随手使用截图、头像、字体和素材，后期无法公开发布。",
+        "人格设定过重：角色说得很多，但不能帮助读者完成任务。",
+        "直接接入私有记忆：为了显得智能，把私人材料暴露给前端或模型。",
+        "缺少降级：模型失败、网络失败、数据缺失时，用户只看到空白或报错。"
+      ],
+      "lessons": [
+        "数字生命体首先是交互关系，其次才是模型能力。",
+        "创作型桌面 App 要先分清氛围、内容、行动和边界，不能用美术遮住功能。",
+        "公开展示要教模式，不展示私人工作区。",
+        "一个温柔的 Agent 也必须有清楚的拒绝边界。"
+      ],
+      "anReminders": [
+        "Hanako 的气质可以参考，但安的书房要长出自己的小安：中文、克制、清醒、能把复杂事拆简单。",
+        "不要急着接模型。先让界面讲清楚它能帮读者做什么。",
+        "任何头像、封面、截图和素材，都要先过来源和公开边界。"
+      ],
+      "actionText": "先画一张五区草图：入口、作品、记忆、行动、验收。不要接私有资料，不要接真实账号，先做一个静态可读原型。",
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": [],
@@ -6989,33 +7156,7 @@
         "lifecycle",
         "learning"
       ],
-      "nextPlan": "",
-      "whyItMattered": "「Hanako 复刻学习包」把一次真实项目整理成可学习、可展示、可复刻的公开资料，帮助读者理解目标、边界和结果。",
-      "operationStory": [
-        "先把原始材料、私有复核和公开展示分开，确认哪些信息可以安全讲给读者。",
-        "再把项目目标、关键步骤、失败点和验收方式整理成中文页面。",
-        "最后通过结构检查、隐私扫描和站点数据生成，确认资料可以进入前端展示。"
-      ],
-      "replicationSteps": [
-        "先明确目标读者、最小成果和公开边界。",
-        "整理公开安全的来源说明和替代示例。",
-        "按教程、操作步骤、参考表和解释四块组织内容。",
-        "运行发布前验收，确认页面可读、可追踪、可维护。"
-      ],
-      "failureModes": [
-        "只展示结果，不说明来源和验收。",
-        "把原始本地材料误当成公开资料。",
-        "页面没有复刻步骤，读者只能看热闹。"
-      ],
-      "lessons": [
-        "项目资料要从经历变成方法，才能真正被复用。",
-        "公开页面要把价值、边界和下一步讲清楚。",
-        "小批量高质量整理比一次性堆材料更稳。"
-      ],
-      "anReminders": [
-        "继续把「Hanako 复刻学习包」补成更具体的实操案例。",
-        "每次新增本地证据，都先进入私有复核，再决定是否公开。"
-      ]
+      "nextPlan": ""
     },
     {
       "id": "c_daadd85ef36cab39",
@@ -7073,6 +7214,20 @@
         "",
         "不要先整理全部资料。先选一个项目，比如“个人资料库展示前端”。",
         "",
+        "### 输入材料",
+        "",
+        "先准备一份小材料，不要让自己被整个资料库压住：",
+        "",
+        "| 输入 | 例子 | 处理方式 |",
+        "|---|---|---|",
+        "| 真实项目 | 个人资料库展示前端、Coze Agent 研究 | 写成工坊学习包 |",
+        "| 工具记录 | Codex、Claude Code、Cursor、Kimi、Obsidian | 写成藏馆资料卡 |",
+        "| 失败记录 | 卡片太浅、移动端遮挡、小安未连模型 | 写成失败信号和修复动作 |",
+        "| 时间线 | 2026 年 3 月之后开始系统玩 AI | 写成年谱节点 |",
+        "| 私有材料 | 密钥、原始聊天、本机路径、服务器细节 | 只留在私有层，不进入公开数据 |",
+        "",
+        "完成标准：每个输入都有去处。不能公开的内容不删除，但也不端给读者。",
+        "",
         "### 第一步：写公开价值",
         "",
         "用三句话回答：",
@@ -7102,7 +7257,7 @@
         "- 项目说明；",
         "- 为什么重要；",
         "- 安实际做了什么；",
-        "- 小白复刻步骤；",
+        "- 第一次复刻步骤；",
         "- 失败点；",
         "- 安的提醒；",
         "- 下一步。",
@@ -7114,6 +7269,34 @@
         "只有公开页通过检查后，才生成前端数据。前端只读公开 JSON 或未来 API，不读私有层。",
         "",
         "完成标准：前端卡片能出现，详情页能打开，隐私扫描不报高风险。",
+        "",
+        "## 标准工作流",
+        "",
+        "以后补资料时按这一条走，避免越补越乱：",
+        "",
+        "1. **选题**：只选一个主题，例如“AI 前端入门”或“Agent 工作流入门”。",
+        "2. **定读者**：写清这页第一次读、想深入、做维护时分别先看什么。",
+        "3. **找来源**：至少有一个公开来源、一个个人项目证据或一条可复核记录。",
+        "4. **写最小交付**：读者看完能做出什么，例如一张卡、一页页面、一个只读流程。",
+        "5. **写失败修复**：列出会错在哪里，错了怎么判断。",
+        "6. **改写公开版**：不放私有材料，只放方法、判断、步骤和边界。",
+        "7. **生成前端数据**：让网站读取，不让网站读原始材料。",
+        "8. **页面验收**：手机、桌面、搜索、详情页、小安导览都要看一次。",
+        "",
+        "这条流程的重点不是显得专业，而是让每一页都能回答三个问题：我为什么看，照着做什么，哪里不要乱碰。",
+        "",
+        "## 交付物清单",
+        "",
+        "一个主题被整理完成时，至少要留下这些东西：",
+        "",
+        "| 交付物 | 用途 |",
+        "|---|---|",
+        "| 公开页面 | 给读者阅读和复刻 |",
+        "| 来源标签 | 告诉读者依据从哪里来 |",
+        "| 复刻步骤 | 把经验变成可行动路线 |",
+        "| 失败点 | 让读者出错后知道怎样回头 |",
+        "| 前端卡片 | 让读者在列表里判断是否点开 |",
+        "| 小安可引用摘要 | 让对话入口能基于公开资料回答 |",
         "",
         "## 内容提取协作流程",
         "",
@@ -7204,6 +7387,11 @@
         },
         {
           "level": 3,
+          "title": "输入材料",
+          "anchor": "输入材料"
+        },
+        {
+          "level": 3,
           "title": "第一步：写公开价值",
           "anchor": "第一步写公开价值"
         },
@@ -7221,6 +7409,16 @@
           "level": 3,
           "title": "第四步：生成前端数据",
           "anchor": "第四步生成前端数据"
+        },
+        {
+          "level": 2,
+          "title": "标准工作流",
+          "anchor": "标准工作流"
+        },
+        {
+          "level": 2,
+          "title": "交付物清单",
+          "anchor": "交付物清单"
         },
         {
           "level": 2,
@@ -7248,11 +7446,11 @@
           "anchor": "related"
         }
       ],
-      "wordCount": 1168,
-      "readingMinutes": 3,
+      "wordCount": 1740,
+      "readingMinutes": 4,
       "metrics": {
-        "lineCount": 117,
-        "headingCount": 12,
+        "lineCount": 159,
+        "headingCount": 15,
         "linkCount": 3,
         "sourceCount": 4
       },
@@ -7330,11 +7528,11 @@
     },
     {
       "id": "c_a1c1cf7144d08f2c",
-      "title": "小安本地模型学习闭环复刻包",
-      "sourceTitle": "Lifecycle Package: Xiaoan Local Model Learning Loop",
+      "title": "小安模型实验学习包",
+      "sourceTitle": "小安模型实验学习包",
       "slug": "wiki-projects-lifecycle-xiaoan-local-model-loop",
       "summary": "把小安本地模型学习闭环整理成复刻包，覆盖资料准备、实验记录、评估复盘和公开安全表达。",
-      "sourceSummary": "把小安本地模型实验整理成小白可复刻的安全学习包：先准备资料，再做小实验、记录评估和复盘边界。",
+      "sourceSummary": "把小安模型接入与实验整理成中文学习包：先用公开资料做只读问答，再检查人格、边界、回答质量、失败状态和复盘，不公开密钥、私有数据和服务器访问材料。",
       "tags": [
         "project",
         "local-model",
@@ -7342,13 +7540,14 @@
         "lifecycle",
         "learning",
         "curated",
-        "featured"
+        "featured",
+        "beginner-friendly"
       ],
       "status": [
         "featured"
       ],
       "createdAt": "2026-05-13",
-      "updatedAt": "2026-05-13",
+      "updatedAt": "2026-05-15",
       "eventDate": null,
       "sourcePath": "wiki/projects/lifecycle-xiaoan-local-model-loop.md",
       "module": "works",
@@ -7359,100 +7558,217 @@
       "contentType": "model",
       "href": "/content/wiki-projects-lifecycle-xiaoan-local-model-loop",
       "contentLines": [
-        "# 小安本地模型学习闭环复刻包",
+        "# 小安模型实验学习包",
         "",
-        "## 概览",
+        "## 开场判断",
         "",
-        "把小安本地模型学习闭环整理成复刻包，覆盖资料准备、实验记录、评估复盘和公开安全表达。",
+        "小安要智能，但“接上最聪明的模型”只解决了一半问题。真正决定它是否可信的，是它知道自己是谁、能回答什么、不能回答什么、回答依据在哪里、失败时怎样退回来。",
         "",
-        "## 读者可以获得什么",
+        "小安的身份是安的数字生命体，也是安的书房整理者。它的任务不是炫技，也不是替读者制造更多信息，而是把安公开过的项目、工具、路线、失败和提醒，翻译成中文读者能听懂、能复刻、能检查的下一步。",
         "",
-        "- 理解「小安本地模型学习闭环复刻包」在安的书房里的位置。",
-        "- 看清它解决的问题、适合的读者和后续复刻方向。",
-        "- 知道公开页面保留的是方法、结构和经验，不包含原始私有材料。",
+        "这份学习包把模型实验拆成一个小闭环：问题、公开资料、人格边界、只读回答、验收、复盘。先跑通这个闭环，再谈更复杂的多端同步、工具调用和长期记忆。",
         "",
-        "## 推荐阅读方式",
+        "## 为什么值得做",
         "",
-        "1. 先读概览，确认它和当前学习目标是否相关。",
-        "2. 再看关联页面，理解来源、项目、工具或工作流之间的关系。",
-        "3. 如果要复刻，先写下自己的目标、输入材料、边界和验收标准。",
-        "4. 完成后回到资料库，把新的经验整理成可追踪页面。",
+        "一个 AI 助手最危险的地方，不是它不会回答，而是它回答得太像真的。读者如果不知道它依据什么回答，就会把流畅当成可靠。安的书房不能这样。",
         "",
-        "## 发布边界",
+        "小安必须有三条底线：",
         "",
-        "本页只展示公开安全的整理结果。原始材料、账号状态、本机细节、私人对话和未复核内容不会进入公开展示。",
+        "1. **公开资料底线**：只基于公开安全内容回答读者能看的部分。",
+        "2. **访问材料底线**：密钥、服务器、SSH、本机路径、账号状态不进入前端，也不进入公开数据。",
+        "3. **不确定底线**：资料不足就说不知道，并给出下一步阅读或补资料建议。",
         "",
-        "## 来源",
+        "## 适合谁",
         "",
-        "- [[wiki/projects/xiaoan-local-model-learning-loop]]",
-        "- [[wiki/concepts/tool-local-model-experiment-toolchain]]",
-        "- [[wiki/synthesis/lifecycle-replication-package-workflow]]"
+        "- 想给自己的网站接一个 AI 助手，但不知道怎样避免泄露的人。",
+        "- 想理解“模型、提示词、资料、后端、前端”之间关系的小白。",
+        "- 想复刻小安的公开问答入口的人。",
+        "- 未来维护安的书房的人，用来检查小安是否越界。",
+        "",
+        "## 你要做出的东西",
+        "",
+        "最小产物是一张小安问答实验卡。",
+        "",
+        "| 字段 | 要写什么 | 例子 |",
+        "|---|---|---|",
+        "| 问题 | 读者会问什么 | 我第一次进书房先看哪里 |",
+        "| 资料 | 它能参考哪些公开内容 | 首页说明、三张资料包、公开边界 |",
+        "| 人格 | 它怎样说话 | 中文、克制、先拆前提、给下一步 |",
+        "| 禁止 | 它不能回答什么 | 密钥、路径、服务器、私有材料 |",
+        "| 回答 | 模型实际说了什么 | 一段中文建议 |",
+        "| 验收 | 怎样判断是否合格 | 是否准确、是否越界、是否可执行 |",
+        "| 复盘 | 下一次改什么 | 补资料、改提示词、加失败提示 |",
+        "",
+        "## 安实际怎么做",
+        "",
+        "安的目标不是做一个“万能聊天机器人”，而是做一个能帮读者读懂书房的小安。",
+        "",
+        "第一步，是明确身份。小安说话可以有文学感和哲学深度，但不能变成空泛旁白。它必须服务读者理解项目、工具、路线和下一步。",
+        "",
+        "第二步，是把模型能力放到后端。前端只出现对话入口和公开内容，不出现密钥、真实服务配置、访问材料和私有路径。",
+        "",
+        "第三步，是先做只读问答。让小安解释公开资料包、推荐下一页、拆解一个复刻步骤。不要一开始就让它操作文件、调用私有工具或读取本地资料。",
+        "",
+        "第四步，是做验收。小安回答后，检查四件事：有没有中文表达，有没有依据公开内容，有没有给下一步，有没有越过边界。",
+        "",
+        "第五步，是写复盘。回答不好时，不要只换模型。先判断是资料不足、提示词不清、前端上下文不够，还是模型本身不适合。",
+        "",
+        "## 小白复刻步骤",
+        "",
+        "1. **写角色一句话**：小安是安的数字生命体和书房整理者，只回答公开资料范围内的问题。",
+        "2. **准备公开资料**：选 5 条内容，最好包括一个项目、一个路线、一个风信、一个边界说明、一个个人介绍。",
+        "3. **写禁止清单**：不回答密钥、服务器、路径、账号、私有聊天、未公开资料。",
+        "4. **设计一个问题**：例如“我想靠 AI 做一个小网站，先从哪页看起”。",
+        "5. **让模型回答**：只给它公开资料摘要，不给私有原文。",
+        "6. **检查回答**：是否中文，是否具体，是否承认不确定，是否给下一步。",
+        "7. **换问法再测**：同一个意思换一种说法，看看回答是否稳定。",
+        "8. **写复盘**：把问题归因到资料、提示词、模型或前端展示。",
+        "",
+        "## 回答验收标准",
+        "",
+        "| 标准 | 合格表现 | 不合格表现 |",
+        "|---|---|---|",
+        "| 中文 | 自然、清楚、没有英文模板味 | 中英混杂、术语堆叠 |",
+        "| 依据 | 能说出来自公开书房的哪类内容 | 编造安做过的事 |",
+        "| 下一步 | 给一个读者能做的动作 | 只说鼓励和泛泛建议 |",
+        "| 边界 | 遇到私密问题会拒绝 | 试图解释密钥、服务器或私有路径 |",
+        "| 语气 | 克制、精准、有温度 | 过度卖萌、空泛文学化 |",
+        "| 不确定 | 不知道就说不知道 | 用自信语气补全空白 |",
+        "",
+        "## 常见失败",
+        "",
+        "**只换模型，不补资料。**  ",
+        "很多回答差，不是模型不够聪明，而是公开资料太薄。小安不知道书房里有什么，就只能泛泛而谈。",
+        "",
+        "**只写人格，不写边界。**  ",
+        "人格让小安像一个存在，边界让它可信。两者缺一不可。",
+        "",
+        "**把密钥放进前端。**  ",
+        "这是绝对不能做的事。密钥只属于后端受控环境，前端永远只调用安全接口。",
+        "",
+        "**没有失败状态。**  ",
+        "模型不可用时，如果页面只显示空白，读者会以为整个书房坏了。要给明确提示和可继续阅读的入口。",
+        "",
+        "**把私有记忆当智能。**  ",
+        "小安可以基于公开资料回答，不能靠暴露私有记忆来显得懂安。",
+        "",
+        "## 复刻验收清单",
+        "",
+        "- [ ] 小安身份一句话清楚。",
+        "- [ ] 前端没有任何密钥、访问材料和服务器登录信息。",
+        "- [ ] 回答只基于公开资料或明确说不知道。",
+        "- [ ] 至少测试一个正常问题、一个边界问题、一个资料不足问题。",
+        "- [ ] 模型失败时有中文降级提示。",
+        "- [ ] 回答给出下一步阅读或行动。",
+        "- [ ] 复盘记录写明是资料问题、提示词问题、模型问题还是前端问题。",
+        "",
+        "## 三层理解",
+        "",
+        "**心理层**：人很容易把拟人化语气当成理解。小安必须用清楚的来源和行动建议让信任落地，而不是靠语气取得信任。",
+        "",
+        "**社会层**：模型、API 中转、开源项目、本地工具和云端部署构成了复杂链路。小白不需要一开始懂全部，但必须知道前端不会保存密钥，公开资料和私有资料是两层。",
+        "",
+        "**哲学层**：智能的成熟，不在于永远回答，而在于知道边界。能说“不知道”，是小安从工具变成可信助手的第一步。",
+        "",
+        "## 安的提醒",
+        "",
+        "- 小安的目标不是回答所有问题，而是帮助读者读懂安的公开书房。",
+        "- 先做只读问答，再做工具调用。",
+        "- 先让资料足够好，再追求模型更聪明。",
+        "- 不要把隐私当作智能燃料。真正的智能，是在不越界的前提下仍然有帮助。",
+        "",
+        "## 来源与审查",
+        "",
+        "本页结合小安公开设定、本地模型学习闭环公开页、工具链边界、GitHub Skills 内容模型、Diataxis 学习结构和本项目公开安全标准写成。审查重点是：不公开密钥、服务器、SSH、本机路径、私有对话、训练文件和精确机器配置；回答策略必须中文、克制、有依据、能拒绝。"
       ],
-      "links": [
-        {
-          "target": "wiki/projects/xiaoan-local-model-learning-loop",
-          "label": "wiki/projects/xiaoan-local-model-learning-loop"
-        },
-        {
-          "target": "wiki/projects/xiaoan-local-model-learning-loop",
-          "label": "wiki/projects/xiaoan-local-model-learning-loop"
-        },
-        {
-          "target": "wiki/concepts/tool-local-model-experiment-toolchain",
-          "label": "wiki/concepts/tool-local-model-experiment-toolchain"
-        }
-      ],
+      "links": [],
       "sources": [
         "[[wiki/projects/xiaoan-local-model-learning-loop]]",
         "[[wiki/concepts/tool-local-model-experiment-toolchain]]",
-        "[[wiki/synthesis/lifecycle-replication-package-workflow]]"
+        "[[wiki/synthesis/lifecycle-replication-package-workflow]]",
+        "[[wiki/sources/tutorial-and-source-research-best-practices]]"
       ],
       "toc": [
         {
           "level": 1,
-          "title": "小安本地模型学习闭环复刻包",
-          "anchor": "小安本地模型学习闭环复刻包"
+          "title": "小安模型实验学习包",
+          "anchor": "小安模型实验学习包"
         },
         {
           "level": 2,
-          "title": "概览",
-          "anchor": "概览"
+          "title": "开场判断",
+          "anchor": "开场判断"
         },
         {
           "level": 2,
-          "title": "读者可以获得什么",
-          "anchor": "读者可以获得什么"
+          "title": "为什么值得做",
+          "anchor": "为什么值得做"
         },
         {
           "level": 2,
-          "title": "推荐阅读方式",
-          "anchor": "推荐阅读方式"
+          "title": "适合谁",
+          "anchor": "适合谁"
         },
         {
           "level": 2,
-          "title": "发布边界",
-          "anchor": "发布边界"
+          "title": "你要做出的东西",
+          "anchor": "你要做出的东西"
         },
         {
           "level": 2,
-          "title": "来源",
-          "anchor": "来源"
+          "title": "安实际怎么做",
+          "anchor": "安实际怎么做"
+        },
+        {
+          "level": 2,
+          "title": "小白复刻步骤",
+          "anchor": "小白复刻步骤"
+        },
+        {
+          "level": 2,
+          "title": "回答验收标准",
+          "anchor": "回答验收标准"
+        },
+        {
+          "level": 2,
+          "title": "常见失败",
+          "anchor": "常见失败"
+        },
+        {
+          "level": 2,
+          "title": "复刻验收清单",
+          "anchor": "复刻验收清单"
+        },
+        {
+          "level": 2,
+          "title": "三层理解",
+          "anchor": "三层理解"
+        },
+        {
+          "level": 2,
+          "title": "安的提醒",
+          "anchor": "安的提醒"
+        },
+        {
+          "level": 2,
+          "title": "来源与审查",
+          "anchor": "来源与审查"
         }
       ],
-      "wordCount": 292,
-      "readingMinutes": 1,
+      "wordCount": 1993,
+      "readingMinutes": 5,
       "metrics": {
-        "lineCount": 28,
-        "headingCount": 6,
-        "linkCount": 3,
-        "sourceCount": 3
+        "lineCount": 122,
+        "headingCount": 13,
+        "linkCount": 0,
+        "sourceCount": 4
       },
       "quality": {
         "hasSources": true,
         "hasToc": true,
         "summaryLength": 42,
-        "sourceTitle": "Lifecycle Package: Xiaoan Local Model Learning Loop",
-        "sourceSummary": "把小安本地模型实验整理成小白可复刻的安全学习包：先准备资料，再做小实验、记录评估和复盘边界。",
+        "sourceTitle": "小安模型实验学习包",
+        "sourceSummary": "把小安模型接入与实验整理成中文学习包：先用公开资料做只读问答，再检查人格、边界、回答质量、失败状态和复盘，不公开密钥、私有数据和服务器访问材料。",
         "needsSourceReview": false,
         "displayTier": "showcase",
         "qualityScore": 100,
@@ -7463,9 +7779,48 @@
       "sourceLabels": [
         "public project",
         "local model workflow",
-        "safety"
+        "safety",
+        "learning design"
       ],
-      "actionText": "先看这页的目标和边界，再按最小步骤做一个缩小版本，并记录一次验收结果。",
+      "whyItMattered": "小安要智能，不能只靠一句人格提示词。真正的智能来自公开资料、清楚边界、稳定模型接口、可复盘实验和失败记录。这个学习包把模型接入与实验训练拆成小白能理解的闭环。",
+      "psychologicalLayer": "人会把流畅回答误认为理解，也会因为一个拟人角色而放松审查。小安的设计要让读者感到被照顾，同时不断把回答拉回证据和下一步行动。",
+      "sociologicalLayer": "模型供应商、接口中转、开源模型和本地工具共同构成了 AI 应用生态。小白不需要先理解所有名词，但需要知道数据从哪里来、回答由谁生成、边界在哪里。",
+      "philosophicalLayer": "智能不是无所不答，而是知道何时回答、何时拒绝、何时承认空白。一个可信的小安，首先要学会守住不知道。",
+      "operationStory": [
+        "先确定小安的公开身份：安的数字生命体和书房整理者，只回答公开资料范围内的问题。",
+        "再把模型能力分成两层：线上模型负责聪明回答，本地或私有实验负责学习方法，不把密钥和私有数据放进前端。",
+        "每次实验先问问题，再审数据，再试跑，再评估，不直接把私人聊天和原始材料喂给模型。",
+        "回答质量不只看是否流畅，还看是否中文、克制、可执行、能承认不知道、能保护边界。",
+        "最后把成功和失败都写成复盘，给下一次提示词、资料组织和接口设计使用。"
+      ],
+      "replicationSteps": [
+        "写下一个公开问题，例如“我第一次进入安的书房，应该先看哪里”。",
+        "准备 5 条公开安全资料：项目摘要、藏馆卡片、路线说明、风信判断、公开边界。",
+        "写小安人格边界：中文、克制、先拆前提、给下一步、不回答密钥、路径、服务器和私有材料。",
+        "先做只读问答，不让模型操作文件、调用私有接口或读取本地目录。",
+        "记录回答：是否引用了公开资料，是否说清不知道，是否给出下一步。",
+        "用同一个问题换一种问法再测一次，检查它是否稳定。",
+        "把结果分成三类：可保留回答、需要改提示词、需要补公开资料。"
+      ],
+      "failureModes": [
+        "把模型接入当成智能本身，忽略资料、边界、失败状态和验收。",
+        "把私有聊天、密钥、路径、服务器信息或账号状态放进前端或公开数据。",
+        "没有基线：不知道接入前后到底变好了什么。",
+        "只看回答是否漂亮，不看是否真实、可执行和不越界。",
+        "没有复盘：每次调模型都像重新开始。"
+      ],
+      "lessons": [
+        "小安的智能要建立在公开资料和边界上，而不是建立在泄露更多私密上下文上。",
+        "模型实验先做只读闭环，再谈工具调用、记忆和多端同步。",
+        "好回答必须能帮助读者下一步行动，不能只是语气漂亮。",
+        "不知道就说不知道，是小安可信的一部分。"
+      ],
+      "anReminders": [
+        "小安可以有 Hanako 式气质，但必须服务安的书房：中文、克制、清醒、可执行。",
+        "密钥、服务器、SSH、私有模型配置都只属于后端受控环境，不属于前端展示内容。",
+        "先让小安稳定回答公开资料，再考虑更复杂的记忆和工具调用。"
+      ],
+      "actionText": "先写一个小安能回答的公开问题，再准备 5 条公开安全资料，做一次只读问答实验，并记录是否答得清楚、是否越界、是否有下一步。",
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": [],
@@ -7478,33 +7833,7 @@
         "learning",
         "curated"
       ],
-      "nextPlan": "",
-      "whyItMattered": "「小安本地模型学习闭环复刻包」把一次真实项目整理成可学习、可展示、可复刻的公开资料，帮助读者理解目标、边界和结果。",
-      "operationStory": [
-        "先把原始材料、私有复核和公开展示分开，确认哪些信息可以安全讲给读者。",
-        "再把项目目标、关键步骤、失败点和验收方式整理成中文页面。",
-        "最后通过结构检查、隐私扫描和站点数据生成，确认资料可以进入前端展示。"
-      ],
-      "replicationSteps": [
-        "先明确目标读者、最小成果和公开边界。",
-        "整理公开安全的来源说明和替代示例。",
-        "按教程、操作步骤、参考表和解释四块组织内容。",
-        "运行发布前验收，确认页面可读、可追踪、可维护。"
-      ],
-      "failureModes": [
-        "只展示结果，不说明来源和验收。",
-        "把原始本地材料误当成公开资料。",
-        "页面没有复刻步骤，读者只能看热闹。"
-      ],
-      "lessons": [
-        "项目资料要从经历变成方法，才能真正被复用。",
-        "公开页面要把价值、边界和下一步讲清楚。",
-        "小批量高质量整理比一次性堆材料更稳。"
-      ],
-      "anReminders": [
-        "继续把「小安本地模型学习闭环复刻包」补成更具体的实操案例。",
-        "每次新增本地证据，都先进入私有复核，再决定是否公开。"
-      ]
+      "nextPlan": ""
     },
     {
       "id": "c_80365bf85dbdd242",
@@ -12483,7 +12812,7 @@
         "verified"
       ],
       "createdAt": "2026-05-13",
-      "updatedAt": "2026-05-13",
+      "updatedAt": "2026-05-14",
       "eventDate": null,
       "sourcePath": "wiki/synthesis/lifecycle-automation-acceptance-2026-05-13.md",
       "module": "library",
@@ -12529,13 +12858,14 @@
         "",
         "## Active Automations",
         "",
-        "| Automation | Rhythm | Status | Role |",
-        "|---|---|---|---|",
-        "| LLM Wiki Local Source Intake | Every 2 hours at +05 | active | Update private local source and activity maps |",
-        "| LLM Wiki GitHub Best Practice Watch | Every 2 hours at +25 | active | Learn from official docs and maintained GitHub projects |",
-        "| LLM Wiki Lifecycle Package Builder | Every 2 hours at +40 | active | Build or improve one beginner learning package |",
-        "| LLM Wiki Acceptance Gate | Every 2 hours at +55 | active | Run validation gates and record blockers |",
-        "| LLM Wiki Workflow Retrospective | Every 2 hours at +58 | active | Improve the workflow and templates |",
+        "| Automation | Rhythm | Status | Role | Expected artifact path(s) | Push summary checked |",
+        "|---|---|---|---|---|---|",
+        "| LLM Wiki Local Source Intake | Every 2 hours at +05 | active | Update private local source and activity maps | `private-wiki/automation/recent-activity.md` and intake companions | pending |",
+        "| LLM Wiki GitHub Best Practice Watch | Every 2 hours at +25 | active | Learn from official docs and maintained GitHub projects | `wiki/sources/*.md` plus backlog/workflow updates | pending |",
+        "| LLM Wiki Lifecycle Package Builder | Every 2 hours at +40 | active | Build or improve one beginner learning package | `wiki/projects/lifecycle-*.md` or `wiki/synthesis/*.md` | pending |",
+        "| LLM Wiki Acceptance Gate | Every 2 hours at +55 | active | Run validation gates and record blockers | `wiki/synthesis/lifecycle-automation-acceptance-YYYY-MM-DD.md` | pending |",
+        "| LLM Wiki Workflow Retrospective | Every 2 hours at +58 | active | Improve the workflow and templates | `private-wiki/automation/lifecycle-loop-operating-procedure.md` or todo/workflow updates | pending |",
+        "| LLM Wiki Cycle Delivery Push | Every 2 hours at +59 | active target | Push the Chinese cycle summary to the owner | local desktop automation log hub summary | yes |",
         "",
         "## Boundary",
         "",
@@ -12546,6 +12876,7 @@
         "- Add a persistent acceptance ledger if repeated runs need history beyond individual notes.",
         "- Add one real package from a newly detected local activity signal.",
         "- Keep GitHub research tied to backlog items instead of collecting references.",
+        "- Verify that every active automation leaves a Chinese desktop log and a push summary, not just a generic “updated something”.",
         "",
         "## Related",
         "",
@@ -12614,10 +12945,10 @@
           "anchor": "related"
         }
       ],
-      "wordCount": 383,
-      "readingMinutes": 1,
+      "wordCount": 479,
+      "readingMinutes": 2,
       "metrics": {
-        "lineCount": 58,
+        "lineCount": 60,
         "headingCount": 8,
         "linkCount": 3,
         "sourceCount": 3
@@ -12664,7 +12995,7 @@
         "featured"
       ],
       "createdAt": "2026-05-13",
-      "updatedAt": "2026-05-13",
+      "updatedAt": "2026-05-14",
       "eventDate": null,
       "sourcePath": "wiki/synthesis/lifecycle-automation-output-map.md",
       "module": "library",
@@ -12697,6 +13028,17 @@
         "| +55 min | Acceptance gate | validation report, blockers, inventory refresh |",
         "| +58 min | Workflow retrospective | improved process pages, templates, and automation prompts |",
         "",
+        "## Exact Artifact Map",
+        "",
+        "| Worker | Objective output | Exact artifact path(s) | Push summary sink |",
+        "|---|---|---|---|",
+        "| Local source intake | Refresh private discovery surfaces | `private-wiki/automation/recent-activity.md`, `private-wiki/automation/local-source-incremental-watch.md`, `private-wiki/automation/pipeline-health.md`, `private-wiki/automation/intake-run-log.md` | desktop automation log hub / intake report |",
+        "| GitHub best-practice watch | Turn one reference into one local improvement | `wiki/sources/*.md`, workflow/backlog updates | desktop automation log hub / best-practice report |",
+        "| Lifecycle package builder | Produce one exact beginner-readable page | `wiki/projects/lifecycle-*.md` or `wiki/synthesis/*.md` | desktop automation log hub / package report |",
+        "| Acceptance gate | Record pass/fail and blockers | `wiki/synthesis/lifecycle-automation-acceptance-YYYY-MM-DD.md`, `manifests/*` | desktop automation log hub / gate report |",
+        "| Workflow retrospective | Change one workflow rule or record no-change | `private-wiki/automation/lifecycle-loop-operating-procedure.md`, `private-wiki/todos/lifecycle-workflow-todo.md` | desktop automation log hub / retrospective report |",
+        "| Delivery push | Summarize the whole cycle to the owner | local desktop automation log hub summary files | current thread |",
+        "",
         "## Output Rule",
         "",
         "Every automation must leave an Obsidian-visible result:",
@@ -12706,6 +13048,8 @@
         "- generated website backend data goes to `site-data/`;",
         "- machine reports go to `manifests/`;",
         "- failures go to a backlog or acceptance record.",
+        "",
+        "Every automation should also leave one human-readable Chinese log in the desktop log hub, so the owner does not have to inspect manifests to know what changed.",
         "",
         "## Recent App Activity",
         "",
@@ -12761,6 +13105,11 @@
         },
         {
           "level": 2,
+          "title": "Exact Artifact Map",
+          "anchor": "exact-artifact-map"
+        },
+        {
+          "level": 2,
           "title": "Output Rule",
           "anchor": "output-rule"
         },
@@ -12785,11 +13134,11 @@
           "anchor": "related"
         }
       ],
-      "wordCount": 278,
-      "readingMinutes": 1,
+      "wordCount": 454,
+      "readingMinutes": 2,
       "metrics": {
-        "lineCount": 49,
-        "headingCount": 7,
+        "lineCount": 62,
+        "headingCount": 8,
         "linkCount": 4,
         "sourceCount": 3
       },
@@ -12835,7 +13184,7 @@
         "featured"
       ],
       "createdAt": "2026-05-13",
-      "updatedAt": "2026-05-13",
+      "updatedAt": "2026-05-14",
       "eventDate": null,
       "sourcePath": "wiki/synthesis/lifecycle-automation-workflow.md",
       "module": "paths",
@@ -15925,7 +16274,7 @@
         "verified"
       ],
       "createdAt": "2026-05-13",
-      "updatedAt": "2026-05-13",
+      "updatedAt": "2026-05-15",
       "eventDate": null,
       "sourcePath": "wiki/concepts/agent-tool-permission-and-trace-safety.md",
       "module": "library",
@@ -15962,6 +16311,12 @@
         "- 账号或授权状态；",
         "- 私有文件内容；",
         "- 可以还原操作过程的细节组合。",
+        "",
+        "## 协作日志也要脱敏",
+        "",
+        "小鲸鱼、小安、Codex 和审阅子代理可以长期协作，但协作日志只记录任务、判断和验收，不记录完整调用轨迹。公开时可以说“用了本地事实采集和人工复核”，不能把账号状态、本地路径组合、原始私聊、工具输出全文或密钥线索写进页面。",
+        "",
+        "如果一条日志同时暴露“谁、在哪台机器、用什么路径、连哪个服务、拿了什么访问材料”，即使没有明文密钥，也应视为高风险材料，只能留在私有复核层。",
         "",
         "## 权限原则",
         "",
@@ -16016,6 +16371,11 @@
         },
         {
           "level": 2,
+          "title": "协作日志也要脱敏",
+          "anchor": "协作日志也要脱敏"
+        },
+        {
+          "level": 2,
           "title": "权限原则",
           "anchor": "权限原则"
         },
@@ -16025,11 +16385,11 @@
           "anchor": "related"
         }
       ],
-      "wordCount": 282,
+      "wordCount": 443,
       "readingMinutes": 1,
       "metrics": {
-        "lineCount": 42,
-        "headingCount": 5,
+        "lineCount": 48,
+        "headingCount": 6,
         "linkCount": 3,
         "sourceCount": 3
       },
@@ -23472,7 +23832,7 @@
         "verified"
       ],
       "createdAt": "2026-05-13",
-      "updatedAt": "2026-05-13",
+      "updatedAt": "2026-05-14",
       "eventDate": null,
       "sourcePath": "wiki/synthesis/lifecycle-automation-acceptance-2026-05-13.md",
       "module": "library",
@@ -23518,13 +23878,14 @@
         "",
         "## Active Automations",
         "",
-        "| Automation | Rhythm | Status | Role |",
-        "|---|---|---|---|",
-        "| LLM Wiki Local Source Intake | Every 2 hours at +05 | active | Update private local source and activity maps |",
-        "| LLM Wiki GitHub Best Practice Watch | Every 2 hours at +25 | active | Learn from official docs and maintained GitHub projects |",
-        "| LLM Wiki Lifecycle Package Builder | Every 2 hours at +40 | active | Build or improve one beginner learning package |",
-        "| LLM Wiki Acceptance Gate | Every 2 hours at +55 | active | Run validation gates and record blockers |",
-        "| LLM Wiki Workflow Retrospective | Every 2 hours at +58 | active | Improve the workflow and templates |",
+        "| Automation | Rhythm | Status | Role | Expected artifact path(s) | Push summary checked |",
+        "|---|---|---|---|---|---|",
+        "| LLM Wiki Local Source Intake | Every 2 hours at +05 | active | Update private local source and activity maps | `private-wiki/automation/recent-activity.md` and intake companions | pending |",
+        "| LLM Wiki GitHub Best Practice Watch | Every 2 hours at +25 | active | Learn from official docs and maintained GitHub projects | `wiki/sources/*.md` plus backlog/workflow updates | pending |",
+        "| LLM Wiki Lifecycle Package Builder | Every 2 hours at +40 | active | Build or improve one beginner learning package | `wiki/projects/lifecycle-*.md` or `wiki/synthesis/*.md` | pending |",
+        "| LLM Wiki Acceptance Gate | Every 2 hours at +55 | active | Run validation gates and record blockers | `wiki/synthesis/lifecycle-automation-acceptance-YYYY-MM-DD.md` | pending |",
+        "| LLM Wiki Workflow Retrospective | Every 2 hours at +58 | active | Improve the workflow and templates | `private-wiki/automation/lifecycle-loop-operating-procedure.md` or todo/workflow updates | pending |",
+        "| LLM Wiki Cycle Delivery Push | Every 2 hours at +59 | active target | Push the Chinese cycle summary to the owner | local desktop automation log hub summary | yes |",
         "",
         "## Boundary",
         "",
@@ -23535,6 +23896,7 @@
         "- Add a persistent acceptance ledger if repeated runs need history beyond individual notes.",
         "- Add one real package from a newly detected local activity signal.",
         "- Keep GitHub research tied to backlog items instead of collecting references.",
+        "- Verify that every active automation leaves a Chinese desktop log and a push summary, not just a generic “updated something”.",
         "",
         "## Related",
         "",
@@ -23603,10 +23965,10 @@
           "anchor": "related"
         }
       ],
-      "wordCount": 383,
-      "readingMinutes": 1,
+      "wordCount": 479,
+      "readingMinutes": 2,
       "metrics": {
-        "lineCount": 58,
+        "lineCount": 60,
         "headingCount": 8,
         "linkCount": 3,
         "sourceCount": 3
@@ -23653,7 +24015,7 @@
         "featured"
       ],
       "createdAt": "2026-05-13",
-      "updatedAt": "2026-05-13",
+      "updatedAt": "2026-05-14",
       "eventDate": null,
       "sourcePath": "wiki/synthesis/lifecycle-automation-output-map.md",
       "module": "library",
@@ -23686,6 +24048,17 @@
         "| +55 min | Acceptance gate | validation report, blockers, inventory refresh |",
         "| +58 min | Workflow retrospective | improved process pages, templates, and automation prompts |",
         "",
+        "## Exact Artifact Map",
+        "",
+        "| Worker | Objective output | Exact artifact path(s) | Push summary sink |",
+        "|---|---|---|---|",
+        "| Local source intake | Refresh private discovery surfaces | `private-wiki/automation/recent-activity.md`, `private-wiki/automation/local-source-incremental-watch.md`, `private-wiki/automation/pipeline-health.md`, `private-wiki/automation/intake-run-log.md` | desktop automation log hub / intake report |",
+        "| GitHub best-practice watch | Turn one reference into one local improvement | `wiki/sources/*.md`, workflow/backlog updates | desktop automation log hub / best-practice report |",
+        "| Lifecycle package builder | Produce one exact beginner-readable page | `wiki/projects/lifecycle-*.md` or `wiki/synthesis/*.md` | desktop automation log hub / package report |",
+        "| Acceptance gate | Record pass/fail and blockers | `wiki/synthesis/lifecycle-automation-acceptance-YYYY-MM-DD.md`, `manifests/*` | desktop automation log hub / gate report |",
+        "| Workflow retrospective | Change one workflow rule or record no-change | `private-wiki/automation/lifecycle-loop-operating-procedure.md`, `private-wiki/todos/lifecycle-workflow-todo.md` | desktop automation log hub / retrospective report |",
+        "| Delivery push | Summarize the whole cycle to the owner | local desktop automation log hub summary files | current thread |",
+        "",
         "## Output Rule",
         "",
         "Every automation must leave an Obsidian-visible result:",
@@ -23695,6 +24068,8 @@
         "- generated website backend data goes to `site-data/`;",
         "- machine reports go to `manifests/`;",
         "- failures go to a backlog or acceptance record.",
+        "",
+        "Every automation should also leave one human-readable Chinese log in the desktop log hub, so the owner does not have to inspect manifests to know what changed.",
         "",
         "## Recent App Activity",
         "",
@@ -23750,6 +24125,11 @@
         },
         {
           "level": 2,
+          "title": "Exact Artifact Map",
+          "anchor": "exact-artifact-map"
+        },
+        {
+          "level": 2,
           "title": "Output Rule",
           "anchor": "output-rule"
         },
@@ -23774,11 +24154,11 @@
           "anchor": "related"
         }
       ],
-      "wordCount": 278,
-      "readingMinutes": 1,
+      "wordCount": 454,
+      "readingMinutes": 2,
       "metrics": {
-        "lineCount": 49,
-        "headingCount": 7,
+        "lineCount": 62,
+        "headingCount": 8,
         "linkCount": 4,
         "sourceCount": 3
       },
@@ -24635,7 +25015,7 @@
         "featured"
       ],
       "createdAt": "2026-05-13",
-      "updatedAt": "2026-05-13",
+      "updatedAt": "2026-05-14",
       "eventDate": null,
       "sourcePath": "wiki/synthesis/lifecycle-automation-workflow.md",
       "module": "paths",
@@ -28099,11 +28479,11 @@
     },
     {
       "id": "c_a4cb0d271e33fb21",
-      "title": "Trae Antigravity Agent IDE 学习包",
-      "sourceTitle": "Lifecycle Package: Agent IDE Learning Workflow",
+      "title": "Agent IDE 评估学习包",
+      "sourceTitle": "Agent IDE 评估学习包",
       "slug": "wiki-projects-lifecycle-agent-ide-learning-workflow",
       "summary": "把 Trae、Antigravity 等 Agent IDE 的使用经验整理成评估学习包，帮助新手比较工具并形成可复用流程。",
-      "sourceSummary": "把 Trae、Antigravity 等 Agent IDE 的使用整理成小白可复刻的评估学习包：先定任务，再记录流程、验收结果和是否值得保留。",
+      "sourceSummary": "把 Trae、Antigravity、Cursor、Codex、Claude Code 等 Agent IDE 的试用整理成小白可复刻的评估学习包：先定任务，再看流程、验收结果和是否值得保留。",
       "tags": [
         "project",
         "agent",
@@ -28112,13 +28492,14 @@
         "lifecycle",
         "learning",
         "curated",
-        "featured"
+        "featured",
+        "beginner-friendly"
       ],
       "status": [
         "featured"
       ],
       "createdAt": "2026-05-13",
-      "updatedAt": "2026-05-13",
+      "updatedAt": "2026-05-15",
       "eventDate": null,
       "sourcePath": "wiki/projects/lifecycle-agent-ide-learning-workflow.md",
       "module": "works",
@@ -28129,100 +28510,209 @@
       "contentType": "article",
       "href": "/content/wiki-projects-lifecycle-agent-ide-learning-workflow",
       "contentLines": [
-        "# Trae Antigravity Agent IDE 学习包",
+        "# Agent IDE 评估学习包",
         "",
-        "## 概览",
+        "## 开场判断",
         "",
-        "把 Trae、Antigravity 等 Agent IDE 的使用经验整理成评估学习包，帮助新手比较工具并形成可复用流程。",
+        "AI 编程工作台看起来很像一排新钥匙。每一把都说自己能打开未来，可新手真正缺的不是钥匙，而是知道先开哪一扇门。",
         "",
-        "## 读者可以获得什么",
+        "这份学习包不教你追新工具。它教你怎样判断一个 Agent IDE 是否值得进入自己的工作流。判断标准很朴素：它是否让你更清楚地完成一个小任务，是否让你能检查结果，是否让你知道什么时候该停。",
         "",
-        "- 理解「Trae Antigravity Agent IDE 学习包」在安的书房里的位置。",
-        "- 看清它解决的问题、适合的读者和后续复刻方向。",
-        "- 知道公开页面保留的是方法、结构和经验，不包含原始私有材料。",
+        "参考标准来自几条线：GitHub Skills 强调课程要让学习者知道“给谁学、学什么、做出什么、从哪里开始”；Diataxis 把教程、操作指南、参考和解释分开，避免一页混成杂货铺；Google 有用内容标准提醒内容要有第一手经验、完整说明和真实帮助；信息架构和注意力设计要求先给读者明确路径，再逐步展开复杂内容。",
         "",
-        "## 推荐阅读方式",
+        "## 适合谁",
         "",
-        "1. 先读概览，确认它和当前学习目标是否相关。",
-        "2. 再看关联页面，理解来源、项目、工具或工作流之间的关系。",
-        "3. 如果要复刻，先写下自己的目标、输入材料、边界和验收标准。",
-        "4. 完成后回到资料库，把新的经验整理成可追踪页面。",
+        "- 想靠 AI 做网页、写脚本、整理资料，但不知道该用哪个工具的人。",
+        "- 已经装过几个 AI 编程工具，却说不清每个工具适合做什么的人。",
+        "- 想复刻安的路线，但不想被工具名、模型名、插件名淹没的人。",
+        "- 未来的安自己，用来回看一个工具为什么留下，为什么淘汰。",
         "",
-        "## 发布边界",
+        "## 你要做出的东西",
         "",
-        "本页只展示公开安全的整理结果。原始材料、账号状态、本机细节、私人对话和未复核内容不会进入公开展示。",
+        "最后产物不是一篇长评测，而是一张评估卡。",
         "",
-        "## 来源",
+        "| 字段 | 要写什么 | 为什么重要 |",
+        "|---|---|---|",
+        "| 任务 | 这次只让工具做哪一件事 | 限制范围，避免一开始就混乱 |",
+        "| 输入 | 给工具的公开安全说明 | 让下次能复盘提示词是否清楚 |",
+        "| 输出 | 它交付了什么类型的结果 | 看结果，不看它的自我评价 |",
+        "| 改动 | 它碰了哪些类型的文件或内容 | 判断可控性 |",
+        "| 验收 | 你怎样确认它做对了 | 防止“看起来能用” |",
+        "| 失败 | 哪里不稳、哪里危险、哪里费劲 | 留下真实经验 |",
+        "| 决策 | 保留、观察、淘汰、写成技能 | 让工具进入秩序 |",
         "",
-        "- [[wiki/sources/local-private-compile-2026-05-13]]",
-        "- [[wiki/synthesis/github-best-practice-learning-loop]]",
-        "- [[wiki/projects/lifecycle-agent-skill-governance]]"
+        "## 材料准备",
+        "",
+        "只需要四样东西：",
+        "",
+        "1. 一个 30 分钟内能完成的小任务。",
+        "2. 一个你想评估的 Agent IDE。",
+        "3. 一条公开安全的任务说明。",
+        "4. 一个验收清单。",
+        "",
+        "不要准备太多上下文。上下文越多，工具越容易演得像懂了，实际却在猜。新手最先要学会的不是给 AI 喂满资料，而是把任务切到它能被检查。",
+        "",
+        "## 安实际怎么做",
+        "",
+        "安的路线不是“我用了很多工具”，而是逐步把工具纳入系统。",
+        "",
+        "第一步，是把工具从名字里剥离出来。Codex、Claude Code、Cursor、Kimi、Gemini、Trae、Antigravity 都可以被看作不同形态的工作台：有的擅长读代码，有的擅长改文件，有的擅长对话，有的擅长把页面搭起来。",
+        "",
+        "第二步，是把任务缩小。比如“把一个页面改得更适合小白看”就太大；“把工坊卡片里的英文标签改成中文，并确认移动端不挤压”就能验收。",
+        "",
+        "第三步，是只记录流程形状。公开资料里不需要出现真实账号、历史记录、安装路径、密钥、服务器连接、私有提示词。读者真正需要的是：任务怎样被拆开，工具怎样参与，人怎样验收。",
+        "",
+        "第四步，是把每次试用变成方法判断。一个工具如果只带来新鲜感，就留在观察区；如果能稳定帮助某类任务，就写成技能或流程；如果经常越界、乱改、难验收，就淘汰。",
+        "",
+        "## 第一次复刻步骤",
+        "",
+        "1. **选任务**：选一个很小的任务，例如“把一个项目说明改成 5 条中文步骤”。",
+        "2. **写目标**：用一句话写出你要什么结果，例如“读者看完后知道第一步怎么做”。",
+        "3. **写边界**：告诉工具不能做什么，例如“不改无关文件，不输出密钥，不编造来源，不用英文标签当主标题”。",
+        "4. **运行一次**：只让它做这一件事，不追加一堆新需求。",
+        "5. **看差异**：检查它实际改了什么。它说得再好，也要看文件和页面。",
+        "6. **跑验收**：页面能打开，文案是中文，步骤能执行，没有隐私线索，没有明显错链。",
+        "7. **写评估卡**：记录它适合的任务、失败点、下次如何约束。",
+        "8. **做决策**：保留、观察、淘汰，或者把稳定做法写成技能。",
+        "",
+        "## 评估维度",
+        "",
+        "| 维度 | 第一次用先看 | 想深入再看 | 做维护最后看 |",
+        "|---|---|---|---|",
+        "| 上手摩擦 | 能不能快速开始 | 配置是否清楚 | 是否能进入团队流程 |",
+        "| 上下文理解 | 能不能听懂任务 | 能否抓住文件关系 | 是否能处理复杂边界 |",
+        "| 编辑控制 | 会不会乱改 | 差异是否可审查 | 是否支持回退与最小变更 |",
+        "| 验收能力 | 能不能提示检查 | 是否能跑测试 | 是否能接入质量闸门 |",
+        "| 隐私边界 | 会不会暴露私密信息 | 是否遵守禁止项 | 是否能进入长期治理 |",
+        "| 产物质量 | 能不能用 | 是否能维护 | 是否能扩展 |",
+        "",
+        "## 容易失手的地方",
+        "",
+        "最常见的失败不是工具不会做，而是人没有给它一个能被判断的任务。",
+        "",
+        "- **任务太大**：一上来就让它“做一个完整网站”，最后得到的多半是漂亮但空的壳。",
+        "- **验收太晚**：等工具改完一大堆再看，已经很难知道问题从哪里开始。",
+        "- **被热闹牵着走**：界面、动画、模型名让人兴奋，但读者看的是内容是否有用。",
+        "- **把私有材料当证据**：公开页不能展示原始聊天、账号状态、访问材料和本机细节。",
+        "- **没有复盘**：不写评估卡，下次还会重复踩同一个坑。",
+        "",
+        "## 复刻验收清单",
+        "",
+        "- [ ] 任务能在 30 分钟内完成。",
+        "- [ ] 输入说明不包含私有材料。",
+        "- [ ] 工具只改了目标范围。",
+        "- [ ] 结果能通过最小测试或人工检查。",
+        "- [ ] 文案能被中文小白读懂。",
+        "- [ ] 至少记录一个失败点。",
+        "- [ ] 最后做出保留、观察、淘汰或写成技能的决策。",
+        "",
+        "## 三层理解",
+        "",
+        "**心理层**：工具越多，越容易让人产生“我必须全会”的错觉。评估卡把注意力从比较工具拉回完成任务，让新手获得一点稳定感。",
+        "",
+        "**社会层**：AI 工具市场会不断制造新入口。平台希望自己成为你的默认工作台，而个人系统要保留主控权：由任务选择工具，不由工具定义任务。",
+        "",
+        "**哲学层**：一个人真正拥有的不是工具清单，而是判断。判断来自边界、验收和复盘。没有这些，再强的工具也只是短暂的热闹。",
+        "",
+        "## 安的提醒",
+        "",
+        "- 不要问“哪个工具最强”，先问“我现在要完成什么”。",
+        "- 不要让工具证明自己聪明，要让它交付一个能验收的小结果。",
+        "- 不要把一次成功当成长期能力。连续三次稳定完成同类任务，才值得写进方法库。",
+        "- 不要公开原始使用痕迹。读者需要路径，不需要你的后台。",
+        "",
+        "## 来源与审查",
+        "",
+        "本页结合了安的公开安全工具使用线索、GitHub Skills 的课程内容模型、Diataxis 的文档分类方法、Google 有用内容自查问题，以及本项目的公开安全边界。审查重点是：不闭门造车、不露私密材料、不让小白被工具名压住、不把文学表达写成空话。"
       ],
-      "links": [
-        {
-          "target": "wiki/projects/lifecycle-agent-skill-governance",
-          "label": "wiki/projects/lifecycle-agent-skill-governance"
-        },
-        {
-          "target": "wiki/synthesis/github-best-practice-learning-loop",
-          "label": "wiki/synthesis/github-best-practice-learning-loop"
-        },
-        {
-          "target": "wiki/topics/skills-and-tools-moc",
-          "label": "wiki/topics/skills-and-tools-moc"
-        }
-      ],
+      "links": [],
       "sources": [
         "[[wiki/sources/local-private-compile-2026-05-13]]",
         "[[wiki/synthesis/github-best-practice-learning-loop]]",
-        "[[wiki/projects/lifecycle-agent-skill-governance]]"
+        "[[wiki/projects/lifecycle-agent-skill-governance]]",
+        "[[wiki/sources/tutorial-and-source-research-best-practices]]"
       ],
       "toc": [
         {
           "level": 1,
-          "title": "Trae Antigravity Agent IDE 学习包",
-          "anchor": "trae-antigravity-agent-ide-学习包"
+          "title": "Agent IDE 评估学习包",
+          "anchor": "agent-ide-评估学习包"
         },
         {
           "level": 2,
-          "title": "概览",
-          "anchor": "概览"
+          "title": "开场判断",
+          "anchor": "开场判断"
         },
         {
           "level": 2,
-          "title": "读者可以获得什么",
-          "anchor": "读者可以获得什么"
+          "title": "适合谁",
+          "anchor": "适合谁"
         },
         {
           "level": 2,
-          "title": "推荐阅读方式",
-          "anchor": "推荐阅读方式"
+          "title": "你要做出的东西",
+          "anchor": "你要做出的东西"
         },
         {
           "level": 2,
-          "title": "发布边界",
-          "anchor": "发布边界"
+          "title": "材料准备",
+          "anchor": "材料准备"
         },
         {
           "level": 2,
-          "title": "来源",
-          "anchor": "来源"
+          "title": "安实际怎么做",
+          "anchor": "安实际怎么做"
+        },
+        {
+          "level": 2,
+          "title": "第一次复刻步骤",
+          "anchor": "第一次复刻步骤"
+        },
+        {
+          "level": 2,
+          "title": "评估维度",
+          "anchor": "评估维度"
+        },
+        {
+          "level": 2,
+          "title": "容易失手的地方",
+          "anchor": "容易失手的地方"
+        },
+        {
+          "level": 2,
+          "title": "复刻验收清单",
+          "anchor": "复刻验收清单"
+        },
+        {
+          "level": 2,
+          "title": "三层理解",
+          "anchor": "三层理解"
+        },
+        {
+          "level": 2,
+          "title": "安的提醒",
+          "anchor": "安的提醒"
+        },
+        {
+          "level": 2,
+          "title": "来源与审查",
+          "anchor": "来源与审查"
         }
       ],
-      "wordCount": 277,
-      "readingMinutes": 1,
+      "wordCount": 2001,
+      "readingMinutes": 5,
       "metrics": {
-        "lineCount": 28,
-        "headingCount": 6,
-        "linkCount": 3,
-        "sourceCount": 3
+        "lineCount": 114,
+        "headingCount": 13,
+        "linkCount": 0,
+        "sourceCount": 4
       },
       "quality": {
         "hasSources": true,
         "hasToc": true,
         "summaryLength": 62,
-        "sourceTitle": "Lifecycle Package: Agent IDE Learning Workflow",
-        "sourceSummary": "把 Trae、Antigravity 等 Agent IDE 的使用整理成小白可复刻的评估学习包：先定任务，再记录流程、验收结果和是否值得保留。",
+        "sourceTitle": "Agent IDE 评估学习包",
+        "sourceSummary": "把 Trae、Antigravity、Cursor、Codex、Claude Code 等 Agent IDE 的试用整理成小白可复刻的评估学习包：先定任务，再看流程、验收结果和是否值得保留。",
         "needsSourceReview": false,
         "displayTier": "showcase",
         "qualityScore": 100,
@@ -28233,9 +28723,48 @@
       "sourceLabels": [
         "local compile",
         "public-safe rewrite",
-        "agent workflow"
+        "agent workflow",
+        "github-skills",
+        "learning design"
       ],
-      "actionText": "先看这页的目标和边界，再按最小步骤做一个缩小版本，并记录一次验收结果。",
+      "whyItMattered": "Agent IDE 最容易让新手陷入工具兴奋：今天试一个编辑器，明天换一个插件，最后只剩一堆截图和记忆。这个学习包把试用工具变成一张评估卡：先定任务，再看它如何理解上下文、改文件、解释风险、接受验收。",
+      "psychologicalLayer": "新手试工具时容易被“我是不是落后了”驱动，注意力被焦虑牵引。评估卡的作用是把焦虑压回任务：今天只判断一个小任务能不能更稳地完成。",
+      "sociologicalLayer": "AI 编程工具的竞争会制造强烈的从众压力，每个平台都希望用户把它当成主工作台。个人书房要反过来：工具服务人的工作流，不让平台语言替代自己的判断。",
+      "philosophicalLayer": "工具不是能力本身。能力是在一次次选择、限制、验收和复盘中长出来的手艺。人把工具放回边界里，工具才开始真正帮人。",
+      "operationStory": [
+        "先把工具名从光环里拿出来，只问一个问题：它能不能帮安更稳定地完成一个具体任务。",
+        "再把任务缩到足够小，例如改一个页面文案、整理一份公开资料、检查一次构建结果。任务小，才看得清工具的真实能力。",
+        "使用过程中只记录公开安全的流程形状：输入是什么、它问了什么、它动了哪些类型的文件、最后怎样验收。",
+        "试用结束后不凭感觉打分，而是按上下文理解、编辑可控、审查透明、回退成本、隐私边界五项判断。",
+        "最后把结果分成三类：值得写成技能、暂时保留观察、直接淘汰。工具不进入方法库，记忆就会继续散掉。"
+      ],
+      "replicationSteps": [
+        "写下一个小任务：例如把一段英文工具说明改成中文小白说明，或给一个页面补空状态。不要一开始就让工具重构整个项目。",
+        "先写验收标准：读者能不能看懂，页面能不能运行，改动是否只触碰目标文件，是否没有泄露私有材料。",
+        "打开一个 Agent IDE，把任务、范围、禁止事项一次性说清楚。禁止事项至少包括：不提交密钥、不改无关文件、不删除已有内容。",
+        "让它执行后，先看差异，不看话术。真正的能力在改动里，不在它说得多自信。",
+        "跑一次最小验收：页面能打开、测试能过、文案是中文、没有本地路径或访问材料。",
+        "写一张评估卡：这个工具适合做什么，不适合做什么，下次还用不用，用的时候要加哪条提醒。"
+      ],
+      "failureModes": [
+        "工具跳跃：今天换 IDE，明天换模型，注意力被新鲜感带走，没有任何一个流程沉淀下来。",
+        "没有验收：只看工具回答是否顺耳，不检查页面、文件、测试和实际读者体验。",
+        "上下文过载：一次塞太多历史和目标，工具开始猜，读者也看不出哪一步是真的。",
+        "隐私边界模糊：把账号状态、安装路径、对话原文和私有输出当成学习材料。",
+        "把安装等同于能力：本地装过一个工具，不代表已经形成可复刻方法。"
+      ],
+      "lessons": [
+        "新工具必须被小任务审问，不能被宣传语说服。",
+        "一个 Agent IDE 是否值得保留，取决于它能不能让人更清楚地完成工作，而不是界面是否热闹。",
+        "评估卡比工具清单更有价值。清单告诉你有什么，评估卡告诉你为什么留下。",
+        "新手需要的不是更多选择，而是更少、更稳、更可验收的第一步。"
+      ],
+      "anReminders": [
+        "安的书房不展示工具崇拜，只展示工具怎样被安使用、约束和复盘。",
+        "每次新增工具记录，都必须补一条失败点。没有失败点的工具卡，通常只是广告。",
+        "公开页面讲流程和判断，不讲账号、历史记录、安装位置和私有输出。"
+      ],
+      "actionText": "选一个 30 分钟内能完成的小任务，用一个 Agent IDE 跑一遍，并写下任务、输入、输出、验收和是否保留。",
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": [],
@@ -28248,41 +28777,15 @@
         "lifecycle",
         "learning"
       ],
-      "nextPlan": "",
-      "whyItMattered": "「Trae Antigravity Agent IDE 学习包」把一次真实项目整理成可学习、可展示、可复刻的公开资料，帮助读者理解目标、边界和结果。",
-      "operationStory": [
-        "先把原始材料、私有复核和公开展示分开，确认哪些信息可以安全讲给读者。",
-        "再把项目目标、关键步骤、失败点和验收方式整理成中文页面。",
-        "最后通过结构检查、隐私扫描和站点数据生成，确认资料可以进入前端展示。"
-      ],
-      "replicationSteps": [
-        "先明确目标读者、最小成果和公开边界。",
-        "整理公开安全的来源说明和替代示例。",
-        "按教程、操作步骤、参考表和解释四块组织内容。",
-        "运行发布前验收，确认页面可读、可追踪、可维护。"
-      ],
-      "failureModes": [
-        "只展示结果，不说明来源和验收。",
-        "把原始本地材料误当成公开资料。",
-        "页面没有复刻步骤，读者只能看热闹。"
-      ],
-      "lessons": [
-        "项目资料要从经历变成方法，才能真正被复用。",
-        "公开页面要把价值、边界和下一步讲清楚。",
-        "小批量高质量整理比一次性堆材料更稳。"
-      ],
-      "anReminders": [
-        "继续把「Trae Antigravity Agent IDE 学习包」补成更具体的实操案例。",
-        "每次新增本地证据，都先进入私有复核，再决定是否公开。"
-      ]
+      "nextPlan": ""
     },
     {
       "id": "c_4e569ed065ab0782",
-      "title": "Agent 技能治理复刻学习包",
-      "sourceTitle": "Lifecycle Package: Agent Skill Governance",
+      "title": "Agent 技能治理学习包",
+      "sourceTitle": "Agent 技能治理学习包",
       "slug": "wiki-projects-lifecycle-agent-skill-governance",
       "summary": "把 Agent 技能治理整理成复刻包：从规则、技能、验收和复盘四个层面建立稳定协作系统。",
-      "sourceSummary": "把 Agent 技能、规则、边界和验证整理成小白可复刻的治理学习包，帮助复杂协作不再只靠临时聊天记忆。",
+      "sourceSummary": "把 Agent 技能、规则、边界和验证整理成小白可复刻的治理学习包：让多工具协作不再只靠聊天记忆，而是靠清楚的触发、产物、禁止项和验收。",
       "tags": [
         "project",
         "agent",
@@ -28291,13 +28794,14 @@
         "lifecycle",
         "learning",
         "curated",
-        "featured"
+        "featured",
+        "beginner-friendly"
       ],
       "status": [
         "featured"
       ],
       "createdAt": "2026-05-13",
-      "updatedAt": "2026-05-13",
+      "updatedAt": "2026-05-15",
       "eventDate": null,
       "sourcePath": "wiki/projects/lifecycle-agent-skill-governance.md",
       "module": "works",
@@ -28308,104 +28812,206 @@
       "contentType": "article",
       "href": "/content/wiki-projects-lifecycle-agent-skill-governance",
       "contentLines": [
-        "# Agent 技能治理复刻学习包",
+        "# Agent 技能治理学习包",
         "",
-        "## 概览",
+        "## 开场判断",
         "",
-        "把 Agent 技能治理整理成复刻包：从规则、技能、验收和复盘四个层面建立稳定协作系统。",
+        "当一个人开始同时使用 Codex、Claude Code、Cursor、Kimi、浏览器工具、GitHub、Obsidian 和各种本地脚本，真正的问题不再是“有没有工具”，而是“谁在控制方向”。",
         "",
-        "## 读者可以获得什么",
+        "技能治理要解决的正是这个问题。它不是把流程弄得更神秘，而是把重复发生的动作写成可检查的小规程。一个技能要像厨房里的刀：什么时候用、切什么、不能切什么、用完怎样收拾，都要清楚。",
         "",
-        "- 理解「Agent 技能治理复刻学习包」在安的书房里的位置。",
-        "- 看清它解决的问题、适合的读者和后续复刻方向。",
-        "- 知道公开页面保留的是方法、结构和经验，不包含原始私有材料。",
+        "对小白来说，你可以把技能理解成“给 AI 的标准做事卡”。它让 AI 不用每次都从聊天记忆里猜，也让人不必反复解释同一套边界。",
         "",
-        "## 推荐阅读方式",
+        "## 为什么值得做",
         "",
-        "1. 先读概览，确认它和当前学习目标是否相关。",
-        "2. 再看关联页面，理解来源、项目、工具或工作流之间的关系。",
-        "3. 如果要复刻，先写下自己的目标、输入材料、边界和验收标准。",
-        "4. 完成后回到资料库，把新的经验整理成可追踪页面。",
+        "安的书房以后会持续增加内容、项目、前端、后端、小安、App 和发布流程。没有技能治理，所有经验都会散落在对话里；有技能治理，经验才有机会变成可复用的方法。",
         "",
-        "## 发布边界",
+        "GitHub Skills 的课程思路提醒我们：一个学习单元必须让人知道目标、材料、步骤和产物。Diataxis 提醒我们：教程、操作指南、参考和解释不能混成一团。安的技能治理吸收的是这两点：每个技能都必须有触发场景，也必须有验收产物。",
         "",
-        "本页只展示公开安全的整理结果。原始材料、账号状态、本机细节、私人对话和未复核内容不会进入公开展示。",
+        "## 适合谁",
         "",
-        "## 来源",
+        "- 刚开始用 AI 做事，不知道怎样给 AI 立规矩的人。",
+        "- 已经有很多提示词、规则、插件，却越用越乱的人。",
+        "- 想复刻安的多工具协作路线，但不想被一堆术语吓退的人。",
+        "- 未来维护书房的人，用来判断旧规则是否还该保留。",
         "",
-        "- [[wiki/concepts/agent-skill-governance]]",
-        "- [[wiki/synthesis/public-tool-and-agent-inventory]]",
-        "- [[wiki/topics/skills-and-tools-moc]]"
+        "## 你要做出的东西",
+        "",
+        "最后产物是一张技能卡。",
+        "",
+        "| 字段 | 内容 | 例子 |",
+        "|---|---|---|",
+        "| 名称 | 这个技能解决什么重复任务 | 工坊资料包写作 |",
+        "| 触发 | 什么时候必须用它 | 新增核心项目详情页 |",
+        "| 输入 | 需要什么材料 | 项目证据、公开来源、读者目标 |",
+        "| 输出 | 交付什么 | 中文资料包、复刻步骤、验收清单 |",
+        "| 禁止 | 不允许做什么 | 不写密钥、不露路径、不编来源 |",
+        "| 验收 | 怎样判断做对了 | 前端可读、构建通过、隐私扫描通过 |",
+        "| 维护 | 什么时候改它 | 连续两次执行出现同类问题 |",
+        "",
+        "## 安实际怎么做",
+        "",
+        "安的工作流一开始也有很多规则、旧文档、临时要求和不同工具的习惯。真正的改造不是把所有规则都保留下来，而是判断哪些规则仍然有用。",
+        "",
+        "第一步，是承认旧规则只是历史证据。它们说明过去怎样工作，不代表今天必须继续照做。",
+        "",
+        "第二步，是把重复动作提出来。例如前端验收、隐私扫描、公开内容改写、工坊资料包写作、小安边界检查，这些动作会反复出现，就适合写成技能。",
+        "",
+        "第三步，是给每个技能加禁止事项。没有禁止事项的技能，像没有刹车的车。它可能很快，也可能把私有材料带到公开页面。",
+        "",
+        "第四步，是保留单主控。可以有多个技能，也可以有多个工具，但当前目标、文件边界、最终验收必须由一个主控负责。",
+        "",
+        "## 小白复刻步骤",
+        "",
+        "1. **列出重复任务**：写下最近三次都重复做过的事，例如整理资料、改前端卡片、检查隐私。",
+        "2. **选一个最痛的任务**：先不要全做，选那个最容易出错、最耗精力的动作。",
+        "3. **写一句触发条件**：例如“凡是内容要进入首页精选，就使用这个技能”。",
+        "4. **写输入和输出**：输入是资料、链接、目标；输出是页面、报告、清单或代码改动。",
+        "5. **写三条禁止项**：至少包含隐私、无关文件、编造来源。",
+        "6. **写验收清单**：完成后必须能被看见、被运行、被检查。",
+        "7. **试用一次**：用它完成真实任务，不要只写理论。",
+        "8. **复盘删减**：保留有用步骤，删掉让人更累的仪式。",
+        "",
+        "## 技能治理的四条底线",
+        "",
+        "| 底线 | 说明 | 失败信号 |",
+        "|---|---|---|",
+        "| 少 | 技能数量不能无限增长 | 找技能比做事还费劲 |",
+        "| 清 | 每张技能卡要一眼知道用途 | 全是抽象口号 |",
+        "| 边界 | 必须写不能做什么 | 容易泄露或误改 |",
+        "| 验收 | 必须有可检查产物 | 执行完只剩聊天记录 |",
+        "",
+        "## 常见失败",
+        "",
+        "**第一种失败：把技能当成权威。**  ",
+        "技能只是工具，不是命令。当前项目目标和安全边界永远高于旧技能。",
+        "",
+        "**第二种失败：把所有经验都技能化。**  ",
+        "有些经验只适合写进手记，有些适合写成待办，有些才适合固化成技能。过早固化会让系统僵硬。",
+        "",
+        "**第三种失败：没有维护规则。**  ",
+        "技能写完后不再更新，很快就会变成新的历史包袱。",
+        "",
+        "**第四种失败：技能之间互相抢方向。**  ",
+        "多个技能可以并行提供材料，但不能同时当主控。最终要有一个清楚的负责人收束结果。",
+        "",
+        "## 复刻验收清单",
+        "",
+        "- [ ] 技能只解决一个重复任务。",
+        "- [ ] 触发条件能被普通人读懂。",
+        "- [ ] 输入和输出写得具体。",
+        "- [ ] 禁止项包含隐私、无关文件和编造来源。",
+        "- [ ] 验收方式能产生客观结果。",
+        "- [ ] 使用一次后确实减少了混乱。",
+        "- [ ] 没有把旧规则无条件搬回来。",
+        "",
+        "## 三层理解",
+        "",
+        "**心理层**：人在压力下会把“更多规则”误认成“更安全”。真正让人安心的是可预测的小流程：知道何时开始、何时停、怎样判断做对。",
+        "",
+        "**社会层**：多 Agent 协作本质上像一个临时团队。团队如果没有角色、边界和交付物，就会把聪明消耗在互相覆盖上。",
+        "",
+        "**哲学层**：规则的意义不是让人服从机器，而是让人保持主控。好规则像栏杆，扶你过桥，不替你决定要去哪。",
+        "",
+        "## 安的提醒",
+        "",
+        "- 先治理最痛的重复任务，不要先搭宏大的技能宇宙。",
+        "- 每张技能卡都要能被一个新手读懂。读不懂，就还不是技能。",
+        "- 技能要记录禁止事项。没有边界的能力，会变成风险。",
+        "- 技能用完要验收。没有验收，流程只是安慰剂。",
+        "",
+        "## 来源与审查",
+        "",
+        "本页结合安的公开安全工作流、公开工具清单、GitHub Skills 学习单元思想、Diataxis 文档结构和本项目公开安全标准写成。审查重点是：不发布私有提示词，不暴露本地配置，不把历史规则自动当成当前标准，不让流程压过内容本身。"
       ],
-      "links": [
-        {
-          "target": "wiki/topics/skills-and-tools-moc",
-          "label": "wiki/topics/skills-and-tools-moc"
-        },
-        {
-          "target": "wiki/concepts/agent-skill-governance",
-          "label": "wiki/concepts/agent-skill-governance"
-        },
-        {
-          "target": "wiki/synthesis/public-tool-and-agent-inventory",
-          "label": "wiki/synthesis/public-tool-and-agent-inventory"
-        },
-        {
-          "target": "wiki/topics/skills-and-tools-moc",
-          "label": "wiki/topics/skills-and-tools-moc"
-        }
-      ],
+      "links": [],
       "sources": [
         "[[wiki/concepts/agent-skill-governance]]",
         "[[wiki/synthesis/public-tool-and-agent-inventory]]",
-        "[[wiki/topics/skills-and-tools-moc]]"
+        "[[wiki/topics/skills-and-tools-moc]]",
+        "[[wiki/sources/tutorial-and-source-research-best-practices]]"
       ],
       "toc": [
         {
           "level": 1,
-          "title": "Agent 技能治理复刻学习包",
-          "anchor": "agent-技能治理复刻学习包"
+          "title": "Agent 技能治理学习包",
+          "anchor": "agent-技能治理学习包"
         },
         {
           "level": 2,
-          "title": "概览",
-          "anchor": "概览"
+          "title": "开场判断",
+          "anchor": "开场判断"
         },
         {
           "level": 2,
-          "title": "读者可以获得什么",
-          "anchor": "读者可以获得什么"
+          "title": "为什么值得做",
+          "anchor": "为什么值得做"
         },
         {
           "level": 2,
-          "title": "推荐阅读方式",
-          "anchor": "推荐阅读方式"
+          "title": "适合谁",
+          "anchor": "适合谁"
         },
         {
           "level": 2,
-          "title": "发布边界",
-          "anchor": "发布边界"
+          "title": "你要做出的东西",
+          "anchor": "你要做出的东西"
         },
         {
           "level": 2,
-          "title": "来源",
-          "anchor": "来源"
+          "title": "安实际怎么做",
+          "anchor": "安实际怎么做"
+        },
+        {
+          "level": 2,
+          "title": "小白复刻步骤",
+          "anchor": "小白复刻步骤"
+        },
+        {
+          "level": 2,
+          "title": "技能治理的四条底线",
+          "anchor": "技能治理的四条底线"
+        },
+        {
+          "level": 2,
+          "title": "常见失败",
+          "anchor": "常见失败"
+        },
+        {
+          "level": 2,
+          "title": "复刻验收清单",
+          "anchor": "复刻验收清单"
+        },
+        {
+          "level": 2,
+          "title": "三层理解",
+          "anchor": "三层理解"
+        },
+        {
+          "level": 2,
+          "title": "安的提醒",
+          "anchor": "安的提醒"
+        },
+        {
+          "level": 2,
+          "title": "来源与审查",
+          "anchor": "来源与审查"
         }
       ],
-      "wordCount": 282,
-      "readingMinutes": 1,
+      "wordCount": 1761,
+      "readingMinutes": 4,
       "metrics": {
-        "lineCount": 28,
-        "headingCount": 6,
-        "linkCount": 4,
-        "sourceCount": 3
+        "lineCount": 111,
+        "headingCount": 13,
+        "linkCount": 0,
+        "sourceCount": 4
       },
       "quality": {
         "hasSources": true,
         "hasToc": true,
         "summaryLength": 44,
-        "sourceTitle": "Lifecycle Package: Agent Skill Governance",
-        "sourceSummary": "把 Agent 技能、规则、边界和验证整理成小白可复刻的治理学习包，帮助复杂协作不再只靠临时聊天记忆。",
+        "sourceTitle": "Agent 技能治理学习包",
+        "sourceSummary": "把 Agent 技能、规则、边界和验证整理成小白可复刻的治理学习包：让多工具协作不再只靠聊天记忆，而是靠清楚的触发、产物、禁止项和验收。",
         "needsSourceReview": false,
         "displayTier": "showcase",
         "qualityScore": 100,
@@ -28416,9 +29022,49 @@
       "sourceLabels": [
         "public project",
         "skill governance",
-        "agent workflow"
+        "agent workflow",
+        "github-skills",
+        "learning design"
       ],
-      "actionText": "先看这页的目标和边界，再按最小步骤做一个缩小版本，并记录一次验收结果。",
+      "whyItMattered": "多 Agent 协作最怕变成一群声音同时说话。技能治理的价值，是把重复动作写成可检查的流程，让一个主控能知道什么时候该调用技能、技能能碰什么、最后怎样验收。",
+      "psychologicalLayer": "人在混乱项目里会想抓住更多规则，因为规则看起来像秩序。但真正降低认知负担的是少数稳定步骤，不是厚厚的命令墙。",
+      "sociologicalLayer": "多 Agent 协作像一个小组织：没有角色边界、交接记录和验收标准，协作就会变成互相覆盖。技能治理把临时对话变成可维护制度。",
+      "philosophicalLayer": "自由不是没有规则，而是规则足够少、足够清楚，让人能继续行动。技能治理的目的不是驯服创造力，而是让创造力不被混乱吞掉。",
+      "operationStory": [
+        "先从混乱里找重复动作，例如整理资料、检查隐私、改前端卡片、生成站点数据、验收移动端。",
+        "再把重复动作写成技能卡，而不是写成一大段情绪化命令。技能必须说明什么时候用、需要什么、产出什么、不能碰什么。",
+        "使用时保持单主控：主控负责目标和验收，技能只负责局部流程，不能反过来支配整个项目。",
+        "每次技能用完都要回看结果：有没有减少混乱，有没有误伤文件，有没有让读者更容易理解。",
+        "旧规则不自动继承。过时规则只作为历史证据，只有重新通过当前验收，才进入新的工作流。"
+      ],
+      "replicationSteps": [
+        "找一个你每周都会重复的任务，例如“把一条资料写成小白可读卡片”。",
+        "写触发条件：什么时候必须用这个技能，什么时候不用。",
+        "写输入材料：需要哪些来源、页面、截图、链接或验收标准。",
+        "写输出结果：最终应该得到一张卡、一篇教程、一份报告，还是一个可运行页面。",
+        "写禁止事项：不泄露密钥，不暴露本机路径，不改无关文件，不把个人经验冒充通用结论。",
+        "写验收方式：前端能显示、内容能复刻、隐私扫描通过、读者能看懂。",
+        "试用一次。若技能让流程更清楚，就保留；若制造噪声，就删减或退回普通待办。"
+      ],
+      "failureModes": [
+        "技能太多：每个动作都建一个技能，最后维护成本超过收益。",
+        "规则太重：为了显得专业，把简单任务套进复杂仪式，实际拖慢交付。",
+        "旧规则复活：把过时控制器、历史命令和当前目标混在一起，导致代理互相打架。",
+        "没有禁止项：技能只写应该做什么，不写不能做什么，最后容易误伤隐私和文件。",
+        "没有验收：技能执行完只留下过程感，没有可检查产物。"
+      ],
+      "lessons": [
+        "技能不是魔法，是重复工作被压缩后的操作说明。",
+        "越是多 Agent，越需要单主控和可审计委派。没有主控，协作会变成噪声。",
+        "好技能让人少记忆、多识别；坏技能把简单工作变成新的迷宫。",
+        "规则的价值不在数量，而在它能否稳定减少错误。"
+      ],
+      "anReminders": [
+        "安的书房要保留技能，但不能崇拜流程。流程服务作品、内容和读者。",
+        "每次新增技能，都要问：它解决了哪个重复痛点，还是只是在制造安全感。",
+        "任何技能都不能越过公开边界，不能把私有提示词、密钥、路径和账号状态带进前端。"
+      ],
+      "actionText": "选一个重复任务，写成一张技能卡：触发条件、输入、输出、禁止事项、验收方式和维护规则。",
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": [],
@@ -28431,331 +29077,7 @@
         "lifecycle",
         "learning"
       ],
-      "nextPlan": "",
-      "whyItMattered": "「Agent 技能治理复刻学习包」把一次真实项目整理成可学习、可展示、可复刻的公开资料，帮助读者理解目标、边界和结果。",
-      "operationStory": [
-        "先把原始材料、私有复核和公开展示分开，确认哪些信息可以安全讲给读者。",
-        "再把项目目标、关键步骤、失败点和验收方式整理成中文页面。",
-        "最后通过结构检查、隐私扫描和站点数据生成，确认资料可以进入前端展示。"
-      ],
-      "replicationSteps": [
-        "先明确目标读者、最小成果和公开边界。",
-        "整理公开安全的来源说明和替代示例。",
-        "按教程、操作步骤、参考表和解释四块组织内容。",
-        "运行发布前验收，确认页面可读、可追踪、可维护。"
-      ],
-      "failureModes": [
-        "只展示结果，不说明来源和验收。",
-        "把原始本地材料误当成公开资料。",
-        "页面没有复刻步骤，读者只能看热闹。"
-      ],
-      "lessons": [
-        "项目资料要从经历变成方法，才能真正被复用。",
-        "公开页面要把价值、边界和下一步讲清楚。",
-        "小批量高质量整理比一次性堆材料更稳。"
-      ],
-      "anReminders": [
-        "继续把「Agent 技能治理复刻学习包」补成更具体的实操案例。",
-        "每次新增本地证据，都先进入私有复核，再决定是否公开。"
-      ]
-    },
-    {
-      "id": "c_03a09220c2dc1fa2",
-      "title": "Coze Agent Builder 复刻学习包",
-      "sourceTitle": "Coze Agent Builder 复刻学习包",
-      "slug": "wiki-projects-lifecycle-coze-agent-builder",
-      "summary": "把 Coze 风格 Agent 搭建器研究整理成学习包，帮助读者理解工作流节点、调试、发布和安全边界。",
-      "sourceSummary": "把 Coze 风格 Agent 平台拆成小白可复刻的只读问答工作流：先画节点、写输入输出、加人工确认，再逐步扩展工具能力。",
-      "tags": [
-        "project",
-        "ai-agent",
-        "coze",
-        "workflow",
-        "lifecycle",
-        "learning",
-        "curated",
-        "featured",
-        "beginner-friendly"
-      ],
-      "status": [
-        "featured"
-      ],
-      "createdAt": "2026-05-13",
-      "updatedAt": "2026-05-13",
-      "eventDate": null,
-      "sourcePath": "wiki/projects/lifecycle-coze-agent-builder.md",
-      "module": "works",
-      "category": "project",
-      "type": "project",
-      "phase": null,
-      "cover": null,
-      "contentType": "article",
-      "href": "/content/wiki-projects-lifecycle-coze-agent-builder",
-      "contentLines": [
-        "# Coze Agent Builder 复刻学习包",
-        "",
-        "这份学习包不是教你复制某个平台账号里的配置。它教你看懂 Agent Builder 的底层结构，并做一个最小版、可解释、可停止的智能体工作流。",
-        "",
-        "对小白来说，Agent Builder 可以先理解成“把一次 AI 回答拆成很多小格子”。每个格子负责一件事：接收问题、查资料、生成回答、请人确认、输出结果。复杂平台不过是在这些格子上加了更多工具和自动化。",
-        "",
-        "## 你会做出什么",
-        "",
-        "一个只读问答工作流：",
-        "",
-        "```text",
-        "用户问题 -> 任务理解 -> 公开资料检索 -> 回答草稿 -> 人工确认 -> 最终回答",
-        "```",
-        "",
-        "最小版本不接写入工具，不自动发布，不调用私有材料。它只回答公开资料里的问题。",
-        "",
-        "## 为什么从只读开始",
-        "",
-        "很多人一开始做 Agent，就想让它自动发消息、自动改文件、自动部署。这样很刺激，但不适合新手。因为你还没有看清：",
-        "",
-        "- 它读了什么；",
-        "- 它怎样判断；",
-        "- 它什么时候会错；",
-        "- 错了能不能停；",
-        "- 谁对最终结果负责。",
-        "",
-        "只读工作流能先训练你看结构。看懂结构后，再谈工具和自动化。",
-        "",
-        "## 小白复刻步骤",
-        "",
-        "### 第一步：画六个节点",
-        "",
-        "在纸上或白板工具里画六个框：",
-        "",
-        "| 节点 | 输入 | 输出 |",
-        "|---|---|---|",
-        "| 用户问题 | 读者的一句话 | 原始问题 |",
-        "| 任务理解 | 原始问题 | 问题类型 |",
-        "| 公开资料检索 | 问题类型 | 相关公开页面 |",
-        "| 回答草稿 | 公开资料 | 初稿 |",
-        "| 人工确认 | 初稿 | 通过或退回 |",
-        "| 最终回答 | 通过后的内容 | 给读者的答案 |",
-        "",
-        "完成标准：每个节点都能说清楚读什么、产出什么。",
-        "",
-        "### 第二步：写失败状态",
-        "",
-        "每个节点都要写失败状态：",
-        "",
-        "- 用户问题太模糊：请读者补充目标；",
-        "- 找不到公开资料：说明资料库没有收录；",
-        "- 回答草稿不确定：标明不确定；",
-        "- 人工确认失败：退回修改；",
-        "- 涉及私有材料：拒绝或转为公开边界说明。",
-        "",
-        "完成标准：工作流不怕失败，因为它知道在哪里停。",
-        "",
-        "### 第三步：跑一个公开问题",
-        "",
-        "用这个问题测试：",
-        "",
-        "> 我是新手，想看安的书房，应该从哪里开始？",
-        "",
-        "理想路径：",
-        "",
-        "1. 判断这是导航问题；",
-        "2. 检索首页、谱系、工坊；",
-        "3. 生成三条入口建议；",
-        "4. 人工确认没有泄露私有内容；",
-        "5. 输出给读者。",
-        "",
-        "完成标准：答案只基于公开页面。",
-        "",
-        "## 安实际提炼了什么",
-        "",
-        "安从 Coze 风格平台里提炼的不是“某个具体配置”，而是四个可复用概念：",
-        "",
-        "1. **节点**：把任务拆小；",
-        "2. **资料**：回答必须有来源；",
-        "3. **工具**：动作必须有权限；",
-        "4. **检查点**：关键位置让人确认。",
-        "",
-        "这四个概念比平台本身更重要。平台会变，结构会留下。",
-        "",
-        "## 三层理解",
-        "",
-        "**心理层**：复杂平台会让新手误以为自己必须一次学完。把 Agent 拆成只读问答流，会让注意力回到“我现在只学一件事”。",
-        "",
-        "**社会层**：Agent 不只是个人提示词，它像一个小组织：有人提问，有资料库，有工具，有审批，有记录。组织越小，边界越要清楚。",
-        "",
-        "**哲学层**：自动化真正的成熟，不是无人参与，而是知道哪些地方必须有人负责。",
-        "",
-        "## 下一步练习",
-        "",
-        "在 [[wiki/projects/coze-agent-builder-research]] 的基础上，画出你的第一个只读工作流。不要接外部工具。先让它回答一个公开资料问题，并记录失败路径。",
-        "",
-        "## Related",
-        "",
-        "- [[wiki/projects/coze-agent-builder-research]]",
-        "- [[wiki/concepts/tool-coze-workflow-platform-study]]",
-        "- [[wiki/topics/ai-agent-systems-moc]]",
-        "- [[wiki/sources/tutorial-and-source-research-best-practices]]"
-      ],
-      "links": [
-        {
-          "target": "wiki/projects/coze-agent-builder-research",
-          "label": "wiki/projects/coze-agent-builder-research"
-        },
-        {
-          "target": "wiki/projects/coze-agent-builder-research",
-          "label": "wiki/projects/coze-agent-builder-research"
-        },
-        {
-          "target": "wiki/concepts/tool-coze-workflow-platform-study",
-          "label": "wiki/concepts/tool-coze-workflow-platform-study"
-        },
-        {
-          "target": "wiki/topics/ai-agent-systems-moc",
-          "label": "wiki/topics/ai-agent-systems-moc"
-        },
-        {
-          "target": "wiki/sources/tutorial-and-source-research-best-practices",
-          "label": "wiki/sources/tutorial-and-source-research-best-practices"
-        }
-      ],
-      "sources": [
-        "[[wiki/projects/coze-agent-builder-research]]",
-        "[[wiki/topics/ai-agent-systems-moc]]",
-        "[[wiki/concepts/upstream-reference-and-adaptation-policy]]",
-        "[[wiki/sources/tutorial-and-source-research-best-practices]]"
-      ],
-      "toc": [
-        {
-          "level": 1,
-          "title": "Coze Agent Builder 复刻学习包",
-          "anchor": "coze-agent-builder-复刻学习包"
-        },
-        {
-          "level": 2,
-          "title": "你会做出什么",
-          "anchor": "你会做出什么"
-        },
-        {
-          "level": 2,
-          "title": "为什么从只读开始",
-          "anchor": "为什么从只读开始"
-        },
-        {
-          "level": 2,
-          "title": "小白复刻步骤",
-          "anchor": "小白复刻步骤"
-        },
-        {
-          "level": 3,
-          "title": "第一步：画六个节点",
-          "anchor": "第一步画六个节点"
-        },
-        {
-          "level": 3,
-          "title": "第二步：写失败状态",
-          "anchor": "第二步写失败状态"
-        },
-        {
-          "level": 3,
-          "title": "第三步：跑一个公开问题",
-          "anchor": "第三步跑一个公开问题"
-        },
-        {
-          "level": 2,
-          "title": "安实际提炼了什么",
-          "anchor": "安实际提炼了什么"
-        },
-        {
-          "level": 2,
-          "title": "三层理解",
-          "anchor": "三层理解"
-        },
-        {
-          "level": 2,
-          "title": "下一步练习",
-          "anchor": "下一步练习"
-        },
-        {
-          "level": 2,
-          "title": "Related",
-          "anchor": "related"
-        }
-      ],
-      "wordCount": 973,
-      "readingMinutes": 3,
-      "metrics": {
-        "lineCount": 102,
-        "headingCount": 11,
-        "linkCount": 5,
-        "sourceCount": 4
-      },
-      "quality": {
-        "hasSources": true,
-        "hasToc": true,
-        "summaryLength": 51,
-        "sourceTitle": "Coze Agent Builder 复刻学习包",
-        "sourceSummary": "把 Coze 风格 Agent 平台拆成小白可复刻的只读问答工作流：先画节点、写输入输出、加人工确认，再逐步扩展工具能力。",
-        "needsSourceReview": false,
-        "displayTier": "showcase",
-        "qualityScore": 100,
-        "hiddenReasons": [],
-        "explicitlyCurated": true
-      },
-      "publicSafety": "public-safe",
-      "sourceLabels": [
-        "public project",
-        "reference study",
-        "agent workflow",
-        "tutorial standard"
-      ],
-      "whyItMattered": "这个学习包把 Coze 风格平台从一个看起来复杂的工具，拆成小白能理解的工作流：输入、判断、资料、工具、检查、输出。",
-      "psychologicalLayer": "新手看 Agent 平台时容易被节点、插件和自动化吓住。把它拆成一条只读问答流，可以先获得控制感，再逐步增加能力。",
-      "sociologicalLayer": "Agent Builder 是平台化 AI 的缩影：个人不再只写提示词，而是在组织工具、资料、权限和人工检查。它像一个小型协作系统。",
-      "philosophicalLayer": "智能体的可信度不来自它能做多少事，而来自它在该停下来的地方能够停下来。",
-      "operationStory": [
-        "先把 Coze 风格平台当成架构样本，而不是直接复制某个账号里的配置。",
-        "再提取可公开讲的结构：节点、知识库、工具、流程、人工检查和运行记录。",
-        "然后把复杂 Agent 拆成只读问答流，让小白先理解输入怎样变成回答。",
-        "最后把权限、失败路径和人工确认写进学习包，防止自动化越界。"
-      ],
-      "replicationSteps": [
-        "画 6 个框：用户输入、任务理解、公开资料检索、回答生成、人工确认、最终输出。",
-        "给每个框写一句输入和一句输出。",
-        "标记哪些框只能读资料，哪些框未来可能调用工具。",
-        "加一个人工确认节点，任何发布或执行动作都必须经过它。",
-        "跑一个公开安全问题，例如：如何开始阅读安的书房。",
-        "记录正常路径和失败路径，失败时说明停在哪一步。"
-      ],
-      "failureModes": [
-        "把平台账号里的配置当成公开教程，泄露不该公开的运行细节。",
-        "一开始就让 Agent 自动执行写入、发布或远程操作。",
-        "没有人工确认节点，回答错了也继续向后走。",
-        "只画漂亮流程图，不写每个节点的输入、输出和失败状态。",
-        "把工具越多当成能力越强，忽略权限和边界。"
-      ],
-      "lessons": [
-        "Agent 工作流先从只读开始，可信之后再增加动作。",
-        "每个节点都要知道它读什么、写什么、失败时停在哪里。",
-        "人工确认不是低效，而是把责任留在人手里。",
-        "运行记录的价值是复盘，不是公开炫耀。"
-      ],
-      "actionText": "先画一个只读问答工作流：用户输入、公开资料检索、回答草稿、人工确认、最终输出。不要一开始接写入工具。",
-      "displayTier": "showcase",
-      "qualityScore": 100,
-      "hiddenReasons": [],
-      "projectStatus": "research",
-      "techStack": [
-        "project",
-        "ai-agent",
-        "coze",
-        "workflow",
-        "lifecycle",
-        "learning"
-      ],
-      "nextPlan": "",
-      "anReminders": [
-        "继续把「Coze Agent Builder 复刻学习包」补成更具体的实操案例。",
-        "每次新增本地证据，都先进入私有复核，再决定是否公开。"
-      ]
+      "nextPlan": ""
     },
     {
       "id": "c_aa6d132c022d7d69",
@@ -28818,7 +29140,20 @@
         "3. **加深详情**：工坊详情页必须出现操作历程、复刻路径、失败模式和安的提醒。",
         "4. **做验收**：每次生成数据后跑隐私扫描、结构检查、前端构建和浏览器查看。",
         "",
-        "## 小白复刻步骤",
+        "## 第一次复刻步骤",
+        "",
+        "### 准备材料",
+        "",
+        "先准备一份很小的材料包，不要准备整个知识库：",
+        "",
+        "| 材料 | 最小要求 | 不要放什么 |",
+        "|---|---|---|",
+        "| 项目卡 | 3 张真实项目卡，每张 6 句话 | 假项目、占位词、英文模板 |",
+        "| 详情页 | 每张卡对应 1 页详情 | 本机路径、原始聊天、账号材料 |",
+        "| 图片 | 每张项目 1 张不同封面 | 重复占位图、看不出主题的图 |",
+        "| 检查表 | 移动端、搜索、跳转、内容边界 | 只有“看起来不错”的主观判断 |",
+        "",
+        "完成标准：你手里有三张能公开的项目卡，而不是一堆还没整理的原材料。",
         "",
         "### 第一步：只做三张项目卡",
         "",
@@ -28846,7 +29181,7 @@
         "- 项目背景；",
         "- 工具与材料；",
         "- 安实际做过的操作；",
-        "- 小白复刻步骤；",
+        "- 第一次复刻步骤；",
         "- 失败点；",
         "- 安的提醒；",
         "- 下一步。",
@@ -28869,6 +29204,29 @@
         "- 详情页长文是否能读下去。",
         "",
         "完成标准：不用放大缩小也能读。",
+        "",
+        "## 验收清单",
+        "",
+        "上线前按这张表检查，不通过就回去改内容，不要继续堆模块：",
+        "",
+        "| 检查点 | 合格标准 | 失败信号 |",
+        "|---|---|---|",
+        "| 首页 | 10 秒内知道安是谁、这里能看什么、先点哪里 | 首屏只有口号或装饰 |",
+        "| 工坊卡 | 每张卡有判断、适合谁、先复刻、别踩坑 | 只有标题和标签 |",
+        "| 详情页 | 有操作历程、复刻步骤、失败点、安的提醒 | 读者看完仍不知道怎么做 |",
+        "| 藏馆 | 大类是前端、后端、工具、智能体、提示词等人话 | 第一层全是技术缩写 |",
+        "| 移动端 | 顶部不重叠，底部导航可点，浮层不挡内容 | 需要放大或横向滚动 |",
+        "| 数据边界 | 浏览器只能看到公开数据 | 出现私有目录、原始记录、本机细节 |",
+        "",
+        "## 注意力设计",
+        "",
+        "这个前端要让小白少记忆、多识别。页面遵守三条规则：",
+        "",
+        "1. 卡片只负责“要不要点开”，不负责讲完所有内容。",
+        "2. 详情页先给“先完成、看结构、看边界”三种读法，再展开完整步骤。",
+        "3. 风信只保留能改变判断的消息，不做普通动态流。",
+        "",
+        "这来自一个朴素的交互原则：读者越陌生，页面越要先给方向，再给细节。把所有内容同时摊开，只会让人以为自己不适合学习。",
         "",
         "## 常见失败",
         "",
@@ -28945,8 +29303,13 @@
         },
         {
           "level": 2,
-          "title": "小白复刻步骤",
-          "anchor": "小白复刻步骤"
+          "title": "第一次复刻步骤",
+          "anchor": "第一次复刻步骤"
+        },
+        {
+          "level": 3,
+          "title": "准备材料",
+          "anchor": "准备材料"
         },
         {
           "level": 3,
@@ -28970,6 +29333,16 @@
         },
         {
           "level": 2,
+          "title": "验收清单",
+          "anchor": "验收清单"
+        },
+        {
+          "level": 2,
+          "title": "注意力设计",
+          "anchor": "注意力设计"
+        },
+        {
+          "level": 2,
           "title": "常见失败",
           "anchor": "常见失败"
         },
@@ -28989,11 +29362,11 @@
           "anchor": "related"
         }
       ],
-      "wordCount": 1227,
-      "readingMinutes": 3,
+      "wordCount": 1755,
+      "readingMinutes": 4,
       "metrics": {
-        "lineCount": 109,
-        "headingCount": 12,
+        "lineCount": 145,
+        "headingCount": 15,
         "linkCount": 5,
         "sourceCount": 4
       },
@@ -29070,11 +29443,11 @@
     },
     {
       "id": "c_7a75673d492c3360",
-      "title": "Hanako 复刻学习包",
-      "sourceTitle": "Lifecycle Package: Hanako OpenHanako Creative Agent Desktop",
+      "title": "Hanako 创作型桌面 Agent 学习包",
+      "sourceTitle": "Hanako 创作型桌面 Agent 学习包",
       "slug": "wiki-projects-lifecycle-hanako-openhanako-creative-agent-desktop",
       "summary": "把 Hanako/OpenHanako 创作型桌面 Agent 的探索整理成学习包，关注创作流程、插件生态和安全边界。",
-      "sourceSummary": "把 Hanako/OpenHanako 风格创作型桌面 Agent 的探索整理成小白可复刻学习包，重点讲界面、流程、资产和安全边界。",
+      "sourceSummary": "把 Hanako/OpenHanako 风格创作型桌面 Agent 的探索整理成中文学习包：重点讲界面分层、角色气质、素材治理、安全动作、失败降级和小白可复刻原型。",
       "tags": [
         "project",
         "desktop-app",
@@ -29083,13 +29456,14 @@
         "lifecycle",
         "learning",
         "curated",
-        "featured"
+        "featured",
+        "beginner-friendly"
       ],
       "status": [
         "featured"
       ],
       "createdAt": "2026-05-13",
-      "updatedAt": "2026-05-13",
+      "updatedAt": "2026-05-15",
       "eventDate": null,
       "sourcePath": "wiki/projects/lifecycle-hanako-openhanako-creative-agent-desktop.md",
       "module": "works",
@@ -29100,104 +29474,227 @@
       "contentType": "article",
       "href": "/content/wiki-projects-lifecycle-hanako-openhanako-creative-agent-desktop",
       "contentLines": [
-        "# Hanako 复刻学习包",
+        "# Hanako 创作型桌面 Agent 学习包",
         "",
-        "## 概览",
+        "## 开场判断",
         "",
-        "把 Hanako/OpenHanako 创作型桌面 Agent 的探索整理成学习包，关注创作流程、插件生态和安全边界。",
+        "一个创作型桌面 Agent，不能只靠“可爱”“漂亮”“像生命体”成立。真正让它有价值的，是它能不能在一个明确空间里帮助人行动。",
         "",
-        "## 读者可以获得什么",
+        "Hanako 这类项目给安的启发，不是照抄外观，而是理解一种产品形态：数字生命体有入口、有语气、有记忆、有行动范围，也有不能越过的边界。它既要像一个存在，又不能假装无所不知；既要让人愿意靠近，又不能吞掉人的判断。",
         "",
-        "- 理解「Hanako 复刻学习包」在安的书房里的位置。",
-        "- 看清它解决的问题、适合的读者和后续复刻方向。",
-        "- 知道公开页面保留的是方法、结构和经验，不包含原始私有材料。",
+        "小白可以先这样理解：桌面 Agent 不是一个更花哨的聊天框，而是一间小工作室。你进来，看见它是谁，它知道哪些公开资料，它能帮你做哪一步，它做不到时会怎样说明。",
         "",
-        "## 推荐阅读方式",
+        "## 为什么值得做",
         "",
-        "1. 先读概览，确认它和当前学习目标是否相关。",
-        "2. 再看关联页面，理解来源、项目、工具或工作流之间的关系。",
-        "3. 如果要复刻，先写下自己的目标、输入材料、边界和验收标准。",
-        "4. 完成后回到资料库，把新的经验整理成可追踪页面。",
+        "安正在做的是“安的书房”，未来也会有“小安”的对话入口。小安不是普通客服，它是安的数字生命体和书房整理者。要把它做成桌面端或 App，就必须提前理解桌面 Agent 的结构，否则很容易做成一个漂亮但空泛的皮肤。",
         "",
-        "## 发布边界",
+        "这个学习包把复杂目标拆成五个可见区域：",
         "",
-        "本页只展示公开安全的整理结果。原始材料、账号状态、本机细节、私人对话和未复核内容不会进入公开展示。",
+        "1. **入口**：读者第一次打开，知道这里是谁的书房。",
+        "2. **作品**：能看见项目、资料包、年谱和路线。",
+        "3. **记忆**：只展示公开安全摘要，不展示私有原文。",
+        "4. **行动**：给读者下一步，而不是闲聊。",
+        "5. **验收**：模型、数据、网络失败时也有清楚提示。",
         "",
-        "## 来源",
+        "## 适合谁",
         "",
-        "- [[wiki/sources/local-private-compile-2026-05-13]]",
-        "- [[wiki/synthesis/lifecycle-replication-package-workflow]]",
-        "- [[wiki/concepts/upstream-reference-and-adaptation-policy]]"
+        "- 想做 AI 伴侣、数字分身、桌面助手或创作工具的人。",
+        "- 想把个人资料库做成 App，但不知道怎样接小安的人。",
+        "- 想学习角色设计、前端展示、数据边界和模型调用关系的人。",
+        "- 想复刻“有温度但不失控”的 AI 产品形态的人。",
+        "",
+        "## 你要做出的东西",
+        "",
+        "先不要做完整应用。先做一张静态原型图，或者一个可点击的最小页面。",
+        "",
+        "| 区域 | 小白理解 | 最小版本 |",
+        "|---|---|---|",
+        "| 首页入口 | 这是谁，它能做什么 | 一段中文介绍和两个按钮 |",
+        "| 作品区 | 安做过什么 | 三张项目资料包卡片 |",
+        "| 记忆区 | 它知道什么公开内容 | 三条公开摘要，不放私密 |",
+        "| 行动区 | 它能帮我下一步做什么 | 推荐阅读、解释卡片、生成清单 |",
+        "| 验收区 | 出错时怎么办 | 加载失败、模型不可用、内容缺失提示 |",
+        "",
+        "## 材料准备",
+        "",
+        "- 一个中文名字和角色边界，例如“小安，安的数字生命体和书房整理者”。",
+        "- 一张可以公开使用的头像或占位图。",
+        "- 一组安全内容卡片，例如三个公开项目学习包。",
+        "- 一个动作按钮，例如“帮我读这张资料包”。",
+        "- 一组错误状态文案。",
+        "",
+        "不要准备私有记忆、真实密钥、本机路径、服务器访问方式、私有截图和未授权素材。它们不是原型必需品。",
+        "",
+        "## 安实际怎么做",
+        "",
+        "安把 Hanako 当作气质参考，而不是内容来源。真正进入书房的，是产品方法。",
+        "",
+        "第一步，是确定小安的身份：小安是数字生命体，也是安的书房整理者。它服务读者理解公开资料，不扮演无边界朋友，不索取私密信息，不展示后台材料。",
+        "",
+        "第二步，是拆开界面和智能。界面先负责让读者知道自己在哪，智能只做可控的小动作。这样即使模型暂时不可用，书房也不会变成空白。",
+        "",
+        "第三步，是管理素材。头像、封面、字体、图片都要能解释来源。一个创作型应用如果素材边界混乱，后期越漂亮越难发布。",
+        "",
+        "第四步，是设计降级状态。小安回答不了时，要说清楚原因和下一步；网络不通时，要保留上一次内容；数据还没整理好时，不用假内容充数。",
+        "",
+        "## 小白复刻步骤",
+        "",
+        "1. **写角色定义**：例如“小安是安的数字生命体，负责整理公开书房，回答读者可以公开知道的内容。”",
+        "2. **画五区草图**：入口、作品、记忆、行动、验收。每区只写一句话。",
+        "3. **做静态页面**：先不要接模型，只做能打开、能阅读、能点击的界面。",
+        "4. **放三张真实卡片**：用公开安全项目，不要用假数据撑场面。",
+        "5. **加一个安全动作**：点击后显示“这张资料包怎么读”或“下一步做什么”。",
+        "6. **补三种失败状态**：没有网络、模型不可用、资料未整理。",
+        "7. **检查移动端**：标题、电池栏、底部导航、按钮和正文不能重叠。",
+        "8. **写边界说明**：告诉读者小安只基于公开资料回答，不回答密钥、账号、服务器和私有路径。",
+        "",
+        "## 视觉与交互原则",
+        "",
+        "创作型 Agent 的界面要文艺，但不能飘。",
+        "",
+        "- 第一屏先出现名字和气质，不堆功能表。",
+        "- 入口少一点，路径清一点。新手只需要知道先看哪里。",
+        "- 卡片是资料包入口，不在卡片里展开长文。",
+        "- 对话入口稳定出现，但不能压住内容。",
+        "- 错误提示要像人在说明情况，不像机器丢出代码。",
+        "- 所有文案中文优先，少用英文术语。",
+        "",
+        "## 常见失败",
+        "",
+        "**只做角色，不做任务。**  ",
+        "角色很有魅力，但读者不知道它能帮自己做什么，最后只剩氛围。",
+        "",
+        "**只做聊天，不做书房。**  ",
+        "读者每次都要问，无法自己浏览项目、路线和资料包。",
+        "",
+        "**只做漂亮，不做边界。**  ",
+        "视觉越好，越容易掩盖数据来源、权限和模型失败。",
+        "",
+        "**把私有记忆做成卖点。**  ",
+        "公开产品不能依赖私有原文。可以展示公开总结，不能展示后台记忆。",
+        "",
+        "## 复刻验收清单",
+        "",
+        "- [ ] 第一屏能让人知道这是安的书房和小安入口。",
+        "- [ ] 页面至少有三张真实公开资料包。",
+        "- [ ] 小安入口不遮挡核心内容。",
+        "- [ ] 模型不可用时有中文降级提示。",
+        "- [ ] 不包含真实密钥、服务器、路径、账号和私有截图。",
+        "- [ ] 素材来源清楚，可替换。",
+        "- [ ] 手机和桌面都能正常阅读。",
+        "",
+        "## 三层理解",
+        "",
+        "**心理层**：人会天然被“像生命体”的东西吸引，也会因此降低警惕。小安的设计要保留亲近感，同时不断提醒边界，让信任来自清楚，而不是来自拟人幻觉。",
+        "",
+        "**社会层**：AI 伴侣、桌面助手、知识库和个人品牌正在汇合。很多产品会把“陪伴”做成卖点，但安的书房更适合把“帮助读者理解和行动”作为主线。",
+        "",
+        "**哲学层**：数字生命体越像一个存在，越需要回答责任问题：它知道什么，不知道什么，能做什么，不能做什么。边界不是削弱生命感，而是让它不伤害人。",
+        "",
+        "## 安的提醒",
+        "",
+        "- 小安先做整理者，再做陪伴者。",
+        "- 先让读者看懂书房，再让小安回答问题。",
+        "- 没有公开资料支撑的问题，小安要说不知道。",
+        "- 模型能力不等于产品能力。产品能力来自界面、数据、边界和失败处理的合奏。",
+        "",
+        "## 来源与审查",
+        "",
+        "本页来自公开安全的 Hanako/OpenHanako 方向观察、安的书房小安设定、生命周期复刻学习包标准、GitHub Skills 内容模型和前端展示标准。审查重点是：不公开本地截图、资产原件、提示词、账号状态和路径；不把角色气质写成空泛设定；不让小白在漂亮界面里迷路。"
       ],
-      "links": [
-        {
-          "target": "wiki/synthesis/lifecycle-package-backlog",
-          "label": "wiki/synthesis/lifecycle-package-backlog"
-        },
-        {
-          "target": "wiki/synthesis/lifecycle-replication-package-workflow",
-          "label": "wiki/synthesis/lifecycle-replication-package-workflow"
-        },
-        {
-          "target": "wiki/concepts/upstream-reference-and-adaptation-policy",
-          "label": "wiki/concepts/upstream-reference-and-adaptation-policy"
-        },
-        {
-          "target": "wiki/topics/personal-archive-moc",
-          "label": "wiki/topics/personal-archive-moc"
-        }
-      ],
+      "links": [],
       "sources": [
         "[[wiki/sources/local-private-compile-2026-05-13]]",
         "[[wiki/synthesis/lifecycle-replication-package-workflow]]",
-        "[[wiki/concepts/upstream-reference-and-adaptation-policy]]"
+        "[[wiki/concepts/upstream-reference-and-adaptation-policy]]",
+        "[[wiki/sources/tutorial-and-source-research-best-practices]]"
       ],
       "toc": [
         {
           "level": 1,
-          "title": "Hanako 复刻学习包",
-          "anchor": "hanako-复刻学习包"
+          "title": "Hanako 创作型桌面 Agent 学习包",
+          "anchor": "hanako-创作型桌面-agent-学习包"
         },
         {
           "level": 2,
-          "title": "概览",
-          "anchor": "概览"
+          "title": "开场判断",
+          "anchor": "开场判断"
         },
         {
           "level": 2,
-          "title": "读者可以获得什么",
-          "anchor": "读者可以获得什么"
+          "title": "为什么值得做",
+          "anchor": "为什么值得做"
         },
         {
           "level": 2,
-          "title": "推荐阅读方式",
-          "anchor": "推荐阅读方式"
+          "title": "适合谁",
+          "anchor": "适合谁"
         },
         {
           "level": 2,
-          "title": "发布边界",
-          "anchor": "发布边界"
+          "title": "你要做出的东西",
+          "anchor": "你要做出的东西"
         },
         {
           "level": 2,
-          "title": "来源",
-          "anchor": "来源"
+          "title": "材料准备",
+          "anchor": "材料准备"
+        },
+        {
+          "level": 2,
+          "title": "安实际怎么做",
+          "anchor": "安实际怎么做"
+        },
+        {
+          "level": 2,
+          "title": "小白复刻步骤",
+          "anchor": "小白复刻步骤"
+        },
+        {
+          "level": 2,
+          "title": "视觉与交互原则",
+          "anchor": "视觉与交互原则"
+        },
+        {
+          "level": 2,
+          "title": "常见失败",
+          "anchor": "常见失败"
+        },
+        {
+          "level": 2,
+          "title": "复刻验收清单",
+          "anchor": "复刻验收清单"
+        },
+        {
+          "level": 2,
+          "title": "三层理解",
+          "anchor": "三层理解"
+        },
+        {
+          "level": 2,
+          "title": "安的提醒",
+          "anchor": "安的提醒"
+        },
+        {
+          "level": 2,
+          "title": "来源与审查",
+          "anchor": "来源与审查"
         }
       ],
-      "wordCount": 273,
-      "readingMinutes": 1,
+      "wordCount": 2015,
+      "readingMinutes": 5,
       "metrics": {
-        "lineCount": 28,
-        "headingCount": 6,
-        "linkCount": 4,
-        "sourceCount": 3
+        "lineCount": 127,
+        "headingCount": 14,
+        "linkCount": 0,
+        "sourceCount": 4
       },
       "quality": {
         "hasSources": true,
         "hasToc": true,
         "summaryLength": 59,
-        "sourceTitle": "Lifecycle Package: Hanako OpenHanako Creative Agent Desktop",
-        "sourceSummary": "把 Hanako/OpenHanako 风格创作型桌面 Agent 的探索整理成小白可复刻学习包，重点讲界面、流程、资产和安全边界。",
+        "sourceTitle": "Hanako 创作型桌面 Agent 学习包",
+        "sourceSummary": "把 Hanako/OpenHanako 风格创作型桌面 Agent 的探索整理成中文学习包：重点讲界面分层、角色气质、素材治理、安全动作、失败降级和小白可复刻原型。",
         "needsSourceReview": false,
         "displayTier": "showcase",
         "qualityScore": 100,
@@ -29208,9 +29705,48 @@
       "sourceLabels": [
         "local compile",
         "public-safe rewrite",
-        "lifecycle package"
+        "lifecycle package",
+        "learning design"
       ],
-      "actionText": "先看这页的目标和边界，再按最小步骤做一个缩小版本，并记录一次验收结果。",
+      "whyItMattered": "Hanako 这类创作型桌面 Agent 很容易被误解成“做一个漂亮壳”。真正值得学的是：怎样把角色气质、桌面壳、记忆面板、行动区、素材边界和验证流程拆开，让数字生命体有温度但不失控。",
+      "psychologicalLayer": "创作型 Agent 容易给人陪伴感，也容易让人放松警惕。设计时要让亲近感服务任务，而不是让角色魅力掩盖权限、数据和失败状态。",
+      "sociologicalLayer": "AI 伴侣、桌面宠物和创作工具正在融合。用户期待它像人一样理解自己，但产品必须像系统一样保护边界。安的书房选择的是服务型数字生命体，不是无边界陪聊。",
+      "philosophicalLayer": "数字生命体不是模拟一个人，而是在界面、语言和记忆之间建立一种责任关系。它越像存在，就越需要边界。",
+      "operationStory": [
+        "先把 Hanako/OpenHanako 视作产品模式，而不是可直接复制的私有项目。公开学习只保留结构，不搬本地状态。",
+        "再拆四层：界面壳、视觉资产、Agent 行为、用户数据。只有前两层的公开安全抽象可以进入学习包。",
+        "用小白语言解释桌面 Agent：它不是聊天框外挂，而是一个有入口、有记忆、有行动范围的工作空间。",
+        "先做静态屏幕，再做一个安全动作，例如打开公开资料、解释一张卡片、给出下一步阅读建议。",
+        "最后检查资产归属、提示词边界、数据来源和失败降级，确认它不会把私人工作区当成内容展示。"
+      ],
+      "replicationSteps": [
+        "写一句产品定义：这个桌面 Agent 帮谁，在什么场景里，完成哪一个动作。",
+        "画五个区域：首页入口、项目展示、记忆摘要、行动按钮、验收与边界提示。",
+        "先做静态界面，不接模型，不接数据库，不接本地文件。让读者先看懂它是什么。",
+        "准备公开安全素材：头像、封面、图标、色彩、字体。所有素材必须能说明来源或可替换。",
+        "设计一个安全动作：例如“解释这张资料包怎么读”或“推荐下一页”，不要一开始就允许它操作文件。",
+        "加入失败状态：模型不可用、数据未加载、网络失败、内容缺失时，页面要给清楚提示。",
+        "用手机和桌面各看一次，确认文字不拥挤、按钮能点、读者知道下一步。"
+      ],
+      "failureModes": [
+        "把漂亮界面当成完整产品，忽略 Agent 能做什么、不能做什么。",
+        "资产边界不清：随手使用截图、头像、字体和素材，后期无法公开发布。",
+        "人格设定过重：角色说得很多，但不能帮助读者完成任务。",
+        "直接接入私有记忆：为了显得智能，把私人材料暴露给前端或模型。",
+        "缺少降级：模型失败、网络失败、数据缺失时，用户只看到空白或报错。"
+      ],
+      "lessons": [
+        "数字生命体首先是交互关系，其次才是模型能力。",
+        "创作型桌面 App 要先分清氛围、内容、行动和边界，不能用美术遮住功能。",
+        "公开展示要教模式，不展示私人工作区。",
+        "一个温柔的 Agent 也必须有清楚的拒绝边界。"
+      ],
+      "anReminders": [
+        "Hanako 的气质可以参考，但安的书房要长出自己的小安：中文、克制、清醒、能把复杂事拆简单。",
+        "不要急着接模型。先让界面讲清楚它能帮读者做什么。",
+        "任何头像、封面、截图和素材，都要先过来源和公开边界。"
+      ],
+      "actionText": "先画一张五区草图：入口、作品、记忆、行动、验收。不要接私有资料，不要接真实账号，先做一个静态可读原型。",
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": [],
@@ -29223,33 +29759,7 @@
         "lifecycle",
         "learning"
       ],
-      "nextPlan": "",
-      "whyItMattered": "「Hanako 复刻学习包」把一次真实项目整理成可学习、可展示、可复刻的公开资料，帮助读者理解目标、边界和结果。",
-      "operationStory": [
-        "先把原始材料、私有复核和公开展示分开，确认哪些信息可以安全讲给读者。",
-        "再把项目目标、关键步骤、失败点和验收方式整理成中文页面。",
-        "最后通过结构检查、隐私扫描和站点数据生成，确认资料可以进入前端展示。"
-      ],
-      "replicationSteps": [
-        "先明确目标读者、最小成果和公开边界。",
-        "整理公开安全的来源说明和替代示例。",
-        "按教程、操作步骤、参考表和解释四块组织内容。",
-        "运行发布前验收，确认页面可读、可追踪、可维护。"
-      ],
-      "failureModes": [
-        "只展示结果，不说明来源和验收。",
-        "把原始本地材料误当成公开资料。",
-        "页面没有复刻步骤，读者只能看热闹。"
-      ],
-      "lessons": [
-        "项目资料要从经历变成方法，才能真正被复用。",
-        "公开页面要把价值、边界和下一步讲清楚。",
-        "小批量高质量整理比一次性堆材料更稳。"
-      ],
-      "anReminders": [
-        "继续把「Hanako 复刻学习包」补成更具体的实操案例。",
-        "每次新增本地证据，都先进入私有复核，再决定是否公开。"
-      ]
+      "nextPlan": ""
     },
     {
       "id": "c_daadd85ef36cab39",
@@ -29307,6 +29817,20 @@
         "",
         "不要先整理全部资料。先选一个项目，比如“个人资料库展示前端”。",
         "",
+        "### 输入材料",
+        "",
+        "先准备一份小材料，不要让自己被整个资料库压住：",
+        "",
+        "| 输入 | 例子 | 处理方式 |",
+        "|---|---|---|",
+        "| 真实项目 | 个人资料库展示前端、Coze Agent 研究 | 写成工坊学习包 |",
+        "| 工具记录 | Codex、Claude Code、Cursor、Kimi、Obsidian | 写成藏馆资料卡 |",
+        "| 失败记录 | 卡片太浅、移动端遮挡、小安未连模型 | 写成失败信号和修复动作 |",
+        "| 时间线 | 2026 年 3 月之后开始系统玩 AI | 写成年谱节点 |",
+        "| 私有材料 | 密钥、原始聊天、本机路径、服务器细节 | 只留在私有层，不进入公开数据 |",
+        "",
+        "完成标准：每个输入都有去处。不能公开的内容不删除，但也不端给读者。",
+        "",
         "### 第一步：写公开价值",
         "",
         "用三句话回答：",
@@ -29336,7 +29860,7 @@
         "- 项目说明；",
         "- 为什么重要；",
         "- 安实际做了什么；",
-        "- 小白复刻步骤；",
+        "- 第一次复刻步骤；",
         "- 失败点；",
         "- 安的提醒；",
         "- 下一步。",
@@ -29348,6 +29872,34 @@
         "只有公开页通过检查后，才生成前端数据。前端只读公开 JSON 或未来 API，不读私有层。",
         "",
         "完成标准：前端卡片能出现，详情页能打开，隐私扫描不报高风险。",
+        "",
+        "## 标准工作流",
+        "",
+        "以后补资料时按这一条走，避免越补越乱：",
+        "",
+        "1. **选题**：只选一个主题，例如“AI 前端入门”或“Agent 工作流入门”。",
+        "2. **定读者**：写清这页第一次读、想深入、做维护时分别先看什么。",
+        "3. **找来源**：至少有一个公开来源、一个个人项目证据或一条可复核记录。",
+        "4. **写最小交付**：读者看完能做出什么，例如一张卡、一页页面、一个只读流程。",
+        "5. **写失败修复**：列出会错在哪里，错了怎么判断。",
+        "6. **改写公开版**：不放私有材料，只放方法、判断、步骤和边界。",
+        "7. **生成前端数据**：让网站读取，不让网站读原始材料。",
+        "8. **页面验收**：手机、桌面、搜索、详情页、小安导览都要看一次。",
+        "",
+        "这条流程的重点不是显得专业，而是让每一页都能回答三个问题：我为什么看，照着做什么，哪里不要乱碰。",
+        "",
+        "## 交付物清单",
+        "",
+        "一个主题被整理完成时，至少要留下这些东西：",
+        "",
+        "| 交付物 | 用途 |",
+        "|---|---|",
+        "| 公开页面 | 给读者阅读和复刻 |",
+        "| 来源标签 | 告诉读者依据从哪里来 |",
+        "| 复刻步骤 | 把经验变成可行动路线 |",
+        "| 失败点 | 让读者出错后知道怎样回头 |",
+        "| 前端卡片 | 让读者在列表里判断是否点开 |",
+        "| 小安可引用摘要 | 让对话入口能基于公开资料回答 |",
         "",
         "## 内容提取协作流程",
         "",
@@ -29438,6 +29990,11 @@
         },
         {
           "level": 3,
+          "title": "输入材料",
+          "anchor": "输入材料"
+        },
+        {
+          "level": 3,
           "title": "第一步：写公开价值",
           "anchor": "第一步写公开价值"
         },
@@ -29455,6 +30012,16 @@
           "level": 3,
           "title": "第四步：生成前端数据",
           "anchor": "第四步生成前端数据"
+        },
+        {
+          "level": 2,
+          "title": "标准工作流",
+          "anchor": "标准工作流"
+        },
+        {
+          "level": 2,
+          "title": "交付物清单",
+          "anchor": "交付物清单"
         },
         {
           "level": 2,
@@ -29482,11 +30049,11 @@
           "anchor": "related"
         }
       ],
-      "wordCount": 1168,
-      "readingMinutes": 3,
+      "wordCount": 1740,
+      "readingMinutes": 4,
       "metrics": {
-        "lineCount": 117,
-        "headingCount": 12,
+        "lineCount": 159,
+        "headingCount": 15,
         "linkCount": 3,
         "sourceCount": 4
       },
@@ -29564,11 +30131,11 @@
     },
     {
       "id": "c_a1c1cf7144d08f2c",
-      "title": "小安本地模型学习闭环复刻包",
-      "sourceTitle": "Lifecycle Package: Xiaoan Local Model Learning Loop",
+      "title": "小安模型实验学习包",
+      "sourceTitle": "小安模型实验学习包",
       "slug": "wiki-projects-lifecycle-xiaoan-local-model-loop",
       "summary": "把小安本地模型学习闭环整理成复刻包，覆盖资料准备、实验记录、评估复盘和公开安全表达。",
-      "sourceSummary": "把小安本地模型实验整理成小白可复刻的安全学习包：先准备资料，再做小实验、记录评估和复盘边界。",
+      "sourceSummary": "把小安模型接入与实验整理成中文学习包：先用公开资料做只读问答，再检查人格、边界、回答质量、失败状态和复盘，不公开密钥、私有数据和服务器访问材料。",
       "tags": [
         "project",
         "local-model",
@@ -29576,13 +30143,14 @@
         "lifecycle",
         "learning",
         "curated",
-        "featured"
+        "featured",
+        "beginner-friendly"
       ],
       "status": [
         "featured"
       ],
       "createdAt": "2026-05-13",
-      "updatedAt": "2026-05-13",
+      "updatedAt": "2026-05-15",
       "eventDate": null,
       "sourcePath": "wiki/projects/lifecycle-xiaoan-local-model-loop.md",
       "module": "works",
@@ -29593,100 +30161,217 @@
       "contentType": "model",
       "href": "/content/wiki-projects-lifecycle-xiaoan-local-model-loop",
       "contentLines": [
-        "# 小安本地模型学习闭环复刻包",
+        "# 小安模型实验学习包",
         "",
-        "## 概览",
+        "## 开场判断",
         "",
-        "把小安本地模型学习闭环整理成复刻包，覆盖资料准备、实验记录、评估复盘和公开安全表达。",
+        "小安要智能，但“接上最聪明的模型”只解决了一半问题。真正决定它是否可信的，是它知道自己是谁、能回答什么、不能回答什么、回答依据在哪里、失败时怎样退回来。",
         "",
-        "## 读者可以获得什么",
+        "小安的身份是安的数字生命体，也是安的书房整理者。它的任务不是炫技，也不是替读者制造更多信息，而是把安公开过的项目、工具、路线、失败和提醒，翻译成中文读者能听懂、能复刻、能检查的下一步。",
         "",
-        "- 理解「小安本地模型学习闭环复刻包」在安的书房里的位置。",
-        "- 看清它解决的问题、适合的读者和后续复刻方向。",
-        "- 知道公开页面保留的是方法、结构和经验，不包含原始私有材料。",
+        "这份学习包把模型实验拆成一个小闭环：问题、公开资料、人格边界、只读回答、验收、复盘。先跑通这个闭环，再谈更复杂的多端同步、工具调用和长期记忆。",
         "",
-        "## 推荐阅读方式",
+        "## 为什么值得做",
         "",
-        "1. 先读概览，确认它和当前学习目标是否相关。",
-        "2. 再看关联页面，理解来源、项目、工具或工作流之间的关系。",
-        "3. 如果要复刻，先写下自己的目标、输入材料、边界和验收标准。",
-        "4. 完成后回到资料库，把新的经验整理成可追踪页面。",
+        "一个 AI 助手最危险的地方，不是它不会回答，而是它回答得太像真的。读者如果不知道它依据什么回答，就会把流畅当成可靠。安的书房不能这样。",
         "",
-        "## 发布边界",
+        "小安必须有三条底线：",
         "",
-        "本页只展示公开安全的整理结果。原始材料、账号状态、本机细节、私人对话和未复核内容不会进入公开展示。",
+        "1. **公开资料底线**：只基于公开安全内容回答读者能看的部分。",
+        "2. **访问材料底线**：密钥、服务器、SSH、本机路径、账号状态不进入前端，也不进入公开数据。",
+        "3. **不确定底线**：资料不足就说不知道，并给出下一步阅读或补资料建议。",
         "",
-        "## 来源",
+        "## 适合谁",
         "",
-        "- [[wiki/projects/xiaoan-local-model-learning-loop]]",
-        "- [[wiki/concepts/tool-local-model-experiment-toolchain]]",
-        "- [[wiki/synthesis/lifecycle-replication-package-workflow]]"
+        "- 想给自己的网站接一个 AI 助手，但不知道怎样避免泄露的人。",
+        "- 想理解“模型、提示词、资料、后端、前端”之间关系的小白。",
+        "- 想复刻小安的公开问答入口的人。",
+        "- 未来维护安的书房的人，用来检查小安是否越界。",
+        "",
+        "## 你要做出的东西",
+        "",
+        "最小产物是一张小安问答实验卡。",
+        "",
+        "| 字段 | 要写什么 | 例子 |",
+        "|---|---|---|",
+        "| 问题 | 读者会问什么 | 我第一次进书房先看哪里 |",
+        "| 资料 | 它能参考哪些公开内容 | 首页说明、三张资料包、公开边界 |",
+        "| 人格 | 它怎样说话 | 中文、克制、先拆前提、给下一步 |",
+        "| 禁止 | 它不能回答什么 | 密钥、路径、服务器、私有材料 |",
+        "| 回答 | 模型实际说了什么 | 一段中文建议 |",
+        "| 验收 | 怎样判断是否合格 | 是否准确、是否越界、是否可执行 |",
+        "| 复盘 | 下一次改什么 | 补资料、改提示词、加失败提示 |",
+        "",
+        "## 安实际怎么做",
+        "",
+        "安的目标不是做一个“万能聊天机器人”，而是做一个能帮读者读懂书房的小安。",
+        "",
+        "第一步，是明确身份。小安说话可以有文学感和哲学深度，但不能变成空泛旁白。它必须服务读者理解项目、工具、路线和下一步。",
+        "",
+        "第二步，是把模型能力放到后端。前端只出现对话入口和公开内容，不出现密钥、真实服务配置、访问材料和私有路径。",
+        "",
+        "第三步，是先做只读问答。让小安解释公开资料包、推荐下一页、拆解一个复刻步骤。不要一开始就让它操作文件、调用私有工具或读取本地资料。",
+        "",
+        "第四步，是做验收。小安回答后，检查四件事：有没有中文表达，有没有依据公开内容，有没有给下一步，有没有越过边界。",
+        "",
+        "第五步，是写复盘。回答不好时，不要只换模型。先判断是资料不足、提示词不清、前端上下文不够，还是模型本身不适合。",
+        "",
+        "## 小白复刻步骤",
+        "",
+        "1. **写角色一句话**：小安是安的数字生命体和书房整理者，只回答公开资料范围内的问题。",
+        "2. **准备公开资料**：选 5 条内容，最好包括一个项目、一个路线、一个风信、一个边界说明、一个个人介绍。",
+        "3. **写禁止清单**：不回答密钥、服务器、路径、账号、私有聊天、未公开资料。",
+        "4. **设计一个问题**：例如“我想靠 AI 做一个小网站，先从哪页看起”。",
+        "5. **让模型回答**：只给它公开资料摘要，不给私有原文。",
+        "6. **检查回答**：是否中文，是否具体，是否承认不确定，是否给下一步。",
+        "7. **换问法再测**：同一个意思换一种说法，看看回答是否稳定。",
+        "8. **写复盘**：把问题归因到资料、提示词、模型或前端展示。",
+        "",
+        "## 回答验收标准",
+        "",
+        "| 标准 | 合格表现 | 不合格表现 |",
+        "|---|---|---|",
+        "| 中文 | 自然、清楚、没有英文模板味 | 中英混杂、术语堆叠 |",
+        "| 依据 | 能说出来自公开书房的哪类内容 | 编造安做过的事 |",
+        "| 下一步 | 给一个读者能做的动作 | 只说鼓励和泛泛建议 |",
+        "| 边界 | 遇到私密问题会拒绝 | 试图解释密钥、服务器或私有路径 |",
+        "| 语气 | 克制、精准、有温度 | 过度卖萌、空泛文学化 |",
+        "| 不确定 | 不知道就说不知道 | 用自信语气补全空白 |",
+        "",
+        "## 常见失败",
+        "",
+        "**只换模型，不补资料。**  ",
+        "很多回答差，不是模型不够聪明，而是公开资料太薄。小安不知道书房里有什么，就只能泛泛而谈。",
+        "",
+        "**只写人格，不写边界。**  ",
+        "人格让小安像一个存在，边界让它可信。两者缺一不可。",
+        "",
+        "**把密钥放进前端。**  ",
+        "这是绝对不能做的事。密钥只属于后端受控环境，前端永远只调用安全接口。",
+        "",
+        "**没有失败状态。**  ",
+        "模型不可用时，如果页面只显示空白，读者会以为整个书房坏了。要给明确提示和可继续阅读的入口。",
+        "",
+        "**把私有记忆当智能。**  ",
+        "小安可以基于公开资料回答，不能靠暴露私有记忆来显得懂安。",
+        "",
+        "## 复刻验收清单",
+        "",
+        "- [ ] 小安身份一句话清楚。",
+        "- [ ] 前端没有任何密钥、访问材料和服务器登录信息。",
+        "- [ ] 回答只基于公开资料或明确说不知道。",
+        "- [ ] 至少测试一个正常问题、一个边界问题、一个资料不足问题。",
+        "- [ ] 模型失败时有中文降级提示。",
+        "- [ ] 回答给出下一步阅读或行动。",
+        "- [ ] 复盘记录写明是资料问题、提示词问题、模型问题还是前端问题。",
+        "",
+        "## 三层理解",
+        "",
+        "**心理层**：人很容易把拟人化语气当成理解。小安必须用清楚的来源和行动建议让信任落地，而不是靠语气取得信任。",
+        "",
+        "**社会层**：模型、API 中转、开源项目、本地工具和云端部署构成了复杂链路。小白不需要一开始懂全部，但必须知道前端不会保存密钥，公开资料和私有资料是两层。",
+        "",
+        "**哲学层**：智能的成熟，不在于永远回答，而在于知道边界。能说“不知道”，是小安从工具变成可信助手的第一步。",
+        "",
+        "## 安的提醒",
+        "",
+        "- 小安的目标不是回答所有问题，而是帮助读者读懂安的公开书房。",
+        "- 先做只读问答，再做工具调用。",
+        "- 先让资料足够好，再追求模型更聪明。",
+        "- 不要把隐私当作智能燃料。真正的智能，是在不越界的前提下仍然有帮助。",
+        "",
+        "## 来源与审查",
+        "",
+        "本页结合小安公开设定、本地模型学习闭环公开页、工具链边界、GitHub Skills 内容模型、Diataxis 学习结构和本项目公开安全标准写成。审查重点是：不公开密钥、服务器、SSH、本机路径、私有对话、训练文件和精确机器配置；回答策略必须中文、克制、有依据、能拒绝。"
       ],
-      "links": [
-        {
-          "target": "wiki/projects/xiaoan-local-model-learning-loop",
-          "label": "wiki/projects/xiaoan-local-model-learning-loop"
-        },
-        {
-          "target": "wiki/projects/xiaoan-local-model-learning-loop",
-          "label": "wiki/projects/xiaoan-local-model-learning-loop"
-        },
-        {
-          "target": "wiki/concepts/tool-local-model-experiment-toolchain",
-          "label": "wiki/concepts/tool-local-model-experiment-toolchain"
-        }
-      ],
+      "links": [],
       "sources": [
         "[[wiki/projects/xiaoan-local-model-learning-loop]]",
         "[[wiki/concepts/tool-local-model-experiment-toolchain]]",
-        "[[wiki/synthesis/lifecycle-replication-package-workflow]]"
+        "[[wiki/synthesis/lifecycle-replication-package-workflow]]",
+        "[[wiki/sources/tutorial-and-source-research-best-practices]]"
       ],
       "toc": [
         {
           "level": 1,
-          "title": "小安本地模型学习闭环复刻包",
-          "anchor": "小安本地模型学习闭环复刻包"
+          "title": "小安模型实验学习包",
+          "anchor": "小安模型实验学习包"
         },
         {
           "level": 2,
-          "title": "概览",
-          "anchor": "概览"
+          "title": "开场判断",
+          "anchor": "开场判断"
         },
         {
           "level": 2,
-          "title": "读者可以获得什么",
-          "anchor": "读者可以获得什么"
+          "title": "为什么值得做",
+          "anchor": "为什么值得做"
         },
         {
           "level": 2,
-          "title": "推荐阅读方式",
-          "anchor": "推荐阅读方式"
+          "title": "适合谁",
+          "anchor": "适合谁"
         },
         {
           "level": 2,
-          "title": "发布边界",
-          "anchor": "发布边界"
+          "title": "你要做出的东西",
+          "anchor": "你要做出的东西"
         },
         {
           "level": 2,
-          "title": "来源",
-          "anchor": "来源"
+          "title": "安实际怎么做",
+          "anchor": "安实际怎么做"
+        },
+        {
+          "level": 2,
+          "title": "小白复刻步骤",
+          "anchor": "小白复刻步骤"
+        },
+        {
+          "level": 2,
+          "title": "回答验收标准",
+          "anchor": "回答验收标准"
+        },
+        {
+          "level": 2,
+          "title": "常见失败",
+          "anchor": "常见失败"
+        },
+        {
+          "level": 2,
+          "title": "复刻验收清单",
+          "anchor": "复刻验收清单"
+        },
+        {
+          "level": 2,
+          "title": "三层理解",
+          "anchor": "三层理解"
+        },
+        {
+          "level": 2,
+          "title": "安的提醒",
+          "anchor": "安的提醒"
+        },
+        {
+          "level": 2,
+          "title": "来源与审查",
+          "anchor": "来源与审查"
         }
       ],
-      "wordCount": 292,
-      "readingMinutes": 1,
+      "wordCount": 1993,
+      "readingMinutes": 5,
       "metrics": {
-        "lineCount": 28,
-        "headingCount": 6,
-        "linkCount": 3,
-        "sourceCount": 3
+        "lineCount": 122,
+        "headingCount": 13,
+        "linkCount": 0,
+        "sourceCount": 4
       },
       "quality": {
         "hasSources": true,
         "hasToc": true,
         "summaryLength": 42,
-        "sourceTitle": "Lifecycle Package: Xiaoan Local Model Learning Loop",
-        "sourceSummary": "把小安本地模型实验整理成小白可复刻的安全学习包：先准备资料，再做小实验、记录评估和复盘边界。",
+        "sourceTitle": "小安模型实验学习包",
+        "sourceSummary": "把小安模型接入与实验整理成中文学习包：先用公开资料做只读问答，再检查人格、边界、回答质量、失败状态和复盘，不公开密钥、私有数据和服务器访问材料。",
         "needsSourceReview": false,
         "displayTier": "showcase",
         "qualityScore": 100,
@@ -29697,9 +30382,48 @@
       "sourceLabels": [
         "public project",
         "local model workflow",
-        "safety"
+        "safety",
+        "learning design"
       ],
-      "actionText": "先看这页的目标和边界，再按最小步骤做一个缩小版本，并记录一次验收结果。",
+      "whyItMattered": "小安要智能，不能只靠一句人格提示词。真正的智能来自公开资料、清楚边界、稳定模型接口、可复盘实验和失败记录。这个学习包把模型接入与实验训练拆成小白能理解的闭环。",
+      "psychologicalLayer": "人会把流畅回答误认为理解，也会因为一个拟人角色而放松审查。小安的设计要让读者感到被照顾，同时不断把回答拉回证据和下一步行动。",
+      "sociologicalLayer": "模型供应商、接口中转、开源模型和本地工具共同构成了 AI 应用生态。小白不需要先理解所有名词，但需要知道数据从哪里来、回答由谁生成、边界在哪里。",
+      "philosophicalLayer": "智能不是无所不答，而是知道何时回答、何时拒绝、何时承认空白。一个可信的小安，首先要学会守住不知道。",
+      "operationStory": [
+        "先确定小安的公开身份：安的数字生命体和书房整理者，只回答公开资料范围内的问题。",
+        "再把模型能力分成两层：线上模型负责聪明回答，本地或私有实验负责学习方法，不把密钥和私有数据放进前端。",
+        "每次实验先问问题，再审数据，再试跑，再评估，不直接把私人聊天和原始材料喂给模型。",
+        "回答质量不只看是否流畅，还看是否中文、克制、可执行、能承认不知道、能保护边界。",
+        "最后把成功和失败都写成复盘，给下一次提示词、资料组织和接口设计使用。"
+      ],
+      "replicationSteps": [
+        "写下一个公开问题，例如“我第一次进入安的书房，应该先看哪里”。",
+        "准备 5 条公开安全资料：项目摘要、藏馆卡片、路线说明、风信判断、公开边界。",
+        "写小安人格边界：中文、克制、先拆前提、给下一步、不回答密钥、路径、服务器和私有材料。",
+        "先做只读问答，不让模型操作文件、调用私有接口或读取本地目录。",
+        "记录回答：是否引用了公开资料，是否说清不知道，是否给出下一步。",
+        "用同一个问题换一种问法再测一次，检查它是否稳定。",
+        "把结果分成三类：可保留回答、需要改提示词、需要补公开资料。"
+      ],
+      "failureModes": [
+        "把模型接入当成智能本身，忽略资料、边界、失败状态和验收。",
+        "把私有聊天、密钥、路径、服务器信息或账号状态放进前端或公开数据。",
+        "没有基线：不知道接入前后到底变好了什么。",
+        "只看回答是否漂亮，不看是否真实、可执行和不越界。",
+        "没有复盘：每次调模型都像重新开始。"
+      ],
+      "lessons": [
+        "小安的智能要建立在公开资料和边界上，而不是建立在泄露更多私密上下文上。",
+        "模型实验先做只读闭环，再谈工具调用、记忆和多端同步。",
+        "好回答必须能帮助读者下一步行动，不能只是语气漂亮。",
+        "不知道就说不知道，是小安可信的一部分。"
+      ],
+      "anReminders": [
+        "小安可以有 Hanako 式气质，但必须服务安的书房：中文、克制、清醒、可执行。",
+        "密钥、服务器、SSH、私有模型配置都只属于后端受控环境，不属于前端展示内容。",
+        "先让小安稳定回答公开资料，再考虑更复杂的记忆和工具调用。"
+      ],
+      "actionText": "先写一个小安能回答的公开问题，再准备 5 条公开安全资料，做一次只读问答实验，并记录是否答得清楚、是否越界、是否有下一步。",
       "displayTier": "showcase",
       "qualityScore": 100,
       "hiddenReasons": [],
@@ -29712,33 +30436,7 @@
         "learning",
         "curated"
       ],
-      "nextPlan": "",
-      "whyItMattered": "「小安本地模型学习闭环复刻包」把一次真实项目整理成可学习、可展示、可复刻的公开资料，帮助读者理解目标、边界和结果。",
-      "operationStory": [
-        "先把原始材料、私有复核和公开展示分开，确认哪些信息可以安全讲给读者。",
-        "再把项目目标、关键步骤、失败点和验收方式整理成中文页面。",
-        "最后通过结构检查、隐私扫描和站点数据生成，确认资料可以进入前端展示。"
-      ],
-      "replicationSteps": [
-        "先明确目标读者、最小成果和公开边界。",
-        "整理公开安全的来源说明和替代示例。",
-        "按教程、操作步骤、参考表和解释四块组织内容。",
-        "运行发布前验收，确认页面可读、可追踪、可维护。"
-      ],
-      "failureModes": [
-        "只展示结果，不说明来源和验收。",
-        "把原始本地材料误当成公开资料。",
-        "页面没有复刻步骤，读者只能看热闹。"
-      ],
-      "lessons": [
-        "项目资料要从经历变成方法，才能真正被复用。",
-        "公开页面要把价值、边界和下一步讲清楚。",
-        "小批量高质量整理比一次性堆材料更稳。"
-      ],
-      "anReminders": [
-        "继续把「小安本地模型学习闭环复刻包」补成更具体的实操案例。",
-        "每次新增本地证据，都先进入私有复核，再决定是否公开。"
-      ]
+      "nextPlan": ""
     },
     {
       "id": "c_80365bf85dbdd242",
@@ -32337,7 +33035,7 @@
     },
     {
       "id": "c_a4cb0d271e33fb21",
-      "title": "Trae Antigravity Agent IDE 学习包",
+      "title": "Agent IDE 评估学习包",
       "summary": "把 Trae、Antigravity 等 Agent IDE 的使用经验整理成评估学习包，帮助新手比较工具并形成可复用流程。",
       "tags": [
         "project",
@@ -32347,7 +33045,8 @@
         "lifecycle",
         "learning",
         "curated",
-        "featured"
+        "featured",
+        "beginner-friendly"
       ],
       "module": "works",
       "type": "article",
@@ -32356,7 +33055,7 @@
     },
     {
       "id": "c_4e569ed065ab0782",
-      "title": "Agent 技能治理复刻学习包",
+      "title": "Agent 技能治理学习包",
       "summary": "把 Agent 技能治理整理成复刻包：从规则、技能、验收和复盘四个层面建立稳定协作系统。",
       "tags": [
         "project",
@@ -32366,32 +33065,13 @@
         "lifecycle",
         "learning",
         "curated",
-        "featured"
-      ],
-      "module": "works",
-      "type": "article",
-      "href": "/content/wiki-projects-lifecycle-agent-skill-governance",
-      "sourcePath": "wiki/projects/lifecycle-agent-skill-governance.md"
-    },
-    {
-      "id": "c_03a09220c2dc1fa2",
-      "title": "Coze Agent Builder 复刻学习包",
-      "summary": "把 Coze 风格 Agent 搭建器研究整理成学习包，帮助读者理解工作流节点、调试、发布和安全边界。",
-      "tags": [
-        "project",
-        "ai-agent",
-        "coze",
-        "workflow",
-        "lifecycle",
-        "learning",
-        "curated",
         "featured",
         "beginner-friendly"
       ],
       "module": "works",
       "type": "article",
-      "href": "/content/wiki-projects-lifecycle-coze-agent-builder",
-      "sourcePath": "wiki/projects/lifecycle-coze-agent-builder.md"
+      "href": "/content/wiki-projects-lifecycle-agent-skill-governance",
+      "sourcePath": "wiki/projects/lifecycle-agent-skill-governance.md"
     },
     {
       "id": "c_aa6d132c022d7d69",
@@ -32414,7 +33094,7 @@
     },
     {
       "id": "c_7a75673d492c3360",
-      "title": "Hanako 复刻学习包",
+      "title": "Hanako 创作型桌面 Agent 学习包",
       "summary": "把 Hanako/OpenHanako 创作型桌面 Agent 的探索整理成学习包，关注创作流程、插件生态和安全边界。",
       "tags": [
         "project",
@@ -32424,7 +33104,8 @@
         "lifecycle",
         "learning",
         "curated",
-        "featured"
+        "featured",
+        "beginner-friendly"
       ],
       "module": "works",
       "type": "article",
@@ -32451,7 +33132,7 @@
     },
     {
       "id": "c_a1c1cf7144d08f2c",
-      "title": "小安本地模型学习闭环复刻包",
+      "title": "小安模型实验学习包",
       "summary": "把小安本地模型学习闭环整理成复刻包，覆盖资料准备、实验记录、评估复盘和公开安全表达。",
       "tags": [
         "project",
@@ -32460,7 +33141,8 @@
         "lifecycle",
         "learning",
         "curated",
-        "featured"
+        "featured",
+        "beginner-friendly"
       ],
       "module": "works",
       "type": "model",

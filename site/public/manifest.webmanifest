@@ -1,8 +1,8 @@
 {
   "id": "./#/",
-  "name": "藏馆 · 个人资料库",
-  "short_name": "藏馆",
-  "description": "一座关于资料、路径、作品与成长的个人藏馆",
+  "name": "安的书房",
+  "short_name": "安的书房",
+  "description": "安的个人书房：把 AI 学习、项目、工具、复盘和复刻路线整理成中文可读的公开展柜",
   "lang": "zh-CN",
   "dir": "ltr",
   "start_url": "./#/",
@@ -53,14 +53,14 @@
       "sizes": "1200x630",
       "type": "image/jpeg",
       "form_factor": "wide",
-      "label": "藏馆桌面展示"
+      "label": "安的书房桌面展示"
     },
     {
       "src": "./hero-cover.jpg",
       "sizes": "1200x800",
       "type": "image/jpeg",
       "form_factor": "narrow",
-      "label": "藏馆移动展示"
+      "label": "安的书房移动展示"
     }
   ]
 }

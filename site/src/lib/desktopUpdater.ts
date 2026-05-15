@@ -51,7 +51,7 @@ function formatDesktopUpdateError(error: unknown): Pick<DesktopUpdateSnapshot, '
 
   if (!details) {
     return {
-      message: '暂时没有连上更新清单。',
+      message: '暂时没有读到远程版本。当前内容仍可继续使用。',
     };
   }
 
@@ -64,34 +64,34 @@ function formatDesktopUpdateError(error: unknown): Pick<DesktopUpdateSnapshot, '
 
   if (normalized.includes('failed to fetch') || normalized.includes('network')) {
     return {
-      message: '没有连上更新服务器，请稍后再试。',
+      message: '暂时没有连上版本服务。当前内容仍可继续使用。',
       details,
     };
   }
 
   if (normalized.includes('404') || normalized.includes('status code')) {
     return {
-      message: '更新清单或安装包地址不可用。',
+      message: '远程版本地址暂时不可用。当前安装版不受影响。',
       details,
     };
   }
 
   if (normalized.includes('json')) {
     return {
-      message: '更新清单格式无效。',
+      message: '这次没有完成版本检查，当前版本仍可继续使用。',
       details,
     };
   }
 
   if (normalized.includes('signature')) {
     return {
-      message: '更新包签名校验失败。',
+      message: '这次没有完成版本检查，当前版本仍可继续使用。',
       details,
     };
   }
 
   return {
-    message: `暂时没有连上更新清单：${details}`,
+    message: '暂时没有读到远程版本。当前内容仍可继续使用。',
     details,
   };
 }

@@ -521,7 +521,7 @@
   },
   {
     "id": "c_a4cb0d271e33fb21",
-    "title": "Trae Antigravity Agent IDE 学习包",
+    "title": "Agent IDE 评估学习包",
     "summary": "把 Trae、Antigravity 等 Agent IDE 的使用经验整理成评估学习包，帮助新手比较工具并形成可复用流程。",
     "tags": [
       "project",
@@ -531,7 +531,8 @@
       "lifecycle",
       "learning",
       "curated",
-      "featured"
+      "featured",
+      "beginner-friendly"
     ],
     "module": "works",
     "type": "article",
@@ -540,7 +541,7 @@
   },
   {
     "id": "c_4e569ed065ab0782",
-    "title": "Agent 技能治理复刻学习包",
+    "title": "Agent 技能治理学习包",
     "summary": "把 Agent 技能治理整理成复刻包：从规则、技能、验收和复盘四个层面建立稳定协作系统。",
     "tags": [
       "project",
@@ -550,32 +551,13 @@
       "lifecycle",
       "learning",
       "curated",
-      "featured"
-    ],
-    "module": "works",
-    "type": "article",
-    "href": "/content/wiki-projects-lifecycle-agent-skill-governance",
-    "sourcePath": "wiki/projects/lifecycle-agent-skill-governance.md"
-  },
-  {
-    "id": "c_03a09220c2dc1fa2",
-    "title": "Coze Agent Builder 复刻学习包",
-    "summary": "把 Coze 风格 Agent 搭建器研究整理成学习包，帮助读者理解工作流节点、调试、发布和安全边界。",
-    "tags": [
-      "project",
-      "ai-agent",
-      "coze",
-      "workflow",
-      "lifecycle",
-      "learning",
-      "curated",
       "featured",
       "beginner-friendly"
     ],
     "module": "works",
     "type": "article",
-    "href": "/content/wiki-projects-lifecycle-coze-agent-builder",
-    "sourcePath": "wiki/projects/lifecycle-coze-agent-builder.md"
+    "href": "/content/wiki-projects-lifecycle-agent-skill-governance",
+    "sourcePath": "wiki/projects/lifecycle-agent-skill-governance.md"
   },
   {
     "id": "c_aa6d132c022d7d69",
@@ -598,7 +580,7 @@
   },
   {
     "id": "c_7a75673d492c3360",
-    "title": "Hanako 复刻学习包",
+    "title": "Hanako 创作型桌面 Agent 学习包",
     "summary": "把 Hanako/OpenHanako 创作型桌面 Agent 的探索整理成学习包，关注创作流程、插件生态和安全边界。",
     "tags": [
       "project",
@@ -608,7 +590,8 @@
       "lifecycle",
       "learning",
       "curated",
-      "featured"
+      "featured",
+      "beginner-friendly"
     ],
     "module": "works",
     "type": "article",
@@ -635,7 +618,7 @@
   },
   {
     "id": "c_a1c1cf7144d08f2c",
-    "title": "小安本地模型学习闭环复刻包",
+    "title": "小安模型实验学习包",
     "summary": "把小安本地模型学习闭环整理成复刻包，覆盖资料准备、实验记录、评估复盘和公开安全表达。",
     "tags": [
       "project",
@@ -644,7 +627,8 @@
       "lifecycle",
       "learning",
       "curated",
-      "featured"
+      "featured",
+      "beginner-friendly"
     ],
     "module": "works",
     "type": "model",

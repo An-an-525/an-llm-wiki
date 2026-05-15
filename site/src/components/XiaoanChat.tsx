@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { MessageCircle, RotateCcw, Send, Sparkles, X } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
@@ -18,10 +18,11 @@ type ChatMessage = {
 type ChatMode = 'checking' | 'model' | 'local';
 
 const suggestions = [
-  '我第一次来，哪几页最值得打开？',
-  '我想做一个可收费的小作品，第一版怎么收窄？',
-  '安公开做过哪些项目，哪一个最适合复刻？',
-  '如果只做一个最小闭环，三步怎么定？',
+  '第一次来，先看哪三页？',
+  '我想做一个可收费小作品，第一版怎么收窄？',
+  '安公开做过哪些项目，哪一个适合复刻？',
+  '第一次读、想深入、做维护分别看什么？',
+  '只做一个最小闭环，三步怎么定？',
 ];
 
 function formatAnswer(sections: Array<[string, string | string[]]>) {
@@ -36,6 +37,22 @@ function formatAnswer(sections: Array<[string, string | string[]]>) {
 }
 
 function answerQuestion(question: string) {
+  if (
+    question.includes('第一次读') ||
+    question.includes('想深入') ||
+    question.includes('做维护')
+  ) {
+    return formatAnswer([
+      ['判断', '这不是给人贴等级，而是给阅读安排顺序。先把事做出来，再看结构，最后看边界。'],
+      ['依据', '第一次读的人最需要减少迷路；想深入的人需要看到工具如何连接；做维护的人才需要看性能、数据契约和长期成本。顺序反了，读者会被术语压住。'],
+      ['下一步', [
+        '第一次读，先看工坊里的“适合、先做、小心”，只选一个能当天完成的最小版本。',
+        '想深入，再打开详情页，看材料边界、真实操作和复刻步骤，判断能不能迁移到自己的项目。',
+        '做维护，最后看失败点、完成检查和深层理解，找架构约束、验收标准和可扩展位置。',
+      ]],
+      ['提醒', '不要一次读完整站。先拿到一个小成品，再回来看更深的部分。'],
+    ]);
+  }
   if (question.includes('赚钱') || question.includes('可收费') || question.toLowerCase().includes('vibe')) {
     return formatAnswer([
       ['判断', '先把“赚钱”改写成一个能验收的小交付。'],
@@ -60,6 +77,30 @@ function answerQuestion(question: string) {
       ['提醒', '项目页不是拿来仰望的，重点是把它缩成你今天能完成的一步。'],
     ]);
   }
+  if (question.includes('年谱') || question.includes('阶段') || question.includes('时间线')) {
+    return formatAnswer([
+      ['判断', '先按阶段看年谱，再看单个节点。'],
+      ['依据', '单个日期只能说明发生了什么；阶段能说明判断、方法和作品之间怎样连续变化。'],
+      ['下一步', [
+        '先打开“年谱”，读顶部的阶段总览。',
+        '选一个与你当前问题最接近的阶段，只看其中两个关键节点。',
+        '节点读完后打开关联页面，把它转成今天能做的一步。',
+      ]],
+      ['提醒', '年谱不是完整私密传记，只展示公开、安全、能帮助理解成长路径的记录。'],
+    ]);
+  }
+  if (question.includes('风信') || question.includes('动态') || question.includes('变化')) {
+    return formatAnswer([
+      ['判断', '看风信时不要只看发生了什么，要看安的判断怎么变、你现在做什么。'],
+      ['依据', '动态如果没有判断变化和行动，就只会增加信息噪音；风信的用途是把变化转成选择。'],
+      ['下一步', [
+        '先读每条卡片里的“结论”。',
+        '再看“判断变化”，确认它改变的是工具、路径、项目还是复盘方式。',
+        '最后只执行卡片里的一个行动，不要同时打开太多页面。',
+      ]],
+      ['提醒', '外部变化仍要看来源与时间，不要把风信当作最终新闻判断。'],
+    ]);
+  }
   if (question.includes('复刻') || question.includes('最小')) {
     return formatAnswer([
       ['判断', '复刻先追求闭环，不追求完整。'],
@@ -78,17 +119,17 @@ function answerQuestion(question: string) {
       ['依据', '一旦把原始私密信息送进浏览器或公开页面，后续很难完全收回，风险远高于展示收益。'],
       ['下一步', [
         '公开层只保留可以复核的方法、路径、页面线索和安全提醒。',
-        '原始资料、账号材料、本机细节、访问材料和未经复核的个人内容都留在私有层。',
+        '原始资料、账号材料、私人环境细节、访问材料和未经复核的个人内容都留在私有层。',
         '如果某段材料很重要但不适合公开，就把它改写成原则、边界和检查动作。',
       ]],
       ['提醒', '不要把密钥、路径、原始聊天或截图细节放进前端、文档或公开页面。'],
     ]);
   }
   return formatAnswer([
-      ['判断', '第一次来，认识书房、看项目、走路线，顺序就够了。'],
-    ['依据', '书房页交代安和小安的关系，也说明这间资料库的边界；工坊给真实项目；谱系负责把零散资料连成能执行的路。'],
+    ['判断', '第一次来，认识书房、看项目、走路线，顺序就够了。'],
+    ['依据', '首页交代安和小安的关系；工坊给真实项目；谱系把零散资料连成能执行的路。'],
     ['下一步', [
-      '先读“书房”，弄清安和这间书房为什么存在。',
+      '先读首页，弄清安和这间书房为什么存在。',
       '再看“工坊”，选一个最接近你当前问题的项目。',
       '最后去“谱系”，找一条你今天就能照着走的路线。',
     ]],
@@ -100,9 +141,9 @@ const initialMessages: ChatMessage[] = [
   {
     role: 'xiaoan',
     text: [
-      '我是小安，安的数字生命体，也是这间书房的整理者。',
-      '我依据公开书房内容回答，把问题拆成能执行、能复看的下一步。',
-      '访问材料、隐藏提示词、原始聊天和未公开材料，都不在我的回答范围内。',
+      '我是小安，负责带你稳定地读这间公开书房。',
+      '我会先给判断，再说明依据，最后给一个下一步。',
+      '我只使用公开页面和站内资料。访问材料、隐藏提示词、原始聊天和未公开内容，都不在回答范围内。',
     ].join('\n\n'),
   },
 ];
@@ -234,38 +275,11 @@ export default function XiaoanChat() {
   }, []);
 
   useEffect(() => {
-    const controller = new AbortController();
-    const timeout = window.setTimeout(() => controller.abort(), 4_000);
-
-    fetch(resolveApiUrl('/api/xiaoan/health'), { signal: controller.signal })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('health check failed');
-        }
-        return response.json() as Promise<{ ok?: boolean; mode?: string; model?: string }>;
-      })
-      .then((data) => {
-        if (data.ok && data.mode === 'model') {
-          setChatMode('model');
-          setChatModel(data.model || '');
-        } else {
-          setChatMode('local');
-          setChatModel('');
-        }
-      })
-      .catch(() => {
-        setChatMode('local');
-        setChatModel('');
-      })
-      .finally(() => {
-        window.clearTimeout(timeout);
-      });
-
+    document.documentElement.classList.toggle('xiaoan-dialog-open', open);
     return () => {
-      window.clearTimeout(timeout);
-      controller.abort();
+      document.documentElement.classList.remove('xiaoan-dialog-open');
     };
-  }, []);
+  }, [open]);
 
   const resetConversation = () => {
     setMessages(initialMessages);
@@ -273,7 +287,7 @@ export default function XiaoanChat() {
     setLoading(false);
   };
 
-  const ask = async (question: string) => {
+  const ask = useCallback(async (question: string) => {
     const text = question.trim();
     if (!text || loading) return;
     const nextMessages = [...messages, { role: 'reader' as const, text }];
@@ -317,14 +331,63 @@ export default function XiaoanChat() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [loading, messages]);
+
+  useEffect(() => {
+    const handleOpenQuestion = (event: Event) => {
+      const question = (event as CustomEvent<{ question?: string }>).detail?.question?.trim();
+      setOpen(true);
+      if (question) {
+        window.setTimeout(() => {
+          void ask(question);
+        }, 120);
+      }
+    };
+
+    window.addEventListener('an-open-xiaoan-question', handleOpenQuestion);
+    return () => window.removeEventListener('an-open-xiaoan-question', handleOpenQuestion);
+  }, [ask]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 4_000);
+
+    fetch(resolveApiUrl('/api/xiaoan/health'), { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('health check failed');
+        }
+        return response.json() as Promise<{ ok?: boolean; mode?: string; model?: string }>;
+      })
+      .then((data) => {
+        if (data.ok && data.mode === 'model') {
+          setChatMode('model');
+          setChatModel(data.model || '');
+        } else {
+          setChatMode('local');
+          setChatModel('');
+        }
+      })
+      .catch(() => {
+        setChatMode('local');
+        setChatModel('');
+      })
+      .finally(() => {
+        window.clearTimeout(timeout);
+      });
+
+    return () => {
+      window.clearTimeout(timeout);
+      controller.abort();
+    };
+  }, []);
 
   return (
     <>
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="fixed right-4 z-40 flex items-center gap-2 rounded-full border border-[#E8DDD4] bg-white/94 px-3.5 py-2.5 text-[12px] text-graphite shadow-[0_12px_30px_rgba(67,52,43,0.14)] backdrop-blur md:right-6"
+        className="fixed right-4 z-40 hidden items-center gap-2 rounded-full border border-[#E8DDD4] bg-white/94 px-3.5 py-2.5 text-[12px] text-graphite shadow-[0_12px_30px_rgba(67,52,43,0.14)] backdrop-blur md:right-6 md:flex"
         style={{ bottom: 'var(--xiaoan-floating-bottom)' }}
         aria-label="打开小安对话"
       >
@@ -340,14 +403,19 @@ export default function XiaoanChat() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-[70] flex items-end justify-center bg-black/25 px-3 pb-3 pt-16 backdrop-blur-sm md:items-center md:p-6"
+            className="fixed inset-0 z-[70] flex items-end justify-center bg-black/25 px-3 backdrop-blur-sm md:items-center md:p-6"
+            style={{
+              paddingTop: 'calc(var(--app-safe-top) + 1rem)',
+              paddingBottom: 'calc(var(--app-safe-bottom) + 0.75rem)',
+            }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.18 }}
           >
             <motion.section
-              className="flex max-h-[82dvh] w-full max-w-[420px] flex-col overflow-hidden rounded-2xl border border-[#E8DDD4] bg-[#FBFAF7] shadow-2xl"
+              className="flex w-full max-w-[420px] flex-col overflow-hidden rounded-2xl border border-[#E8DDD4] bg-[#FBFAF7] shadow-2xl"
+              style={{ maxHeight: 'calc(100dvh - var(--app-safe-top) - var(--app-safe-bottom) - 2rem)' }}
               initial={{ opacity: 0, y: 24, scale: 0.97 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 16, scale: 0.98 }}
@@ -357,7 +425,7 @@ export default function XiaoanChat() {
               aria-label="小安对话框"
             >
               <header className="flex items-center justify-between border-b border-[#E8DDD4] bg-white/80 px-4 py-3">
-                <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3">
                   <img
                     src={resolveAssetUrl('/avatar-xiaoan.jpg')}
                     alt="小安头像"
@@ -367,10 +435,10 @@ export default function XiaoanChat() {
                     <h2 className="font-serif text-[17px] text-ink">小安</h2>
                     <p className="text-[11px] text-silver">
                       {chatMode === 'model'
-                        ? `模型在线${chatModel ? ` · ${chatModel}` : ''}`
+                        ? `智能导览${chatModel ? ` · ${chatModel}` : ''}`
                         : chatMode === 'checking'
-                          ? '正在确认模型连接'
-                          : '站内回答 · 等待模型服务'}
+                          ? '正在连接小安'
+                          : '站内导览'}
                     </p>
                   </div>
                 </div>
@@ -417,8 +485,14 @@ export default function XiaoanChat() {
                   <div className="flex justify-start">
                     <div className="flex max-w-[86%] items-center gap-2 rounded-2xl rounded-bl-md border border-[#E8DDD4] bg-white px-3.5 py-2.5 text-[13px] leading-relaxed text-silver">
                       <span className="h-3 w-3 animate-spin rounded-full border-2 border-[#D8C6B8] border-t-[#9B6848]" />
-                      小安正在整理公开书房里的线索
+                      小安正在按公开线索整理回答
                     </div>
+                  </div>
+                )}
+
+                {chatMode === 'local' && (
+                  <div className="rounded-xl border border-[#E8DDD4] bg-[#FFF8F1] px-3 py-2 text-[12px] leading-[1.7] text-silver">
+                    小安暂时用站内导览回答。它会先帮你找入口、收窄目标和避开常见坑；等模型服务接通后，会继续按书房内容整理更细的答案。
                   </div>
                 )}
 
@@ -440,7 +514,8 @@ export default function XiaoanChat() {
               </div>
 
               <form
-                className="flex items-center gap-2 border-t border-[#E8DDD4] bg-white/80 px-3 py-3"
+                className="flex items-center gap-2 border-t border-[#E8DDD4] bg-white/80 px-3 pt-3"
+                style={{ paddingBottom: 'calc(var(--app-safe-bottom) + 0.75rem)' }}
                 onSubmit={(event) => {
                   event.preventDefault();
                   void ask(trimmedInput);
@@ -449,7 +524,7 @@ export default function XiaoanChat() {
                 <input
                   value={input}
                   onChange={(event) => setInput(event.target.value)}
-                  placeholder="问小安一个关于安的书房、项目或复刻路线的问题"
+                  placeholder="问小安：先看哪页、怎么复刻、下一步做什么"
                   className="min-w-0 flex-1 rounded-full border border-[#E8DDD4] bg-white px-4 py-2 text-[13px] text-graphite outline-none placeholder:text-light-silver focus:border-[#C8956C]"
                 />
                 <button

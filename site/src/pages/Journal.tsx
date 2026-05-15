@@ -89,6 +89,20 @@ function getAllTags(entries: typeof journalEntries): string[] {
   return Array.from(set);
 }
 
+function getJournalGuidance(entry: JournalEntry) {
+  const keyTakeaway = entry.keyTakeaways?.[0];
+  const action = entry.actionText || '读完后只留下一个可重复的做法，不急着扩展成完整系统。';
+  const reason = keyTakeaway
+    ? '这篇手记已经从事件里抽出一个方法点，适合先看收获再读细节。'
+    : '它的价值不在记录情绪，而在帮助读者看见一次判断或方法怎样改变。';
+
+  return {
+    conclusion: keyTakeaway || entry.excerpt,
+    reason,
+    action,
+  };
+}
+
 /* ------------------------------------------------------------------ */
 /*  Category counts                                                   */
 /* ------------------------------------------------------------------ */
@@ -120,6 +134,7 @@ function JournalListItem({
   const readTime = entry.readingTime;
   const difficulty = entry.difficulty;
   const keyTakeaways = entry.keyTakeaways ?? [];
+  const guidance = getJournalGuidance(entry);
 
   const minutes = readTime ?? estimateReadTime(entry.body);
   const diffCfg = difficulty ? difficultyConfig[difficulty] : null;
@@ -129,6 +144,14 @@ function JournalListItem({
       className="group py-6 md:py-7 border-b border-border-color cursor-pointer transition-colors duration-200 hover:bg-[rgba(250,249,247,0.6)] -mx-5 md:-mx-6 px-5 md:px-6 card-tap"
       style={{ borderLeft: '3px solid transparent' }}
       onClick={onClick}
+      role="link"
+      tabIndex={0}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          onClick();
+        }
+      }}
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.06, duration: 0.4, ease: easeOut }}
@@ -171,10 +194,26 @@ function JournalListItem({
         {entry.title}
       </h3>
 
-      {/* Excerpt */}
-      <p className="text-[15px] font-sans text-silver leading-[1.7] line-clamp-3 mb-3">
-        {entry.excerpt}
-      </p>
+      <div className="mb-3 grid grid-cols-1 gap-2 md:grid-cols-3">
+        <div className="rounded-lg bg-[#FAF9F7] px-3 py-2 md:col-span-3">
+          <p className="mb-1 text-[11px] font-sans text-silver">结论</p>
+          <p className="text-[14px] font-sans text-graphite leading-[1.7] line-clamp-2">
+            {guidance.conclusion}
+          </p>
+        </div>
+        <div className="rounded-lg border border-[#F0F0EE] bg-white px-3 py-2 md:col-span-2">
+          <p className="mb-1 text-[11px] font-sans text-silver">原因</p>
+          <p className="text-[12px] font-sans text-silver leading-relaxed">
+            {guidance.reason}
+          </p>
+        </div>
+        <div className="rounded-lg border border-[#E8DDD4] bg-white px-3 py-2">
+          <p className="mb-1 text-[11px] font-sans text-silver">下一步</p>
+          <p className="text-[12px] font-sans text-graphite leading-relaxed">
+            {guidance.action}
+          </p>
+        </div>
+      </div>
 
       {/* Key Takeaways */}
       {keyTakeaways.length > 0 && (
@@ -284,7 +323,7 @@ export default function Journal() {
   // Error boundary
   if (!journalEntries || !Array.isArray(journalEntries)) {
     return (
-      <div className="min-h-[100dvh] pt-[96px] px-5 md:px-12">
+      <div className="min-h-[100dvh] pt-[calc(var(--app-nav-height)+32px)] px-5 md:px-12">
         <ErrorState
           title="加载失败"
           description="数据加载异常，请刷新页面重试"
@@ -296,7 +335,7 @@ export default function Journal() {
 
   /* ---------------- List View ---------------- */
   return (
-    <div className="pt-16 md:pt-[96px]">
+    <div className="pt-[calc(var(--app-nav-height)+16px)]">
       {/* 1. Page Header */}
       <section className="max-w-[800px] mx-auto px-5 md:px-6 pt-12 md:pt-[48px] pb-8 border-b border-border-color">
         <motion.h1
@@ -313,7 +352,7 @@ export default function Journal() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15, duration: 0.5, ease: easeOut }}
         >
-          随笔与思考记录。不成体系，但真诚。
+          每篇先看方法结论，再看事件原因，最后带走一个下一步。
         </motion.p>
         <motion.span
           className="inline-block mb-4 text-[12px] font-sans text-light-silver"

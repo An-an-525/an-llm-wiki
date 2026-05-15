@@ -1,8 +1,8 @@
 {
   "vault": ".",
-  "pages_checked": 280,
+  "pages_checked": 284,
   "strict_pages": 75,
-  "legacy_pages": 192,
+  "legacy_pages": 196,
   "learning_pages": 94,
   "frontend_data_checks": 1,
   "blocking_findings": 0,

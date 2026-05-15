@@ -9,10 +9,11 @@ import {
   Sparkles,
   RefreshCw,
   PackageOpen,
+  ArrowRight,
 } from 'lucide-react';
 import AndroidUpdatePanel from '@/components/AndroidUpdatePanel';
 import DesktopUpdatePanel from '@/components/DesktopUpdatePanel';
-import { resolveAssetUrl, resolveReleaseManifestUrl } from '@/lib/runtime';
+import { resolveAssetUrl, resolvePublicAssetUrl, resolveReleaseManifestUrl } from '@/lib/runtime';
 
 const easeOut = [0, 0, 0.2, 1] as [number, number, number, number];
 
@@ -54,6 +55,9 @@ type ReleaseInfo = {
       name: string;
       path: string;
       bytes: number;
+      sha256?: string;
+      abi?: string;
+      buildType?: string;
     };
   };
 };
@@ -106,26 +110,37 @@ export default function Install() {
 
   const windowsInstaller = release?.files?.windowsInstaller;
   const installerHref = windowsInstaller ? resolveAssetUrl(windowsInstaller.path) : '';
+  const androidApk = release?.files?.androidApk;
+  const androidHref = resolvePublicAssetUrl(release?.clients?.android?.entry || androidApk?.path);
 
   const installCards = useMemo(
     () => [
       {
         title: '网页直接阅读',
+        label: '最轻量',
         icon: Globe,
-        summary: '预览、试读、分享和下载入口。',
+        summary: '不用安装，打开就能读。适合第一次来、分享给朋友、确认最新内容。',
+        action: '打开网页版',
+        href: '/',
       },
       {
         title: 'Windows 桌面安装版',
+        label: release?.version ? `v${release.version}` : '可下载',
         icon: Laptop,
-        summary: '独立窗口、应用内检查更新、长期阅读。',
+        summary: '像普通软件一样打开。适合长期放在电脑里，慢慢读工坊、谱系和小安。',
+        action: installerHref ? '下载 Windows' : '安装包整理中',
+        href: installerHref,
       },
       {
         title: 'Android 安装版',
+        label: release?.clients?.android?.version ? `v${release.clients.android.version}` : '内测',
         icon: MonitorSmartphone,
-        summary: '手机端阅读与小安对话，后续按移动端规范分发。',
+        summary: '手机上随时阅读，也能问小安。当前先用 APK 内测包，由你手动确认安装。',
+        action: androidHref ? '下载 Android APK' : 'APK 整理中',
+        href: androidHref,
       },
     ],
-    [],
+    [androidHref, installerHref, release],
   );
 
   const clientRows = useMemo(
@@ -133,27 +148,27 @@ export default function Install() {
       {
         label: '网页预览',
         status: release?.clients?.web?.status || 'active',
-        delivery: '浏览器预览 / 下载入口',
-        updateMode: '刷新获取最新内容',
+        delivery: '直接用浏览器打开',
+        updateMode: '刷新页面就能看到新内容',
       },
       {
         label: 'Windows 桌面',
         status: release?.clients?.windows?.status || 'active',
-        delivery: release?.clients?.windows?.delivery || 'NSIS 安装包',
-        updateMode: release?.clients?.windows?.updateMode || '应用内更新',
+        delivery: 'Windows 安装包',
+        updateMode: '安装版里手动检查新版',
       },
       {
         label: 'Android',
         status: release?.clients?.android?.status || 'planned',
-        delivery: release?.clients?.android?.delivery || 'APK / AAB',
-        updateMode: release?.clients?.android?.updateMode || '移动端独立分发',
+        delivery: 'Android APK',
+        updateMode: '下载新版安装包后手动安装',
       },
     ],
     [release],
   );
 
   return (
-    <div className="min-h-[100dvh] bg-[#FAF9F7] pt-[calc(72px+40px)] pb-16">
+    <div className="min-h-[100dvh] bg-[#FAF9F7] pt-[calc(var(--app-nav-height)+32px)] pb-16">
       <div className="mx-auto max-w-[1120px] px-5 md:px-12">
         <motion.section
           initial={{ opacity: 0, y: 18 }}
@@ -166,25 +181,64 @@ export default function Install() {
             <span className="text-[12px] tracking-[0.08em]">安装与版本</span>
           </div>
           <h1 className="mt-3 font-serif text-[30px] leading-[1.3] text-ink md:text-[42px]">
-            安的书房安装与版本
+            选择你要打开书房的方式
           </h1>
           <p className="mt-4 max-w-[780px] text-[14px] leading-[2] text-silver md:text-[15px]">
-            网页、Windows 和 Android 共用同一套公开内容。这里负责下载、版本和更新状态。
+            网页、Windows 和 Android 都读同一间公开书房。先选你手边的设备，能打开、能阅读、能问小安，比形式复杂更重要。
           </p>
 
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             {installCards.map((card) => {
               const Icon = card.icon;
+              const inner = (
+                <>
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[#9B6848] shadow-sm">
+                      <Icon size={18} strokeWidth={1.6} />
+                    </div>
+                    <span className="rounded-full bg-white px-3 py-1 text-[11px] text-silver">
+                      {card.label}
+                    </span>
+                  </div>
+                  <h2 className="mt-4 font-serif text-[18px] text-ink">{card.title}</h2>
+                  <p className="mt-2 min-h-[52px] text-[13px] leading-[1.9] text-silver">{card.summary}</p>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] text-graphite">
+                    {card.action}
+                    <ArrowRight size={13} strokeWidth={1.6} />
+                  </span>
+                </>
+              );
+
+              if (card.href === '/') {
+                return (
+                  <Link
+                    key={card.title}
+                    to="/"
+                    className="group rounded-2xl border border-[#E8DDD4] bg-[#FBFAF7] p-5 transition-colors hover:border-[#C9AF96] hover:bg-white"
+                  >
+                    {inner}
+                  </Link>
+                );
+              }
+
+              if (card.href) {
+                return (
+                  <a
+                    key={card.title}
+                    href={card.href}
+                    className="group rounded-2xl border border-[#E8DDD4] bg-[#FBFAF7] p-5 transition-colors hover:border-[#C9AF96] hover:bg-white"
+                  >
+                    {inner}
+                  </a>
+                );
+              }
+
               return (
                 <div
                   key={card.title}
-                  className="rounded-2xl border border-[#E8DDD4] bg-[#FBFAF7] p-5"
+                  className="rounded-2xl border border-[#E8DDD4] bg-[#FBFAF7] p-5 opacity-75"
                 >
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[#9B6848] shadow-sm">
-                    <Icon size={18} strokeWidth={1.6} />
-                  </div>
-                  <h2 className="mt-4 font-serif text-[18px] text-ink">{card.title}</h2>
-                  <p className="mt-2 text-[13px] leading-[1.9] text-silver">{card.summary}</p>
+                  {inner}
                 </div>
               );
             })}
@@ -195,22 +249,24 @@ export default function Install() {
           <div className="rounded-[22px] border border-[#E8DDD4] bg-white p-6 md:p-7">
             <div className="flex items-center gap-3">
               <PackageOpen size={18} strokeWidth={1.6} className="text-[#9B6848]" />
-              <h2 className="font-serif text-[22px] text-ink">当前桌面版</h2>
+              <h2 className="font-serif text-[22px] text-ink">现在能下载什么</h2>
             </div>
 
             <div className="mt-5 rounded-2xl border border-[#E8DDD4] bg-[#FBFAF7] p-5">
-              <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="grid gap-4 md:grid-cols-3">
                 <div>
-                  <p className="text-[12px] text-silver">版本号</p>
+                  <p className="text-[12px] text-silver">Windows</p>
                   <p className="mt-1 text-[20px] text-ink">{release?.version || '0.1.0'}</p>
+                  <p className="mt-1 text-[12px] text-silver">{formatBytes(windowsInstaller?.bytes)}</p>
                 </div>
                 <div>
-                  <p className="text-[12px] text-silver">发布时间</p>
-                  <p className="mt-1 text-[14px] text-graphite">{formatDate(release?.generatedAt)}</p>
+                  <p className="text-[12px] text-silver">Android</p>
+                  <p className="mt-1 text-[20px] text-ink">{release?.clients?.android?.version || '内测'}</p>
+                  <p className="mt-1 text-[12px] text-silver">{formatBytes(androidApk?.bytes)}</p>
                 </div>
                 <div>
-                  <p className="text-[12px] text-silver">安装包大小</p>
-                  <p className="mt-1 text-[14px] text-graphite">{formatBytes(windowsInstaller?.bytes)}</p>
+                  <p className="text-[12px] text-silver">清单时间</p>
+                  <p className="mt-1 text-[14px] leading-[1.7] text-graphite">{formatDate(release?.generatedAt)}</p>
                 </div>
               </div>
 
@@ -236,6 +292,15 @@ export default function Install() {
                   <Globe size={16} strokeWidth={1.6} />
                   直接打开网页版
                 </Link>
+                {androidHref ? (
+                  <a
+                    href={androidHref}
+                    className="inline-flex items-center gap-2 rounded-full border border-[#D8C6B8] bg-white px-5 py-3 text-[13px] text-graphite"
+                  >
+                    <MonitorSmartphone size={16} strokeWidth={1.6} />
+                    下载 Android APK
+                  </a>
+                ) : null}
               </div>
             </div>
 
@@ -243,17 +308,17 @@ export default function Install() {
               <div className="rounded-2xl border border-[#E8DDD4] bg-[#FBFAF7] p-5">
                 <h3 className="font-serif text-[17px] text-ink">装好之后能做什么</h3>
                 <ul className="mt-3 space-y-2 text-[13px] leading-[1.8] text-graphite">
-                  <li>稳定打开首页、藏馆、谱系、工坊、手记和年谱。</li>
+                  <li>打开首页、藏馆、谱系、工坊、手记和年谱。</li>
                   <li>像独立软件一样阅读。</li>
-                  <li>通过线上小安服务对话。</li>
+                  <li>进入小安页面或弹窗，按书房里的公开内容提问。</li>
                 </ul>
               </div>
               <div className="rounded-2xl border border-[#E8DDD4] bg-[#FBFAF7] p-5">
-                <h3 className="font-serif text-[17px] text-ink">当前边界</h3>
+                <h3 className="font-serif text-[17px] text-ink">需要知道的边界</h3>
                 <ul className="mt-3 space-y-2 text-[13px] leading-[1.8] text-graphite">
-                  <li>桌面版不打包原始材料。</li>
-                  <li>访问材料只留在服务端，安装包里没有令牌。</li>
-                  <li>Android 按移动端分发规则单独交付，不和桌面更新机制混用。</li>
+                  <li>安装包只放公开书房，不放安的私人材料。</li>
+                  <li>小安的在线回答由后端提供，页面里不保存访问密钥。</li>
+                  <li>Android 新版需要你自己确认安装，不会偷偷替换。</li>
                 </ul>
               </div>
             </div>
@@ -269,8 +334,11 @@ export default function Install() {
             <div className="rounded-[22px] border border-[#E8DDD4] bg-white p-6">
               <div className="flex items-center gap-3">
                 <MonitorSmartphone size={18} strokeWidth={1.6} className="text-[#9B6848]" />
-                <h2 className="font-serif text-[22px] text-ink">双端互通标准</h2>
+                <h2 className="font-serif text-[22px] text-ink">内容怎样同步</h2>
               </div>
+              <p className="mt-3 text-[13px] leading-[1.9] text-silver">
+                内容更新和软件更新分开。内容可以更快刷新，软件版本慢一点也没关系；这样更稳，也不影响读者继续阅读。
+              </p>
               <div className="mt-4 space-y-3">
                 {clientRows.map((row) => (
                   <div

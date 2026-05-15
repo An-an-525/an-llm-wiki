@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import {
   Trophy,
   BookOpen,
@@ -53,6 +53,14 @@ const importanceSize: Record<string, number> = {
   major: 18,
 };
 
+type PhaseGroup = {
+  phase: string;
+  years: string[];
+  events: typeof timelineEvents;
+  conclusion: string;
+  nextStep: string;
+};
+
 /* ------------------------------------------------------------------ */
 /*  Helpers                                                           */
 /* ------------------------------------------------------------------ */
@@ -75,6 +83,35 @@ function groupByYear(events: typeof timelineEvents) {
   }
   const sortedYears = Object.keys(groups).sort((a, b) => parseInt(b) - parseInt(a));
   return sortedYears.map((year) => ({ year, events: groups[year] }));
+}
+
+function groupByPhase(events: typeof timelineEvents): PhaseGroup[] {
+  const map = new Map<string, typeof timelineEvents>();
+  for (const event of events) {
+    const phase = event.stage || '未标注阶段';
+    const existing = map.get(phase);
+    if (existing) {
+      existing.push(event);
+    } else {
+      map.set(phase, [event]);
+    }
+  }
+
+  return Array.from(map.entries()).map(([phase, phaseEvents]) => {
+    const years = Array.from(new Set(phaseEvents.map((event) => getYearFromDate(event.date)))).sort();
+    const majorEvent = phaseEvents.find((event) => event.importance === 'major') || phaseEvents[0];
+    const nextAction = [...phaseEvents]
+      .reverse()
+      .find((event) => event.actionText)?.actionText;
+
+    return {
+      phase,
+      years,
+      events: phaseEvents,
+      conclusion: majorEvent?.description || '这一阶段记录安的学习与建造方式如何变化。',
+      nextStep: nextAction || '先读本阶段的关键节点，再打开关联页面做一个最小动作。',
+    };
+  });
 }
 
 /* ------------------------------------------------------------------ */
@@ -122,6 +159,36 @@ function StageSummaryCard({
   );
 }
 
+function PhaseOverview({ phases }: { phases: PhaseGroup[] }) {
+  if (phases.length === 0) return null;
+
+  return (
+    <section className="max-w-[900px] mx-auto px-5 md:px-6 py-6">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+        {phases.map((phase) => (
+          <div
+            key={phase.phase}
+            className="rounded-xl border border-border-color bg-white px-4 py-3"
+          >
+            <div className="mb-2 flex items-center justify-between gap-3">
+              <h3 className="font-serif text-[16px] text-ink">{phase.phase}</h3>
+              <span className="shrink-0 text-[11px] font-sans text-light-silver">
+                {phase.years.join(' / ')} · {phase.events.length} 节点
+              </span>
+            </div>
+            <p className="mb-2 text-[13px] font-sans text-graphite leading-[1.75]">
+              结论：{phase.conclusion}
+            </p>
+            <p className="text-[12px] font-sans text-silver leading-relaxed">
+              下一步：{phase.nextStep}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /*  Timeline Card                                                     */
 /* ------------------------------------------------------------------ */
@@ -135,15 +202,26 @@ function TimelineCard({
   config: { label: string; color: string; icon: typeof Trophy };
   Icon: typeof Trophy;
 }) {
+  const navigate = useNavigate();
   const achievements = event.achievements ?? [];
   const reflection = event.reflection;
   const relatedPathIds = event.relatedPathIds ?? [];
+  const nextAction = event.actionText || '读完这个节点后，回到关联路径或详情页做一个最小动作。';
 
   return (
     <motion.div
-      className="bg-white border border-border-color rounded-xl p-4 md:p-5 shadow-sm transition-shadow duration-200 hover:shadow-md"
+      className="bg-white border border-border-color rounded-xl p-4 md:p-5 shadow-sm transition-shadow duration-200 hover:shadow-md cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C8956C]"
       whileHover={{ y: -2 }}
       transition={{ duration: 0.2 }}
+      role="link"
+      tabIndex={0}
+      onClick={() => navigate(`/content/${event.id}`)}
+      onKeyDown={(keyboardEvent) => {
+        if (keyboardEvent.key === 'Enter' || keyboardEvent.key === ' ') {
+          keyboardEvent.preventDefault();
+          navigate(`/content/${event.id}`);
+        }
+      }}
     >
       {/* Category badge + date */}
       <div className="flex items-center gap-2 mb-2.5">
@@ -164,10 +242,28 @@ function TimelineCard({
         {event.title}
       </h4>
 
-      {/* Description */}
-      <p className="text-[13px] font-sans text-silver leading-relaxed mb-3">
-        {event.description}
-      </p>
+      <div className="space-y-2 mb-3">
+        <div className="rounded-lg bg-[#FAF9F7] px-3 py-2">
+          <p className="mb-1 text-[11px] font-sans text-silver">结论</p>
+          <p className="text-[13px] font-sans text-graphite leading-relaxed">
+            {event.description}
+          </p>
+        </div>
+        <div className="grid grid-cols-1 gap-2">
+          <div className="rounded-lg border border-[#F0F0EE] bg-white px-3 py-2">
+            <p className="mb-1 text-[11px] font-sans text-silver">阶段</p>
+            <p className="text-[12px] font-sans text-graphite leading-relaxed">
+              {event.stage || '这一节点还在整理中'}
+            </p>
+          </div>
+          <div className="rounded-lg border border-[#E8DDD4] bg-white px-3 py-2">
+            <p className="mb-1 text-[11px] font-sans text-silver">下一步</p>
+            <p className="text-[12px] font-sans text-graphite leading-relaxed">
+              {nextAction}
+            </p>
+          </div>
+        </div>
+      </div>
 
       {/* Achievements */}
       {achievements.length > 0 && (
@@ -226,6 +322,7 @@ function TimelineCard({
               key={link}
               to={link}
               className="inline-flex items-center gap-1 text-[12px] font-sans text-favorite hover:opacity-80 transition-opacity duration-150"
+              onClick={(clickEvent) => clickEvent.stopPropagation()}
             >
               了解更多
               <ArrowRight size={12} strokeWidth={1.5} />
@@ -237,6 +334,7 @@ function TimelineCard({
       <Link
         to={`/content/${event.id}`}
         className="mt-3 inline-flex items-center gap-1 text-[12px] font-sans text-graphite hover:text-favorite transition-colors duration-150"
+        onClick={(event) => event.stopPropagation()}
       >
         查看年谱详情
         <ArrowRight size={12} strokeWidth={1.5} />
@@ -532,6 +630,7 @@ export default function Timeline() {
 
   // Group by year
   const yearGroups = useMemo(() => groupByYear(filteredEvents), [filteredEvents]);
+  const phaseGroups = useMemo(() => groupByPhase(filteredEvents), [filteredEvents]);
 
   const clearFilters = () => {
     setActiveYear('all');
@@ -550,7 +649,7 @@ export default function Timeline() {
     categoryFilters.filter((cat) => cat !== 'all' && (categoryCounts[cat] || 0) > 0).length > 1;
 
   return (
-    <div className="pt-16 md:pt-[96px]">
+    <div className="pt-[calc(var(--app-nav-height)+16px)]">
       {/* 1. Page Header */}
       <section className="max-w-[800px] mx-auto px-5 md:px-6 pt-12 md:pt-[48px] pb-8 border-b border-border-color text-center">
         <motion.h1
@@ -576,7 +675,7 @@ export default function Timeline() {
           transition={{ delay: 0.25, duration: 0.4 }}
         >
           <span>
-            {stats.nodes} 个节点 · {stats.years} 年 · {stats.completedPaths} 条路径已完成
+            {stats.nodes} 个节点 · {stats.years} 年 · 已整理出 {stats.completedPaths} 条可继续阅读的路线
           </span>
         </motion.div>
         <motion.span
@@ -652,6 +751,8 @@ export default function Timeline() {
           共 {filteredEvents.length} 个节点
         </span>
       </section>
+
+      <PhaseOverview phases={phaseGroups} />
 
       {/* 4. Timeline Body */}
       <section className="bg-cream">
