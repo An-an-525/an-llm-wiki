@@ -11,6 +11,7 @@
     "server:xiaoan": "node server/xiaoan-chat-proxy.mjs",
     "prebuild": "node scripts/sync-site-data.mjs",
     "build": "tsc -b && vite build",
+    "postbuild": "node scripts/prune-dist-release-artifacts.mjs",
     "desktop:prepare-release": "node scripts/prepare-desktop-release.mjs",
     "tauri": "tauri",
     "desktop:dev": "tauri dev",

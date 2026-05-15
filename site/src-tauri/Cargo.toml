@@ -1,6 +1,6 @@
 [package]
 name = "an-study-room"
-version = "0.1.1"
+version = "0.1.2"
 description = "An Study Room desktop shell"
 authors = ["An"]
 license = ""

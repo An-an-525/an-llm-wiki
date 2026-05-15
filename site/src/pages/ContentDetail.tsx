@@ -553,7 +553,10 @@ function MarkdownBody({ children }: { children: string }) {
 function ResourceBody({ content }: { content: UnifiedContent }) {
   const item = content.original as LibraryItem;
   const statusColor = getStatusColor(content.status);
-  const visibleLinks = (item.links ?? []).filter((link) => link.url.startsWith('http'));
+  const visibleLinks = (item.links ?? []).filter((link) => {
+    if (link.url.startsWith('http')) return true;
+    return isInternalReaderLink(link.url);
+  });
   const typeLabels: Record<string, string> = {
     article: '文章',
     video: '视频',
@@ -597,10 +600,11 @@ function ResourceBody({ content }: { content: UnifiedContent }) {
         </motion.div>
       )}
 
-      {/* External source cards only */}
+      {/* Reader-visible source and related cards only */}
       {visibleLinks.map((link) => {
         const cardLabel = readerLinkLabel(link.label, link.url);
         const metaLabel = readerLinkMeta(link.url);
+        const isInternal = isInternalReaderLink(link.url);
 
         const cardContent = (
           <>
@@ -627,6 +631,19 @@ function ResourceBody({ content }: { content: UnifiedContent }) {
 
         const cardClassName = 'flex items-center justify-between p-5 bg-white border border-border-color rounded-xl mb-6 hover:shadow-md hover:border-border-dark transition-all duration-250 group';
         const cardStyle = { transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' as const };
+
+        if (isInternal) {
+          return (
+            <Link
+              key={`${link.url}-${cardLabel}`}
+              to={link.url}
+              className={cardClassName}
+              style={cardStyle}
+            >
+              {cardContent}
+            </Link>
+          );
+        }
 
         return (
           <a
@@ -959,14 +976,22 @@ function PathBody({ content }: { content: UnifiedContent }) {
 function DetailSection({
   id,
   title,
+  tone = 'plain',
   children,
 }: {
   id?: string;
   title: string;
+  tone?: 'plain' | 'soft' | 'accent';
   children: ReactNode;
 }) {
+  const toneClass = tone === 'accent'
+    ? 'border-[#E8DDD4] bg-[#FFFCF8]'
+    : tone === 'soft'
+      ? 'border-[#EDE4DC] bg-[#FCFAF7]'
+      : 'border-border-color bg-white';
+
   return (
-    <section id={id} className="scroll-mt-[120px] bg-white border border-border-color rounded-xl p-5 md:p-6">
+    <section id={id} className={`scroll-mt-[120px] rounded-xl border p-5 md:p-6 ${toneClass}`}>
       <h3 className="font-serif text-[18px] text-ink mb-4">{title}</h3>
       {children}
     </section>
@@ -1060,11 +1085,11 @@ function WorkPacketMap({
         <div>
           <p className="text-[12px] text-[#9B7E68]">资料包地图</p>
           <h2 className="mt-1 font-serif text-[22px] leading-tight text-ink">
-            先抓主线，再进细节
+            先拿到路线，再进细节
           </h2>
         </div>
         <p className="max-w-[360px] text-[12px] leading-relaxed text-silver md:text-right">
-          列表只帮你选择，详情页负责完整学习。读完这四格，再决定是否继续深读。
+          小白先走前两格，想深入再看边界和复盘。不要一上来读完整原文。
         </p>
       </div>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-4">
@@ -1173,7 +1198,7 @@ function WorkBody({ content }: { content: UnifiedContent }) {
           )}
         </DetailSection>
 
-        <DetailSection title="三层读者怎么读">
+        <DetailSection title="三层读者怎么读" tone="soft">
           <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
             <div className="rounded-lg bg-cream px-4 py-3">
               <p className="mb-1 text-[12px] text-silver">小白先完成</p>
@@ -1196,27 +1221,34 @@ function WorkBody({ content }: { content: UnifiedContent }) {
           </div>
         </DetailSection>
 
-        <DetailSection id="boundary" title="材料与边界">
-          <div className="mb-4 flex flex-wrap gap-2">
-            {work.techStack.map((tech) => (
-              <span
-                key={tech}
-                className="text-[13px] font-sans text-graphite bg-light-pink px-3 py-1 rounded-lg"
-              >
-                {toPublicLabel(tech)}
-              </span>
-            ))}
+        <DetailSection id="boundary" title="材料与边界" tone="soft">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+            <div>
+              <p className="mb-2 text-[12px] text-silver">用到的材料</p>
+              <div className="flex flex-wrap gap-2">
+                {work.techStack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="text-[13px] font-sans text-graphite bg-white px-3 py-1 rounded-lg border border-[#E8DDD4]"
+                  >
+                    {toPublicLabel(tech)}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-xl bg-white px-4 py-3">
+              {work.sourceLabels && work.sourceLabels.length > 0 && (
+                <p className="text-[13px] font-sans text-silver leading-relaxed">
+                  来源类型：{work.sourceLabels.map(toPublicLabel).join(' / ')}
+                </p>
+              )}
+              {work.publicSafety && (
+                <p className="mt-2 text-[13px] font-sans text-silver leading-relaxed">
+                  公开边界：{toPublicLabel(work.publicSafety)}
+                </p>
+              )}
+            </div>
           </div>
-          {work.sourceLabels && work.sourceLabels.length > 0 && (
-            <p className="text-[13px] font-sans text-silver leading-relaxed">
-              来源类型：{work.sourceLabels.map(toPublicLabel).join(' / ')}
-            </p>
-          )}
-          {work.publicSafety && (
-            <p className="mt-2 text-[13px] font-sans text-silver leading-relaxed">
-              公开边界：{toPublicLabel(work.publicSafety)}
-            </p>
-          )}
         </DetailSection>
 
         {work.operationStory && work.operationStory.length > 0 && (
@@ -1226,12 +1258,12 @@ function WorkBody({ content }: { content: UnifiedContent }) {
         )}
 
         {work.replicationSteps && work.replicationSteps.length > 0 && (
-          <DetailSection id="replicate" title="复刻步骤">
+          <DetailSection id="replicate" title="复刻步骤" tone="accent">
             <DetailList items={work.replicationSteps} ordered />
           </DetailSection>
         )}
 
-        <DetailSection title="复刻完成检查">
+        <DetailSection title="复刻完成检查" tone="accent">
           <CompletionChecklist />
         </DetailSection>
 
@@ -1528,7 +1560,7 @@ export default function ContentDetail() {
 
   if (!content) {
     return (
-      <div className="min-h-[100dvh] flex items-center justify-center pt-16">
+      <div className="min-h-[100dvh] flex items-center justify-center pt-[calc(var(--app-nav-height)+16px)]">
         <div className="text-center">
           <h1 className="font-serif text-[24px] text-graphite mb-3">内容未找到</h1>
           <p className="text-[14px] text-silver mb-5">该内容可能已被删除或不存在</p>
@@ -1584,7 +1616,7 @@ export default function ContentDetail() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.2 }}
-        className="pt-[96px] pb-4 px-5 md:px-12"
+        className="pt-[calc(var(--app-nav-height)+32px)] pb-4 px-5 md:px-12"
       >
         <div className="max-w-[1200px] mx-auto flex items-center gap-2 text-[12px] font-sans text-silver">
           <Link to="/" className="hover:text-ink hover:underline transition-colors duration-150">

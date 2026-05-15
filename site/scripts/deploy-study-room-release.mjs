@@ -1,4 +1,4 @@
-import { access, readFile, rm } from 'node:fs/promises';
+import { access, copyFile, mkdir, readFile, rm } from 'node:fs/promises';
 import { constants } from 'node:fs';
 import { spawn } from 'node:child_process';
 import { basename, dirname, resolve } from 'node:path';
@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 const scriptDir = dirname(fileURLToPath(import.meta.url));
 const siteRoot = resolve(scriptDir, '..');
 const distRoot = resolve(siteRoot, 'dist');
+const publicRoot = resolve(siteRoot, 'public');
 
 const releaseId = (process.env.AN_STUDY_ROOM_RELEASE_ID || new Date().toISOString())
   .replace(/[:]/g, '-')
@@ -24,6 +25,22 @@ const archivePath = resolve(tmpdir(), `an-study-room-dist-${releaseId}.tar.gz`);
 
 async function ensureReadable(path) {
   await access(path, constants.R_OK);
+}
+
+async function exists(path) {
+  try {
+    await access(path, constants.R_OK);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function copyIfMissing(targetPath, fallbackPath) {
+  if (await exists(targetPath)) return;
+  if (!(await exists(fallbackPath))) return;
+  await mkdir(dirname(targetPath), { recursive: true });
+  await copyFile(fallbackPath, targetPath);
 }
 
 async function runCommand(command, args, options = {}) {
@@ -51,19 +68,22 @@ function shellQuote(value) {
   return `'${String(value).replace(/'/g, `'\\''`)}'`;
 }
 
-function collectDownloadFiles(releaseManifest) {
+async function collectDownloadFiles(releaseManifest) {
   const files = releaseManifest?.files || {};
-  return Object.values(files)
+  const entries = Object.values(files)
     .map((file) => file?.path)
     .filter((filePath) => typeof filePath === 'string' && filePath.startsWith('/downloads/'))
-    .map((filePath) => {
+    .map(async (filePath) => {
       const name = basename(filePath);
+      const distPath = resolve(distRoot, 'downloads', name);
+      const publicPath = resolve(publicRoot, 'downloads', name);
       return {
         name,
-        localPath: resolve(distRoot, 'downloads', name),
+        localPath: (await exists(distPath)) ? distPath : publicPath,
         remoteTmpPath: `${remoteTmpDir}/${name}`,
       };
     });
+  return Promise.all(entries);
 }
 
 if (!sshHost) {
@@ -71,11 +91,13 @@ if (!sshHost) {
 }
 
 await ensureReadable(resolve(distRoot, 'index.html'));
+await copyIfMissing(resolve(distRoot, 'downloads', 'release.json'), resolve(publicRoot, 'downloads', 'release.json'));
+await copyIfMissing(resolve(distRoot, 'updates', 'latest.json'), resolve(publicRoot, 'updates', 'latest.json'));
 await ensureReadable(resolve(distRoot, 'downloads', 'release.json'));
 await ensureReadable(resolve(distRoot, 'updates', 'latest.json'));
 await ensureReadable(resolve(distRoot, 'site-data', 'adapter.json'));
 const releaseManifest = JSON.parse(await readFile(resolve(distRoot, 'downloads', 'release.json'), 'utf8'));
-const downloadFiles = collectDownloadFiles(releaseManifest);
+const downloadFiles = await collectDownloadFiles(releaseManifest);
 for (const file of downloadFiles) {
   await ensureReadable(file.localPath);
 }

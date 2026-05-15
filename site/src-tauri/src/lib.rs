@@ -32,6 +32,7 @@ window.__AN_STUDY_ROOM_DESKTOP__ = Object.assign(
   window.__AN_STUDY_ROOM_DESKTOP__ || {{}},
   {{ {} }}
 );
+window.dispatchEvent(new CustomEvent('an-runtime-config-updated'));
 "#,
         parts.join(", ")
     )

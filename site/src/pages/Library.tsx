@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Search,
@@ -8,6 +8,7 @@ import {
   RotateCcw,
   Sparkles,
   SlidersHorizontal,
+  ArrowRight,
 } from 'lucide-react';
 import { libraryItems } from '@/data/mockLibrary';
 import type { LibraryItem, LibraryReaderCategory } from '@/types';
@@ -27,17 +28,18 @@ const statusConfig: Record<
 };
 
 /* ── beginner category helpers ── */
-const categoryConfig: Record<LibraryReaderCategory, { label: string; color: string; hint: string }> = {
+type BeginnerLibraryCategory = Exclude<LibraryReaderCategory, 'xiaoan'>;
+
+const categoryConfig: Record<BeginnerLibraryCategory, { label: string; color: string; hint: string }> = {
   frontend: { label: '前端', color: '#C8956C', hint: '页面、交互、移动端和可安装网页' },
-  backend: { label: '后端', color: '#8A9BB8', hint: '接口、数据生成、服务边界' },
-  tools: { label: '工具', color: '#8AAE9B', hint: '软件、平台和工作台' },
-  agents: { label: '智能体', color: '#B8A87F', hint: '多步工作流和工具调用' },
-  xiaoan: { label: '小安', color: '#C47D6E', hint: '数字生命体、人格和对话边界' },
-  prompts: { label: '提示词', color: '#9C8FB8', hint: '目标、上下文、约束和验收' },
+  backend: { label: '后端', color: '#8A9BB8', hint: '接口、数据出口、服务边界和稳定更新' },
+  tools: { label: '工具', color: '#8AAE9B', hint: '软件、平台、浏览器、命令行和工作台' },
+  agents: { label: '智能体', color: '#B8A87F', hint: '能按步骤协作的 AI 工作流' },
+  prompts: { label: '提示词', color: '#9C8FB8', hint: '目标、材料、约束、输出和验收' },
   archive: { label: '资料整理', color: '#6B9E7C', hint: '把散乱材料整理成公开书页' },
-  security: { label: '边界', color: '#A06A62', hint: '发布前检查、改写和边界' },
   learning: { label: '学习路线', color: '#9A8E6A', hint: '从一个最小成果开始复刻' },
-  sources: { label: '来源', color: '#7C8FA6', hint: '官方文档、项目和来源说明' },
+  security: { label: '边界保护', color: '#A06A62', hint: '发布前检查、改写和保护隐私' },
+  sources: { label: '参考资料', color: '#7C8FA6', hint: '官方文档、参考项目和来源说明' },
   other: { label: '其他', color: '#A0A0A0', hint: '暂未归入上面大类的内容' },
 };
 
@@ -47,13 +49,38 @@ const categoryFilters = [
   { key: 'backend', label: '后端' },
   { key: 'tools', label: '工具' },
   { key: 'agents', label: '智能体' },
-  { key: 'xiaoan', label: '小安' },
   { key: 'prompts', label: '提示词' },
-  { key: 'archive', label: '资料整理' },
+  { key: 'archive', label: '整理资料' },
   { key: 'learning', label: '学习路线' },
-  { key: 'security', label: '边界' },
-  { key: 'sources', label: '来源' },
+  { key: 'security', label: '边界保护' },
+  { key: 'sources', label: '参考资料' },
 ] as const;
+
+function getBeginnerCategory(item: LibraryItem): BeginnerLibraryCategory {
+  if (item.readerCategory === 'xiaoan') return 'agents';
+  return item.readerCategory || 'other';
+}
+
+function pickFirstText(...values: Array<string | undefined>) {
+  return values.find((value) => value?.trim())?.trim();
+}
+
+function stripMarkdown(value?: string) {
+  return (value || '')
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/^#+\s+/gm, '')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/[*_>#-]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function shortText(value?: string, max = 72) {
+  const text = stripMarkdown(value);
+  if (text.length <= max) return text;
+  return `${text.slice(0, max).replace(/[，。；、\s]+$/u, '')}…`;
+}
 
 const statusFilters = [
   { key: 'all', label: '全部' },
@@ -89,10 +116,17 @@ function LibraryCard({
   item: LibraryItem;
   index: number;
 }) {
-  const categoryInfo = categoryConfig[item.readerCategory || 'other'];
+  const navigate = useNavigate();
+  const beginnerCategory = getBeginnerCategory(item);
+  const categoryInfo = categoryConfig[beginnerCategory];
   const statusInfo = statusConfig[item.status];
   const isExternal = item.links.some((l) => l.url.startsWith('http'));
-  const useCase = item.useCase?.trim();
+  const judgmentText = shortText(pickFirstText(item.description, item.useCase), 82);
+  const whoText = pickFirstText(item.whoFor, item.recommendedFor);
+  const nextText = pickFirstText(item.actionText, item.links[0]?.label);
+  const riskText = pickFirstText(item.cons?.[0], item.publicSafety);
+  const sourceText = item.sourceLabels?.slice(0, 2).join(' / ');
+  const detailUrl = `/content/${item.id}`;
 
   return (
     <motion.div
@@ -103,8 +137,17 @@ function LibraryCard({
         duration: 0.3,
         ease: easeOut,
       }}
-      className="group bg-white border border-border-color rounded-xl shadow-sm hover:shadow-md hover:border-border-dark transition-all duration-250 flex flex-col overflow-hidden card-tap"
+      className="group bg-white border border-border-color rounded-xl shadow-sm hover:shadow-md hover:border-border-dark transition-all duration-250 flex flex-col overflow-hidden card-tap cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C8956C]"
       style={{ transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)' }}
+      role="link"
+      tabIndex={0}
+      onClick={() => navigate(detailUrl)}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          navigate(detailUrl);
+        }
+      }}
     >
       {/* Top color bar */}
       <div className="h-1 w-full" style={{ backgroundColor: categoryInfo.color }} />
@@ -132,27 +175,45 @@ function LibraryCard({
 
         {/* Row 2: Title */}
         <Link
-          to={`/content/${item.id}`}
+          to={detailUrl}
           className="text-[15px] font-sans font-medium text-graphite group-hover:text-ink transition-colors duration-150 mb-1.5 leading-snug"
+          onClick={(event) => event.stopPropagation()}
         >
           {item.title}
         </Link>
 
-        {/* Row 3: Description */}
-        <p className="text-[13px] font-sans text-silver leading-relaxed line-clamp-2 mb-2.5">
-          {item.description}
+        <p className="mb-3 text-[13px] font-sans text-graphite leading-relaxed line-clamp-3">
+          {judgmentText}
         </p>
 
-        {useCase && (
-          <div className="rounded-lg bg-[#F6F2EC] px-3 py-2 mb-3">
+        <div className="mb-3 space-y-2 rounded-lg bg-[#FCFBF9] px-3 py-3">
+          {whoText && (
             <p className="text-[12px] font-sans text-graphite leading-relaxed line-clamp-2">
-              {useCase}
+              <span className="mr-1 text-light-silver">读者：</span>
+              {shortText(whoText, 48)}
             </p>
-          </div>
-        )}
+          )}
+          {nextText && (
+            <p className="text-[12px] font-sans text-graphite leading-relaxed line-clamp-2">
+              <span className="mr-1 text-light-silver">先做：</span>
+              {shortText(nextText, 52)}
+            </p>
+          )}
+          {(riskText || sourceText) && (
+            <p className="text-[12px] font-sans text-graphite leading-relaxed line-clamp-2">
+              <span className="mr-1 text-light-silver">注意：</span>
+              {shortText(riskText || `来源：${sourceText}`, 52)}
+            </p>
+          )}
+          {sourceText && (
+            <p className="hidden text-[11px] font-sans text-silver leading-relaxed line-clamp-1 md:block">
+              来源：{sourceText}
+            </p>
+          )}
+        </div>
 
         {/* Row 4: Tags */}
-        <div className="flex flex-wrap gap-1.5 mb-3">
+        <div className="hidden flex-wrap gap-1.5 mb-3 md:flex">
           {item.tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
@@ -169,13 +230,16 @@ function LibraryCard({
             <span className="text-[11px] font-sans text-light-silver">
               {item.timeToLearn}
             </span>
-            {item.publicSafety && (
-              <span className="text-[11px] font-sans text-light-silver">
-                {item.publicSafety}
-              </span>
-            )}
           </div>
           <div className="flex items-center gap-1.5">
+            <Link
+              to={detailUrl}
+              className="inline-flex items-center gap-1.5 rounded-full border border-border-color px-2.5 py-1.5 text-[12px] font-sans text-silver transition-colors hover:border-border-dark hover:bg-cream hover:text-graphite"
+              onClick={(event) => event.stopPropagation()}
+            >
+              打开资料包
+              <ArrowRight size={12} strokeWidth={1.5} />
+            </Link>
             {isExternal && (
               <a
                 href={item.links[0].url}
@@ -239,7 +303,7 @@ function useFilterCounts(items: LibraryItem[], signature: string) {
     if (f.key === 'all') {
       counts.category[f.key] = items.length;
     } else {
-      counts.category[f.key] = items.filter((i) => (i.readerCategory || 'other') === f.key).length;
+      counts.category[f.key] = items.filter((i) => getBeginnerCategory(i) === f.key).length;
     }
   });
   statusFilters.forEach((f) => {
@@ -283,6 +347,7 @@ export default function Library() {
         (item.useCase || '').toLowerCase().includes(q) ||
         (item.actionText || '').toLowerCase().includes(q) ||
         item.tags.some((t) => t.toLowerCase().includes(q)) ||
+        categoryConfig[getBeginnerCategory(item)].label.toLowerCase().includes(q) ||
         (item.readerCategoryLabel || '').toLowerCase().includes(q) ||
         (item.whoFor || '').toLowerCase().includes(q) ||
         (item.myThoughts || '').toLowerCase().includes(q) ||
@@ -292,7 +357,7 @@ export default function Library() {
 
   // Beginner category filter
   if (activeType !== 'all') {
-    filteredItems = filteredItems.filter((item) => (item.readerCategory || 'other') === activeType);
+    filteredItems = filteredItems.filter((item) => getBeginnerCategory(item) === activeType);
   }
 
   // Tag filter
@@ -364,7 +429,7 @@ export default function Library() {
   // Error boundary
   if (!libraryItems || !Array.isArray(libraryItems)) {
     return (
-      <div className="min-h-[100dvh] pt-[96px] px-5 md:px-12">
+      <div className="min-h-[100dvh] pt-[calc(var(--app-nav-height)+32px)] px-5 md:px-12">
         <ErrorState
           title="加载失败"
           description="数据加载异常，请刷新页面重试"
@@ -377,7 +442,7 @@ export default function Library() {
   return (
     <div className="min-h-[100dvh]">
       {/* ── Page Header ── */}
-      <section className="pt-[96px] pb-8 px-5 md:px-12">
+      <section className="pt-[calc(var(--app-nav-height)+32px)] pb-8 px-5 md:px-12">
         <div className="max-w-[1200px] mx-auto">
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
@@ -393,7 +458,7 @@ export default function Library() {
             transition={{ duration: 0.4, ease: easeOut, delay: 0.2 }}
             className="text-[15px] text-silver mb-6"
           >
-            前端、后端、工具、智能体、提示词、资料整理和边界。
+            按前端、后端、工具、智能体、提示词、资料整理、学习路线、边界保护和参考资料来找。
           </motion.p>
 
           <div className="border-b border-border-color" />

@@ -46,12 +46,18 @@
     }
   }
 
-  html[data-platform='android'].android-standalone {
-    --app-safe-top: max(env(safe-area-inset-top, 0px), 24px);
+  html[data-platform='android'],
+  html.android-standalone {
+    --app-safe-top: max(env(safe-area-inset-top, 0px), 32px);
     --app-safe-bottom: 0px;
     --app-nav-height: calc(4rem + var(--app-safe-top));
     --mobile-nav-height: 56px;
     --xiaoan-floating-bottom: 68px;
+  }
+
+  html[data-platform='android'] body,
+  html.android-standalone body {
+    background: #ffffff;
   }
 
   @media (min-width: 768px) {

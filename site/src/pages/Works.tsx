@@ -86,7 +86,7 @@ const typeBadgeConfig: Record<string, { label: string; bg: string }> = {
 const featuredWorkTitles = [
   '个人资料库展示前端',
   '个人资料库平台复刻学习包',
-  'Coze Agent Builder 复刻学习包',
+  'Coze 风格 Agent 搭建器研究',
 ];
 
 function pickFirstText(...values: Array<string | undefined>) {
@@ -117,18 +117,12 @@ function shortText(value?: string, max = 74) {
   return `${text.slice(0, max).replace(/[，。；、\s]+$/u, '')}…`;
 }
 
-function WorkInfoLine({
-  label,
-  children,
-}: {
-  label: string;
-  children?: React.ReactNode;
-}) {
+function WorkInfoLine({ label, children }: { label: string; children?: React.ReactNode }) {
   if (!children) return null;
 
   return (
     <p className="text-[12px] font-sans text-graphite leading-relaxed">
-      <span className="text-light-silver">{label}：</span>
+      <span className="mr-1 text-light-silver">{label}：</span>
       {children}
     </p>
   );
@@ -165,7 +159,6 @@ function WorkCard({
   const whyText = pickFirstText(work.whyItMattered, work.learnings, work.challenges);
   const nextText = pickFirstText(work.actionText, work.replicationSteps?.[0], work.nextPlan);
   const riskText = pickFirstText(work.failureModes?.[0], splitFirstText(work.challenges), work.publicSafety);
-  const sourceText = work.sourceLabels?.slice(0, 2).join(' / ');
   const detailUrl = `/content/${work.id}`;
 
   return (
@@ -245,30 +238,17 @@ function WorkCard({
           </p>
 
           <div className="space-y-2 rounded-lg bg-[#FCFBF9] px-3 py-3 mb-3">
-            <WorkInfoLine label="小白">
+            <WorkInfoLine label="适合">
               <span className="line-clamp-1 md:line-clamp-2">{shortText(whoText, 48)}</span>
             </WorkInfoLine>
-            <div className="hidden md:block">
-              <WorkInfoLine label="极客">
-                <span className="line-clamp-2">{shortText(whyText, 54)}</span>
-              </WorkInfoLine>
-            </div>
-            <div className="md:hidden">
-              <WorkInfoLine label="看点">
-                <span className="line-clamp-2">{shortText(whyText, 46)}</span>
-              </WorkInfoLine>
-            </div>
+            <WorkInfoLine label="看点">
+              <span className="line-clamp-2">{shortText(whyText, 54)}</span>
+            </WorkInfoLine>
             <WorkInfoLine label="先做">
               <span className="line-clamp-2">{shortText(nextText, 56)}</span>
             </WorkInfoLine>
-            <WorkInfoLine label="码神">
-              <span className="line-clamp-2 md:line-clamp-2">
-                {shortText(riskText || (sourceText ? `来源：${sourceText}` : ''), 58)}
-                <span className="hidden md:inline">
-                  {riskText && sourceText ? '；' : ''}
-                  {sourceText ? `来源：${sourceText}` : ''}
-                </span>
-              </span>
+            <WorkInfoLine label="小心">
+              <span className="line-clamp-2">{shortText(riskText, 58)}</span>
             </WorkInfoLine>
           </div>
 
@@ -428,7 +408,7 @@ export default function WorksPage() {
   // Error boundary
   if (!works || !Array.isArray(works)) {
     return (
-      <div className="min-h-[100dvh] pt-[96px] px-5 md:px-12">
+      <div className="min-h-[100dvh] pt-[calc(var(--app-nav-height)+32px)] px-5 md:px-12">
         <ErrorState
           title="加载失败"
           description="数据加载异常，请刷新页面重试"
@@ -441,7 +421,7 @@ export default function WorksPage() {
   return (
     <div className="min-h-[100dvh] bg-white">
       {/* ========== Header ========== */}
-      <section className="pt-[96px] md:pt-[144px] pb-8">
+      <section className="pt-[calc(var(--app-nav-height)+32px)] md:pt-[calc(var(--app-nav-height)+80px)] pb-8">
         <div className="max-w-[1200px] mx-auto px-5 md:px-12">
           <motion.h1
             className="font-serif text-[28px] md:text-[36px] font-normal text-ink leading-[1.3] tracking-[-0.01em] mb-3 text-center"
@@ -459,50 +439,31 @@ export default function WorksPage() {
           >
             这里不是作品墙。每张卡都是一份资料包：列表只帮你判断要不要打开，完整背景、复刻步骤、失败点和安的提醒都在详情页。
           </motion.p>
-          <motion.div
-            className="mx-auto mt-5 grid max-w-[900px] grid-cols-1 gap-3 md:grid-cols-3"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: easeOut, delay: 0.25 }}
-          >
-            {[
-              ['小白', '先看这件事能不能照着做出一个最小版本。'],
-              ['极客', '再看工具、数据、流程和取舍怎样连起来。'],
-              ['码神', '最后看边界、风险、验收和后续维护成本。'],
-            ].map(([label, text]) => (
-              <div key={label} className="rounded-lg border border-[#E8DDD4] bg-[#FCFAF7] px-4 py-3 text-left">
-                <p className="text-[12px] text-[#9B7E68]">{label}</p>
-                <p className="mt-1 text-[13px] leading-[1.75] text-graphite">{text}</p>
-              </div>
-            ))}
-          </motion.div>
           {featuredWorks.length > 0 && (
             <motion.div
-              className="mx-auto mt-6 grid max-w-[1080px] grid-cols-1 gap-4 md:grid-cols-3"
+              className="mx-auto mt-5 flex max-w-[980px] flex-col gap-2 rounded-2xl border border-[#E8DDD4] bg-[#FCFAF7] p-3 text-left md:flex-row md:items-center md:gap-3 md:p-3.5"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, ease: easeOut, delay: 0.36 }}
+              transition={{ duration: 0.4, ease: easeOut, delay: 0.25 }}
             >
+              <div className="shrink-0 px-1 text-[12px] text-[#9B7E68] md:w-[78px]">
+                推荐先读
+              </div>
               {featuredWorks.map((work, index) => (
                 <Link
                   key={work.id}
                   to={`/content/${work.id}`}
-                  className="group rounded-xl border border-[#E8DDD4] bg-[#FCFAF7] p-5 text-left transition-all duration-200 hover:-translate-y-[2px] hover:border-[#C9AF96] hover:shadow-md"
+                  className="group flex min-w-0 items-center gap-2 rounded-xl bg-white px-3 py-2.5 text-left transition-all duration-200 hover:bg-[#F8F3EE] md:flex-1"
                 >
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="rounded-full bg-white px-2.5 py-1 text-[11px] text-[#9B7E68]">
-                      精选 {index + 1}
-                    </span>
-                    <ArrowRight
-                      size={15}
-                      strokeWidth={1.5}
-                      className="text-silver transition-transform duration-150 group-hover:translate-x-0.5"
-                    />
-                  </div>
-                  <h2 className="mt-4 font-serif text-[19px] leading-[1.45] text-ink">{work.title}</h2>
-                  <p className="mt-2 line-clamp-3 text-[13px] leading-[1.8] text-silver">
-                    {work.description}
-                  </p>
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#F5EDE8] text-[11px] text-[#9B7E68]">
+                    {index + 1}
+                  </span>
+                  <span className="min-w-0 flex-1 truncate text-[13px] text-graphite">{work.title}</span>
+                  <ArrowRight
+                    size={14}
+                    strokeWidth={1.5}
+                    className="shrink-0 text-silver transition-transform duration-150 group-hover:translate-x-0.5"
+                  />
                 </Link>
               ))}
             </motion.div>

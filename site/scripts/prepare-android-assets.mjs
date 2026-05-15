@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const distDir = path.join(root, 'dist');
+const currentTauriConfigPath = path.join(root, 'src-tauri', 'tauri.conf.json');
 const androidAssetsDir = path.join(root, 'src-tauri', 'gen', 'android', 'app', 'src', 'main', 'assets');
 const tauriConfigPath = path.join(androidAssetsDir, 'tauri.conf.json');
 
@@ -30,7 +31,7 @@ async function main() {
 
   let tauriConfig = '';
   try {
-    tauriConfig = await readFile(tauriConfigPath, 'utf8');
+    tauriConfig = await readFile(currentTauriConfigPath, 'utf8');
   } catch {
     tauriConfig = '';
   }
