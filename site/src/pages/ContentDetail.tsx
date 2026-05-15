@@ -27,6 +27,7 @@ import { journalEntries } from '@/data/mockJournal';
 import { feedItems } from '@/data/mockFeed';
 import { timelineEvents } from '@/data/mockTimeline';
 import { resolveAssetUrl } from '@/lib/runtime';
+import { toPublicLabel } from '@/lib/publicLabels';
 import type {
   LibraryItem,
   Path,
@@ -368,6 +369,68 @@ function readerLinkMeta(url: string): string {
   }
 }
 
+type ReadingGuideItem = {
+  label: string;
+  text: string;
+};
+
+type ReaderTrack = {
+  label: string;
+  text: string;
+};
+
+function ReadingGuide({ items }: { items: ReadingGuideItem[] }) {
+  const visible = items.filter((item) => item.text.trim());
+  if (visible.length === 0) return null;
+
+  return (
+    <section className="mb-6 rounded-xl border border-[#E8DDD4] bg-[#FAF9F7] p-4 md:p-5">
+      <h2 className="mb-3 font-serif text-[18px] text-ink">导读</h2>
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+        {visible.map((item) => (
+          <div key={item.label} className="rounded-lg bg-white px-3 py-2.5">
+            <p className="mb-1 text-[12px] font-sans text-silver">{item.label}</p>
+            <p className="text-[14px] font-sans text-graphite leading-[1.75]">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ReaderTracks({ tracks }: { tracks: ReaderTrack[] }) {
+  const visible = tracks.filter((item) => item.text.trim());
+  if (visible.length === 0) return null;
+
+  return (
+    <section className="mb-6 rounded-xl border border-[#E8DDD4] bg-[#FCFAF7] p-4 md:p-5">
+      <div className="mb-3 flex items-center justify-between gap-3">
+        <h2 className="font-serif text-[18px] text-ink">三种读法</h2>
+        <span className="shrink-0 rounded-full bg-white px-2.5 py-1 text-[11px] text-[#9B7E68]">
+          先选一条路
+        </span>
+      </div>
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+        {visible.map((item) => (
+          <div key={item.label} className="rounded-lg bg-white px-3 py-3">
+            <p className="mb-1 text-[12px] text-[#9B7E68]">{item.label}</p>
+            <p className="text-[13px] leading-[1.75] text-graphite">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function getGenericRisk(content: UnifiedContent): string {
+  if (content.type === 'resource') return '不要把资料推荐当成通用答案，先核对来源、状态和自己的场景。';
+  if (content.type === 'path') return '不要跳过前置条件，也不要把路径当作保证结果的承诺。';
+  if (content.type === 'work') return '不要直接复制完整项目，先缩到一个可验收的小版本。';
+  if (content.type === 'journal') return '这是公开复盘，不等于完整私密背景；不要过度推断个人细节。';
+  if (content.type === 'feed') return '这是判断更新，不是新闻结论；外部事实需要继续看来源和时间。';
+  return '这是年谱节点，不等于完整因果链；日期、阶段和后续动作要一起看。';
+}
+
 /* ═══════════════════════════════════════════
    Markdown Styles wrapper
    ═══════════════════════════════════════════ */
@@ -502,6 +565,23 @@ function ResourceBody({ content }: { content: UnifiedContent }) {
 
   return (
     <div className="max-w-[800px] mx-auto">
+      <ReaderTracks
+        tracks={[
+          {
+            label: '小白',
+            text: item.actionText || item.useCase || content.description,
+          },
+          {
+            label: '极客',
+            text: item.pros?.[0] || '看用途、来源和边界，判断它能放进哪一步工作流。',
+          },
+          {
+            label: '码神',
+            text: item.cons?.[0] || item.publicSafety || '看限制和维护成本，决定是否进入长期方法库。',
+          },
+        ]}
+      />
+
       {content.cover && (
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
@@ -614,7 +694,7 @@ function ResourceBody({ content }: { content: UnifiedContent }) {
                       key={tag}
                       className="rounded-sm bg-light-pink px-2 py-0.5 text-[11px] font-sans text-graphite"
                     >
-                      {tag}
+                      {toPublicLabel(tag)}
                     </span>
                   ))}
                 </div>
@@ -792,6 +872,7 @@ function PathStageItem({ stage, index }: { stage: PathStage; index: number }) {
 function PathBody({ content }: { content: UnifiedContent }) {
   const path = content.original as Path;
   const stages = (content.metadata.stages as PathStage[]) || [];
+  const firstStage = stages[0];
   const difficultyLabel: Record<string, string> = {
     beginner: '初级',
     intermediate: '中级',
@@ -800,6 +881,14 @@ function PathBody({ content }: { content: UnifiedContent }) {
 
   return (
     <div className="max-w-[800px] mx-auto">
+      <ReadingGuide
+        items={[
+          { label: '先看什么', text: content.description },
+          { label: '适合谁', text: path.whoFor || '适合想照着路线做出一个最小成果的人。' },
+          { label: '下一步', text: path.actionText || firstStage?.deliverable || '从第一阶段开始，完成一个可验收的小产出。' },
+          { label: '风险', text: getGenericRisk(content) },
+        ]}
+      />
       <DetailSection title="摘要">
         <div className="mb-4 flex flex-wrap gap-4">
           <div className="flex items-center gap-1.5 text-[13px] font-sans text-silver">
@@ -868,14 +957,16 @@ function PathBody({ content }: { content: UnifiedContent }) {
    ═══════════════════════════════════════════ */
 
 function DetailSection({
+  id,
   title,
   children,
 }: {
+  id?: string;
   title: string;
   children: ReactNode;
 }) {
   return (
-    <section className="bg-white border border-border-color rounded-xl p-5 md:p-6">
+    <section id={id} className="scroll-mt-[120px] bg-white border border-border-color rounded-xl p-5 md:p-6">
       <h3 className="font-serif text-[18px] text-ink mb-4">{title}</h3>
       {children}
     </section>
@@ -914,8 +1005,120 @@ function ThoughtLayer({
   );
 }
 
+function WorkPacketMap({
+  content,
+  work,
+  firstReplicationStep,
+  firstOperation,
+  firstFailureMode,
+  firstLesson,
+}: {
+  content: UnifiedContent;
+  work: Work;
+  firstReplicationStep?: string;
+  firstOperation?: string;
+  firstFailureMode?: string;
+  firstLesson?: string;
+}) {
+  const cards = [
+    {
+      label: '先判断',
+      title: '这件事值不值得读',
+      text: work.whyItMattered || content.description,
+      targetId: 'judgment',
+    },
+    {
+      label: '再复刻',
+      title: '先做一个最小版本',
+      text: firstReplicationStep || work.actionText || '把目标缩小到今天能完成的一页、一个流程或一个可打开的小版本。',
+      targetId: 'replicate',
+    },
+    {
+      label: '看边界',
+      title: '哪里最容易出错',
+      text: firstFailureMode || work.publicSafety || '先看失败点、公开边界和维护成本，再决定要不要扩大。',
+      targetId: 'risks',
+    },
+    {
+      label: '再复盘',
+      title: '留下能迁移的方法',
+      text: firstLesson || work.nextPlan || firstOperation || '把这次项目留下的步骤、判断和提醒，转成下一次能复用的方法。',
+      targetId: 'reflection',
+    },
+  ];
+
+  const scrollToSection = (targetId: string) => {
+    document.getElementById(targetId)?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  };
+
+  return (
+    <section className="mb-6 rounded-2xl border border-[#E8DDD4] bg-[#FFFCF8] p-4 md:p-5">
+      <div className="mb-4 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="text-[12px] text-[#9B7E68]">资料包地图</p>
+          <h2 className="mt-1 font-serif text-[22px] leading-tight text-ink">
+            先抓主线，再进细节
+          </h2>
+        </div>
+        <p className="max-w-[360px] text-[12px] leading-relaxed text-silver md:text-right">
+          列表只帮你选择，详情页负责完整学习。读完这四格，再决定是否继续深读。
+        </p>
+      </div>
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-4">
+        {cards.map((card, index) => (
+          <button
+            type="button"
+            key={card.label}
+            onClick={() => scrollToSection(card.targetId)}
+            className="group rounded-xl border border-[#F0E5DD] bg-white px-3.5 py-3.5 text-left transition-all duration-150 hover:-translate-y-0.5 hover:border-[#D8C6B8] hover:shadow-sm"
+          >
+            <div className="mb-2 flex items-center gap-2">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#F5EDE8] text-[11px] text-[#9B7E68]">
+                {index + 1}
+              </span>
+              <span className="text-[12px] text-[#9B7E68]">{card.label}</span>
+            </div>
+            <h3 className="mb-1.5 text-[14px] font-medium leading-snug text-graphite group-hover:text-ink">
+              {card.title}
+            </h3>
+            <p className="line-clamp-3 text-[13px] leading-[1.7] text-silver">{card.text}</p>
+          </button>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function CompletionChecklist() {
+  const checks = [
+    '能用一句话说清这件事解决什么问题，适合谁先读。',
+    '能完成一个最小版本，并把输入、步骤、输出写下来。',
+    '能指出至少一个失败点，并说明先检查页面、数据、提示词还是工具权限。',
+    '能留下一个下次还能复用的判断，而不是只收藏这个页面。',
+  ];
+
+  return (
+    <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+      {checks.map((check, index) => (
+        <div key={`${index}-${check}`} className="flex gap-3 rounded-lg bg-[#FCFAF7] px-3.5 py-3">
+          <CheckCircle2 size={16} strokeWidth={1.6} className="mt-1 shrink-0 text-[#6B9E7C]" />
+          <p className="text-[13px] leading-[1.8] text-graphite">{check}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function WorkBody({ content }: { content: UnifiedContent }) {
   const work = content.original as Work;
+  const [showPublicNote, setShowPublicNote] = useState(false);
+  const firstReplicationStep = work.replicationSteps?.find(Boolean);
+  const firstFailureMode = work.failureModes?.find(Boolean);
+  const firstOperation = work.operationStory?.find(Boolean);
+  const firstLesson = work.lessons?.find(Boolean);
   const hasStructuredDepth =
     work.whyItMattered ||
     work.operationStory?.length ||
@@ -943,8 +1146,17 @@ function WorkBody({ content }: { content: UnifiedContent }) {
         </motion.div>
       )}
 
+      <WorkPacketMap
+        content={content}
+        work={work}
+        firstReplicationStep={firstReplicationStep}
+        firstOperation={firstOperation}
+        firstFailureMode={firstFailureMode}
+        firstLesson={firstLesson}
+      />
+
       <div className="space-y-5">
-        <DetailSection title="先用一句话说清楚">
+        <DetailSection id="judgment" title="先把目标说清楚">
           <p className="text-[15px] font-sans text-graphite leading-[1.8] mb-4">
             {content.description}
           </p>
@@ -955,50 +1167,82 @@ function WorkBody({ content }: { content: UnifiedContent }) {
           )}
           {work.actionText && (
             <div className="mt-4 rounded-xl bg-[#F5EDE8] px-4 py-3">
-              <p className="mb-1 text-[12px] text-silver">第一步</p>
+              <p className="mb-1 text-[12px] text-silver">今天先做</p>
               <p className="text-[14px] text-graphite leading-[1.8]">{work.actionText}</p>
             </div>
           )}
         </DetailSection>
 
-        <DetailSection title="工具与材料">
-          <div className="flex flex-wrap gap-2 mb-4">
+        <DetailSection title="三层读者怎么读">
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+            <div className="rounded-lg bg-cream px-4 py-3">
+              <p className="mb-1 text-[12px] text-silver">小白先完成</p>
+              <p className="text-[14px] leading-[1.8] text-graphite">
+                {firstReplicationStep || '照着页面做出一个能被别人打开、看懂、复述的小版本。'}
+              </p>
+            </div>
+            <div className="rounded-lg bg-[#F5EDE8] px-4 py-3">
+              <p className="mb-1 text-[12px] text-silver">极客看结构</p>
+              <p className="text-[14px] leading-[1.8] text-graphite">
+                {firstOperation || '看工具、数据、页面和验收如何分层，不被单个工具牵着走。'}
+              </p>
+            </div>
+            <div className="rounded-lg bg-[#F7F3EC] px-4 py-3">
+              <p className="mb-1 text-[12px] text-silver">码神看边界</p>
+              <p className="text-[14px] leading-[1.8] text-graphite">
+                {firstFailureMode || '看失败模式、公开边界、数据契约和后续维护成本。'}
+              </p>
+            </div>
+          </div>
+        </DetailSection>
+
+        <DetailSection id="boundary" title="材料与边界">
+          <div className="mb-4 flex flex-wrap gap-2">
             {work.techStack.map((tech) => (
               <span
                 key={tech}
                 className="text-[13px] font-sans text-graphite bg-light-pink px-3 py-1 rounded-lg"
               >
-                {tech}
+                {toPublicLabel(tech)}
               </span>
             ))}
           </div>
           {work.sourceLabels && work.sourceLabels.length > 0 && (
             <p className="text-[13px] font-sans text-silver leading-relaxed">
-              来源类型：{work.sourceLabels.join(' / ')}
+              来源类型：{work.sourceLabels.map(toPublicLabel).join(' / ')}
+            </p>
+          )}
+          {work.publicSafety && (
+            <p className="mt-2 text-[13px] font-sans text-silver leading-relaxed">
+              公开边界：{toPublicLabel(work.publicSafety)}
             </p>
           )}
         </DetailSection>
 
         {work.operationStory && work.operationStory.length > 0 && (
-          <DetailSection title="操作历程">
+          <DetailSection id="operation" title="安实际怎么做">
             <DetailList items={work.operationStory} ordered />
           </DetailSection>
         )}
 
         {work.replicationSteps && work.replicationSteps.length > 0 && (
-          <DetailSection title="复刻路径">
+          <DetailSection id="replicate" title="复刻步骤">
             <DetailList items={work.replicationSteps} ordered />
           </DetailSection>
         )}
 
-        {work.anReminders && work.anReminders.length > 0 && (
-          <DetailSection title="提醒">
-            <DetailList items={work.anReminders} />
+        <DetailSection title="复刻完成检查">
+          <CompletionChecklist />
+        </DetailSection>
+
+        {work.failureModes && work.failureModes.length > 0 && (
+          <DetailSection id="risks" title="容易失手的地方">
+            <DetailList items={work.failureModes} />
           </DetailSection>
         )}
 
         {(work.psychologicalLayer || work.sociologicalLayer || work.philosophicalLayer) && (
-          <DetailSection title="三层理解">
+          <DetailSection id="reflection" title="为什么这里会让人乱">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               <ThoughtLayer title="心理层">{work.psychologicalLayer}</ThoughtLayer>
               <ThoughtLayer title="社会层">{work.sociologicalLayer}</ThoughtLayer>
@@ -1007,9 +1251,9 @@ function WorkBody({ content }: { content: UnifiedContent }) {
           </DetailSection>
         )}
 
-        {work.failureModes && work.failureModes.length > 0 && (
-          <DetailSection title="容易失手的地方">
-            <DetailList items={work.failureModes} />
+        {work.anReminders && work.anReminders.length > 0 && (
+          <DetailSection title="安的提醒">
+            <DetailList items={work.anReminders} />
           </DetailSection>
         )}
 
@@ -1034,9 +1278,28 @@ function WorkBody({ content }: { content: UnifiedContent }) {
         )}
 
         {work.body && (
-          <DetailSection title="公开笔记">
-            <MarkdownBody>{work.body}</MarkdownBody>
-          </DetailSection>
+          <section className="rounded-xl border border-[#E8DDD4] bg-[#FCFAF7] p-5 md:p-6">
+            <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+              <div>
+                <h3 className="font-serif text-[18px] text-ink">完整公开笔记</h3>
+                <p className="mt-1 text-[13px] leading-relaxed text-silver">
+                  上面已经整理成资料包；这一段保留更完整的公开原文，适合需要深读的人。
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowPublicNote((value) => !value)}
+                className="inline-flex shrink-0 items-center justify-center rounded-full border border-[#D8C6B8] bg-white px-4 py-2 text-[13px] text-graphite transition-colors hover:bg-cream"
+              >
+                {showPublicNote ? '收起原文' : '展开原文'}
+              </button>
+            </div>
+            {showPublicNote && (
+              <div className="mt-5 border-t border-[#E8DDD4] pt-5">
+                <MarkdownBody>{work.body}</MarkdownBody>
+              </div>
+            )}
+          </section>
         )}
 
         <div className="flex flex-wrap gap-3">
@@ -1073,8 +1336,20 @@ function WorkBody({ content }: { content: UnifiedContent }) {
    ═══════════════════════════════════════════ */
 
 function JournalBody({ content }: { content: UnifiedContent }) {
+  const journal = content.original as JournalEntry;
+  const firstTakeaway = journal.keyTakeaways?.[0] || content.description;
+  const actionText = journal.actionText || '读完后写下一条可重复的做法，再决定是否延伸阅读。';
+
   return (
     <div className="max-w-[720px] mx-auto lg:mx-0 lg:ml-0">
+      <ReadingGuide
+        items={[
+          { label: '先看什么', text: firstTakeaway },
+          { label: '适合谁', text: '适合想从一次经历里提炼方法，而不是只看情绪记录的读者。' },
+          { label: '下一步', text: actionText },
+          { label: '风险', text: getGenericRisk(content) },
+        ]}
+      />
       {content.body ? (
         <MarkdownBody>{content.body}</MarkdownBody>
       ) : (
@@ -1095,9 +1370,22 @@ function FeedBody({ content }: { content: UnifiedContent }) {
   const sourceLink = feed.link || '';
   const visibleLink = sourceLink && sourceLink.startsWith('http') ? sourceLink : '';
   const actionText = typeof content.metadata.actionText === 'string' ? content.metadata.actionText : '';
+  const judgment = feed.body
+    ?.split('\n')
+    .map((line) => line.replace(/^#+\s*/, '').trim())
+    .find((line) => line && !line.startsWith('-'))
+    || '先看安的判断变化，再决定这条信息是否值得行动。';
 
   return (
     <div className="max-w-[720px] mx-auto">
+      <ReadingGuide
+        items={[
+          { label: '先看什么', text: judgment },
+          { label: '适合谁', text: '适合想知道这条变化如何影响阅读顺序、工具选择或下一步行动的读者。' },
+          { label: '下一步', text: actionText || '打开关联页面，先完成一个最小阅读或复刻动作。' },
+          { label: '风险', text: getGenericRisk(content) },
+        ]}
+      />
       <DetailSection title="摘要">
         <p className="text-[15px] font-sans text-graphite leading-[1.8]">
           {content.description}
@@ -1148,9 +1436,18 @@ function TimelineBody({ content }: { content: UnifiedContent }) {
     relatedLinks?: string[];
     achievements?: string[];
   };
+  const nextStep = metadata.actionText || '先读节点说明，再打开关联路径或详情页做一个最小动作。';
 
   return (
     <div className="max-w-[720px] mx-auto">
+      <ReadingGuide
+        items={[
+          { label: '先看什么', text: content.description },
+          { label: '适合谁', text: '适合想按阶段理解安从尝试、方法到作品如何变化的读者。' },
+          { label: '下一步', text: nextStep },
+          { label: '风险', text: getGenericRisk(content) },
+        ]}
+      />
       <DetailSection title="节点说明">
         <div className="mb-4 flex flex-wrap items-center gap-4">
           <div className="flex items-center gap-1.5 text-[13px] font-sans text-silver">
@@ -1364,7 +1661,7 @@ export default function ContentDetail() {
                 key={tag}
                 className="text-[11px] font-sans text-silver bg-light-gray px-2 py-0.5 rounded-sm"
               >
-                {tag}
+                {toPublicLabel(tag)}
               </span>
             ))}
           </div>

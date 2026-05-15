@@ -15,8 +15,6 @@ import {
   Inbox,
   Clock,
   Users,
-  AlertTriangle,
-  Lightbulb,
   ArrowRight,
   ChevronDown,
   SlidersHorizontal,
@@ -37,15 +35,15 @@ const easeOut = [0, 0, 0.2, 1] as [number, number, number, number];
 
 type WorkType = 'all' | 'website' | 'tool' | 'video' | 'miniapp' | 'resource' | 'opensource' | 'prototype' | 'experiment';
 type WorkStatus = 'all' | 'in_progress' | 'completed' | 'archived';
+type WorkCardData = Work & { inferredType: WorkType; whoFor?: string };
 
 function inferWorkType(work: Work): WorkType {
   const stack = work.techStack.join(' ').toLowerCase();
   const title = work.title.toLowerCase();
-  if (title.includes('小安') || stack.includes('小安')) return 'prototype';
+  if (title.includes('学习包') || title.includes('复刻') || stack.includes('学习')) return 'resource';
   if (stack.includes('react') || stack.includes('vite') || title.includes('前端') || title.includes('网站') || title.includes('app')) return 'website';
   if (title.includes('api') || title.includes('后端') || stack.includes('接口') || stack.includes('后端')) return 'miniapp';
-  if (title.includes('agent') || title.includes('智能体') || title.includes('coze') || stack.includes('智能体')) return 'opensource';
-  if (title.includes('学习包') || title.includes('复刻') || stack.includes('学习')) return 'resource';
+  if (title.includes('agent') || title.includes('智能体') || title.includes('coze') || stack.includes('智能体') || title.includes('小安') || stack.includes('小安')) return 'opensource';
   if (title.includes('资料库') || title.includes('书房') || title.includes('藏馆') || stack.includes('资料库')) return 'tool';
   if (stack.includes('three.js') || stack.includes('glsl') || title.includes('实验')) return 'experiment';
   return 'website';
@@ -53,13 +51,12 @@ function inferWorkType(work: Work): WorkType {
 
 const typeFilters: { key: WorkType; label: string; icon: React.ReactNode }[] = [
   { key: 'all', label: '全部', icon: <Layers size={13} strokeWidth={1.5} /> },
-  { key: 'website', label: '网页与 App', icon: <Globe size={13} strokeWidth={1.5} /> },
-  { key: 'tool', label: '资料库', icon: <Wrench size={13} strokeWidth={1.5} /> },
+  { key: 'website', label: '前端', icon: <Globe size={13} strokeWidth={1.5} /> },
+  { key: 'miniapp', label: '后端', icon: <Cpu size={13} strokeWidth={1.5} /> },
+  { key: 'tool', label: '工具', icon: <Wrench size={13} strokeWidth={1.5} /> },
   { key: 'opensource', label: '智能体', icon: <Code2 size={13} strokeWidth={1.5} /> },
-  { key: 'resource', label: '复刻学习包', icon: <BookOpen size={13} strokeWidth={1.5} /> },
-  { key: 'prototype', label: '小安', icon: <Cpu size={13} strokeWidth={1.5} /> },
-  { key: 'miniapp', label: '后端接口', icon: <Cpu size={13} strokeWidth={1.5} /> },
-  { key: 'experiment', label: '实验作品', icon: <FlaskConical size={13} strokeWidth={1.5} /> },
+  { key: 'resource', label: '学习路线', icon: <BookOpen size={13} strokeWidth={1.5} /> },
+  { key: 'experiment', label: '工具实验', icon: <FlaskConical size={13} strokeWidth={1.5} /> },
 ];
 
 const statusFilters: { key: WorkStatus; label: string }[] = [
@@ -76,14 +73,14 @@ const statusConfig: Record<string, { label: string; bg: string; text: string }> 
 };
 
 const typeBadgeConfig: Record<string, { label: string; bg: string }> = {
-  website: { label: '网页与 App', bg: 'bg-[#E8EBF0]' },
-  tool: { label: '资料库', bg: 'bg-[#F0EDE5]' },
+  website: { label: '前端', bg: 'bg-[#E8EBF0]' },
+  tool: { label: '工具', bg: 'bg-[#F0EDE5]' },
   video: { label: '视频', bg: 'bg-[#F5EDE8]' },
-  miniapp: { label: '后端接口', bg: 'bg-[#E8F0EB]' },
-  resource: { label: '复刻学习包', bg: 'bg-[#F0DDD8]' },
+  miniapp: { label: '后端', bg: 'bg-[#E8F0EB]' },
+  resource: { label: '学习路线', bg: 'bg-[#F0DDD8]' },
   opensource: { label: '智能体', bg: 'bg-[#E8EBF0]' },
-  prototype: { label: '小安', bg: 'bg-[#F5EDE8]' },
-  experiment: { label: '实验作品', bg: 'bg-[#F0EDE5]' },
+  prototype: { label: '智能体', bg: 'bg-[#F5EDE8]' },
+  experiment: { label: '工具实验', bg: 'bg-[#F0EDE5]' },
 };
 
 const featuredWorkTitles = [
@@ -91,6 +88,51 @@ const featuredWorkTitles = [
   '个人资料库平台复刻学习包',
   'Coze Agent Builder 复刻学习包',
 ];
+
+function pickFirstText(...values: Array<string | undefined>) {
+  return values.find((value) => value?.trim())?.trim();
+}
+
+function splitFirstText(value?: string) {
+  return value
+    ?.split(/[；;]/)
+    .map((item) => item.trim())
+    .find(Boolean);
+}
+
+function stripMarkdown(value?: string) {
+  return (value || '')
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/^#+\s+/gm, '')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/[*_>#-]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function shortText(value?: string, max = 74) {
+  const text = stripMarkdown(value);
+  if (text.length <= max) return text;
+  return `${text.slice(0, max).replace(/[，。；、\s]+$/u, '')}…`;
+}
+
+function WorkInfoLine({
+  label,
+  children,
+}: {
+  label: string;
+  children?: React.ReactNode;
+}) {
+  if (!children) return null;
+
+  return (
+    <p className="text-[12px] font-sans text-graphite leading-relaxed">
+      <span className="text-light-silver">{label}：</span>
+      {children}
+    </p>
+  );
+}
 
 /* ------------------------------------------------------------------ */
 /*  Work Card                                                          */
@@ -100,7 +142,7 @@ function WorkCard({
   work,
   index,
 }: {
-  work: Work & { inferredType: WorkType };
+  work: WorkCardData;
   index: number;
 }) {
   const [hovered, setHovered] = useState(false);
@@ -118,9 +160,12 @@ function WorkCard({
 
   const duration = work.duration;
   const teamSize = work.teamSize;
-  const firstFailureMode = work.failureModes?.find((item) => item?.trim())?.trim();
-  const firstReminder = work.anReminders?.find((item) => item?.trim())?.trim();
-  const replicationSteps = work.replicationSteps ?? [];
+  const judgmentText = shortText(pickFirstText(work.description, work.whyItMattered), 92);
+  const whoText = pickFirstText(work.whoFor, '想看真实项目、照着做一个小版本的读者');
+  const whyText = pickFirstText(work.whyItMattered, work.learnings, work.challenges);
+  const nextText = pickFirstText(work.actionText, work.replicationSteps?.[0], work.nextPlan);
+  const riskText = pickFirstText(work.failureModes?.[0], splitFirstText(work.challenges), work.publicSafety);
+  const sourceText = work.sourceLabels?.slice(0, 2).join(' / ');
   const detailUrl = `/content/${work.id}`;
 
   return (
@@ -195,13 +240,40 @@ function WorkCard({
             {work.title}
           </h3>
 
-          {/* Description */}
-          <p className="text-[13px] font-sans font-normal text-silver leading-[1.7] line-clamp-2 mb-3">
-            {work.description}
+          <p className="mb-3 text-[13px] font-sans text-graphite leading-relaxed line-clamp-3">
+            {judgmentText}
           </p>
 
+          <div className="space-y-2 rounded-lg bg-[#FCFBF9] px-3 py-3 mb-3">
+            <WorkInfoLine label="小白">
+              <span className="line-clamp-1 md:line-clamp-2">{shortText(whoText, 48)}</span>
+            </WorkInfoLine>
+            <div className="hidden md:block">
+              <WorkInfoLine label="极客">
+                <span className="line-clamp-2">{shortText(whyText, 54)}</span>
+              </WorkInfoLine>
+            </div>
+            <div className="md:hidden">
+              <WorkInfoLine label="看点">
+                <span className="line-clamp-2">{shortText(whyText, 46)}</span>
+              </WorkInfoLine>
+            </div>
+            <WorkInfoLine label="先做">
+              <span className="line-clamp-2">{shortText(nextText, 56)}</span>
+            </WorkInfoLine>
+            <WorkInfoLine label="码神">
+              <span className="line-clamp-2 md:line-clamp-2">
+                {shortText(riskText || (sourceText ? `来源：${sourceText}` : ''), 58)}
+                <span className="hidden md:inline">
+                  {riskText && sourceText ? '；' : ''}
+                  {sourceText ? `来源：${sourceText}` : ''}
+                </span>
+              </span>
+            </WorkInfoLine>
+          </div>
+
           {/* Duration & Team */}
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-3 text-[12px] text-silver">
+          <div className="hidden flex-wrap items-center gap-x-4 gap-y-1 mb-3 text-[12px] text-silver md:flex">
             {duration && (
               <span className="flex items-center gap-1">
                 <Clock size={12} strokeWidth={1.5} />
@@ -227,24 +299,6 @@ function WorkCard({
             ))}
           </div>
 
-          {firstReminder ? (
-            <div className="flex items-start gap-1.5 text-[12px] text-graphite mb-3 bg-[#F0F7F2] rounded-lg px-2.5 py-1.5">
-              <Lightbulb size={12} strokeWidth={1.5} className="text-[#6B9E7C] mt-0.5 shrink-0" />
-              <span className="line-clamp-2">安的提醒：{firstReminder}</span>
-            </div>
-          ) : firstFailureMode ? (
-            <div className="flex items-start gap-1.5 text-[12px] text-graphite mb-3 bg-[#FAF4F1] rounded-lg px-2.5 py-1.5">
-              <AlertTriangle size={12} strokeWidth={1.5} className="text-[#C47D6E] mt-0.5 shrink-0" />
-              <span className="line-clamp-2">容易失败：{firstFailureMode}</span>
-            </div>
-          ) : null}
-
-          {replicationSteps.length > 0 && (
-            <p className="mb-3 text-[12px] text-silver">
-              {replicationSteps.length} 段复刻记录
-            </p>
-          )}
-
           {/* Footer: date + links */}
           <div className="flex items-center justify-between pt-3 border-t border-border-color">
             <span className="text-[11px] font-sans text-light-silver">{formattedDate}</span>
@@ -255,8 +309,8 @@ function WorkCard({
                 onClick={(e) => e.stopPropagation()}
                 aria-label={`查看${work.title}的复刻步骤`}
               >
-                <BookOpen size={13} strokeWidth={1.5} />
-                复刻步骤
+                <ArrowRight size={13} strokeWidth={1.5} />
+                打开学习包
               </Link>
               {work.github && (
                 <a
@@ -367,7 +421,7 @@ export default function WorksPage() {
   const advancedFilterCount = (activeStatus !== 'all' ? 1 : 0) + activeTags.length;
   const featuredWorks = featuredWorkTitles
     .map((title) => enrichedWorks.find((work) => work.title === title))
-    .filter(Boolean) as Array<Work & { inferredType: WorkType }>;
+    .filter(Boolean) as WorkCardData[];
 
   // 数据源固定后，这里直接渲染内容；后端接入时可切换为统一生命周期骨架
 
@@ -398,13 +452,30 @@ export default function WorksPage() {
             工坊
           </motion.h1>
           <motion.p
-            className="text-[15px] font-sans font-normal text-silver leading-relaxed text-center mb-4 max-w-[680px] mx-auto"
+            className="text-[15px] font-sans font-normal text-silver leading-relaxed text-center mb-4 max-w-[720px] mx-auto"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: easeOut, delay: 0.15 }}
           >
-            每张卡片都是一份资料包，点进去看背景、步骤和复盘。
+            这里不是作品墙。每张卡都是一份资料包：列表只帮你判断要不要打开，完整背景、复刻步骤、失败点和安的提醒都在详情页。
           </motion.p>
+          <motion.div
+            className="mx-auto mt-5 grid max-w-[900px] grid-cols-1 gap-3 md:grid-cols-3"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: easeOut, delay: 0.25 }}
+          >
+            {[
+              ['小白', '先看这件事能不能照着做出一个最小版本。'],
+              ['极客', '再看工具、数据、流程和取舍怎样连起来。'],
+              ['码神', '最后看边界、风险、验收和后续维护成本。'],
+            ].map(([label, text]) => (
+              <div key={label} className="rounded-lg border border-[#E8DDD4] bg-[#FCFAF7] px-4 py-3 text-left">
+                <p className="text-[12px] text-[#9B7E68]">{label}</p>
+                <p className="mt-1 text-[13px] leading-[1.75] text-graphite">{text}</p>
+              </div>
+            ))}
+          </motion.div>
           {featuredWorks.length > 0 && (
             <motion.div
               className="mx-auto mt-6 grid max-w-[1080px] grid-cols-1 gap-4 md:grid-cols-3"
