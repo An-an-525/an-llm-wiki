@@ -28,3 +28,8 @@ Compiled wiki pages may be public when they contain no credentials, raw private 
 ## Required Checks
 
 Run structural and privacy checks before committing or pushing.
+
+## Rewrite Standards
+
+- [[wiki/concepts/sensitive-context-rewrite-rules]] - how to keep reusable lessons while removing unsafe context.
+- [[wiki/concepts/upstream-reference-and-adaptation-policy]] - how to label reference studies, adaptations, and owner-built work.

@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 12%;
+    --primary: 0 0% 12%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 40 20% 97%;
+    --secondary-foreground: 0 0% 12%;
+    --muted: 40 10% 96%;
+    --muted-foreground: 40 2% 53%;
+    --accent: 20 30% 93%;
+    --accent-foreground: 0 0% 12%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 40 5% 89%;
+    --input: 40 5% 89%;
+    --ring: 40 5% 78%;
+    --radius: 0.625rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    --app-safe-top: max(env(safe-area-inset-top, 0px), 0px);
+    --app-nav-height: calc(4rem + var(--app-safe-top));
+    --app-safe-bottom: env(safe-area-inset-bottom, 0px);
+    --mobile-nav-height: calc(56px + var(--app-safe-bottom));
+    --xiaoan-floating-bottom: calc(var(--mobile-nav-height) + 12px);
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      --app-safe-top: max(env(safe-area-inset-top, 0px), 0px);
+      --app-nav-height: calc(4rem + var(--app-safe-top));
+    }
+  }
+
+  html[data-platform='android'],
+  html.android-standalone {
+    --app-safe-top: max(env(safe-area-inset-top, 0px), 0px);
+    --app-safe-bottom: 0px;
+    --app-nav-height: calc(4rem + var(--app-safe-top));
+    --mobile-nav-height: 56px;
+    --xiaoan-floating-bottom: 68px;
+  }
+
+  html[data-platform='android'][data-display-mode='standalone'],
+  html[data-platform='android'][data-display-mode='fullscreen'],
+  html[data-platform='android'].android-standalone {
+    --app-safe-top: max(env(safe-area-inset-top, 0px), 24px);
+    --app-nav-height: calc(4rem + var(--app-safe-top));
+  }
+
+  html[data-platform='android'] body,
+  html.android-standalone body {
+    background: #ffffff;
+  }
+
+  html.xiaoan-dialog-open .mobile-bottom-nav {
+    display: none;
+    pointer-events: none;
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --xiaoan-floating-bottom: 1.5rem;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    background: #ffffff;
+  }
+
+  body {
+    @apply bg-white text-graphite font-sans antialiased;
+    font-size: 15px;
+    line-height: 1.75;
+    letter-spacing: 0;
+    overscroll-behavior-y: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media (display-mode: standalone) {
+    body {
+      overscroll-behavior-y: contain;
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif text-ink;
+  }
+
+  * {
+    @apply border-border-color;
+  }
+
+  /* Touch-friendly improvements */
+  a, button {
+    touch-action: manipulation;
+  }
+
+  /* Prevent text selection on interactive elements */
+  .no-select {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Hide scrollbar but allow scroll */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Active/tap feedback for clickable elements */
+  .tap-active {
+    transition: transform 150ms ease, opacity 150ms ease;
+  }
+  .tap-active:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+
+  /* Card tap feedback */
+  .card-tap {
+    transition: transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
+  }
+  .card-tap:active {
+    transform: scale(0.98);
+    opacity: 0.92;
+  }
+}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-label="AI 行动路线">
+  <rect width="640" height="420" fill="#F5EDE8"/>
+  <path d="M110 294h92l72-126 72 92 82-150 102 184" fill="none" stroke="#C8956C" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="96" y="92" width="134" height="52" rx="14" fill="#FFFDF9" stroke="#D7C6BB" stroke-width="3"/>
+  <rect x="252" y="184" width="134" height="52" rx="14" fill="#FFFDF9" stroke="#B8CBBE" stroke-width="3"/>
+  <rect x="410" y="92" width="134" height="52" rx="14" fill="#FFFDF9" stroke="#BEC8D8" stroke-width="3"/>
+  <text x="92" y="54" fill="#3C3530" font-family="serif" font-size="30">AI 行动路线</text>
+  <text x="96" y="384" fill="#7A716B" font-family="sans-serif" font-size="20">从问题到交付物，一步一步做成</text>
+</svg>

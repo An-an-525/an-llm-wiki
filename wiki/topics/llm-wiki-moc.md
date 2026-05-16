@@ -6,10 +6,10 @@ category: synthesis
 type: moc
 status: active
 created: 2026-05-12
-updated: 2026-05-12
+updated: 2026-05-13
 sources:
   - "[[wiki/sources/karpathy-llm-wiki-pattern]]"
-summary: "Map for the vault architecture, schema, source policy, and rebuild alignment notes."
+summary: "LLM Wiki 总地图：连接官方来源、公开 wiki 层契约、架构偏差说明、维护规则和当前对齐审计。"
 ---
 
 # LLM Wiki MOC
@@ -19,9 +19,11 @@ Use this page for the wiki operating model, not for raw migrated content.
 ## Architecture
 
 - [[wiki/sources/karpathy-llm-wiki-pattern]] - official pattern source
+- [[wiki/synthesis/karpathy-official-wiki-layer]] - public wiki layer contract
 - [[CLAUDE]] - local schema and page contract
 - [[AGENTS]] - operating rules for future agents
 - [[wiki/sources-and-data-policy]] - public/private source boundary
+- `scripts/check_karpathy_alignment.py` - 对齐官方模式的独立审计脚本
 
 ## Rebuild Records
 

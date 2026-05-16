@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-label="小安">
+  <rect width="640" height="420" fill="#F4ECEA"/>
+  <path d="M154 226c40-82 116-124 166-124s126 42 166 124c-38 62-104 94-166 94s-128-32-166-94z" fill="#FFFDF9" stroke="#C47D6E" stroke-width="4"/>
+  <path d="M236 226c36-38 132-38 168 0M256 260c38 28 90 28 128 0" fill="none" stroke="#3C3530" stroke-width="9" stroke-linecap="round"/>
+  <path d="M320 122v-46M216 164l-34-30M424 164l34-30" stroke="#C8956C" stroke-width="7" stroke-linecap="round"/>
+  <text x="92" y="54" fill="#3C3530" font-family="serif" font-size="30">小安</text>
+  <text x="96" y="384" fill="#7A716B" font-family="sans-serif" font-size="20">数字生命体、人格、对话与边界</text>
+</svg>

@@ -25,3 +25,13 @@ These projects inform implementation details. They do not replace Karpathy's gis
 - green-dalii/obsidian-llm-wiki - plugin-oriented interaction model
 - MehmetGoekce/llm-wiki - Claude Code and layered wiki workflow
 - yologdev/karpathy-llm-wiki - web app and agentic experiment
+
+## Recurring Study Rule
+
+Use [[wiki/synthesis/github-best-practice-learning-loop]] before turning a GitHub project into local practice. A useful reference should improve one workflow, source note, package, or validation gate.
+
+Official references for current workflow design:
+
+- [[wiki/sources/obsidian-properties]] - metadata and note properties.
+- [[wiki/sources/diataxis-framework]] - learning package structure.
+- [[wiki/sources/github-actions-scheduled-workflows]] - recurring workflow baseline.

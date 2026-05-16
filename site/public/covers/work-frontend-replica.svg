@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-label="资料库前端复刻">
+  <rect width="640" height="420" fill="#EEF3F1"/>
+  <rect x="86" y="104" width="468" height="228" rx="24" fill="#FFFDF9" stroke="#B8CBBE" stroke-width="4"/>
+  <rect x="120" y="140" width="176" height="150" rx="16" fill="#E8F0EB"/>
+  <rect x="326" y="140" width="88" height="66" rx="14" fill="#F5EDE8"/>
+  <rect x="434" y="140" width="84" height="150" rx="14" fill="#E8EBF0"/>
+  <path d="M326 238h148M326 270h104" stroke="#60736B" stroke-width="8" stroke-linecap="round"/>
+  <path d="M150 178h116M150 222h82M150 264h102" stroke="#60736B" stroke-width="8" stroke-linecap="round"/>
+  <text x="92" y="54" fill="#2F3A36" font-family="serif" font-size="30">前端复刻</text>
+  <text x="96" y="384" fill="#67716D" font-family="sans-serif" font-size="20">先做三张卡片，再接入真实内容</text>
+</svg>
