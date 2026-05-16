@@ -4,6 +4,7 @@ _archives/
 inbox/private/
 private-wiki/
 _meta/
+.omx/
 local-index-cache/
 .trash/
 .claude/
@@ -32,6 +33,9 @@ hot.md
 # Local runtime/collaboration scratch
 00 - */
 01 - */
+99 - Agent指南与规范/
+项目经验/
+docs/superpowers/
 scripts/__pycache__/
 __pycache__/
 site/node_modules/
@@ -42,6 +46,7 @@ site/public/site-data/
 
 # Generated local reports
 wiki/reports/
+manifests/private/
 manifests/*.log
 manifests/git_init_result.json
 

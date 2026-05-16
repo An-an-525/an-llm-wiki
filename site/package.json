@@ -24,6 +24,7 @@
     "android:prepare-release": "node scripts/prepare-android-release-metadata.mjs",
     "android:build:apk": "tauri android build --apk",
     "android:build:aab": "tauri android build --aab",
+    "perf:budget": "npm run build && node scripts/performance-budget-check.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },

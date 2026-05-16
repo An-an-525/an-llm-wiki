@@ -1,0 +1,66 @@
+{
+  "generatedAt": "2026-05-16T02:10:21.287Z",
+  "budgets": {
+    "cssTotal": 143360,
+    "largestVendorChunk": 368640,
+    "largestRouteChunk": 92160,
+    "largestSiteDataChunk": 471040,
+    "javascriptTotal": 1415578,
+    "publicAdapter": 573440,
+    "generatedDataModule": 573440,
+    "largestImage": 430080,
+    "imageTotal": 1310720,
+    "windowsInstaller": 33554432,
+    "androidApk": 26214400
+  },
+  "metrics": {
+    "build": {
+      "jsFiles": 22,
+      "cssFiles": 1,
+      "imageFiles": 49,
+      "cssTotalBytes": 119672,
+      "javascriptTotalBytes": 1254315,
+      "largestVendorChunk": {
+        "path": "\\dist\\assets\\vendor-C2Qv0g8T.js",
+        "bytes": 319831
+      },
+      "largestRouteChunk": {
+        "path": "\\dist\\assets\\ContentDetail-dipT1kZz.js",
+        "bytes": 39573
+      },
+      "largestSiteDataChunk": {
+        "path": "\\dist\\assets\\site-data-DGJ-Tkvu.js",
+        "bytes": 410675
+      },
+      "largestImage": {
+        "path": "\\dist\\hero-cover.jpg",
+        "bytes": 94882
+      },
+      "imageTotalBytes": 697745
+    },
+    "publicAdapterBytes": 479630,
+    "generatedDataModuleBytes": 468864,
+    "pwa": {
+      "name": "安的书房",
+      "shortName": "安的书房",
+      "display": "standalone",
+      "startUrl": "./#/",
+      "scope": "./",
+      "iconCount": 2
+    },
+    "release": {
+      "productName": "安的书房",
+      "version": "0.1.1",
+      "clients": [
+        "web",
+        "windows",
+        "android"
+      ]
+    },
+    "windowsInstallerBytes": 25626128,
+    "androidApkBytes": 18296123
+  },
+  "failures": [],
+  "warnings": [],
+  "status": "pass"
+}
